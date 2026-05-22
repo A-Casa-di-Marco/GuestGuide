@@ -273,7 +273,7 @@
       color: #fff;
       border: none;
       border-radius: 999px;
-      padding: 10px 38px 10px 16px;
+      padding: 10px 42px 10px 16px;
       font-family: 'Poppins', sans-serif;
       font-size: 13px;
       font-weight: 600;
@@ -282,14 +282,14 @@
     }
 
     .lang-select-wrap::after {
-      content: "⌄";
+      content: "👇";
       position: absolute;
-      right: 15px;
+      right: 13px;
       top: 50%;
-      transform: translateY(-56%);
-      color: #fff;
+      transform: translateY(-50%);
       pointer-events: none;
-      font-size: 16px;
+      font-size: 14px;
+      line-height: 1;
     }
 
     .topbar a {
@@ -376,14 +376,53 @@
       box-shadow: 0 12px 28px rgba(0, 90, 95, .22);
     }
 
-    .marco-letter {
+    .marco-story {
+      display: grid;
+      grid-template-columns: 1.45fr .85fr;
+      gap: 24px;
+      align-items: start;
       margin-top: 18px;
     }
 
-    .marco-letter img {
+    .marco-text {
+      background: var(--milk);
+      border: 1px solid #eee5d8;
+      border-radius: 24px;
+      padding: 24px;
+    }
+
+    .marco-text p {
+      max-width: none;
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .marco-text .greeting {
+      font-weight: 600;
+      color: var(--ottanio-dark);
+    }
+
+    .marco-sign {
+      margin-top: 8px;
+      font-weight: 600;
+      color: var(--ottanio-dark);
+    }
+
+    .marco-photo img {
       width: 100%;
       border-radius: 24px;
       box-shadow: 0 12px 35px rgba(0, 80, 85, .14);
+      object-fit: cover;
+    }
+
+    .marco-photo small {
+      display: block;
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
     }
 
     .contact-grid {
@@ -483,6 +522,19 @@
         flex-basis: 88%;
         height: 240px;
       }
+
+      .marco-story {
+        grid-template-columns: 1fr;
+      }
+
+      .marco-text {
+        padding: 18px;
+      }
+
+      .marco-text p {
+        font-size: 14px;
+        line-height: 1.75;
+      }
     }
   </style>
 </head>
@@ -524,9 +576,9 @@
             <option value="fr" data-it="🇫🇷 Français" data-en="🇫🇷 French" data-es="🇫🇷 Francés" data-fr="🇫🇷 Français">🇫🇷 Français</option>
           </select>
         </div>
+        <a href="#contacts-section" data-it="Contatti" data-en="Contacts" data-es="Contactos" data-fr="Contacts">Contatti</a>
         <a href="#home-menu" data-it="Guida ospiti" data-en="Guest guide" data-es="Guía para huéspedes" data-fr="Guide des invités">Guida ospiti</a>
         <a href="#marco-section" data-it="Chi è Marco?" data-en="Who is Marco?" data-es="¿Quién es Marco?" data-fr="Qui est Marco ?">Chi è Marco?</a>
-        <a href="#contacts-section" data-it="Contatti" data-en="Contacts" data-es="Contactos" data-fr="Contacts">Contatti</a>
       </div>
     </nav>
 
@@ -622,10 +674,82 @@
       </section>
 
       <section id="marco-section" class="marco-section">
-        <h2 data-it="Chi è Marco?" data-en="Who is Marco?" data-es="¿Quién es Marco?" data-fr="Qui est Marco ?">Chi è Marco?</h2>
-        <p data-it-html="Prima di continuare con la guida, vogliamo raccontarvi perché questa casa si chiama <strong>A Casa di Marco</strong>." data-en-html="Before continuing with the guide, we want to tell you why this house is called <strong>A Casa di Marco</strong>." data-es-html="Antes de continuar con la guía, queremos contaros por qué esta casa se llama <strong>A Casa di Marco</strong>." data-fr-html="Avant de continuer le guide, nous voulons vous raconter pourquoi cette maison s'appelle <strong>A Casa di Marco</strong>.">Prima di continuare con la guida, vogliamo raccontarvi perché questa casa si chiama <strong>A Casa di Marco</strong>.</p>
-        <div class="marco-letter">
-          <img src="assets/pettirosso.png" alt="Lettera dedicata a Marco e al pettirosso">
+        <h2 data-it="Chi è Marco?"
+            data-en="Who is Marco?"
+            data-es="¿Quién es Marco?"
+            data-fr="Qui est Marco ?">Chi è Marco?</h2>
+
+        <div class="marco-story">
+          <div class="marco-text">
+            <p class="greeting"
+               data-it="Gentili Ospiti,"
+               data-en="Dear Guests,"
+               data-es="Queridos huéspedes:"
+               data-fr="Chers hôtes,">
+              Gentili Ospiti,
+            </p>
+
+            <p data-it="Forse avrete notato che prima di arrivare qui non avete mai parlato o chattato con Marco. E magari vi stareste chiedendo: “Sì, ma chi è Marco?” La verità è semplice... Questa casa non è gestita da Marco. È dedicata a lui."
+               data-en="Perhaps you may have noticed that before arriving here, you never actually spoke or chatted with Marco. And maybe you are wondering: “Yes, but who is Marco?” The truth is simple... This house is not managed by Marco. It is dedicated to him."
+               data-es="Quizá habréis notado que antes de llegar aquí nunca hablasteis ni chateasteis con Marco. Y tal vez os estaréis preguntando: “Sí, pero ¿quién es Marco?” La verdad es muy sencilla... Esta casa no está gestionada por Marco. Está dedicada a él."
+               data-fr="Vous avez peut-être remarqué qu’avant d’arriver ici, vous n’avez jamais parlé ni échangé de messages avec Marco. Et vous vous demandez peut-être : « Oui, mais qui est Marco ? » La vérité est simple... Cette maison n’est pas gérée par Marco. Elle lui est dédiée.">
+              Forse avrete notato che prima di arrivare qui non avete mai parlato o chattato con Marco. E magari vi stareste chiedendo: “Sì, ma chi è Marco?” La verità è semplice... Questa casa non è gestita da Marco. È dedicata a lui.
+            </p>
+
+            <p data-it="Marco era nostro zio... Non viveva qui, ma con noi, ed era un po’ come un fratello maggiore. Era una capa fresca, smemorato, disorganizzato e capatosta come pochi, ma sempre allegro e con il sorriso facile. Lavorava tanto, a modo suo, e mangiare bene per lui non era mai abbastanza. Per il suo aspetto imponente e affettuoso lo chiamavamo affettuosamente “bambolotto”."
+               data-en="Marco was our uncle... He did not live here, but with us, and he was a bit like an older brother. He was free-spirited, forgetful, disorganised and stubborn like few others, but always cheerful and quick to smile. He worked hard, in his own way, and good food was never enough for him. Because of his big and affectionate presence, we lovingly called him “bambolotto”."
+               data-es="Marco era nuestro tío... No vivía aquí, sino con nosotras, y era un poco como un hermano mayor. Era una persona despreocupada, olvidadiza, desorganizada y muy testaruda, pero siempre alegre y con una sonrisa fácil. Trabajaba mucho, a su manera, y para él comer bien nunca era suficiente. Por su presencia imponente y cariñosa, le llamábamos con cariño “bambolotto”."
+               data-fr="Marco était notre oncle... Il ne vivait pas ici, mais avec nous, et il était un peu comme un grand frère. Il était insouciant, distrait, désorganisé et têtu comme peu de gens, mais toujours joyeux et avec le sourire facile. Il travaillait beaucoup, à sa manière, et pour lui, bien manger n’était jamais assez. Pour sa présence imposante et affectueuse, nous l’appelions tendrement « bambolotto ».">
+              Marco era nostro zio... Non viveva qui, ma con noi, ed era un po’ come un fratello maggiore. Era una capa fresca, smemorato, disorganizzato e capatosta come pochi, ma sempre allegro e con il sorriso facile. Lavorava tanto, a modo suo, e mangiare bene per lui non era mai abbastanza. Per il suo aspetto imponente e affettuoso lo chiamavamo affettuosamente “bambolotto”.
+            </p>
+
+            <p data-it="Purtroppo Marco non è più con noi, ma questa casa è un modo per tenerlo vicino e ricordarlo ogni giorno. Aprire una casa come questa era uno dei suoi sogni, e noi l’abbiamo fatto anche per lui."
+               data-en="Sadly, Marco is no longer with us, but this house is a way to keep him close and remember him every day. Opening a home like this was one of his dreams, and we did it for him too."
+               data-es="Por desgracia, Marco ya no está con nosotras, pero esta casa es una forma de tenerlo cerca y recordarlo cada día. Abrir una casa como esta era uno de sus sueños, y también lo hicimos por él."
+               data-fr="Malheureusement, Marco n’est plus avec nous, mais cette maison est une façon de le garder près de nous et de nous souvenir de lui chaque jour. Ouvrir une maison comme celle-ci était l’un de ses rêves, et nous l’avons fait aussi pour lui.">
+              Purtroppo Marco non è più con noi, ma questa casa è un modo per tenerlo vicino e ricordarlo ogni giorno. Aprire una casa come questa era uno dei suoi sogni, e noi l’abbiamo fatto anche per lui.
+            </p>
+
+            <p data-it="E a volte sembra proprio che Marco venga a farci visita… Se durante il vostro soggiorno vedete un pettirosso avvicinarsi alla casa, non spaventatelo. Ci capita spesso, a volte quando scendiamo a pulire oppure quando passiamo un pomeriggio qui... Non si fa toccare, ma a volte entra persino in casa."
+               data-en="And sometimes it really feels as if Marco comes to visit us… If during your stay you see a robin coming close to the house, please do not scare it away. It happens quite often, sometimes when we come down to clean or spend an afternoon here... It does not let itself be touched, but sometimes it even comes inside the house."
+               data-es="Y a veces realmente parece que Marco venga a visitarnos… Si durante vuestra estancia veis un petirrojo acercarse a la casa, no lo asustéis. Nos pasa a menudo, a veces cuando bajamos a limpiar o cuando pasamos aquí una tarde... No se deja tocar, pero a veces incluso entra en casa."
+               data-fr="Et parfois, on a vraiment l’impression que Marco vient nous rendre visite… Si pendant votre séjour vous voyez un rouge-gorge s’approcher de la maison, ne l’effrayez pas. Cela nous arrive souvent, parfois quand nous descendons pour nettoyer ou quand nous passons un après-midi ici... Il ne se laisse pas toucher, mais il entre parfois même dans la maison.">
+              E a volte sembra proprio che Marco venga a farci visita… Se durante il vostro soggiorno vedete un pettirosso avvicinarsi alla casa, non spaventatelo. Ci capita spesso, a volte quando scendiamo a pulire oppure quando passiamo un pomeriggio qui... Non si fa toccare, ma a volte entra persino in casa.
+            </p>
+
+            <p data-it="Per il suo comportamento e anche per il suo aspetto chiatto, ci è venuto naturale pensare, nonostante siamo persone poco superstiziose, che sia Marco che passa a dare un’occhiata e a controllare che sia tutto a posto. Lo chiamiamo affettuosamente “il pettirosso chiatto”, perché anche lui, come nostro zio, non era certo uno che si teneva leggero."
+               data-en="Because of its behaviour and even its plump appearance, it felt natural to think — even though we are not very superstitious people — that it might be Marco stopping by to check that everything is all right. We lovingly call it “the chubby robin”, because, just like our uncle, he was certainly not someone who stayed skinny."
+               data-es="Por su comportamiento y también por su aspecto regordete, nos vino natural pensar, aunque no somos personas supersticiosas, que era Marco pasando a echar un vistazo y comprobar que todo estaba bien. Lo llamamos cariñosamente “el petirrojo gordito”, porque él también, como nuestro tío, no era precisamente de los que se mantenían ligeros."
+               data-fr="À cause de son comportement et même de son aspect un peu dodu, il nous est venu naturellement à l’esprit, même si nous ne sommes pas très superstitieuses, que c’était Marco qui passait jeter un coup d’œil pour vérifier que tout allait bien. Nous l’appelons affectueusement « le rouge-gorge dodu », car lui aussi, comme notre oncle, n’était pas vraiment du genre à rester léger.">
+              Per il suo comportamento e anche per il suo aspetto chiatto, ci è venuto naturale pensare, nonostante siamo persone poco superstiziose, che sia Marco che passa a dare un’occhiata e a controllare che sia tutto a posto. Lo chiamiamo affettuosamente “il pettirosso chiatto”, perché anche lui, come nostro zio, non era certo uno che si teneva leggero.
+            </p>
+
+            <p data-it="Se lo vedete, se vi va, potete anche mandarci una foto, ci farà sorridere pensare che Marco sia passato a trovarvi. Se qui vi sentirete bene, se vi sembrerà davvero di essere a casa, allora probabilmente Marco è passato. Ha guardato in giro, ha borbottato qualcosa… e se n’è andato soddisfatto."
+               data-en="If you see it, and if you feel like it, you can also send us a photo — it will make us smile to think that Marco stopped by to visit you. If you feel good here, if it truly feels like home, then Marco has probably passed by. He looked around, grumbled about something… and left satisfied."
+               data-es="Si lo veis, y si os apetece, también podéis enviarnos una foto: nos hará sonreír pensar que Marco ha pasado a visitaros. Si aquí os sentís bien, si de verdad os parece estar en casa, entonces probablemente Marco ha pasado por aquí. Ha mirado alrededor, ha gruñido algo… y se ha ido satisfecho."
+               data-fr="Si vous le voyez, et si vous en avez envie, vous pouvez aussi nous envoyer une photo : cela nous fera sourire de penser que Marco est passé vous rendre visite. Si vous vous sentez bien ici, si vous avez vraiment l’impression d’être chez vous, alors Marco est probablement passé. Il a regardé autour de lui, a marmonné quelque chose… puis il est reparti satisfait.">
+              Se lo vedete, se vi va, potete anche mandarci una foto, ci farà sorridere pensare che Marco sia passato a trovarvi. Se qui vi sentirete bene, se vi sembrerà davvero di essere a casa, allora probabilmente Marco è passato. Ha guardato in giro, ha borbottato qualcosa… e se n’è andato soddisfatto.
+            </p>
+
+            <p class="marco-sign"
+               data-it="— Stefania, Ambra, Asja"
+               data-en="— Stefania, Ambra, Asja"
+               data-es="— Stefania, Ambra, Asja"
+               data-fr="— Stefania, Ambra, Asja">
+              — Stefania, Ambra, Asja
+            </p>
+          </div>
+
+          <div class="marco-photo">
+            <img src="assets/pettirosso.png" alt="Il pettirosso di Marco">
+            <small
+              data-it="Il nostro “pettirosso chiatto”. Se lo vedete, mandateci una foto 💛"
+              data-en="Our “chubby robin”. If you see it, send us a photo 💛"
+              data-es="Nuestro “petirrojo gordito”. Si lo veis, enviadnos una foto 💛"
+              data-fr="Notre « rouge-gorge dodu ». Si vous le voyez, envoyez-nous une photo 💛">
+              Il nostro “pettirosso chiatto”. Se lo vedete, mandateci una foto 💛
+            </small>
+          </div>
         </div>
       </section>
 

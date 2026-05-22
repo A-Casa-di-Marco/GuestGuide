@@ -179,6 +179,28 @@
       color:var(--ottanio-dark);
     }
 
+    summary {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: "👇";
+      font-size: 15px;
+      line-height: 1;
+    }
+
+    details[open] summary::after {
+      content: "👆";
+    }
+
     .pdf-actions {
       display:flex;
       flex-wrap:wrap;

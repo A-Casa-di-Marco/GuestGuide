@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Manuale della casa · A Casa di Marco</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ottanio:#0f7f83;
+      --ottanio-dark:#075f63;
+      --ottanio-soft:#dff3f2;
+      --white:#fff;
+      --milk:#fbfbf8;
+      --text:#263238;
+      --muted:#6f7d80;
+      --shadow:0 18px 50px rgba(0,70,75,.20);
+      --radius:28px;
+    }
+
+    * {
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    body {
+      background:var(--milk);
+      color:var(--text);
+      font-family:'Poppins',sans-serif;
+      line-height:1.65;
+    }
+
+    h1,h2,h3 {
+      font-family:'Pacifico',cursive;
+      font-weight:400;
+      color:var(--ottanio-dark);
+    }
+
+    .page-hero {
+      min-height:38vh;
+      background:
+        linear-gradient(180deg, rgba(0,80,85,.25), rgba(0,80,85,.55)),
+        url("assets/garden-main.jpg") center/cover no-repeat;
+      color:#fff;
+      display:flex;
+      align-items:flex-end;
+      padding:38px 20px;
+    }
+
+    .page-hero div {
+      max-width:1000px;
+      margin:0 auto;
+      width:100%;
+    }
+
+    .page-hero h1 {
+      color:#fff;
+      font-size:clamp(38px, 7vw, 68px);
+      text-shadow:0 5px 20px rgba(0,0,0,.35);
+    }
+
+    main {
+      max-width:1000px;
+      margin:0 auto;
+      padding:28px 16px 60px;
+    }
+
+    section {
+      background:#fff;
+      border-radius:28px;
+      padding:28px;
+      box-shadow:var(--shadow);
+      margin-bottom:22px;
+    }
+
+    .back-home {
+      display:inline-flex;
+      margin-bottom:18px;
+      background:var(--ottanio);
+      color:#fff;
+      text-decoration:none;
+      border-radius:999px;
+      padding:11px 18px;
+      font-weight:600;
+    }
+
+    .intro {
+      color:var(--muted);
+      max-width:850px;
+      margin-top:8px;
+    }
+
+    .note {
+      background:#fff8e8;
+      border-left:5px solid var(--ottanio);
+      border-radius:16px;
+      padding:14px 16px;
+      margin:16px 0;
+    }
+
+    .manual-details {
+      margin-top:18px;
+      background:#fff;
+      border:1px solid rgba(15,127,131,.16);
+      border-radius:22px;
+      overflow:hidden;
+    }
+
+    .manual-details summary {
+      list-style:none;
+      cursor:pointer;
+      background:var(--ottanio);
+      color:#fff;
+      padding:15px 18px;
+      font-weight:700;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+
+    .manual-details summary::-webkit-details-marker {
+      display:none;
+    }
+
+    .manual-details summary::after {
+      content:"👇";
+      font-size:15px;
+      line-height:1;
+      flex:0 0 auto;
+    }
+
+    .manual-details[open] summary::after {
+      content:"👆";
+    }
+
+    .manual-content {
+      padding:18px;
+      background:#fff;
+    }
+
+    .manual-content p {
+      margin-bottom:12px;
+    }
+
+    .info-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(230px, 1fr));
+      gap:14px;
+      margin-top:14px;
+    }
+
+    .info-card {
+      background:var(--ottanio-soft);
+      border-radius:18px;
+      padding:16px;
+    }
+
+    .info-card strong {
+      display:block;
+      color:var(--ottanio-dark);
+      margin-bottom:6px;
+    }
+
+    .simple-list {
+      list-style:none;
+      display:grid;
+      gap:10px;
+      margin-top:12px;
+    }
+
+    .simple-list li {
+      background:var(--ottanio-soft);
+      border-radius:16px;
+      padding:13px 15px;
+    }
+
+    .simple-list strong {
+      color:var(--ottanio-dark);
+    }
+
+    .waste-table {
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0 12px;
+      margin-top:14px;
+    }
+
+    .waste-table th {
+      text-align:left;
+      color:var(--ottanio-dark);
+      font-size:14px;
+      padding:0 12px 4px;
+    }
+
+    .waste-table td {
+      background:var(--ottanio-soft);
+      padding:14px 12px;
+      vertical-align:top;
+      font-size:14px;
+    }
+
+    .waste-table td:first-child {
+      border-radius:16px 0 0 16px;
+      font-weight:700;
+      color:var(--ottanio-dark);
+      width:24%;
+    }
+
+    .waste-table td:last-child {
+      border-radius:0 16px 16px 0;
+    }
+
+    .do-dont {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+      margin-top:14px;
+    }
+
+    .do-box,
+    .dont-box {
+      border-radius:18px;
+      padding:15px;
+    }
+
+    .do-box {
+      background:var(--ottanio-soft);
+    }
+
+    .dont-box {
+      background:#fff0ec;
+    }
+
+    .do-box strong,
+    .dont-box strong {
+      display:block;
+      margin-bottom:6px;
+      color:var(--ottanio-dark);
+    }
+
+    .placeholder {
+      color:var(--muted);
+      font-style:italic;
+    }
+
+    @media (max-width:720px) {
+      body {
+        font-size:14px;
+      }
+
+      .page-hero {
+        min-height:28vh;
+        padding:28px 16px;
+      }
+
+      .page-hero h1 {
+        font-size:34px;
+      }
+
+      main {
+        padding:20px 12px 44px;
+      }
+
+      section {
+        padding:20px;
+        border-radius:22px;
+      }
+
+      h2 {
+        font-size:26px;
+      }
+
+      .manual-details summary {
+        font-size:14px;
+        padding:13px 15px;
+      }
+
+      .manual-content {
+        padding:15px;
+      }
+
+      .do-dont {
+        grid-template-columns:1fr;
+      }
+
+      .waste-table,
+      .waste-table thead,
+      .waste-table tbody,
+      .waste-table th,
+      .waste-table td,
+      .waste-table tr {
+        display:block;
+      }
+
+      .waste-table thead {
+        display:none;
+      }
+
+      .waste-table tr {
+        background:var(--ottanio-soft);
+        border-radius:18px;
+        margin-bottom:12px;
+        padding:12px;
+      }
+
+      .waste-table td {
+        background:transparent;
+        padding:6px 0;
+      }
+
+      .waste-table td:first-child,
+      .waste-table td:last-child {
+        border-radius:0;
+        width:100%;
+      }
+
+      .waste-table td::before {
+        display:block;
+        font-size:12px;
+        font-weight:700;
+        color:var(--muted);
+        text-transform:uppercase;
+        margin-bottom:2px;
+      }
+
+      .waste-table td:nth-child(1)::before {
+        content:"Categoria";
+      }
+
+      .waste-table td:nth-child(2)::before {
+        content:"Cosa mettere";
+      }
+
+      .waste-table td:nth-child(3)::before {
+        content:"Attenzione";
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="page-hero">
+    <div>
+      <h1 data-it="Manuale della casa"
+          data-en="House manual"
+          data-es="Manual de la casa"
+          data-fr="Manuel de la maison">Manuale della casa</h1>
+    </div>
+  </header>
+
+  <main>
+    <a class="back-home" href="index.html"
+       data-it="← Torna alla home"
+       data-en="← Back to home"
+       data-es="← Volver a la home"
+       data-fr="← Retour à l'accueil">← Torna alla home</a>
+
+    <section>
+      <h2 data-it="Informazioni utili"
+          data-en="Useful information"
+          data-es="Información útil"
+          data-fr="Informations utiles">Informazioni utili</h2>
+
+      <p class="intro"
+         data-it="In questa pagina trovate le istruzioni pratiche per usare la casa nel modo più semplice possibile: Wi-Fi, raccolta differenziata, clima, riscaldamento, moka e piccoli consigli utili."
+         data-en="On this page you will find practical instructions for using the house as easily as possible: Wi-Fi, waste sorting, air conditioning, heating, moka coffee maker and useful tips."
+         data-es="En esta página encontraréis instrucciones prácticas para usar la casa de la forma más sencilla posible: Wi-Fi, recogida selectiva, clima, calefacción, cafetera moka y consejos útiles."
+         data-fr="Sur cette page, vous trouverez les instructions pratiques pour utiliser la maison le plus facilement possible : Wi-Fi, tri des déchets, climatisation, chauffage, cafetière moka et conseils utiles.">
+        In questa pagina trovate le istruzioni pratiche per usare la casa nel modo più semplice possibile: Wi-Fi, raccolta differenziata, clima, riscaldamento, moka e piccoli consigli utili.
+      </p>
+
+      <div class="note"
+           data-it="Per qualsiasi dubbio, scriveteci su WhatsApp: è sempre meglio chiedere prima piuttosto che rischiare di usare qualcosa nel modo sbagliato."
+           data-en="For any doubts, message us on WhatsApp: it is always better to ask first rather than risk using something the wrong way."
+           data-es="Para cualquier duda, escribidnos por WhatsApp: siempre es mejor preguntar antes que arriesgarse a usar algo de forma incorrecta."
+           data-fr="Pour tout doute, écrivez-nous sur WhatsApp : il vaut toujours mieux demander avant plutôt que risquer d'utiliser quelque chose de la mauvaise façon.">
+        Per qualsiasi dubbio, scriveteci su WhatsApp: è sempre meglio chiedere prima piuttosto che rischiare di usare qualcosa nel modo sbagliato.
+      </div>
+
+      <details class="manual-details">
+        <summary data-it="Wi-Fi"
+                 data-en="Wi-Fi"
+                 data-es="Wi-Fi"
+                 data-fr="Wi-Fi">Wi-Fi</summary>
+
+        <div class="manual-content">
+          <div class="info-grid">
+            <div class="info-card">
+              <strong data-it="Nome rete"
+                      data-en="Network name"
+                      data-es="Nombre de la red"
+                      data-fr="Nom du réseau">Nome rete</strong>
+              <span class="placeholder"
+                    data-it="Da inserire"
+                    data-en="To be added"
+                    data-es="Por añadir"
+                    data-fr="À ajouter">Da inserire</span>
+            </div>
+
+            <div class="info-card">
+              <strong data-it="Password"
+                      data-en="Password"
+                      data-es="Contraseña"
+                      data-fr="Mot de passe">Password</strong>
+              <span class="placeholder"
+                    data-it="Da inserire"
+                    data-en="To be added"
+                    data-es="Por añadir"
+                    data-fr="À ajouter">Da inserire</span>
+            </div>
+          </div>
+
+          <ul class="simple-list">
+            <li data-it-html="Se il Wi-Fi non funziona, provate prima a <strong>disattivare e riattivare il Wi-Fi</strong> dal vostro telefono."
+                data-en-html="If the Wi-Fi does not work, first try <strong>turning Wi-Fi off and on again</strong> on your phone."
+                data-es-html="Si el Wi-Fi no funciona, probad primero a <strong>desactivar y volver a activar el Wi-Fi</strong> en vuestro teléfono."
+                data-fr-html="Si le Wi-Fi ne fonctionne pas, essayez d'abord de <strong>désactiver puis réactiver le Wi-Fi</strong> sur votre téléphone.">
+              Se il Wi-Fi non funziona, provate prima a <strong>disattivare e riattivare il Wi-Fi</strong> dal vostro telefono.
+            </li>
+
+            <li data-it-html="Se il problema continua, scriveteci su WhatsApp e vi aiuteremo il prima possibile."
+                data-en-html="If the problem continues, message us on WhatsApp and we will help you as soon as possible."
+                data-es-html="Si el problema continúa, escribidnos por WhatsApp y os ayudaremos lo antes posible."
+                data-fr-html="Si le problème continue, écrivez-nous sur WhatsApp et nous vous aiderons dès que possible.">
+              Se il problema continua, scriveteci su WhatsApp e vi aiuteremo il prima possibile.
+            </li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="manual-details" open>
+        <summary data-it="Raccolta differenziata"
+                 data-en="Waste sorting"
+                 data-es="Recogida selectiva"
+                 data-fr="Tri des déchets">Raccolta differenziata</summary>
+
+        <div class="manual-content">
+          <div class="note"
+               data-it-html="<strong>Importante:</strong> i bidoni condominiali esterni non devono essere portati dentro casa. Durante il soggiorno potete raccogliere i rifiuti nei sacchetti; a fine soggiorno vi chiediamo di buttare la spazzatura negli appositi bidoni condominiali."
+               data-en-html="<strong>Important:</strong> the outdoor condominium bins must not be brought inside the house. During your stay, you can collect waste in bags; at the end of your stay, please throw the rubbish in the proper condominium bins."
+               data-es-html="<strong>Importante:</strong> los contenedores exteriores del edificio no deben llevarse dentro de la casa. Durante la estancia podéis recoger los residuos en bolsas; al final de la estancia, os pedimos que tiréis la basura en los contenedores correspondientes del edificio."
+               data-fr-html="<strong>Important :</strong> les poubelles extérieures de la copropriété ne doivent pas être apportées à l'intérieur de la maison. Pendant votre séjour, vous pouvez collecter les déchets dans des sacs ; à la fin du séjour, merci de jeter les déchets dans les poubelles appropriées de la copropriété.">
+            <strong>Importante:</strong> i bidoni condominiali esterni non devono essere portati dentro casa. Durante il soggiorno potete raccogliere i rifiuti nei sacchetti; a fine soggiorno vi chiediamo di buttare la spazzatura negli appositi bidoni condominiali.
+          </div>
+
+          <table class="waste-table">
+            <thead>
+              <tr>
+                <th data-it="Categoria"
+                    data-en="Category"
+                    data-es="Categoría"
+                    data-fr="Catégorie">Categoria</th>
+                <th data-it="Cosa mettere"
+                    data-en="What to put"
+                    data-es="Qué poner"
+                    data-fr="Quoi jeter">Cosa mettere</th>
+                <th data-it="Attenzione"
+                    data-en="Pay attention"
+                    data-es="Atención"
+                    data-fr="Attention">Attenzione</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td data-it="Organico"
+                    data-en="Organic waste"
+                    data-es="Orgánico"
+                    data-fr="Déchets organiques">Organico</td>
+                <td data-it="Scarti di cucina, avanzi di cibo, gusci d’uovo, fondi di caffè e tè, tovaglioli di carta sporchi di cibo."
+                    data-en="Kitchen scraps, food leftovers, eggshells, coffee grounds, tea bags and paper napkins dirty with food."
+                    data-es="Restos de cocina, sobras de comida, cáscaras de huevo, posos de café y té, servilletas de papel sucias de comida."
+                    data-fr="Déchets de cuisine, restes alimentaires, coquilles d'œufs, marc de café, thé et serviettes en papier sales de nourriture.">
+                  Scarti di cucina, avanzi di cibo, gusci d’uovo, fondi di caffè e tè, tovaglioli di carta sporchi di cibo.
+                </td>
+                <td data-it="Usare sacchetti compostabili. Non usare sacchi di plastica."
+                    data-en="Use compostable bags. Do not use plastic bags."
+                    data-es="Usar bolsas compostables. No usar bolsas de plástico."
+                    data-fr="Utiliser des sacs compostables. Ne pas utiliser de sacs en plastique.">
+                  Usare sacchetti compostabili. Non usare sacchi di plastica.
+                </td>
+              </tr>
+
+              <tr>
+                <td data-it="Plastica, acciaio e alluminio"
+                    data-en="Plastic, steel and aluminium"
+                    data-es="Plástico, acero y aluminio"
+                    data-fr="Plastique, acier et aluminium">Plastica, acciaio e alluminio</td>
+                <td data-it="Bottiglie di plastica, vasetti yogurt, flaconi, buste per alimenti, vaschette, lattine, bombolette spray vuote, barattoli, tappi e coperchi."
+                    data-en="Plastic bottles, yogurt pots, bottles for detergents, food bags, trays, cans, empty spray cans, tins, caps and lids."
+                    data-es="Botellas de plástico, envases de yogur, botes, bolsas para alimentos, bandejas, latas, aerosoles vacíos, tarros, tapones y tapas."
+                    data-fr="Bouteilles en plastique, pots de yaourt, flacons, sacs alimentaires, barquettes, canettes, aérosols vides, boîtes, bouchons et couvercles.">
+                  Bottiglie di plastica, vasetti yogurt, flaconi, buste per alimenti, vaschette, lattine, bombolette spray vuote, barattoli, tappi e coperchi.
+                </td>
+                <td data-it="Non mettere giocattoli, CD/DVD, oggetti in gomma, cavi, tubi, posate di plastica o sacchetti in bioplastica."
+                    data-en="Do not put toys, CDs/DVDs, rubber objects, cables, pipes, plastic cutlery or bioplastic bags."
+                    data-es="No tirar juguetes, CD/DVD, objetos de goma, cables, tubos, cubiertos de plástico o bolsas de bioplástico."
+                    data-fr="Ne pas jeter de jouets, CD/DVD, objets en caoutchouc, câbles, tuyaux, couverts en plastique ou sacs en bioplastique.">
+                  Non mettere giocattoli, CD/DVD, oggetti in gomma, cavi, tubi, posate di plastica o sacchetti in bioplastica.
+                </td>
+              </tr>
+
+              <tr>
+                <td data-it="Carta e cartone"
+                    data-en="Paper and cardboard"
+                    data-es="Papel y cartón"
+                    data-fr="Papier et carton">Carta e cartone</td>
+                <td data-it="Giornali, riviste, fogli, scatole, imballaggi in cartone, sacchetti di carta, confezioni in cartoncino pulite."
+                    data-en="Newspapers, magazines, sheets of paper, boxes, cardboard packaging, paper bags and clean cardboard packaging."
+                    data-es="Periódicos, revistas, hojas, cajas, embalajes de cartón, bolsas de papel y envases de cartoncillo limpios."
+                    data-fr="Journaux, magazines, feuilles, boîtes, emballages en carton, sacs en papier et emballages en carton propres.">
+                  Giornali, riviste, fogli, scatole, imballaggi in cartone, sacchetti di carta, confezioni in cartoncino pulite.
+                </td>
+                <td data-it="Non mettere scontrini, carta oleata, carta da forno, fazzoletti usati o cartoni sporchi di cibo."
+                    data-en="Do not put receipts, waxed paper, baking paper, used tissues or cardboard dirty with food."
+                    data-es="No tirar recibos, papel encerado, papel de horno, pañuelos usados o cartones sucios de comida."
+                    data-fr="Ne pas jeter les tickets de caisse, le papier ciré, le papier cuisson, les mouchoirs usagés ou les cartons sales de nourriture.">
+                  Non mettere scontrini, carta oleata, carta da forno, fazzoletti usati o cartoni sporchi di cibo.
+                </td>
+              </tr>
+
+              <tr>
+                <td data-it="Vetro"
+                    data-en="Glass"
+                    data-es="Vidrio"
+                    data-fr="Verre">Vetro</td>
+                <td data-it="Bottiglie, vasetti e contenitori in vetro vuoti, senza tappi."
+                    data-en="Empty glass bottles, jars and containers, without caps."
+                    data-es="Botellas, tarros y envases de vidrio vacíos, sin tapas."
+                    data-fr="Bouteilles, bocaux et contenants en verre vides, sans bouchons.">
+                  Bottiglie, vasetti e contenitori in vetro vuoti, senza tappi.
+                </td>
+                <td data-it="Non mettere bicchieri, specchi, ceramica, porcellana, lampadine, pyrex o vetri di finestre."
+                    data-en="Do not put drinking glasses, mirrors, ceramics, porcelain, light bulbs, pyrex or window glass."
+                    data-es="No tirar vasos, espejos, cerámica, porcelana, bombillas, pyrex o cristales de ventanas."
+                    data-fr="Ne pas jeter les verres à boire, miroirs, céramique, porcelaine, ampoules, pyrex ou vitres.">
+                  Non mettere bicchieri, specchi, ceramica, porcellana, lampadine, pyrex o vetri di finestre.
+                </td>
+              </tr>
+
+              <tr>
+                <td data-it="Indifferenziato"
+                    data-en="Non-recyclable waste"
+                    data-es="No reciclable"
+                    data-fr="Déchets non recyclables">Indifferenziato</td>
+                <td data-it="Pannolini, assorbenti, calze di nylon, rasoi, spazzole, carta plastificata, carta da forno, cerotti, gomme da masticare, scontrini."
+                    data-en="Nappies, sanitary pads, nylon tights, razors, brushes, plastic-coated paper, baking paper, plasters, chewing gum, receipts."
+                    data-es="Pañales, compresas, medias de nylon, cuchillas, cepillos, papel plastificado, papel de horno, tiritas, chicles, recibos."
+                    data-fr="Couches, protections hygiéniques, collants en nylon, rasoirs, brosses, papier plastifié, papier cuisson, pansements, chewing-gums, tickets de caisse.">
+                  Pannolini, assorbenti, calze di nylon, rasoi, spazzole, carta plastificata, carta da forno, cerotti, gomme da masticare, scontrini.
+                </td>
+                <td data-it="Non mettere carta, vetro, plastica, organico, pile, farmaci, olio o piccoli elettrodomestici."
+                    data-en="Do not put paper, glass, plastic, organic waste, batteries, medicines, oil or small electronic devices."
+                    data-es="No tirar papel, vidrio, plástico, orgánico, pilas, medicamentos, aceite o pequeños electrodomésticos."
+                    data-fr="Ne pas jeter le papier, le verre, le plastique, les déchets organiques, piles, médicaments, huile ou petits appareils électroniques.">
+                  Non mettere carta, vetro, plastica, organico, pile, farmaci, olio o piccoli elettrodomestici.
+                </td>
+              </tr>
+
+              <tr>
+                <td data-it="Farmaci, pile e olio"
+                    data-en="Medicines, batteries and oil"
+                    data-es="Medicamentos, pilas y aceite"
+                    data-fr="Médicaments, piles et huile">Farmaci, pile e olio</td>
+                <td data-it="Farmaci scaduti, pile, batterie e olio vegetale usato non vanno buttati nei normali bidoni."
+                    data-en="Expired medicines, batteries and used vegetable oil must not be thrown into normal bins."
+                    data-es="Los medicamentos caducados, pilas, baterías y aceite vegetal usado no deben tirarse en los contenedores normales."
+                    data-fr="Les médicaments périmés, piles, batteries et huile végétale usagée ne doivent pas être jetés dans les poubelles normales.">
+                  Farmaci scaduti, pile, batterie e olio vegetale usato non vanno buttati nei normali bidoni.
+                </td>
+                <td data-it="Vanno conferiti negli appositi contenitori, farmacie, esercizi autorizzati o centri di raccolta."
+                    data-en="They must be taken to dedicated containers, pharmacies, authorised shops or collection centres."
+                    data-es="Deben depositarse en contenedores específicos, farmacias, tiendas autorizadas o centros de recogida."
+                    data-fr="Ils doivent être déposés dans les conteneurs dédiés, pharmacies, magasins autorisés ou centres de collecte.">
+                  Vanno conferiti negli appositi contenitori, farmacie, esercizi autorizzati o centri di raccolta.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="do-dont">
+            <div class="do-box">
+              <strong data-it="Da fare"
+                      data-en="Please do"
+                      data-es="Qué hacer"
+                      data-fr="À faire">Da fare</strong>
+              <p data-it="A fine soggiorno buttate i sacchetti nei bidoni condominiali corretti."
+                 data-en="At the end of your stay, throw the bags into the correct condominium bins."
+                 data-es="Al final de la estancia, tirad las bolsas en los contenedores correctos del edificio."
+                 data-fr="À la fin du séjour, jetez les sacs dans les bonnes poubelles de la copropriété.">
+                A fine soggiorno buttate i sacchetti nei bidoni condominiali corretti.
+              </p>
+            </div>
+
+            <div class="dont-box">
+              <strong data-it="Da evitare"
+                      data-en="Please avoid"
+                      data-es="Qué evitar"
+                      data-fr="À éviter">Da evitare</strong>
+              <p data-it="Non lasciate l'organico sotto al lavandino per troppo tempo e non usate sacchi neri."
+                 data-en="Do not leave organic waste under the sink for too long and do not use black bags."
+                 data-es="No dejéis el orgánico debajo del fregadero durante demasiado tiempo y no uséis bolsas negras."
+                 data-fr="Ne laissez pas les déchets organiques sous l'évier trop longtemps et n'utilisez pas de sacs noirs.">
+                Non lasciate l'organico sotto al lavandino per troppo tempo e non usate sacchi neri.
+              </p>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details class="manual-details">
+        <summary data-it="Clima e riscaldamento"
+                 data-en="Air conditioning and heating"
+                 data-es="Clima y calefacción"
+                 data-fr="Climatisation et chauffage">Clima e riscaldamento</summary>
+
+        <div class="manual-content">
+          <ul class="simple-list">
+            <li data-it-html="Usate climatizzatore e riscaldamento con attenzione, mantenendo una temperatura confortevole ma senza sprechi."
+                data-en-html="Please use air conditioning and heating carefully, keeping a comfortable temperature without wasting energy."
+                data-es-html="Usad el aire acondicionado y la calefacción con cuidado, manteniendo una temperatura agradable sin desperdiciar energía."
+                data-fr-html="Merci d'utiliser la climatisation et le chauffage avec attention, en gardant une température confortable sans gaspillage.">
+              Usate climatizzatore e riscaldamento con attenzione, mantenendo una temperatura confortevole ma senza sprechi.
+            </li>
+
+            <li data-it-html="Quando uscite di casa, ricordate di <strong>spegnere climatizzatore e termosifoni</strong>."
+                data-en-html="When you leave the house, remember to <strong>turn off the air conditioning and radiators</strong>."
+                data-es-html="Cuando salgáis de casa, recordad <strong>apagar el aire acondicionado y los radiadores</strong>."
+                data-fr-html="Lorsque vous quittez la maison, pensez à <strong>éteindre la climatisation et les radiateurs</strong>.">
+              Quando uscite di casa, ricordate di <strong>spegnere climatizzatore e termosifoni</strong>.
+            </li>
+
+            <li data-it-html="Alla partenza, controllate sempre che tutto sia spento."
+                data-en-html="Before departure, always check that everything is turned off."
+                data-es-html="Antes de la salida, comprobad siempre que todo esté apagado."
+                data-fr-html="Avant le départ, vérifiez toujours que tout est éteint.">
+              Alla partenza, controllate sempre che tutto sia spento.
+            </li>
+
+            <li data-it-html="Se avete difficoltà con il termostato o il telecomando, scriveteci: vi guideremo passo passo."
+                data-en-html="If you have trouble with the thermostat or remote control, message us: we will guide you step by step."
+                data-es-html="Si tenéis dificultad con el termostato o el mando, escribidnos: os guiaremos paso a paso."
+                data-fr-html="Si vous avez des difficultés avec le thermostat ou la télécommande, écrivez-nous : nous vous guiderons étape par étape.">
+              Se avete difficoltà con il termostato o il telecomando, scriveteci: vi guideremo passo passo.
+            </li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="manual-details">
+        <summary data-it="Moka e caffè"
+                 data-en="Moka coffee maker"
+                 data-es="Cafetera moka"
+                 data-fr="Cafetière moka">Moka e caffè</summary>
+
+        <div class="manual-content">
+          <ul class="simple-list">
+            <li data-it-html="Riempite la parte inferiore della moka con acqua, senza superare la valvola."
+                data-en-html="Fill the lower part of the moka with water, without going above the valve."
+                data-es-html="Llenad la parte inferior de la moka con agua, sin superar la válvula."
+                data-fr-html="Remplissez la partie inférieure de la moka avec de l'eau, sans dépasser la valve.">
+              Riempite la parte inferiore della moka con acqua, senza superare la valvola.
+            </li>
+
+            <li data-it-html="Inserite il filtro e aggiungete il caffè senza pressarlo troppo."
+                data-en-html="Insert the filter and add the coffee without pressing it too much."
+                data-es-html="Colocad el filtro y añadid el café sin presionarlo demasiado."
+                data-fr-html="Insérez le filtre et ajoutez le café sans trop le tasser.">
+              Inserite il filtro e aggiungete il caffè senza pressarlo troppo.
+            </li>
+
+            <li data-it-html="Chiudete bene la moka e mettetela sul fornello a fuoco basso o medio."
+                data-en-html="Close the moka properly and place it on the stove over low or medium heat."
+                data-es-html="Cerrad bien la moka y ponedla en el fuego bajo o medio."
+                data-fr-html="Fermez bien la moka et placez-la sur la plaque à feu doux ou moyen.">
+              Chiudete bene la moka e mettetela sul fornello a fuoco basso o medio.
+            </li>
+
+            <li data-it-html="Quando il caffè sale, spegnete il fuoco. Non lasciate la moka sul fornello acceso senza controllo."
+                data-en-html="When the coffee comes up, turn off the heat. Do not leave the moka on the lit stove unattended."
+                data-es-html="Cuando suba el café, apagad el fuego. No dejéis la moka en el fuego encendido sin vigilancia."
+                data-fr-html="Lorsque le café monte, éteignez le feu. Ne laissez pas la moka sur la plaque allumée sans surveillance.">
+              Quando il caffè sale, spegnete il fuoco. Non lasciate la moka sul fornello acceso senza controllo.
+            </li>
+
+            <li data-it-html="Dopo l'uso, lasciatela raffreddare prima di lavarla."
+                data-en-html="After use, let it cool down before washing it."
+                data-es-html="Después de usarla, dejadla enfriar antes de lavarla."
+                data-fr-html="Après utilisation, laissez-la refroidir avant de la laver.">
+              Dopo l'uso, lasciatela raffreddare prima di lavarla.
+            </li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="manual-details">
+        <summary data-it="Cucina e piano cottura"
+                 data-en="Kitchen and hob"
+                 data-es="Cocina y placa"
+                 data-fr="Cuisine et plaque de cuisson">Cucina e piano cottura</summary>
+
+        <div class="manual-content">
+          <ul class="simple-list">
+            <li data-it-html="Potete usare la cucina normalmente, avendo cura di lasciare tutto pulito dopo l'utilizzo."
+                data-en-html="You can use the kitchen normally, taking care to leave everything clean after use."
+                data-es-html="Podéis usar la cocina normalmente, procurando dejar todo limpio después de usarla."
+                data-fr-html="Vous pouvez utiliser la cuisine normalement, en veillant à tout laisser propre après utilisation.">
+              Potete usare la cucina normalmente, avendo cura di lasciare tutto pulito dopo l'utilizzo.
+            </li>
+
+            <li data-it-html="Non lasciate pentole, moka o padelle sul fuoco senza controllo."
+                data-en-html="Do not leave pots, the moka or pans on the stove unattended."
+                data-es-html="No dejéis ollas, moka o sartenes en el fuego sin vigilancia."
+                data-fr-html="Ne laissez pas casseroles, moka ou poêles sur le feu sans surveillance.">
+              Non lasciate pentole, moka o padelle sul fuoco senza controllo.
+            </li>
+
+            <li data-it-html="Prima di uscire o prima del check-out, controllate che il piano cottura sia spento."
+                data-en-html="Before going out or before check-out, make sure the hob is turned off."
+                data-es-html="Antes de salir o antes del check-out, comprobad que la placa esté apagada."
+                data-fr-html="Avant de sortir ou avant le check-out, vérifiez que la plaque de cuisson est éteinte.">
+              Prima di uscire o prima del check-out, controllate che il piano cottura sia spento.
+            </li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="manual-details">
+        <summary data-it="Lavatrice"
+                 data-en="Washing machine"
+                 data-es="Lavadora"
+                 data-fr="Machine à laver">Lavatrice</summary>
+
+        <div class="manual-content">
+          <ul class="simple-list">
+            <li data-it-html="La lavatrice può essere usata se necessario, con attenzione e senza sovraccaricarla."
+                data-en-html="The washing machine can be used if needed, carefully and without overloading it."
+                data-es-html="La lavadora puede usarse si es necesario, con cuidado y sin sobrecargarla."
+                data-fr-html="La machine à laver peut être utilisée si nécessaire, avec attention et sans la surcharger.">
+              La lavatrice può essere usata se necessario, con attenzione e senza sovraccaricarla.
+            </li>
+
+            <li data-it-html="Alla fine del soggiorno, se potete, mettete gli asciugamani usati nella lavatrice <strong>senza avviarla</strong>."
+                data-en-html="At the end of your stay, if possible, place the used towels in the washing machine <strong>without starting it</strong>."
+                data-es-html="Al final de la estancia, si podéis, poned las toallas usadas en la lavadora <strong>sin ponerla en marcha</strong>."
+                data-fr-html="À la fin du séjour, si possible, mettez les serviettes utilisées dans la machine <strong>sans la lancer</strong>.">
+              Alla fine del soggiorno, se potete, mettete gli asciugamani usati nella lavatrice <strong>senza avviarla</strong>.
+            </li>
+
+            <li data-it-html="Se non siete sicuri di quale programma usare, scriveteci prima di avviarla."
+                data-en-html="If you are not sure which programme to use, message us before starting it."
+                data-es-html="Si no estáis seguros de qué programa usar, escribidnos antes de ponerla en marcha."
+                data-fr-html="Si vous ne savez pas quel programme utiliser, écrivez-nous avant de la lancer.">
+              Se non siete sicuri di quale programma usare, scriveteci prima di avviarla.
+            </li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="manual-details">
+        <summary data-it="Problemi durante il soggiorno"
+                 data-en="Problems during your stay"
+                 data-es="Problemas durante la estancia"
+                 data-fr="Problèmes pendant le séjour">Problemi durante il soggiorno</summary>
+
+        <div class="manual-content">
+          <p data-it="Se qualcosa non funziona o avete un dubbio, vi chiediamo di avvisarci subito. Faremo il possibile per aiutarvi rapidamente."
+             data-en="If something does not work or you have a doubt, please let us know immediately. We will do our best to help you quickly."
+             data-es="Si algo no funciona o tenéis alguna duda, os pedimos que nos aviséis enseguida. Haremos todo lo posible para ayudaros rápidamente."
+             data-fr="Si quelque chose ne fonctionne pas ou si vous avez un doute, merci de nous prévenir immédiatement. Nous ferons de notre mieux pour vous aider rapidement.">
+            Se qualcosa non funziona o avete un dubbio, vi chiediamo di avvisarci subito. Faremo il possibile per aiutarvi rapidamente.
+          </p>
+
+          <ul class="simple-list">
+            <li data-it-html="<strong>Problemi urgenti:</strong> chiamateci."
+                data-en-html="<strong>Urgent problems:</strong> call us."
+                data-es-html="<strong>Problemas urgentes:</strong> llamadnos."
+                data-fr-html="<strong>Problèmes urgents :</strong> appelez-nous.">
+              <strong>Problemi urgenti:</strong> chiamateci.
+            </li>
+
+            <li data-it-html="<strong>Richieste non urgenti:</strong> scriveteci su WhatsApp."
+                data-en-html="<strong>Non-urgent requests:</strong> message us on WhatsApp."
+                data-es-html="<strong>Solicitudes no urgentes:</strong> escribidnos por WhatsApp."
+                data-fr-html="<strong>Demandes non urgentes :</strong> écrivez-nous sur WhatsApp.">
+              <strong>Richieste non urgenti:</strong> scriveteci su WhatsApp.
+            </li>
+
+            <li data-it-html="<strong>Emergenze:</strong> chiamate il 112 o il 118 se necessario."
+                data-en-html="<strong>Emergencies:</strong> call 112 or 118 if needed."
+                data-es-html="<strong>Emergencias:</strong> llamad al 112 o al 118 si es necesario."
+                data-fr-html="<strong>Urgences :</strong> appelez le 112 ou le 118 si nécessaire.">
+              <strong>Emergenze:</strong> chiamate il 112 o il 118 se necessario.
+            </li>
+          </ul>
+        </div>
+      </details>
+
+    </section>
+  </main>
+
+  <script>
+    function getLang() {
+      var params = new URLSearchParams(window.location.search);
+      var lang = params.get('lang');
+
+      if (lang === 'it' || lang === 'en' || lang === 'es' || lang === 'fr') {
+        return lang;
+      }
+
+      try {
+        lang = localStorage.getItem('guestGuideLang');
+      } catch (e) {}
+
+      if (lang === 'it' || lang === 'en' || lang === 'es' || lang === 'fr') {
+        return lang;
+      }
+
+      return 'it';
+    }
+
+    function translatePage(lang) {
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll('[data-it], [data-it-html]').forEach(function (el) {
+        var htmlTranslation = el.getAttribute('data-' + lang + '-html');
+        var textTranslation = el.getAttribute('data-' + lang);
+
+        if (htmlTranslation) {
+          el.innerHTML = htmlTranslation;
+        } else if (textTranslation) {
+          el.textContent = textTranslation;
+        }
+      });
+
+      var home = document.querySelector('.back-home');
+      if (home) {
+        home.href = 'index.html#' + lang;
+      }
+
+      try {
+        localStorage.setItem('guestGuideLang', lang);
+      } catch (e) {}
+    }
+
+    translatePage(getLang());
+  </script>
+</body>
+</html>

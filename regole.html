@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Regole della casa · A Casa di Marco</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ottanio:#0f7f83;
+      --ottanio-dark:#075f63;
+      --ottanio-soft:#dff3f2;
+      --white:#fff;
+      --milk:#fbfbf8;
+      --text:#263238;
+      --muted:#6f7d80;
+      --shadow:0 18px 50px rgba(0,70,75,.20);
+      --radius:28px;
+    }
+
+    * {
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    body {
+      background:var(--milk);
+      color:var(--text);
+      font-family:'Poppins',sans-serif;
+      line-height:1.65;
+    }
+
+    h1, h2, h3 {
+      font-family:'Pacifico',cursive;
+      font-weight:400;
+      color:var(--ottanio-dark);
+    }
+
+    .page-hero {
+      min-height:38vh;
+      background:
+        linear-gradient(180deg, rgba(0,80,85,.25), rgba(0,80,85,.55)),
+        url("assets/garden-main.jpg") center/cover no-repeat;
+      color:#fff;
+      display:flex;
+      align-items:flex-end;
+      padding:38px 20px;
+    }
+
+    .page-hero div {
+      max-width:1000px;
+      margin:0 auto;
+      width:100%;
+    }
+
+    .page-hero h1 {
+      color:#fff;
+      font-size:clamp(38px, 7vw, 68px);
+      text-shadow:0 5px 20px rgba(0,0,0,.35);
+    }
+
+    main {
+      max-width:1000px;
+      margin:0 auto;
+      padding:28px 16px 60px;
+    }
+
+    section {
+      background:#fff;
+      border-radius:28px;
+      padding:28px;
+      box-shadow:var(--shadow);
+      margin-bottom:22px;
+    }
+
+    .back-home {
+      display:inline-flex;
+      margin-bottom:18px;
+      background:var(--ottanio);
+      color:#fff;
+      text-decoration:none;
+      border-radius:999px;
+      padding:11px 18px;
+      font-weight:600;
+    }
+
+    .intro {
+      color:var(--muted);
+      margin-top:8px;
+      max-width:800px;
+    }
+
+    .info-list {
+      list-style:none;
+      display:grid;
+      gap:12px;
+      margin-top:18px;
+    }
+
+    .info-list li {
+      background:var(--ottanio-soft);
+      border-radius:18px;
+      padding:15px 17px;
+    }
+
+    .info-list strong {
+      color:var(--ottanio-dark);
+      font-weight:700;
+    }
+
+    .final-message {
+      margin-top:22px;
+      background:#fff8e8;
+      border-left:5px solid var(--ottanio);
+      border-radius:18px;
+      padding:18px;
+      color:var(--text);
+    }
+
+    .final-message strong {
+      color:var(--ottanio-dark);
+    }
+
+    @media (max-width:720px) {
+      body {
+        font-size:14px;
+      }
+
+      .page-hero {
+        min-height:28vh;
+        padding:28px 16px;
+      }
+
+      .page-hero h1 {
+        font-size:34px;
+      }
+
+      main {
+        padding:20px 12px 44px;
+      }
+
+      section {
+        padding:20px;
+        border-radius:22px;
+      }
+
+      h2 {
+        font-size:26px;
+      }
+
+      .info-list li {
+        padding:13px 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="page-hero">
+    <div>
+      <h1
+        data-it="Regole della casa"
+        data-en="House rules"
+        data-es="Reglas de la casa"
+        data-fr="Règles de la maison">Regole della casa</h1>
+    </div>
+  </header>
+
+  <main>
+    <a class="back-home" href="index.html"
+       data-it="← Torna alla home"
+       data-en="← Back to home"
+       data-es="← Volver a la home"
+       data-fr="← Retour à l'accueil">← Torna alla home</a>
+
+    <section>
+      <h2
+        data-it="Regole della casa"
+        data-en="House rules"
+        data-es="Reglas de la casa"
+        data-fr="Règles de la maison">Regole della casa</h2>
+
+      <p class="intro"
+         data-it="Vi chiediamo di leggere con attenzione queste semplici regole: ci aiutano a garantire un soggiorno piacevole a voi, agli ospiti successivi e al vicinato."
+         data-en="Please read these simple rules carefully: they help us ensure a pleasant stay for you, for the next guests and for the neighbours."
+         data-es="Os pedimos que leáis atentamente estas sencillas reglas: nos ayudan a garantizar una estancia agradable para vosotros, para los próximos huéspedes y para los vecinos."
+         data-fr="Merci de lire attentivement ces règles simples : elles nous aident à garantir un séjour agréable pour vous, pour les prochains voyageurs et pour le voisinage.">
+        Vi chiediamo di leggere con attenzione queste semplici regole: ci aiutano a garantire un soggiorno piacevole a voi, agli ospiti successivi e al vicinato.
+      </p>
+
+      <ul class="info-list">
+
+        <li
+          data-it-html="<strong>Chiavi:</strong> Le chiavi devono essere conservate con cura durante il soggiorno. In caso di smarrimento, sarà applicata una penale di <strong>25 euro</strong>. Vi invitiamo pertanto a custodirle adeguatamente."
+          data-en-html="<strong>Keys:</strong> The keys must be kept carefully during your stay. In case of loss, a <strong>€25 penalty</strong> will be charged. Please make sure to look after them properly."
+          data-es-html="<strong>Llaves:</strong> Las llaves deben conservarse con cuidado durante la estancia. En caso de pérdida, se aplicará una penalización de <strong>25 euros</strong>. Os pedimos que las guardéis adecuadamente."
+          data-fr-html="<strong>Clés :</strong> Les clés doivent être conservées avec soin pendant le séjour. En cas de perte, une pénalité de <strong>25 euros</strong> sera appliquée. Merci de les garder soigneusement.">
+          <strong>Chiavi:</strong> Le chiavi devono essere conservate con cura durante il soggiorno. In caso di smarrimento, sarà applicata una penale di <strong>25 euro</strong>. Vi invitiamo pertanto a custodirle adeguatamente.
+        </li>
+
+        <li
+          data-it-html="<strong>Ore di silenzio:</strong> Dalle <strong>23:00 alle 7:00</strong>, la casa va in modalità &quot;zen&quot;. Se anche voi volete rilassarvi, basta abbassare il volume e godervi la quiete."
+          data-en-html="<strong>Quiet hours:</strong> From <strong>11:00 PM to 7:00 AM</strong>, the house goes into &quot;zen mode&quot;. If you want to relax too, just keep the volume low and enjoy the peace."
+          data-es-html="<strong>Horas de silencio:</strong> De <strong>23:00 a 7:00</strong>, la casa entra en &quot;modo zen&quot;. Si vosotros también queréis relajaros, basta con bajar el volumen y disfrutar de la tranquilidad."
+          data-fr-html="<strong>Heures de silence :</strong> De <strong>23h00 à 7h00</strong>, la maison passe en &quot;mode zen&quot;. Si vous voulez vous détendre aussi, il suffit de baisser le volume et de profiter du calme.">
+          <strong>Ore di silenzio:</strong> Dalle <strong>23:00 alle 7:00</strong>, la casa va in modalità "zen". Se anche voi volete rilassarvi, basta abbassare il volume e godervi la quiete.
+        </li>
+
+        <li
+          data-it-html="<strong>Danni:</strong> Se accidentalmente rompete qualcosa, non preoccupatevi, può succedere. L'importante è farcelo sapere subito, così evitiamo spiacevoli sorprese. E ricordate: <strong>chi rompe, paga...</strong>"
+          data-en-html="<strong>Damage:</strong> If you accidentally break something, don’t worry, it can happen. The important thing is to let us know immediately, so we can avoid unpleasant surprises. And remember: <strong>if you break it, you pay for it...</strong>"
+          data-es-html="<strong>Daños:</strong> Si accidentalmente rompéis algo, no os preocupéis, puede pasar. Lo importante es avisarnos enseguida, así evitamos sorpresas desagradables. Y recordad: <strong>quien rompe, paga...</strong>"
+          data-fr-html="<strong>Dommages :</strong> Si vous cassez quelque chose par accident, ne vous inquiétez pas, cela peut arriver. L'important est de nous prévenir immédiatement, afin d'éviter les mauvaises surprises. Et n'oubliez pas : <strong>qui casse, paie...</strong>">
+          <strong>Danni:</strong> Se accidentalmente rompete qualcosa, non preoccupatevi, può succedere. L'importante è farcelo sapere subito, così evitiamo spiacevoli sorprese. E ricordate: <strong>chi rompe, paga...</strong>
+        </li>
+
+        <li
+          data-it-html="<strong>Fumo:</strong> Fumatori, siete i benvenuti! Ma le cicche, per favore, vanno nel <strong>posacenere</strong>."
+          data-en-html="<strong>Smoking:</strong> Smokers are welcome! But please put cigarette ends in the <strong>ashtray</strong>."
+          data-es-html="<strong>Tabaco:</strong> ¡Los fumadores son bienvenidos! Pero las colillas, por favor, van en el <strong>cenicero</strong>."
+          data-fr-html="<strong>Tabac :</strong> Les fumeurs sont les bienvenus ! Mais les mégots doivent être mis dans le <strong>cendrier</strong>, s'il vous plaît.">
+          <strong>Fumo:</strong> Fumatori, siete i benvenuti! Ma le cicche, per favore, vanno nel <strong>posacenere</strong>.
+        </li>
+
+        <li
+          data-it-html="<strong>Rispetto del vicinato:</strong> I nostri vicini sono simpatici, manteniamoli così! Niente rumori molesti, per favore."
+          data-en-html="<strong>Respect for the neighbours:</strong> Our neighbours are nice, let’s keep them that way! Please avoid disturbing noises."
+          data-es-html="<strong>Respeto por los vecinos:</strong> Nuestros vecinos son simpáticos, ¡mantengámoslos así! Por favor, evitad ruidos molestos."
+          data-fr-html="<strong>Respect du voisinage :</strong> Nos voisins sont sympathiques, gardons-les comme ça ! Merci d'éviter les bruits gênants.">
+          <strong>Rispetto del vicinato:</strong> I nostri vicini sono simpatici, manteniamoli così! Niente rumori molesti, per favore.
+        </li>
+
+        <li
+          data-it-html="<strong>Raccolta differenziata:</strong> Non è divertente, lo sappiamo, ma aiuta il pianeta. L'organico non va lasciato sotto al lavandino per troppo tempo. La spazzatura rimanente, come plastica, indifferenziato, carta e altri rifiuti, va gettata fuori negli appositi bidoni."
+          data-en-html="<strong>Recycling:</strong> We know it is not the most fun part, but it helps the planet. Organic waste should not be left under the sink for too long. The remaining rubbish, such as plastic, general waste, paper and other waste, must be placed outside in the appropriate bins."
+          data-es-html="<strong>Reciclaje:</strong> Sabemos que no es lo más divertido, pero ayuda al planeta. Los residuos orgánicos no deben dejarse debajo del fregadero durante demasiado tiempo. El resto de la basura, como plástico, residuos no reciclables, papel y otros residuos, debe tirarse fuera en los contenedores correspondientes."
+          data-fr-html="<strong>Tri sélectif :</strong> Nous savons que ce n'est pas la partie la plus amusante, mais cela aide la planète. Les déchets organiques ne doivent pas rester trop longtemps sous l'évier. Les autres déchets, comme le plastique, les déchets non recyclables, le papier et autres, doivent être jetés dehors dans les bacs prévus.">
+          <strong>Raccolta differenziata:</strong> Non è divertente, lo sappiamo, ma aiuta il pianeta. L'organico non va lasciato sotto al lavandino per troppo tempo. La spazzatura rimanente, come plastica, indifferenziato, carta e altri rifiuti, va gettata fuori negli appositi bidoni.
+        </li>
+
+        <li
+          data-it-html="<strong>Rispetto reciproco:</strong> Noi siamo qui per assicurarci che la vostra vacanza sia indimenticabile, e vi chiediamo solo di rispettarci e trattarci con gentilezza. <strong>Rispetto chiama rispetto!</strong>"
+          data-en-html="<strong>Mutual respect:</strong> We are here to make sure your holiday is unforgettable, and we simply ask you to respect us and treat us kindly. <strong>Respect brings respect!</strong>"
+          data-es-html="<strong>Respeto mutuo:</strong> Estamos aquí para asegurarnos de que vuestra estancia sea inolvidable, y solo os pedimos que nos respetéis y nos tratéis con amabilidad. <strong>¡El respeto llama al respeto!</strong>"
+          data-fr-html="<strong>Respect mutuel :</strong> Nous sommes là pour que vos vacances soient inoubliables, et nous vous demandons simplement de nous respecter et de nous traiter avec gentillesse. <strong>Le respect appelle le respect !</strong>">
+          <strong>Rispetto reciproco:</strong> Noi siamo qui per assicurarci che la vostra vacanza sia indimenticabile, e vi chiediamo solo di rispettarci e trattarci con gentilezza. <strong>Rispetto chiama rispetto!</strong>
+        </li>
+
+        <li
+          data-it-html="<strong>Prezzi:</strong> I prezzi non sono trattabili. Ma va bene così, perché sono già super convenienti!"
+          data-en-html="<strong>Prices:</strong> Prices are not negotiable. But that’s okay, because they are already very convenient!"
+          data-es-html="<strong>Precios:</strong> Los precios no son negociables. Pero está bien así, porque ya son muy convenientes."
+          data-fr-html="<strong>Prix :</strong> Les prix ne sont pas négociables. Mais c'est très bien ainsi, car ils sont déjà très avantageux !">
+          <strong>Prezzi:</strong> I prezzi non sono trattabili. Ma va bene così, perché sono già super convenienti!
+        </li>
+
+        <li
+          data-it-html="<strong>Party e ospiti esterni:</strong> I party sono vietati. Se desiderate organizzare una cena speciale con amici, fatecelo sapere prima. Non sono consentiti <strong>pernottamenti extra</strong> non autorizzati."
+          data-en-html="<strong>Parties and external guests:</strong> Parties are not allowed. If you would like to organise a special dinner with friends, please let us know in advance. <strong>Unauthorised extra overnight guests</strong> are not allowed."
+          data-es-html="<strong>Fiestas e invitados externos:</strong> Las fiestas no están permitidas. Si queréis organizar una cena especial con amigos, avisadnos antes. No se permiten <strong>pernoctaciones extra</strong> no autorizadas."
+          data-fr-html="<strong>Fêtes et invités extérieurs :</strong> Les fêtes ne sont pas autorisées. Si vous souhaitez organiser un dîner spécial avec des amis, merci de nous prévenir à l'avance. Les <strong>nuitées supplémentaires</strong> non autorisées ne sont pas permises.">
+          <strong>Party e ospiti esterni:</strong> I party sono vietati. Se desiderate organizzare una cena speciale con amici, fatecelo sapere prima. Non sono consentiti <strong>pernottamenti extra</strong> non autorizzati.
+        </li>
+
+        <li
+          data-it-html="<strong>Animali:</strong> Anche se amiamo gli animali, purtroppo non possiamo accoglierli qui."
+          data-en-html="<strong>Pets:</strong> Although we love animals, unfortunately we cannot host them here."
+          data-es-html="<strong>Animales:</strong> Aunque amamos a los animales, lamentablemente no podemos alojarlos aquí."
+          data-fr-html="<strong>Animaux :</strong> Même si nous aimons les animaux, nous ne pouvons malheureusement pas les accueillir ici.">
+          <strong>Animali:</strong> Anche se amiamo gli animali, purtroppo non possiamo accoglierli qui.
+        </li>
+
+        <li
+          data-it-html="<strong>Feedback:</strong> Se qualcosa non va o avete suggerimenti, non esitate a farcelo sapere. Siamo qui per rendere la vostra vacanza perfetta: <strong>ogni feedback è benvenuto!</strong>"
+          data-en-html="<strong>Feedback:</strong> If something is not right or if you have suggestions, please do not hesitate to let us know. We are here to make your stay perfect: <strong>all feedback is welcome!</strong>"
+          data-es-html="<strong>Comentarios:</strong> Si algo no va bien o tenéis sugerencias, no dudéis en decírnoslo. Estamos aquí para que vuestra estancia sea perfecta: <strong>¡todo comentario es bienvenido!</strong>"
+          data-fr-html="<strong>Retour d'expérience :</strong> Si quelque chose ne va pas ou si vous avez des suggestions, n'hésitez pas à nous le dire. Nous sommes là pour rendre votre séjour parfait : <strong>tous les avis sont les bienvenus !</strong>">
+          <strong>Feedback:</strong> Se qualcosa non va o avete suggerimenti, non esitate a farcelo sapere. Siamo qui per rendere la vostra vacanza perfetta: <strong>ogni feedback è benvenuto!</strong>
+        </li>
+
+        <li
+          data-it-html="<strong>Risparmio energetico:</strong> Spegnete luci e condizionatori quando non servono. Il pianeta vi ringrazierà, e anche la bolletta!"
+          data-en-html="<strong>Energy saving:</strong> Please turn off lights and air conditioning when not needed. The planet will thank you, and so will the bill!"
+          data-es-html="<strong>Ahorro energético:</strong> Apagad las luces y el aire acondicionado cuando no sean necesarios. ¡El planeta os lo agradecerá, y la factura también!"
+          data-fr-html="<strong>Économie d'énergie :</strong> Merci d'éteindre les lumières et la climatisation lorsqu'elles ne sont pas nécessaires. La planète vous remerciera, et la facture aussi !">
+          <strong>Risparmio energetico:</strong> Spegnete luci e condizionatori quando non servono. Il pianeta vi ringrazierà, e anche la bolletta!
+        </li>
+
+        <li
+          data-it-html="<strong>Pulizia finale:</strong> Vi chiediamo gentilmente di lasciare la casa in condizioni decorose."
+          data-en-html="<strong>Final cleaning:</strong> Please leave the house in a decent condition."
+          data-es-html="<strong>Limpieza final:</strong> Os pedimos que dejéis la casa en condiciones decentes."
+          data-fr-html="<strong>Ménage final :</strong> Merci de laisser la maison dans un état correct.">
+          <strong>Pulizia finale:</strong> Vi chiediamo gentilmente di lasciare la casa in condizioni decorose.
+        </li>
+
+        <li
+          data-it-html="<strong>Attività pericolose:</strong> È vietato praticare attività pericolose all'interno della casa, come giochi con palloni o sport."
+          data-en-html="<strong>Dangerous activities:</strong> Dangerous activities inside the house are not allowed, including ball games or sports."
+          data-es-html="<strong>Actividades peligrosas:</strong> Está prohibido practicar actividades peligrosas dentro de la casa, como juegos con pelotas o deportes."
+          data-fr-html="<strong>Activités dangereuses :</strong> Il est interdit de pratiquer des activités dangereuses à l'intérieur de la maison, comme des jeux avec ballon ou des sports.">
+          <strong>Attività pericolose:</strong> È vietato praticare attività pericolose all'interno della casa, come giochi con palloni o sport.
+        </li>
+
+        <li
+          data-it-html="<strong>Check-in:</strong> Dalle <strong>15:00</strong>. Siete troppo entusiasti per aspettare? Fatecelo sapere: se possibile, proveremo a farvi entrare prima."
+          data-en-html="<strong>Check-in:</strong> From <strong>3:00 PM</strong>. Too excited to wait? Let us know: if possible, we will try to let you in earlier."
+          data-es-html="<strong>Check-in:</strong> Desde las <strong>15:00</strong>. ¿Demasiado entusiasmados para esperar? Avisadnos: si es posible, intentaremos dejaros entrar antes."
+          data-fr-html="<strong>Check-in :</strong> À partir de <strong>15h00</strong>. Trop impatients d'attendre ? Prévenez-nous : si possible, nous essaierons de vous faire entrer plus tôt.">
+          <strong>Check-in:</strong> Dalle <strong>15:00</strong>. Siete troppo entusiasti per aspettare? Fatecelo sapere: se possibile, proveremo a farvi entrare prima.
+        </li>
+
+        <li
+          data-it-html="<strong>Check-out:</strong> Entro le <strong>10:00</strong>. Si prega di non fare tardi: dobbiamo far brillare la casa per gli ospiti successivi! Eventuali ritardi non concordati potrebbero comportare un costo aggiuntivo. Le chiavi vanno lasciate nella buca delle lettere con sopra scritto <strong>&quot;A Casa di Marco&quot;</strong>."
+          data-en-html="<strong>Check-out:</strong> By <strong>10:00 AM</strong>. Please do not be late: we need to make the house shine for the next guests! Any delays not agreed in advance may result in an additional cost. The keys must be left in the mailbox marked <strong>&quot;A Casa di Marco&quot;</strong>."
+          data-es-html="<strong>Check-out:</strong> Antes de las <strong>10:00</strong>. Por favor, no os retraséis: ¡tenemos que dejar la casa impecable para los próximos huéspedes! Cualquier retraso no acordado previamente podría comportar un coste adicional. Las llaves deben dejarse en el buzón con el nombre <strong>&quot;A Casa di Marco&quot;</strong>."
+          data-fr-html="<strong>Check-out :</strong> Avant <strong>10h00</strong>. Merci de ne pas être en retard : nous devons faire briller la maison pour les prochains voyageurs ! Tout retard non convenu à l'avance peut entraîner un coût supplémentaire. Les clés doivent être déposées dans la boîte aux lettres indiquant <strong>&quot;A Casa di Marco&quot;</strong>.">
+          <strong>Check-out:</strong> Entro le <strong>10:00</strong>. Si prega di non fare tardi: dobbiamo far brillare la casa per gli ospiti successivi! Eventuali ritardi non concordati potrebbero comportare un costo aggiuntivo. Le chiavi vanno lasciate nella buca delle lettere con sopra scritto <strong>"A Casa di Marco"</strong>.
+        </li>
+
+      </ul>
+
+      <div class="final-message"
+           data-it-html="<strong>Buon soggiorno!</strong><br>Godetevi il vostro tempo qui e fate come se foste a casa vostra."
+           data-en-html="<strong>Enjoy your stay!</strong><br>Enjoy your time here and feel at home."
+           data-es-html="<strong>¡Feliz estancia!</strong><br>Disfrutad de vuestro tiempo aquí y sentíos como en casa."
+           data-fr-html="<strong>Bon séjour !</strong><br>Profitez de votre temps ici et faites comme chez vous.">
+        <strong>Buon soggiorno!</strong><br>
+        Godetevi il vostro tempo qui e fate come se foste a casa vostra.
+      </div>
+
+    </section>
+  </main>
+
+  <script>
+    function getLang() {
+      var params = new URLSearchParams(window.location.search);
+      var lang = params.get('lang');
+
+      if (lang === 'it' || lang === 'en' || lang === 'es' || lang === 'fr') {
+        return lang;
+      }
+
+      try {
+        lang = localStorage.getItem('guestGuideLang');
+      } catch (e) {
+        lang = null;
+      }
+
+      if (lang === 'it' || lang === 'en' || lang === 'es' || lang === 'fr') {
+        return lang;
+      }
+
+      return 'it';
+    }
+
+    function translatePage(lang) {
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll('[data-it], [data-it-html]').forEach(function (el) {
+        var htmlTranslation = el.getAttribute('data-' + lang + '-html');
+        var textTranslation = el.getAttribute('data-' + lang);
+
+        if (htmlTranslation) {
+          el.innerHTML = htmlTranslation;
+        } else if (textTranslation) {
+          el.textContent = textTranslation;
+        }
+      });
+
+      var home = document.querySelector('.back-home');
+      if (home) {
+        home.href = 'index.html#' + lang;
+      }
+
+      try {
+        localStorage.setItem('guestGuideLang', lang);
+      } catch (e) {}
+    }
+
+    translatePage(getLang());
+  </script>
+
+</body>
+</html>

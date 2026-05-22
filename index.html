@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Casa di Marco · Guest Guide</title>
+  <meta name="description" content="Guida digitale per gli ospiti di A Casa di Marco, Garden Cottage Escape a Salerno." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ottanio: #0f7f83;
+      --ottanio-dark: #075f63;
+      --ottanio-soft: #dff3f2;
+      --white: #ffffff;
+      --milk: #fbfbf8;
+      --text: #263238;
+      --muted: #6f7d80;
+      --shadow: 0 18px 50px rgba(0, 70, 75, .20);
+      --radius: 28px;
+      --navy: #1a3a4a;
+      --teal: #2a7f8f;
+      --teal2: #3a9aaa;
+      --cream: #f7f3ec;
+      --sand: #e8dfd0;
+      --gold: #b08850;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--white);
+      color: var(--text);
+      font-family: 'Poppins', system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Pacifico', cursive;
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    #lang-screen {
+      min-height: 100dvh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      overflow: hidden;
+      background: var(--ottanio);
+    }
+
+    #lang-screen::before {
+      content: "";
+      position: absolute;
+      inset: -14px;
+      background: url("assets/garden-main.jpg") center / cover no-repeat;
+      filter: blur(8px) brightness(.78);
+      transform: scale(1.08);
+      z-index: 0;
+    }
+
+    #lang-screen::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          180deg,
+          rgba(15, 127, 131, .50) 0%,
+          rgba(15, 127, 131, .68) 100%
+        );
+      z-index: 1;
+    }
+
+    .lang-box {
+      position: relative;
+      z-index: 2;
+      width: min(480px, 100%);
+      background: rgba(255, 255, 255, .88);
+      border: 1px solid rgba(255, 255, 255, .75);
+      border-radius: 34px;
+      padding: 42px 30px 34px;
+      text-align: center;
+      color: var(--text);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .lang-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--ottanio-soft);
+      color: var(--ottanio-dark);
+      border-radius: 999px;
+      padding: 7px 16px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .lang-box h1 {
+      font-size: clamp(34px, 8vw, 54px);
+      color: var(--ottanio);
+      margin-bottom: 8px;
+    }
+
+    .lang-subtitle {
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    .lang-welcome {
+      margin-bottom: 28px;
+      line-height: 1.7;
+    }
+
+    .lang-welcome strong {
+      display: block;
+      font-family: 'Pacifico', cursive;
+      font-size: clamp(24px, 6vw, 36px);
+      font-weight: 400;
+      color: var(--ottanio-dark);
+    }
+
+    .lang-welcome span {
+      display: block;
+      margin-top: 6px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .lang-btns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .lang-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--white);
+      color: var(--ottanio-dark);
+      border: 1px solid rgba(15, 127, 131, .22);
+      border-radius: 999px;
+      padding: 13px 16px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 8px 22px rgba(0, 90, 95, .12);
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
+    }
+
+    .lang-btn:hover {
+      transform: translateY(-2px);
+      background: var(--ottanio);
+      color: var(--white);
+      box-shadow: 0 12px 28px rgba(0, 90, 95, .22);
+    }
+
+    .lang-btn .flag {
+      font-size: 21px;
+      line-height: 1;
+    }
+
+    @media (max-width: 520px) {
+      .lang-box {
+        padding: 34px 20px 28px;
+        border-radius: 28px;
+      }
+
+      .lang-btns {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    #site {
+      display: none;
+    }
+
+    .hero {
+      min-height: 68vh;
+      position: relative;
+      background:
+        linear-gradient(180deg, rgba(0, 80, 85, .25) 0%, rgba(0, 80, 85, .45) 100%),
+        url("assets/garden-main.jpg") center / cover no-repeat;
+      display: flex;
+      align-items: flex-end;
+      color: #fff;
+      padding: 42px 20px;
+    }
+
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+      padding-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: clamp(44px, 8vw, 82px);
+      margin-bottom: 12px;
+      text-shadow: 0 5px 22px rgba(0,0,0,.35);
+    }
+
+    .hero p {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(16px, 2.4vw, 23px);
+      max-width: 680px;
+      margin-bottom: 22px;
+      text-shadow: 0 3px 16px rgba(0,0,0,.35);
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255, 255, 255, .94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 5px 18px rgba(0, 80, 85, .10);
+      padding: 10px 14px;
+    }
+
+    .topbar-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    .lang-select-wrap {
+      position: relative;
+      flex: 0 0 auto;
+    }
+
+    .lang-select {
+      appearance: none;
+      -webkit-appearance: none;
+      background: var(--ottanio);
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      padding: 10px 38px 10px 16px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(0, 90, 95, .16);
+    }
+
+    .lang-select-wrap::after {
+      content: "⌄";
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-56%);
+      color: #fff;
+      pointer-events: none;
+      font-size: 16px;
+    }
+
+    .topbar a {
+      display: inline-block;
+      background: var(--white);
+      border: 1px solid rgba(15, 127, 131, .18);
+      border-radius: 999px;
+      padding: 9px 14px;
+      font-size: 13px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      color: var(--ottanio-dark);
+      cursor: pointer;
+      transition: background .18s, color .18s, transform .18s;
+    }
+
+    .topbar a:hover {
+      background: var(--ottanio);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px 16px 64px;
+    }
+
+    section {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 28px;
+      margin: 20px 0;
+      border: 1px solid #e8e0d4;
+    }
+
+    .home-welcome p,
+    .marco-section p {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 820px;
+    }
+
+    .carousel {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding: 8px 0 12px;
+    }
+
+    .carousel img {
+      flex: 0 0 78%;
+      max-width: 520px;
+      height: 320px;
+      object-fit: cover;
+      border-radius: 24px;
+      scroll-snap-align: center;
+      box-shadow: 0 12px 35px rgba(0, 80, 85, .16);
+    }
+
+    .page-buttons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .page-buttons a {
+      background: var(--ottanio);
+      color: #fff;
+      border-radius: 999px;
+      padding: 14px 18px;
+      text-align: center;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      box-shadow: 0 8px 22px rgba(0, 90, 95, .16);
+      transition: transform .18s, box-shadow .18s;
+    }
+
+    .page-buttons a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(0, 90, 95, .22);
+    }
+
+    .marco-letter {
+      margin-top: 18px;
+    }
+
+    .marco-letter img {
+      width: 100%;
+      border-radius: 24px;
+      box-shadow: 0 12px 35px rgba(0, 80, 85, .14);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .contact-card {
+      background: var(--ottanio-soft);
+      border-radius: 20px;
+      padding: 18px;
+    }
+
+    .contact-card strong {
+      display: block;
+      color: var(--ottanio-dark);
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+
+    .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--ottanio);
+      color: #fff;
+      border-radius: 999px;
+      padding: 10px 16px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 8px 18px rgba(0, 90, 95, .16);
+    }
+
+    .contact-btn.light {
+      background: #fff;
+      color: var(--ottanio-dark);
+      border: 1px solid rgba(15, 127, 131, .25);
+    }
+
+    .emergency-box {
+      margin-top: 18px;
+      background: #fff8e8;
+      border-left: 5px solid var(--ottanio);
+      border-radius: 18px;
+      padding: 16px;
+    }
+
+    @media (max-width: 720px) {
+      .contact-card {
+        padding: 15px;
+      }
+
+      .contact-btn {
+        font-size: 13px;
+        padding: 9px 14px;
+      }
+    }
+
+    footer {
+      background: var(--navy);
+      color: #fff;
+      text-align: center;
+      padding: 32px 20px;
+      font-size: 15px;
+    }
+
+    footer p {
+      margin: 4px 0;
+    }
+
+    @media (max-width: 720px) {
+      .hero {
+        min-height: 60vh;
+        padding: 34px 18px;
+      }
+
+      .topbar {
+        padding: 9px 8px;
+      }
+
+      .topbar a {
+        padding: 8px 12px;
+        font-size: 12px;
+      }
+
+      .carousel img {
+        flex-basis: 88%;
+        height: 240px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="lang-screen">
+    <div class="lang-box">
+      <div class="lang-badge" data-it="Guida ospiti" data-en="Guest guide" data-es="Guía para huéspedes" data-fr="Guide des invités">Guest Guide</div>
+      <h1 data-it="A Casa di Marco" data-en="A Casa di Marco" data-es="A Casa di Marco" data-fr="A Casa di Marco">A Casa di Marco</h1>
+      <p class="lang-subtitle" data-it="Garden Cottage Escape · Salerno" data-en="Garden Cottage Escape · Salerno" data-es="Garden Cottage Escape · Salerno" data-fr="Garden Cottage Escape · Salerno">Garden Cottage Escape · Salerno</p>
+      <div class="lang-welcome">
+        <strong data-it="Benvenuti" data-en="Welcome" data-es="Bienvenidos" data-fr="Bienvenue">Benvenuti</strong>
+        <span data-it="Welcome · Bienvenidos · Bienvenue" data-en="Welcome · Bienvenidos · Bienvenue" data-es="Welcome · Bienvenidos · Bienvenue" data-fr="Welcome · Bienvenidos · Bienvenue">Welcome · Bienvenidos · Bienvenue</span>
+      </div>
+      <div class="lang-btns">
+        <button class="lang-btn" onclick="showSite('it')" data-it="Italiano" data-en="Italian" data-es="Italiano" data-fr="Italien"><span class="flag">🇮🇹</span> Italiano</button>
+        <button class="lang-btn" onclick="showSite('en')" data-it="English" data-en="English" data-es="Inglés" data-fr="Anglais"><span class="flag">🇬🇧</span> English</button>
+        <button class="lang-btn" onclick="showSite('es')" data-it="Español" data-en="Spanish" data-es="Español" data-fr="Espagnol"><span class="flag">🇪🇸</span> Español</button>
+        <button class="lang-btn" onclick="showSite('fr')" data-it="Français" data-en="French" data-es="Francés" data-fr="Français"><span class="flag">🇫🇷</span> Français</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="site">
+    <header class="hero">
+      <div class="hero-inner">
+        <h1 data-it="A Casa di Marco" data-en="A Casa di Marco" data-es="A Casa di Marco" data-fr="A Casa di Marco">A Casa di Marco</h1>
+        <p data-it="Garden Cottage Escape · Salerno" data-en="Garden Cottage Escape · Salerno" data-es="Garden Cottage Escape · Salerno" data-fr="Garden Cottage Escape · Salerno">Garden Cottage Escape · Salerno</p>
+      </div>
+    </header>
+
+    <nav class="topbar">
+      <div class="topbar-inner">
+        <div class="lang-select-wrap">
+          <select class="lang-select" onchange="showSite(this.value)" aria-label="Seleziona lingua">
+            <option value="" selected disabled data-it="Seleziona lingua" data-en="Select language" data-es="Selecciona idioma" data-fr="Sélectionner la langue">Seleziona lingua</option>
+            <option value="it" data-it="🇮🇹 Italiano" data-en="🇮🇹 Italian" data-es="🇮🇹 Italiano" data-fr="🇮🇹 Italien">🇮🇹 Italiano</option>
+            <option value="en" data-it="🇬🇧 English" data-en="🇬🇧 English" data-es="🇬🇧 Inglés" data-fr="🇬🇧 Anglais">🇬🇧 English</option>
+            <option value="es" data-it="🇪🇸 Español" data-en="🇪🇸 Spanish" data-es="🇪🇸 Español" data-fr="🇪🇸 Espagnol">🇪🇸 Español</option>
+            <option value="fr" data-it="🇫🇷 Français" data-en="🇫🇷 French" data-es="🇫🇷 Francés" data-fr="🇫🇷 Français">🇫🇷 Français</option>
+          </select>
+        </div>
+        <a href="#home-menu" data-it="Guida ospiti" data-en="Guest guide" data-es="Guía para huéspedes" data-fr="Guide des invités">Guida ospiti</a>
+        <a href="#marco-section" data-it="Chi è Marco?" data-en="Who is Marco?" data-es="¿Quién es Marco?" data-fr="Qui est Marco ?">Chi è Marco?</a>
+        <a href="#contacts-section" data-it="Contatti" data-en="Contacts" data-es="Contactos" data-fr="Contacts">Contatti</a>
+      </div>
+    </nav>
+
+    <main>
+      <section id="welcome-home" class="home-welcome">
+        <h2 data-it="Benvenuti"
+            data-en="Welcome"
+            data-es="Bienvenidos"
+            data-fr="Bienvenue">Benvenuti</h2>
+        <p data-it="Benvenuti ad A Casa di Marco. Siamo felici di ospitarvi e speriamo che possiate sentirvi davvero a casa. In questa guida troverete tutte le informazioni utili per vivere al meglio il vostro soggiorno." data-en="Welcome to A Casa di Marco. We are happy to host you and hope you will truly feel at home. In this guide you will find all the useful information to enjoy your stay." data-es="Bienvenidos a A Casa di Marco. Nos alegra alojaros y esperamos que os sintáis como en casa. En esta guía encontraréis toda la información útil para disfrutar de vuestra estancia." data-fr="Bienvenue à A Casa di Marco. Nous sommes heureux de vous accueillir et espérons que vous vous sentirez vraiment chez vous. Dans ce guide, vous trouverez toutes les informations utiles pour profiter de votre séjour.">Benvenuti ad A Casa di Marco. Siamo felici di ospitarvi e speriamo che possiate sentirvi davvero a casa. In questa guida troverete tutte le informazioni utili per vivere al meglio il vostro soggiorno.</p>
+      </section>
+
+      
+      <section id="home-menu" class="home-menu">
+        <h2 data-it="Guida ospiti"
+          data-en="Guest guide"
+          data-es="Guía para huéspedes"
+          data-fr="Guide des invités">Guida ospiti</h2>
+          <div class="page-buttons">
+         <a data-href="checkin.html" href="checkin.html"
+           data-it="Check-in / Check-out"
+           data-en="Check-in / Check-out"
+           data-es="Check-in / Check-out"
+           data-fr="Check-in / Check-out">Check-in / Check-out</a>
+
+         <a data-href="regole.html" href="regole.html"
+           data-it="Regole della casa"
+           data-en="House rules"
+           data-es="Reglas de la casa"
+           data-fr="Règles de la maison">Regole della casa</a>
+
+         <a data-href="luoghi.html" href="luoghi.html"
+           data-it="Luoghi da visitare"
+           data-en="Places to visit"
+           data-es="Lugares para visitar"
+           data-fr="Lieux à visiter">Luoghi da visitare</a>
+
+         <a data-href="mangiare.html" href="mangiare.html"
+           data-it="Dove mangiare"
+           data-en="Where to eat"
+           data-es="Dónde comer"
+           data-fr="Où manger">Dove mangiare</a>
+
+         <a data-href="parcheggio.html" href="parcheggio.html"
+           data-it="Dove parcheggiare"
+           data-en="Where to park"
+           data-es="Dónde aparcar"
+           data-fr="Où se garer">Dove parcheggiare</a>
+
+         <a data-href="spesa.html" href="spesa.html"
+           data-it="Dove fare la spesa"
+           data-en="Grocery shopping"
+           data-es="Dónde hacer la compra"
+           data-fr="Où faire les courses">Dove fare la spesa</a>
+
+         <a data-href="colazione.html" href="colazione.html"
+           data-it="Colazione"
+           data-en="Breakfast"
+           data-es="Desayuno"
+           data-fr="Petit-déjeuner">Colazione</a>
+
+         <a data-href="trasporti.html" href="trasporti.html"
+           data-it="Trasporti"
+           data-en="Transport"
+           data-es="Transporte"
+           data-fr="Transports">Trasporti</a>
+
+         <a href="#contacts-section"
+           data-it="Contatti"
+           data-en="Contacts"
+           data-es="Contactos"
+           data-fr="Contacts">Contatti</a>
+        </div>
+      </section>
+
+
+      <section id="home-gallery" class="home-gallery">
+        <h2 data-it="La casa"
+            data-en="The house"
+            data-es="La casa"
+            data-fr="La maison">La casa</h2>
+        <div class="carousel">
+          <img src="assets/casa-1.jpg" alt="Camera matrimoniale">
+          <img src="assets/casa-2.jpg" alt="Soggiorno">
+          <img src="assets/casa-3.jpg" alt="Cameretta">
+          <img src="assets/casa-4.jpg" alt="Bagno">
+          <img src="assets/casa-5.jpg" alt="Cucina">
+          <img src="assets/casa-6.jpg" alt="Cucina">
+          <img src="assets/casa-7.jpg" alt="Cucina">
+          <img src="assets/casa-8.jpg" alt="Cucina">
+          <img src="assets/casa-9.jpg" alt="Cucina">
+        </div>
+      </section>
+
+      <section id="marco-section" class="marco-section">
+        <h2 data-it="Chi è Marco?" data-en="Who is Marco?" data-es="¿Quién es Marco?" data-fr="Qui est Marco ?">Chi è Marco?</h2>
+        <p data-it-html="Prima di continuare con la guida, vogliamo raccontarvi perché questa casa si chiama <strong>A Casa di Marco</strong>." data-en-html="Before continuing with the guide, we want to tell you why this house is called <strong>A Casa di Marco</strong>." data-es-html="Antes de continuar con la guía, queremos contaros por qué esta casa se llama <strong>A Casa di Marco</strong>." data-fr-html="Avant de continuer le guide, nous voulons vous raconter pourquoi cette maison s'appelle <strong>A Casa di Marco</strong>.">Prima di continuare con la guida, vogliamo raccontarvi perché questa casa si chiama <strong>A Casa di Marco</strong>.</p>
+        <div class="marco-letter">
+          <img src="assets/pettirosso.png" alt="Lettera dedicata a Marco e al pettirosso">
+        </div>
+      </section>
+
+      <section id="contacts-section" class="contacts-section">
+        <h2 data-it="Contatti"
+            data-en="Contacts"
+            data-es="Contactos"
+            data-fr="Contacts">Contatti</h2>
+
+        <p data-it="Per comunicazioni urgenti potete chiamarci. Per tutte le altre richieste, scriveteci su WhatsApp: risponderemo il prima possibile."
+           data-en="For urgent matters, you can call us. For all other requests, please message us on WhatsApp: we will reply as soon as possible."
+           data-es="Para comunicaciones urgentes podéis llamarnos. Para todas las demás solicitudes, escribidnos por WhatsApp: responderemos lo antes posible."
+           data-fr="Pour les communications urgentes, vous pouvez nous appeler. Pour toute autre demande, écrivez-nous sur WhatsApp : nous répondrons dès que possible.">
+          Per comunicazioni urgenti potete chiamarci. Per tutte le altre richieste, scriveteci su WhatsApp: risponderemo il prima possibile.
+        </p>
+
+        <p data-it="Vi chiediamo di utilizzare le chiamate solo per comunicazioni urgenti, così riusciamo a gestire al meglio tutte le richieste."
+           data-en="Please use phone calls only for urgent matters, so we can manage all requests in the best possible way."
+           data-es="Os pedimos que utilicéis las llamadas solo para asuntos urgentes, así podremos gestionar mejor todas las solicitudes."
+           data-fr="Merci d'utiliser les appels uniquement pour les situations urgentes, afin que nous puissions gérer au mieux toutes les demandes.">
+          Vi chiediamo di utilizzare le chiamate solo per comunicazioni urgenti, così riusciamo a gestire al meglio tutte le richieste.
+        </p>
+
+        <div class="contact-grid">
+
+          <div class="contact-card">
+            <strong>Asja</strong>
+            <p data-it="Contatto principale per il vostro soggiorno."
+               data-en="Main contact for your stay."
+               data-es="Contacto principal para vuestra estancia."
+               data-fr="Contact principal pour votre séjour.">
+              Contatto principale per il vostro soggiorno.
+            </p>
+
+            <div class="contact-actions">
+              <a class="contact-btn"
+                 href="tel:+393923064010"
+                 data-it="📞 Chiama"
+                 data-en="📞 Call"
+                 data-es="📞 Llamar"
+                 data-fr="📞 Appeler">📞 Chiama</a>
+
+              <a class="contact-btn light"
+                 href="https://wa.me/393923064010"
+                 target="_blank"
+                 data-it="💬 WhatsApp"
+                 data-en="💬 WhatsApp"
+                 data-es="💬 WhatsApp"
+                 data-fr="💬 WhatsApp">💬 WhatsApp</a>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <strong>Ambra</strong>
+            <p data-it="Secondo contatto utile in caso di necessità."
+               data-en="Second useful contact if needed."
+               data-es="Segundo contacto útil en caso de necesidad."
+               data-fr="Deuxième contact utile en cas de besoin.">
+              Secondo contatto utile in caso di necessità.
+            </p>
+
+            <div class="contact-actions">
+              <a class="contact-btn"
+                 href="tel:+393397009276"
+                 data-it="📞 Chiama"
+                 data-en="📞 Call"
+                 data-es="📞 Llamar"
+                 data-fr="📞 Appeler">📞 Chiama</a>
+
+              <a class="contact-btn light"
+                 href="https://wa.me/393397009276"
+                 target="_blank"
+                 data-it="💬 WhatsApp"
+                 data-en="💬 WhatsApp"
+                 data-es="💬 WhatsApp"
+                 data-fr="💬 WhatsApp">💬 WhatsApp</a>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <strong>Email</strong>
+            <p data-it="Per comunicazioni non urgenti potete scriverci anche via email."
+               data-en="For non-urgent communications, you can also email us."
+               data-es="Para comunicaciones no urgentes, también podéis escribirnos por email."
+               data-fr="Pour les communications non urgentes, vous pouvez aussi nous écrire par email.">
+              Per comunicazioni non urgenti potete scriverci anche via email.
+            </p>
+
+            <div class="contact-actions">
+              <a class="contact-btn"
+                 href="mailto:acasadimarco17@gmail.com"
+                 data-it="✉️ Scrivi email"
+                 data-en="✉️ Send email"
+                 data-es="✉️ Enviar email"
+                 data-fr="✉️ Envoyer un email">✉️ Scrivi email</a>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="emergency-box">
+          <strong data-it="Numeri di emergenza"
+                  data-en="Emergency numbers"
+                  data-es="Números de emergencia"
+                  data-fr="Numéros d'urgence">Numeri di emergenza</strong>
+
+          <p data-it="In caso di emergenza sanitaria chiamare il 118. Per emergenze generali chiamare il 112."
+             data-en="In case of medical emergency, call 118. For general emergencies, call 112."
+             data-es="En caso de emergencia sanitaria, llamad al 118. Para emergencias generales, llamad al 112."
+             data-fr="En cas d'urgence médicale, appelez le 118. Pour les urgences générales, appelez le 112.">
+            In caso di emergenza sanitaria chiamare il 118. Per emergenze generali chiamare il 112.
+          </p>
+
+          <div class="contact-actions">
+            <a class="contact-btn"
+               href="tel:118"
+               data-it="🚑 Chiama 118"
+               data-en="🚑 Call 118"
+               data-es="🚑 Llamar 118"
+               data-fr="🚑 Appeler 118">🚑 Chiama 118</a>
+
+            <a class="contact-btn"
+               href="tel:112"
+               data-it="🚨 Chiama 112"
+               data-en="🚨 Call 112"
+               data-es="🚨 Llamar 112"
+               data-fr="🚨 Appeler 112">🚨 Chiama 112</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p data-it-html="<strong>A Casa di Marco – Guida ospiti</strong> · Garden Cottage Escape · Salerno" data-en-html="<strong>A Casa di Marco – Guest Guide</strong> · Garden Cottage Escape · Salerno" data-es-html="<strong>A Casa di Marco – Guía para huéspedes</strong> · Garden Cottage Escape · Salerno" data-fr-html="<strong>A Casa di Marco – Guide des invités</strong> · Garden Cottage Escape · Salerno"><strong>A Casa di Marco – Guest Guide</strong> · Garden Cottage Escape · Salerno</p>
+      <p data-it="Grazie per aver scelto la nostra casa." data-en="Thank you for choosing our home." data-es="Gracias por elegir nuestra casa." data-fr="Merci d'avoir choisi notre maison.">Grazie per aver scelto la nostra casa.</p>
+    </footer>
+  </div>
+
+<script>
+  function translatePage(lang) {
+    document.documentElement.lang = lang;
+
+    document.querySelectorAll('[data-it], [data-it-html]').forEach(function (el) {
+      var htmlTranslation = el.getAttribute('data-' + lang + '-html');
+      var textTranslation = el.getAttribute('data-' + lang);
+
+      if (htmlTranslation) {
+        el.innerHTML = htmlTranslation;
+      } else if (textTranslation) {
+        el.textContent = textTranslation;
+      }
+    });
+
+    document.querySelectorAll('[data-href]').forEach(function (link) {
+      var base = link.getAttribute('data-href');
+      link.href = base + '?lang=' + lang;
+    });
+
+    try {
+      localStorage.setItem('guestGuideLang', lang);
+    } catch (e) {}
+  }
+
+  function showSite(lang) {
+    lang = lang || 'it';
+
+    document.getElementById('lang-screen').style.display = 'none';
+    document.getElementById('site').style.display = 'block';
+
+    translatePage(lang);
+
+    if (location.hash !== '#' + lang) {
+      history.pushState(null, '', '#' + lang);
+    }
+  }
+
+  function showLangScreen() {
+    document.getElementById('lang-screen').style.display = 'flex';
+    document.getElementById('site').style.display = 'none';
+
+    if (location.hash !== '#lang') {
+      history.pushState(null, '', '#lang');
+    }
+  }
+
+  (function () {
+    var hash = location.hash.replace('#', '');
+    if (hash === 'it' || hash === 'en' || hash === 'es' || hash === 'fr') {
+      showSite(hash);
+    } else {
+      showLangScreen();
+    }
+  })();
+</script>
+</body>
+</html>

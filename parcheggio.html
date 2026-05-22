@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dove parcheggiare · A Casa di Marco</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --ottanio:#0f7f83; --ottanio-dark:#075f63; --ottanio-soft:#dff3f2; --white:#fff; --milk:#fbfbf8; --text:#263238; --muted:#6f7d80; --shadow:0 18px 50px rgba(0,70,75,.20); --radius:28px; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { background:var(--milk); color:var(--text); font-family:'Poppins',sans-serif; line-height:1.65; }
+    h1,h2,h3 { font-family:'Pacifico',cursive; font-weight:400; color:var(--ottanio-dark); }
+    .page-hero { min-height:38vh; background:linear-gradient(180deg, rgba(0,80,85,.25), rgba(0,80,85,.55)), url("assets/garden-main.jpg") center/cover no-repeat; color:#fff; display:flex; align-items:flex-end; padding:38px 20px; }
+    .page-hero div { max-width:1000px; margin:0 auto; width:100%; }
+    .page-hero h1 { color:#fff; font-size:clamp(38px, 7vw, 68px); text-shadow:0 5px 20px rgba(0,0,0,.35); }
+    main { max-width:1000px; margin:0 auto; padding:28px 16px 60px; }
+    section { background:#fff; border-radius:28px; padding:28px; box-shadow:var(--shadow); margin-bottom:22px; }
+    .back-home { display:inline-flex; margin-bottom:18px; background:var(--ottanio); color:#fff; text-decoration:none; border-radius:999px; padding:11px 18px; font-weight:600; }
+    .img-card img { width:100%; border-radius:22px; margin-top:18px; }
+
+    .parking-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .parking-card {
+      background: var(--ottanio-soft);
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: 0 10px 28px rgba(0, 80, 85, .10);
+    }
+
+    .parking-card.featured {
+      background: #fff8e8;
+      border-left: 5px solid var(--ottanio);
+    }
+
+    .parking-card h3 {
+      font-size: 25px;
+      margin-bottom: 8px;
+    }
+
+    .parking-card p {
+      font-size: 15px;
+      margin-bottom: 10px;
+    }
+
+    .parking-note {
+      background: #fff;
+      border-radius: 15px;
+      padding: 12px;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    .parking-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .parking-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--ottanio);
+      color: #fff;
+      border-radius: 999px;
+      padding: 10px 15px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    @media (max-width: 720px) {
+      body {
+        font-size: 14px;
+        line-height: 1.55;
+      }
+
+      .page-hero {
+        min-height: 26vh;
+        padding: 26px 16px;
+      }
+
+      .page-hero h1 {
+        font-size: 34px;
+        line-height: 1.15;
+      }
+
+      main {
+        padding: 18px 12px 44px;
+      }
+
+      section {
+        padding: 18px;
+        border-radius: 22px;
+      }
+
+      h2 {
+        font-size: 26px;
+      }
+
+      .parking-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .parking-card {
+        padding: 15px;
+      }
+
+      .parking-card h3 {
+        font-size: 23px;
+      }
+
+      .parking-card p,
+      .parking-note {
+        font-size: 14px;
+      }
+
+      .parking-actions {
+        flex-direction: column;
+      }
+
+      .parking-btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="page-hero"><div><h1 data-it="Dove parcheggiare" data-en="Where to park" data-es="Dónde aparcar" data-fr="Où se garer">Dove parcheggiare</h1></div></header>
+  <main>
+    <a class="back-home" href="index.html" data-it="← Torna alla home" data-en="← Back to home" data-es="← Volver a la home" data-fr="← Retour à l'accueil">← Torna alla home</a>
+    <section>
+      <h2 data-it="Dove parcheggiare"
+          data-en="Where to park"
+          data-es="Dónde aparcar"
+          data-fr="Où se garer">Dove parcheggiare</h2>
+
+      <p data-it="Qui trovate le indicazioni per parcheggiare presso la struttura e alcune soluzioni consigliate per visitare Salerno."
+         data-en="Here you will find parking instructions for the property and some recommended options for visiting Salerno."
+         data-es="Aquí encontraréis indicaciones para aparcar en la estructura y algunas opciones recomendadas para visitar Salerno."
+         data-fr="Vous trouverez ici les indications pour vous garer à la maison et quelques solutions conseillées pour visiter Salerne.">
+        Qui trovate le indicazioni per parcheggiare presso la struttura e alcune soluzioni consigliate per visitare Salerno.
+      </p>
+
+      <div class="parking-grid">
+
+        <div class="parking-card featured">
+          <h3 data-it="Parcheggio nella struttura"
+              data-en="Parking at the property"
+              data-es="Aparcamiento en la estructura"
+              data-fr="Parking dans la propriété">Parcheggio nella struttura</h3>
+
+          <p data-it="È possibile parcheggiare nel giardino della casa oppure fuori sulla strada, prima della curva per entrare."
+             data-en="You can park in the garden of the house or outside on the road, before the curve leading to the entrance."
+             data-es="Se puede aparcar en el jardín de la casa o fuera, en la carretera antes de la curva de entrada."
+             data-fr="Vous pouvez vous garer dans le jardin de la maison ou sur la route, avant le virage d'entrée.">
+            È possibile parcheggiare nel giardino della casa oppure fuori sulla strada, prima della curva per entrare.
+          </p>
+
+          <div class="img-card">
+            <img src="assets/gate.jpg" alt="Ingresso A Casa di Marco">
+          </div>
+        </div>
+
+        <div class="parking-card">
+          <h3 data-it="Parcheggio Libertà"
+              data-en="Parcheggio Libertà"
+              data-es="Parcheggio Libertà"
+              data-fr="Parcheggio Libertà">Parcheggio Libertà</h3>
+
+          <p data-it="Parcheggio moderno, ampio e ben organizzato in Piazza della Libertà, nel cuore di Salerno. È comodo per raggiungere a piedi il lungomare, il centro storico e la Villa Comunale."
+             data-en="A modern, spacious and well-organised parking facility in Piazza della Libertà, in the heart of Salerno. It is convenient for reaching the seafront, the historic centre and the Villa Comunale on foot."
+             data-es="Aparcamiento moderno, amplio y bien organizado en Piazza della Libertà, en el corazón de Salerno. Es cómodo para llegar a pie al paseo marítimo, al centro histórico y a la Villa Comunale."
+             data-fr="Parking moderne, spacieux et bien organisé à Piazza della Libertà, au cœur de Salerne. Il est pratique pour rejoindre à pied le front de mer, le centre historique et la Villa Comunale.">
+            Parcheggio moderno, ampio e ben organizzato in Piazza della Libertà, nel cuore di Salerno. È comodo per raggiungere a piedi il lungomare, il centro storico e la Villa Comunale.
+          </p>
+
+          <div class="parking-note"
+               data-it="A pagamento. Tariffe indicative: 1 ora €2, 2 ore €3,50, 3 ore €5. Accetta contanti, carte/contactless e Telepass. Aperto 24 ore."
+               data-en="Paid parking. Indicative rates: 1 hour €2, 2 hours €3.50, 3 hours €5. Cash, card/contactless and Telepass accepted. Open 24 hours."
+               data-es="Aparcamiento de pago. Tarifas orientativas: 1 hora 2 €, 2 horas 3,50 €, 3 horas 5 €. Acepta efectivo, tarjeta/contactless y Telepass. Abierto 24 horas."
+               data-fr="Parking payant. Tarifs indicatifs : 1 heure 2 €, 2 heures 3,50 €, 3 heures 5 €. Espèces, carte/contactless et Telepass acceptés. Ouvert 24h/24.">
+            A pagamento. Tariffe indicative: 1 ora €2, 2 ore €3,50, 3 ore €5. Accetta contanti, carte/contactless e Telepass. Aperto 24 ore.
+          </div>
+
+          <div class="parking-actions">
+            <a class="parking-btn"
+               href="https://www.google.com/maps/search/?api=1&query=Parcheggio+Libert%C3%A0+Piazza+della+Libert%C3%A0+Salerno"
+               target="_blank"
+               data-it="📍 Portami lì"
+               data-en="📍 Take me there"
+               data-es="📍 Llévame allí"
+               data-fr="📍 M’y emmener">📍 Portami lì</a>
+          </div>
+        </div>
+
+        <div class="parking-card">
+          <h3 data-it="Parcheggio Via Alfonso Carella"
+              data-en="Via Alfonso Carella parking"
+              data-es="Aparcamiento Via Alfonso Carella"
+              data-fr="Parking Via Alfonso Carella">Parcheggio Via Alfonso Carella</h3>
+
+          <p data-it="Un'altra opzione comoda è il parcheggio in Via Alfonso Carella: è più defilato rispetto al centro, ma può essere utile nei periodi di maggiore affluenza."
+             data-en="Another convenient option is the parking area in Via Alfonso Carella: it is slightly outside the centre, but useful during busy periods."
+             data-es="Otra opción cómoda es el aparcamiento en Via Alfonso Carella: está algo más apartado del centro, pero puede ser útil en periodos de mucha afluencia."
+             data-fr="Une autre option pratique est le parking de Via Alfonso Carella : il est un peu plus éloigné du centre, mais utile pendant les périodes de forte affluence.">
+            Un'altra opzione comoda è il parcheggio in Via Alfonso Carella: è più defilato rispetto al centro, ma può essere utile nei periodi di maggiore affluenza.
+          </p>
+
+          <div class="parking-note"
+               data-it="Parcheggio a pagamento. Le tariffe possono variare: controllate sempre la segnaletica o la cassa automatica sul posto."
+               data-en="Paid parking. Rates may vary: always check the signs or the payment machine on site."
+               data-es="Aparcamiento de pago. Las tarifas pueden variar: comprobad siempre la señalización o la máquina de pago."
+               data-fr="Parking payant. Les tarifs peuvent varier : vérifiez toujours la signalisation ou la caisse automatique sur place.">
+            Parcheggio a pagamento. Le tariffe possono variare: controllate sempre la segnaletica o la cassa automatica sul posto.
+          </div>
+
+          <div class="parking-actions">
+            <a class="parking-btn"
+               href="https://www.google.com/maps/search/?api=1&query=Parcheggio+Via+Alfonso+Carella+Salerno"
+               target="_blank"
+               data-it="📍 Portami lì"
+               data-en="📍 Take me there"
+               data-es="📍 Llévame allí"
+               data-fr="📍 M’y emmener">📍 Portami lì</a>
+          </div>
+        </div>
+
+        <div class="parking-card">
+          <h3 data-it="Parcheggio Piazza Concordia / Mazzini"
+              data-en="Piazza Concordia / Mazzini parking"
+              data-es="Aparcamiento Piazza Concordia / Mazzini"
+              data-fr="Parking Piazza Concordia / Mazzini">Parcheggio Piazza Concordia / Mazzini</h3>
+
+          <p data-it="Soluzione utile se volete stare vicino al lungomare, alla stazione o al centro. Può essere molto comoda per una passeggiata in città."
+             data-en="A useful option if you want to be close to the seafront, the station or the centre. Very convenient for a walk around the city."
+             data-es="Una opción útil si queréis estar cerca del paseo marítimo, de la estación o del centro. Muy cómoda para pasear por la ciudad."
+             data-fr="Une option utile si vous voulez être près du front de mer, de la gare ou du centre. Très pratique pour une promenade en ville.">
+            Soluzione utile se volete stare vicino al lungomare, alla stazione o al centro. Può essere molto comoda per una passeggiata in città.
+          </p>
+
+          <div class="parking-note"
+               data-it="Durante alta stagione, Luci d'Artista, estate o eventi, conviene arrivare prima o valutare parcheggi leggermente più lontani."
+               data-en="During high season, Christmas lights, summer or events, it is better to arrive earlier or consider slightly more distant parking areas."
+               data-es="Durante la temporada alta, las luces navideñas, el verano o los eventos, conviene llegar antes o considerar aparcamientos algo más alejados."
+               data-fr="En haute saison, pendant les lumières de Noël, l’été ou les événements, il vaut mieux arriver tôt ou envisager des parkings un peu plus éloignés.">
+            Durante alta stagione, Luci d'Artista, estate o eventi, conviene arrivare prima o valutare parcheggi leggermente più lontani.
+          </div>
+
+          <div class="parking-actions">
+            <a class="parking-btn"
+               href="https://www.google.com/maps/search/?api=1&query=Parcheggio+Piazza+Concordia+Salerno"
+               target="_blank"
+               data-it="📍 Piazza Concordia"
+               data-en="📍 Piazza Concordia"
+               data-es="📍 Piazza Concordia"
+               data-fr="📍 Piazza Concordia">📍 Piazza Concordia</a>
+
+            <a class="parking-btn"
+               href="https://www.google.com/maps/search/?api=1&query=Parcheggio+Piazza+Mazzini+Salerno"
+               target="_blank"
+               data-it="📍 Piazza Mazzini"
+               data-en="📍 Piazza Mazzini"
+               data-es="📍 Piazza Mazzini"
+               data-fr="📍 Piazza Mazzini">📍 Piazza Mazzini</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+<script>
+  function getLang() {
+    var params = new URLSearchParams(window.location.search);
+    var lang = params.get('lang');
+
+    if (lang === 'it' || lang === 'en' || lang === 'es' || lang === 'fr') {
+      return lang;
+    }
+
+    try {
+      lang = localStorage.getItem('guestGuideLang');
+    } catch (e) {}
+
+    if (lang === 'it' || lang === 'en' || lang === 'es' || lang === 'fr') {
+      return lang;
+    }
+
+    return 'it';
+  }
+
+  function translatePage(lang) {
+    document.documentElement.lang = lang;
+
+    document.querySelectorAll('[data-it], [data-it-html]').forEach(function (el) {
+      var htmlTranslation = el.getAttribute('data-' + lang + '-html');
+      var textTranslation = el.getAttribute('data-' + lang);
+
+      if (htmlTranslation) {
+        el.innerHTML = htmlTranslation;
+      } else if (textTranslation) {
+        el.textContent = textTranslation;
+      }
+    });
+
+    var home = document.querySelector('.back-home');
+    if (home) {
+      home.href = 'index.html#' + lang;
+    }
+
+    try {
+      localStorage.setItem('guestGuideLang', lang);
+    } catch (e) {}
+  }
+
+  translatePage(getLang());
+</script>
+</body>
+</html>

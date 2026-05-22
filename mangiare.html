@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dove mangiare · A Casa di Marco</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ottanio:#0f7f83;
+      --ottanio-dark:#075f63;
+      --ottanio-soft:#dff3f2;
+      --white:#fff;
+      --milk:#fbfbf8;
+      --text:#263238;
+      --muted:#6f7d80;
+      --shadow:0 18px 50px rgba(0,70,75,.20);
+      --radius:28px;
+    }
+
+    * {
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    body {
+      background:var(--milk);
+      color:var(--text);
+      font-family:'Poppins',sans-serif;
+      line-height:1.65;
+    }
+
+    h1,h2,h3 {
+      font-family:'Pacifico',cursive;
+      font-weight:400;
+      color:var(--ottanio-dark);
+    }
+
+    .page-hero {
+      min-height:38vh;
+      background:
+        linear-gradient(180deg, rgba(0,80,85,.25), rgba(0,80,85,.55)),
+        url("assets/garden-main.jpg") center/cover no-repeat;
+      color:#fff;
+      display:flex;
+      align-items:flex-end;
+      padding:38px 20px;
+    }
+
+    .page-hero div {
+      max-width:1000px;
+      margin:0 auto;
+      width:100%;
+    }
+
+    .page-hero h1 {
+      color:#fff;
+      font-size:clamp(38px, 7vw, 68px);
+      text-shadow:0 5px 20px rgba(0,0,0,.35);
+    }
+
+    main {
+      max-width:1000px;
+      margin:0 auto;
+      padding:28px 16px 60px;
+    }
+
+    section {
+      background:#fff;
+      border-radius:28px;
+      padding:28px;
+      box-shadow:var(--shadow);
+      margin-bottom:22px;
+    }
+
+    .back-home {
+      display:inline-flex;
+      margin-bottom:18px;
+      background:var(--ottanio);
+      color:#fff;
+      text-decoration:none;
+      border-radius:999px;
+      padding:11px 18px;
+      font-weight:600;
+    }
+
+    .food-choice-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(210px, 1fr));
+      gap:14px;
+      margin-top:18px;
+    }
+
+    .food-choice {
+      border:none;
+      background:var(--ottanio-soft);
+      border-radius:22px;
+      padding:18px;
+      text-align:left;
+      font-family:'Poppins', sans-serif;
+      cursor:pointer;
+      box-shadow:0 8px 22px rgba(0,80,85,.10);
+      transition:transform .18s, box-shadow .18s;
+    }
+
+    .food-choice:hover {
+      transform:translateY(-2px);
+      box-shadow:0 12px 28px rgba(0,80,85,.16);
+    }
+
+    .food-choice span {
+      display:block;
+      font-size:28px;
+      margin-bottom:8px;
+    }
+
+    .food-choice strong {
+      display:block;
+      color:var(--ottanio-dark);
+      font-size:16px;
+      margin-bottom:4px;
+    }
+
+    .food-choice small {
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .food-category {
+      display:none;
+    }
+
+    .food-category.active {
+      display:block;
+    }
+
+    .category-header {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:18px;
+    }
+
+    .back-category {
+      border:none;
+      background:var(--ottanio);
+      color:#fff;
+      border-radius:999px;
+      padding:10px 15px;
+      font-family:'Poppins', sans-serif;
+      font-weight:600;
+      cursor:pointer;
+    }
+
+    .restaurant-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+      gap:18px;
+    }
+
+    .restaurant-card {
+      background:var(--ottanio-soft);
+      border-radius:24px;
+      overflow:hidden;
+      box-shadow:0 10px 28px rgba(0,80,85,.12);
+    }
+
+    .restaurant-card.featured {
+      background:#fff8e8;
+      border:2px solid rgba(15,127,131,.35);
+      box-shadow:0 14px 34px rgba(0,80,85,.18);
+    }
+
+    .restaurant-card img {
+      width:100%;
+      height:190px;
+      object-fit:cover;
+      display:block;
+    }
+
+    .restaurant-content {
+      padding:18px;
+    }
+
+    .restaurant-content h3 {
+      font-size:25px;
+      margin-bottom:8px;
+    }
+
+    .restaurant-content p {
+      font-size:15px;
+      margin-bottom:10px;
+    }
+
+    .walk-badge {
+      display:inline-flex;
+      align-items:center;
+      background:var(--ottanio);
+      color:#fff;
+      border-radius:999px;
+      padding:6px 12px;
+      font-size:12px;
+      font-weight:700;
+      margin-bottom:10px;
+    }
+
+    .tip-box {
+      background:#fff;
+      border-left:5px solid var(--ottanio);
+      border-radius:16px;
+      padding:12px;
+      font-size:14px;
+      margin-top:10px;
+    }
+
+    .restaurant-actions {
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:14px;
+    }
+
+    .restaurant-btn {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      background:var(--ottanio);
+      color:#fff;
+      border-radius:999px;
+      padding:10px 15px;
+      font-size:13px;
+      font-weight:600;
+      text-decoration:none;
+    }
+
+    .restaurant-btn.light {
+      background:#fff;
+      color:var(--ottanio-dark);
+      border:1px solid rgba(15,127,131,.25);
+    }
+
+    @media (max-width:720px) {
+      body {
+        font-size:14px;
+        line-height:1.55;
+      }
+
+      .page-hero {
+        min-height:26vh;
+        padding:26px 16px;
+      }
+
+      .page-hero h1 {
+        font-size:34px;
+        line-height:1.15;
+      }
+
+      main {
+        padding:18px 12px 44px;
+      }
+
+      section {
+        padding:18px;
+        border-radius:22px;
+      }
+
+      h2 {
+        font-size:26px;
+      }
+
+      .food-choice-grid {
+        grid-template-columns:1fr;
+      }
+
+      .category-header {
+        align-items:flex-start;
+        flex-direction:column;
+      }
+
+      .restaurant-grid {
+        grid-template-columns:1fr;
+      }
+
+      .restaurant-card img {
+        height:175px;
+      }
+
+      .restaurant-content {
+        padding:15px;
+      }
+
+      .restaurant-content h3 {
+        font-size:23px;
+      }
+
+      .restaurant-content p,
+      .tip-box {
+        font-size:14px;
+      }
+
+      .restaurant-actions {
+        flex-direction:column;
+      }
+
+      .restaurant-btn,
+      .back-category {
+        width:100%;
+        text-align:center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="page-hero">
+    <div>
+      <h1 data-it="Dove mangiare"
+          data-en="Where to eat"
+          data-es="Dónde comer"
+          data-fr="Où manger">Dove mangiare</h1>
+    </div>
+  </header>
+
+  <main>
+    <a class="back-home" href="index.html"
+       data-it="← Torna alla home"
+       data-en="← Back to home"
+       data-es="← Volver a la home"
+       data-fr="← Retour à l'accueil">← Torna alla home</a>
+
+    <section id="food-start">
+      <h2 data-it="Cosa hai voglia di mangiare?"
+          data-en="What would you like to eat?"
+          data-es="¿Qué te apetece comer?"
+          data-fr="Qu’avez-vous envie de manger ?">Cosa hai voglia di mangiare?</h2>
+
+      <p data-it="Scegli una categoria e scopri i nostri consigli da salernitani."
+         data-en="Choose a category and discover our local recommendations."
+         data-es="Elige una categoría y descubre nuestras recomendaciones locales."
+         data-fr="Choisissez une catégorie et découvrez nos recommandations locales.">
+        Scegli una categoria e scopri i nostri consigli da salernitani.
+      </p>
+
+      <div class="food-choice-grid">
+        <button class="food-choice" onclick="showCategory('pizza')">
+          <span>🍕</span>
+          <strong data-it="Ho voglia di pizza"
+                  data-en="I feel like pizza"
+                  data-es="Me apetece pizza"
+                  data-fr="J’ai envie de pizza">Ho voglia di pizza</strong>
+          <small data-it="Pizzerie consigliate"
+                 data-en="Recommended pizzerias"
+                 data-es="Pizzerías recomendadas"
+                 data-fr="Pizzerias recommandées">Pizzerie consigliate</small>
+        </button>
+
+        <button class="food-choice" onclick="showCategory('ristoranti')">
+          <span>🍽️</span>
+          <strong data-it="Ho voglia di cucina di mare o di terra"
+                  data-en="I feel like seafood or local cuisine"
+                  data-es="Me apetece cocina de mar o de tierra"
+                  data-fr="J’ai envie de cuisine de mer ou de terre">Ho voglia di cucina di mare o di terra</strong>
+          <small data-it="Ristoranti di pesce, carne e cucina tipica"
+                 data-en="Seafood, meat and traditional restaurants"
+                 data-es="Restaurantes de pescado, carne y cocina típica"
+                 data-fr="Restaurants de poisson, viande et cuisine traditionnelle">Ristoranti di pesce, carne e cucina tipica</small>
+        </button>
+
+        <button class="food-choice" onclick="showCategory('gelato')">
+          <span>🍦</span>
+          <strong data-it="Ho voglia di gelato"
+                  data-en="I feel like gelato"
+                  data-es="Me apetece helado"
+                  data-fr="J’ai envie de glace">Ho voglia di gelato</strong>
+          <small data-it="Gelaterie e dolci"
+                 data-en="Gelato and sweets"
+                 data-es="Heladerías y dulces"
+                 data-fr="Glaciers et douceurs">Gelaterie e dolci</small>
+        </button>
+
+        <button class="food-choice" onclick="showCategory('vino')">
+          <span>☕</span>
+          <strong data-it="Ho voglia di bar / aperitivo"
+                  data-en="I feel like a café / aperitivo"
+                  data-es="Me apetece un bar / aperitivo"
+                  data-fr="J’ai envie d’un café / apéritif">Ho voglia di bar / aperitivo</strong>
+          <small data-it="Caffè, cocktail, vino e aperitivi"
+                 data-en="Coffee, cocktails, wine and aperitivo"
+                 data-es="Café, cócteles, vino y aperitivos"
+                 data-fr="Café, cocktails, vin et apéritifs">Caffè, cocktail, vino e aperitivi</small>
+        </button>
+      </div>
+    </section>
+
+    <section id="food-category" class="food-category">
+      <div class="category-header">
+        <h2 id="category-title">Categoria</h2>
+
+        <button class="back-category" onclick="hideCategory()"
+                data-it="← Torna alle categorie"
+                data-en="← Back to categories"
+                data-es="← Volver a las categorías"
+                data-fr="← Retour aux catégories">← Torna alle categorie</button>
+      </div>
+
+      <div id="restaurant-grid" class="restaurant-grid"></div>
+    </section>
+  </main>
+
+  <script>
+    var currentLang = 'it';
+
+    var categories = {
+      pizza: {
+        title: {
+          it: "Pizzerie consigliate",
+          en: "Recommended pizzerias",
+          es: "Pizzerías recomendadas",
+          fr: "Pizzerias recommandées"
+        },
+        restaurants: [
+          {
+            image: "assets/a-modo-bio.jpg",
+            featured: true,
+            walkable: true,
+            mapsQuery: "A Modo Bio Brignano Salerno",
+            name: {
+              it: "A Modo Bio",
+              en: "A Modo Bio",
+              es: "A Modo Bio",
+              fr: "A Modo Bio"
+            },
+            desc: {
+              it: "Pizzeria vicina alla casa, comoda se non volete spostarvi troppo. È una buona soluzione per una pizza semplice, veloce e raggiungibile a piedi.",
+              en: "A pizzeria close to the house, convenient if you do not want to go too far. A good option for a simple, quick pizza within walking distance.",
+              es: "Una pizzería cerca de la casa, cómoda si no queréis desplazaros demasiado. Una buena opción para una pizza sencilla, rápida y a poca distancia a pie.",
+              fr: "Une pizzeria proche de la maison, pratique si vous ne voulez pas trop vous éloigner. Une bonne option pour une pizza simple et rapide, accessible à pied."
+            },
+            tip: {
+              it: "Vicino casa e raggiungibile a piedi: perfetta per una serata tranquilla senza prendere l’auto.",
+              en: "Close to the house and reachable on foot: perfect for a quiet evening without taking the car.",
+              es: "Cerca de la casa y accesible a pie: perfecta para una noche tranquila sin coger el coche.",
+              fr: "Proche de la maison et accessible à pied : parfait pour une soirée tranquille sans prendre la voiture."
+            }
+          },
+          {
+            image: "assets/errico-porzio-salerno.jpg",
+            mapsUrl: "https://g.co/kgs/Dia6YTf",
+            name: {
+              it: "Pizzeria Errico Porzio Salerno",
+              en: "Pizzeria Errico Porzio Salerno",
+              es: "Pizzeria Errico Porzio Salerno",
+              fr: "Pizzeria Errico Porzio Salerno"
+            },
+            desc: {
+              it: "Una pizzeria molto conosciuta, ideale se volete provare una pizza napoletana ricca, scenografica e molto social.",
+              en: "A very well-known pizzeria, ideal if you want to try a rich, eye-catching and very popular Neapolitan-style pizza.",
+              es: "Una pizzería muy conocida, ideal si queréis probar una pizza napolitana abundante, llamativa y muy popular.",
+              fr: "Une pizzeria très connue, idéale si vous voulez goûter une pizza napolitaine généreuse, spectaculaire et très populaire."
+            },
+            tip: {
+              it: "Perfetta se vi piacciono pizze abbondanti e gusti particolari.",
+              en: "Perfect if you like generous pizzas and special flavours.",
+              es: "Perfecta si os gustan las pizzas abundantes y los sabores especiales.",
+              fr: "Parfaite si vous aimez les pizzas généreuses et les saveurs originales."
+            }
+          },
+          {
+            image: "assets/pizzium-salerno.jpg",
+            mapsUrl: "https://g.co/kgs/Mm7WKix",
+            name: {
+              it: "Pizzium - Salerno",
+              en: "Pizzium - Salerno",
+              es: "Pizzium - Salerno",
+              fr: "Pizzium - Salerno"
+            },
+            desc: {
+              it: "Pizzeria colorata e moderna, con pizze ispirate alle diverse regioni italiane.",
+              en: "A colourful and modern pizzeria, with pizzas inspired by different Italian regions.",
+              es: "Una pizzería colorida y moderna, con pizzas inspiradas en distintas regiones italianas.",
+              fr: "Une pizzeria colorée et moderne, avec des pizzas inspirées des différentes régions italiennes."
+            },
+            tip: {
+              it: "Scegliete una pizza regionale se volete provare qualcosa di diverso dalla classica margherita.",
+              en: "Choose a regional pizza if you want to try something different from the classic margherita.",
+              es: "Elegid una pizza regional si queréis probar algo distinto de la clásica margarita.",
+              fr: "Choisissez une pizza régionale si vous voulez essayer autre chose que la classique margherita."
+            }
+          },
+          {
+            image: "assets/giagiu.jpg",
+            mapsUrl: "https://g.co/kgs/ukU2iTp",
+            name: {
+              it: "Giagiù",
+              en: "Giagiù",
+              es: "Giagiù",
+              fr: "Giagiù"
+            },
+            desc: {
+              it: "Locale consigliato per una pizza buona in un ambiente curato e piacevole.",
+              en: "A recommended place for good pizza in a pleasant and well-kept setting.",
+              es: "Un lugar recomendado para una buena pizza en un ambiente agradable y cuidado.",
+              fr: "Une adresse conseillée pour une bonne pizza dans un cadre agréable et soigné."
+            },
+            tip: {
+              it: "Ottimo se cercate una pizzeria non troppo informale ma comunque accogliente.",
+              en: "Great if you are looking for a pizzeria that is not too informal but still welcoming.",
+              es: "Ideal si buscáis una pizzería no demasiado informal pero acogedora.",
+              fr: "Idéal si vous cherchez une pizzeria pas trop informelle mais accueillante."
+            }
+          },
+          {
+            image: "assets/da-michele-salerno.jpg",
+            mapsQuery: "Da Michele Salerno",
+            name: {
+              it: "Da Michele Salerno",
+              en: "Da Michele Salerno",
+              es: "Da Michele Salerno",
+              fr: "Da Michele Salerno"
+            },
+            desc: {
+              it: "Una scelta perfetta per chi vuole una pizza classica, semplice e legata alla tradizione napoletana.",
+              en: "A perfect choice for those who want a classic, simple pizza linked to Neapolitan tradition.",
+              es: "Una opción perfecta para quienes quieren una pizza clásica, sencilla y ligada a la tradición napolitana.",
+              fr: "Un choix parfait pour ceux qui veulent une pizza classique, simple et liée à la tradition napolitaine."
+            },
+            tip: {
+              it: "Provate la margherita o la marinara.",
+              en: "Try the margherita or marinara.",
+              es: "Probad la margarita o la marinara.",
+              fr: "Goûtez la margherita ou la marinara."
+            }
+          },
+          {
+            image: "assets/pepe-nero.jpg",
+            mapsQuery: "Pepe Nero Salerno",
+            name: {
+              it: "Pepe Nero",
+              en: "Pepe Nero",
+              es: "Pepe Nero",
+              fr: "Pepe Nero"
+            },
+            desc: {
+              it: "Locale versatile: va bene per pizza, piatti di pesce e cucina di terra.",
+              en: "A versatile place: good for pizza, seafood dishes and meat/local cuisine.",
+              es: "Un lugar versátil: va bien para pizza, platos de pescado y cocina de tierra.",
+              fr: "Une adresse polyvalente : idéale pour la pizza, les plats de poisson et la cuisine de terre."
+            },
+            tip: {
+              it: "Sceglietelo se nel gruppo non tutti hanno voglia della stessa cosa.",
+              en: "Choose it if not everyone in the group wants the same type of food.",
+              es: "Elegidlo si en el grupo no todos quieren comer lo mismo.",
+              fr: "Choisissez-le si tout le groupe n’a pas envie de la même chose."
+            }
+          },
+          {
+            image: "assets/granammare.jpg",
+            mapsQuery: "Granammare Pizza Fritti Cocktail Salerno",
+            name: {
+              it: "Granammare - Pizza, Fritti e Cocktail",
+              en: "Granammare - Pizza, Fried Food and Cocktails",
+              es: "Granammare - Pizza, Fritos y Cócteles",
+              fr: "Granammare - Pizza, Fritures et Cocktails"
+            },
+            desc: {
+              it: "Locale consigliato per pizza, fritti e cocktail. Comodo anche se preferite ordinare da asporto o takeaway.",
+              en: "A recommended place for pizza, fried food and cocktails. Also convenient if you prefer takeaway.",
+              es: "Un lugar recomendado para pizza, fritos y cócteles. También cómodo si preferís pedir para llevar.",
+              fr: "Une adresse conseillée pour pizza, fritures et cocktails. Pratique aussi si vous préférez commander à emporter."
+            },
+            tip: {
+              it: "Ottima scelta se volete qualcosa di sfizioso e informale, anche da portare a casa.",
+              en: "A great choice if you want something tasty and informal, also to take home.",
+              es: "Una buena opción si queréis algo sabroso e informal, también para llevar a casa.",
+              fr: "Un bon choix si vous voulez quelque chose de gourmand et informel, aussi à emporter."
+            }
+          }
+        ]
+      },
+
+      ristoranti: {
+        title: {
+          it: "Cucina di mare o di terra",
+          en: "Seafood or local cuisine",
+          es: "Cocina de mar o de tierra",
+          fr: "Cuisine de mer ou de terre"
+        },
+        restaurants: [
+          {
+            image: "assets/tramp-ristorante.jpg",
+            mapsQuery: "Tramp Ristorante Salerno",
+            name: {
+              it: "Tramp Ristorante",
+              en: "Tramp Restaurant",
+              es: "Tramp Restaurante",
+              fr: "Restaurant Tramp"
+            },
+            desc: {
+              it: "Un locale consigliato per chi vuole mangiare pesce fresco a Salerno, in un ambiente informale e piacevole.",
+              en: "A recommended place for those who want to eat fresh seafood in Salerno, in an informal and pleasant setting.",
+              es: "Un lugar recomendado para quienes quieren comer pescado fresco en Salerno, en un ambiente informal y agradable.",
+              fr: "Une adresse conseillée pour ceux qui veulent manger du poisson frais à Salerne, dans une ambiance simple et agréable."
+            },
+            tip: {
+              it: "Chiedete sempre quali sono i piatti del giorno a base di pesce fresco.",
+              en: "Always ask for the daily fresh seafood dishes.",
+              es: "Preguntad siempre por los platos del día con pescado fresco.",
+              fr: "Demandez toujours les plats du jour à base de poisson frais."
+            }
+          },
+          {
+            image: "assets/convivium-sea-food.jpg",
+            mapsQuery: "Convivium Sea Food Restaurant Salerno",
+            name: {
+              it: "Convivium Sea Food Restaurant",
+              en: "Convivium Sea Food Restaurant",
+              es: "Convivium Sea Food Restaurant",
+              fr: "Convivium Sea Food Restaurant"
+            },
+            desc: {
+              it: "Ristorante elegante, ideale per una cena più curata, con piatti di mare e proposte ispirate alla tradizione campana.",
+              en: "An elegant restaurant, ideal for a more refined dinner, with seafood dishes inspired by Campania’s tradition.",
+              es: "Restaurante elegante, ideal para una cena más cuidada, con platos de mar inspirados en la tradición de Campania.",
+              fr: "Restaurant élégant, idéal pour un dîner plus raffiné, avec des plats de la mer inspirés de la tradition campanienne."
+            },
+            tip: {
+              it: "Perfetto per una cena romantica o per una serata speciale.",
+              en: "Perfect for a romantic dinner or a special evening.",
+              es: "Perfecto para una cena romántica o una noche especial.",
+              fr: "Parfait pour un dîner romantique ou une soirée spéciale."
+            }
+          },
+          {
+            image: "assets/da-nonna-maria.jpg",
+            mapsUrl: "https://www.google.com/maps/search/?api=1&query=Da+Nonna+Maria+Salerno",
+            name: {
+              it: "Da Nonna Maria",
+              en: "Da Nonna Maria",
+              es: "Da Nonna Maria",
+              fr: "Da Nonna Maria"
+            },
+            desc: {
+              it: "Un posto adatto per chi cerca cucina semplice, tradizionale e sapori di casa.",
+              en: "A good place for those looking for simple, traditional food and home-style flavours.",
+              es: "Un lugar adecuado para quienes buscan cocina sencilla, tradicional y sabores caseros.",
+              fr: "Une bonne adresse pour ceux qui cherchent une cuisine simple, traditionnelle et familiale."
+            },
+            tip: {
+              it: "Ideale per provare piatti più autentici e meno turistici.",
+              en: "Ideal for trying more authentic and less touristy dishes.",
+              es: "Ideal para probar platos más auténticos y menos turísticos.",
+              fr: "Idéal pour goûter des plats plus authentiques et moins touristiques."
+            }
+          },
+          {
+            image: "assets/la-botte-pazza.jpg",
+            mapsUrl: "https://www.google.com/maps/search/?api=1&query=La+Botte+Pazza+Salerno",
+            name: {
+              it: "La Botte Pazza",
+              en: "La Botte Pazza",
+              es: "La Botte Pazza",
+              fr: "La Botte Pazza"
+            },
+            desc: {
+              it: "Locale consigliato per una cena tipica e conviviale, con piatti saporiti e atmosfera informale.",
+              en: "A recommended place for a typical and convivial dinner, with tasty dishes and an informal atmosphere.",
+              es: "Un lugar recomendado para una cena típica y agradable, con platos sabrosos y ambiente informal.",
+              fr: "Une adresse conseillée pour un dîner typique et convivial, avec des plats savoureux et une ambiance simple."
+            },
+            tip: {
+              it: "Perfetto se volete una serata semplice, buona e molto salernitana.",
+              en: "Perfect if you want a simple, good and very local evening.",
+              es: "Perfecto si queréis una noche sencilla, buena y muy local.",
+              fr: "Parfait si vous voulez une soirée simple, bonne et très locale."
+            }
+          },
+          {
+            image: "assets/pepe-nero.jpg",
+            mapsQuery: "Pepe Nero Salerno",
+            name: {
+              it: "Pepe Nero",
+              en: "Pepe Nero",
+              es: "Pepe Nero",
+              fr: "Pepe Nero"
+            },
+            desc: {
+              it: "Locale versatile: va bene sia per piatti di mare sia per cucina di terra, quindi è comodo quando nel gruppo ci sono gusti diversi.",
+              en: "A versatile place, good for both seafood and local/meat dishes, convenient when people in the group have different tastes.",
+              es: "Un lugar versátil, válido tanto para platos de mar como para cocina de tierra, cómodo cuando en el grupo hay gustos diferentes.",
+              fr: "Une adresse polyvalente, idéale pour les plats de mer comme pour la cuisine de terre, pratique quand le groupe a des goûts différents."
+            },
+            tip: {
+              it: "Sceglietelo se nel gruppo non tutti hanno voglia della stessa cosa.",
+              en: "Choose it if not everyone in the group wants the same type of food.",
+              es: "Elegidlo si en el grupo no todos quieren comer lo mismo.",
+              fr: "Choisissez-le si tout le groupe n’a pas envie de la même chose."
+            }
+          }
+        ]
+      },
+
+      gelato: {
+        title: {
+          it: "Gelato e dolci",
+          en: "Gelato and desserts",
+          es: "Helado y dulces",
+          fr: "Glaces et desserts"
+        },
+        restaurants: [
+          {
+            image: "assets/bar-gelateria-nettuno.jpg",
+            mapsQuery: "Bar Gelateria Nettuno Salerno",
+            name: {
+              it: "Bar Gelateria Nettuno",
+              en: "Bar Gelateria Nettuno",
+              es: "Bar Gelateria Nettuno",
+              fr: "Bar Gelateria Nettuno"
+            },
+            desc: {
+              it: "A Salerno è quasi una legge: da Nettuno bisogna prendere la brioche con il gelato. È una delle esperienze più salernitane, soprattutto in estate.",
+              en: "In Salerno, it is almost a rule: at Nettuno you have to try the brioche with gelato. It is one of the most authentic local experiences, especially in summer.",
+              es: "En Salerno es casi una regla: en Nettuno hay que probar la brioche con helado. Es una de las experiencias más auténticas de la ciudad, sobre todo en verano.",
+              fr: "À Salerne, c’est presque une règle : chez Nettuno, il faut goûter la brioche avec glace. C’est l’une des expériences les plus typiques, surtout en été."
+            },
+            tip: {
+              it: "Ci sono due sedi. Quella sul lungomare è più turistica e spesso affollata; quella a Mercatello è meno turistica, ma molto frequentata dai salernitani. Provate nocciotella o pistacchio.",
+              en: "There are two locations. The seafront one is more touristy and often crowded; the Mercatello one is less touristy but very popular with locals. Try nocciotella or pistachio.",
+              es: "Hay dos sedes. La del paseo marítimo es más turística y suele estar llena; la de Mercatello es menos turística, pero muy frecuentada por los salernitanos. Probad nocciotella o pistacho.",
+              fr: "Il y a deux adresses. Celle du front de mer est plus touristique et souvent bondée ; celle de Mercatello est moins touristique, mais très fréquentée par les habitants. Goûtez la nocciotella ou la pistache."
+            }
+          },
+          {
+            image: "assets/pantaleone.jpg",
+            mapsQuery: "Antica Dolceria Pantaleone Salerno",
+            name: {
+              it: "Antica Dolceria Pantaleone",
+              en: "Antica Dolceria Pantaleone",
+              es: "Antica Dolceria Pantaleone",
+              fr: "Antica Dolceria Pantaleone"
+            },
+            desc: {
+              it: "Storica pasticceria nel centro di Salerno, perfetta per assaggiare dolci della tradizione in un luogo pieno di storia.",
+              en: "A historic pastry shop in the centre of Salerno, perfect for tasting traditional desserts in a place full of history.",
+              es: "Una pastelería histórica en el centro de Salerno, perfecta para probar dulces tradicionales en un lugar lleno de historia.",
+              fr: "Une pâtisserie historique au centre de Salerne, idéale pour goûter des desserts traditionnels dans un lieu chargé d’histoire."
+            },
+            tip: {
+              it: "Provate la Scazzetta, uno dei dolci simbolo di Salerno.",
+              en: "Try the Scazzetta, one of Salerno’s signature desserts.",
+              es: "Probad la Scazzetta, uno de los dulces símbolo de Salerno.",
+              fr: "Goûtez la Scazzetta, l’un des desserts emblématiques de Salerne."
+            }
+          },
+          {
+            image: "assets/bar-delle-sirene.jpg",
+            mapsQuery: "Bar delle Sirene Salerno",
+            name: {
+              it: "Bar delle Sirene",
+              en: "Bar delle Sirene",
+              es: "Bar delle Sirene",
+              fr: "Bar delle Sirene"
+            },
+            desc: {
+              it: "Un bar storico e molto conosciuto a Salerno, perfetto per una pausa dolce, un gelato o qualcosa di fresco durante una passeggiata.",
+              en: "A well-known historic bar in Salerno, perfect for a sweet break, gelato or something refreshing during a walk.",
+              es: "Un bar histórico y muy conocido en Salerno, perfecto para una pausa dulce, un helado o algo fresco durante un paseo.",
+              fr: "Un bar historique et très connu à Salerne, idéal pour une pause sucrée, une glace ou quelque chose de frais pendant une promenade."
+            },
+            tip: {
+              it: "Perfetto se siete già in centro o sul lungomare e volete fermarvi senza allontanarvi troppo.",
+              en: "Perfect if you are already in the centre or near the seafront and want to stop without going too far.",
+              es: "Perfecto si ya estáis en el centro o cerca del paseo marítimo y queréis hacer una parada sin alejaros demasiado.",
+              fr: "Parfait si vous êtes déjà dans le centre ou près du front de mer et que vous voulez faire une pause sans trop vous éloigner."
+            }
+          },
+          {
+            image: "assets/punto-freddo.jpg",
+            mapsQuery: "Punto Freddo Salerno",
+            name: {
+              it: "Punto Freddo",
+              en: "Punto Freddo",
+              es: "Punto Freddo",
+              fr: "Punto Freddo"
+            },
+            desc: {
+              it: "Una gelateria semplice e amata, ideale se avete voglia di un buon gelato senza troppi fronzoli.",
+              en: "A simple and popular gelato shop, ideal if you want good gelato without too many frills.",
+              es: "Una heladería sencilla y apreciada, ideal si os apetece un buen helado sin demasiadas complicaciones.",
+              fr: "Un glacier simple et apprécié, idéal si vous avez envie d’une bonne glace sans trop de chichis."
+            },
+            tip: {
+              it: "Ottimo per una pausa veloce e fresca, soprattutto nelle giornate calde.",
+              en: "Great for a quick and refreshing break, especially on hot days.",
+              es: "Ideal para una pausa rápida y refrescante, sobre todo en los días calurosos.",
+              fr: "Très bien pour une pause rapide et fraîche, surtout pendant les journées chaudes."
+            }
+          },
+          {
+            image: "assets/pasticceria-sal-de-riso.jpg",
+            mapsQuery: "Pasticceria Sal De Riso Minori",
+            name: {
+              it: "Pasticceria Sal De Riso",
+              en: "Sal De Riso Pastry Shop",
+              es: "Pastelería Sal De Riso",
+              fr: "Pâtisserie Sal De Riso"
+            },
+            desc: {
+              it: "A Minori, in Costiera Amalfitana, è una tappa famosa per chi ama i dolci. Perfetta se visitate la Costiera.",
+              en: "In Minori, on the Amalfi Coast, this is a famous stop for dessert lovers. Perfect if you are visiting the Coast.",
+              es: "En Minori, en la Costa Amalfitana, es una parada famosa para los amantes de los dulces. Perfecta si visitáis la Costa.",
+              fr: "À Minori, sur la Côte Amalfitaine, c’est une adresse célèbre pour les amateurs de desserts. Parfait si vous visitez la Côte."
+            },
+            tip: {
+              it: "Provate la delizia al limone.",
+              en: "Try the lemon delight.",
+              es: "Probad la delicia de limón.",
+              fr: "Goûtez la délice au citron."
+            }
+          }
+        ]
+      },
+
+      vino: {
+        title: {
+          it: "Bar, vino e aperitivo",
+          en: "Cafés, wine and aperitivo",
+          es: "Bares, vino y aperitivo",
+          fr: "Cafés, vin et apéritif"
+        },
+        restaurants: [
+          {
+            image: "assets/brignan-cafe.jpg",
+            featured: true,
+            walkable: true,
+            mapsQuery: "Brignan Cafè Salerno Via Brignano Inferiore",
+            name: {
+              it: "Brignan Cafè",
+              en: "Brignan Cafè",
+              es: "Brignan Cafè",
+              fr: "Brignan Cafè"
+            },
+            desc: {
+              it: "Bar convenzionato con A Casa di Marco e molto vicino alla struttura. Comodo se avete voglia di un caffè, una colazione, una pausa veloce o qualcosa da bere senza allontanarvi troppo.",
+              en: "Partner café of A Casa di Marco and very close to the property. Convenient if you feel like coffee, breakfast, a quick break or something to drink without going too far.",
+              es: "Bar asociado con A Casa di Marco y muy cerca de la casa. Cómodo si os apetece un café, un desayuno, una pausa rápida o algo para beber sin alejaros demasiado.",
+              fr: "Café partenaire de A Casa di Marco et très proche de la maison. Pratique si vous avez envie d’un café, d’un petit-déjeuner, d’une pause rapide ou de boire quelque chose sans trop vous éloigner."
+            },
+            tip: {
+              it: "Vicino casa: perfetto per un caffè al volo o per una pausa semplice durante la giornata.",
+              en: "Close to the house: perfect for a quick coffee or an easy break during the day.",
+              es: "Cerca de la casa: perfecto para un café rápido o una pausa sencilla durante el día.",
+              fr: "Proche de la maison : parfait pour un café rapide ou une pause simple pendant la journée."
+            }
+          },
+          {
+            image: "assets/compagnia-del-buon-vino.jpg",
+            mapsQuery: "Compagnia del buon vino Salerno",
+            name: {
+              it: "Compagnia del Buon Vino",
+              en: "Compagnia del Buon Vino",
+              es: "Compagnia del Buon Vino",
+              fr: "Compagnia del Buon Vino"
+            },
+            desc: {
+              it: "Una wine bar accogliente dove assaggiare vini locali e passare una serata tranquilla.",
+              en: "A cosy wine bar where you can taste local wines and enjoy a relaxed evening.",
+              es: "Un wine bar acogedor donde probar vinos locales y pasar una noche tranquila.",
+              fr: "Un bar à vin chaleureux où déguster des vins locaux et passer une soirée tranquille."
+            },
+            tip: {
+              it: "Chiedete un calice di vino campano e fatevi consigliare l’abbinamento.",
+              en: "Ask for a glass of Campania wine and let them suggest the pairing.",
+              es: "Pedid una copa de vino campano y dejad que os recomienden el maridaje.",
+              fr: "Demandez un verre de vin de Campanie et laissez-vous conseiller pour l’accord."
+            }
+          },
+          {
+            image: "assets/marama-tiki-bar.jpg",
+            mapsQuery: "Marama Tiki Bar Salerno",
+            name: {
+              it: "Marama Tiki Bar Salerno",
+              en: "Marama Tiki Bar Salerno",
+              es: "Marama Tiki Bar Salerno",
+              fr: "Marama Tiki Bar Salerno"
+            },
+            desc: {
+              it: "Locale ideale per un aperitivo diverso dal solito, cocktail e serata più informale in compagnia.",
+              en: "An ideal place for a different kind of aperitivo, cocktails and a relaxed evening with friends.",
+              es: "Un lugar ideal para un aperitivo diferente, cócteles y una noche informal en compañía.",
+              fr: "Un lieu idéal pour un apéritif différent, des cocktails et une soirée décontractée entre amis."
+            },
+            tip: {
+              it: "Consigliato se avete voglia di bere qualcosa in un ambiente più giovane e vivace.",
+              en: "Recommended if you feel like having a drink in a younger and lively atmosphere.",
+              es: "Recomendado si os apetece tomar algo en un ambiente más joven y animado.",
+              fr: "Conseillé si vous avez envie de boire quelque chose dans une ambiance plus jeune et animée."
+            }
+          }
+        ]
+      }
+    };
+
+    var labels = {
+      maps: {
+        it: "📍 Apri su Maps",
+        en: "📍 Open in Maps",
+        es: "📍 Abrir en Maps",
+        fr: "📍 Ouvrir sur Maps"
+      },
+      tip: {
+        it: "Consiglio",
+        en: "Tip",
+        es: "Consejo",
+        fr: "Conseil"
+      },
+      walkable: {
+        it: "🚶 Raggiungibile a piedi",
+        en: "🚶 Within walking distance",
+        es: "🚶 Se puede llegar a pie",
+        fr: "🚶 Accessible à pied"
+      }
+    };
+
+    function getLang() {
+      var params = new URLSearchParams(window.location.search);
+      var lang = params.get('lang');
+
+      if (lang === 'it' || lang === 'en' || lang === 'es' || lang === 'fr') return lang;
+
+      try {
+        lang = localStorage.getItem('guestGuideLang');
+      } catch (e) {}
+
+      if (lang === 'it' || lang === 'en' || lang === 'es' || lang === 'fr') return lang;
+
+      return 'it';
+    }
+
+    function translatePage(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll('[data-it], [data-it-html]').forEach(function (el) {
+        var htmlTranslation = el.getAttribute('data-' + lang + '-html');
+        var textTranslation = el.getAttribute('data-' + lang);
+
+        if (htmlTranslation) {
+          el.innerHTML = htmlTranslation;
+        } else if (textTranslation) {
+          el.textContent = textTranslation;
+        }
+      });
+
+      var home = document.querySelector('.back-home');
+      if (home) {
+        home.href = 'index.html#' + lang;
+      }
+
+      try {
+        localStorage.setItem('guestGuideLang', lang);
+      } catch (e) {}
+    }
+
+    function renderCategory(categoryKey) {
+      var category = categories[categoryKey];
+      var grid = document.getElementById('restaurant-grid');
+      var title = document.getElementById('category-title');
+
+      if (!category || !grid || !title) return;
+
+      title.textContent = category.title[currentLang];
+
+      grid.innerHTML = category.restaurants.map(function (place) {
+        var mapsUrl = place.mapsUrl || "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(place.mapsQuery);
+
+        return `
+          <article class="restaurant-card ${place.featured ? 'featured' : ''}">
+            <img src="${place.image}" alt="${place.name[currentLang]}">
+            <div class="restaurant-content">
+              ${place.walkable ? `<div class="walk-badge">${labels.walkable[currentLang]}</div>` : ''}
+              <h3>${place.name[currentLang]}</h3>
+              <p>${place.desc[currentLang]}</p>
+
+              <div class="tip-box">
+                <strong>${labels.tip[currentLang]}:</strong>
+                ${place.tip[currentLang]}
+              </div>
+
+              <div class="restaurant-actions">
+                <a class="restaurant-btn light" href="${mapsUrl}" target="_blank">
+                  ${labels.maps[currentLang]}
+                </a>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('');
+
+      document.getElementById('food-start').style.display = 'none';
+      document.getElementById('food-category').classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function showCategory(categoryKey) {
+      renderCategory(categoryKey);
+
+      var newUrl = new URL(window.location.href);
+      newUrl.searchParams.set('cat', categoryKey);
+
+      history.pushState(
+        { category: categoryKey },
+        '',
+        newUrl.pathname + '?' + newUrl.searchParams.toString()
+      );
+    }
+
+    function renderCategoriesStart() {
+      document.getElementById('food-category').classList.remove('active');
+      document.getElementById('food-start').style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function hideCategory() {
+      renderCategoriesStart();
+
+      var newUrl = new URL(window.location.href);
+      newUrl.searchParams.delete('cat');
+
+      history.pushState(
+        { category: null },
+        '',
+        newUrl.pathname + '?' + newUrl.searchParams.toString()
+      );
+    }
+
+    translatePage(getLang());
+
+    (function initCategoryFromUrl() {
+      var params = new URLSearchParams(window.location.search);
+      var category = params.get('cat');
+
+      history.replaceState(
+        { category: category || null },
+        '',
+        window.location.href
+      );
+
+      if (category && categories[category]) {
+        renderCategory(category);
+      } else {
+        renderCategoriesStart();
+      }
+    })();
+
+    window.addEventListener('popstate', function () {
+      var params = new URLSearchParams(window.location.search);
+      var category = params.get('cat');
+
+      if (category && categories[category]) {
+        renderCategory(category);
+      } else {
+        renderCategoriesStart();
+      }
+    });
+  </script>
+</body>
+</html>

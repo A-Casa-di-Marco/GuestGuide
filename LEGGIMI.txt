@@ -1,9 +1,0 @@
-COME CARICARE IL SITO SU GITHUB
-
-1. Apri il tuo repository GitHub.
-2. Carica il file index.html nella pagina principale del repository.
-3. Crea o carica anche la cartella assets con tutte le immagini e il PDF.
-4. Vai su Settings > Pages e controlla che sia selezionato main / root.
-5. Aspetta qualche minuto e apri il link GitHub Pages.
-
-IMPORTANTE: non modificare i nomi dei file dentro assets, altrimenti le immagini non si vedono.

@@ -165,101 +165,6 @@
       border:1px solid rgba(15,127,131,.25);
     }
 
-    details {
-      background:#fff;
-      border-radius:18px;
-      padding:14px 16px;
-      margin-top:14px;
-      border:1px solid rgba(15,127,131,.16);
-    }
-
-    summary {
-      font-weight:700;
-      cursor:pointer;
-      color:var(--ottanio-dark);
-    }
-
-    summary {
-      list-style: none;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-    }
-
-    summary::-webkit-details-marker {
-      display: none;
-    }
-
-    summary::after {
-      content: "👇";
-      font-size: 15px;
-      line-height: 1;
-    }
-
-    details[open] summary::after {
-      content: "👆";
-    }
-
-    .pdf-actions {
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top:14px;
-    }
-
-    .pdf-hint {
-      font-size:13px;
-      color:var(--muted);
-      margin-top:8px;
-    }
-
-    .lightbox {
-      display:none;
-      position:fixed;
-      z-index:9999;
-      inset:0;
-      background:rgba(0, 0, 0, .86);
-      align-items:center;
-      justify-content:center;
-      padding:18px;
-    }
-
-    .lightbox.active {
-      display:flex;
-    }
-
-    .lightbox-content {
-      width:min(1100px, 96vw);
-      height:88vh;
-      background:#fff;
-      border-radius:18px;
-      overflow:hidden;
-      box-shadow:0 18px 60px rgba(0,0,0,.45);
-    }
-
-    .lightbox-content iframe {
-      width:100%;
-      height:100%;
-      border:0;
-    }
-
-    .lightbox-close {
-      position:fixed;
-      top:16px;
-      right:18px;
-      border:none;
-      background:#fff;
-      color:var(--ottanio-dark);
-      border-radius:999px;
-      width:44px;
-      height:44px;
-      font-size:26px;
-      font-weight:700;
-      cursor:pointer;
-      line-height:1;
-    }
-
     @media (max-width:720px) {
       body {
         font-size:14px;
@@ -306,31 +211,12 @@
         font-size:14px;
       }
 
-      .transport-actions,
-      .pdf-actions {
+      .transport-actions {
         flex-direction:column;
       }
 
       .transport-btn {
         width:100%;
-      }
-
-      .lightbox {
-        padding:10px;
-      }
-
-      .lightbox-content {
-        width:98vw;
-        height:84vh;
-        border-radius:10px;
-      }
-
-      .lightbox-close {
-        top:10px;
-        right:10px;
-        width:42px;
-        height:42px;
-        font-size:24px;
       }
     }
   </style>
@@ -382,71 +268,23 @@
             Per raggiungere il centro senza prendere l'auto, potete usare il bus. Le linee utili sono la Linea 14 e la Linea B.
           </p>
 
-          <details open>
-            <summary data-it="Orario feriale - Linea 14"
-                     data-en="Weekday timetable - Line 14"
-                     data-es="Horario laborable - Línea 14"
-                     data-fr="Horaire en semaine - Ligne 14">Orario feriale - Linea 14</summary>
+          <div class="transport-actions">
+            <a class="transport-btn"
+               href="assets/bus-feriale-14.pdf"
+               target="_blank"
+               data-it="🚌 Vedi gli orari pullman 14"
+               data-en="🚌 View bus 14 timetable"
+               data-es="🚌 Ver horarios del autobús 14"
+               data-fr="🚌 Voir les horaires du bus 14">🚌 Vedi gli orari pullman 14</a>
 
-            <div class="pdf-actions">
-              <button class="transport-btn"
-                      type="button"
-                      onclick="openPdfLightbox('assets/bus-feriale-14.pdf')"
-                      data-it="🔍 Apri orario a schermo intero"
-                      data-en="🔍 Open timetable full screen"
-                      data-es="🔍 Abrir horario a pantalla completa"
-                      data-fr="🔍 Ouvrir l'horaire en plein écran">🔍 Apri orario a schermo intero</button>
-
-              <a class="transport-btn light"
-                 href="assets/bus-feriale-14.pdf"
-                 target="_blank"
-                 data-it="📄 Apri PDF"
-                 data-en="📄 Open PDF"
-                 data-es="📄 Abrir PDF"
-                 data-fr="📄 Ouvrir le PDF">📄 Apri PDF</a>
-            </div>
-
-            <p class="pdf-hint"
-               data-it="Se il PDF non si visualizza bene sul telefono, usate il tasto “Apri PDF”."
-               data-en="If the PDF does not display well on your phone, use the “Open PDF” button."
-               data-es="Si el PDF no se ve bien en el teléfono, usad el botón “Abrir PDF”."
-               data-fr="Si le PDF ne s'affiche pas bien sur le téléphone, utilisez le bouton “Ouvrir le PDF”.">
-              Se il PDF non si visualizza bene sul telefono, usate il tasto “Apri PDF”.
-            </p>
-          </details>
-
-          <details>
-            <summary data-it="Orario festivo - Linea B"
-                     data-en="Holiday timetable - Line B"
-                     data-es="Horario festivo - Línea B"
-                     data-fr="Horaire jours fériés - Ligne B">Orario festivo - Linea B</summary>
-
-            <div class="pdf-actions">
-              <button class="transport-btn"
-                      type="button"
-                      onclick="openPdfLightbox('assets/bus-festivo-b.pdf')"
-                      data-it="🔍 Apri orario a schermo intero"
-                      data-en="🔍 Open timetable full screen"
-                      data-es="🔍 Abrir horario a pantalla completa"
-                      data-fr="🔍 Ouvrir l'horaire en plein écran">🔍 Apri orario a schermo intero</button>
-
-              <a class="transport-btn light"
-                 href="assets/bus-festivo-b.pdf"
-                 target="_blank"
-                 data-it="📄 Apri PDF"
-                 data-en="📄 Open PDF"
-                 data-es="📄 Abrir PDF"
-                 data-fr="📄 Ouvrir le PDF">📄 Apri PDF</a>
-            </div>
-
-            <p class="pdf-hint"
-               data-it="Se il PDF non si visualizza bene sul telefono, usate il tasto “Apri PDF”."
-               data-en="If the PDF does not display well on your phone, use the “Open PDF” button."
-               data-es="Si el PDF no se ve bien en el teléfono, usad el botón “Abrir PDF”."
-               data-fr="Si le PDF ne s'affiche pas bien sur le téléphone, utilisez le bouton “Ouvrir le PDF”.">
-              Se il PDF non si visualizza bene sul telefono, usate il tasto “Apri PDF”.
-            </p>
-          </details>
+            <a class="transport-btn light"
+               href="assets/bus-festivo-b.pdf"
+               target="_blank"
+               data-it="🚌 Vedi gli orari pullman B"
+               data-en="🚌 View bus B timetable"
+               data-es="🚌 Ver horarios del autobús B"
+               data-fr="🚌 Voir les horaires du bus B">🚌 Vedi gli orari pullman B</a>
+          </div>
 
           <div class="transport-note"
                data-it="Consiglio: per andare verso il porto o il centro, potete scendere in zona Lungomare Trieste e poi proseguire a piedi."
@@ -628,14 +466,6 @@
     </section>
   </main>
 
-  <div id="pdf-lightbox" class="lightbox" onclick="closePdfLightbox()">
-    <button class="lightbox-close" type="button" onclick="closePdfLightbox()">×</button>
-
-    <div class="lightbox-content" onclick="event.stopPropagation()">
-      <iframe id="pdf-frame" src="" title="Orario pullman"></iframe>
-    </div>
-  </div>
-
   <script>
     function getLang() {
       var params = new URLSearchParams(window.location.search);
@@ -679,30 +509,6 @@
         localStorage.setItem('guestGuideLang', lang);
       } catch (e) {}
     }
-
-    function openPdfLightbox(src) {
-      var lightbox = document.getElementById('pdf-lightbox');
-      var frame = document.getElementById('pdf-frame');
-
-      frame.src = src;
-      lightbox.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closePdfLightbox() {
-      var lightbox = document.getElementById('pdf-lightbox');
-      var frame = document.getElementById('pdf-frame');
-
-      lightbox.classList.remove('active');
-      frame.src = '';
-      document.body.style.overflow = '';
-    }
-
-    document.addEventListener('keydown', function(event) {
-      if (event.key === 'Escape') {
-        closePdfLightbox();
-      }
-    });
 
     translatePage(getLang());
   </script>

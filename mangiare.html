@@ -198,6 +198,14 @@
       margin-bottom:10px;
     }
 
+    .badge-row {
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      align-items:center;
+      margin-bottom:10px;
+    }
+
     .walk-badge {
       display:inline-flex;
       align-items:center;
@@ -207,7 +215,23 @@
       padding:6px 12px;
       font-size:12px;
       font-weight:700;
-      margin-bottom:10px;
+    }
+
+    .price-badge {
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      background:#fff;
+      color:var(--ottanio-dark);
+      border:1px solid rgba(15,127,131,.25);
+      border-radius:999px;
+      padding:6px 12px;
+      font-size:12px;
+      font-weight:700;
+    }
+
+    .price-badge .price-symbol {
+      letter-spacing:.5px;
     }
 
     .tip-box {
@@ -347,6 +371,14 @@
         Scegli una categoria e scopri i nostri consigli da salernitani.
       </p>
 
+      <p style="margin-top:10px; color:var(--muted); font-size:14px;"
+         data-it="Legenda prezzi indicativa: € economico · €€ medio · €€€ più costoso"
+         data-en="Indicative price guide: € budget · €€ medium · €€€ more expensive"
+         data-es="Guía de precios orientativa: € económico · €€ medio · €€€ más caro"
+         data-fr="Guide des prix indicatif : € économique · €€ moyen · €€€ plus cher">
+        Legenda prezzi indicativa: € economico · €€ medio · €€€ più costoso
+      </p>
+
       <div class="food-choice-grid">
         <button class="food-choice" onclick="showCategory('pizza')">
           <span>🍕</span>
@@ -427,6 +459,7 @@
         restaurants: [
           {
             image: "assets/a-modo-bio.jpg",
+            price: "€€",
             featured: true,
             walkable: true,
             mapsQuery: "A Modo Bio Brignano Salerno",
@@ -451,6 +484,7 @@
           },
           {
             image: "assets/errico-porzio-salerno.jpg",
+            price: "€€",
             mapsUrl: "https://g.co/kgs/Dia6YTf",
             name: {
               it: "Pizzeria Errico Porzio Salerno",
@@ -473,6 +507,7 @@
           },
           {
             image: "assets/pizzium-salerno.jpg",
+            price: "€€",
             mapsUrl: "https://g.co/kgs/Mm7WKix",
             name: {
               it: "Pizzium - Salerno",
@@ -495,6 +530,7 @@
           },
           {
             image: "assets/giagiu.jpg",
+            price: "€€",
             mapsUrl: "https://g.co/kgs/ukU2iTp",
             name: {
               it: "Giagiù",
@@ -517,6 +553,7 @@
           },
           {
             image: "assets/da-michele-salerno.jpg",
+            price: "€",
             mapsQuery: "Da Michele Salerno",
             name: {
               it: "Da Michele Salerno",
@@ -539,6 +576,7 @@
           },
           {
             image: "assets/pepe-nero.jpg",
+            price: "€€",
             mapsQuery: "Pepe Nero Salerno",
             name: {
               it: "Pepe Nero",
@@ -561,6 +599,7 @@
           },
           {
             image: "assets/granammare.jpg",
+            price: "€€",
             mapsQuery: "Granammare Pizza Fritti Cocktail Salerno",
             name: {
               it: "Granammare - Pizza, Fritti e Cocktail",
@@ -594,6 +633,7 @@
         restaurants: [
           {
             image: "assets/tramp-ristorante.jpg",
+            price: "€€",
             mapsQuery: "Tramp Ristorante Salerno",
             name: {
               it: "Tramp Ristorante",
@@ -616,6 +656,7 @@
           },
           {
             image: "assets/convivium-sea-food.jpg",
+            price: "€€€",
             mapsQuery: "Convivium Sea Food Restaurant Salerno",
             name: {
               it: "Convivium Sea Food Restaurant",
@@ -638,6 +679,7 @@
           },
           {
             image: "assets/da-nonna-maria.jpg",
+            price: "€€",
             mapsUrl: "https://www.google.com/maps/search/?api=1&query=Da+Nonna+Maria+Salerno",
             name: {
               it: "Da Nonna Maria",
@@ -660,6 +702,7 @@
           },
           {
             image: "assets/la-botte-pazza.jpg",
+            price: "€€",
             mapsUrl: "https://www.google.com/maps/search/?api=1&query=La+Botte+Pazza+Salerno",
             name: {
               it: "La Botte Pazza",
@@ -682,6 +725,7 @@
           },
           {
             image: "assets/pepe-nero.jpg",
+            price: "€€",
             mapsQuery: "Pepe Nero Salerno",
             name: {
               it: "Pepe Nero",
@@ -715,6 +759,7 @@
         restaurants: [
           {
             image: "assets/bar-gelateria-nettuno.jpg",
+            price: "€",
             mapsQuery: "Bar Gelateria Nettuno Salerno",
             name: {
               it: "Bar Gelateria Nettuno",
@@ -737,6 +782,7 @@
           },
           {
             image: "assets/pantaleone.jpg",
+            price: "€€",
             mapsQuery: "Antica Dolceria Pantaleone Salerno",
             name: {
               it: "Antica Dolceria Pantaleone",
@@ -759,6 +805,7 @@
           },
           {
             image: "assets/bar-delle-sirene.jpg",
+            price: "€",
             mapsQuery: "Bar delle Sirene Salerno",
             name: {
               it: "Bar delle Sirene",
@@ -781,6 +828,7 @@
           },
           {
             image: "assets/punto-freddo.jpg",
+            price: "€",
             mapsQuery: "Punto Freddo Salerno",
             name: {
               it: "Punto Freddo",
@@ -803,6 +851,7 @@
           },
           {
             image: "assets/pasticceria-sal-de-riso.jpg",
+            price: "€€",
             mapsQuery: "Pasticceria Sal De Riso Minori",
             name: {
               it: "Pasticceria Sal De Riso",
@@ -836,6 +885,7 @@
         restaurants: [
           {
             image: "assets/brignan-cafe.jpg",
+            price: "€",
             featured: true,
             walkable: true,
             mapsQuery: "Brignan Cafè Salerno Via Brignano Inferiore",
@@ -860,6 +910,7 @@
           },
           {
             image: "assets/compagnia-del-buon-vino.jpg",
+            price: "€€",
             mapsQuery: "Compagnia del buon vino Salerno",
             name: {
               it: "Compagnia del Buon Vino",
@@ -882,6 +933,7 @@
           },
           {
             image: "assets/marama-tiki-bar.jpg",
+            price: "€€",
             mapsQuery: "Marama Tiki Bar Salerno",
             name: {
               it: "Marama Tiki Bar Salerno",
@@ -924,6 +976,12 @@
         en: "🚶 Within walking distance",
         es: "🚶 Se puede llegar a pie",
         fr: "🚶 Accessible à pied"
+      },
+      price: {
+        it: "Prezzo indicativo",
+        en: "Indicative price",
+        es: "Precio orientativo",
+        fr: "Prix indicatif"
       }
     };
 
@@ -983,7 +1041,10 @@
           <article class="restaurant-card ${place.featured ? 'featured' : ''}">
             <img src="${place.image}" alt="${place.name[currentLang]}">
             <div class="restaurant-content">
-              ${place.walkable ? `<div class="walk-badge">${labels.walkable[currentLang]}</div>` : ''}
+              <div class="badge-row">
+                ${place.walkable ? `<div class="walk-badge">${labels.walkable[currentLang]}</div>` : ''}
+                ${place.price ? `<div class="price-badge" title="${labels.price[currentLang]}"><span class="price-symbol">${place.price}</span></div>` : ''}
+              </div>
               <h3>${place.name[currentLang]}</h3>
               <p>${place.desc[currentLang]}</p>
 

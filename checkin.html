@@ -7,191 +7,654 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
-    :root { --ottanio:#0f7f83; --ottanio-dark:#075f63; --ottanio-soft:#dff3f2; --white:#fff; --milk:#fbfbf8; --text:#263238; --muted:#6f7d80; --shadow:0 18px 50px rgba(0,70,75,.20); --radius:28px; }
-    * { box-sizing:border-box; margin:0; padding:0; }
-    body { background:var(--milk); color:var(--text); font-family:'Poppins',sans-serif; line-height:1.65; }
-    h1,h2,h3 { font-family:'Pacifico',cursive; font-weight:400; color:var(--ottanio-dark); }
-    .page-hero { min-height:38vh; background:linear-gradient(180deg, rgba(0,80,85,.25), rgba(0,80,85,.55)), url("assets/garden-main.jpg") center/cover no-repeat; color:#fff; display:flex; align-items:flex-end; padding:38px 20px; }
-    .page-hero div { max-width:1000px; margin:0 auto; width:100%; }
-    .page-hero h1 { color:#fff; font-size:clamp(38px, 7vw, 68px); text-shadow:0 5px 20px rgba(0,0,0,.35); }
-    main { max-width:1000px; margin:0 auto; padding:28px 16px 60px; }
-    section { background:#fff; border-radius:28px; padding:28px; box-shadow:var(--shadow); margin-bottom:22px; }
-    .back-home { display:inline-flex; margin-bottom:18px; background:var(--ottanio); color:#fff; text-decoration:none; border-radius:999px; padding:11px 18px; font-weight:600; }
-    .img-card img { width:100%; border-radius:22px; margin:18px 0; }
-    .info-list { list-style:none; display:grid; gap:12px; margin-top:14px; }
-    .info-list li { background:var(--ottanio-soft); border-radius:18px; padding:14px 16px; }
-    .note { background:#fff8e8; border-left:5px solid var(--ottanio); border-radius:16px; padding:14px 16px; margin:16px 0; }
-    .toggle-box {
-      margin-top: 18px;
-      background: transparent;
-      border: none;
+    :root {
+      --ottanio:#0f7f83;
+      --ottanio-dark:#075f63;
+      --ottanio-soft:#dff3f2;
+      --white:#fff;
+      --milk:#fbfbf8;
+      --text:#263238;
+      --muted:#6f7d80;
+      --shadow:0 18px 50px rgba(0,70,75,.20);
+      --radius:28px;
     }
 
-    .toggle-box summary {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--ottanio);
-      color: #fff;
-      border-radius: 999px;
-      padding: 14px 22px;
-      font-family: 'Poppins', sans-serif;
-      font-size: 16px;
-      font-weight: 700;
-      cursor: pointer;
-      box-shadow: 0 8px 22px rgba(0, 90, 95, .16);
-      list-style: none;
+    * {
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
     }
 
-    .toggle-box summary::-webkit-details-marker {
-      display: none;
+    body {
+      background:var(--milk);
+      color:var(--text);
+      font-family:'Poppins',sans-serif;
+      line-height:1.65;
     }
 
-    .toggle-box summary::after {
-      content: "👇";
-      margin-left: 10px;
-      font-size: 15px;
-      line-height: 1;
+    h1,h2,h3 {
+      font-family:'Pacifico',cursive;
+      font-weight:400;
+      color:var(--ottanio-dark);
     }
 
-    .toggle-box[open] summary::after {
-      content: "👆";
+    .page-hero {
+      min-height:38vh;
+      background:
+        linear-gradient(180deg, rgba(0,80,85,.25), rgba(0,80,85,.55)),
+        url("assets/garden-main.jpg") center/cover no-repeat;
+      color:#fff;
+      display:flex;
+      align-items:flex-end;
+      padding:38px 20px;
     }
 
-    .toggle-content {
-      margin-top: 16px;
+    .page-hero div {
+      max-width:1000px;
+      margin:0 auto;
+      width:100%;
+    }
+
+    .page-hero h1 {
+      color:#fff;
+      font-size:clamp(38px, 7vw, 68px);
+      text-shadow:0 5px 20px rgba(0,0,0,.35);
+    }
+
+    main {
+      max-width:1000px;
+      margin:0 auto;
+      padding:28px 16px 60px;
+    }
+
+    section {
+      background:#fff;
+      border-radius:28px;
+      padding:28px;
+      box-shadow:var(--shadow);
+      margin-bottom:22px;
+    }
+
+    .back-home {
+      display:inline-flex;
+      margin-bottom:18px;
+      background:var(--ottanio);
+      color:#fff;
+      text-decoration:none;
+      border-radius:999px;
+      padding:11px 18px;
+      font-weight:600;
+    }
+
+    .img-card img {
+      width:100%;
+      border-radius:22px;
+      margin:18px 0;
+    }
+
+    .info-list {
+      list-style:none;
+      display:grid;
+      gap:12px;
+      margin-top:14px;
+    }
+
+    .info-list li {
+      background:var(--ottanio-soft);
+      border-radius:18px;
+      padding:14px 16px;
     }
 
     .info-list li strong {
-      color: var(--ottanio-dark);
-      font-weight: 700;
+      color:var(--ottanio-dark);
+      font-weight:700;
     }
 
-    @media (max-width: 720px) {
+    .note {
+      background:#fff8e8;
+      border-left:5px solid var(--ottanio);
+      border-radius:16px;
+      padding:14px 16px;
+      margin:16px 0;
+    }
+
+    .toggle-box {
+      margin-top:18px;
+      background:transparent;
+      border:none;
+    }
+
+    .toggle-box summary {
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:var(--ottanio);
+      color:#fff;
+      border-radius:999px;
+      padding:14px 22px;
+      font-family:'Poppins', sans-serif;
+      font-size:16px;
+      font-weight:700;
+      cursor:pointer;
+      box-shadow:0 8px 22px rgba(0, 90, 95, .16);
+      list-style:none;
+    }
+
+    .toggle-box summary::-webkit-details-marker {
+      display:none;
+    }
+
+    .toggle-box summary::after {
+      content:"👇";
+      margin-left:10px;
+      font-size:15px;
+      line-height:1;
+    }
+
+    .toggle-box[open] summary::after {
+      content:"👆";
+    }
+
+    .toggle-content {
+      margin-top:16px;
+    }
+
+    .checklist-intro {
+      margin-top:22px;
+      background:#fff8e8;
+      border-left:5px solid var(--ottanio);
+      border-radius:18px;
+      padding:16px;
+    }
+
+    .checklist-intro h3 {
+      font-size:28px;
+      margin-bottom:8px;
+    }
+
+    .checklist-intro p {
+      color:var(--text);
+      font-size:15px;
+    }
+
+    .checkout-checklist {
+      margin-top:16px;
+      display:grid;
+      gap:12px;
+    }
+
+    .check-item {
+      display:flex;
+      align-items:flex-start;
+      gap:12px;
+      background:var(--ottanio-soft);
+      border:1px solid rgba(15,127,131,.16);
+      border-radius:18px;
+      padding:14px 16px;
+      cursor:pointer;
+      transition:transform .15s ease, background .15s ease, box-shadow .15s ease;
+    }
+
+    .check-item:hover {
+      transform:translateY(-1px);
+      box-shadow:0 8px 18px rgba(0,80,85,.10);
+    }
+
+    .check-item input {
+      appearance:none;
+      -webkit-appearance:none;
+      flex:0 0 auto;
+      width:23px;
+      height:23px;
+      border:2px solid var(--ottanio);
+      border-radius:8px;
+      background:#fff;
+      margin-top:2px;
+      cursor:pointer;
+      position:relative;
+    }
+
+    .check-item input:checked {
+      background:var(--ottanio);
+    }
+
+    .check-item input:checked::after {
+      content:"✓";
+      position:absolute;
+      left:50%;
+      top:50%;
+      transform:translate(-50%, -55%);
+      color:#fff;
+      font-size:17px;
+      font-weight:800;
+    }
+
+    .check-item span {
+      font-size:15px;
+      color:var(--text);
+    }
+
+    .check-item input:checked + span {
+      text-decoration:line-through;
+      color:var(--muted);
+    }
+
+    .check-progress {
+      margin-top:14px;
+      background:#fff;
+      border:1px solid rgba(15,127,131,.18);
+      border-radius:18px;
+      padding:13px 15px;
+      color:var(--ottanio-dark);
+      font-weight:700;
+      text-align:center;
+    }
+
+    .final-reminder {
+      margin-top:16px;
+      background:#fff8e8;
+      border-radius:18px;
+      padding:15px;
+      font-size:15px;
+    }
+
+    .final-reminder strong {
+      color:var(--ottanio-dark);
+    }
+
+    @media (max-width:720px) {
       body {
-        font-size: 14px;
+        font-size:14px;
       }
 
       .page-hero {
-        min-height: 28vh;
-        padding: 28px 16px;
+        min-height:28vh;
+        padding:28px 16px;
       }
 
       .page-hero h1 {
-        font-size: 34px;
+        font-size:34px;
       }
 
       main {
-        padding: 20px 12px 44px;
+        padding:20px 12px 44px;
       }
 
       section {
-        padding: 20px;
-        border-radius: 22px;
+        padding:20px;
+        border-radius:22px;
       }
 
       h2 {
-        font-size: 26px;
+        font-size:26px;
       }
 
       .toggle-box summary {
-        font-size: 14px;
-        padding: 12px 18px;
+        font-size:14px;
+        padding:12px 18px;
       }
 
       .info-list li {
-        font-size: 14px;
-        padding: 13px 14px;
+        font-size:14px;
+        padding:13px 14px;
+      }
+
+      .checklist-intro h3 {
+        font-size:25px;
+      }
+
+      .checklist-intro p,
+      .check-item span,
+      .final-reminder {
+        font-size:14px;
+      }
+
+      .check-item {
+        padding:13px 14px;
       }
     }
   </style>
 </head>
+
 <body>
-  <header class="page-hero"><div><h1 data-it="Check-in / Check-out" data-en="Check-in / Check-out" data-es="Check-in / Check-out" data-fr="Check-in / Check-out">Check-in / Check-out</h1></div></header>
+  <header class="page-hero">
+    <div>
+      <h1 data-it="Check-in / Check-out"
+          data-en="Check-in / Check-out"
+          data-es="Check-in / Check-out"
+          data-fr="Check-in / Check-out">Check-in / Check-out</h1>
+    </div>
+  </header>
+
   <main>
-    <a class="back-home" href="index.html" data-it="← Torna alla home" data-en="← Back to home" data-es="← Volver a la home" data-fr="← Retour à l'accueil">← Torna alla home</a>
+    <a class="back-home" href="index.html"
+       data-it="← Torna alla home"
+       data-en="← Back to home"
+       data-es="← Volver a la home"
+       data-fr="← Retour à l'accueil">← Torna alla home</a>
+
     <section>
-      <h2 data-it="Istruzioni" data-en="Instructions" data-es="Instrucciones" data-fr="Instructions">Istruzioni</h2>
-      <div class="note" data-it="Check-in anticipato e check-out tardivo sono disponibili solo su richiesta, salvo disponibilità, e prevedono un costo aggiuntivo." data-en="Early check-in and late check-out are available only on request, subject to availability, and have an additional cost." data-es="El check-in anticipado y el check-out tardío están disponibles solo bajo petición, según disponibilidad, y tienen un coste adicional." data-fr="L'arrivée anticipée et le départ tardif sont disponibles uniquement sur demande, sous réserve de disponibilité, et entraînent un coût supplémentaire.">Check-in anticipato e check-out tardivo sono disponibili solo su richiesta, salvo disponibilita, e prevedono un costo aggiuntivo.</div>
-      <div class="img-card"><img src="assets/cancello-check-in.jpg" alt="Cancello per il check-in"></div>
+      <h2 data-it="Istruzioni"
+          data-en="Instructions"
+          data-es="Instrucciones"
+          data-fr="Instructions">Istruzioni</h2>
+
+      <div class="note"
+           data-it="Check-in anticipato e check-out tardivo sono disponibili solo su richiesta, salvo disponibilità, e prevedono un costo aggiuntivo."
+           data-en="Early check-in and late check-out are available only on request, subject to availability, and have an additional cost."
+           data-es="El check-in anticipado y el check-out tardío están disponibles solo bajo petición, según disponibilidad, y tienen un coste adicional."
+           data-fr="L'arrivée anticipée et le départ tardif sont disponibles uniquement sur demande, sous réserve de disponibilité, et entraînent un coût supplémentaire.">
+        Check-in anticipato e check-out tardivo sono disponibili solo su richiesta, salvo disponibilità, e prevedono un costo aggiuntivo.
+      </div>
+
+      <div class="img-card">
+        <img src="assets/cancello-check-in.jpg" alt="Cancello per il check-in">
+      </div>
+
       <details class="toggle-box">
-        <summary data-it="Check-in" data-en="Check-in" data-es="Check-in" data-fr="Check-in">Check-in</summary>
+        <summary data-it="Check-in"
+                 data-en="Check-in"
+                 data-es="Check-in"
+                 data-fr="Check-in">Check-in</summary>
 
         <div class="toggle-content">
           <ul class="info-list">
-            <li data-it-html="Al vostro arrivo ci incontreremo <strong>davanti al cancello della struttura</strong>." data-en-html="Upon arrival, we will meet you <strong>in front of the property gate</strong>." data-es-html="A vuestra llegada nos encontraremos <strong>delante de la puerta de la propiedad</strong>." data-fr-html="À votre arrivée, nous nous retrouverons <strong>devant le portail de la propriété</strong>.">Al vostro arrivo ci incontreremo <strong>davanti al cancello della struttura</strong>.</li>
-            <li data-it-html="Vi chiediamo gentilmente di comunicarci in anticipo <strong>l'orario di arrivo previsto</strong>." data-en-html="Please let us know in advance <strong>your expected arrival time</strong>." data-es-html="Os pedimos que nos comuniquéis con antelación <strong>la hora prevista de llegada</strong>." data-fr-html="Merci de nous communiquer à l'avance <strong>votre heure d'arrivée prévue</strong>.">Vi chiediamo gentilmente di comunicarci in anticipo <strong>l'orario di arrivo previsto</strong>.</li>
-            <li data-it-html="È importante inviarci un messaggio circa <strong>30 minuti prima del vostro arrivo</strong>, così potremo organizzarci per accogliervi al meglio." data-en-html="It is important to send us a message about <strong>30 minutes before your arrival</strong>, so we can be ready to welcome you properly." data-es-html="Es importante enviarnos un mensaje unos <strong>30 minutos antes de vuestra llegada</strong>, para que podamos organizarnos y recibiros de la mejor manera." data-fr-html="Il est important de nous envoyer un message environ <strong>30 minutes avant votre arrivée</strong>, afin que nous puissions nous organiser pour vous accueillir au mieux.">È importante inviarci un messaggio circa <strong>30 minuti prima del vostro arrivo</strong>, così potremo organizzarci per accogliervi al meglio.</li>
-            <li data-it-html="Al check-in verranno richiesti i <strong>documenti di identità di tutti gli ospiti</strong>, inclusi <strong>i bambini</strong>." data-en-html="At check-in, <strong>identity documents of all guests</strong> will be required, including <strong>children</strong>." data-es-html="En el check-in se solicitarán los <strong>documentos de identidad de todos los huéspedes</strong>, incluidos <strong>los niños</strong>." data-fr-html="Lors du check-in, les <strong>pièces d'identité de tous les voyageurs</strong> seront demandées, y compris <strong>celles des enfants</strong>.">Al check-in verranno richiesti i <strong>documenti di identità di tutti gli ospiti</strong>, inclusi <strong>i bambini</strong>.</li>
-            <li data-it-html="Al check-in dovrà essere pagata la <strong>tassa di soggiorno</strong>: <strong>3 euro a persona al giorno</strong>, esclusi i bambini sotto gli 11 anni." data-en-html="At check-in, the <strong>tourist tax</strong> must be paid: <strong>€3 per person per day</strong>, excluding children under 11 years old." data-es-html="En el check-in deberá pagarse la <strong>tasa turística</strong>: <strong>3 euros por persona por día</strong>, excepto los niños menores de 11 años." data-fr-html="Lors du check-in, la <strong>taxe de séjour</strong> devra être réglée : <strong>3 euros par personne et par jour</strong>, sauf pour les enfants de moins de 11 ans.">Al check-in dovrà essere pagata la <strong>tassa di soggiorno</strong>: <strong>3 euro a persona al giorno</strong>, esclusi i bambini sotto gli 11 anni.</li>
-            <li data-it-html="Per le prenotazioni effettuate tramite <strong>Booking</strong> verrà richiesto un <strong>deposito cauzionale di 100 euro</strong>. Il deposito verrà restituito tramite <strong>bonifico bancario entro 48 ore dal check-out</strong>, dopo il controllo dell'alloggio." data-en-html="For bookings made through <strong>Booking</strong>, a <strong>security deposit of €100</strong> will be required. The deposit will be refunded by <strong>bank transfer within 48 hours after check-out</strong>, after the property has been checked." data-es-html="Para las reservas realizadas a través de <strong>Booking</strong>, se solicitará un <strong>depósito de garantía de 100 euros</strong>. El depósito se devolverá mediante <strong>transferencia bancaria dentro de las 48 horas posteriores al check-out</strong>, tras revisar el alojamiento." data-fr-html="Pour les réservations effectuées via <strong>Booking</strong>, un <strong>dépôt de garantie de 100 euros</strong> sera demandé. Il sera restitué par <strong>virement bancaire dans les 48 heures suivant le check-out</strong>, après vérification du logement.">Per le prenotazioni effettuate tramite <strong>Booking</strong> verrà richiesto un <strong>deposito cauzionale di 100 euro</strong>. Il deposito verrà restituito tramite <strong>bonifico bancario entro 48 ore dal check-out</strong>, dopo il controllo dell'alloggio.</li>
-            <li data-it-html="I pagamenti possono essere effettuati tramite <strong>bonifico immediato</strong>, <strong>PayPal</strong> o <strong>contanti</strong>.<br><strong>Non abbiamo il POS.</strong>" data-en-html="Payments can be made by <strong>instant bank transfer</strong>, <strong>PayPal</strong> or <strong>cash</strong>.<br><strong>We do not have a card payment terminal.</strong>" data-es-html="Los pagos pueden realizarse mediante <strong>transferencia inmediata</strong>, <strong>PayPal</strong> o <strong>efectivo</strong>.<br><strong>No disponemos de TPV.</strong>" data-fr-html="Les paiements peuvent être effectués par <strong>virement instantané</strong>, <strong>PayPal</strong> ou <strong>espèces</strong>.<br><strong>Nous n'avons pas de terminal de paiement par carte.</strong>">I pagamenti possono essere effettuati tramite <strong>bonifico immediato</strong>, <strong>PayPal</strong> o <strong>contanti</strong>.<br><strong>Non abbiamo il POS.</strong></li>
+            <li data-it-html="Al vostro arrivo ci incontreremo <strong>davanti al cancello della struttura</strong>."
+                data-en-html="Upon arrival, we will meet you <strong>in front of the property gate</strong>."
+                data-es-html="A vuestra llegada nos encontraremos <strong>delante de la puerta de la propiedad</strong>."
+                data-fr-html="À votre arrivée, nous nous retrouverons <strong>devant le portail de la propriété</strong>.">
+              Al vostro arrivo ci incontreremo <strong>davanti al cancello della struttura</strong>.
+            </li>
+
+            <li data-it-html="Vi chiediamo gentilmente di comunicarci in anticipo <strong>l'orario di arrivo previsto</strong>."
+                data-en-html="Please let us know in advance <strong>your expected arrival time</strong>."
+                data-es-html="Os pedimos que nos comuniquéis con antelación <strong>la hora prevista de llegada</strong>."
+                data-fr-html="Merci de nous communiquer à l'avance <strong>votre heure d'arrivée prévue</strong>.">
+              Vi chiediamo gentilmente di comunicarci in anticipo <strong>l'orario di arrivo previsto</strong>.
+            </li>
+
+            <li data-it-html="È importante inviarci un messaggio circa <strong>30 minuti prima del vostro arrivo</strong>, così potremo organizzarci per accogliervi al meglio."
+                data-en-html="It is important to send us a message about <strong>30 minutes before your arrival</strong>, so we can be ready to welcome you properly."
+                data-es-html="Es importante enviarnos un mensaje unos <strong>30 minutos antes de vuestra llegada</strong>, para que podamos organizarnos y recibiros de la mejor manera."
+                data-fr-html="Il est important de nous envoyer un message environ <strong>30 minutes avant votre arrivée</strong>, afin que nous puissions nous organiser pour vous accueillir au mieux.">
+              È importante inviarci un messaggio circa <strong>30 minuti prima del vostro arrivo</strong>, così potremo organizzarci per accogliervi al meglio.
+            </li>
+
+            <li data-it-html="Al check-in verranno richiesti i <strong>documenti di identità di tutti gli ospiti</strong>, inclusi <strong>i bambini</strong>."
+                data-en-html="At check-in, <strong>identity documents of all guests</strong> will be required, including <strong>children</strong>."
+                data-es-html="En el check-in se solicitarán los <strong>documentos de identidad de todos los huéspedes</strong>, incluidos <strong>los niños</strong>."
+                data-fr-html="Lors du check-in, les <strong>pièces d'identité de tous les voyageurs</strong> seront demandées, y compris <strong>celles des enfants</strong>.">
+              Al check-in verranno richiesti i <strong>documenti di identità di tutti gli ospiti</strong>, inclusi <strong>i bambini</strong>.
+            </li>
+
+            <li data-it-html="Al check-in dovrà essere pagata la <strong>tassa di soggiorno</strong>: <strong>3 euro a persona al giorno</strong>, esclusi i bambini sotto gli 11 anni."
+                data-en-html="At check-in, the <strong>tourist tax</strong> must be paid: <strong>€3 per person per day</strong>, excluding children under 11 years old."
+                data-es-html="En el check-in deberá pagarse la <strong>tasa turística</strong>: <strong>3 euros por persona por día</strong>, excepto los niños menores de 11 años."
+                data-fr-html="Lors du check-in, la <strong>taxe de séjour</strong> devra être réglée : <strong>3 euros par personne et par jour</strong>, sauf pour les enfants de moins de 11 ans.">
+              Al check-in dovrà essere pagata la <strong>tassa di soggiorno</strong>: <strong>3 euro a persona al giorno</strong>, esclusi i bambini sotto gli 11 anni.
+            </li>
+
+            <li data-it-html="Per le prenotazioni effettuate tramite <strong>Booking</strong> verrà richiesto un <strong>deposito cauzionale di 100 euro</strong>. Il deposito verrà restituito tramite <strong>bonifico bancario entro 48 ore dal check-out</strong>, dopo il controllo dell'alloggio."
+                data-en-html="For bookings made through <strong>Booking</strong>, a <strong>security deposit of €100</strong> will be required. The deposit will be refunded by <strong>bank transfer within 48 hours after check-out</strong>, after the property has been checked."
+                data-es-html="Para las reservas realizadas a través de <strong>Booking</strong>, se solicitará un <strong>depósito de garantía de 100 euros</strong>. El depósito se devolverá mediante <strong>transferencia bancaria dentro de las 48 horas posteriores al check-out</strong>, tras revisar el alojamiento."
+                data-fr-html="Pour les réservations effectuées via <strong>Booking</strong>, un <strong>dépôt de garantie de 100 euros</strong> sera demandé. Il sera restitué par <strong>virement bancaire dans les 48 heures suivant le check-out</strong>, après vérification du logement.">
+              Per le prenotazioni effettuate tramite <strong>Booking</strong> verrà richiesto un <strong>deposito cauzionale di 100 euro</strong>. Il deposito verrà restituito tramite <strong>bonifico bancario entro 48 ore dal check-out</strong>, dopo il controllo dell'alloggio.
+            </li>
+
+            <li data-it-html="I pagamenti possono essere effettuati tramite <strong>bonifico immediato</strong>, <strong>PayPal</strong> o <strong>contanti</strong>.<br><strong>Non abbiamo il POS.</strong>"
+                data-en-html="Payments can be made by <strong>instant bank transfer</strong>, <strong>PayPal</strong> or <strong>cash</strong>.<br><strong>We do not have a card payment terminal.</strong>"
+                data-es-html="Los pagos pueden realizarse mediante <strong>transferencia inmediata</strong>, <strong>PayPal</strong> o <strong>efectivo</strong>.<br><strong>No disponemos de TPV.</strong>"
+                data-fr-html="Les paiements peuvent être effectués par <strong>virement instantané</strong>, <strong>PayPal</strong> ou <strong>espèces</strong>.<br><strong>Nous n'avons pas de terminal de paiement par carte.</strong>">
+              I pagamenti possono essere effettuati tramite <strong>bonifico immediato</strong>, <strong>PayPal</strong> o <strong>contanti</strong>.<br><strong>Non abbiamo il POS.</strong>
+            </li>
           </ul>
         </div>
       </details>
 
       <details class="toggle-box">
-        <summary data-it="Check-out" data-en="Check-out" data-es="Check-out" data-fr="Check-out">Check-out</summary>
+        <summary data-it="Check-out"
+                 data-en="Check-out"
+                 data-es="Check-out"
+                 data-fr="Check-out">Check-out</summary>
 
         <div class="toggle-content">
           <ul class="info-list">
-            <li data-it-html="Il check-out deve essere effettuato <strong>entro le ore 10:00 e non oltre</strong>, salvo diversi accordi presi in anticipo." data-en-html="Check-out must be completed <strong>by 10:00 AM and no later</strong>, unless otherwise agreed in advance." data-es-html="El check-out debe realizarse <strong>antes de las 10:00 y no más tarde</strong>, salvo acuerdo previo." data-fr-html="Le check-out doit être effectué <strong>avant 10h00 au plus tard</strong>, sauf accord préalable.">Il check-out deve essere effettuato <strong>entro le ore 10:00 e non oltre</strong>, salvo diversi accordi presi in anticipo.</li>
-            <li data-it-html="Prima di lasciare la casa, vi chiediamo di controllare che siano spenti <strong>luci, rubinetti, condizionatore e termosifoni</strong>." data-en-html="Before leaving the house, please make sure that <strong>lights, taps, air conditioning and radiators</strong> are turned off." data-es-html="Antes de dejar la casa, os pedimos que comprobéis que estén apagados <strong>las luces, los grifos, el aire acondicionado y los radiadores</strong>." data-fr-html="Avant de quitter la maison, merci de vérifier que <strong>les lumières, les robinets, la climatisation et les radiateurs</strong> sont éteints.">Prima di lasciare la casa, vi chiediamo di controllare che siano spenti <strong>luci, rubinetti, condizionatore e termosifoni</strong>.</li>
-            <li data-it-html="Se possibile, vi chiediamo di mettere <strong>gli asciugamani usati nella lavatrice</strong>, senza avviarla." data-en-html="If possible, please place <strong>the used towels in the washing machine</strong>, without starting it." data-es-html="Si es posible, os pedimos que pongáis <strong>las toallas usadas en la lavadora</strong>, sin ponerla en marcha." data-fr-html="Si possible, merci de mettre <strong>les serviettes utilisées dans la machine à laver</strong>, sans la lancer.">Se possibile, vi chiediamo di mettere <strong>gli asciugamani usati nella lavatrice</strong>, senza avviarla.</li>
-            <li data-it-html="È molto importante <strong>buttare la spazzatura prima della partenza</strong>." data-en-html="It is very important to <strong>take out the rubbish before departure</strong>." data-es-html="Es muy importante <strong>tirar la basura antes de la salida</strong>." data-fr-html="Il est très important de <strong>jeter les déchets avant le départ</strong>.">È molto importante <strong>buttare la spazzatura prima della partenza</strong>.</li>
-            <li data-it-html="Le chiavi vanno lasciate nella <strong>cassetta delle lettere</strong> appena fuori dal <strong>cancello principale condominiale</strong>, sulla sinistra, nella cassetta con scritto <strong>“A Casa di Marco”</strong>." data-en-html="The keys must be left in the <strong>mailbox</strong> just outside the <strong>main condominium gate</strong>, on the left, in the mailbox marked <strong>“A Casa di Marco”</strong>." data-es-html="Las llaves deben dejarse en el <strong>buzón</strong> situado justo fuera de la <strong>puerta principal del edificio</strong>, a la izquierda, en el buzón con el nombre <strong>“A Casa di Marco”</strong>." data-fr-html="Les clés doivent être déposées dans la <strong>boîte aux lettres</strong> située juste à l'extérieur du <strong>portail principal de la copropriété</strong>, à gauche, dans la boîte indiquant <strong>“A Casa di Marco”</strong>.">Le chiavi vanno lasciate nella <strong>cassetta delle lettere</strong> appena fuori dal <strong>cancello principale condominiale</strong>, sulla sinistra, nella cassetta con scritto <strong>“A Casa di Marco”</strong>.</li>
-            <li data-it-html="Dopo aver lasciato le chiavi, vi chiediamo gentilmente di inviarci <strong>un messaggio per confermare l'avvenuto check-out</strong>." data-en-html="After leaving the keys, please send us <strong>a message to confirm that check-out has been completed</strong>." data-es-html="Después de dejar las llaves, os pedimos que nos enviéis <strong>un mensaje para confirmar que el check-out se ha realizado</strong>." data-fr-html="Après avoir déposé les clés, merci de nous envoyer <strong>un message pour confirmer que le check-out a bien été effectué</strong>.">Dopo aver lasciato le chiavi, vi chiediamo gentilmente di inviarci <strong>un messaggio per confermare l'avvenuto check-out</strong>.</li>
+            <li data-it-html="Il check-out deve essere effettuato <strong>entro le ore 10:00 e non oltre</strong>, salvo diversi accordi presi in anticipo."
+                data-en-html="Check-out must be completed <strong>by 10:00 AM and no later</strong>, unless otherwise agreed in advance."
+                data-es-html="El check-out debe realizarse <strong>antes de las 10:00 y no más tarde</strong>, salvo acuerdo previo."
+                data-fr-html="Le check-out doit être effectué <strong>avant 10h00 au plus tard</strong>, sauf accord préalable.">
+              Il check-out deve essere effettuato <strong>entro le ore 10:00 e non oltre</strong>, salvo diversi accordi presi in anticipo.
+            </li>
+
+            <li data-it-html="Prima di lasciare la casa, vi chiediamo di controllare che siano spenti <strong>luci, rubinetti, condizionatore e termosifoni</strong>."
+                data-en-html="Before leaving the house, please make sure that <strong>lights, taps, air conditioning and radiators</strong> are turned off."
+                data-es-html="Antes de dejar la casa, os pedimos que comprobéis que estén apagados <strong>las luces, los grifos, el aire acondicionado y los radiadores</strong>."
+                data-fr-html="Avant de quitter la maison, merci de vérifier que <strong>les lumières, les robinets, la climatisation et les radiateurs</strong> sont éteints.">
+              Prima di lasciare la casa, vi chiediamo di controllare che siano spenti <strong>luci, rubinetti, condizionatore e termosifoni</strong>.
+            </li>
+
+            <li data-it-html="Se possibile, vi chiediamo di mettere <strong>gli asciugamani usati nella lavatrice</strong>, senza avviarla."
+                data-en-html="If possible, please place <strong>the used towels in the washing machine</strong>, without starting it."
+                data-es-html="Si es posible, os pedimos que pongáis <strong>las toallas usadas en la lavadora</strong>, sin ponerla en marcha."
+                data-fr-html="Si possible, merci de mettre <strong>les serviettes utilisées dans la machine à laver</strong>, sans la lancer.">
+              Se possibile, vi chiediamo di mettere <strong>gli asciugamani usati nella lavatrice</strong>, senza avviarla.
+            </li>
+
+            <li data-it-html="È molto importante <strong>buttare la spazzatura prima della partenza</strong>."
+                data-en-html="It is very important to <strong>take out the rubbish before departure</strong>."
+                data-es-html="Es muy importante <strong>tirar la basura antes de la salida</strong>."
+                data-fr-html="Il est très important de <strong>jeter les déchets avant le départ</strong>.">
+              È molto importante <strong>buttare la spazzatura prima della partenza</strong>.
+            </li>
+
+            <li data-it-html="Le chiavi vanno lasciate nella <strong>cassetta delle lettere</strong> appena fuori dal <strong>cancello principale condominiale</strong>, sulla sinistra, nella cassetta con scritto <strong>“A Casa di Marco”</strong>."
+                data-en-html="The keys must be left in the <strong>mailbox</strong> just outside the <strong>main condominium gate</strong>, on the left, in the mailbox marked <strong>“A Casa di Marco”</strong>."
+                data-es-html="Las llaves deben dejarse en el <strong>buzón</strong> situado justo fuera de la <strong>puerta principal del edificio</strong>, a la izquierda, en el buzón con el nombre <strong>“A Casa di Marco”</strong>."
+                data-fr-html="Les clés doivent être déposées dans la <strong>boîte aux lettres</strong> située juste à l'extérieur du <strong>portail principal de la copropriété</strong>, à gauche, dans la boîte indiquant <strong>“A Casa di Marco”</strong>.">
+              Le chiavi vanno lasciate nella <strong>cassetta delle lettere</strong> appena fuori dal <strong>cancello principale condominiale</strong>, sulla sinistra, nella cassetta con scritto <strong>“A Casa di Marco”</strong>.
+            </li>
+
+            <li data-it-html="Dopo aver lasciato le chiavi, vi chiediamo gentilmente di inviarci <strong>un messaggio per confermare l'avvenuto check-out</strong>."
+                data-en-html="After leaving the keys, please send us <strong>a message to confirm that check-out has been completed</strong>."
+                data-es-html="Después de dejar las llaves, os pedimos que nos enviéis <strong>un mensaje para confirmar que el check-out se ha realizado</strong>."
+                data-fr-html="Après avoir déposé les clés, merci de nous envoyer <strong>un message pour confirmer que le check-out a bien été effectué</strong>.">
+              Dopo aver lasciato le chiavi, vi chiediamo gentilmente di inviarci <strong>un messaggio per confermare l'avvenuto check-out</strong>.
+            </li>
           </ul>
+
+          <div class="checklist-intro">
+            <h3 data-it="Checklist prima di partire"
+                data-en="Checklist before leaving"
+                data-es="Checklist antes de salir"
+                data-fr="Checklist avant de partir">Checklist prima di partire</h3>
+
+            <p data-it="Questa è una checklist interattiva: potete spuntare ogni punto prima di uscire dalla casa, così siete sicuri di non dimenticare nulla."
+               data-en="This is an interactive checklist: you can tick each item before leaving the house, so you can be sure you have not forgotten anything."
+               data-es="Esta es una checklist interactiva: podéis marcar cada punto antes de salir de la casa, para aseguraros de no olvidar nada."
+               data-fr="Ceci est une checklist interactive : vous pouvez cocher chaque point avant de quitter la maison, afin d'être sûrs de ne rien oublier.">
+              Questa è una checklist interattiva: potete spuntare ogni punto prima di uscire dalla casa, così siete sicuri di non dimenticare nulla.
+            </p>
+          </div>
+
+          <div class="checkout-checklist">
+            <label class="check-item">
+              <input type="checkbox" class="checkout-checkbox">
+              <span data-it="Ho spento tutte le luci."
+                    data-en="I have turned off all the lights."
+                    data-es="He apagado todas las luces."
+                    data-fr="J'ai éteint toutes les lumières.">Ho spento tutte le luci.</span>
+            </label>
+
+            <label class="check-item">
+              <input type="checkbox" class="checkout-checkbox">
+              <span data-it="Ho chiuso tutti i rubinetti."
+                    data-en="I have turned off all the taps."
+                    data-es="He cerrado todos los grifos."
+                    data-fr="J'ai fermé tous les robinets.">Ho chiuso tutti i rubinetti.</span>
+            </label>
+
+            <label class="check-item">
+              <input type="checkbox" class="checkout-checkbox">
+              <span data-it="Ho spento condizionatore e/o termosifoni."
+                    data-en="I have turned off the air conditioning and/or radiators."
+                    data-es="He apagado el aire acondicionado y/o los radiadores."
+                    data-fr="J'ai éteint la climatisation et/ou les radiateurs.">Ho spento condizionatore e/o termosifoni.</span>
+            </label>
+
+            <label class="check-item">
+              <input type="checkbox" class="checkout-checkbox">
+              <span data-it="Ho controllato di non aver dimenticato oggetti personali."
+                    data-en="I have checked that I have not forgotten any personal belongings."
+                    data-es="He comprobado que no he olvidado objetos personales."
+                    data-fr="J'ai vérifié que je n'ai oublié aucun effet personnel.">Ho controllato di non aver dimenticato oggetti personali.</span>
+            </label>
+
+            <label class="check-item">
+              <input type="checkbox" class="checkout-checkbox">
+              <span data-it="Ho messo gli asciugamani usati nella lavatrice, senza avviarla."
+                    data-en="I have placed the used towels in the washing machine, without starting it."
+                    data-es="He puesto las toallas usadas en la lavadora, sin ponerla en marcha."
+                    data-fr="J'ai mis les serviettes utilisées dans la machine à laver, sans la lancer.">Ho messo gli asciugamani usati nella lavatrice, senza avviarla.</span>
+            </label>
+
+            <label class="check-item">
+              <input type="checkbox" class="checkout-checkbox">
+              <span data-it="Ho buttato la spazzatura."
+                    data-en="I have taken out the rubbish."
+                    data-es="He tirado la basura."
+                    data-fr="J'ai jeté les déchets.">Ho buttato la spazzatura.</span>
+            </label>
+
+            <label class="check-item">
+              <input type="checkbox" class="checkout-checkbox">
+              <span data-it="Ho chiuso bene la porta della casa."
+                    data-en="I have properly closed the house door."
+                    data-es="He cerrado bien la puerta de la casa."
+                    data-fr="J'ai bien fermé la porte de la maison.">Ho chiuso bene la porta della casa.</span>
+            </label>
+
+            <label class="check-item">
+              <input type="checkbox" class="checkout-checkbox">
+              <span data-it="Ho lasciato le chiavi nella cassetta delle lettere “A Casa di Marco”."
+                    data-en="I have left the keys in the “A Casa di Marco” mailbox."
+                    data-es="He dejado las llaves en el buzón “A Casa di Marco”."
+                    data-fr="J'ai laissé les clés dans la boîte aux lettres “A Casa di Marco”.">Ho lasciato le chiavi nella cassetta delle lettere “A Casa di Marco”.</span>
+            </label>
+
+            <label class="check-item">
+              <input type="checkbox" class="checkout-checkbox">
+              <span data-it="Ho inviato un messaggio per confermare il check-out."
+                    data-en="I have sent a message to confirm check-out."
+                    data-es="He enviado un mensaje para confirmar el check-out."
+                    data-fr="J'ai envoyé un message pour confirmer le check-out.">Ho inviato un messaggio per confermare il check-out.</span>
+            </label>
+          </div>
+
+          <div id="check-progress" class="check-progress">0/9 completati</div>
+
+          <div class="final-reminder"
+               data-it-html="<strong>Grazie!</strong> Questa piccola attenzione ci aiuta a preparare la casa al meglio per gli ospiti successivi."
+               data-en-html="<strong>Thank you!</strong> This small attention helps us prepare the house in the best possible way for the next guests."
+               data-es-html="<strong>¡Gracias!</strong> Esta pequeña atención nos ayuda a preparar la casa de la mejor manera para los próximos huéspedes."
+               data-fr-html="<strong>Merci !</strong> Cette petite attention nous aide à préparer la maison au mieux pour les prochains hôtes.">
+            <strong>Grazie!</strong> Questa piccola attenzione ci aiuta a preparare la casa al meglio per gli ospiti successivi.
+          </div>
         </div>
       </details>
     </section>
   </main>
-<script>
-  function getLang() {
-    var params = new URLSearchParams(window.location.search);
-    var lang = params.get('lang');
 
-    if (lang === 'it' || lang === 'en' || lang === 'es' || lang === 'fr') {
-      return lang;
-    }
+  <script>
+    var currentLang = 'it';
 
-    try {
-      lang = localStorage.getItem('guestGuideLang');
-    } catch (e) {}
-
-    if (lang === 'it' || lang === 'en' || lang === 'es' || lang === 'fr') {
-      return lang;
-    }
-
-    return 'it';
-  }
-
-  function translatePage(lang) {
-    document.documentElement.lang = lang;
-
-    document.querySelectorAll('[data-it], [data-it-html]').forEach(function (el) {
-      var htmlTranslation = el.getAttribute('data-' + lang + '-html');
-      var textTranslation = el.getAttribute('data-' + lang);
-
-      if (htmlTranslation) {
-        el.innerHTML = htmlTranslation;
-      } else if (textTranslation) {
-        el.textContent = textTranslation;
+    var checklistLabels = {
+      it: {
+        completed: "completati",
+        allDone: "Tutto fatto! Grazie per la collaborazione 💛"
+      },
+      en: {
+        completed: "completed",
+        allDone: "All done! Thank you for your cooperation 💛"
+      },
+      es: {
+        completed: "completados",
+        allDone: "¡Todo listo! Gracias por vuestra colaboración 💛"
+      },
+      fr: {
+        completed: "terminés",
+        allDone: "Tout est fait ! Merci pour votre collaboration 💛"
       }
+    };
+
+    function getLang() {
+      var params = new URLSearchParams(window.location.search);
+      var lang = params.get('lang');
+
+      if (lang === 'it' || lang === 'en' || lang === 'es' || lang === 'fr') {
+        return lang;
+      }
+
+      try {
+        lang = localStorage.getItem('guestGuideLang');
+      } catch (e) {}
+
+      if (lang === 'it' || lang === 'en' || lang === 'es' || lang === 'fr') {
+        return lang;
+      }
+
+      return 'it';
+    }
+
+    function translatePage(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll('[data-it], [data-it-html]').forEach(function (el) {
+        var htmlTranslation = el.getAttribute('data-' + lang + '-html');
+        var textTranslation = el.getAttribute('data-' + lang);
+
+        if (htmlTranslation) {
+          el.innerHTML = htmlTranslation;
+        } else if (textTranslation) {
+          el.textContent = textTranslation;
+        }
+      });
+
+      var home = document.querySelector('.back-home');
+      if (home) {
+        home.href = 'index.html#' + lang;
+      }
+
+      try {
+        localStorage.setItem('guestGuideLang', lang);
+      } catch (e) {}
+
+      updateChecklistProgress();
+    }
+
+    function updateChecklistProgress() {
+      var checkboxes = document.querySelectorAll('.checkout-checkbox');
+      var checked = document.querySelectorAll('.checkout-checkbox:checked').length;
+      var progress = document.getElementById('check-progress');
+
+      if (!progress || !checkboxes.length) return;
+
+      var labels = checklistLabels[currentLang] || checklistLabels.it;
+
+      if (checked === checkboxes.length) {
+        progress.textContent = labels.allDone;
+      } else {
+        progress.textContent = checked + "/" + checkboxes.length + " " + labels.completed;
+      }
+    }
+
+    document.querySelectorAll('.checkout-checkbox').forEach(function (checkbox) {
+      checkbox.addEventListener('change', updateChecklistProgress);
     });
 
-    var home = document.querySelector('.back-home');
-    if (home) {
-      home.href = 'index.html#' + lang;
-    }
-
-    try {
-      localStorage.setItem('guestGuideLang', lang);
-    } catch (e) {}
-  }
-
-  translatePage(getLang());
-</script>
+    translatePage(getLang());
+  </script>
 </body>
 </html>

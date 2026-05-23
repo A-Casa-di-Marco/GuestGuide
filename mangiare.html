@@ -427,6 +427,18 @@
                  data-es="Café, cócteles, vino y aperitivos"
                  data-fr="Café, cocktails, vin et apéritifs">Caffè, cocktail, vino e aperitivi</small>
         </button>
+
+        <button class="food-choice" onclick="showCategory('mondo')">
+          <span>🌍</span>
+          <strong data-it="Ho voglia di cucina del mondo"
+            data-en="I feel like world cuisine"
+            data-es="Me apetece cocina del mundo"
+            data-fr="J’ai envie de cuisine du monde">Ho voglia di cucina del mondo</strong>
+          <small data-it="Sushi, greco, messicano e altri sapori"
+           data-en="Sushi, Greek, Mexican and other flavours"
+           data-es="Sushi, griego, mexicano y otros sabores"
+           data-fr="Sushi, grec, mexicain et autres saveurs">Sushi, greco, messicano e altri sapori</small>
+        </button>
       </div>
     </section>
 
@@ -631,6 +643,98 @@
           fr: "Cuisine de mer ou de terre"
         },
         restaurants: [
+          {
+            image: "assets/pescheria-salerno.jpg",
+            price: "€€€",
+            mapsQuery: "Pescheria Salerno Corso Garibaldi 227",
+            name: {
+              it: "Pescheria",
+              en: "Pescheria",
+              es: "Pescheria",
+              fr: "Pescheria"
+            },
+            desc: {
+              it: "Ristorante di pesce elegante nel centro di Salerno, consigliato per una cena di mare più curata e speciale.",
+              en: "An elegant seafood restaurant in central Salerno, recommended for a more refined and special seafood dinner.",
+              es: "Restaurante de pescado elegante en el centro de Salerno, recomendado para una cena de mar más cuidada y especial.",
+              fr: "Restaurant de poisson élégant au centre de Salerne, conseillé pour un dîner de la mer plus raffiné et spécial."
+            },
+            tip: {
+              it: "Consigliato per una cena speciale. Fascia di prezzo alta, ma adatto se volete mangiare pesce di qualità.",
+              en: "Recommended for a special dinner. Higher price range, but ideal if you want quality seafood.",
+              es: "Recomendado para una cena especial. Rango de precio alto, pero ideal si queréis comer pescado de calidad.",
+              fr: "Conseillé pour un dîner spécial. Prix plus élevé, mais idéal si vous voulez manger du poisson de qualité."
+            }
+          },
+          {
+            image: "assets/osso-salerno.jpg",
+            price: "€€€",
+            mapsQuery: "Osso Salerno Piazza Sedile di Portanova",
+            name: {
+              it: "Osso Salerno",
+              en: "Osso Salerno",
+              es: "Osso Salerno",
+              fr: "Osso Salerno"
+            },
+            desc: {
+              it: "Braceria e ristorante di carne nel centro di Salerno, ideale per chi vuole una cena più importante con tagli selezionati.",
+              en: "A steakhouse and meat restaurant in central Salerno, ideal for a more important dinner with selected cuts of meat.",
+              es: "Bracería y restaurante de carne en el centro de Salerno, ideal para una cena más especial con cortes seleccionados.",
+              fr: "Brasserie/restaurant de viande au centre de Salerne, idéal pour un dîner plus spécial avec des morceaux sélectionnés."
+            },
+            tip: {
+              it: "Perfetto per gli amanti della carne. Locale molto buono, ma da considerare come fascia più costosa.",
+              en: "Perfect for meat lovers. Very good restaurant, but to be considered a more expensive option.",
+              es: "Perfecto para amantes de la carne. Muy buen restaurante, pero de una franja más cara.",
+              fr: "Parfait pour les amateurs de viande. Très bon restaurant, mais à considérer comme une option plus chère."
+            }
+          },
+          {
+            image: "assets/al-dente-spaghetteria.jpg",
+            price: "€€",
+            mapsQuery: "Al Dente Spaghetteria Salerno",
+            name: {
+              it: "Al Dente Spaghetteria",
+              en: "Al Dente Spaghetteria",
+              es: "Al Dente Spaghetteria",
+              fr: "Al Dente Spaghetteria"
+            },
+            desc: {
+              it: "Locale perfetto se avete voglia di pasta. Propone spaghetti artigianali e piatti della tradizione mediterranea.",
+              en: "Perfect if you feel like pasta. It offers artisan spaghetti and Mediterranean traditional dishes.",
+              es: "Perfecto si os apetece pasta. Ofrece spaghetti artesanales y platos de la tradición mediterránea.",
+              fr: "Parfait si vous avez envie de pâtes. On y trouve des spaghetti artisanaux et des plats de tradition méditerranéenne."
+            },
+            tip: {
+              it: "Consigliato per chi vuole un buon piatto di pasta senza scegliere un ristorante troppo impegnativo.",
+              en: "Recommended if you want a good pasta dish without choosing a too formal restaurant.",
+              es: "Recomendado si queréis un buen plato de pasta sin elegir un restaurante demasiado formal.",
+              fr: "Conseillé si vous voulez un bon plat de pâtes sans choisir un restaurant trop formel."
+            }
+          },
+          {
+            image: "assets/casa-ragusa.jpg",
+            price: "€€",
+            mapsQuery: "Casa Ragùsa Salerno",
+            name: {
+              it: "Casa Ragùsa",
+              en: "Casa Ragùsa",
+              es: "Casa Ragùsa",
+              fr: "Casa Ragùsa"
+            },
+            desc: {
+              it: "Ristorante di cucina tipica con pasta fresca fatta a mano. Molto particolare e bello da consigliare ai turisti.",
+              en: "A traditional restaurant with handmade fresh pasta. Very special and a great recommendation for tourists.",
+              es: "Restaurante de cocina típica con pasta fresca hecha a mano. Muy especial y perfecto para recomendar a turistas.",
+              fr: "Restaurant de cuisine typique avec pâtes fraîches faites à la main. Très particulier et idéal à conseiller aux touristes."
+            },
+            tip: {
+              it: "Top se volete vivere un’esperienza più autentica: spesso si vedono anche le signore preparare la pasta.",
+              en: "Great if you want a more authentic experience: you may even see the ladies preparing the pasta.",
+              es: "Ideal si queréis vivir una experiencia más auténtica: a menudo se puede ver a las señoras preparando la pasta.",
+              fr: "Excellent si vous voulez vivre une expérience plus authentique : on peut parfois voir les dames préparer les pâtes."
+            }
+          },
           {
             image: "assets/tramp-ristorante.jpg",
             price: "€€",
@@ -884,6 +988,29 @@
         },
         restaurants: [
           {
+            image: "assets/salumeria-del-corso.jpg",
+            price: "€€",
+            mapsQuery: "Salumeria del Corso Salerno",
+            name: {
+              it: "Salumeria del Corso",
+              en: "Salumeria del Corso",
+              es: "Salumeria del Corso",
+              fr: "Salumeria del Corso"
+            },
+            desc: {
+              it: "Una salumeria sul corso con tavolini, taglieri, panini e cose fatte in casa. Perfetta per qualcosa di semplice ma buono.",
+              en: "A delicatessen on the main street with tables, boards, sandwiches and homemade-style food. Perfect for something simple but good.",
+              es: "Una salumería en el corso con mesas, tablas, bocadillos y comida casera. Perfecta para algo sencillo pero bueno.",
+              fr: "Une salumeria sur le corso avec des tables, planches, sandwiches et produits faits maison. Parfaite pour quelque chose de simple mais bon."
+            },
+            tip: {
+              it: "Ottima per un pranzo veloce, un aperitivo o un tagliere senza andare in un ristorante vero e proprio.",
+              en: "Great for a quick lunch, an aperitivo or a board without going to a proper restaurant.",
+              es: "Ideal para un almuerzo rápido, un aperitivo o una tabla sin ir a un restaurante formal.",
+              fr: "Idéale pour un déjeuner rapide, un apéritif ou une planche sans aller dans un vrai restaurant."
+            }
+          },
+          {
             image: "assets/brignan-cafe.jpg",
             price: "€",
             featured: true,
@@ -952,6 +1079,86 @@
               en: "Recommended if you feel like having a drink in a younger and lively atmosphere.",
               es: "Recomendado si os apetece tomar algo en un ambiente más joven y animado.",
               fr: "Conseillé si vous avez envie de boire quelque chose dans une ambiance plus jeune et animée."
+            }
+          }
+        ]
+      },
+
+      mondo: {
+        title: {
+          it: "Cucina del mondo",
+          en: "World cuisine",
+          es: "Cocina del mundo",
+          fr: "Cuisine du monde"
+        },
+        restaurants: [
+          {
+            image: "assets/cucina-del-mondo.jpg",
+            price: "€€",
+            mapsQuery: "sushi Salerno centro",
+            name: {
+              it: "Sushi a Salerno",
+              en: "Sushi in Salerno",
+              es: "Sushi en Salerno",
+              fr: "Sushi à Salerne"
+            },
+            desc: {
+              it: "Categoria da completare con il nome del locale scelto. Utile per chi ha voglia di sushi o cucina giapponese.",
+              en: "Category to be completed with the chosen restaurant name. Useful for those who feel like sushi or Japanese cuisine.",
+              es: "Categoría por completar con el nombre del local elegido. Útil para quien tenga ganas de sushi o cocina japonesa.",
+              fr: "Catégorie à compléter avec le nom du restaurant choisi. Utile pour ceux qui ont envie de sushi ou de cuisine japonaise."
+            },
+            tip: {
+              it: "Appena scegliamo il locale migliore, sostituiamo questa card con nome, foto e link Maps.",
+              en: "Once we choose the best place, we will replace this card with the name, photo and Maps link.",
+              es: "Cuando elijamos el mejor local, sustituiremos esta tarjeta con nombre, foto y enlace Maps.",
+              fr: "Dès que nous choisissons le meilleur endroit, nous remplacerons cette carte par le nom, la photo et le lien Maps."
+            }
+          },
+          {
+            image: "assets/cucina-del-mondo.jpg",
+            price: "€€",
+            mapsQuery: "ristorante greco Salerno",
+            name: {
+              it: "Cucina greca",
+              en: "Greek cuisine",
+              es: "Cocina griega",
+              fr: "Cuisine grecque"
+            },
+            desc: {
+              it: "Categoria da completare con il nome del locale scelto. Ideale per pita, gyros e piatti greci.",
+              en: "Category to be completed with the chosen restaurant name. Ideal for pita, gyros and Greek dishes.",
+              es: "Categoría por completar con el nombre del local elegido. Ideal para pita, gyros y platos griegos.",
+              fr: "Catégorie à compléter avec le nom du restaurant choisi. Idéal pour pita, gyros et plats grecs."
+            },
+            tip: {
+              it: "Da completare con il locale preciso che vuoi consigliare.",
+              en: "To be completed with the exact place you want to recommend.",
+              es: "Por completar con el local exacto que quieres recomendar.",
+              fr: "À compléter avec l'adresse exacte que vous souhaitez conseiller."
+            }
+          },
+          {
+            image: "assets/cucina-del-mondo.jpg",
+            price: "€€",
+            mapsQuery: "ristorante messicano Salerno",
+            name: {
+              it: "Cucina messicana",
+              en: "Mexican cuisine",
+              es: "Cocina mexicana",
+              fr: "Cuisine mexicaine"
+            },
+            desc: {
+              it: "Categoria da completare con il nome del locale scelto. Pensata per chi cerca tacos, burritos o qualcosa di diverso.",
+              en: "Category to be completed with the chosen restaurant name. For those looking for tacos, burritos or something different.",
+              es: "Categoría por completar con el nombre del local elegido. Pensada para quien busca tacos, burritos o algo diferente.",
+              fr: "Catégorie à compléter avec le nom du restaurant choisi. Pour ceux qui cherchent tacos, burritos ou quelque chose de différent."
+            },
+            tip: {
+              it: "Da completare quando scegliamo il locale messicano migliore.",
+              en: "To be completed once we choose the best Mexican place.",
+              es: "Por completar cuando elijamos el mejor local mexicano.",
+              fr: "À compléter quand nous choisirons le meilleur restaurant mexicain."
             }
           }
         ]

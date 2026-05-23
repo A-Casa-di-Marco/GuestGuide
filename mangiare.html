@@ -167,8 +167,23 @@
     .restaurant-card {
       background:var(--ottanio-soft);
       border-radius:24px;
+      position:relative;
       overflow:hidden;
       box-shadow:0 10px 28px rgba(0,80,85,.12);
+    }
+
+    .recommended-ribbon {
+      position:absolute;
+      top:14px;
+      left:14px;
+      z-index:2;
+      background:var(--ottanio);
+      color:#fff;
+      border-radius:999px;
+      padding:7px 13px;
+      font-size:12px;
+      font-weight:800;
+      box-shadow:0 8px 22px rgba(0,0,0,.22);
     }
 
     .restaurant-card.featured {
@@ -232,6 +247,17 @@
 
     .price-badge .price-symbol {
       letter-spacing:.5px;
+    }
+
+    .recommended-badge {
+      display:inline-flex;
+      align-items:center;
+      background:var(--ottanio);
+      color:#fff;
+      border-radius:999px;
+      padding:6px 12px;
+      font-size:12px;
+      font-weight:700;
     }
 
     .tip-box {
@@ -727,6 +753,8 @@
           {
             image: "assets/casa-ragusa.jpg",
             price: "€€",
+            featured: true,
+            recommended: true,
             mapsQuery: "Casa Ragùsa Salerno",
             name: {
               it: "Casa Ragùsa",
@@ -741,10 +769,10 @@
               fr: "Restaurant de cuisine typique avec pâtes fraîches faites à la main. Très particulier et idéal à conseiller aux touristes."
             },
             tip: {
-              it: "Top se volete vivere un’esperienza più autentica: spesso si vedono anche le signore preparare la pasta.",
-              en: "Great if you want a more authentic experience: you may even see the ladies preparing the pasta.",
-              es: "Ideal si queréis vivir una experiencia más auténtica: a menudo se puede ver a las señoras preparando la pasta.",
-              fr: "Excellent si vous voulez vivre une expérience plus authentique : on peut parfois voir les dames préparer les pâtes."
+              it: "Una delle nostre prime scelte: particolare, autentico e molto bello per i turisti. Spesso si vedono anche le signore preparare la pasta fresca.",
+              en: "One of our top choices: special, authentic and lovely for tourists. You may even see the ladies preparing fresh pasta.",
+              es: "Una de nuestras primeras opciones: especial, auténtico y muy bonito para turistas. A menudo se puede ver a las señoras preparando pasta fresca.",
+              fr: "L’un de nos premiers choix : particulier, authentique et très agréable pour les touristes. On peut parfois voir les dames préparer les pâtes fraîches."
             }
           },
           {
@@ -865,6 +893,8 @@
           {
             image: "assets/tramp-ristorante.jpg",
             price: "€€",
+            featured: true,
+            recommended: true,
             mapsQuery: "Tramp Ristorante Salerno",
             name: {
               it: "Tramp Ristorante",
@@ -879,10 +909,10 @@
               fr: "Une adresse conseillée pour ceux qui veulent manger du poisson frais à Salerne, dans une ambiance simple et agréable."
             },
             tip: {
-              it: "Chiedete sempre quali sono i piatti del giorno a base di pesce fresco.",
-              en: "Always ask for the daily fresh seafood dishes.",
-              es: "Preguntad siempre por los platos del día con pescado fresco.",
-              fr: "Demandez toujours les plats du jour à base de poisson frais."
+              it: "Una delle nostre prime scelte per il pesce: chiedete sempre quali sono i piatti del giorno a base di pesce fresco.",
+              en: "One of our top choices for seafood: always ask for the daily fresh fish dishes.",
+              es: "Una de nuestras primeras opciones para pescado: preguntad siempre por los platos del día con pescado fresco.",
+              fr: "L’un de nos premiers choix pour le poisson : demandez toujours les plats du jour à base de poisson frais."
             }
           },
           {
@@ -1442,6 +1472,12 @@
         en: "Indicative price",
         es: "Precio orientativo",
         fr: "Prix indicatif"
+      },
+      recommended: {
+        it: "⭐ Consigliato da noi",
+        en: "⭐ Recommended by us",
+        es: "⭐ Recomendado por nosotros",
+        fr: "⭐ Recommandé par nous"
       }
     };
 
@@ -1494,14 +1530,20 @@
 
       title.textContent = category.title[currentLang];
 
-      grid.innerHTML = category.restaurants.map(function (place) {
+      var sortedRestaurants = category.restaurants.slice().sort(function(a, b) {
+        return (b.recommended === true) - (a.recommended === true);
+      });
+
+      grid.innerHTML = sortedRestaurants.map(function (place) {
         var mapsUrl = place.mapsUrl || "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(place.mapsQuery);
 
         return `
           <article class="restaurant-card ${place.featured ? 'featured' : ''}">
+            ${place.recommended ? `<div class="recommended-ribbon">${labels.recommended[currentLang]}</div>` : ''}
             <img src="${place.image}" alt="${place.name[currentLang]}">
             <div class="restaurant-content">
               <div class="badge-row">
+                ${place.recommended ? `<div class="recommended-badge">${labels.recommended[currentLang]}</div>` : ''}
                 ${place.walkable ? `<div class="walk-badge">${labels.walkable[currentLang]}</div>` : ''}
                 ${place.price ? `<div class="price-badge" title="${labels.price[currentLang]}"><span class="price-symbol">${place.price}</span></div>` : ''}
               </div>

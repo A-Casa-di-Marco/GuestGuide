@@ -250,6 +250,96 @@
       font-style:italic;
     }
 
+    .manual-img {
+      margin: 16px 0;
+    }
+
+    .manual-img img {
+      width: 100%;
+      max-height: 420px;
+      object-fit: cover;
+      border-radius: 20px;
+      box-shadow: 0 10px 28px rgba(0,80,85,.12);
+    }
+
+    .manual-img.contain img {
+      object-fit: contain;
+      background: #f7f7f2;
+    }
+
+    .step-list {
+      list-style: none;
+      counter-reset: step;
+      display: grid;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .step-list li {
+      counter-increment: step;
+      background: var(--ottanio-soft);
+      border-radius: 18px;
+      padding: 14px 16px 14px 54px;
+      position: relative;
+    }
+
+    .step-list li::before {
+      content: counter(step);
+      position: absolute;
+      left: 16px;
+      top: 14px;
+      width: 27px;
+      height: 27px;
+      border-radius: 999px;
+      background: var(--ottanio);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .warning-box {
+      background: #fff0ec;
+      border-left: 5px solid #d96b4c;
+      border-radius: 16px;
+      padding: 14px 16px;
+      margin: 16px 0;
+    }
+
+    .program-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 10px;
+      margin-top: 14px;
+    }
+
+    .program-table th {
+      text-align: left;
+      color: var(--ottanio-dark);
+      font-size: 14px;
+      padding: 0 12px 4px;
+    }
+
+    .program-table td {
+      background: var(--ottanio-soft);
+      padding: 12px;
+      font-size: 14px;
+      vertical-align: top;
+    }
+
+    .program-table td:first-child {
+      border-radius: 14px 0 0 14px;
+      font-weight: 700;
+      color: var(--ottanio-dark);
+      width: 26%;
+    }
+
+    .program-table td:last-child {
+      border-radius: 0 14px 14px 0;
+    }
+
     @media (max-width:720px) {
       body {
         font-size:14px;
@@ -284,6 +374,41 @@
 
       .manual-content {
         padding:15px;
+      }
+
+      .manual-img img {
+        max-height: 330px;
+      }
+
+      .program-table,
+      .program-table thead,
+      .program-table tbody,
+      .program-table tr,
+      .program-table th,
+      .program-table td {
+        display: block;
+      }
+
+      .program-table thead {
+        display: none;
+      }
+
+      .program-table tr {
+        background: var(--ottanio-soft);
+        border-radius: 16px;
+        padding: 12px;
+        margin-bottom: 10px;
+      }
+
+      .program-table td {
+        background: transparent;
+        padding: 5px 0;
+      }
+
+      .program-table td:first-child,
+      .program-table td:last-child {
+        border-radius: 0;
+        width: 100%;
       }
 
       .do-dont {
@@ -622,35 +747,99 @@
                  data-fr="Climatisation et chauffage">Clima e riscaldamento</summary>
 
         <div class="manual-content">
-          <ul class="simple-list">
-            <li data-it-html="Usate climatizzatore e riscaldamento con attenzione, mantenendo una temperatura confortevole ma senza sprechi."
-                data-en-html="Please use air conditioning and heating carefully, keeping a comfortable temperature without wasting energy."
-                data-es-html="Usad el aire acondicionado y la calefacción con cuidado, manteniendo una temperatura agradable sin desperdiciar energía."
-                data-fr-html="Merci d'utiliser la climatisation et le chauffage avec attention, en gardant une température confortable sans gaspillage.">
-              Usate climatizzatore e riscaldamento con attenzione, mantenendo una temperatura confortevole ma senza sprechi.
+          <h3 data-it="Termostato dei termosifoni"
+              data-en="Radiator thermostat"
+              data-es="Termostato de los radiadores"
+              data-fr="Thermostat des radiateurs">Termostato dei termosifoni</h3>
+
+          <div class="manual-img">
+            <img src="assets/manuale-termostato.jpg" alt="Termostato dei termosifoni">
+          </div>
+
+          <ol class="step-list">
+            <li data-it-html="Per accendere il riscaldamento, premete il tasto <strong>ON</strong>."
+                data-en-html="To turn on the heating, press the <strong>ON</strong> button."
+                data-es-html="Para encender la calefacción, pulsad el botón <strong>ON</strong>."
+                data-fr-html="Pour allumer le chauffage, appuyez sur le bouton <strong>ON</strong>.">
+              Per accendere il riscaldamento, premete il tasto <strong>ON</strong>.
             </li>
 
-            <li data-it-html="Quando uscite di casa, ricordate di <strong>spegnere climatizzatore e termosifoni</strong>."
-                data-en-html="When you leave the house, remember to <strong>turn off the air conditioning and radiators</strong>."
-                data-es-html="Cuando salgáis de casa, recordad <strong>apagar el aire acondicionado y los radiadores</strong>."
-                data-fr-html="Lorsque vous quittez la maison, pensez à <strong>éteindre la climatisation et les radiateurs</strong>.">
-              Quando uscite di casa, ricordate di <strong>spegnere climatizzatore e termosifoni</strong>.
+            <li data-it-html="Girate la manopola fino alla temperatura desiderata."
+                data-en-html="Turn the dial to the desired temperature."
+                data-es-html="Girad la rueda hasta la temperatura deseada."
+                data-fr-html="Tournez la molette jusqu’à la température souhaitée.">
+              Girate la manopola fino alla temperatura desiderata.
             </li>
 
-            <li data-it-html="Alla partenza, controllate sempre che tutto sia spento."
-                data-en-html="Before departure, always check that everything is turned off."
-                data-es-html="Antes de la salida, comprobad siempre que todo esté apagado."
-                data-fr-html="Avant le départ, vérifiez toujours que tout est éteint.">
-              Alla partenza, controllate sempre che tutto sia spento.
+            <li data-it-html="Aspettate circa <strong>1 ora</strong> affinché la casa raggiunga la temperatura impostata."
+                data-en-html="Wait about <strong>1 hour</strong> for the house to reach the set temperature."
+                data-es-html="Esperad aproximadamente <strong>1 hora</strong> para que la casa alcance la temperatura establecida."
+                data-fr-html="Attendez environ <strong>1 heure</strong> pour que la maison atteigne la température réglée.">
+              Aspettate circa <strong>1 ora</strong> affinché la casa raggiunga la temperatura impostata.
             </li>
 
-            <li data-it-html="Se avete difficoltà con il termostato o il telecomando, scriveteci: vi guideremo passo passo."
-                data-en-html="If you have trouble with the thermostat or remote control, message us: we will guide you step by step."
-                data-es-html="Si tenéis dificultad con el termostato o el mando, escribidnos: os guiaremos paso a paso."
-                data-fr-html="Si vous avez des difficultés avec le thermostat ou la télécommande, écrivez-nous : nous vous guiderons étape par étape.">
-              Se avete difficoltà con il termostato o il telecomando, scriveteci: vi guideremo passo passo.
+            <li data-it-html="Quando la casa è calda, potete spegnere il termostato: premete <strong>OFF</strong> e girate la manopola su <strong>0</strong>."
+                data-en-html="When the house is warm, you can turn the thermostat off: press <strong>OFF</strong> and turn the dial to <strong>0</strong>."
+                data-es-html="Cuando la casa esté caliente, podéis apagar el termostato: pulsad <strong>OFF</strong> y girad la rueda a <strong>0</strong>."
+                data-fr-html="Quand la maison est chaude, vous pouvez éteindre le thermostat : appuyez sur <strong>OFF</strong> et tournez la molette sur <strong>0</strong>.">
+              Quando la casa è calda, potete spegnere il termostato: premete <strong>OFF</strong> e girate la manopola su <strong>0</strong>.
             </li>
-          </ul>
+          </ol>
+
+          <div class="warning-box"
+               data-it-html="<strong>Importante:</strong> per spegnere davvero i termosifoni bisogna fare entrambe le cose: premere <strong>OFF</strong> e girare la manopola su <strong>0</strong>. Se non girate la manopola, i termosifoni potrebbero continuare a funzionare."
+               data-en-html="<strong>Important:</strong> to properly turn off the radiators, you must do both: press <strong>OFF</strong> and turn the dial to <strong>0</strong>. If you do not turn the dial, the radiators may keep working."
+               data-es-html="<strong>Importante:</strong> para apagar correctamente los radiadores hay que hacer ambas cosas: pulsar <strong>OFF</strong> y girar la rueda a <strong>0</strong>. Si no giráis la rueda, los radiadores podrían seguir funcionando."
+               data-fr-html="<strong>Important :</strong> pour éteindre correctement les radiateurs, il faut faire les deux choses : appuyer sur <strong>OFF</strong> et tourner la molette sur <strong>0</strong>. Si vous ne tournez pas la molette, les radiateurs peuvent continuer à fonctionner.">
+            <strong>Importante:</strong> per spegnere davvero i termosifoni bisogna fare entrambe le cose: premere <strong>OFF</strong> e girare la manopola su <strong>0</strong>. Se non girate la manopola, i termosifoni potrebbero continuare a funzionare.
+          </div>
+
+          <h3 data-it="Telecomando del condizionatore"
+              data-en="Air conditioner remote control"
+              data-es="Mando del aire acondicionado"
+              data-fr="Télécommande de la climatisation">Telecomando del condizionatore</h3>
+
+          <div class="manual-img">
+            <img src="assets/manuale-condizionatore-telecomando.jpg" alt="Telecomando del condizionatore">
+          </div>
+
+          <ol class="step-list">
+            <li data-it-html="Per accendere o spegnere il condizionatore, premete il tasto rosso <strong>ON/OFF</strong>."
+                data-en-html="To turn the air conditioner on or off, press the red <strong>ON/OFF</strong> button."
+                data-es-html="Para encender o apagar el aire acondicionado, pulsad el botón rojo <strong>ON/OFF</strong>."
+                data-fr-html="Pour allumer ou éteindre la climatisation, appuyez sur le bouton rouge <strong>ON/OFF</strong>.">
+              Per accendere o spegnere il condizionatore, premete il tasto rosso <strong>ON/OFF</strong>.
+            </li>
+
+            <li data-it-html="Con il tasto <strong>MODE</strong> scegliete la modalità: freddo in estate, caldo in inverno."
+                data-en-html="Use the <strong>MODE</strong> button to choose the mode: cooling in summer, heating in winter."
+                data-es-html="Con el botón <strong>MODE</strong> elegid el modo: frío en verano, calor en invierno."
+                data-fr-html="Avec le bouton <strong>MODE</strong>, choisissez le mode : froid en été, chaud en hiver.">
+              Con il tasto <strong>MODE</strong> scegliete la modalità: freddo in estate, caldo in inverno.
+            </li>
+
+            <li data-it-html="Usate le frecce <strong>TEMP</strong> per alzare o abbassare la temperatura."
+                data-en-html="Use the <strong>TEMP</strong> arrows to increase or decrease the temperature."
+                data-es-html="Usad las flechas <strong>TEMP</strong> para subir o bajar la temperatura."
+                data-fr-html="Utilisez les flèches <strong>TEMP</strong> pour augmenter ou diminuer la température.">
+              Usate le frecce <strong>TEMP</strong> per alzare o abbassare la temperatura.
+            </li>
+
+            <li data-it-html="Con <strong>FAN SPEED</strong> potete regolare la velocità dell’aria."
+                data-en-html="With <strong>FAN SPEED</strong> you can adjust the air speed."
+                data-es-html="Con <strong>FAN SPEED</strong> podéis regular la velocidad del aire."
+                data-fr-html="Avec <strong>FAN SPEED</strong>, vous pouvez régler la vitesse de l’air.">
+              Con <strong>FAN SPEED</strong> potete regolare la velocità dell’aria.
+            </li>
+          </ol>
+
+          <div class="warning-box"
+               data-it-html="<strong>Per favore:</strong> quando uscite di casa, spegnete sempre condizionatore e termosifoni. Tenete porte e finestre chiuse mentre sono in funzione, altrimenti si spreca energia e la casa non raggiunge la temperatura desiderata."
+               data-en-html="<strong>Please:</strong> when you leave the house, always turn off the air conditioning and radiators. Keep doors and windows closed while they are on, otherwise energy is wasted and the house will not reach the desired temperature."
+               data-es-html="<strong>Por favor:</strong> cuando salgáis de casa, apagad siempre el aire acondicionado y los radiadores. Mantened puertas y ventanas cerradas mientras están encendidos, de lo contrario se desperdicia energía y la casa no alcanza la temperatura deseada."
+               data-fr-html="<strong>S’il vous plaît :</strong> lorsque vous quittez la maison, éteignez toujours la climatisation et les radiateurs. Gardez portes et fenêtres fermées lorsqu’ils sont en marche, sinon l’énergie est gaspillée et la maison n’atteint pas la température souhaitée.">
+            <strong>Per favore:</strong> quando uscite di casa, spegnete sempre condizionatore e termosifoni. Tenete porte e finestre chiuse mentre sono in funzione, altrimenti si spreca energia e la casa non raggiunge la temperatura desiderata.
+          </div>
         </div>
       </details>
 
@@ -661,19 +850,38 @@
                  data-fr="Cafetière moka">Moka e caffè</summary>
 
         <div class="manual-content">
-          <ul class="simple-list">
-            <li data-it-html="Riempite la parte inferiore della moka con acqua, senza superare la valvola."
-                data-en-html="Fill the lower part of the moka with water, without going above the valve."
-                data-es-html="Llenad la parte inferior de la moka con agua, sin superar la válvula."
-                data-fr-html="Remplissez la partie inférieure de la moka avec de l'eau, sans dépasser la valve.">
-              Riempite la parte inferiore della moka con acqua, senza superare la valvola.
+          <div class="manual-img contain">
+            <img src="assets/manuale-moka.jpg" alt="Istruzioni per usare la moka">
+          </div>
+
+          <div class="warning-box"
+               data-it-html="<strong>Attenzione:</strong> la moka non va mai messa in lavastoviglie. Non usate detersivi aggressivi. Lavatela solo a mano con acqua calda, asciugatela bene dopo il lavaggio e non lasciate acqua nel serbatoio."
+               data-en-html="<strong>Attention:</strong> never put the moka in the dishwasher. Do not use harsh detergents. Hand wash only with hot water, dry it thoroughly after washing and do not leave water in the tank."
+               data-es-html="<strong>Atención:</strong> la cafetera moka no debe ponerse nunca en el lavavajillas. No uséis detergentes agresivos. Lavadla solo a mano con agua caliente, secadla bien después del lavado y no dejéis agua en el depósito."
+               data-fr-html="<strong>Attention :</strong> ne mettez jamais la moka au lave-vaisselle. N’utilisez pas de détergents agressifs. Lavez-la uniquement à la main avec de l’eau chaude, séchez-la bien après le lavage et ne laissez pas d’eau dans le réservoir.">
+            <strong>Attenzione:</strong> la moka non va mai messa in lavastoviglie. Non usate detersivi aggressivi. Lavatela solo a mano con acqua calda, asciugatela bene dopo il lavaggio e non lasciate acqua nel serbatoio.
+          </div>
+
+          <ol class="step-list">
+            <li data-it-html="Svitate la moka separando la parte inferiore, il filtro e la parte superiore."
+                data-en-html="Unscrew the moka, separating the lower chamber, the filter and the upper part."
+                data-es-html="Desenroscad la moka separando la parte inferior, el filtro y la parte superior."
+                data-fr-html="Dévissez la moka en séparant la partie inférieure, le filtre et la partie supérieure.">
+              Svitate la moka separando la parte inferiore, il filtro e la parte superiore.
             </li>
 
-            <li data-it-html="Inserite il filtro e aggiungete il caffè senza pressarlo troppo."
-                data-en-html="Insert the filter and add the coffee without pressing it too much."
-                data-es-html="Colocad el filtro y añadid el café sin presionarlo demasiado."
-                data-fr-html="Insérez le filtre et ajoutez le café sans trop le tasser.">
-              Inserite il filtro e aggiungete il caffè senza pressarlo troppo.
+            <li data-it-html="Riempite la parte inferiore con acqua, senza superare la valvola."
+                data-en-html="Fill the lower chamber with water, without going above the valve."
+                data-es-html="Llenad la parte inferior con agua, sin superar la válvula."
+                data-fr-html="Remplissez la partie inférieure avec de l’eau, sans dépasser la valve.">
+              Riempite la parte inferiore con acqua, senza superare la valvola.
+            </li>
+
+            <li data-it-html="Inserite il filtro e aggiungete il caffè macinato. Non pressatelo troppo."
+                data-en-html="Insert the filter and add ground coffee. Do not press it too much."
+                data-es-html="Colocad el filtro y añadid café molido. No lo presionéis demasiado."
+                data-fr-html="Insérez le filtre et ajoutez le café moulu. Ne le tassez pas trop.">
+              Inserite il filtro e aggiungete il caffè macinato. Non pressatelo troppo.
             </li>
 
             <li data-it-html="Chiudete bene la moka e mettetela sul fornello a fuoco basso o medio."
@@ -683,20 +891,20 @@
               Chiudete bene la moka e mettetela sul fornello a fuoco basso o medio.
             </li>
 
-            <li data-it-html="Quando il caffè sale, spegnete il fuoco. Non lasciate la moka sul fornello acceso senza controllo."
-                data-en-html="When the coffee comes up, turn off the heat. Do not leave the moka on the lit stove unattended."
-                data-es-html="Cuando suba el café, apagad el fuego. No dejéis la moka en el fuego encendido sin vigilancia."
-                data-fr-html="Lorsque le café monte, éteignez le feu. Ne laissez pas la moka sur la plaque allumée sans surveillance.">
-              Quando il caffè sale, spegnete il fuoco. Non lasciate la moka sul fornello acceso senza controllo.
+            <li data-it-html="Quando sentite il classico rumore del caffè che sale, spegnete il fuoco."
+                data-en-html="When you hear the classic bubbling sound of the coffee coming up, turn off the heat."
+                data-es-html="Cuando escuchéis el sonido típico del café que sube, apagád el fuego."
+                data-fr-html="Quand vous entendez le bruit typique du café qui monte, éteignez le feu.">
+              Quando sentite il classico rumore del caffè che sale, spegnete il fuoco.
             </li>
 
-            <li data-it-html="Dopo l'uso, lasciatela raffreddare prima di lavarla."
-                data-en-html="After use, let it cool down before washing it."
-                data-es-html="Después de usarla, dejadla enfriar antes de lavarla."
-                data-fr-html="Après utilisation, laissez-la refroidir avant de la laver.">
-              Dopo l'uso, lasciatela raffreddare prima di lavarla.
+            <li data-it-html="Versate il caffè e lasciate raffreddare la moka prima di lavarla."
+                data-en-html="Pour the coffee and let the moka cool down before washing it."
+                data-es-html="Servid el café y dejad enfriar la moka antes de lavarla."
+                data-fr-html="Versez le café et laissez refroidir la moka avant de la laver.">
+              Versate il caffè e lasciate raffreddare la moka prima di lavarla.
             </li>
-          </ul>
+          </ol>
         </div>
       </details>
 
@@ -739,28 +947,346 @@
                  data-fr="Machine à laver">Lavatrice</summary>
 
         <div class="manual-content">
+          <div class="manual-img">
+            <img src="assets/manuale-lavatrice-comandi.jpg" alt="Comandi della lavatrice">
+          </div>
+
+          <p data-it="La lavatrice può essere usata se necessario. Vi chiediamo solo di non sovraccaricarla e di usare poco detersivo."
+             data-en="The washing machine can be used if needed. We only ask you not to overload it and to use a small amount of detergent."
+             data-es="La lavadora puede usarse si es necesario. Solo os pedimos que no la sobrecarguéis y que uséis poco detergente."
+             data-fr="La machine à laver peut être utilisée si nécessaire. Nous vous demandons seulement de ne pas la surcharger et d’utiliser peu de lessive.">
+            La lavatrice può essere usata se necessario. Vi chiediamo solo di non sovraccaricarla e di usare poco detersivo.
+          </p>
+
+          <h3 data-it="Dove mettere il detersivo"
+              data-en="Where to put the detergent"
+              data-es="Dónde poner el detergente"
+              data-fr="Où mettre la lessive">Dove mettere il detersivo</h3>
+
+          <div class="manual-img">
+            <img src="assets/manuale-lavatrice-cassetto.jpg" alt="Cassetto detersivi della lavatrice">
+          </div>
+
           <ul class="simple-list">
-            <li data-it-html="La lavatrice può essere usata se necessario, con attenzione e senza sovraccaricarla."
-                data-en-html="The washing machine can be used if needed, carefully and without overloading it."
-                data-es-html="La lavadora puede usarse si es necesario, con cuidado y sin sobrecargarla."
-                data-fr-html="La machine à laver peut être utilisée si nécessaire, avec attention et sans la surcharger.">
-              La lavatrice può essere usata se necessario, con attenzione e senza sovraccaricarla.
+            <li data-it-html="<strong>Vaschetta 2:</strong> detersivo per il lavaggio principale. È quella da usare nella maggior parte dei casi."
+                data-en-html="<strong>Compartment 2:</strong> detergent for the main wash. This is the one to use in most cases."
+                data-es-html="<strong>Compartimento 2:</strong> detergente para el lavado principal. Es el que se usa en la mayoría de los casos."
+                data-fr-html="<strong>Compartiment 2 :</strong> lessive pour le lavage principal. C’est celui à utiliser dans la plupart des cas.">
+              <strong>Vaschetta 2:</strong> detersivo per il lavaggio principale. È quella da usare nella maggior parte dei casi.
             </li>
 
-            <li data-it-html="Alla fine del soggiorno, se potete, mettete gli asciugamani usati nella lavatrice <strong>senza avviarla</strong>."
-                data-en-html="At the end of your stay, if possible, place the used towels in the washing machine <strong>without starting it</strong>."
-                data-es-html="Al final de la estancia, si podéis, poned las toallas usadas en la lavadora <strong>sin ponerla en marcha</strong>."
-                data-fr-html="À la fin du séjour, si possible, mettez les serviettes utilisées dans la machine <strong>sans la lancer</strong>.">
-              Alla fine del soggiorno, se potete, mettete gli asciugamani usati nella lavatrice <strong>senza avviarla</strong>.
+            <li data-it-html="<strong>Vaschetta con il fiore:</strong> ammorbidente, solo se volete usarlo."
+                data-en-html="<strong>Compartment with the flower:</strong> fabric softener, only if you want to use it."
+                data-es-html="<strong>Compartimento con la flor:</strong> suavizante, solo si queréis usarlo."
+                data-fr-html="<strong>Compartiment avec la fleur :</strong> adoucissant, seulement si vous voulez l’utiliser.">
+              <strong>Vaschetta con il fiore:</strong> ammorbidente, solo se volete usarlo.
             </li>
 
-            <li data-it-html="Se non siete sicuri di quale programma usare, scriveteci prima di avviarla."
-                data-en-html="If you are not sure which programme to use, message us before starting it."
-                data-es-html="Si no estáis seguros de qué programa usar, escribidnos antes de ponerla en marcha."
-                data-fr-html="Si vous ne savez pas quel programme utiliser, écrivez-nous avant de la lancer.">
-              Se non siete sicuri di quale programma usare, scriveteci prima di avviarla.
+            <li data-it-html="<strong>Vaschetta 1:</strong> prelavaggio. Normalmente non serve."
+                data-en-html="<strong>Compartment 1:</strong> pre-wash. Usually not needed."
+                data-es-html="<strong>Compartimento 1:</strong> prelavado. Normalmente no hace falta."
+                data-fr-html="<strong>Compartiment 1 :</strong> prélavage. Normalement inutile.">
+              <strong>Vaschetta 1:</strong> prelavaggio. Normalmente non serve.
             </li>
           </ul>
+
+          <h3 data-it="Programmi principali"
+              data-en="Main programmes"
+              data-es="Programas principales"
+              data-fr="Programmes principaux">Programmi principali</h3>
+
+          <div class="manual-img">
+            <img src="assets/manuale-lavatrice-programmi.jpg" alt="Programmi della lavatrice">
+          </div>
+
+          <table class="program-table">
+            <thead>
+              <tr>
+                <th data-it="Programma"
+                    data-en="Programme"
+                    data-es="Programa"
+                    data-fr="Programme">Programma</th>
+                <th data-it="Quando usarlo"
+                    data-en="When to use it"
+                    data-es="Cuándo usarlo"
+                    data-fr="Quand l’utiliser">Quando usarlo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-it="Daily 2 o 3"
+                    data-en="Daily 2 or 3"
+                    data-es="Daily 2 o 3"
+                    data-fr="Daily 2 ou 3">Daily 2 o 3</td>
+                <td data-it="Per bucato normale di tutti i giorni. È la scelta più semplice."
+                    data-en="For normal everyday laundry. This is the easiest choice."
+                    data-es="Para ropa normal del día a día. Es la opción más sencilla."
+                    data-fr="Pour le linge normal du quotidien. C’est le choix le plus simple.">
+                  Per bucato normale di tutti i giorni. È la scelta più semplice.
+                </td>
+              </tr>
+
+              <tr>
+                <td data-it="Zone 20°"
+                    data-en="Zone 20°"
+                    data-es="Zone 20°"
+                    data-fr="Zone 20°">Zone 20°</td>
+                <td data-it="Per lavaggi più delicati o per capi poco sporchi, a bassa temperatura."
+                    data-en="For more delicate washes or lightly soiled clothes, at low temperature."
+                    data-es="Para lavados más delicados o ropa poco sucia, a baja temperatura."
+                    data-fr="Pour les lavages plus délicats ou le linge peu sale, à basse température.">
+                  Per lavaggi più delicati o per capi poco sporchi, a bassa temperatura.
+                </td>
+              </tr>
+
+              <tr>
+                <td data-it="Special 9 / 10 / 11"
+                    data-en="Special 9 / 10 / 11"
+                    data-es="Special 9 / 10 / 11"
+                    data-fr="Special 9 / 10 / 11">Special 9 / 10 / 11</td>
+                <td data-it="Per capi particolari. Usateli solo se sapete quale programma vi serve."
+                    data-en="For specific garments. Use them only if you know which programme you need."
+                    data-es="Para prendas especiales. Usadlos solo si sabéis qué programa necesitáis."
+                    data-fr="Pour des vêtements particuliers. Utilisez-les seulement si vous savez quel programme vous faut.">
+                  Per capi particolari. Usateli solo se sapete quale programma vi serve.
+                </td>
+              </tr>
+
+              <tr>
+                <td data-it="Sport 12 / 13 / 14"
+                    data-en="Sport 12 / 13 / 14"
+                    data-es="Sport 12 / 13 / 14"
+                    data-fr="Sport 12 / 13 / 14">Sport 12 / 13 / 14</td>
+                <td data-it="Per capi sportivi o scarpe, se necessario."
+                    data-en="For sportswear or shoes, if needed."
+                    data-es="Para ropa deportiva o zapatos, si es necesario."
+                    data-fr="Pour vêtements de sport ou chaussures, si nécessaire.">
+                  Per capi sportivi o scarpe, se necessario.
+                </td>
+              </tr>
+
+              <tr>
+                <td data-it="Rinse / Spin + Drain"
+                    data-en="Rinse / Spin + Drain"
+                    data-es="Aclarado / Centrifugado + desagüe"
+                    data-fr="Rinçage / Essorage + vidange">Rinse / Spin + Drain</td>
+                <td data-it="Per risciacquare, centrifugare o scaricare l’acqua senza fare un lavaggio completo."
+                    data-en="To rinse, spin or drain water without doing a full wash."
+                    data-es="Para aclarar, centrifugar o vaciar el agua sin hacer un lavado completo."
+                    data-fr="Pour rincer, essorer ou vidanger sans faire un lavage complet.">
+                  Per risciacquare, centrifugare o scaricare l’acqua senza fare un lavaggio completo.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <ol class="step-list">
+            <li data-it-html="Inserite i capi nel cestello senza riempirlo troppo."
+                data-en-html="Put the clothes in the drum without overfilling it."
+                data-es-html="Meted la ropa en el tambor sin llenarlo demasiado."
+                data-fr-html="Mettez le linge dans le tambour sans trop le remplir.">
+              Inserite i capi nel cestello senza riempirlo troppo.
+            </li>
+
+            <li data-it-html="Mettete poco detersivo nella vaschetta <strong>2</strong>."
+                data-en-html="Put a small amount of detergent in compartment <strong>2</strong>."
+                data-es-html="Poned poco detergente en el compartimento <strong>2</strong>."
+                data-fr-html="Mettez une petite quantité de lessive dans le compartiment <strong>2</strong>.">
+              Mettete poco detersivo nella vaschetta <strong>2</strong>.
+            </li>
+
+            <li data-it-html="Accendete la lavatrice con il tasto <strong>ON/OFF</strong>."
+                data-en-html="Turn on the washing machine using the <strong>ON/OFF</strong> button."
+                data-es-html="Encended la lavadora con el botón <strong>ON/OFF</strong>."
+                data-fr-html="Allumez la machine avec le bouton <strong>ON/OFF</strong>.">
+              Accendete la lavatrice con il tasto <strong>ON/OFF</strong>.
+            </li>
+
+            <li data-it-html="Scegliete il programma con la manopola grande."
+                data-en-html="Choose the programme using the large dial."
+                data-es-html="Elegid el programa con la rueda grande."
+                data-fr-html="Choisissez le programme avec la grande molette.">
+              Scegliete il programma con la manopola grande.
+            </li>
+
+            <li data-it-html="Premete <strong>START/PAUSE</strong> per avviare."
+                data-en-html="Press <strong>START/PAUSE</strong> to start."
+                data-es-html="Pulsad <strong>START/PAUSE</strong> para iniciar."
+                data-fr-html="Appuyez sur <strong>START/PAUSE</strong> pour démarrer.">
+              Premete <strong>START/PAUSE</strong> per avviare.
+            </li>
+          </ol>
+
+          <div class="warning-box"
+               data-it-html="Alla fine del soggiorno, se potete, mettete gli asciugamani usati nella lavatrice <strong>senza avviarla</strong>."
+               data-en-html="At the end of your stay, if possible, place the used towels in the washing machine <strong>without starting it</strong>."
+               data-es-html="Al final de la estancia, si podéis, poned las toallas usadas en la lavadora <strong>sin ponerla en marcha</strong>."
+               data-fr-html="À la fin du séjour, si possible, mettez les serviettes utilisées dans la machine <strong>sans la lancer</strong>.">
+            Alla fine del soggiorno, se potete, mettete gli asciugamani usati nella lavatrice <strong>senza avviarla</strong>.
+          </div>
+        </div>
+      </details>
+
+      <details class="manual-details">
+        <summary data-it="Lavastoviglie"
+                 data-en="Dishwasher"
+                 data-es="Lavavajillas"
+                 data-fr="Lave-vaisselle">Lavastoviglie</summary>
+
+        <div class="manual-content">
+          <p data-it="La lavastoviglie può essere usata normalmente. Vi chiediamo solo di non inserire oggetti non adatti e di usare solo detersivo per lavastoviglie."
+             data-en="The dishwasher can be used normally. We only ask you not to put unsuitable items inside and to use only dishwasher detergent."
+             data-es="El lavavajillas puede usarse normalmente. Solo os pedimos que no metáis objetos no aptos y que uséis solo detergente para lavavajillas."
+             data-fr="Le lave-vaisselle peut être utilisé normalement. Nous vous demandons seulement de ne pas y mettre d’objets non adaptés et d’utiliser uniquement du détergent pour lave-vaisselle.">
+            La lavastoviglie può essere usata normalmente. Vi chiediamo solo di non inserire oggetti non adatti e di usare solo detersivo per lavastoviglie.
+          </p>
+
+          <h3 data-it="Dove mettere detersivo e brillantante"
+              data-en="Where to put detergent and rinse aid"
+              data-es="Dónde poner detergente y abrillantador"
+              data-fr="Où mettre le détergent et le liquide de rinçage">Dove mettere detersivo e brillantante</h3>
+
+          <div class="manual-img">
+            <img src="assets/manuale-lavastoviglie-cassetto.jpg" alt="Vaschetta detersivo e brillantante lavastoviglie">
+          </div>
+
+          <ul class="simple-list">
+            <li data-it-html="<strong>Detersivo:</strong> va inserito nello sportellino principale della lavastoviglie. Potete usare una pastiglia oppure detersivo specifico per lavastoviglie."
+                data-en-html="<strong>Detergent:</strong> put it in the main dishwasher dispenser. You can use a tablet or dishwasher-specific detergent."
+                data-es-html="<strong>Detergente:</strong> se coloca en el compartimento principal del lavavajillas. Podéis usar una pastilla o detergente específico para lavavajillas."
+                data-fr-html="<strong>Détergent :</strong> mettez-le dans le compartiment principal du lave-vaisselle. Vous pouvez utiliser une tablette ou un détergent spécifique pour lave-vaisselle.">
+              <strong>Detersivo:</strong> va inserito nello sportellino principale della lavastoviglie. Potete usare una pastiglia oppure detersivo specifico per lavastoviglie.
+            </li>
+
+            <li data-it-html="<strong>Brillantante:</strong> va inserito nel serbatoio con il simbolo della stellina. Non va riempito ogni volta, solo quando è vuoto."
+                data-en-html="<strong>Rinse aid:</strong> put it in the container with the star symbol. It does not need to be filled every time, only when empty."
+                data-es-html="<strong>Abrillantador:</strong> se pone en el depósito con el símbolo de la estrella. No hay que llenarlo cada vez, solo cuando esté vacío."
+                data-fr-html="<strong>Liquide de rinçage :</strong> mettez-le dans le réservoir avec le symbole étoile. Il ne faut pas le remplir à chaque fois, seulement lorsqu’il est vide.">
+              <strong>Brillantante:</strong> va inserito nel serbatoio con il simbolo della stellina. Non va riempito ogni volta, solo quando è vuoto.
+            </li>
+          </ul>
+
+          <div class="warning-box"
+               data-it-html="<strong>Non usate mai detersivo per piatti a mano</strong> nella lavastoviglie: fa troppa schiuma e può causare perdite o danni."
+               data-en-html="<strong>Never use hand dishwashing liquid</strong> in the dishwasher: it creates too much foam and may cause leaks or damage."
+               data-es-html="<strong>No uséis nunca detergente para lavar platos a mano</strong> en el lavavajillas: hace demasiada espuma y puede causar fugas o daños."
+               data-fr-html="<strong>N’utilisez jamais de liquide vaisselle à main</strong> dans le lave-vaisselle : il mousse trop et peut provoquer des fuites ou des dégâts.">
+            <strong>Non usate mai detersivo per piatti a mano</strong> nella lavastoviglie: fa troppa schiuma e può causare perdite o danni.
+          </div>
+
+          <h3 data-it="Come avviare la lavastoviglie"
+              data-en="How to start the dishwasher"
+              data-es="Cómo iniciar el lavavajillas"
+              data-fr="Comment lancer le lave-vaisselle">Come avviare la lavastoviglie</h3>
+
+          <div class="manual-img">
+            <img src="assets/manuale-lavastoviglie-comandi.jpg" alt="Comandi della lavastoviglie">
+          </div>
+
+          <table class="program-table">
+            <thead>
+              <tr>
+                <th data-it="Programma"
+                    data-en="Programme"
+                    data-es="Programa"
+                    data-fr="Programme">Programma</th>
+                <th data-it="Quando usarlo"
+                    data-en="When to use it"
+                    data-es="Cuándo usarlo"
+                    data-fr="Quand l’utiliser">Quando usarlo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-it="Eco 50°"
+                    data-en="Eco 50°"
+                    data-es="Eco 50°"
+                    data-fr="Éco 50°">Eco 50°</td>
+                <td data-it="Programma consigliato per piatti normalmente sporchi. Consuma meno."
+                    data-en="Recommended programme for normally dirty dishes. It uses less energy."
+                    data-es="Programa recomendado para platos normalmente sucios. Consume menos."
+                    data-fr="Programme conseillé pour la vaisselle normalement sale. Il consomme moins.">
+                  Programma consigliato per piatti normalmente sporchi. Consuma meno.
+                </td>
+              </tr>
+
+              <tr>
+                <td data-it="Normale 65°"
+                    data-en="Normal 65°"
+                    data-es="Normal 65°"
+                    data-fr="Normal 65°">Normale 65°</td>
+                <td data-it="Per piatti e pentole più sporchi."
+                    data-en="For dirtier dishes and pans."
+                    data-es="Para platos y ollas más sucios."
+                    data-fr="Pour la vaisselle et les casseroles plus sales.">
+                  Per piatti e pentole più sporchi.
+                </td>
+              </tr>
+
+              <tr>
+                <td data-it="Intensivo 70°"
+                    data-en="Intensive 70°"
+                    data-es="Intensivo 70°"
+                    data-fr="Intensif 70°">Intensivo 70°</td>
+                <td data-it="Solo per sporco molto resistente."
+                    data-en="Only for very stubborn dirt."
+                    data-es="Solo para suciedad muy resistente."
+                    data-fr="Seulement pour la saleté très incrustée.">
+                  Solo per sporco molto resistente.
+                </td>
+              </tr>
+
+              <tr>
+                <td data-it="Ammollo"
+                    data-en="Soak"
+                    data-es="Remojo"
+                    data-fr="Trempage">Ammollo</td>
+                <td data-it="Per risciacquare velocemente prima di un lavaggio completo."
+                    data-en="To quickly rinse before a full wash."
+                    data-es="Para aclarar rápidamente antes de un lavado completo."
+                    data-fr="Pour rincer rapidement avant un lavage complet.">
+                  Per risciacquare velocemente prima di un lavaggio completo.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <ol class="step-list">
+            <li data-it-html="Caricate la lavastoviglie senza bloccare i bracci interni."
+                data-en-html="Load the dishwasher without blocking the internal spray arms."
+                data-es-html="Cargad el lavavajillas sin bloquear los brazos internos."
+                data-fr-html="Chargez le lave-vaisselle sans bloquer les bras internes.">
+              Caricate la lavastoviglie senza bloccare i bracci interni.
+            </li>
+
+            <li data-it-html="Inserite il detersivo nello sportellino principale e chiudetelo."
+                data-en-html="Put the detergent in the main dispenser and close it."
+                data-es-html="Poned el detergente en el compartimento principal y cerradlo."
+                data-fr-html="Mettez le détergent dans le compartiment principal et fermez-le.">
+              Inserite il detersivo nello sportellino principale e chiudetelo.
+            </li>
+
+            <li data-it-html="Premete il tasto di accensione."
+                data-en-html="Press the power button."
+                data-es-html="Pulsad el botón de encendido."
+                data-fr-html="Appuyez sur le bouton d’allumage.">
+              Premete il tasto di accensione.
+            </li>
+
+            <li data-it-html="Selezionate il programma desiderato, di solito <strong>Eco 50°</strong> o <strong>Normale 65°</strong>."
+                data-en-html="Select the desired programme, usually <strong>Eco 50°</strong> or <strong>Normal 65°</strong>."
+                data-es-html="Seleccionad el programa deseado, normalmente <strong>Eco 50°</strong> o <strong>Normal 65°</strong>."
+                data-fr-html="Sélectionnez le programme souhaité, généralement <strong>Éco 50°</strong> ou <strong>Normal 65°</strong>.">
+              Selezionate il programma desiderato, di solito <strong>Eco 50°</strong> o <strong>Normale 65°</strong>.
+            </li>
+
+            <li data-it-html="Chiudete bene lo sportello e lasciate terminare il ciclo."
+                data-en-html="Close the door properly and let the cycle finish."
+                data-es-html="Cerrad bien la puerta y dejad que termine el ciclo."
+                data-fr-html="Fermez bien la porte et laissez le cycle se terminer.">
+              Chiudete bene lo sportello e lasciate terminare il ciclo.
+            </li>
+          </ol>
         </div>
       </details>
 

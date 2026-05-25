@@ -256,15 +256,29 @@
 
     .manual-img img {
       width: 100%;
-      max-height: 420px;
-      object-fit: cover;
+      height: auto;
+      max-height: none;
+      object-fit: contain;
       border-radius: 20px;
       box-shadow: 0 10px 28px rgba(0,80,85,.12);
+      background: #f7f7f2;
+      display: block;
     }
 
     .manual-img.contain img {
       object-fit: contain;
       background: #f7f7f2;
+    }
+
+    .manual-img.wide img {
+      width: 100%;
+      max-height: none;
+      object-fit: contain;
+    }
+
+    .manual-img.small img {
+      max-width: 650px;
+      margin: 0 auto;
     }
 
     .step-list {
@@ -502,7 +516,7 @@
       }
 
       .manual-img img {
-        max-height: 330px;
+        max-height: none;
       }
 
       .program-table,
@@ -1246,8 +1260,134 @@
                  data-fr="Machine à laver">Lavatrice</summary>
 
         <div class="manual-content">
-          <div class="manual-img">
+          <div class="manual-img wide">
             <img src="assets/manuale-lavatrice-comandi.jpg" alt="Comandi della lavatrice">
+          </div>
+
+          <h3 data-it="Comandi principali"
+              data-en="Main controls"
+              data-es="Mandos principales"
+              data-fr="Commandes principales">Comandi principali</h3>
+
+          <div class="remote-guide">
+
+            <div class="remote-card remote-white">
+              <strong data-it="Tasto ON/OFF"
+                      data-en="ON/OFF button"
+                      data-es="Botón ON/OFF"
+                      data-fr="Bouton ON/OFF">Tasto ON/OFF</strong>
+              <p data-it="Serve per accendere e spegnere la lavatrice."
+                 data-en="Use this button to turn the washing machine on and off."
+                 data-es="Sirve para encender y apagar la lavadora."
+                 data-fr="Il sert à allumer et éteindre la machine à laver.">
+                Serve per accendere e spegnere la lavatrice.
+              </p>
+            </div>
+
+            <div class="remote-card remote-white">
+              <strong data-it="Manopola programmi"
+                      data-en="Programme dial"
+                      data-es="Rueda de programas"
+                      data-fr="Molette des programmes">Manopola programmi</strong>
+              <p data-it="Serve per scegliere il programma di lavaggio. Giratela fino al numero desiderato, seguendo la tabella dei programmi."
+                 data-en="Use it to choose the washing programme. Turn it to the desired number, following the programme table."
+                 data-es="Sirve para elegir el programa de lavado. Giradla hasta el número deseado, siguiendo la tabla de programas."
+                 data-fr="Elle sert à choisir le programme de lavage. Tournez-la jusqu’au numéro souhaité, en suivant le tableau des programmes.">
+                Serve per scegliere il programma di lavaggio. Giratela fino al numero desiderato, seguendo la tabella dei programmi.
+              </p>
+            </div>
+
+            <div class="remote-card remote-white">
+              <strong data-it="Manopola temperatura"
+                      data-en="Temperature dial"
+                      data-es="Rueda de temperatura"
+                      data-fr="Molette de température">Manopola temperatura</strong>
+              <p data-it="Serve per scegliere la temperatura dell’acqua: 20°, 30°, 40°, 50°, 60°, 70° o 90°. Per un lavaggio normale consigliamo 30° o 40°."
+                 data-en="Use it to choose the water temperature: 20°, 30°, 40°, 50°, 60°, 70° or 90°. For a normal wash, we recommend 30° or 40°."
+                 data-es="Sirve para elegir la temperatura del agua: 20°, 30°, 40°, 50°, 60°, 70° o 90°. Para un lavado normal recomendamos 30° o 40°."
+                 data-fr="Elle sert à choisir la température de l’eau : 20°, 30°, 40°, 50°, 60°, 70° ou 90°. Pour un lavage normal, nous conseillons 30° ou 40°.">
+                Serve per scegliere la temperatura dell’acqua: 20°, 30°, 40°, 50°, 60°, 70° o 90°. Per un lavaggio normale consigliamo 30° o 40°.
+              </p>
+            </div>
+
+            <div class="remote-card remote-white">
+              <strong data-it="Manopola centrifuga"
+                      data-en="Spin speed dial"
+                      data-es="Rueda de centrifugado"
+                      data-fr="Molette d’essorage">Manopola centrifuga</strong>
+              <p data-it="Serve per scegliere la velocità della centrifuga. Più alto è il numero, più i capi usciranno strizzati. Per un uso normale potete lasciare 700/800 giri."
+                 data-en="Use it to choose the spin speed. The higher the number, the drier the clothes will come out. For normal use, you can leave it at 700/800 rpm."
+                 data-es="Sirve para elegir la velocidad de centrifugado. Cuanto más alto sea el número, más escurrida saldrá la ropa. Para un uso normal podéis dejar 700/800 revoluciones."
+                 data-fr="Elle sert à choisir la vitesse d’essorage. Plus le nombre est élevé, plus le linge sort essoré. Pour un usage normal, vous pouvez laisser 700/800 tours.">
+                Serve per scegliere la velocità della centrifuga. Più alto è il numero, più i capi usciranno strizzati. Per un uso normale potete lasciare 700/800 giri.
+              </p>
+            </div>
+
+            <div class="remote-card remote-white">
+              <strong data-it="Tasto START/PAUSE"
+                      data-en="START/PAUSE button"
+                      data-es="Botón START/PAUSE"
+                      data-fr="Bouton START/PAUSE">Tasto START/PAUSE</strong>
+              <p data-it="Serve per avviare il lavaggio o metterlo in pausa."
+                 data-en="Use this button to start the wash or pause it."
+                 data-es="Sirve para iniciar el lavado o ponerlo en pausa."
+                 data-fr="Il sert à lancer le lavage ou à le mettre en pause.">
+                Serve per avviare il lavaggio o metterlo in pausa.
+              </p>
+            </div>
+
+            <div class="remote-card remote-white">
+              <strong data-it="Tasto EcoTime"
+                      data-en="EcoTime button"
+                      data-es="Botón EcoTime"
+                      data-fr="Bouton EcoTime">Tasto EcoTime</strong>
+              <p data-it="Può essere usato per ridurre tempo o consumi nei lavaggi più leggeri. Non è indispensabile: se avete dubbi, potete non usarlo."
+                 data-en="It can be used to reduce time or consumption for lighter washes. It is not essential: if you are not sure, you can avoid using it."
+                 data-es="Puede usarse para reducir tiempo o consumo en lavados más ligeros. No es indispensable: si tenéis dudas, podéis no usarlo."
+                 data-fr="Il peut être utilisé pour réduire le temps ou la consommation pour les lavages légers. Il n’est pas indispensable : en cas de doute, vous pouvez ne pas l’utiliser.">
+                Può essere usato per ridurre tempo o consumi nei lavaggi più leggeri. Non è indispensabile: se avete dubbi, potete non usarlo.
+              </p>
+            </div>
+
+            <div class="remote-card remote-white">
+              <strong data-it="Tasto Energy Saver"
+                      data-en="Energy Saver button"
+                      data-es="Botón Energy Saver"
+                      data-fr="Bouton Energy Saver">Tasto Energy Saver</strong>
+              <p data-it="Serve per un lavaggio più attento ai consumi. Può allungare i tempi del lavaggio. Usatelo solo se vi serve."
+                 data-en="Use it for a more energy-saving wash. It may make the cycle longer. Use it only if needed."
+                 data-es="Sirve para un lavado con menor consumo. Puede alargar el tiempo del lavado. Usadlo solo si lo necesitáis."
+                 data-fr="Il sert à un lavage plus économe. Il peut rallonger la durée du cycle. Utilisez-le seulement si nécessaire.">
+                Serve per un lavaggio più attento ai consumi. Può allungare i tempi del lavaggio. Usatelo solo se vi serve.
+              </p>
+            </div>
+
+            <div class="remote-card remote-white">
+              <strong data-it="Tasto extra risciacquo"
+                      data-en="Extra rinse button"
+                      data-es="Botón aclarado extra"
+                      data-fr="Bouton rinçage supplémentaire">Tasto extra risciacquo</strong>
+              <p data-it="È il tasto con il simbolo delle gocce. Aggiunge un risciacquo in più, utile se avete usato troppo detersivo o per capi delicati."
+                 data-en="It is the button with the drops symbol. It adds an extra rinse, useful if you used too much detergent or for delicate clothes."
+                 data-es="Es el botón con el símbolo de las gotas. Añade un aclarado extra, útil si habéis usado demasiado detergente o para prendas delicadas."
+                 data-fr="C’est le bouton avec le symbole des gouttes. Il ajoute un rinçage supplémentaire, utile si vous avez utilisé trop de lessive ou pour les vêtements délicats.">
+                È il tasto con il simbolo delle gocce. Aggiunge un risciacquo in più, utile se avete usato troppo detersivo o per capi delicati.
+              </p>
+            </div>
+
+            <div class="remote-card remote-white">
+              <strong data-it="Tasto avvio ritardato"
+                      data-en="Delayed start button"
+                      data-es="Botón inicio diferido"
+                      data-fr="Bouton départ différé">Tasto avvio ritardato</strong>
+              <p data-it="È il tasto con il simbolo dell’orologio. Serve per far partire la lavatrice dopo 3, 6, 9 o 12 ore. Per un uso normale non serve."
+                 data-en="It is the button with the clock symbol. It starts the washing machine after 3, 6, 9 or 12 hours. For normal use, you do not need it."
+                 data-es="Es el botón con el símbolo del reloj. Sirve para iniciar la lavadora después de 3, 6, 9 o 12 horas. Para un uso normal no hace falta."
+                 data-fr="C’est le bouton avec le symbole de l’horloge. Il sert à démarrer la machine après 3, 6, 9 ou 12 heures. Pour un usage normal, il n’est pas nécessaire.">
+                È il tasto con il simbolo dell’orologio. Serve per far partire la lavatrice dopo 3, 6, 9 o 12 ore. Per un uso normale non serve.
+              </p>
+            </div>
+
           </div>
 
           <p data-it="La lavatrice può essere usata se necessario. Vi chiediamo solo di non sovraccaricarla e di usare poco detersivo."
@@ -1262,7 +1402,7 @@
               data-es="Dónde poner el detergente"
               data-fr="Où mettre la lessive">Dove mettere il detersivo</h3>
 
-          <div class="manual-img">
+          <div class="manual-img small">
             <img src="assets/manuale-lavatrice-cassetto.jpg" alt="Cassetto detersivi della lavatrice">
           </div>
 
@@ -1294,7 +1434,7 @@
               data-es="Programas principales"
               data-fr="Programmes principaux">Programmi principali</h3>
 
-          <div class="manual-img">
+          <div class="manual-img wide">
             <img src="assets/manuale-lavatrice-programmi.jpg" alt="Programmi della lavatrice">
           </div>
 
@@ -1313,49 +1453,101 @@
             </thead>
             <tbody>
               <tr>
-                <td data-it="Daily 2 o 3"
-                    data-en="Daily 2 or 3"
-                    data-es="Daily 2 o 3"
-                    data-fr="Daily 2 ou 3">Daily 2 o 3</td>
-                <td data-it="Per bucato normale di tutti i giorni. È la scelta più semplice."
-                    data-en="For normal everyday laundry. This is the easiest choice."
-                    data-es="Para ropa normal del día a día. Es la opción más sencilla."
-                    data-fr="Pour le linge normal du quotidien. C’est le choix le plus simple.">
-                  Per bucato normale di tutti i giorni. È la scelta più semplice.
+                <td data-it="1 - Cotone 90°"
+                    data-en="1 - Cotton 90°"
+                    data-es="1 - Algodón 90°"
+                    data-fr="1 - Coton 90°">1 - Cotone 90°</td>
+                <td data-it="Per capi bianchi molto resistenti e molto sporchi. Usatelo raramente."
+                    data-en="For very resistant and very dirty white laundry. Use it rarely."
+                    data-es="Para prendas blancas muy resistentes y muy sucias. Usadlo raramente."
+                    data-fr="Pour linge blanc très résistant et très sale. À utiliser rarement.">
+                  Per capi bianchi molto resistenti e molto sporchi. Usatelo raramente.
                 </td>
               </tr>
 
               <tr>
-                <td data-it="Zone 20°"
-                    data-en="Zone 20°"
-                    data-es="Zone 20°"
-                    data-fr="Zone 20°">Zone 20°</td>
-                <td data-it="Per lavaggi più delicati o per capi poco sporchi, a bassa temperatura."
-                    data-en="For more delicate washes or lightly soiled clothes, at low temperature."
-                    data-es="Para lavados más delicados o ropa poco sucia, a baja temperatura."
-                    data-fr="Pour les lavages plus délicats ou le linge peu sale, à basse température.">
-                  Per lavaggi più delicati o per capi poco sporchi, a bassa temperatura.
+                <td data-it="2 - Cotone 60°"
+                    data-en="2 - Cotton 60°"
+                    data-es="2 - Algodón 60°"
+                    data-fr="2 - Coton 60°">2 - Cotone 60°</td>
+                <td data-it="Per asciugamani, lenzuola e capi resistenti."
+                    data-en="For towels, sheets and resistant laundry."
+                    data-es="Para toallas, sábanas y prendas resistentes."
+                    data-fr="Pour serviettes, draps et linge résistant.">
+                  Per asciugamani, lenzuola e capi resistenti.
                 </td>
               </tr>
 
               <tr>
-                <td data-it="Special 9 / 10 / 11"
-                    data-en="Special 9 / 10 / 11"
-                    data-es="Special 9 / 10 / 11"
-                    data-fr="Special 9 / 10 / 11">Special 9 / 10 / 11</td>
-                <td data-it="Per capi particolari. Usateli solo se sapete quale programma vi serve."
-                    data-en="For specific garments. Use them only if you know which programme you need."
-                    data-es="Para prendas especiales. Usadlos solo si sabéis qué programa necesitáis."
-                    data-fr="Pour des vêtements particuliers. Utilisez-les seulement si vous savez quel programme vous faut.">
-                  Per capi particolari. Usateli solo se sapete quale programma vi serve.
+                <td data-it="3 - Cotone 40°"
+                    data-en="3 - Cotton 40°"
+                    data-es="3 - Algodón 40°"
+                    data-fr="3 - Coton 40°">3 - Cotone 40°</td>
+                <td data-it="Scelta consigliata per un lavaggio normale di tutti i giorni."
+                    data-en="Recommended choice for a normal everyday wash."
+                    data-es="Opción recomendada para un lavado normal del día a día."
+                    data-fr="Choix conseillé pour un lavage normal du quotidien.">
+                  Scelta consigliata per un lavaggio normale di tutti i giorni.
                 </td>
               </tr>
 
               <tr>
-                <td data-it="Sport 12 / 13 / 14"
-                    data-en="Sport 12 / 13 / 14"
-                    data-es="Sport 12 / 13 / 14"
-                    data-fr="Sport 12 / 13 / 14">Sport 12 / 13 / 14</td>
+                <td data-it="4 - Sintetici 60°"
+                    data-en="4 - Synthetics 60°"
+                    data-es="4 - Sintéticos 60°"
+                    data-fr="4 - Synthétiques 60°">4 - Sintetici 60°</td>
+                <td data-it="Per capi sintetici più resistenti."
+                    data-en="For more resistant synthetic clothes."
+                    data-es="Para prendas sintéticas más resistentes."
+                    data-fr="Pour vêtements synthétiques plus résistants.">
+                  Per capi sintetici più resistenti.
+                </td>
+              </tr>
+
+              <tr>
+                <td data-it="5 - Sintetici 40°"
+                    data-en="5 - Synthetics 40°"
+                    data-es="5 - Sintéticos 40°"
+                    data-fr="5 - Synthétiques 40°">5 - Sintetici 40°</td>
+                <td data-it="Per capi sintetici normali. Buona scelta per vestiti non troppo sporchi."
+                    data-en="For normal synthetic clothes. Good choice for clothes that are not too dirty."
+                    data-es="Para prendas sintéticas normales. Buena opción para ropa no demasiado sucia."
+                    data-fr="Pour vêtements synthétiques normaux. Bon choix pour du linge peu sale.">
+                  Per capi sintetici normali. Buona scelta per vestiti non troppo sporchi.
+                </td>
+              </tr>
+
+              <tr>
+                <td data-it="6 / 7 / 8 - Zone 20°"
+                    data-en="6 / 7 / 8 - Zone 20°"
+                    data-es="6 / 7 / 8 - Zone 20°"
+                    data-fr="6 / 7 / 8 - Zone 20°">6 / 7 / 8 - Zone 20°</td>
+                <td data-it="Per lavaggi a bassa temperatura, capi poco sporchi o più delicati."
+                    data-en="For low-temperature washes, lightly soiled or more delicate clothes."
+                    data-es="Para lavados a baja temperatura, ropa poco sucia o más delicada."
+                    data-fr="Pour les lavages à basse température, linge peu sale ou plus délicat.">
+                  Per lavaggi a bassa temperatura, capi poco sporchi o più delicati.
+                </td>
+              </tr>
+
+              <tr>
+                <td data-it="9 / 10 / 11 - Special"
+                    data-en="9 / 10 / 11 - Special"
+                    data-es="9 / 10 / 11 - Special"
+                    data-fr="9 / 10 / 11 - Special">9 / 10 / 11 - Special</td>
+                <td data-it="Programmi per capi particolari. Usateli solo se sapete quale programma vi serve."
+                    data-en="Programmes for specific garments. Use them only if you know which programme you need."
+                    data-es="Programas para prendas especiales. Usadlos solo si sabéis qué programa necesitáis."
+                    data-fr="Programmes pour vêtements particuliers. Utilisez-les seulement si vous savez quel programme vous faut.">
+                  Programmi per capi particolari. Usateli solo se sapete quale programma vi serve.
+                </td>
+              </tr>
+
+              <tr>
+                <td data-it="12 / 13 / 14 - Sport"
+                    data-en="12 / 13 / 14 - Sport"
+                    data-es="12 / 13 / 14 - Sport"
+                    data-fr="12 / 13 / 14 - Sport">12 / 13 / 14 - Sport</td>
                 <td data-it="Per capi sportivi o scarpe, se necessario."
                     data-en="For sportswear or shoes, if needed."
                     data-es="Para ropa deportiva o zapatos, si es necesario."
@@ -1365,19 +1557,40 @@
               </tr>
 
               <tr>
-                <td data-it="Rinse / Spin + Drain"
-                    data-en="Rinse / Spin + Drain"
-                    data-es="Aclarado / Centrifugado + desagüe"
-                    data-fr="Rinçage / Essorage + vidange">Rinse / Spin + Drain</td>
-                <td data-it="Per risciacquare, centrifugare o scaricare l’acqua senza fare un lavaggio completo."
-                    data-en="To rinse, spin or drain water without doing a full wash."
-                    data-es="Para aclarar, centrifugar o vaciar el agua sin hacer un lavado completo."
-                    data-fr="Pour rincer, essorer ou vidanger sans faire un lavage complet.">
-                  Per risciacquare, centrifugare o scaricare l’acqua senza fare un lavaggio completo.
+                <td data-it="Rinse"
+                    data-en="Rinse"
+                    data-es="Aclarado"
+                    data-fr="Rinçage">Rinse</td>
+                <td data-it="Serve solo per risciacquare i capi, senza fare un lavaggio completo."
+                    data-en="Use it only to rinse clothes, without doing a full wash."
+                    data-es="Sirve solo para aclarar la ropa, sin hacer un lavado completo."
+                    data-fr="Sert uniquement à rincer le linge, sans faire un lavage complet.">
+                  Serve solo per risciacquare i capi, senza fare un lavaggio completo.
+                </td>
+              </tr>
+
+              <tr>
+                <td data-it="Spin + Drain"
+                    data-en="Spin + Drain"
+                    data-es="Centrifugado + desagüe"
+                    data-fr="Essorage + vidange">Spin + Drain</td>
+                <td data-it="Serve per centrifugare e scaricare l’acqua. Utile se il bucato è ancora troppo bagnato."
+                    data-en="Use it to spin and drain water. Useful if the laundry is still too wet."
+                    data-es="Sirve para centrifugar y vaciar el agua. Útil si la ropa sigue demasiado mojada."
+                    data-fr="Sert à essorer et vidanger l’eau. Utile si le linge est encore trop mouillé.">
+                  Serve per centrifugare e scaricare l’acqua. Utile se il bucato è ancora troppo bagnato.
                 </td>
               </tr>
             </tbody>
           </table>
+
+          <div class="warning-box"
+               data-it-html="<strong>Consiglio:</strong> per un lavaggio normale usate il programma <strong>3 - Cotone 40°</strong> oppure <strong>5 - Sintetici 40°</strong>. Non sovraccaricate la lavatrice e usate poco detersivo."
+               data-en-html="<strong>Tip:</strong> for a normal wash, use programme <strong>3 - Cotton 40°</strong> or <strong>5 - Synthetics 40°</strong>. Do not overload the washing machine and use only a small amount of detergent."
+               data-es-html="<strong>Consejo:</strong> para un lavado normal, usad el programa <strong>3 - Algodón 40°</strong> o <strong>5 - Sintéticos 40°</strong>. No sobrecarguéis la lavadora y usad poco detergente."
+               data-fr-html="<strong>Conseil :</strong> pour un lavage normal, utilisez le programme <strong>3 - Coton 40°</strong> ou <strong>5 - Synthétiques 40°</strong>. Ne surchargez pas la machine et utilisez peu de lessive.">
+            <strong>Consiglio:</strong> per un lavaggio normale usate il programma <strong>3 - Cotone 40°</strong> oppure <strong>5 - Sintetici 40°</strong>. Non sovraccaricate la lavatrice e usate poco detersivo.
+          </div>
 
           <ol class="step-list">
             <li data-it-html="Inserite i capi nel cestello senza riempirlo troppo."

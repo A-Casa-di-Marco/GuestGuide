@@ -371,7 +371,7 @@
       margin-top: 18px;
     }
 
-    .page-buttons a {
+    .guide-btn {
       background: var(--ottanio);
       color: #fff;
       border-radius: 999px;
@@ -383,9 +383,25 @@
       transition: transform .18s, box-shadow .18s;
     }
 
-    .page-buttons a:hover {
+    .guide-btn:hover {
       transform: translateY(-2px);
       box-shadow: 0 12px 28px rgba(0, 90, 95, .22);
+    }
+
+    .guide-btn.emergency-btn {
+      background: #b93a32;
+      color: #fff;
+      box-shadow: 0 14px 34px rgba(185, 58, 50, .28);
+      border: 2px solid rgba(255,255,255,.45);
+    }
+
+    .guide-btn.emergency-btn:hover {
+      background: #9f2f29;
+      transform: translateY(-2px);
+    }
+
+    .guide-btn.emergency-btn small {
+      color: rgba(255,255,255,.9);
     }
 
     .marco-story {
@@ -616,7 +632,7 @@
             <option value="fr" data-it="🇫🇷 Français" data-en="🇫🇷 French" data-es="🇫🇷 Francés" data-fr="🇫🇷 Français">🇫🇷 Français</option>
           </select>
         </div>
-        <a href="#contacts-section" data-it="Contatti" data-en="Contacts" data-es="Contactos" data-fr="Contacts">Contatti</a>
+        <a href="#contatti" data-it="Contatti" data-en="Contacts" data-es="Contactos" data-fr="Contacts">Contatti</a>
         <a href="#home-menu" data-it="Guida ospiti" data-en="Guest guide" data-es="Guía para huéspedes" data-fr="Guide des invités">Guida ospiti</a>
         <a href="#marco-section" data-it="Chi è Marco?" data-en="Who is Marco?" data-es="¿Quién es Marco?" data-fr="Qui est Marco ?">Chi è Marco?</a>
       </div>
@@ -638,71 +654,71 @@
           data-es="Guía para huéspedes"
           data-fr="Guide des invités">Guida ospiti</h2>
           <div class="page-buttons">
-         <a data-href="checkin.html" href="checkin.html"
-           data-it="Check-in / Check-out"
-           data-en="Check-in / Check-out"
-           data-es="Check-in / Check-out"
-           data-fr="Check-in / Check-out">Check-in / Check-out</a>
-
-         <a data-href="manuale.html" href="manuale.html"
-           data-it="Manuale della casa"
-           data-en="House manual"
-           data-es="Manual de la casa"
-           data-fr="Manuel de la maison">Manuale della casa</a>
-
-         <a data-href="regole.html" href="regole.html"
-           data-it="Regole della casa"
-           data-en="House rules"
-           data-es="Reglas de la casa"
-           data-fr="Règles de la maison">Regole della casa</a>
-
-         <a data-href="luoghi.html" href="luoghi.html"
-           data-it="Luoghi da visitare"
-           data-en="Places to visit"
-           data-es="Lugares para visitar"
-           data-fr="Lieux à visiter">Luoghi da visitare</a>
-
-         <a data-href="mangiare.html" href="mangiare.html"
-           data-it="Dove mangiare"
-           data-en="Where to eat"
-           data-es="Dónde comer"
-           data-fr="Où manger">Dove mangiare</a>
-
-         <a data-href="parcheggio.html" href="parcheggio.html"
-           data-it="Dove parcheggiare"
-           data-en="Where to park"
-           data-es="Dónde aparcar"
-           data-fr="Où se garer">Dove parcheggiare</a>
-
-         <a data-href="spesa.html" href="spesa.html"
-           data-it="Dove fare la spesa"
-           data-en="Grocery shopping"
-           data-es="Dónde hacer la compra"
-           data-fr="Où faire les courses">Dove fare la spesa</a>
-
-         <a data-href="farmacie-emergenze.html" href="farmacie-emergenze.html"
+         <a class="guide-btn emergency-btn" data-href="farmacie-emergenze.html" href="farmacie-emergenze.html"
            data-it="💊 Farmacie ed emergenze"
            data-en="💊 Pharmacies and emergencies"
            data-es="💊 Farmacias y emergencias"
            data-fr="💊 Pharmacies et urgences">💊 Farmacie ed emergenze</a>
 
-         <a data-href="colazione.html" href="colazione.html"
-           data-it="Colazione"
-           data-en="Breakfast"
-           data-es="Desayuno"
-           data-fr="Petit-déjeuner">Colazione</a>
+         <a class="guide-btn" href="#contatti"
+           data-it="📞 Contatti"
+           data-en="📞 Contacts"
+           data-es="📞 Contactos"
+           data-fr="📞 Contacts">📞 Contatti</a>
 
-         <a data-href="trasporti.html" href="trasporti.html"
-           data-it="Trasporti"
-           data-en="Transport"
-           data-es="Transporte"
-           data-fr="Transports">Trasporti</a>
+         <a class="guide-btn" href="check-in-out.html"
+           data-it="🧳 Check-in / Check-out"
+           data-en="🧳 Check-in / Check-out"
+           data-es="🧳 Check-in / Check-out"
+           data-fr="🧳 Check-in / Check-out">🧳 Check-in / Check-out</a>
 
-         <a href="#contacts-section"
-           data-it="Contatti"
-           data-en="Contacts"
-           data-es="Contactos"
-           data-fr="Contacts">Contatti</a>
+         <a class="guide-btn" href="manuale.html"
+           data-it="🏠 Manuale della casa"
+           data-en="🏠 House manual"
+           data-es="🏠 Manual de la casa"
+           data-fr="🏠 Manuel de la maison">🏠 Manuale della casa</a>
+
+         <a class="guide-btn" href="regole.html"
+           data-it="📋 Regole della casa"
+           data-en="📋 House rules"
+           data-es="📋 Reglas de la casa"
+           data-fr="📋 Règlement de la maison">📋 Regole della casa</a>
+
+         <a class="guide-btn" href="luoghi.html"
+           data-it="📍 Luoghi da visitare"
+           data-en="📍 Places to visit"
+           data-es="📍 Lugares para visitar"
+           data-fr="📍 Lieux à visiter">📍 Luoghi da visitare</a>
+
+         <a class="guide-btn" href="mangiare.html"
+           data-it="🍽️ Dove andare a mangiare"
+           data-en="🍽️ Where to eat"
+           data-es="🍽️ Dónde comer"
+           data-fr="🍽️ Où manger">🍽️ Dove andare a mangiare</a>
+
+         <a class="guide-btn" href="parcheggio.html"
+           data-it="🅿️ Dove parcheggiare"
+           data-en="🅿️ Where to park"
+           data-es="🅿️ Dónde aparcar"
+           data-fr="🅿️ Où se garer">🅿️ Dove parcheggiare</a>
+
+         <a class="guide-btn" href="spesa.html"
+           data-it="🛒 Dove fare la spesa"
+           data-en="🛒 Grocery shopping"
+           data-es="🛒 Dónde hacer la compra"
+           data-fr="🛒 Où faire les courses">🛒 Dove fare la spesa</a>
+
+         <a class="guide-btn" href="colazione.html"
+           data-it="☕ Colazione"
+           data-en="☕ Breakfast"
+           data-es="☕ Desayuno"
+           data-fr="☕ Petit-déjeuner">☕ Colazione</a>
+
+         <a class="guide-btn" href="trasporti.html"
+           data-it="🚌 Trasporti"
+           data-en="🚌 Transport"
+           data-es="🚌 Transportes"
+           data-fr="🚌 Transports">🚌 Trasporti</a>
         </div>
       </section>
 
@@ -806,7 +822,7 @@
         </div>
       </section>
 
-      <section id="contacts-section" class="contacts-section">
+      <section id="contatti" class="contacts-section">
         <h2 data-it="Contatti"
             data-en="Contacts"
             data-es="Contactos"

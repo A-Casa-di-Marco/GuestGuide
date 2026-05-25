@@ -340,6 +340,72 @@
       border-radius: 0 14px 14px 0;
     }
 
+    .remote-guide {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .remote-card {
+      border-radius: 18px;
+      padding: 15px 16px;
+      border: 1px solid rgba(0,0,0,.08);
+      background: #fff;
+    }
+
+    .remote-card strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 15px;
+    }
+
+    .remote-card p {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .remote-blue {
+      background: #e9f6ff;
+      border-left: 6px solid #168ec4;
+    }
+
+    .remote-yellow {
+      background: #fff7df;
+      border-left: 6px solid #f0a400;
+    }
+
+    .remote-red {
+      background: #fff0ee;
+      border-left: 6px solid #d63c32;
+    }
+
+    .remote-purple {
+      background: #f4ecff;
+      border-left: 6px solid #8b40c9;
+    }
+
+    .remote-cyan {
+      background: #e8fbfb;
+      border-left: 6px solid #18b8bd;
+    }
+
+    .remote-white {
+      background: #fff;
+      border-left: 6px solid #d9dedf;
+    }
+
+    .remote-warning {
+      background: #fff0ec;
+      border-left: 6px solid #d96b4c;
+      border-radius: 18px;
+      padding: 15px 16px;
+      margin: 16px 0;
+    }
+
+    .remote-warning strong {
+      color: #9b2f1e;
+    }
+
     @media (max-width:720px) {
       body {
         font-size:14px;
@@ -523,10 +589,10 @@
                       data-es="Nombre de la red"
                       data-fr="Nom du réseau">Nome rete</strong>
               <span class="placeholder"
-                    data-it="Da inserire"
-                    data-en="To be added"
-                    data-es="Por añadir"
-                    data-fr="À ajouter">Da inserire</span>
+                    data-it="A Casa di Marco - Wifi"
+                    data-en="A Casa di Marco - Wifi"
+                    data-es="A Casa di Marco - Wifi"
+                    data-fr="A Casa di Marco - Wifi">A Casa di Marco - Wifi</span>
             </div>
 
             <div class="info-card">
@@ -535,10 +601,10 @@
                       data-es="Contraseña"
                       data-fr="Mot de passe">Password</strong>
               <span class="placeholder"
-                    data-it="Da inserire"
-                    data-en="To be added"
-                    data-es="Por añadir"
-                    data-fr="À ajouter">Da inserire</span>
+                    data-it="ACASADIMARCO!17"
+                    data-en="ACASADIMARCO!17"
+                    data-es="ACASADIMARCO!17"
+                    data-fr="ACASADIMARCO!17">ACASADIMARCO!17</span>
             </div>
           </div>
 
@@ -799,46 +865,210 @@
               data-es="Mando del aire acondicionado"
               data-fr="Télécommande de la climatisation">Telecomando del condizionatore</h3>
 
-          <div class="manual-img">
-            <img src="assets/manuale-condizionatore-telecomando.jpg" alt="Telecomando del condizionatore">
+          <div class="manual-img contain">
+            <img src="assets/manuale-condizionatore-telecomando.jpg" alt="Telecomando del condizionatore con tasti evidenziati">
           </div>
 
-          <ol class="step-list">
-            <li data-it-html="Per accendere o spegnere il condizionatore, premete il tasto rosso <strong>ON/OFF</strong>."
-                data-en-html="To turn the air conditioner on or off, press the red <strong>ON/OFF</strong> button."
-                data-es-html="Para encender o apagar el aire acondicionado, pulsad el botón rojo <strong>ON/OFF</strong>."
-                data-fr-html="Pour allumer ou éteindre la climatisation, appuyez sur le bouton rouge <strong>ON/OFF</strong>.">
-              Per accendere o spegnere il condizionatore, premete il tasto rosso <strong>ON/OFF</strong>.
-            </li>
+          <div class="remote-warning"
+               data-it-html="<strong>Importante:</strong> ogni volta che usate il telecomando, puntatelo verso il condizionatore. Se non è rivolto verso il condizionatore, il comando potrebbe non funzionare."
+               data-en-html="<strong>Important:</strong> every time you use the remote control, point it towards the air conditioner. If it is not facing the unit, the command may not work."
+               data-es-html="<strong>Importante:</strong> cada vez que uséis el mando, apuntadlo hacia el aire acondicionado. Si no está orientado hacia el aparato, el comando podría no funcionar."
+               data-fr-html="<strong>Important :</strong> chaque fois que vous utilisez la télécommande, dirigez-la vers la climatisation. Si elle n’est pas orientée vers l’appareil, la commande peut ne pas fonctionner.">
+            <strong>Importante:</strong> ogni volta che usate il telecomando, puntatelo verso il condizionatore. Se non è rivolto verso il condizionatore, il comando potrebbe non funzionare.
+          </div>
 
-            <li data-it-html="Con il tasto <strong>MODE</strong> scegliete la modalità: freddo in estate, caldo in inverno."
-                data-en-html="Use the <strong>MODE</strong> button to choose the mode: cooling in summer, heating in winter."
-                data-es-html="Con el botón <strong>MODE</strong> elegid el modo: frío en verano, calor en invierno."
-                data-fr-html="Avec le bouton <strong>MODE</strong>, choisissez le mode : froid en été, chaud en hiver.">
-              Con il tasto <strong>MODE</strong> scegliete la modalità: freddo in estate, caldo in inverno.
-            </li>
+          <div class="remote-warning"
+               data-it-html="<strong>È vietato lasciare il condizionatore acceso quando non siete in casa.</strong> Prima di uscire, controllate sempre di averlo spento."
+               data-en-html="<strong>It is forbidden to leave the air conditioner on when you are not at home.</strong> Before going out, always check that it is turned off."
+               data-es-html="<strong>Está prohibido dejar el aire acondicionado encendido cuando no estáis en casa.</strong> Antes de salir, comprobad siempre que esté apagado."
+               data-fr-html="<strong>Il est interdit de laisser la climatisation allumée lorsque vous n’êtes pas dans la maison.</strong> Avant de sortir, vérifiez toujours qu’elle est éteinte.">
+            <strong>È vietato lasciare il condizionatore acceso quando non siete in casa.</strong> Prima di uscire, controllate sempre di averlo spento.
+          </div>
 
-            <li data-it-html="Usate le frecce <strong>TEMP</strong> per alzare o abbassare la temperatura."
-                data-en-html="Use the <strong>TEMP</strong> arrows to increase or decrease the temperature."
-                data-es-html="Usad las flechas <strong>TEMP</strong> para subir o bajar la temperatura."
-                data-fr-html="Utilisez les flèches <strong>TEMP</strong> pour augmenter ou diminuer la température.">
-              Usate le frecce <strong>TEMP</strong> per alzare o abbassare la temperatura.
-            </li>
+          <div class="remote-guide">
 
-            <li data-it-html="Con <strong>FAN SPEED</strong> potete regolare la velocità dell’aria."
-                data-en-html="With <strong>FAN SPEED</strong> you can adjust the air speed."
-                data-es-html="Con <strong>FAN SPEED</strong> podéis regular la velocidad del aire."
-                data-fr-html="Avec <strong>FAN SPEED</strong>, vous pouvez régler la vitesse de l’air.">
-              Con <strong>FAN SPEED</strong> potete regolare la velocità dell’aria.
-            </li>
-          </ol>
+            <div class="remote-card remote-red">
+              <strong data-it="Tasto ON/OFF"
+                      data-en="ON/OFF button"
+                      data-es="Botón ON/OFF"
+                      data-fr="Bouton ON/OFF">Tasto ON/OFF</strong>
 
-          <div class="warning-box"
-               data-it-html="<strong>Per favore:</strong> quando uscite di casa, spegnete sempre condizionatore e termosifoni. Tenete porte e finestre chiuse mentre sono in funzione, altrimenti si spreca energia e la casa non raggiunge la temperatura desiderata."
-               data-en-html="<strong>Please:</strong> when you leave the house, always turn off the air conditioning and radiators. Keep doors and windows closed while they are on, otherwise energy is wasted and the house will not reach the desired temperature."
-               data-es-html="<strong>Por favor:</strong> cuando salgáis de casa, apagad siempre el aire acondicionado y los radiadores. Mantened puertas y ventanas cerradas mientras están encendidos, de lo contrario se desperdicia energía y la casa no alcanza la temperatura deseada."
-               data-fr-html="<strong>S’il vous plaît :</strong> lorsque vous quittez la maison, éteignez toujours la climatisation et les radiateurs. Gardez portes et fenêtres fermées lorsqu’ils sont en marche, sinon l’énergie est gaspillée et la maison n’atteint pas la température souhaitée.">
-            <strong>Per favore:</strong> quando uscite di casa, spegnete sempre condizionatore e termosifoni. Tenete porte e finestre chiuse mentre sono in funzione, altrimenti si spreca energia e la casa non raggiunge la temperatura desiderata.
+              <p data-it="Serve per accendere e spegnere il condizionatore."
+                 data-en="Use this button to turn the air conditioner on and off."
+                 data-es="Sirve para encender y apagar el aire acondicionado."
+                 data-fr="Il sert à allumer et éteindre la climatisation.">
+                Serve per accendere e spegnere il condizionatore.
+              </p>
+            </div>
+
+            <div class="remote-card remote-blue">
+              <strong data-it="Tasto MODE"
+                      data-en="MODE button"
+                      data-es="Botón MODE"
+                      data-fr="Bouton MODE">Tasto MODE</strong>
+
+              <p data-it="Serve per scegliere la modalità. Premendolo più volte potete cambiare tra freddo, caldo, deumidificazione, ventilazione o automatico."
+                 data-en="Use this button to choose the mode. Press it several times to switch between cooling, heating, dry, fan or automatic mode."
+                 data-es="Sirve para elegir el modo. Pulsándolo varias veces podéis cambiar entre frío, calor, deshumidificación, ventilación o automático."
+                 data-fr="Il sert à choisir le mode. Appuyez plusieurs fois pour passer entre froid, chaud, déshumidification, ventilation ou automatique.">
+                Serve per scegliere la modalità. Premendolo più volte potete cambiare tra freddo, caldo, deumidificazione, ventilazione o automatico.
+              </p>
+            </div>
+
+            <div class="remote-card remote-yellow">
+              <strong data-it="Tasti TEMP"
+                      data-en="TEMP buttons"
+                      data-es="Botones TEMP"
+                      data-fr="Boutons TEMP">Tasti TEMP</strong>
+
+              <p data-it="Servono per aumentare o diminuire la temperatura. La freccia verso l’alto aumenta i gradi, la freccia verso il basso li diminuisce."
+                 data-en="Use these buttons to increase or decrease the temperature. The up arrow increases the degrees, the down arrow decreases them."
+                 data-es="Sirven para subir o bajar la temperatura. La flecha hacia arriba aumenta los grados, la flecha hacia abajo los disminuye."
+                 data-fr="Ils servent à augmenter ou diminuer la température. La flèche vers le haut augmente les degrés, la flèche vers le bas les diminue.">
+                Servono per aumentare o diminuire la temperatura. La freccia verso l’alto aumenta i gradi, la freccia verso il basso li diminuisce.
+              </p>
+            </div>
+
+            <div class="remote-card remote-purple">
+              <strong data-it="Tasto FAN SPEED"
+                      data-en="FAN SPEED button"
+                      data-es="Botón FAN SPEED"
+                      data-fr="Bouton FAN SPEED">Tasto FAN SPEED</strong>
+
+              <p data-it="Serve per regolare la velocità dell’aria. Se non sapete cosa scegliere, lasciate una velocità media o automatica."
+                 data-en="Use this button to adjust the fan speed. If you are not sure, leave it on medium or automatic speed."
+                 data-es="Sirve para regular la velocidad del aire. Si no sabéis qué elegir, dejad una velocidad media o automática."
+                 data-fr="Il sert à régler la vitesse de l’air. Si vous ne savez pas quoi choisir, laissez une vitesse moyenne ou automatique.">
+                Serve per regolare la velocità dell’aria. Se non sapete cosa scegliere, lasciate una velocità media o automatica.
+              </p>
+            </div>
+
+            <div class="remote-card remote-cyan">
+              <strong data-it="Tasto SLEEP"
+                      data-en="SLEEP button"
+                      data-es="Botón SLEEP"
+                      data-fr="Bouton SLEEP">Tasto SLEEP</strong>
+
+              <p data-it="Serve per la modalità notte. Riduce il funzionamento del condizionatore durante il riposo, mantenendo una temperatura più delicata."
+                 data-en="Use this for night mode. It reduces the air conditioner’s operation while you rest, keeping a softer temperature."
+                 data-es="Sirve para el modo noche. Reduce el funcionamiento del aire acondicionado durante el descanso, manteniendo una temperatura más suave."
+                 data-fr="Il sert au mode nuit. Il réduit le fonctionnement de la climatisation pendant le repos, en gardant une température plus douce.">
+                Serve per la modalità notte. Riduce il funzionamento del condizionatore durante il riposo, mantenendo una temperatura più delicata.
+              </p>
+            </div>
+
+            <div class="remote-card remote-white">
+              <strong data-it="Tasto SWING orizzontale"
+                      data-en="Horizontal SWING button"
+                      data-es="Botón SWING horizontal"
+                      data-fr="Bouton SWING horizontal">Tasto SWING orizzontale</strong>
+
+              <p data-it="Serve per muovere il flusso d’aria lateralmente, da destra a sinistra."
+                 data-en="Use this button to move the airflow sideways, from right to left."
+                 data-es="Sirve para mover el flujo de aire lateralmente, de derecha a izquierda."
+                 data-fr="Il sert à déplacer le flux d’air latéralement, de droite à gauche.">
+                Serve per muovere il flusso d’aria lateralmente, da destra a sinistra.
+              </p>
+            </div>
+
+            <div class="remote-card remote-white">
+              <strong data-it="Tasto SWING verticale"
+                      data-en="Vertical SWING button"
+                      data-es="Botón SWING vertical"
+                      data-fr="Bouton SWING vertical">Tasto SWING verticale</strong>
+
+              <p data-it="Serve per muovere il flusso d’aria verso l’alto o verso il basso."
+                 data-en="Use this button to move the airflow up or down."
+                 data-es="Sirve para mover el flujo de aire hacia arriba o hacia abajo."
+                 data-fr="Il sert à déplacer le flux d’air vers le haut ou vers le bas.">
+                Serve per muovere il flusso d’aria verso l’alto o verso il basso.
+              </p>
+            </div>
+
+            <div class="remote-card remote-white">
+              <strong data-it="Tasto SUPER"
+                      data-en="SUPER button"
+                      data-es="Botón SUPER"
+                      data-fr="Bouton SUPER">Tasto SUPER</strong>
+
+              <p data-it="Serve per raffreddare o riscaldare più velocemente. Usatelo solo per poco tempo, perché consuma di più."
+                 data-en="Use this button to cool or heat faster. Use it only for a short time, because it consumes more energy."
+                 data-es="Sirve para enfriar o calentar más rápido. Usadlo solo durante poco tiempo, porque consume más energía."
+                 data-fr="Il sert à refroidir ou chauffer plus rapidement. Utilisez-le seulement peu de temps, car il consomme plus d’énergie.">
+                Serve per raffreddare o riscaldare più velocemente. Usatelo solo per poco tempo, perché consuma di più.
+              </p>
+            </div>
+
+            <div class="remote-card remote-white">
+              <strong data-it="Tasto QUIET"
+                      data-en="QUIET button"
+                      data-es="Botón QUIET"
+                      data-fr="Bouton QUIET">Tasto QUIET</strong>
+
+              <p data-it="Serve per rendere il condizionatore più silenzioso."
+                 data-en="Use this button to make the air conditioner quieter."
+                 data-es="Sirve para hacer que el aire acondicionado sea más silencioso."
+                 data-fr="Il sert à rendre la climatisation plus silencieuse.">
+                Serve per rendere il condizionatore più silenzioso.
+              </p>
+            </div>
+
+            <div class="remote-card remote-white">
+              <strong data-it="Tasto SMART"
+                      data-en="SMART button"
+                      data-es="Botón SMART"
+                      data-fr="Bouton SMART">Tasto SMART</strong>
+
+              <p data-it="Serve per impostare una modalità automatica. Il condizionatore sceglie il funzionamento in base alla temperatura della stanza."
+                 data-en="Use this button for automatic mode. The air conditioner chooses how to work based on the room temperature."
+                 data-es="Sirve para activar un modo automático. El aire acondicionado elige cómo funcionar según la temperatura de la habitación."
+                 data-fr="Il sert à activer un mode automatique. La climatisation choisit le fonctionnement selon la température de la pièce.">
+                Serve per impostare una modalità automatica. Il condizionatore sceglie il funzionamento in base alla temperatura della stanza.
+              </p>
+            </div>
+
+            <div class="remote-card remote-white">
+              <strong data-it="Tasti ON TIMER e OFF TIMER"
+                      data-en="ON TIMER and OFF TIMER buttons"
+                      data-es="Botones ON TIMER y OFF TIMER"
+                      data-fr="Boutons ON TIMER et OFF TIMER">Tasti ON TIMER e OFF TIMER</strong>
+
+              <p data-it="Servono per programmare l’accensione o lo spegnimento automatico. Usateli solo se sapete impostare correttamente l’orario."
+                 data-en="Use these buttons to schedule automatic start or shutdown. Use them only if you know how to set the time correctly."
+                 data-es="Sirven para programar el encendido o apagado automático. Usadlos solo si sabéis configurar correctamente la hora."
+                 data-fr="Ils servent à programmer l’allumage ou l’arrêt automatique. Utilisez-les seulement si vous savez régler correctement l’heure.">
+                Servono per programmare l’accensione o lo spegnimento automatico. Usateli solo se sapete impostare correttamente l’orario.
+              </p>
+            </div>
+
+            <div class="remote-card remote-white">
+              <strong data-it="Tasti DIMMER / CLOCK"
+                      data-en="DIMMER / CLOCK buttons"
+                      data-es="Botones DIMMER / CLOCK"
+                      data-fr="Boutons DIMMER / CLOCK">Tasti DIMMER / CLOCK</strong>
+
+              <p data-it="Servono per regolare la luminosità del display o l’orologio del telecomando. Non sono necessari per l’uso normale."
+                 data-en="Use these buttons to adjust the display brightness or the remote control clock. They are not needed for normal use."
+                 data-es="Sirven para regular la luminosidad de la pantalla o el reloj del mando. No son necesarios para el uso normal."
+                 data-fr="Ils servent à régler la luminosité de l’écran ou l’horloge de la télécommande. Ils ne sont pas nécessaires pour une utilisation normale.">
+                Servono per regolare la luminosità del display o l’orologio del telecomando. Non sono necessari per l’uso normale.
+              </p>
+            </div>
+
+            <div class="remote-card remote-white">
+              <strong data-it="Tasti ECONOMY / I FEEL"
+                      data-en="ECONOMY / I FEEL buttons"
+                      data-es="Botones ECONOMY / I FEEL"
+                      data-fr="Boutons ECONOMY / I FEEL">Tasti ECONOMY / I FEEL</strong>
+
+              <p data-it="ECONOMY aiuta a ridurre i consumi. I FEEL usa il telecomando per percepire la temperatura vicino a voi."
+                 data-en="ECONOMY helps reduce energy consumption. I FEEL uses the remote control to detect the temperature near you."
+                 data-es="ECONOMY ayuda a reducir el consumo. I FEEL usa el mando para detectar la temperatura cerca de vosotros."
+                 data-fr="ECONOMY aide à réduire la consommation. I FEEL utilise la télécommande pour mesurer la température près de vous.">
+                ECONOMY aiuta a ridurre i consumi. I FEEL usa il telecomando per percepire la temperatura vicino a voi.
+              </p>
+            </div>
+
           </div>
         </div>
       </details>

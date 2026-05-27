@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Luoghi da visitare · A Casa di Marco</title>
+  <title>Luoghi da visitare ed eventi · A Casa di Marco</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -25,11 +25,53 @@
       margin-top: 20px;
     }
 
+    .place-category {
+      margin-top: 34px;
+    }
+
+    .place-category:first-of-type {
+      margin-top: 24px;
+    }
+
+    .place-category-header {
+      background: #fff8e8;
+      border-left: 5px solid var(--ottanio);
+      border-radius: 20px;
+      padding: 16px 18px;
+      margin-bottom: 16px;
+    }
+
+    .place-category-header h2 {
+      font-size: 31px;
+      margin-bottom: 4px;
+    }
+
+    .place-category-header p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
     .place-card {
       background: var(--ottanio-soft);
       border-radius: 24px;
       overflow: hidden;
       box-shadow: 0 10px 28px rgba(0, 80, 85, .12);
+    }
+
+    .event-card {
+      background: #fff0ec;
+      border-left: 5px solid #b93a32;
+    }
+
+    .event-badge {
+      display: inline-flex;
+      background: #b93a32;
+      color: #fff;
+      border-radius: 999px;
+      padding: 5px 11px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 8px;
     }
 
     .place-card img {
@@ -82,6 +124,18 @@
     }
 
     @media (max-width: 720px) {
+      .place-category-header {
+        padding: 14px 15px;
+      }
+
+      .place-category-header h2 {
+        font-size: 25px;
+      }
+
+      .place-category-header p {
+        font-size: 14px;
+      }
+
       .places-grid {
         grid-template-columns: 1fr;
         gap: 14px;
@@ -116,298 +170,367 @@
   </style>
 </head>
 <body>
-  <header class="page-hero"><div><h1 data-it="Luoghi da visitare" data-en="Places to visit" data-es="Lugares para visitar" data-fr="Lieux à visiter">Luoghi da visitare</h1></div></header>
+  <header class="page-hero"><div><h1 data-it="Luoghi da visitare ed eventi" data-en="Places to visit and events" data-es="Lugares para visitar y eventos" data-fr="Lieux à visiter et événements">Luoghi da visitare ed eventi</h1></div></header>
   <main>
     <a class="back-home" href="index.html" data-it="← Torna alla home" data-en="← Back to home" data-es="← Volver a la home" data-fr="← Retour à l'accueil">← Torna alla home</a>
     <section>
-      <h2 data-it="Da non perdere"
-          data-en="Must-see"
-          data-es="Imprescindibles"
-          data-fr="À ne pas manquer">Da non perdere</h2>
+      <h2 data-it="Scegli cosa visitare"
+          data-en="Choose what to visit"
+          data-es="Elige qué visitar"
+          data-fr="Choisissez quoi visiter">Scegli cosa visitare</h2>
 
-      <p data-it="Una selezione di luoghi che consigliamo di visitare partendo da A Casa di Marco."
-         data-en="A selection of places we recommend visiting from A Casa di Marco."
-         data-es="Una selección de lugares que recomendamos visitar desde A Casa di Marco."
-         data-fr="Une sélection de lieux à visiter depuis A Casa di Marco.">
-        Una selezione di luoghi che consigliamo di visitare partendo da A Casa di Marco.
+      <p data-it="Abbiamo diviso i luoghi per zona, così potete scegliere più facilmente cosa visitare in base al tempo che avete e a come volete organizzarvi."
+         data-en="We have divided the places by area, so you can choose more easily what to visit depending on your time and plans."
+         data-es="Hemos dividido los lugares por zona, para que podáis elegir más fácilmente qué visitar según el tiempo que tenéis y cómo queréis organizaros."
+         data-fr="Nous avons divisé les lieux par zone, afin que vous puissiez choisir plus facilement quoi visiter selon le temps disponible et votre organisation.">
+        Abbiamo diviso i luoghi per zona, così potete scegliere più facilmente cosa visitare in base al tempo che avete e a come volete organizzarvi.
       </p>
 
-      <div id="places-grid" class="places-grid"></div>
+      <div id="places-container"></div>
     </section>
   </main>
 <script>
-  var places = [
+  var placeCategories = [
     {
-      image: "assets/brignano.jpg",
-      infoUrl: "https://www.google.com/search?q=Brignano+Salerno",
-      mapsQuery: "Via Brignano Inferiore, Salerno",
+      id: "salerno",
       title: {
-        it: "Via Brignano Inferiore",
-        en: "Via Brignano Inferiore",
-        es: "Via Brignano Inferiore",
-        fr: "Via Brignano Inferiore"
+        it: "Salerno",
+        en: "Salerno",
+        es: "Salerno",
+        fr: "Salerne"
       },
-      desc: {
-        it: "Una zona tranquilla e verde, perfetta per una passeggiata lenta vicino casa e per scoprire angoli più autentici di Salerno.",
-        en: "A quiet and green area, perfect for a slow walk near the house and for discovering a more authentic side of Salerno.",
-        es: "Una zona tranquila y verde, perfecta para pasear cerca de la casa y descubrir una parte más auténtica de Salerno.",
-        fr: "Un quartier calme et verdoyant, idéal pour une promenade près de la maison et pour découvrir un côté plus authentique de Salerne."
-      }
+      intro: {
+        it: "Luoghi comodi da visitare in città, perfetti anche se avete poco tempo.",
+        en: "Places to visit in the city, perfect even if you have little time.",
+        es: "Lugares para visitar en la ciudad, perfectos también si tenéis poco tiempo.",
+        fr: "Lieux à visiter en ville, parfaits même si vous avez peu de temps."
+      },
+      places: [
+        {
+          image: "assets/brignano.jpg",
+          infoUrl: "https://www.google.com/search?q=Brignano+Salerno",
+          mapsQuery: "Via Brignano Inferiore, Salerno",
+          title: {
+            it: "Via Brignano Inferiore",
+            en: "Via Brignano Inferiore",
+            es: "Via Brignano Inferiore",
+            fr: "Via Brignano Inferiore"
+          },
+          desc: {
+            it: "Una zona tranquilla e verde, perfetta per una passeggiata lenta vicino casa e per scoprire angoli più autentici di Salerno.",
+            en: "A quiet and green area, perfect for a slow walk near the house and for discovering a more authentic side of Salerno.",
+            es: "Una zona tranquila y verde, perfecta para pasear cerca de la casa y descubrir una parte más auténtica de Salerno.",
+            fr: "Un quartier calme et verdoyant, idéal pour une promenade près de la maison et pour découvrir un côté plus authentique de Salerne."
+          }
+        },
+        {
+          image: "assets/lungomare-salerno.jpg",
+          infoUrl: "https://www.google.com/search?q=Lungomare+Trieste+Salerno",
+          mapsQuery: "Lungomare Trieste, Salerno",
+          title: {
+            it: "Lungomare di Salerno",
+            en: "Salerno Seafront",
+            es: "Paseo marítimo de Salerno",
+            fr: "Front de mer de Salerne"
+          },
+          desc: {
+            it: "Una passeggiata elegante e panoramica sul mare, perfetta per rilassarsi, camminare o godersi un tramonto sul golfo.",
+            en: "An elegant and scenic seafront promenade, perfect for relaxing, walking or enjoying a sunset over the gulf.",
+            es: "Un paseo marítimo elegante y panorámico, perfecto para relajarse, caminar o disfrutar de una puesta de sol sobre el golfo.",
+            fr: "Une promenade élégante et panoramique en bord de mer, idéale pour se détendre, marcher ou admirer le coucher du soleil sur le golfe."
+          }
+        },
+        {
+          image: "assets/piazza-della-liberta.jpg",
+          infoUrl: "https://www.google.com/search?q=Piazza+della+Libert%C3%A0+Salerno",
+          mapsQuery: "Piazza della Libertà, Salerno",
+          title: {
+            it: "Piazza della Libertà",
+            en: "Piazza della Libertà",
+            es: "Piazza della Libertà",
+            fr: "Piazza della Libertà"
+          },
+          desc: {
+            it: "Una delle piazze più moderne e scenografiche di Salerno, affacciata sul mare.",
+            en: "One of Salerno’s most modern and scenic squares, overlooking the sea.",
+            es: "Una de las plazas más modernas y escénicas de Salerno, frente al mar.",
+            fr: "L’une des places les plus modernes et spectaculaires de Salerne, face à la mer."
+          }
+        },
+        {
+          image: "assets/castello-arechi.jpg",
+          infoUrl: "https://www.castelloarechi.sa.it/",
+          mapsQuery: "Castello di Arechi, Salerno",
+          title: {
+            it: "Castello di Arechi",
+            en: "Arechi Castle",
+            es: "Castillo de Arechi",
+            fr: "Château d’Arechi"
+          },
+          desc: {
+            it: "Un castello medievale con una vista spettacolare su Salerno e sul golfo. Ideale al tramonto, con scarpe comode e acqua.",
+            en: "A medieval castle with a spectacular view over Salerno and the gulf. Ideal at sunset, with comfortable shoes and water.",
+            es: "Un castillo medieval con una vista espectacular de Salerno y del golfo. Ideal al atardecer, con calzado cómodo y agua.",
+            fr: "Un château médiéval avec une vue spectaculaire sur Salerne et le golfe. Idéal au coucher du soleil, avec des chaussures confortables et de l’eau."
+          }
+        },
+        {
+          image: "assets/duomo-salerno.jpg",
+          infoUrl: "https://www.google.com/search?q=Cattedrale+di+Salerno",
+          mapsQuery: "Cattedrale di Santa Maria degli Angeli San Matteo e San Gregorio VII, Salerno",
+          title: {
+            it: "Cattedrale di Salerno",
+            en: "Salerno Cathedral",
+            es: "Catedral de Salerno",
+            fr: "Cathédrale de Salerne"
+          },
+          desc: {
+            it: "Uno dei simboli della città, con una facciata medievale e una cripta barocca molto suggestiva.",
+            en: "One of the city’s landmarks, with a medieval façade and a very evocative baroque crypt.",
+            es: "Uno de los símbolos de la ciudad, con una fachada medieval y una cripta barroca muy evocadora.",
+            fr: "L’un des symboles de la ville, avec une façade médiévale et une crypte baroque très suggestive."
+          }
+        },
+        {
+          image: "assets/giardino-minerva.jpg",
+          infoUrl: "https://comune.salerno.it/luogo/giardino-della-minerva",
+          mapsQuery: "Giardino della Minerva, Salerno",
+          title: {
+            it: "Giardino della Minerva",
+            en: "Minerva Garden",
+            es: "Jardín de la Minerva",
+            fr: "Jardin de la Minerve"
+          },
+          desc: {
+            it: "Un antico orto botanico nel cuore del centro storico, legato alla Scuola Medica Salernitana. Tranquillo, panoramico e molto particolare.",
+            en: "An ancient botanical garden in the historic centre, connected to the Salerno Medical School. Peaceful, panoramic and very unique.",
+            es: "Un antiguo jardín botánico en el centro histórico, vinculado a la Escuela Médica Salernitana. Tranquilo, panorámico y muy especial.",
+            fr: "Un ancien jardin botanique au cœur du centre historique, lié à l’École médicale de Salerne. Calme, panoramique et très particulier."
+          }
+        }
+      ]
     },
     {
-      image: "assets/castello-arechi.jpg",
-      infoUrl: "https://www.castelloarechi.sa.it/",
-      mapsQuery: "Castello di Arechi, Salerno",
-      title: {
-        it: "Castello di Arechi",
-        en: "Arechi Castle",
-        es: "Castillo de Arechi",
-        fr: "Château d’Arechi"
-      },
-      desc: {
-        it: "Un castello medievale con una vista spettacolare su Salerno e sul golfo. Ideale al tramonto, con scarpe comode e acqua.",
-        en: "A medieval castle with a spectacular view over Salerno and the gulf. Ideal at sunset, with comfortable shoes and water.",
-        es: "Un castillo medieval con una vista espectacular de Salerno y del golfo. Ideal al atardecer, con calzado cómodo y agua.",
-        fr: "Un château médiéval avec une vue spectaculaire sur Salerne et le golfe. Idéal au coucher du soleil, avec des chaussures confortables et de l’eau."
-      }
-    },
-    {
-      image: "assets/duomo-salerno.jpg",
-      infoUrl: "https://www.google.com/search?q=Cattedrale+di+Salerno",
-      mapsQuery: "Cattedrale di Santa Maria degli Angeli San Matteo e San Gregorio VII, Salerno",
-      title: {
-        it: "Cattedrale di Salerno",
-        en: "Salerno Cathedral",
-        es: "Catedral de Salerno",
-        fr: "Cathédrale de Salerne"
-      },
-      desc: {
-        it: "Uno dei simboli della città, con una facciata medievale e una cripta barocca molto suggestiva.",
-        en: "One of the city’s landmarks, with a medieval façade and a very evocative baroque crypt.",
-        es: "Uno de los símbolos de la ciudad, con una fachada medieval y una cripta barroca muy evocadora.",
-        fr: "L’un des symboles de la ville, avec une façade médiévale et une crypte baroque très suggestive."
-      }
-    },
-    {
-      image: "assets/giardino-minerva.jpg",
-      infoUrl: "https://comune.salerno.it/luogo/giardino-della-minerva",
-      mapsQuery: "Giardino della Minerva, Salerno",
-      title: {
-        it: "Giardino della Minerva",
-        en: "Minerva Garden",
-        es: "Jardín de la Minerva",
-        fr: "Jardin de la Minerve"
-      },
-      desc: {
-        it: "Un antico orto botanico nel cuore del centro storico, legato alla Scuola Medica Salernitana. Tranquillo, panoramico e molto particolare.",
-        en: "An ancient botanical garden in the historic centre, connected to the Salerno Medical School. Peaceful, panoramic and very unique.",
-        es: "Un antiguo jardín botánico en el centro histórico, vinculado a la Escuela Médica Salernitana. Tranquilo, panorámico y muy especial.",
-        fr: "Un ancien jardin botanique au cœur du centre historique, lié à l’École médicale de Salerne. Calme, panoramique et très particulier."
-      }
-    },
-    {
-      image: "assets/teatro-verdi.jpg",
-      infoUrl: "https://www.google.com/search?q=Teatro+Verdi+Salerno+programma",
-      mapsQuery: "Teatro Municipale Giuseppe Verdi, Salerno",
-      title: {
-        it: "Teatro Verdi",
-        en: "Teatro Verdi",
-        es: "Teatro Verdi",
-        fr: "Teatro Verdi"
-      },
-      desc: {
-        it: "Lo storico teatro di Salerno, perfetto per una serata culturale tra concerti, opera, spettacoli e appuntamenti speciali.",
-        en: "Salerno’s historic theatre, perfect for a cultural evening with concerts, opera, performances and special events.",
-        es: "El teatro histórico de Salerno, perfecto para una noche cultural con conciertos, ópera, espectáculos y eventos especiales.",
-        fr: "Le théâtre historique de Salerne, idéal pour une soirée culturelle avec concerts, opéra, spectacles et événements spéciaux."
-      }
-    },
-    {
-      image: "assets/paestum.jpg",
-      infoUrl: "https://museopaestum.cultura.gov.it/",
-      mapsQuery: "Parco Archeologico di Paestum",
-      title: {
-        it: "Parco Archeologico di Paestum",
-        en: "Paestum Archaeological Park",
-        es: "Parque Arqueológico de Paestum",
-        fr: "Parc archéologique de Paestum"
-      },
-      desc: {
-        it: "Uno dei siti archeologici più belli della Campania, famoso per i templi greci tra i meglio conservati al mondo.",
-        en: "One of the most beautiful archaeological sites in Campania, famous for some of the best-preserved Greek temples in the world.",
-        es: "Uno de los sitios arqueológicos más bonitos de Campania, famoso por sus templos griegos muy bien conservados.",
-        fr: "L’un des plus beaux sites archéologiques de Campanie, célèbre pour ses temples grecs parmi les mieux conservés au monde."
-      }
-    },
-    {
-      image: "assets/pompei.jpg",
-      infoUrl: "https://pompeiisites.org/",
-      mapsQuery: "Scavi di Pompei",
-      title: {
-        it: "Scavi di Pompei",
-        en: "Pompeii Ruins",
-        es: "Ruinas de Pompeya",
-        fr: "Ruines de Pompéi"
-      },
-      desc: {
-        it: "Un viaggio indietro nel tempo nella città romana sepolta dall’eruzione del Vesuvio nel 79 d.C. Una visita unica e affascinante.",
-        en: "A journey back in time through the Roman city buried by the eruption of Mount Vesuvius in 79 AD. A unique and fascinating visit.",
-        es: "Un viaje al pasado por la ciudad romana sepultada por la erupción del Vesubio en el año 79 d.C. Una visita única y fascinante.",
-        fr: "Un voyage dans le temps dans la ville romaine ensevelie par l’éruption du Vésuve en 79 après J.-C. Une visite unique et fascinante."
-      }
-    },
-    {
-      image: "assets/costiera-amalfitana.jpg",
-      infoUrl: "https://www.google.com/search?q=Costiera+Amalfitana+cosa+vedere",
-      mapsQuery: "Costiera Amalfitana",
+      id: "costiera",
       title: {
         it: "Costiera Amalfitana",
         en: "Amalfi Coast",
         es: "Costa Amalfitana",
         fr: "Côte Amalfitaine"
       },
-      desc: {
-        it: "Una delle coste più famose al mondo, con panorami mozzafiato, borghi colorati e mare cristallino.",
-        en: "One of the most famous coastlines in the world, with breathtaking views, colourful villages and crystal-clear sea.",
-        es: "Una de las costas más famosas del mundo, con vistas impresionantes, pueblos coloridos y mar cristalino.",
-        fr: "L’une des côtes les plus célèbres au monde, avec des vues magnifiques, des villages colorés et une mer cristalline."
-      }
+      intro: {
+        it: "Borghi sul mare, panorami meravigliosi e luoghi iconici della Costiera.",
+        en: "Seaside villages, beautiful views and iconic places on the Amalfi Coast.",
+        es: "Pueblos junto al mar, vistas maravillosas y lugares icónicos de la Costa Amalfitana.",
+        fr: "Villages en bord de mer, vues magnifiques et lieux emblématiques de la Côte Amalfitaine."
+      },
+      places: [
+        {
+          image: "assets/vietri-sul-mare.jpg",
+          infoUrl: "https://www.google.com/search?q=Vietri+sul+Mare+cosa+vedere",
+          mapsQuery: "Vietri sul Mare",
+          title: {
+            it: "Vietri sul Mare",
+            en: "Vietri sul Mare",
+            es: "Vietri sul Mare",
+            fr: "Vietri sul Mare"
+          },
+          desc: {
+            it: "La prima perla della Costiera Amalfitana arrivando da Salerno. Famosa per le ceramiche colorate, il centro storico, la cupola maiolicata e le spiagge.",
+            en: "The first gem of the Amalfi Coast when coming from Salerno. Famous for its colourful ceramics, historic centre, majolica dome and beaches.",
+            es: "La primera joya de la Costa Amalfitana llegando desde Salerno. Famosa por sus cerámicas coloridas, el centro histórico, la cúpula de mayólica y las playas.",
+            fr: "La première perle de la Côte Amalfitaine en arrivant de Salerne. Célèbre pour ses céramiques colorées, son centre historique, sa coupole en majolique et ses plages."
+          }
+        },
+        {
+          image: "assets/duomo-amalfi.jpg",
+          infoUrl: "https://www.google.com/search?q=Duomo+di+Sant%27Andrea+Amalfi",
+          mapsQuery: "Duomo di Sant'Andrea, Amalfi",
+          title: {
+            it: "Amalfi e Duomo di Sant’Andrea",
+            en: "Amalfi and Saint Andrew’s Cathedral",
+            es: "Amalfi y Catedral de San Andrés",
+            fr: "Amalfi et cathédrale Saint-André"
+          },
+          desc: {
+            it: "Amalfi è uno dei gioielli della Costiera, con il suo Duomo scenografico, le stradine vivaci e la storia da antica Repubblica Marinara.",
+            en: "Amalfi is one of the jewels of the coast, with its stunning cathedral, lively streets and history as a former Maritime Republic.",
+            es: "Amalfi es una de las joyas de la costa, con su impresionante catedral, calles animadas e historia como antigua República Marinera.",
+            fr: "Amalfi est l’un des joyaux de la côte, avec sa cathédrale spectaculaire, ses ruelles animées et son histoire d’ancienne République maritime."
+          }
+        },
+        {
+          image: "assets/costiera-amalfitana.jpg",
+          infoUrl: "https://www.google.com/search?q=Costiera+Amalfitana+cosa+vedere",
+          mapsQuery: "Costiera Amalfitana",
+          title: {
+            it: "Costiera Amalfitana",
+            en: "Amalfi Coast",
+            es: "Costa Amalfitana",
+            fr: "Côte Amalfitaine"
+          },
+          desc: {
+            it: "Una delle coste più famose al mondo, con panorami mozzafiato, borghi colorati e mare cristallino.",
+            en: "One of the most famous coastlines in the world, with breathtaking views, colourful villages and crystal-clear sea.",
+            es: "Una de las costas más famosas del mundo, con vistas impresionantes, pueblos coloridos y mar cristalino.",
+            fr: "L’une des côtes les plus célèbres au monde, avec des vues magnifiques, des villages colorés et une mer cristalline."
+          }
+        },
+        {
+          image: "assets/sentiero-degli-dei.jpg",
+          infoUrl: "https://www.google.com/search?q=Sentiero+degli+Dei+Agerola+Nocelle",
+          mapsQuery: "Sentiero degli Dei, Agerola",
+          title: {
+            it: "Sentiero degli Dei",
+            en: "Path of the Gods",
+            es: "Sendero de los Dioses",
+            fr: "Sentier des Dieux"
+          },
+          desc: {
+            it: "Un trekking panoramico da Agerola a Nocelle, sopra Positano, con viste incredibili sulla Costiera e Capri. Portate acqua e scarpe adatte.",
+            en: "A scenic hike from Agerola to Nocelle, above Positano, with incredible views of the coast and Capri. Bring water and proper shoes.",
+            es: "Una ruta panorámica de Agerola a Nocelle, sobre Positano, con vistas increíbles de la costa y Capri. Llevad agua y calzado adecuado.",
+            fr: "Une randonnée panoramique d’Agerola à Nocelle, au-dessus de Positano, avec des vues incroyables sur la côte et Capri. Prévoyez de l’eau et des chaussures adaptées."
+          }
+        }
+      ]
     },
     {
-      image: "assets/vietri-sul-mare.jpg",
-      infoUrl: "https://www.google.com/search?q=Vietri+sul+Mare+cosa+vedere",
-      mapsQuery: "Vietri sul Mare",
+      id: "campania",
       title: {
-        it: "Vietri sul Mare",
-        en: "Vietri sul Mare",
-        es: "Vietri sul Mare",
-        fr: "Vietri sul Mare"
+        it: "Campania e dintorni",
+        en: "Campania and surroundings",
+        es: "Campania y alrededores",
+        fr: "Campanie et alentours"
       },
-      desc: {
-        it: "La prima perla della Costiera Amalfitana arrivando da Salerno. Famosa per le ceramiche colorate, il centro storico, la cupola maiolicata e le spiagge.",
-        en: "The first gem of the Amalfi Coast when coming from Salerno. Famous for its colourful ceramics, historic centre, majolica dome and beaches.",
-        es: "La primera joya de la Costa Amalfitana llegando desde Salerno. Famosa por sus cerámicas coloridas, el centro histórico, la cúpula de mayólica y las playas.",
-        fr: "La première perle de la Côte Amalfitaine en arrivant de Salerne. Célèbre pour ses céramiques colorées, son centre historique, sa coupole en majolique et ses plages."
-      }
+      intro: {
+        it: "Gite fuori porta tra archeologia, storia, natura e città famose.",
+        en: "Day trips among archaeology, history, nature and famous cities.",
+        es: "Excursiones entre arqueología, historia, naturaleza y ciudades famosas.",
+        fr: "Excursions entre archéologie, histoire, nature et villes célèbres."
+      },
+      places: [
+        {
+          image: "assets/paestum.jpg",
+          infoUrl: "https://museopaestum.cultura.gov.it/",
+          mapsQuery: "Parco Archeologico di Paestum",
+          title: {
+            it: "Parco Archeologico di Paestum",
+            en: "Paestum Archaeological Park",
+            es: "Parque Arqueológico de Paestum",
+            fr: "Parc archéologique de Paestum"
+          },
+          desc: {
+            it: "Uno dei siti archeologici più belli della Campania, famoso per i templi greci tra i meglio conservati al mondo.",
+            en: "One of the most beautiful archaeological sites in Campania, famous for some of the best-preserved Greek temples in the world.",
+            es: "Uno de los sitios arqueológicos más bonitos de Campania, famoso por sus templos griegos muy bien conservados.",
+            fr: "L’un des plus beaux sites archéologiques de Campanie, célèbre pour ses temples grecs parmi les mieux conservés au monde."
+          }
+        },
+        {
+          image: "assets/pompei.jpg",
+          infoUrl: "https://pompeiisites.org/",
+          mapsQuery: "Scavi di Pompei",
+          title: {
+            it: "Scavi di Pompei",
+            en: "Pompeii Ruins",
+            es: "Ruinas de Pompeya",
+            fr: "Ruines de Pompéi"
+          },
+          desc: {
+            it: "Un viaggio indietro nel tempo nella città romana sepolta dall’eruzione del Vesuvio nel 79 d.C. Una visita unica e affascinante.",
+            en: "A journey back in time through the Roman city buried by the eruption of Mount Vesuvius in 79 AD. A unique and fascinating visit.",
+            es: "Un viaje al pasado por la ciudad romana sepultada por la erupción del Vesubio en el año 79 d.C. Una visita única y fascinante.",
+            fr: "Un voyage dans le temps dans la ville romaine ensevelie par l’éruption du Vésuve en 79 après J.-C. Une visite unique et fascinante."
+          }
+        },
+        {
+          image: "assets/reggia-caserta.jpg",
+          infoUrl: "https://reggiadicaserta.cultura.gov.it/biglietti/",
+          mapsQuery: "Reggia di Caserta",
+          title: {
+            it: "Reggia di Caserta",
+            en: "Royal Palace of Caserta",
+            es: "Palacio Real de Caserta",
+            fr: "Palais royal de Caserte"
+          },
+          desc: {
+            it: "Una residenza reale monumentale con appartamenti storici, grandi giardini, fontane scenografiche e il Giardino Inglese.",
+            en: "A monumental royal residence with historic apartments, vast gardens, dramatic fountains and the English Garden.",
+            es: "Una residencia real monumental con apartamentos históricos, grandes jardines, fuentes escénicas y el Jardín Inglés.",
+            fr: "Une résidence royale monumentale avec appartements historiques, grands jardins, fontaines spectaculaires et Jardin anglais."
+          }
+        },
+        {
+          image: "assets/grotte-pertosa.jpg",
+          infoUrl: "https://comune.auletta.sa.it/vivere-il-comune/luoghi/le-grotte-di-pertosa-auletta/",
+          mapsQuery: "Grotte di Pertosa-Auletta",
+          title: {
+            it: "Grotte di Pertosa-Auletta",
+            en: "Pertosa-Auletta Caves",
+            es: "Cuevas de Pertosa-Auletta",
+            fr: "Grottes de Pertosa-Auletta"
+          },
+          desc: {
+            it: "Grotte spettacolari nel Cilento, con un tratto navigabile su fiume sotterraneo. Consigliate scarpe comode e una giacca.",
+            en: "Spectacular caves in Cilento, with a navigable underground river section. Comfortable shoes and a jacket are recommended.",
+            es: "Cuevas espectaculares en el Cilento, con un tramo navegable por un río subterráneo. Se recomiendan zapatos cómodos y una chaqueta.",
+            fr: "Grottes spectaculaires dans le Cilento, avec une partie navigable sur une rivière souterraine. Chaussures confortables et veste recommandées."
+          }
+        },
+        {
+          image: "assets/piccolo-ranch-terminio.jpg",
+          infoUrl: "https://www.google.com/search?q=Il+Piccolo+Ranch+Terminio",
+          mapsQuery: "Il Piccolo Ranch Terminio",
+          title: {
+            it: "Il Piccolo Ranch – Terminio",
+            en: "Il Piccolo Ranch – Terminio",
+            es: "Il Piccolo Ranch – Terminio",
+            fr: "Il Piccolo Ranch – Terminio"
+          },
+          desc: {
+            it: "Un centro immerso nel verde del Terminio, ideale per famiglie, passeggiate a cavallo, pony e attività nella natura.",
+            en: "A green retreat in the Terminio area, ideal for families, horse rides, ponies and nature activities.",
+            es: "Un centro rodeado de naturaleza en la zona del Terminio, ideal para familias, paseos a caballo, ponis y actividades al aire libre.",
+            fr: "Un lieu entouré de verdure dans la zone du Terminio, idéal pour les familles, les balades à cheval, les poneys et les activités nature."
+          }
+        }
+      ]
     },
     {
-      image: "assets/duomo-amalfi.jpg",
-      infoUrl: "https://www.google.com/search?q=Duomo+di+Sant%27Andrea+Amalfi",
-      mapsQuery: "Duomo di Sant'Andrea, Amalfi",
+      id: "eventi",
+      isEvents: true,
       title: {
-        it: "Amalfi e Duomo di Sant’Andrea",
-        en: "Amalfi and Saint Andrew’s Cathedral",
-        es: "Amalfi y Catedral de San Andrés",
-        fr: "Amalfi et cathédrale Saint-André"
+        it: "Eventi e cose speciali",
+        en: "Events and special things",
+        es: "Eventos y cosas especiales",
+        fr: "Événements et choses spéciales"
       },
-      desc: {
-        it: "Amalfi è uno dei gioielli della Costiera, con il suo Duomo scenografico, le stradine vivaci e la storia da antica Repubblica Marinara.",
-        en: "Amalfi is one of the jewels of the coast, with its stunning cathedral, lively streets and history as a former Maritime Republic.",
-        es: "Amalfi es una de las joyas de la costa, con su impresionante catedral, calles animadas e historia como antigua República Marinera.",
-        fr: "Amalfi est l’un des joyaux de la côte, avec sa cathédrale spectaculaire, ses ruelles animées et son histoire d’ancienne République maritime."
-      }
-    },
-    {
-      image: "assets/reggia-caserta.jpg",
-      infoUrl: "https://reggiadicaserta.cultura.gov.it/biglietti/",
-      mapsQuery: "Reggia di Caserta",
-      title: {
-        it: "Reggia di Caserta",
-        en: "Royal Palace of Caserta",
-        es: "Palacio Real de Caserta",
-        fr: "Palais royal de Caserte"
+      intro: {
+        it: "Eventi stagionali, sagre e appuntamenti da controllare in base al periodo del soggiorno.",
+        en: "Seasonal events, festivals and appointments to check depending on your stay period.",
+        es: "Eventos de temporada, fiestas y citas para comprobar según el periodo de vuestra estancia.",
+        fr: "Événements saisonniers, fêtes et rendez-vous à vérifier selon la période de votre séjour."
       },
-      desc: {
-        it: "Una residenza reale monumentale con appartamenti storici, grandi giardini, fontane scenografiche e il Giardino Inglese.",
-        en: "A monumental royal residence with historic apartments, vast gardens, dramatic fountains and the English Garden.",
-        es: "Una residencia real monumental con apartamentos históricos, grandes jardines, fuentes escénicas y el Jardín Inglés.",
-        fr: "Une résidence royale monumentale avec appartements historiques, grands jardins, fontaines spectaculaires et Jardin anglais."
-      }
-    },
-    {
-      image: "assets/piccolo-ranch-terminio.jpg",
-      infoUrl: "https://www.google.com/search?q=Il+Piccolo+Ranch+Terminio",
-      mapsQuery: "Il Piccolo Ranch Terminio",
-      title: {
-        it: "Il Piccolo Ranch – Terminio",
-        en: "Il Piccolo Ranch – Terminio",
-        es: "Il Piccolo Ranch – Terminio",
-        fr: "Il Piccolo Ranch – Terminio"
-      },
-      desc: {
-        it: "Un centro immerso nel verde del Terminio, ideale per famiglie, passeggiate a cavallo, pony e attività nella natura.",
-        en: "A green retreat in the Terminio area, ideal for families, horse rides, ponies and nature activities.",
-        es: "Un centro rodeado de naturaleza en la zona del Terminio, ideal para familias, paseos a caballo, ponis y actividades al aire libre.",
-        fr: "Un lieu entouré de verdure dans la zone du Terminio, idéal pour les familles, les balades à cheval, les poneys et les activités nature."
-      }
-    },
-    {
-      image: "assets/lungomare-salerno.jpg",
-      infoUrl: "https://www.google.com/search?q=Lungomare+Trieste+Salerno",
-      mapsQuery: "Lungomare Trieste, Salerno",
-      title: {
-        it: "Lungomare di Salerno",
-        en: "Salerno Seafront",
-        es: "Paseo marítimo de Salerno",
-        fr: "Front de mer de Salerne"
-      },
-      desc: {
-        it: "Una passeggiata elegante e panoramica sul mare, perfetta per rilassarsi, camminare o godersi un tramonto sul golfo.",
-        en: "An elegant and scenic seafront promenade, perfect for relaxing, walking or enjoying a sunset over the gulf.",
-        es: "Un paseo marítimo elegante y panorámico, perfecto para relajarse, caminar o disfrutar de una puesta de sol sobre el golfo.",
-        fr: "Une promenade élégante et panoramique en bord de mer, idéale pour se détendre, marcher ou admirer le coucher du soleil sur le golfe."
-      }
-    },
-    {
-      image: "assets/piazza-della-liberta.jpg",
-      infoUrl: "https://www.google.com/search?q=Piazza+della+Libert%C3%A0+Salerno",
-      mapsQuery: "Piazza della Libertà, Salerno",
-      title: {
-        it: "Piazza della Libertà",
-        en: "Piazza della Libertà",
-        es: "Piazza della Libertà",
-        fr: "Piazza della Libertà"
-      },
-      desc: {
-        it: "Una delle piazze più moderne e scenografiche di Salerno, affacciata sul mare. Perfetta per una passeggiata, una foto ricordo e per godersi la vista sul porto e sul golfo.",
-        en: "One of Salerno’s most modern and scenic squares, overlooking the sea. Perfect for a walk, a souvenir photo and enjoying the view of the port and the gulf.",
-        es: "Una de las plazas más modernas y escénicas de Salerno, frente al mar. Perfecta para pasear, hacer una foto de recuerdo y disfrutar de la vista del puerto y del golfo.",
-        fr: "L’une des places les plus modernes et spectaculaires de Salerne, face à la mer. Parfaite pour une promenade, une photo souvenir et pour profiter de la vue sur le port et le golfe."
-      }
-    },
-    {
-      image: "assets/grotte-pertosa.jpg",
-      infoUrl: "https://comune.auletta.sa.it/vivere-il-comune/luoghi/le-grotte-di-pertosa-auletta/",
-      mapsQuery: "Grotte di Pertosa-Auletta",
-      title: {
-        it: "Grotte di Pertosa-Auletta",
-        en: "Pertosa-Auletta Caves",
-        es: "Cuevas de Pertosa-Auletta",
-        fr: "Grottes de Pertosa-Auletta"
-      },
-      desc: {
-        it: "Grotte spettacolari nel Cilento, con un tratto navigabile su fiume sotterraneo. Consigliate scarpe comode e una giacca.",
-        en: "Spectacular caves in Cilento, with a navigable underground river section. Comfortable shoes and a jacket are recommended.",
-        es: "Cuevas espectaculares en el Cilento, con un tramo navegable por un río subterráneo. Se recomiendan zapatos cómodos y una chaqueta.",
-        fr: "Grottes spectaculaires dans le Cilento, avec une partie navigable sur une rivière souterraine. Chaussures confortables et veste recommandées."
-      }
-    },
-    {
-      image: "assets/sentiero-degli-dei.jpg",
-      infoUrl: "https://www.google.com/search?q=Sentiero+degli+Dei+Agerola+Nocelle",
-      mapsQuery: "Sentiero degli Dei, Agerola",
-      title: {
-        it: "Sentiero degli Dei",
-        en: "Path of the Gods",
-        es: "Sendero de los Dioses",
-        fr: "Sentier des Dieux"
-      },
-      desc: {
-        it: "Un trekking panoramico da Agerola a Nocelle, sopra Positano, con viste incredibili sulla Costiera e Capri. Portate acqua e scarpe adatte.",
-        en: "A scenic hike from Agerola to Nocelle, above Positano, with incredible views of the coast and Capri. Bring water and proper shoes.",
-        es: "Una ruta panorámica de Agerola a Nocelle, sobre Positano, con vistas increíbles de la costa y Capri. Llevad agua y calzado adecuado.",
-        fr: "Une randonnée panoramique d’Agerola à Nocelle, au-dessus de Positano, avec des vues incroyables sur la côte et Capri. Prévoyez de l’eau et des chaussures adaptées."
-      }
+      places: [
+        {
+          image: "assets/teatro-verdi.jpg",
+          infoUrl: "https://www.google.com/search?q=Teatro+Verdi+Salerno+programma",
+          mapsQuery: "Teatro Municipale Giuseppe Verdi, Salerno",
+          title: {
+            it: "Teatro Verdi",
+            en: "Teatro Verdi",
+            es: "Teatro Verdi",
+            fr: "Teatro Verdi"
+          },
+          desc: {
+            it: "Lo storico teatro di Salerno, perfetto per una serata culturale tra concerti, opera, spettacoli e appuntamenti speciali.",
+            en: "Salerno’s historic theatre, perfect for a cultural evening with concerts, opera, performances and special events.",
+            es: "El teatro histórico de Salerno, perfecto para una noche cultural con conciertos, ópera, espectáculos y eventos especiales.",
+            fr: "Le théâtre historique de Salerne, idéal pour une soirée culturelle avec concerts, opéra, spectacles et événements spéciaux."
+          }
+        }
+      ]
     }
   ];
 
@@ -417,6 +540,18 @@
       en: "Info / Tickets",
       es: "Info / Entradas",
       fr: "Infos / Billets"
+    },
+    dates: {
+      it: "Date / Programma",
+      en: "Dates / Programme",
+      es: "Fechas / Programa",
+      fr: "Dates / Programme"
+    },
+    event: {
+      it: "Evento",
+      en: "Event",
+      es: "Evento",
+      fr: "Événement"
     },
     maps: {
       it: "📍 Apri su Maps",
@@ -446,24 +581,41 @@
   }
 
   function renderPlaces(lang) {
-    var container = document.getElementById('places-grid');
+    var container = document.getElementById('places-container');
     if (!container) return;
 
-    container.innerHTML = places.map(function (place) {
-      var mapsUrl = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(place.mapsQuery);
+    container.innerHTML = placeCategories.map(function (category) {
+      var cards = category.places.map(function (place) {
+        var mapsUrl = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(place.mapsQuery);
+        var cardClass = category.isEvents ? "place-card event-card" : "place-card";
+        var badge = category.isEvents ? '<span class="event-badge">' + labels.event[lang] + '</span>' : "";
+
+        return `
+          <article class="${cardClass}">
+            <img src="${place.image}" alt="${place.title[lang]}">
+            <div class="place-content">
+              ${badge}
+              <h3>${place.title[lang]}</h3>
+              <p>${place.desc[lang]}</p>
+              <div class="place-actions">
+                <a class="place-btn" href="${place.infoUrl}" target="_blank">${category.isEvents ? labels.dates[lang] : labels.info[lang]}</a>
+                <a class="place-btn light" href="${mapsUrl}" target="_blank">${labels.maps[lang]}</a>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('');
 
       return `
-        <article class="place-card">
-          <img src="${place.image}" alt="${place.title[lang]}">
-          <div class="place-content">
-            <h3>${place.title[lang]}</h3>
-            <p>${place.desc[lang]}</p>
-            <div class="place-actions">
-              <a class="place-btn" href="${place.infoUrl}" target="_blank">${labels.info[lang]}</a>
-              <a class="place-btn light" href="${mapsUrl}" target="_blank">${labels.maps[lang]}</a>
-            </div>
+        <div class="place-category" id="${category.id}">
+          <div class="place-category-header">
+            <h2>${category.title[lang]}</h2>
+            <p>${category.intro[lang]}</p>
           </div>
-        </article>
+          <div class="places-grid">
+            ${cards}
+          </div>
+        </div>
       `;
     }).join('');
   }

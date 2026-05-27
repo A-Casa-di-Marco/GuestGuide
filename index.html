@@ -692,13 +692,6 @@
                 data-fr="📲 Ajouter à l’écran d’accueil">
           📲 Aggiungi alla schermata Home
         </button>
-        <p class="install-note"
-           data-it="Su iPhone: apri Safari, premi Condividi e scegli “Aggiungi alla schermata Home”."
-           data-en="On iPhone: open Safari, tap Share and choose “Add to Home Screen”."
-           data-es="En iPhone: abre Safari, toca Compartir y elige “Añadir a pantalla de inicio”."
-           data-fr="Sur iPhone : ouvrez Safari, touchez Partager puis “Ajouter à l’écran d’accueil”.">
-          Su iPhone: apri Safari, premi Condividi e scegli “Aggiungi alla schermata Home”.
-        </p>
           <div class="page-buttons">
          <a class="guide-btn emergency-btn" data-href="farmacie-emergenze.html" href="farmacie-emergenze.html"
            data-it="💊 Farmacie ed emergenze"
@@ -1072,6 +1065,10 @@
   let deferredPrompt;
   const installBtn = document.getElementById('installAppBtn');
 
+  function isIOS() {
+    return /iphone|ipad|ipod/i.test(navigator.userAgent);
+  }
+
   window.addEventListener('beforeinstallprompt', function (event) {
     event.preventDefault();
     deferredPrompt = event;
@@ -1088,8 +1085,13 @@
         await deferredPrompt.userChoice;
         deferredPrompt = null;
         installBtn.classList.remove('show');
+        return;
+      }
+
+      if (isIOS()) {
+        alert("Su iPhone: apri questo sito con Safari, premi il tasto Condividi e scegli “Aggiungi alla schermata Home”.");
       } else {
-        alert("Per aggiungere la guida alla schermata Home: apri il menu del browser e scegli 'Aggiungi alla schermata Home'.");
+        alert("Per salvare la guida sul telefono: apri il menu del browser e scegli “Aggiungi alla schermata Home” o “Installa app”.");
       }
     });
   }

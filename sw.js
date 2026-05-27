@@ -1,4 +1,4 @@
-const CACHE_NAME = "casa-di-marco-guide-v2";
+const CACHE_NAME = "casa-di-marco-guide-v3";
 
 const FILES_TO_CACHE = [
   "./",

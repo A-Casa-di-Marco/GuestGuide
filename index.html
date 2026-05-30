@@ -162,6 +162,103 @@
       color: var(--muted);
     }
 
+    .hidden {
+      display: none !important;
+    }
+
+    .guest-welcome {
+      background: #dff3f2;
+      border-left: 6px solid #0f7f83;
+      border-radius: 22px;
+      padding: 18px 20px;
+      margin-bottom: 22px;
+      box-shadow: 0 10px 26px rgba(0,80,85,.10);
+    }
+
+    .guest-welcome h2 {
+      font-family: 'Pacifico', cursive;
+      font-size: 34px;
+      color: #075f63;
+      margin-bottom: 6px;
+    }
+
+    .guest-welcome p {
+      color: #263238;
+      font-size: 17px;
+      margin: 0;
+    }
+
+    .owner-generator {
+      background: #fff8e8;
+      border-left: 6px solid #0f7f83;
+      border-radius: 22px;
+      padding: 20px;
+      margin: 22px 0;
+    }
+
+    .owner-generator h3 {
+      font-family: 'Pacifico', cursive;
+      color: #075f63;
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .owner-generator p {
+      color: #6f7d80;
+      margin-bottom: 14px;
+    }
+
+    .owner-generator label {
+      display: block;
+      font-weight: 700;
+      color: #075f63;
+      margin: 12px 0 6px;
+    }
+
+    .owner-generator input,
+    .owner-generator select {
+      width: 100%;
+      border: 1px solid rgba(15,127,131,.25);
+      border-radius: 16px;
+      padding: 12px 14px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px;
+      background: #fff;
+      color: #263238;
+    }
+
+    .owner-btn {
+      margin-top: 14px;
+      border: none;
+      cursor: pointer;
+      background: #0f7f83;
+      color: #fff;
+      border-radius: 999px;
+      padding: 11px 18px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+    }
+
+    .owner-btn.light {
+      background: #fff;
+      color: #075f63;
+      border: 1px solid rgba(15,127,131,.25);
+    }
+
+    .generated-link-box {
+      margin-top: 18px;
+      background: #dff3f2;
+      border-radius: 18px;
+      padding: 15px;
+    }
+
+    .generated-link-box strong {
+      display: block;
+      color: #075f63;
+      margin-bottom: 8px;
+    }
+
     .lang-btns {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -612,6 +709,18 @@
         font-size: 14px;
         line-height: 1.75;
       }
+
+      .guest-welcome h2 {
+        font-size: 27px;
+      }
+
+      .guest-welcome p {
+        font-size: 15px;
+      }
+
+      .owner-btn {
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -680,12 +789,57 @@
 
     <main>
       <section id="welcome-home" class="home-welcome">
+        <div id="guestWelcomeBox" class="guest-welcome hidden">
+          <h2 id="guestWelcomeTitle">Benvenuti</h2>
+          <p id="guestWelcomeSubtitle">La vostra guida digitale per il soggiorno ad A Casa di Marco</p>
+        </div>
         <h2 data-it="Benvenuti"
             data-en="Welcome"
             data-es="Bienvenidos"
             data-fr="Bienvenue">Benvenuti</h2>
         <p data-it="Benvenuti A Casa di Marco. Siamo felici di ospitarvi e speriamo che possiate sentirvi davvero a casa. In questa guida troverete tutte le informazioni utili per vivere al meglio il vostro soggiorno." data-en="Welcome to A Casa di Marco. We are happy to host you and hope you will truly feel at home. In this guide you will find all the useful information to enjoy your stay." data-es="Bienvenidos A Casa di Marco. Nos alegra alojaros y esperamos que os sintáis como en casa. En esta guía encontraréis toda la información útil para disfrutar de vuestra estancia." data-fr="Bienvenue A Casa di Marco. Nous sommes heureux de vous accueillir et espérons que vous vous sentirez vraiment chez vous. Dans ce guide, vous trouverez toutes les informations utiles pour profiter de votre séjour.">Benvenuti A Casa di Marco. Siamo felici di ospitarvi e speriamo che possiate sentirvi davvero a casa. In questa guida troverete tutte le informazioni utili per vivere al meglio il vostro soggiorno.</p>
       </section>
+
+      <div id="ownerGuestGenerator" class="owner-generator hidden">
+        <h3>Area proprietario</h3>
+
+        <p>Inserisci il tipo di ospite e il nome/cognome. Il sito tradurrà automaticamente “Famiglia”, “Signor”, “Signora” o “Ospiti” nella lingua scelta.</p>
+
+        <label for="guestTypeSelect">Tipo ospite</label>
+        <select id="guestTypeSelect">
+          <option value="family">Famiglia</option>
+          <option value="mr">Signor</option>
+          <option value="mrs">Signora</option>
+          <option value="guests">Ospiti</option>
+          <option value="custom">Testo personalizzato</option>
+        </select>
+
+        <label for="guestNameInput">Nome / cognome</label>
+        <input id="guestNameInput" type="text" placeholder="Esempio: Rossi">
+
+        <label for="guestCustomInput" id="guestCustomLabel" class="hidden">Testo personalizzato</label>
+        <input id="guestCustomInput" class="hidden" type="text" placeholder="Esempio: Gruppo Rossi">
+
+        <label for="guestLangSelect">Lingua iniziale</label>
+        <select id="guestLangSelect">
+          <option value="it">Italiano</option>
+          <option value="en">English</option>
+          <option value="es">Español</option>
+          <option value="fr">Français</option>
+        </select>
+
+        <button type="button" class="owner-btn" id="generateGuestLink">
+          Crea link ospite
+        </button>
+
+        <div id="generatedLinkBox" class="generated-link-box hidden">
+          <strong>Link da inviare:</strong>
+          <input id="generatedGuestLink" type="text" readonly>
+          <button type="button" class="owner-btn light" id="copyGuestLink">
+            Copia link
+          </button>
+        </div>
+      </div>
 
       
       <section id="home-menu" class="home-menu">
@@ -1005,6 +1159,231 @@
   </div>
 
 <script>
+  function getCurrentLangForGuest() {
+    var hash = window.location.hash ? window.location.hash.replace("#", "") : "";
+    var params = new URLSearchParams(window.location.search);
+    var langParam = params.get("lang");
+
+    if (langParam === "it" || langParam === "en" || langParam === "es" || langParam === "fr") {
+      return langParam;
+    }
+
+    if (hash === "it" || hash === "en" || hash === "es" || hash === "fr") {
+      return hash;
+    }
+
+    try {
+      var savedLang = localStorage.getItem("guestGuideLang");
+      if (savedLang === "it" || savedLang === "en" || savedLang === "es" || savedLang === "fr") {
+        return savedLang;
+      }
+    } catch (e) {}
+
+    return "it";
+  }
+
+  function getGuestDataFromUrl() {
+    var params = new URLSearchParams(window.location.search);
+    var guestName = params.get("guestName") || "";
+    var guestType = params.get("guestType") || "";
+    var guestCustom = params.get("guestCustom") || "";
+
+    if (guestName || guestType || guestCustom) {
+      try {
+        localStorage.setItem("guestName", guestName);
+        localStorage.setItem("guestType", guestType);
+        localStorage.setItem("guestCustom", guestCustom);
+      } catch (e) {}
+
+      return {
+        name: guestName,
+        type: guestType,
+        custom: guestCustom
+      };
+    }
+
+    try {
+      return {
+        name: localStorage.getItem("guestName") || "",
+        type: localStorage.getItem("guestType") || "",
+        custom: localStorage.getItem("guestCustom") || ""
+      };
+    } catch (e) {
+      return {
+        name: "",
+        type: "",
+        custom: ""
+      };
+    }
+  }
+
+  function formatGuestName(type, name, custom, lang) {
+    name = name ? name.trim() : "";
+    custom = custom ? custom.trim() : "";
+
+    var translations = {
+      family: {
+        it: "Famiglia " + name,
+        en: name + " Family",
+        es: "Familia " + name,
+        fr: "Famille " + name
+      },
+      mr: {
+        it: "Signor " + name,
+        en: "Mr. " + name,
+        es: "Señor " + name,
+        fr: "Monsieur " + name
+      },
+      mrs: {
+        it: "Signora " + name,
+        en: "Mrs. " + name,
+        es: "Señora " + name,
+        fr: "Madame " + name
+      },
+      guests: {
+        it: name ? "Ospiti " + name : "Ospiti",
+        en: name ? name + " Guests" : "Guests",
+        es: name ? "Huéspedes " + name : "Huéspedes",
+        fr: name ? "Hôtes " + name : "Hôtes"
+      },
+      custom: {
+        it: custom || name,
+        en: custom || name,
+        es: custom || name,
+        fr: custom || name
+      }
+    };
+
+    if (!translations[type]) {
+      return name || custom;
+    }
+
+    return translations[type][lang] || translations[type].it;
+  }
+
+  function showGuestWelcome() {
+    var guestData = getGuestDataFromUrl();
+    var lang = getCurrentLangForGuest();
+
+    var box = document.getElementById("guestWelcomeBox");
+    var title = document.getElementById("guestWelcomeTitle");
+    var subtitle = document.getElementById("guestWelcomeSubtitle");
+
+    if (!box || !title || !subtitle) return;
+
+    var finalGuestName = formatGuestName(
+      guestData.type,
+      guestData.name,
+      guestData.custom,
+      lang
+    );
+
+    if (!finalGuestName) {
+      box.classList.add("hidden");
+      return;
+    }
+
+    var welcomeTexts = {
+      it: "Benvenuti, ",
+      en: "Welcome, ",
+      es: "Bienvenidos, ",
+      fr: "Bienvenue, "
+    };
+
+    var subtitleTexts = {
+      it: "La vostra guida digitale per il soggiorno ad A Casa di Marco",
+      en: "Your digital guide for your stay at A Casa di Marco",
+      es: "Vuestra guía digital para la estancia en A Casa di Marco",
+      fr: "Votre guide numérique pour votre séjour à A Casa di Marco"
+    };
+
+    title.textContent = welcomeTexts[lang] + finalGuestName;
+    subtitle.textContent = subtitleTexts[lang];
+
+    box.classList.remove("hidden");
+  }
+
+  function setupOwnerGuestGenerator() {
+    var params = new URLSearchParams(window.location.search);
+    var isAdmin = params.get("admin") === "1";
+
+    var generator = document.getElementById("ownerGuestGenerator");
+    var typeSelect = document.getElementById("guestTypeSelect");
+    var input = document.getElementById("guestNameInput");
+    var customInput = document.getElementById("guestCustomInput");
+    var customLabel = document.getElementById("guestCustomLabel");
+    var langSelect = document.getElementById("guestLangSelect");
+    var generateBtn = document.getElementById("generateGuestLink");
+    var generatedBox = document.getElementById("generatedLinkBox");
+    var generatedInput = document.getElementById("generatedGuestLink");
+    var copyBtn = document.getElementById("copyGuestLink");
+
+    if (!generator || !typeSelect || !input || !customInput || !customLabel || !langSelect || !generateBtn || !generatedBox || !generatedInput || !copyBtn) return;
+
+    if (!isAdmin) {
+      generator.classList.add("hidden");
+      return;
+    }
+
+    generator.classList.remove("hidden");
+
+    typeSelect.addEventListener("change", function () {
+      if (typeSelect.value === "custom") {
+        customInput.classList.remove("hidden");
+        customLabel.classList.remove("hidden");
+      } else {
+        customInput.classList.add("hidden");
+        customLabel.classList.add("hidden");
+      }
+    });
+
+    generateBtn.addEventListener("click", function () {
+      var guestType = typeSelect.value;
+      var guestName = input.value.trim();
+      var guestCustom = customInput.value.trim();
+      var lang = langSelect.value || "it";
+
+      if (guestType !== "custom" && !guestName) {
+        alert("Inserisci il cognome o il nome dell’ospite.");
+        return;
+      }
+
+      if (guestType === "custom" && !guestCustom) {
+        alert("Inserisci il testo personalizzato.");
+        return;
+      }
+
+      var baseUrl = window.location.origin + window.location.pathname;
+      var finalUrl = baseUrl
+        + "?guestType=" + encodeURIComponent(guestType)
+        + "&guestName=" + encodeURIComponent(guestName)
+        + "&guestCustom=" + encodeURIComponent(guestCustom)
+        + "#" + lang;
+
+      generatedInput.value = finalUrl;
+      generatedBox.classList.remove("hidden");
+    });
+
+    copyBtn.addEventListener("click", function () {
+      generatedInput.select();
+      generatedInput.setSelectionRange(0, 99999);
+
+      try {
+        navigator.clipboard.writeText(generatedInput.value);
+        copyBtn.textContent = "Copiato!";
+        setTimeout(function () {
+          copyBtn.textContent = "Copia link";
+        }, 1800);
+      } catch (e) {
+        document.execCommand("copy");
+        copyBtn.textContent = "Copiato!";
+        setTimeout(function () {
+          copyBtn.textContent = "Copia link";
+        }, 1800);
+      }
+    });
+  }
+
   function translatePage(lang) {
     document.documentElement.lang = lang;
 
@@ -1059,6 +1438,9 @@
       showLangScreen();
     }
   })();
+
+  showGuestWelcome();
+  setupOwnerGuestGenerator();
 </script>
 <script>
   if ('serviceWorker' in navigator) {

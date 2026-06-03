@@ -7,7 +7,6 @@
   <title>A Casa di Marco · Guest Guide</title>
   <meta name="description" content="Guida digitale per gli ospiti di A Casa di Marco, Garden Cottage Escape a Salerno." />
 
-  <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#0f7f83">
   <link rel="apple-touch-icon" href="assets/icon-192.png">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -802,6 +801,28 @@
         padding: 9px 14px;
       }
     }
+
+        .install-note {
+      display: none;
+    }
+
+    .save-guide-box {
+      background: #dff3f2;
+      border-left: 5px solid #0f7f83;
+      border-radius: 18px;
+      padding: 14px 16px;
+      margin: -8px 0 20px 0;
+      color: #263238;
+      font-size: 14px;
+    }
+
+    .save-guide-box p {
+      margin-bottom: 10px;
+    }
+
+    .save-guide-box p:last-child {
+      margin-bottom: 0;
+    }
   </style>
 </head>
 
@@ -994,13 +1015,29 @@
             data-es="Guía para huéspedes"
             data-fr="Guide des invités">Guida ospiti</h2>
 
-        <button class="install-app-btn" id="installAppBtn"
-                data-it="📲 Aggiungi alla schermata Home"
-                data-en="📲 Add to Home Screen"
-                data-es="📲 Añadir a pantalla de inicio"
-                data-fr="📲 Ajouter à l’écran d’accueil">
-          📲 Aggiungi alla schermata Home
+        <button class="install-app-btn show" id="saveGuideBtn"
+                data-it="📲 Salva questa guida sul telefono"
+                data-en="📲 Save this guide on your phone"
+                data-es="📲 Guarda esta guía en tu teléfono"
+                data-fr="📲 Enregistrer ce guide sur le téléphone">
+          📲 Salva questa guida sul telefono
         </button>
+
+        <div id="saveGuideInstructions" class="save-guide-box hidden">
+          <p data-it-html="<strong>Android:</strong> apri il menu del browser ⋮ e scegli “Aggiungi alla schermata Home”. Verrà salvato un collegamento veloce al sito."
+            data-en-html="<strong>Android:</strong> open the browser menu ⋮ and choose “Add to Home screen”. A quick shortcut to the website will be saved."
+            data-es-html="<strong>Android:</strong> abre el menú del navegador ⋮ y elige “Añadir a pantalla de inicio”. Se guardará un acceso rápido al sitio."
+            data-fr-html="<strong>Android :</strong> ouvrez le menu du navigateur ⋮ et choisissez “Ajouter à l’écran d’accueil”. Un raccourci rapide vers le site sera enregistré.">
+            <strong>Android:</strong> apri il menu del browser ⋮ e scegli “Aggiungi alla schermata Home”. Verrà salvato un collegamento veloce al sito.
+          </p>
+
+          <p data-it-html="<strong>iPhone:</strong> apri il sito con Safari, premi Condividi e scegli “Aggiungi alla schermata Home”."
+            data-en-html="<strong>iPhone:</strong> open the site with Safari, tap Share and choose “Add to Home Screen”."
+            data-es-html="<strong>iPhone:</strong> abre el sitio con Safari, toca Compartir y elige “Añadir a pantalla de inicio”."
+            data-fr-html="<strong>iPhone :</strong> ouvrez le site avec Safari, touchez Partager puis “Ajouter à l’écran d’accueil”.">
+            <strong>iPhone:</strong> apri il sito con Safari, premi Condividi e scegli “Aggiungi alla schermata Home”.
+          </p>
+        </div>
 
         <div class="page-buttons">
           <a class="guide-btn emergency-btn" data-href="farmacie-emergenze.html" href="farmacie-emergenze.html"
@@ -1770,47 +1807,12 @@
   </script>
 
   <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function () {
-        navigator.serviceWorker.register('sw.js').catch(function (error) {
-          console.log('Service Worker non registrato:', error);
-        });
-      });
-    }
-  </script>
+    const saveGuideBtn = document.getElementById('saveGuideBtn');
+    const saveGuideInstructions = document.getElementById('saveGuideInstructions');
 
-  <script>
-    let deferredPrompt;
-    const installBtn = document.getElementById('installAppBtn');
-
-    function isIOS() {
-      return /iphone|ipad|ipod/i.test(navigator.userAgent);
-    }
-
-    window.addEventListener('beforeinstallprompt', function (event) {
-      event.preventDefault();
-      deferredPrompt = event;
-
-      if (installBtn) {
-        installBtn.classList.add('show');
-      }
-    });
-
-    if (installBtn) {
-      installBtn.addEventListener('click', async function () {
-        if (deferredPrompt) {
-          deferredPrompt.prompt();
-          await deferredPrompt.userChoice;
-          deferredPrompt = null;
-          installBtn.classList.remove('show');
-          return;
-        }
-
-        if (isIOS()) {
-          alert("Su iPhone: apri questo sito con Safari, premi il tasto Condividi e scegli “Aggiungi alla schermata Home”.");
-        } else {
-          alert("Per salvare la guida sul telefono: apri il menu del browser e scegli “Aggiungi alla schermata Home” o “Installa app”.");
-        }
+    if (saveGuideBtn && saveGuideInstructions) {
+      saveGuideBtn.addEventListener('click', function () {
+        saveGuideInstructions.classList.toggle('hidden');
       });
     }
   </script>

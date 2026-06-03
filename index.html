@@ -3,17 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>A Casa di Marco · Guest Guide</title>
   <meta name="description" content="Guida digitale per gli ospiti di A Casa di Marco, Garden Cottage Escape a Salerno." />
+
   <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#0f7f83">
   <link rel="apple-touch-icon" href="assets/icon-192.png">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Casa di Marco">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --ottanio: #0f7f83;
@@ -541,6 +545,70 @@
       display: none;
     }
 
+    .weather-box {
+      background: #fff;
+      border-radius: 24px;
+      padding: 18px;
+      margin: 20px 0;
+      box-shadow: 0 12px 34px rgba(0,70,75,.14);
+      border: 1px solid rgba(15,127,131,.14);
+    }
+
+    .weather-main {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .weather-label {
+      display: block;
+      color: #6f7d80;
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+
+    .weather-main strong {
+      color: #075f63;
+      font-size: 18px;
+    }
+
+    .weather-temp {
+      min-width: 72px;
+      text-align: center;
+      background: #dff3f2;
+      color: #075f63;
+      border-radius: 18px;
+      padding: 10px 12px;
+      font-weight: 800;
+      font-size: 24px;
+    }
+
+    .weather-details {
+      margin-top: 10px;
+      color: #6f7d80;
+      font-size: 14px;
+    }
+
+    .umbrella-alert {
+      margin-top: 14px;
+      background: #fff0ec;
+      border-left: 6px solid #d96b4c;
+      border-radius: 18px;
+      padding: 14px 16px;
+    }
+
+    .umbrella-alert strong {
+      display: block;
+      color: #9b2f1e;
+      margin-bottom: 4px;
+    }
+
+    .umbrella-alert p {
+      margin: 0;
+      color: #263238;
+    }
+
     .marco-story {
       display: grid;
       grid-template-columns: 1.45fr .85fr;
@@ -645,17 +713,6 @@
       padding: 16px;
     }
 
-    @media (max-width: 720px) {
-      .contact-card {
-        padding: 15px;
-      }
-
-      .contact-btn {
-        font-size: 13px;
-        padding: 9px 14px;
-      }
-    }
-
     footer {
       background: var(--navy);
       color: #fff;
@@ -697,6 +754,20 @@
         height: 240px;
       }
 
+      .weather-box {
+        padding: 15px;
+        border-radius: 20px;
+      }
+
+      .weather-main strong {
+        font-size: 16px;
+      }
+
+      .weather-temp {
+        font-size: 21px;
+        min-width: 64px;
+      }
+
       .marco-story {
         grid-template-columns: 1fr;
       }
@@ -721,19 +792,51 @@
       .owner-btn {
         width: 100%;
       }
+
+      .contact-card {
+        padding: 15px;
+      }
+
+      .contact-btn {
+        font-size: 13px;
+        padding: 9px 14px;
+      }
     }
   </style>
 </head>
+
 <body>
   <div id="lang-screen">
     <div class="lang-box">
-      <div class="lang-badge" data-it="Guida ospiti" data-en="Guest guide" data-es="Guía para huéspedes" data-fr="Guide des invités">Guest Guide</div>
-      <h1 data-it="A Casa di Marco" data-en="A Casa di Marco" data-es="A Casa di Marco" data-fr="A Casa di Marco">A Casa di Marco</h1>
-      <p class="lang-subtitle" data-it="Garden Cottage Escape · Salerno" data-en="Garden Cottage Escape · Salerno" data-es="Garden Cottage Escape · Salerno" data-fr="Garden Cottage Escape · Salerno">Garden Cottage Escape · Salerno</p>
+      <div class="lang-badge"
+           data-it="Guida ospiti"
+           data-en="Guest guide"
+           data-es="Guía para huéspedes"
+           data-fr="Guide des invités">Guest Guide</div>
+
+      <h1 data-it="A Casa di Marco"
+          data-en="A Casa di Marco"
+          data-es="A Casa di Marco"
+          data-fr="A Casa di Marco">A Casa di Marco</h1>
+
+      <p class="lang-subtitle"
+         data-it="Garden Cottage Escape · Salerno"
+         data-en="Garden Cottage Escape · Salerno"
+         data-es="Garden Cottage Escape · Salerno"
+         data-fr="Garden Cottage Escape · Salerno">Garden Cottage Escape · Salerno</p>
+
       <div class="lang-welcome">
-        <strong data-it="Benvenuti" data-en="Welcome" data-es="Bienvenidos" data-fr="Bienvenue">Benvenuti</strong>
-        <span data-it="Welcome · Bienvenidos · Bienvenue" data-en="Welcome · Bienvenidos · Bienvenue" data-es="Welcome · Bienvenidos · Bienvenue" data-fr="Welcome · Bienvenidos · Bienvenue">Welcome · Bienvenidos · Bienvenue</span>
+        <strong data-it="Benvenuti"
+                data-en="Welcome"
+                data-es="Bienvenidos"
+                data-fr="Bienvenue">Benvenuti</strong>
+
+        <span data-it="Welcome · Bienvenidos · Bienvenue"
+              data-en="Welcome · Bienvenidos · Bienvenue"
+              data-es="Welcome · Bienvenidos · Bienvenue"
+              data-fr="Welcome · Bienvenidos · Bienvenue">Welcome · Bienvenidos · Bienvenue</span>
       </div>
+
       <div class="lang-btns">
         <button class="lang-btn" onclick="showSite('it')" data-it="Italiano" data-en="Italian" data-es="Italiano" data-fr="Italien"><span class="flag">🇮🇹</span> Italiano</button>
         <button class="lang-btn" onclick="showSite('en')" data-it="English" data-en="English" data-es="Inglés" data-fr="Anglais"><span class="flag">🇬🇧</span> English</button>
@@ -781,6 +884,7 @@
             <option value="fr" data-it="🇫🇷 Français" data-en="🇫🇷 French" data-es="🇫🇷 Francés" data-fr="🇫🇷 Français">🇫🇷 Français</option>
           </select>
         </div>
+
         <a href="#contatti" data-it="Contatti" data-en="Contacts" data-es="Contactos" data-fr="Contacts">Contatti</a>
         <a href="#home-menu" data-it="Guida ospiti" data-en="Guest guide" data-es="Guía para huéspedes" data-fr="Guide des invités">Guida ospiti</a>
         <a href="#marco-section" data-it="Chi è Marco?" data-en="Who is Marco?" data-es="¿Quién es Marco?" data-fr="Qui est Marco ?">Chi è Marco?</a>
@@ -788,16 +892,59 @@
     </nav>
 
     <main>
+      <div id="weatherBox" class="weather-box hidden">
+        <div class="weather-main">
+          <div>
+            <span class="weather-label"
+                  data-it="Meteo oggi a Salerno"
+                  data-en="Today’s weather in Salerno"
+                  data-es="Tiempo hoy en Salerno"
+                  data-fr="Météo aujourd’hui à Salerne">
+              Meteo oggi a Salerno
+            </span>
+
+            <strong id="weatherSummary">Caricamento meteo...</strong>
+          </div>
+
+          <div class="weather-temp" id="weatherTemp">--°</div>
+        </div>
+
+        <div class="weather-details" id="weatherDetails"></div>
+
+        <div id="umbrellaAlert" class="umbrella-alert hidden">
+          <strong data-it="Attenzione ombrellone"
+                  data-en="Garden umbrella warning"
+                  data-es="Atención sombrilla"
+                  data-fr="Attention parasol">
+            Attenzione ombrellone
+          </strong>
+
+          <p data-it="In caso di pioggia o vento, vi chiediamo di chiudere l’ombrellone prima di uscire o quando non siete in giardino."
+             data-en="In case of rain or wind, please close the garden umbrella before leaving or when you are not in the garden."
+             data-es="En caso de lluvia o viento, os pedimos que cerréis la sombrilla antes de salir o cuando no estéis en el jardín."
+             data-fr="En cas de pluie ou de vent, merci de refermer le parasol avant de sortir ou lorsque vous n’êtes pas dans le jardin.">
+            In caso di pioggia o vento, vi chiediamo di chiudere l’ombrellone prima di uscire o quando non siete in giardino.
+          </p>
+        </div>
+      </div>
+
       <section id="welcome-home" class="home-welcome">
         <div id="guestWelcomeBox" class="guest-welcome hidden">
           <h2 id="guestWelcomeTitle">Benvenuti</h2>
           <p id="guestWelcomeSubtitle">La vostra guida digitale per il soggiorno ad A Casa di Marco</p>
         </div>
+
         <h2 data-it="Benvenuti"
             data-en="Welcome"
             data-es="Bienvenidos"
             data-fr="Bienvenue">Benvenuti</h2>
-        <p data-it="Benvenuti A Casa di Marco. Siamo felici di ospitarvi e speriamo che possiate sentirvi davvero a casa. In questa guida troverete tutte le informazioni utili per vivere al meglio il vostro soggiorno." data-en="Welcome to A Casa di Marco. We are happy to host you and hope you will truly feel at home. In this guide you will find all the useful information to enjoy your stay." data-es="Bienvenidos A Casa di Marco. Nos alegra alojaros y esperamos que os sintáis como en casa. En esta guía encontraréis toda la información útil para disfrutar de vuestra estancia." data-fr="Bienvenue A Casa di Marco. Nous sommes heureux de vous accueillir et espérons que vous vous sentirez vraiment chez vous. Dans ce guide, vous trouverez toutes les informations utiles pour profiter de votre séjour.">Benvenuti A Casa di Marco. Siamo felici di ospitarvi e speriamo che possiate sentirvi davvero a casa. In questa guida troverete tutte le informazioni utili per vivere al meglio il vostro soggiorno.</p>
+
+        <p data-it="Benvenuti A Casa di Marco. Siamo felici di ospitarvi e speriamo che possiate sentirvi davvero a casa. In questa guida troverete tutte le informazioni utili per vivere al meglio il vostro soggiorno."
+           data-en="Welcome to A Casa di Marco. We are happy to host you and hope you will truly feel at home. In this guide you will find all the useful information to enjoy your stay."
+           data-es="Bienvenidos A Casa di Marco. Nos alegra alojaros y esperamos que os sintáis como en casa. En esta guía encontraréis toda la información útil para disfrutar de vuestra estancia."
+           data-fr="Bienvenue A Casa di Marco. Nous sommes heureux de vous accueillir et espérons que vous vous sentirez vraiment chez vous. Dans ce guide, vous trouverez toutes les informations utiles pour profiter de votre séjour.">
+          Benvenuti A Casa di Marco. Siamo felici di ospitarvi e speriamo che possiate sentirvi davvero a casa. In questa guida troverete tutte le informazioni utili per vivere al meglio il vostro soggiorno.
+        </p>
       </section>
 
       <div id="ownerGuestGenerator" class="owner-generator hidden">
@@ -841,12 +988,12 @@
         </div>
       </div>
 
-      
       <section id="home-menu" class="home-menu">
         <h2 data-it="Guida ospiti"
-          data-en="Guest guide"
-          data-es="Guía para huéspedes"
-          data-fr="Guide des invités">Guida ospiti</h2>
+            data-en="Guest guide"
+            data-es="Guía para huéspedes"
+            data-fr="Guide des invités">Guida ospiti</h2>
+
         <button class="install-app-btn" id="installAppBtn"
                 data-it="📲 Aggiungi alla schermata Home"
                 data-en="📲 Add to Home Screen"
@@ -854,81 +1001,82 @@
                 data-fr="📲 Ajouter à l’écran d’accueil">
           📲 Aggiungi alla schermata Home
         </button>
-          <div class="page-buttons">
-         <a class="guide-btn emergency-btn" data-href="farmacie-emergenze.html" href="farmacie-emergenze.html"
-           data-it="💊 Farmacie ed emergenze"
-           data-en="💊 Pharmacies and emergencies"
-           data-es="💊 Farmacias y emergencias"
-           data-fr="💊 Pharmacies et urgences">💊 Farmacie ed emergenze</a>
 
-         <a class="guide-btn" href="#contatti"
-           data-it="📞 Contatti"
-           data-en="📞 Contacts"
-           data-es="📞 Contactos"
-           data-fr="📞 Contacts">📞 Contatti</a>
+        <div class="page-buttons">
+          <a class="guide-btn emergency-btn" data-href="farmacie-emergenze.html" href="farmacie-emergenze.html"
+             data-it="💊 Farmacie ed emergenze"
+             data-en="💊 Pharmacies and emergencies"
+             data-es="💊 Farmacias y emergencias"
+             data-fr="💊 Pharmacies et urgences">💊 Farmacie ed emergenze</a>
 
-         <a class="guide-btn" href="check-in-out.html"
-           data-it="🧳 Check-in / Check-out"
-           data-en="🧳 Check-in / Check-out"
-           data-es="🧳 Check-in / Check-out"
-           data-fr="🧳 Check-in / Check-out">🧳 Check-in / Check-out</a>
+          <a class="guide-btn" href="#contatti"
+             data-it="📞 Contatti"
+             data-en="📞 Contacts"
+             data-es="📞 Contactos"
+             data-fr="📞 Contacts">📞 Contatti</a>
 
-         <a class="guide-btn" href="manuale.html"
-           data-it="🏠 Manuale della casa"
-           data-en="🏠 House manual"
-           data-es="🏠 Manual de la casa"
-           data-fr="🏠 Manuel de la maison">🏠 Manuale della casa</a>
+          <a class="guide-btn" href="check-in-out.html"
+             data-it="🧳 Check-in / Check-out"
+             data-en="🧳 Check-in / Check-out"
+             data-es="🧳 Check-in / Check-out"
+             data-fr="🧳 Check-in / Check-out">🧳 Check-in / Check-out</a>
 
-         <a class="guide-btn" href="regole.html"
-           data-it="📋 Regole della casa"
-           data-en="📋 House rules"
-           data-es="📋 Reglas de la casa"
-           data-fr="📋 Règlement de la maison">📋 Regole della casa</a>
+          <a class="guide-btn" href="manuale.html"
+             data-it="🏠 Manuale della casa"
+             data-en="🏠 House manual"
+             data-es="🏠 Manual de la casa"
+             data-fr="🏠 Manuel de la maison">🏠 Manuale della casa</a>
 
-         <a class="guide-btn" href="luoghi.html"
-           data-it="📍 Luoghi da visitare"
-           data-en="📍 Places to visit"
-           data-es="📍 Lugares para visitar"
-           data-fr="📍 Lieux à visiter">📍 Luoghi da visitare</a>
+          <a class="guide-btn" href="regole.html"
+             data-it="📋 Regole della casa"
+             data-en="📋 House rules"
+             data-es="📋 Reglas de la casa"
+             data-fr="📋 Règlement de la maison">📋 Regole della casa</a>
 
-         <a class="guide-btn" href="mangiare.html"
-           data-it="🍽️ Dove andare a mangiare"
-           data-en="🍽️ Where to eat"
-           data-es="🍽️ Dónde comer"
-           data-fr="🍽️ Où manger">🍽️ Dove andare a mangiare</a>
+          <a class="guide-btn" href="luoghi.html"
+             data-it="📍 Luoghi da visitare"
+             data-en="📍 Places to visit"
+             data-es="📍 Lugares para visitar"
+             data-fr="📍 Lieux à visiter">📍 Luoghi da visitare</a>
 
-         <a class="guide-btn" href="parcheggio.html"
-           data-it="🅿️ Dove parcheggiare"
-           data-en="🅿️ Where to park"
-           data-es="🅿️ Dónde aparcar"
-           data-fr="🅿️ Où se garer">🅿️ Dove parcheggiare</a>
+          <a class="guide-btn" href="mangiare.html"
+             data-it="🍽️ Dove andare a mangiare"
+             data-en="🍽️ Where to eat"
+             data-es="🍽️ Dónde comer"
+             data-fr="🍽️ Où manger">🍽️ Dove andare a mangiare</a>
 
-         <a class="guide-btn" href="spesa.html"
-           data-it="🛒 Dove fare la spesa"
-           data-en="🛒 Grocery shopping"
-           data-es="🛒 Dónde hacer la compra"
-           data-fr="🛒 Où faire les courses">🛒 Dove fare la spesa</a>
+          <a class="guide-btn" href="parcheggio.html"
+             data-it="🅿️ Dove parcheggiare"
+             data-en="🅿️ Where to park"
+             data-es="🅿️ Dónde aparcar"
+             data-fr="🅿️ Où se garer">🅿️ Dove parcheggiare</a>
 
-         <a class="guide-btn" href="colazione.html"
-           data-it="☕ Colazione"
-           data-en="☕ Breakfast"
-           data-es="☕ Desayuno"
-           data-fr="☕ Petit-déjeuner">☕ Colazione</a>
+          <a class="guide-btn" href="spesa.html"
+             data-it="🛒 Dove fare la spesa"
+             data-en="🛒 Grocery shopping"
+             data-es="🛒 Dónde hacer la compra"
+             data-fr="🛒 Où faire les courses">🛒 Dove fare la spesa</a>
 
-         <a class="guide-btn" href="trasporti.html"
-           data-it="🚌 Trasporti"
-           data-en="🚌 Transport"
-           data-es="🚌 Transportes"
-           data-fr="🚌 Transports">🚌 Trasporti</a>
+          <a class="guide-btn" href="colazione.html"
+             data-it="☕ Colazione"
+             data-en="☕ Breakfast"
+             data-es="☕ Desayuno"
+             data-fr="☕ Petit-déjeuner">☕ Colazione</a>
+
+          <a class="guide-btn" href="trasporti.html"
+             data-it="🚌 Trasporti"
+             data-en="🚌 Transport"
+             data-es="🚌 Transportes"
+             data-fr="🚌 Transports">🚌 Trasporti</a>
         </div>
       </section>
-
 
       <section id="home-gallery" class="home-gallery">
         <h2 data-it="La casa"
             data-en="The house"
             data-es="La casa"
             data-fr="La maison">La casa</h2>
+
         <div class="carousel">
           <img src="assets/casa-1.jpg" alt="Camera matrimoniale">
           <img src="assets/casa-2.jpg" alt="Soggiorno">
@@ -1044,7 +1192,6 @@
         </p>
 
         <div class="contact-grid">
-
           <div class="contact-card">
             <strong>Asja</strong>
             <p data-it="Contatto principale per il vostro soggiorno."
@@ -1117,7 +1264,6 @@
                  data-fr="✉️ Envoyer un email">✉️ Scrivi email</a>
             </div>
           </div>
-
         </div>
 
         <div class="emergency-box">
@@ -1153,338 +1299,520 @@
     </main>
 
     <footer>
-      <p data-it-html="<strong>A Casa di Marco – Guida ospiti</strong> · Garden Cottage Escape · Salerno" data-en-html="<strong>A Casa di Marco – Guest Guide</strong> · Garden Cottage Escape · Salerno" data-es-html="<strong>A Casa di Marco – Guía para huéspedes</strong> · Garden Cottage Escape · Salerno" data-fr-html="<strong>A Casa di Marco – Guide des invités</strong> · Garden Cottage Escape · Salerno"><strong>A Casa di Marco – Guest Guide</strong> · Garden Cottage Escape · Salerno</p>
-      <p data-it="Grazie per aver scelto la nostra casa." data-en="Thank you for choosing our home." data-es="Gracias por elegir nuestra casa." data-fr="Merci d'avoir choisi notre maison.">Grazie per aver scelto la nostra casa.</p>
+      <p data-it-html="<strong>A Casa di Marco – Guida ospiti</strong> · Garden Cottage Escape · Salerno"
+         data-en-html="<strong>A Casa di Marco – Guest Guide</strong> · Garden Cottage Escape · Salerno"
+         data-es-html="<strong>A Casa di Marco – Guía para huéspedes</strong> · Garden Cottage Escape · Salerno"
+         data-fr-html="<strong>A Casa di Marco – Guide des invités</strong> · Garden Cottage Escape · Salerno">
+        <strong>A Casa di Marco – Guest Guide</strong> · Garden Cottage Escape · Salerno
+      </p>
+
+      <p data-it="Grazie per aver scelto la nostra casa."
+         data-en="Thank you for choosing our home."
+         data-es="Gracias por elegir nuestra casa."
+         data-fr="Merci d'avoir choisi notre maison.">
+        Grazie per aver scelto la nostra casa.
+      </p>
     </footer>
   </div>
 
-<script>
-  function getCurrentLangForGuest() {
-    var hash = window.location.hash ? window.location.hash.replace("#", "") : "";
-    var params = new URLSearchParams(window.location.search);
-    var langParam = params.get("lang");
+  <script>
+    function getCurrentLangForGuest() {
+      var hash = window.location.hash ? window.location.hash.replace("#", "") : "";
+      var params = new URLSearchParams(window.location.search);
+      var langParam = params.get("lang");
 
-    if (langParam === "it" || langParam === "en" || langParam === "es" || langParam === "fr") {
-      return langParam;
-    }
-
-    if (hash === "it" || hash === "en" || hash === "es" || hash === "fr") {
-      return hash;
-    }
-
-    try {
-      var savedLang = localStorage.getItem("guestGuideLang");
-      if (savedLang === "it" || savedLang === "en" || savedLang === "es" || savedLang === "fr") {
-        return savedLang;
+      if (langParam === "it" || langParam === "en" || langParam === "es" || langParam === "fr") {
+        return langParam;
       }
-    } catch (e) {}
 
-    return "it";
-  }
+      if (hash === "it" || hash === "en" || hash === "es" || hash === "fr") {
+        return hash;
+      }
 
-  function getGuestDataFromUrl() {
-    var params = new URLSearchParams(window.location.search);
-    var guestName = params.get("guestName") || "";
-    var guestType = params.get("guestType") || "";
-    var guestCustom = params.get("guestCustom") || "";
-
-    if (guestName || guestType || guestCustom) {
       try {
-        localStorage.setItem("guestName", guestName);
-        localStorage.setItem("guestType", guestType);
-        localStorage.setItem("guestCustom", guestCustom);
+        var savedLang = localStorage.getItem("guestGuideLang");
+        if (savedLang === "it" || savedLang === "en" || savedLang === "es" || savedLang === "fr") {
+          return savedLang;
+        }
       } catch (e) {}
 
-      return {
-        name: guestName,
-        type: guestType,
-        custom: guestCustom
-      };
+      return "it";
     }
 
-    try {
-      return {
-        name: localStorage.getItem("guestName") || "",
-        type: localStorage.getItem("guestType") || "",
-        custom: localStorage.getItem("guestCustom") || ""
-      };
-    } catch (e) {
-      return {
-        name: "",
-        type: "",
-        custom: ""
-      };
-    }
-  }
+    function getGuestDataFromUrl() {
+      var params = new URLSearchParams(window.location.search);
+      var guestName = params.get("guestName") || "";
+      var guestType = params.get("guestType") || "";
+      var guestCustom = params.get("guestCustom") || "";
 
-  function formatGuestName(type, name, custom, lang) {
-    name = name ? name.trim() : "";
-    custom = custom ? custom.trim() : "";
+      if (guestName || guestType || guestCustom) {
+        try {
+          localStorage.setItem("guestName", guestName);
+          localStorage.setItem("guestType", guestType);
+          localStorage.setItem("guestCustom", guestCustom);
+        } catch (e) {}
 
-    var translations = {
-      family: {
-        it: "Famiglia " + name,
-        en: name + " Family",
-        es: "Familia " + name,
-        fr: "Famille " + name
-      },
-      mr: {
-        it: "Signor " + name,
-        en: "Mr. " + name,
-        es: "Señor " + name,
-        fr: "Monsieur " + name
-      },
-      mrs: {
-        it: "Signora " + name,
-        en: "Mrs. " + name,
-        es: "Señora " + name,
-        fr: "Madame " + name
-      },
-      guests: {
-        it: name ? "Ospiti " + name : "Ospiti",
-        en: name ? name + " Guests" : "Guests",
-        es: name ? "Huéspedes " + name : "Huéspedes",
-        fr: name ? "Hôtes " + name : "Hôtes"
-      },
-      custom: {
-        it: custom || name,
-        en: custom || name,
-        es: custom || name,
-        fr: custom || name
+        return {
+          name: guestName,
+          type: guestType,
+          custom: guestCustom
+        };
       }
-    };
-
-    if (!translations[type]) {
-      return name || custom;
-    }
-
-    return translations[type][lang] || translations[type].it;
-  }
-
-  function showGuestWelcome() {
-    var guestData = getGuestDataFromUrl();
-    var lang = getCurrentLangForGuest();
-
-    var box = document.getElementById("guestWelcomeBox");
-    var title = document.getElementById("guestWelcomeTitle");
-    var subtitle = document.getElementById("guestWelcomeSubtitle");
-
-    if (!box || !title || !subtitle) return;
-
-    var finalGuestName = formatGuestName(
-      guestData.type,
-      guestData.name,
-      guestData.custom,
-      lang
-    );
-
-    if (!finalGuestName) {
-      box.classList.add("hidden");
-      return;
-    }
-
-    var welcomeTexts = {
-      it: "Benvenuti, ",
-      en: "Welcome, ",
-      es: "Bienvenidos, ",
-      fr: "Bienvenue, "
-    };
-
-    var subtitleTexts = {
-      it: "La vostra guida digitale per il soggiorno ad A Casa di Marco",
-      en: "Your digital guide for your stay at A Casa di Marco",
-      es: "Vuestra guía digital para la estancia en A Casa di Marco",
-      fr: "Votre guide numérique pour votre séjour à A Casa di Marco"
-    };
-
-    title.textContent = welcomeTexts[lang] + finalGuestName;
-    subtitle.textContent = subtitleTexts[lang];
-
-    box.classList.remove("hidden");
-  }
-
-  function setupOwnerGuestGenerator() {
-    var params = new URLSearchParams(window.location.search);
-    var isAdmin = params.get("admin") === "1";
-
-    var generator = document.getElementById("ownerGuestGenerator");
-    var typeSelect = document.getElementById("guestTypeSelect");
-    var input = document.getElementById("guestNameInput");
-    var customInput = document.getElementById("guestCustomInput");
-    var customLabel = document.getElementById("guestCustomLabel");
-    var langSelect = document.getElementById("guestLangSelect");
-    var generateBtn = document.getElementById("generateGuestLink");
-    var generatedBox = document.getElementById("generatedLinkBox");
-    var generatedInput = document.getElementById("generatedGuestLink");
-    var copyBtn = document.getElementById("copyGuestLink");
-
-    if (!generator || !typeSelect || !input || !customInput || !customLabel || !langSelect || !generateBtn || !generatedBox || !generatedInput || !copyBtn) return;
-
-    if (!isAdmin) {
-      generator.classList.add("hidden");
-      return;
-    }
-
-    generator.classList.remove("hidden");
-
-    typeSelect.addEventListener("change", function () {
-      if (typeSelect.value === "custom") {
-        customInput.classList.remove("hidden");
-        customLabel.classList.remove("hidden");
-      } else {
-        customInput.classList.add("hidden");
-        customLabel.classList.add("hidden");
-      }
-    });
-
-    generateBtn.addEventListener("click", function () {
-      var guestType = typeSelect.value;
-      var guestName = input.value.trim();
-      var guestCustom = customInput.value.trim();
-      var lang = langSelect.value || "it";
-
-      if (guestType !== "custom" && !guestName) {
-        alert("Inserisci il cognome o il nome dell’ospite.");
-        return;
-      }
-
-      if (guestType === "custom" && !guestCustom) {
-        alert("Inserisci il testo personalizzato.");
-        return;
-      }
-
-      var baseUrl = window.location.origin + window.location.pathname;
-      var finalUrl = baseUrl
-        + "?guestType=" + encodeURIComponent(guestType)
-        + "&guestName=" + encodeURIComponent(guestName)
-        + "&guestCustom=" + encodeURIComponent(guestCustom)
-        + "#" + lang;
-
-      generatedInput.value = finalUrl;
-      generatedBox.classList.remove("hidden");
-    });
-
-    copyBtn.addEventListener("click", function () {
-      generatedInput.select();
-      generatedInput.setSelectionRange(0, 99999);
 
       try {
-        navigator.clipboard.writeText(generatedInput.value);
-        copyBtn.textContent = "Copiato!";
-        setTimeout(function () {
-          copyBtn.textContent = "Copia link";
-        }, 1800);
+        return {
+          name: localStorage.getItem("guestName") || "",
+          type: localStorage.getItem("guestType") || "",
+          custom: localStorage.getItem("guestCustom") || ""
+        };
       } catch (e) {
-        document.execCommand("copy");
-        copyBtn.textContent = "Copiato!";
-        setTimeout(function () {
-          copyBtn.textContent = "Copia link";
-        }, 1800);
+        return {
+          name: "",
+          type: "",
+          custom: ""
+        };
       }
-    });
-  }
+    }
 
-  function translatePage(lang) {
-    document.documentElement.lang = lang;
+    function formatGuestName(type, name, custom, lang) {
+      name = name ? name.trim() : "";
+      custom = custom ? custom.trim() : "";
 
-    document.querySelectorAll('[data-it], [data-it-html]').forEach(function (el) {
-      var htmlTranslation = el.getAttribute('data-' + lang + '-html');
-      var textTranslation = el.getAttribute('data-' + lang);
+      var translations = {
+        family: {
+          it: "Famiglia " + name,
+          en: name + " Family",
+          es: "Familia " + name,
+          fr: "Famille " + name
+        },
+        mr: {
+          it: "Signor " + name,
+          en: "Mr. " + name,
+          es: "Señor " + name,
+          fr: "Monsieur " + name
+        },
+        mrs: {
+          it: "Signora " + name,
+          en: "Mrs. " + name,
+          es: "Señora " + name,
+          fr: "Madame " + name
+        },
+        guests: {
+          it: name ? "Ospiti " + name : "Ospiti",
+          en: name ? name + " Guests" : "Guests",
+          es: name ? "Huéspedes " + name : "Huéspedes",
+          fr: name ? "Hôtes " + name : "Hôtes"
+        },
+        custom: {
+          it: custom || name,
+          en: custom || name,
+          es: custom || name,
+          fr: custom || name
+        }
+      };
 
-      if (htmlTranslation) {
-        el.innerHTML = htmlTranslation;
-      } else if (textTranslation) {
-        el.textContent = textTranslation;
+      if (!translations[type]) {
+        return name || custom;
       }
-    });
 
-    document.querySelectorAll('[data-href]').forEach(function (link) {
-      var base = link.getAttribute('data-href');
-      link.href = base + '?lang=' + lang;
-    });
-
-    try {
-      localStorage.setItem('guestGuideLang', lang);
-    } catch (e) {}
-  }
-
-  function showSite(lang) {
-    lang = lang || 'it';
-
-    document.getElementById('lang-screen').style.display = 'none';
-    document.getElementById('site').style.display = 'block';
-
-    translatePage(lang);
-
-    if (location.hash !== '#' + lang) {
-      history.pushState(null, '', '#' + lang);
+      return translations[type][lang] || translations[type].it;
     }
-  }
 
-  function showLangScreen() {
-    document.getElementById('lang-screen').style.display = 'flex';
-    document.getElementById('site').style.display = 'none';
+    function showGuestWelcome() {
+      var guestData = getGuestDataFromUrl();
+      var lang = getCurrentLangForGuest();
 
-    if (location.hash !== '#lang') {
-      history.pushState(null, '', '#lang');
-    }
-  }
+      var box = document.getElementById("guestWelcomeBox");
+      var title = document.getElementById("guestWelcomeTitle");
+      var subtitle = document.getElementById("guestWelcomeSubtitle");
 
-  (function () {
-    var hash = location.hash.replace('#', '');
-    if (hash === 'it' || hash === 'en' || hash === 'es' || hash === 'fr') {
-      showSite(hash);
-    } else {
-      showLangScreen();
-    }
-  })();
+      if (!box || !title || !subtitle) return;
 
-  showGuestWelcome();
-  setupOwnerGuestGenerator();
-</script>
-<script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function () {
-      navigator.serviceWorker.register('sw.js').catch(function (error) {
-        console.log('Service Worker non registrato:', error);
-      });
-    });
-  }
-</script>
-<script>
-  let deferredPrompt;
-  const installBtn = document.getElementById('installAppBtn');
+      var finalGuestName = formatGuestName(
+        guestData.type,
+        guestData.name,
+        guestData.custom,
+        lang
+      );
 
-  function isIOS() {
-    return /iphone|ipad|ipod/i.test(navigator.userAgent);
-  }
-
-  window.addEventListener('beforeinstallprompt', function (event) {
-    event.preventDefault();
-    deferredPrompt = event;
-
-    if (installBtn) {
-      installBtn.classList.add('show');
-    }
-  });
-
-  if (installBtn) {
-    installBtn.addEventListener('click', async function () {
-      if (deferredPrompt) {
-        deferredPrompt.prompt();
-        await deferredPrompt.userChoice;
-        deferredPrompt = null;
-        installBtn.classList.remove('show');
+      if (!finalGuestName) {
+        box.classList.add("hidden");
         return;
       }
 
-      if (isIOS()) {
-        alert("Su iPhone: apri questo sito con Safari, premi il tasto Condividi e scegli “Aggiungi alla schermata Home”.");
+      var welcomeTexts = {
+        it: "Benvenuti, ",
+        en: "Welcome, ",
+        es: "Bienvenidos, ",
+        fr: "Bienvenue, "
+      };
+
+      var subtitleTexts = {
+        it: "La vostra guida digitale per il soggiorno ad A Casa di Marco",
+        en: "Your digital guide for your stay at A Casa di Marco",
+        es: "Vuestra guía digital para la estancia en A Casa di Marco",
+        fr: "Votre guide numérique pour votre séjour à A Casa di Marco"
+      };
+
+      title.textContent = welcomeTexts[lang] + finalGuestName;
+      subtitle.textContent = subtitleTexts[lang];
+
+      box.classList.remove("hidden");
+    }
+
+    function setupOwnerGuestGenerator() {
+      var params = new URLSearchParams(window.location.search);
+      var isAdmin = params.get("admin") === "1";
+
+      var generator = document.getElementById("ownerGuestGenerator");
+      var typeSelect = document.getElementById("guestTypeSelect");
+      var input = document.getElementById("guestNameInput");
+      var customInput = document.getElementById("guestCustomInput");
+      var customLabel = document.getElementById("guestCustomLabel");
+      var langSelect = document.getElementById("guestLangSelect");
+      var generateBtn = document.getElementById("generateGuestLink");
+      var generatedBox = document.getElementById("generatedLinkBox");
+      var generatedInput = document.getElementById("generatedGuestLink");
+      var copyBtn = document.getElementById("copyGuestLink");
+
+      if (!generator || !typeSelect || !input || !customInput || !customLabel || !langSelect || !generateBtn || !generatedBox || !generatedInput || !copyBtn) return;
+
+      if (!isAdmin) {
+        generator.classList.add("hidden");
+        return;
+      }
+
+      generator.classList.remove("hidden");
+
+      typeSelect.addEventListener("change", function () {
+        if (typeSelect.value === "custom") {
+          customInput.classList.remove("hidden");
+          customLabel.classList.remove("hidden");
+        } else {
+          customInput.classList.add("hidden");
+          customLabel.classList.add("hidden");
+        }
+      });
+
+      generateBtn.addEventListener("click", function () {
+        var guestType = typeSelect.value;
+        var guestName = input.value.trim();
+        var guestCustom = customInput.value.trim();
+        var lang = langSelect.value || "it";
+
+        if (guestType !== "custom" && !guestName) {
+          alert("Inserisci il cognome o il nome dell’ospite.");
+          return;
+        }
+
+        if (guestType === "custom" && !guestCustom) {
+          alert("Inserisci il testo personalizzato.");
+          return;
+        }
+
+        var baseUrl = window.location.origin + window.location.pathname;
+        var finalUrl = baseUrl
+          + "?guestType=" + encodeURIComponent(guestType)
+          + "&guestName=" + encodeURIComponent(guestName)
+          + "&guestCustom=" + encodeURIComponent(guestCustom)
+          + "#" + lang;
+
+        generatedInput.value = finalUrl;
+        generatedBox.classList.remove("hidden");
+      });
+
+      copyBtn.addEventListener("click", function () {
+        generatedInput.select();
+        generatedInput.setSelectionRange(0, 99999);
+
+        try {
+          navigator.clipboard.writeText(generatedInput.value);
+          copyBtn.textContent = "Copiato!";
+          setTimeout(function () {
+            copyBtn.textContent = "Copia link";
+          }, 1800);
+        } catch (e) {
+          document.execCommand("copy");
+          copyBtn.textContent = "Copiato!";
+          setTimeout(function () {
+            copyBtn.textContent = "Copia link";
+          }, 1800);
+        }
+      });
+    }
+
+    function translatePage(lang) {
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll('[data-it], [data-it-html]').forEach(function (el) {
+        var htmlTranslation = el.getAttribute('data-' + lang + '-html');
+        var textTranslation = el.getAttribute('data-' + lang);
+
+        if (htmlTranslation) {
+          el.innerHTML = htmlTranslation;
+        } else if (textTranslation) {
+          el.textContent = textTranslation;
+        }
+      });
+
+      document.querySelectorAll('[data-href]').forEach(function (link) {
+        var base = link.getAttribute('data-href');
+        link.href = base + '?lang=' + lang;
+      });
+
+      try {
+        localStorage.setItem('guestGuideLang', lang);
+      } catch (e) {}
+    }
+
+    function showSite(lang) {
+      lang = lang || 'it';
+
+      document.getElementById('lang-screen').style.display = 'none';
+      document.getElementById('site').style.display = 'block';
+
+      translatePage(lang);
+      showGuestWelcome();
+
+      if (typeof loadSalernoWeather === 'function') {
+        loadSalernoWeather();
+      }
+
+      if (location.hash !== '#' + lang) {
+        history.pushState(null, '', '#' + lang);
+      }
+    }
+
+    function showLangScreen() {
+      document.getElementById('lang-screen').style.display = 'flex';
+      document.getElementById('site').style.display = 'none';
+
+      if (location.hash !== '#lang') {
+        history.pushState(null, '', '#lang');
+      }
+    }
+
+    (function () {
+      var hash = location.hash.replace('#', '');
+      if (hash === 'it' || hash === 'en' || hash === 'es' || hash === 'fr') {
+        showSite(hash);
       } else {
-        alert("Per salvare la guida sul telefono: apri il menu del browser e scegli “Aggiungi alla schermata Home” o “Installa app”.");
+        showLangScreen();
+      }
+    })();
+
+    showGuestWelcome();
+    setupOwnerGuestGenerator();
+  </script>
+
+  <script>
+    function getWeatherLang() {
+      var hash = window.location.hash ? window.location.hash.replace("#", "") : "";
+
+      if (hash === "it" || hash === "en" || hash === "es" || hash === "fr") {
+        return hash;
+      }
+
+      try {
+        var savedLang = localStorage.getItem("guestGuideLang");
+        if (savedLang === "it" || savedLang === "en" || savedLang === "es" || savedLang === "fr") {
+          return savedLang;
+        }
+      } catch (e) {}
+
+      return "it";
+    }
+
+    function weatherCodeText(code, lang) {
+      var texts = {
+        clear: {
+          it: "Sereno",
+          en: "Clear",
+          es: "Despejado",
+          fr: "Dégagé"
+        },
+        partly: {
+          it: "Poco nuvoloso",
+          en: "Partly cloudy",
+          es: "Parcialmente nublado",
+          fr: "Partiellement nuageux"
+        },
+        cloudy: {
+          it: "Nuvoloso",
+          en: "Cloudy",
+          es: "Nublado",
+          fr: "Nuageux"
+        },
+        fog: {
+          it: "Nebbia",
+          en: "Fog",
+          es: "Niebla",
+          fr: "Brouillard"
+        },
+        drizzle: {
+          it: "Pioviggine",
+          en: "Drizzle",
+          es: "Llovizna",
+          fr: "Bruine"
+        },
+        rain: {
+          it: "Pioggia",
+          en: "Rain",
+          es: "Lluvia",
+          fr: "Pluie"
+        },
+        storm: {
+          it: "Temporale",
+          en: "Thunderstorm",
+          es: "Tormenta",
+          fr: "Orage"
+        },
+        snow: {
+          it: "Neve",
+          en: "Snow",
+          es: "Nieve",
+          fr: "Neige"
+        }
+      };
+
+      if (code === 0) return texts.clear[lang];
+      if ([1, 2].includes(code)) return texts.partly[lang];
+      if (code === 3) return texts.cloudy[lang];
+      if ([45, 48].includes(code)) return texts.fog[lang];
+      if ([51, 53, 55, 56, 57].includes(code)) return texts.drizzle[lang];
+      if ([61, 63, 65, 66, 67, 80, 81, 82].includes(code)) return texts.rain[lang];
+      if ([95, 96, 99].includes(code)) return texts.storm[lang];
+      if ([71, 73, 75, 77, 85, 86].includes(code)) return texts.snow[lang];
+
+      return texts.cloudy[lang];
+    }
+
+    function isRainWeather(code, precipitation) {
+      var rainCodes = [51, 53, 55, 56, 57, 61, 63, 65, 66, 67, 80, 81, 82, 95, 96, 99];
+      return rainCodes.includes(code) || precipitation > 0;
+    }
+
+    function loadSalernoWeather() {
+      var lang = getWeatherLang();
+
+      var weatherBox = document.getElementById("weatherBox");
+      var weatherSummary = document.getElementById("weatherSummary");
+      var weatherTemp = document.getElementById("weatherTemp");
+      var weatherDetails = document.getElementById("weatherDetails");
+      var umbrellaAlert = document.getElementById("umbrellaAlert");
+
+      if (!weatherBox || !weatherSummary || !weatherTemp || !weatherDetails || !umbrellaAlert) return;
+
+      var latitude = 40.6824;
+      var longitude = 14.7681;
+
+      var apiUrl =
+        "https://api.open-meteo.com/v1/forecast" +
+        "?latitude=" + latitude +
+        "&longitude=" + longitude +
+        "&current=temperature_2m,weather_code,wind_speed_10m,precipitation" +
+        "&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,wind_speed_10m_max" +
+        "&timezone=Europe%2FRome";
+
+      fetch(apiUrl)
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (data) {
+          if (!data || !data.current || !data.daily) return;
+
+          var current = data.current;
+          var daily = data.daily;
+
+          var temperature = Math.round(current.temperature_2m);
+          var currentWind = Math.round(current.wind_speed_10m || 0);
+          var currentRain = current.precipitation || 0;
+          var code = current.weather_code;
+
+          var maxTemp = Math.round(daily.temperature_2m_max[0]);
+          var minTemp = Math.round(daily.temperature_2m_min[0]);
+          var rainProbability = daily.precipitation_probability_max[0] || 0;
+          var maxWind = Math.round(daily.wind_speed_10m_max[0] || 0);
+
+          var condition = weatherCodeText(code, lang);
+
+          var detailsTexts = {
+            it: "Min " + minTemp + "° · Max " + maxTemp + "° · Vento " + currentWind + " km/h · Probabilità pioggia " + rainProbability + "%",
+            en: "Min " + minTemp + "° · Max " + maxTemp + "° · Wind " + currentWind + " km/h · Rain chance " + rainProbability + "%",
+            es: "Min " + minTemp + "° · Max " + maxTemp + "° · Viento " + currentWind + " km/h · Probabilidad de lluvia " + rainProbability + "%",
+            fr: "Min " + minTemp + "° · Max " + maxTemp + "° · Vent " + currentWind + " km/h · Risque de pluie " + rainProbability + "%"
+          };
+
+          weatherSummary.textContent = condition;
+          weatherTemp.textContent = temperature + "°";
+          weatherDetails.textContent = detailsTexts[lang];
+
+          weatherBox.classList.remove("hidden");
+
+          var shouldShowUmbrellaAlert =
+            isRainWeather(code, currentRain) ||
+            rainProbability >= 40 ||
+            currentWind >= 20 ||
+            maxWind >= 25;
+
+          if (shouldShowUmbrellaAlert) {
+            umbrellaAlert.classList.remove("hidden");
+          } else {
+            umbrellaAlert.classList.add("hidden");
+          }
+        })
+        .catch(function () {
+          weatherBox.classList.add("hidden");
+        });
+    }
+
+    loadSalernoWeather();
+  </script>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('sw.js').catch(function (error) {
+          console.log('Service Worker non registrato:', error);
+        });
+      });
+    }
+  </script>
+
+  <script>
+    let deferredPrompt;
+    const installBtn = document.getElementById('installAppBtn');
+
+    function isIOS() {
+      return /iphone|ipad|ipod/i.test(navigator.userAgent);
+    }
+
+    window.addEventListener('beforeinstallprompt', function (event) {
+      event.preventDefault();
+      deferredPrompt = event;
+
+      if (installBtn) {
+        installBtn.classList.add('show');
       }
     });
-  }
-</script>
+
+    if (installBtn) {
+      installBtn.addEventListener('click', async function () {
+        if (deferredPrompt) {
+          deferredPrompt.prompt();
+          await deferredPrompt.userChoice;
+          deferredPrompt = null;
+          installBtn.classList.remove('show');
+          return;
+        }
+
+        if (isIOS()) {
+          alert("Su iPhone: apri questo sito con Safari, premi il tasto Condividi e scegli “Aggiungi alla schermata Home”.");
+        } else {
+          alert("Per salvare la guida sul telefono: apri il menu del browser e scegli “Aggiungi alla schermata Home” o “Installa app”.");
+        }
+      });
+    }
+  </script>
 </body>
 </html>

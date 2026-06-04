@@ -1857,6 +1857,127 @@
     return rainCodes.includes(code) || precipitation > 0;
   }
 
+  function getWeatherFallbackText(lang) {
+    var texts = {
+      it: "Meteo non disponibile",
+      en: "Weather not available",
+      es: "Tiempo no disponible",
+      fr: "Météo non disponible"
+    };
+
+    return texts[lang] || texts.it;
+  }
+
+  function getWeatherLoadingText(lang) {
+    var texts = {
+      it: "Caricamento meteo...",
+      en: "Loading weather...",
+      es: "Cargando tiempo...",
+      fr: "Chargement météo..."
+    };
+
+    return texts[lang] || texts.it;
+  }
+
+  function getSavedWeatherText(lang) {
+    var texts = {
+      it: "Ultimo meteo disponibile",
+      en: "Last available weather",
+      es: "Último tiempo disponible",
+      fr: "Dernière météo disponible"
+    };
+
+    return texts[lang] || texts.it;
+  }
+
+  function getUpdatedText(lang) {
+    var texts = {
+      it: "Aggiornato",
+      en: "Updated",
+      es: "Actualizado",
+      fr: "Mis à jour"
+    };
+
+    return texts[lang] || texts.it;
+  }
+
+  function saveWeatherCache(weatherData) {
+    try {
+      localStorage.setItem("salernoWeatherCache", JSON.stringify(weatherData));
+    } catch (e) {}
+  }
+
+  function getWeatherCache() {
+    try {
+      var saved = localStorage.getItem("salernoWeatherCache");
+      if (!saved) return null;
+      return JSON.parse(saved);
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function formatWeatherUpdateTime(timestamp, lang) {
+    if (!timestamp) return "";
+
+    try {
+      var date = new Date(timestamp);
+
+      return date.toLocaleString(lang === "en" ? "en-GB" : lang + "-IT", {
+        day: "2-digit",
+        month: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit"
+      });
+    } catch (e) {
+      return "";
+    }
+  }
+
+  function renderWeatherFromCache(lang) {
+    var weatherBox = document.getElementById("weatherBox");
+    var weatherSummary = document.getElementById("weatherSummary");
+    var weatherTemp = document.getElementById("weatherTemp");
+    var weatherDetails = document.getElementById("weatherDetails");
+    var umbrellaAlert = document.getElementById("umbrellaAlert");
+
+    if (!weatherBox || !weatherSummary || !weatherTemp || !weatherDetails || !umbrellaAlert) return false;
+
+    var cached = getWeatherCache();
+
+    if (!cached) {
+      weatherBox.classList.remove("hidden");
+      weatherSummary.textContent = "🌤️ " + getWeatherFallbackText(lang);
+      weatherTemp.textContent = "--°";
+      weatherDetails.textContent = "";
+      umbrellaAlert.classList.add("hidden");
+      return false;
+    }
+
+    weatherBox.classList.remove("hidden");
+
+    weatherSummary.textContent = cached.emoji + " " + cached.condition;
+    weatherTemp.textContent = cached.temperature + "°";
+
+    var updatedTime = formatWeatherUpdateTime(cached.savedAt, lang);
+
+    var savedLabel = getSavedWeatherText(lang);
+    var updatedLabel = getUpdatedText(lang);
+
+    weatherDetails.textContent =
+      savedLabel + " · " +
+      cached.details +
+      (updatedTime ? " · " + updatedLabel + ": " + updatedTime : "");
+
+    if (cached.shouldShowUmbrellaAlert) {
+      umbrellaAlert.classList.remove("hidden");
+    } else {
+      umbrellaAlert.classList.add("hidden");
+    }
+
+    return true;
+  }
+
   function loadSalernoWeather() {
     var requestId = ++salernoWeatherRequestId;
     var lang = getWeatherLang();
@@ -1869,29 +1990,20 @@
 
     if (!weatherBox || !weatherSummary || !weatherTemp || !weatherDetails || !umbrellaAlert) return;
 
-    /*
-      Il box ora resta visibile nella home.
-      Non viene più nascosto se il meteo tarda a caricare.
-    */
     weatherBox.classList.remove("hidden");
 
-    var loadingTexts = {
-      it: "Caricamento meteo...",
-      en: "Loading weather...",
-      es: "Cargando tiempo...",
-      fr: "Chargement météo..."
-    };
+    /*
+      Prima prova a mostrare subito l’ultimo meteo salvato.
+      Così il box è sempre pieno e non sparisce.
+    */
+    var hasCache = renderWeatherFromCache(lang);
 
-    var fallbackTexts = {
-      it: "Meteo non disponibile",
-      en: "Weather not available",
-      es: "Tiempo no disponible",
-      fr: "Météo non disponible"
-    };
-
-    weatherSummary.textContent = "🌤️ " + loadingTexts[lang];
-    weatherTemp.textContent = "--°";
-    weatherDetails.textContent = "";
+    if (!hasCache) {
+      weatherSummary.textContent = "🌤️ " + getWeatherLoadingText(lang);
+      weatherTemp.textContent = "--°";
+      weatherDetails.textContent = "";
+      umbrellaAlert.classList.add("hidden");
+    }
 
     var latitude = 40.6824;
     var longitude = 14.7681;
@@ -1904,19 +2016,23 @@
       "&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,wind_speed_10m_max" +
       "&timezone=Europe%2FRome";
 
-    fetch(apiUrl)
-      .then(function (response) {
+    var timeout = new Promise(function (_, reject) {
+      setTimeout(function () {
+        reject(new Error("Timeout meteo"));
+      }, 7000);
+    });
+
+    Promise.race([
+      fetch(apiUrl).then(function (response) {
         return response.json();
-      })
+      }),
+      timeout
+    ])
       .then(function (data) {
-        /*
-          Se parte una seconda richiesta, ignora la vecchia.
-          Questo evita che il meteo compaia/scompaia a caso.
-        */
         if (requestId !== salernoWeatherRequestId) return;
 
         if (!data || !data.current || !data.daily) {
-          weatherSummary.textContent = "🌤️ " + fallbackTexts[lang];
+          renderWeatherFromCache(lang);
           return;
         }
 
@@ -1943,15 +2059,26 @@
           fr: "Min " + minTemp + "° · Max " + maxTemp + "° · Vent " + currentWind + " km/h · Risque de pluie " + rainProbability + "%"
         };
 
-        weatherSummary.textContent = emoji + " " + condition;
-        weatherTemp.textContent = temperature + "°";
-        weatherDetails.textContent = detailsTexts[lang];
-
         var shouldShowUmbrellaAlert =
           isRainWeather(code, currentRain) ||
           rainProbability >= 40 ||
-          currentWind >= 20 ||
-          maxWind >= 25;
+          currentWind >= 25 ||
+          maxWind >= 35;
+
+        var weatherData = {
+          emoji: emoji,
+          condition: condition,
+          temperature: temperature,
+          details: detailsTexts[lang],
+          shouldShowUmbrellaAlert: shouldShowUmbrellaAlert,
+          savedAt: new Date().toISOString()
+        };
+
+        saveWeatherCache(weatherData);
+
+        weatherSummary.textContent = emoji + " " + condition;
+        weatherTemp.textContent = temperature + "°";
+        weatherDetails.textContent = detailsTexts[lang];
 
         if (shouldShowUmbrellaAlert) {
           umbrellaAlert.classList.remove("hidden");
@@ -1960,17 +2087,13 @@
         }
       })
       .catch(function () {
-        /*
-          Prima qui il box veniva nascosto.
-          Ora invece resta visibile con un messaggio neutro.
-        */
         if (requestId !== salernoWeatherRequestId) return;
 
-        weatherBox.classList.remove("hidden");
-        weatherSummary.textContent = "🌤️ " + fallbackTexts[lang];
-        weatherTemp.textContent = "--°";
-        weatherDetails.textContent = "";
-        umbrellaAlert.classList.add("hidden");
+        /*
+          Se il meteo non carica, mostra l’ultimo meteo salvato.
+          Se non esiste, mostra “Meteo non disponibile”.
+        */
+        renderWeatherFromCache(lang);
       });
   }
 

@@ -370,93 +370,23 @@
       }
     }
   
-/* MOBILE: categorie e ristoranti in 2 colonne + freccetta */
-@media (max-width: 720px) {
-  .food-choice-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 10px;
-  }
-
-  .food-choice {
-    padding: 13px 10px;
-    border-radius: 18px;
-    text-align: center;
-  }
-
-  .food-choice span {
-    font-size: 23px;
-    margin-bottom: 5px;
-  }
-
-  .food-choice strong {
-    font-size: 13px;
-    line-height: 1.25;
-  }
-
-  .food-choice small {
-    font-size: 11px;
-    line-height: 1.25;
-  }
-
-  .restaurant-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 10px;
-  }
-
-  .restaurant-card {
-    border-radius: 18px;
-    overflow: hidden;
-  }
-
-  .restaurant-card img {
-    height: 110px !important;
-    object-fit: cover;
-  }
-
-  .restaurant-content {
-    padding: 12px;
-  }
-
-  .restaurant-content h3 {
-    font-size: 17px;
-    line-height: 1.25;
-    margin-bottom: 6px;
-  }
-
-  .restaurant-content p,
-  .tip-box {
-    font-size: 12px;
-    line-height: 1.4;
-  }
-
-  .badge-row {
-    gap: 5px;
-  }
-
-  .walk-badge,
-  .price-badge,
-  .recommended-badge {
-    font-size: 10px;
-    padding: 5px 8px;
-  }
-
-  .restaurant-actions {
-    flex-direction: column;
-    gap: 7px;
-  }
-
-  .restaurant-btn {
-    width: 100%;
-    font-size: 11px;
-    padding: 8px 8px;
-  }
-
-  .back-category {
-    width: 100%;
-    font-size: 13px;
-  }
+/* LEGENDA PREZZI */
+.price-legend {
+  font-size: 14px;
+  color: var(--muted);
+  margin: 10px 0 22px 0;
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
 }
 
+.price-legend::-webkit-scrollbar {
+  display: none;
+}
+
+/* FRECCETTA MOBILE */
 .scroll-hint {
   position: fixed;
   left: 50%;
@@ -487,9 +417,153 @@
   }
 }
 
-@media (max-width: 720px) {
+/* MOBILE */
+@media (max-width:720px) {
+  body {
+    font-size:14px;
+    line-height:1.55;
+  }
+
+  .page-hero {
+    min-height:26vh;
+    padding:26px 16px;
+  }
+
+  .page-hero h1 {
+    font-size:34px;
+    line-height:1.15;
+  }
+
+  main {
+    padding:18px 12px 44px;
+  }
+
+  section {
+    padding:18px;
+    border-radius:22px;
+  }
+
+  h2 {
+    font-size:26px;
+  }
+
+  .price-legend {
+    font-size:11px;
+    line-height:1.2;
+    margin-top:8px;
+    margin-bottom:18px;
+    white-space:nowrap;
+    overflow-x:auto;
+    overflow-y:hidden;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+
+  .price-legend::-webkit-scrollbar {
+    display:none;
+  }
+
+  /* CATEGORIE CIBO: 2 colonne */
+  .food-choice-grid {
+    grid-template-columns:repeat(2, 1fr) !important;
+    gap:12px;
+  }
+
+  .food-choice {
+    padding:16px 10px;
+    border-radius:20px;
+    text-align:center;
+    min-height:145px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .food-choice span {
+    font-size:24px;
+    margin-bottom:8px;
+  }
+
+  .food-choice strong {
+    font-size:14px;
+    line-height:1.25;
+    margin-bottom:6px;
+  }
+
+  .food-choice small {
+    font-size:12px;
+    line-height:1.3;
+  }
+
+  .category-header {
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .back-category {
+    width:100%;
+    font-size:13px;
+    padding:10px 14px;
+    text-align:center;
+  }
+
+  /* LOCALI/RISTORANTI: 1 colonna, così non sono stretti */
+  .restaurant-grid {
+    grid-template-columns:1fr !important;
+    gap:18px;
+  }
+
+  .restaurant-card {
+    border-radius:22px;
+    overflow:hidden;
+  }
+
+  .restaurant-card img {
+    height:185px !important;
+    object-fit:cover;
+  }
+
+  .restaurant-content {
+    padding:15px;
+  }
+
+  .restaurant-content h3 {
+    font-size:23px;
+    line-height:1.25;
+    margin-bottom:8px;
+  }
+
+  .restaurant-content p,
+  .tip-box {
+    font-size:14px;
+    line-height:1.5;
+  }
+
+  .badge-row {
+    gap:7px;
+  }
+
+  .walk-badge,
+  .price-badge,
+  .recommended-badge {
+    font-size:11px;
+    padding:5px 9px;
+  }
+
+  .restaurant-actions {
+    flex-direction:column;
+    gap:8px;
+  }
+
+  .restaurant-btn {
+    width:100%;
+    font-size:13px;
+    padding:10px 14px;
+  }
+
   .scroll-hint {
-    display: flex;
+    display:flex;
   }
 }
 </style>
@@ -526,12 +600,12 @@
         Scegli una categoria e scopri i nostri consigli da salernitani.
       </p>
 
-      <p style="margin-top:10px; color:var(--muted); font-size:14px;"
-         data-it="Legenda prezzi indicativa: € economico · €€ medio · €€€ più costoso"
-         data-en="Indicative price guide: € budget · €€ medium · €€€ more expensive"
-         data-es="Guía de precios orientativa: € económico · €€ medio · €€€ más caro"
-         data-fr="Guide des prix indicatif : € économique · €€ moyen · €€€ plus cher">
-        Legenda prezzi indicativa: € economico · €€ medio · €€€ più costoso
+        <p class="price-legend"
+        data-it="Legenda prezzi: € economico · €€ medio · €€€ costoso"
+        data-en="Price guide: € budget · €€ medium · €€€ expensive"
+        data-es="Precios: € económico · €€ medio · €€€ caro"
+        data-fr="Prix : € économique · €€ moyen · €€€ cher">
+        Legenda prezzi: € economico · €€ medio · €€€ costoso
       </p>
 
       <div class="food-choice-grid">

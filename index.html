@@ -823,10 +823,123 @@
     .save-guide-box p:last-child {
       margin-bottom: 0;
     }
+
+        /* MOBILE: pulsanti e card in 2 colonne */
+    @media (max-width: 720px) {
+
+      .page-buttons {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+
+      .guide-btn {
+        padding: 12px 10px;
+        font-size: 13px;
+        line-height: 1.25;
+        min-height: 58px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .cards-grid,
+      .card-grid,
+      .food-grid,
+      .places-grid,
+      .restaurant-grid,
+      .restaurant-list,
+      .location-grid,
+      .supermarket-grid,
+      .pharmacy-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .card,
+      .food-card,
+      .place-card,
+      .restaurant-card,
+      .location-card,
+      .supermarket-card,
+      .pharmacy-card {
+        border-radius: 18px;
+        overflow: hidden;
+      }
+
+      .card img,
+      .food-card img,
+      .place-card img,
+      .restaurant-card img,
+      .location-card img,
+      .supermarket-card img,
+      .pharmacy-card img {
+        height: 120px;
+        object-fit: cover;
+      }
+
+      .card h3,
+      .food-card h3,
+      .place-card h3,
+      .restaurant-card h3,
+      .location-card h3,
+      .supermarket-card h3,
+      .pharmacy-card h3 {
+        font-size: 18px;
+        line-height: 1.25;
+      }
+
+      .card p,
+      .food-card p,
+      .place-card p,
+      .restaurant-card p,
+      .location-card p,
+      .supermarket-card p,
+      .pharmacy-card p {
+        font-size: 13px;
+        line-height: 1.45;
+      }
+    }
+    .scroll-hint {
+    position: fixed;
+    left: 50%;
+    bottom: 14px;
+    transform: translateX(-50%);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(15, 127, 131, 0.85);
+    color: #fff;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    line-height: 1;
+    z-index: 999;
+    box-shadow: 0 8px 18px rgba(0, 70, 75, .22);
+    animation: scrollHintMove 1.4s infinite;
+  }
+
+  @keyframes scrollHintMove {
+    0%, 100% {
+      transform: translate(-50%, 0);
+    }
+
+    50% {
+      transform: translate(-50%, 5px);
+    }
+  }
+
+  @media (max-width: 720px) {
+    .scroll-hint {
+      display: flex;
+    }
+  }
   </style>
 </head>
 
 <body>
+  <div class="scroll-hint" id="scrollHint">⌄</div>
   <div id="lang-screen">
     <div class="lang-box">
       <div class="lang-badge"
@@ -1833,6 +1946,26 @@
       });
     });
   }
+</script>
+<script>
+  const scrollHint = document.getElementById('scrollHint');
+
+  function updateScrollHint() {
+    if (!scrollHint) return;
+
+    const scrollPosition = window.scrollY + window.innerHeight;
+    const pageHeight = document.documentElement.scrollHeight;
+
+    if (pageHeight - scrollPosition < 120) {
+      scrollHint.style.display = 'none';
+    } else {
+      scrollHint.style.display = window.innerWidth <= 720 ? 'flex' : 'none';
+    }
+  }
+
+  window.addEventListener('scroll', updateScrollHint);
+  window.addEventListener('resize', updateScrollHint);
+  window.addEventListener('load', updateScrollHint);
 </script>
 </body>
 </html>

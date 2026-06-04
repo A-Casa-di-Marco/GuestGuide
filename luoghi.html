@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Luoghi da visitare ed eventi · A Casa di Marco</title>
-  <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#0f7f83">
   <link rel="apple-touch-icon" href="assets/icon-192.png">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -173,9 +172,90 @@
         padding: 10px 14px;
       }
     }
-  </style>
+  
+/* MOBILE: luoghi in 2 colonne + freccetta */
+@media (max-width: 720px) {
+  .places-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px;
+  }
+
+  .place-card {
+    border-radius: 18px;
+    overflow: hidden;
+  }
+
+  .place-card img {
+    height: 110px !important;
+    object-fit: cover;
+  }
+
+  .place-content {
+    padding: 12px;
+  }
+
+  .place-content h3 {
+    font-size: 17px;
+    line-height: 1.25;
+    margin-bottom: 6px;
+  }
+
+  .place-content p {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .place-actions {
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  .place-btn {
+    width: 100%;
+    font-size: 11px;
+    padding: 8px 8px;
+  }
+}
+
+.scroll-hint {
+  position: fixed;
+  left: 50%;
+  bottom: 14px;
+  transform: translateX(-50%);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(15, 127, 131, 0.85);
+  color: #fff;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  line-height: 1;
+  z-index: 999;
+  box-shadow: 0 8px 18px rgba(0, 70, 75, .22);
+  animation: scrollHintMove 1.4s infinite;
+}
+
+@keyframes scrollHintMove {
+  0%, 100% {
+    transform: translate(-50%, 0);
+  }
+
+  50% {
+    transform: translate(-50%, 5px);
+  }
+}
+
+@media (max-width: 720px) {
+  .scroll-hint {
+    display: flex;
+  }
+}
+</style>
 </head>
 <body>
+  <div class="scroll-hint" id="scrollHint">⌄</div>
   <header class="page-hero"><div><h1 data-it="Luoghi da visitare ed eventi" data-en="Places to visit and events" data-es="Lugares para visitar y eventos" data-fr="Lieux à visiter et événements">Luoghi da visitare ed eventi</h1></div></header>
   <main>
     <a class="back-home" href="index.html" data-it="← Torna alla home" data-en="← Back to home" data-es="← Volver a la home" data-fr="← Retour à l'accueil">← Torna alla home</a>
@@ -653,6 +733,27 @@
   }
 
   translatePage(getLang());
+</script>
+
+<script>
+  const scrollHint = document.getElementById('scrollHint');
+
+  function updateScrollHint() {
+    if (!scrollHint) return;
+
+    const scrollPosition = window.scrollY + window.innerHeight;
+    const pageHeight = document.documentElement.scrollHeight;
+
+    if (pageHeight - scrollPosition < 120) {
+      scrollHint.style.display = 'none';
+    } else {
+      scrollHint.style.display = window.innerWidth <= 720 ? 'flex' : 'none';
+    }
+  }
+
+  window.addEventListener('scroll', updateScrollHint);
+  window.addEventListener('resize', updateScrollHint);
+  window.addEventListener('load', updateScrollHint);
 </script>
 </body>
 </html>

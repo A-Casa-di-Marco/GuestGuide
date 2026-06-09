@@ -252,6 +252,165 @@
     display: flex;
   }
 }
+
+/* SELETTORE CATEGORIE LUOGHI */
+.place-choice-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.place-choice {
+  border: none;
+  background: var(--ottanio-soft);
+  border-radius: 22px;
+  padding: 18px;
+  text-align: left;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(0,80,85,.10);
+  transition: transform .18s, box-shadow .18s, background .18s;
+}
+
+.place-choice:hover,
+.place-choice.active {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0,80,85,.16);
+  background: #fff8e8;
+}
+
+.place-choice span {
+  display: block;
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.place-choice strong {
+  display: block;
+  color: var(--ottanio-dark);
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.place-choice small {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.place-category {
+  display: none;
+}
+
+.place-category.active {
+  display: block;
+}
+
+.category-top-actions {
+  margin: 18px 0 0;
+}
+
+.back-to-place-categories {
+  border: none;
+  background: var(--ottanio);
+  color: #fff;
+  border-radius: 999px;
+  padding: 10px 15px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.place-card.free-beach {
+  background: #e8fbf0;
+  border: 2px solid rgba(32, 150, 90, .28);
+}
+
+.place-card.paid-beach {
+  background: #fff3df;
+  border: 2px solid rgba(218, 143, 39, .35);
+}
+
+.beach-badge {
+  display: inline-flex;
+  border-radius: 999px;
+  padding: 5px 11px;
+  font-size: 12px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.beach-badge.free {
+  background: #20965a;
+  color: #fff;
+}
+
+.beach-badge.paid {
+  background: #d98b24;
+  color: #fff;
+}
+
+.beach-note {
+  background: #fff;
+  border-left: 5px solid var(--ottanio);
+  border-radius: 16px;
+  padding: 12px;
+  font-size: 13px;
+  margin-top: 10px;
+  color: var(--text);
+}
+
+@media (max-width: 720px) {
+  .place-choice-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .place-choice {
+    padding: 13px 10px;
+    border-radius: 18px;
+    text-align: center;
+    min-height: 135px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .place-choice span {
+    font-size: 24px;
+    margin-bottom: 6px;
+  }
+
+  .place-choice strong {
+    font-size: 13px;
+    line-height: 1.25;
+  }
+
+  .place-choice small {
+    font-size: 11px;
+    line-height: 1.25;
+  }
+
+  .back-to-place-categories {
+    width: 100%;
+    font-size: 13px;
+    padding: 10px 14px;
+  }
+
+  .beach-badge {
+    font-size: 10px;
+    padding: 5px 8px;
+  }
+
+  .beach-note {
+    font-size: 11px;
+    line-height: 1.35;
+    padding: 9px;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -272,24 +431,32 @@
         Abbiamo diviso i luoghi per zona, così potete scegliere più facilmente cosa visitare in base al tempo che avete e a come volete organizzarvi.
       </p>
 
+      <div id="place-choice-grid" class="place-choice-grid"></div>
       <div id="places-container"></div>
     </section>
   </main>
 <script>
   var placeCategories = [
     {
-      id: "salerno",
+      id: "salerno-provincia",
+      icon: "🏛️",
       title: {
-        it: "Salerno",
-        en: "Salerno",
-        es: "Salerno",
-        fr: "Salerne"
+        it: "Salerno e provincia",
+        en: "Salerno and surroundings",
+        es: "Salerno y provincia",
+        fr: "Salerne et province"
+      },
+      short: {
+        it: "Centro, panorami e luoghi vicini",
+        en: "City centre, views and nearby places",
+        es: "Centro, vistas y lugares cercanos",
+        fr: "Centre, panoramas et lieux proches"
       },
       intro: {
-        it: "Luoghi comodi da visitare in città, perfetti anche se avete poco tempo.",
-        en: "Places to visit in the city, perfect even if you have little time.",
-        es: "Lugares para visitar en la ciudad, perfectos también si tenéis poco tiempo.",
-        fr: "Lieux à visiter en ville, parfaits même si vous avez peu de temps."
+        it: "Luoghi comodi da visitare a Salerno e nei dintorni, perfetti anche se avete poco tempo.",
+        en: "Places to visit in Salerno and nearby, perfect even if you have little time.",
+        es: "Lugares para visitar en Salerno y alrededores, perfectos también si tenéis poco tiempo.",
+        fr: "Lieux à visiter à Salerne et aux alentours, parfaits même si vous avez peu de temps."
       },
       places: [
         {
@@ -397,12 +564,187 @@
       ]
     },
     {
+      id: "spiagge",
+      icon: "🏖️",
+      title: {
+        it: "Spiagge a Salerno e dintorni",
+        en: "Beaches in Salerno and nearby",
+        es: "Playas en Salerno y alrededores",
+        fr: "Plages à Salerne et alentours"
+      },
+      short: {
+        it: "Libere e a pagamento",
+        en: "Free and paid beaches",
+        es: "Libres y de pago",
+        fr: "Gratuites et payantes"
+      },
+      intro: {
+        it: "Spiagge comode da raggiungere da Salerno e Vietri. Abbiamo distinto le spiagge libere da quelle a pagamento.",
+        en: "Beaches easy to reach from Salerno and Vietri. We have separated free beaches from paid beach clubs.",
+        es: "Playas fáciles de alcanzar desde Salerno y Vietri. Hemos separado las playas libres de las de pago.",
+        fr: "Plages faciles à rejoindre depuis Salerne et Vietri. Nous avons séparé les plages gratuites des plages payantes."
+      },
+      places: [
+        {
+          image: "assets/lungomare-salerno.jpg",
+          beachType: "free",
+          infoUrl: "https://www.google.com/search?q=Spiaggia+Santa+Teresa+Salerno",
+          mapsQuery: "Spiaggia Santa Teresa, Salerno",
+          title: {
+            it: "Spiaggia Santa Teresa",
+            en: "Santa Teresa Beach",
+            es: "Playa Santa Teresa",
+            fr: "Plage Santa Teresa"
+          },
+          desc: {
+            it: "Spiaggia cittadina libera nel centro di Salerno, comoda per un bagno veloce o per rilassarsi senza spostarsi troppo.",
+            en: "A free city beach in central Salerno, convenient for a quick swim or relaxing without going too far.",
+            es: "Playa urbana libre en el centro de Salerno, cómoda para un baño rápido o para relajarse sin desplazarse demasiado.",
+            fr: "Plage urbaine gratuite au centre de Salerne, pratique pour une baignade rapide ou pour se détendre sans aller trop loin."
+          },
+          note: {
+            it: "Libera: portate telo, acqua e tutto il necessario.",
+            en: "Free beach: bring a towel, water and everything you need.",
+            es: "Playa libre: llevad toalla, agua y todo lo necesario.",
+            fr: "Plage gratuite : apportez serviette, eau et tout le nécessaire."
+          }
+        },
+        {
+          image: "assets/lungomare-salerno.jpg",
+          beachType: "paid",
+          infoUrl: "https://www.google.com/search?q=Lido+La+Conchiglia+Salerno",
+          mapsQuery: "Lido La Conchiglia, Salerno",
+          title: {
+            it: "Lido La Conchiglia",
+            en: "Lido La Conchiglia",
+            es: "Lido La Conchiglia",
+            fr: "Lido La Conchiglia"
+          },
+          desc: {
+            it: "Stabilimento balneare a Salerno, comodo se preferite lettini, ombrelloni e servizi.",
+            en: "A beach club in Salerno, convenient if you prefer sunbeds, umbrellas and services.",
+            es: "Establecimiento balneario en Salerno, cómodo si preferís tumbonas, sombrillas y servicios.",
+            fr: "Établissement balnéaire à Salerne, pratique si vous préférez transats, parasols et services."
+          },
+          note: {
+            it: "A pagamento: consigliato controllare disponibilità e prezzi prima di andare.",
+            en: "Paid beach club: check availability and prices before going.",
+            es: "De pago: se recomienda comprobar disponibilidad y precios antes de ir.",
+            fr: "Payant : il est conseillé de vérifier disponibilité et tarifs avant d’y aller."
+          }
+        },
+        {
+          image: "assets/vietri-sul-mare.jpg",
+          beachType: "free",
+          infoUrl: "https://www.google.com/search?q=Spiaggia+La+Baia+Vietri+sul+Mare",
+          mapsQuery: "Spiaggia La Baia, Vietri sul Mare",
+          title: {
+            it: "Spiaggia La Baia - Vietri",
+            en: "La Baia Beach - Vietri",
+            es: "Playa La Baia - Vietri",
+            fr: "Plage La Baia - Vietri"
+          },
+          desc: {
+            it: "Una delle spiagge più ampie di Vietri, comoda arrivando da Salerno. In zona possono esserci sia tratti liberi sia lidi.",
+            en: "One of the widest beaches in Vietri, convenient when coming from Salerno. The area may have both free sections and beach clubs.",
+            es: "Una de las playas más amplias de Vietri, cómoda llegando desde Salerno. En la zona puede haber tramos libres y lidos.",
+            fr: "L’une des plages les plus larges de Vietri, pratique en arrivant de Salerne. La zone peut proposer des parties gratuites et des lidos."
+          },
+          note: {
+            it: "Mista: controllate sul posto se volete la zona libera o uno stabilimento.",
+            en: "Mixed: check on site if you prefer the free area or a beach club.",
+            es: "Mixta: comprobad en el lugar si preferís zona libre o establecimiento.",
+            fr: "Mixte : vérifiez sur place si vous préférez la zone gratuite ou un établissement."
+          }
+        },
+        {
+          image: "assets/vietri-sul-mare.jpg",
+          beachType: "free",
+          infoUrl: "https://www.google.com/search?q=Marina+di+Vietri+spiaggia",
+          mapsQuery: "Spiaggia Marina di Vietri, Vietri sul Mare",
+          title: {
+            it: "Marina di Vietri",
+            en: "Marina di Vietri",
+            es: "Marina di Vietri",
+            fr: "Marina di Vietri"
+          },
+          desc: {
+            it: "Zona mare di Vietri con spiaggia, ristoranti e servizi vicini. Buona scelta se volete restare vicino a Salerno ma vedere già un po’ di Costiera.",
+            en: "Vietri’s seaside area with beach, restaurants and nearby services. A good choice if you want to stay close to Salerno but already see a bit of the Amalfi Coast.",
+            es: "Zona de mar de Vietri con playa, restaurantes y servicios cercanos. Buena opción si queréis quedaros cerca de Salerno pero ver ya un poco de Costa Amalfitana.",
+            fr: "Zone balnéaire de Vietri avec plage, restaurants et services proches. Bon choix si vous voulez rester près de Salerne tout en découvrant déjà un peu la Côte Amalfitaine."
+          },
+          note: {
+            it: "Mista: ci sono zone libere e stabilimenti.",
+            en: "Mixed: there are free areas and beach clubs.",
+            es: "Mixta: hay zonas libres y establecimientos.",
+            fr: "Mixte : il y a des zones gratuites et des établissements."
+          }
+        },
+        {
+          image: "assets/vietri-sul-mare.jpg",
+          beachType: "paid",
+          infoUrl: "https://www.google.com/search?q=Spiaggia+La+Crestarella+Vietri+sul+Mare",
+          mapsQuery: "Spiaggia La Crestarella, Vietri sul Mare",
+          title: {
+            it: "La Crestarella - Vietri",
+            en: "La Crestarella - Vietri",
+            es: "La Crestarella - Vietri",
+            fr: "La Crestarella - Vietri"
+          },
+          desc: {
+            it: "Spiaggia molto suggestiva vicino alla torre, più raccolta e scenografica. Ideale se cercate una giornata mare più organizzata.",
+            en: "A very scenic beach near the tower, smaller and picturesque. Ideal if you want a more organised beach day.",
+            es: "Playa muy bonita cerca de la torre, más recogida y escénica. Ideal si queréis un día de playa más organizado.",
+            fr: "Plage très suggestive près de la tour, plus intime et pittoresque. Idéale si vous cherchez une journée mer plus organisée."
+          },
+          note: {
+            it: "A pagamento / con servizi: meglio controllare disponibilità e prenotazione.",
+            en: "Paid / with services: it is better to check availability and booking.",
+            es: "De pago / con servicios: mejor comprobar disponibilidad y reserva.",
+            fr: "Payante / avec services : mieux vaut vérifier disponibilité et réservation."
+          }
+        },
+        {
+          image: "assets/vietri-sul-mare.jpg",
+          beachType: "free",
+          infoUrl: "https://www.google.com/search?q=Marina+d%27Albori+Vietri+sul+Mare",
+          mapsQuery: "Marina d'Albori, Vietri sul Mare",
+          title: {
+            it: "Marina d’Albori - Vietri",
+            en: "Marina d’Albori - Vietri",
+            es: "Marina d’Albori - Vietri",
+            fr: "Marina d’Albori - Vietri"
+          },
+          desc: {
+            it: "Spiaggia più particolare e meno immediata da raggiungere, adatta a chi ama posti più tranquilli e caratteristici.",
+            en: "A more particular beach and less immediate to reach, suitable for those who love quieter and more characteristic places.",
+            es: "Playa más particular y menos inmediata de alcanzar, adecuada para quien busca lugares más tranquilos y característicos.",
+            fr: "Plage plus particulière et moins directe d’accès, adaptée à ceux qui aiment les lieux plus calmes et typiques."
+          },
+          note: {
+            it: "Accesso meno comodo: valutate scarpe adatte e controllate prima il percorso.",
+            en: "Less convenient access: consider suitable shoes and check the route first.",
+            es: "Acceso menos cómodo: llevad calzado adecuado y comprobad antes el recorrido.",
+            fr: "Accès moins pratique : prévoyez des chaussures adaptées et vérifiez le parcours avant."
+          }
+        }
+      ]
+    },
+    {
       id: "costiera",
+      icon: "🌊",
       title: {
         it: "Costiera Amalfitana",
         en: "Amalfi Coast",
         es: "Costa Amalfitana",
         fr: "Côte Amalfitaine"
+      },
+      short: {
+        it: "Vietri, Amalfi, Positano, Maiori",
+        en: "Vietri, Amalfi, Positano, Maiori",
+        es: "Vietri, Amalfi, Positano, Maiori",
+        fr: "Vietri, Amalfi, Positano, Maiori"
       },
       intro: {
         it: "Borghi sul mare, panorami meravigliosi e luoghi iconici della Costiera.",
@@ -429,6 +771,23 @@
           }
         },
         {
+          image: "assets/costiera-amalfitana.jpg",
+          infoUrl: "https://www.google.com/search?q=Maiori+Minori+Costiera+Amalfitana",
+          mapsQuery: "Maiori Minori Costiera Amalfitana",
+          title: {
+            it: "Maiori e Minori",
+            en: "Maiori and Minori",
+            es: "Maiori y Minori",
+            fr: "Maiori et Minori"
+          },
+          desc: {
+            it: "Due località comode e piacevoli in Costiera: Maiori ha una spiaggia ampia, Minori è famosa anche per i dolci e Sal De Riso.",
+            en: "Two pleasant and convenient towns on the Coast: Maiori has a wide beach, Minori is also famous for desserts and Sal De Riso.",
+            es: "Dos localidades cómodas y agradables de la Costa: Maiori tiene una playa amplia, Minori es famosa también por los dulces y Sal De Riso.",
+            fr: "Deux localités agréables et pratiques de la Côte : Maiori a une grande plage, Minori est aussi connue pour les desserts et Sal De Riso."
+          }
+        },
+        {
           image: "assets/duomo-amalfi.jpg",
           infoUrl: "https://www.google.com/search?q=Duomo+di+Sant%27Andrea+Amalfi",
           mapsQuery: "Duomo di Sant'Andrea, Amalfi",
@@ -447,19 +806,19 @@
         },
         {
           image: "assets/costiera-amalfitana.jpg",
-          infoUrl: "https://www.google.com/search?q=Costiera+Amalfitana+cosa+vedere",
-          mapsQuery: "Costiera Amalfitana",
+          infoUrl: "https://www.google.com/search?q=Positano+cosa+vedere",
+          mapsQuery: "Positano",
           title: {
-            it: "Costiera Amalfitana",
-            en: "Amalfi Coast",
-            es: "Costa Amalfitana",
-            fr: "Côte Amalfitaine"
+            it: "Positano",
+            en: "Positano",
+            es: "Positano",
+            fr: "Positano"
           },
           desc: {
-            it: "Una delle coste più famose al mondo, con panorami mozzafiato, borghi colorati e mare cristallino.",
-            en: "One of the most famous coastlines in the world, with breathtaking views, colourful villages and crystal-clear sea.",
-            es: "Una de las costas más famosas del mundo, con vistas impresionantes, pueblos coloridos y mar cristalino.",
-            fr: "L’une des côtes les plus célèbres au monde, avec des vues magnifiques, des villages colorés et une mer cristalline."
+            it: "Uno dei luoghi più famosi della Costiera, con case colorate, vicoli panoramici, negozi e scorci fotografici.",
+            en: "One of the most famous places on the Coast, with colourful houses, scenic alleys, shops and photo spots.",
+            es: "Uno de los lugares más famosos de la Costa, con casas coloridas, callejuelas panorámicas, tiendas y rincones fotográficos.",
+            fr: "L’un des lieux les plus célèbres de la Côte, avec maisons colorées, ruelles panoramiques, boutiques et points photo."
           }
         },
         {
@@ -482,18 +841,100 @@
       ]
     },
     {
+      id: "napoli",
+      icon: "🌋",
+      title: {
+        it: "Napoli",
+        en: "Naples",
+        es: "Nápoles",
+        fr: "Naples"
+      },
+      short: {
+        it: "Centro storico e panorami",
+        en: "Historic centre and views",
+        es: "Centro histórico y vistas",
+        fr: "Centre historique et panoramas"
+      },
+      intro: {
+        it: "Una gita a Napoli può essere intensa ma bellissima: centro storico, mare, piazze e street food.",
+        en: "A day trip to Naples can be intense but beautiful: historic centre, sea, squares and street food.",
+        es: "Una excursión a Nápoles puede ser intensa pero preciosa: centro histórico, mar, plazas y street food.",
+        fr: "Une excursion à Naples peut être intense mais magnifique : centre historique, mer, places et street food."
+      },
+      places: [
+        {
+          image: "assets/napoli.jpg",
+          infoUrl: "https://www.google.com/search?q=Spaccanapoli+Napoli",
+          mapsQuery: "Spaccanapoli, Napoli",
+          title: {
+            it: "Spaccanapoli",
+            en: "Spaccanapoli",
+            es: "Spaccanapoli",
+            fr: "Spaccanapoli"
+          },
+          desc: {
+            it: "Il cuore del centro storico di Napoli, tra chiese, vicoli, botteghe, presepi e street food.",
+            en: "The heart of Naples’ historic centre, with churches, alleys, shops, nativity scenes and street food.",
+            es: "El corazón del centro histórico de Nápoles, entre iglesias, callejuelas, tiendas, belenes y street food.",
+            fr: "Le cœur du centre historique de Naples, entre églises, ruelles, boutiques, crèches et street food."
+          }
+        },
+        {
+          image: "assets/napoli.jpg",
+          infoUrl: "https://www.google.com/search?q=Piazza+del+Plebiscito+Napoli",
+          mapsQuery: "Piazza del Plebiscito, Napoli",
+          title: {
+            it: "Piazza del Plebiscito",
+            en: "Piazza del Plebiscito",
+            es: "Piazza del Plebiscito",
+            fr: "Piazza del Plebiscito"
+          },
+          desc: {
+            it: "Una delle piazze simbolo di Napoli, vicina al Teatro San Carlo, Palazzo Reale e al lungomare.",
+            en: "One of Naples’ landmark squares, close to Teatro San Carlo, the Royal Palace and the seafront.",
+            es: "Una de las plazas símbolo de Nápoles, cerca del Teatro San Carlo, Palacio Real y paseo marítimo.",
+            fr: "L’une des places emblématiques de Naples, près du Teatro San Carlo, du Palais Royal et du front de mer."
+          }
+        },
+        {
+          image: "assets/napoli.jpg",
+          infoUrl: "https://www.google.com/search?q=Castel+dell%27Ovo+Napoli",
+          mapsQuery: "Castel dell'Ovo, Napoli",
+          title: {
+            it: "Castel dell’Ovo e Lungomare",
+            en: "Castel dell’Ovo and seafront",
+            es: "Castel dell’Ovo y paseo marítimo",
+            fr: "Castel dell’Ovo et front de mer"
+          },
+          desc: {
+            it: "Zona panoramica perfetta per una passeggiata vista Vesuvio e per scattare foto sul mare.",
+            en: "A scenic area perfect for a walk with views of Vesuvius and photos by the sea.",
+            es: "Zona panorámica perfecta para pasear con vistas al Vesubio y hacer fotos junto al mar.",
+            fr: "Zone panoramique parfaite pour une promenade avec vue sur le Vésuve et des photos au bord de la mer."
+          }
+        }
+      ]
+    },
+    {
       id: "campania",
+      icon: "🏺",
       title: {
         it: "Campania e dintorni",
         en: "Campania and surroundings",
         es: "Campania y alrededores",
         fr: "Campanie et alentours"
       },
+      short: {
+        it: "Pompei, Paestum, Caserta",
+        en: "Pompeii, Paestum, Caserta",
+        es: "Pompeya, Paestum, Caserta",
+        fr: "Pompéi, Paestum, Caserte"
+      },
       intro: {
-        it: "Gite fuori porta tra archeologia, storia, natura e città famose.",
-        en: "Day trips among archaeology, history, nature and famous cities.",
-        es: "Excursiones entre arqueología, historia, naturaleza y ciudades famosas.",
-        fr: "Excursions entre archéologie, histoire, nature et villes célèbres."
+        it: "Gite fuori porta tra archeologia, storia, natura e luoghi famosi.",
+        en: "Day trips among archaeology, history, nature and famous places.",
+        es: "Excursiones entre arqueología, historia, naturaleza y lugares famosos.",
+        fr: "Excursions entre archéologie, histoire, nature et lieux célèbres."
       },
       places: [
         {
@@ -564,6 +1005,32 @@
             fr: "Grottes spectaculaires dans le Cilento, avec une partie navigable sur une rivière souterraine. Chaussures confortables et veste recommandées."
           }
         },
+
+      ]
+    },
+    {
+      id: "eventi",
+      icon: "🎭",
+      isEvents: true,
+      title: {
+        it: "Eventi e cose speciali",
+        en: "Events and special things",
+        es: "Eventos y cosas especiales",
+        fr: "Événements et choses spéciales"
+      },
+      short: {
+        it: "Estate, teatro e appuntamenti",
+        en: "Summer, theatre and events",
+        es: "Verano, teatro y eventos",
+        fr: "Été, théâtre et événements"
+      },
+      intro: {
+        it: "Eventi stagionali, sagre e appuntamenti da controllare in base al periodo del soggiorno.",
+        en: "Seasonal events, festivals and appointments to check depending on your stay period.",
+        es: "Eventos de temporada, fiestas y citas para comprobar según el periodo de vuestra estancia.",
+        fr: "Événements saisonniers, fêtes et rendez-vous à vérifier selon la période de votre séjour."
+      },
+      places: [
         {
           image: "assets/piccolo-ranch-terminio.jpg",
           infoUrl: "https://www.google.com/search?q=Il+Piccolo+Ranch+Terminio",
@@ -575,30 +1042,12 @@
             fr: "Il Piccolo Ranch – Terminio"
           },
           desc: {
-            it: "Un centro immerso nel verde del Terminio, ideale per famiglie, passeggiate a cavallo, pony e attività nella natura.",
-            en: "A green retreat in the Terminio area, ideal for families, horse rides, ponies and nature activities.",
-            es: "Un centro rodeado de naturaleza en la zona del Terminio, ideal para familias, paseos a caballo, ponis y actividades al aire libre.",
-            fr: "Un lieu entouré de verdure dans la zone du Terminio, idéal pour les familles, les balades à cheval, les poneys et les activités nature."
+            it: "Attività speciale immersa nel verde del Terminio, ideale per famiglie, passeggiate a cavallo, pony e momenti nella natura. Da controllare in base a disponibilità, orari e stagione.",
+            en: "A special activity surrounded by the greenery of the Terminio area, ideal for families, horse rides, ponies and time in nature. Check availability, opening times and season.",
+            es: "Actividad especial rodeada de naturaleza en la zona del Terminio, ideal para familias, paseos a caballo, ponis y momentos al aire libre. Comprobad disponibilidad, horarios y temporada.",
+            fr: "Activité spéciale entourée de verdure dans la zone du Terminio, idéale pour les familles, les balades à cheval, les poneys et les moments en nature. Vérifiez disponibilité, horaires et saison."
           }
-        }
-      ]
-    },
-    {
-      id: "eventi",
-      isEvents: true,
-      title: {
-        it: "Eventi e cose speciali",
-        en: "Events and special things",
-        es: "Eventos y cosas especiales",
-        fr: "Événements et choses spéciales"
-      },
-      intro: {
-        it: "Eventi stagionali, sagre e appuntamenti da controllare in base al periodo del soggiorno.",
-        en: "Seasonal events, festivals and appointments to check depending on your stay period.",
-        es: "Eventos de temporada, fiestas y citas para comprobar según el periodo de vuestra estancia.",
-        fr: "Événements saisonniers, fêtes et rendez-vous à vérifier selon la période de votre séjour."
-      },
-      places: [
+        },
         {
           image: "assets/teatro-verdi.jpg",
           infoUrl: "https://www.google.com/search?q=Teatro+Verdi+Salerno+programma",
@@ -614,6 +1063,23 @@
             en: "Salerno’s historic theatre, perfect for a cultural evening with concerts, opera, performances and special events.",
             es: "El teatro histórico de Salerno, perfecto para una noche cultural con conciertos, ópera, espectáculos y eventos especiales.",
             fr: "Le théâtre historique de Salerne, idéal pour une soirée culturelle avec concerts, opéra, spectacles et événements spéciaux."
+          }
+        },
+        {
+          image: "assets/garden-main.jpg",
+          infoUrl: "https://www.google.com/search?q=Chiena+Campagna+programma",
+          mapsQuery: "Campagna, Salerno",
+          title: {
+            it: "La Chiena di Campagna",
+            en: "La Chiena in Campagna",
+            es: "La Chiena de Campagna",
+            fr: "La Chiena de Campagna"
+          },
+          desc: {
+            it: "Evento estivo molto particolare a Campagna: le strade del centro vengono attraversate dall’acqua. Da controllare in base alle date estive.",
+            en: "A very particular summer event in Campagna: water flows through the streets of the town centre. Check dates during summer.",
+            es: "Evento de verano muy particular en Campagna: el agua atraviesa las calles del centro. Hay que comprobar las fechas en verano.",
+            fr: "Événement estival très particulier à Campagna : l’eau traverse les rues du centre. Dates à vérifier en été."
           }
         }
       ]
@@ -644,6 +1110,24 @@
       en: "📍 Open in Maps",
       es: "📍 Abrir en Maps",
       fr: "📍 Ouvrir sur Maps"
+    },
+    back: {
+      it: "← Torna alle categorie",
+      en: "← Back to categories",
+      es: "← Volver a las categorías",
+      fr: "← Retour aux catégories"
+    },
+    free: {
+      it: "Spiaggia libera",
+      en: "Free beach",
+      es: "Playa libre",
+      fr: "Plage gratuite"
+    },
+    paid: {
+      it: "A pagamento",
+      en: "Paid beach",
+      es: "De pago",
+      fr: "Payante"
     }
   };
 
@@ -666,26 +1150,69 @@
     return 'it';
   }
 
+  function getMapsUrl(place) {
+    if (place.mapsUrl) return place.mapsUrl;
+    return "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(place.mapsQuery);
+  }
+
+  function renderPlaceChoiceButtons(lang) {
+    var grid = document.getElementById('place-choice-grid');
+    if (!grid) return;
+
+    grid.innerHTML = placeCategories.map(function (category) {
+      return `
+        <button class="place-choice" type="button" onclick="showPlaceCategory('${category.id}')">
+          <span>${category.icon}</span>
+          <strong>${category.title[lang]}</strong>
+          <small>${category.short[lang]}</small>
+        </button>
+      `;
+    }).join('');
+  }
+
   function renderPlaces(lang) {
     var container = document.getElementById('places-container');
     if (!container) return;
 
     container.innerHTML = placeCategories.map(function (category) {
       var cards = category.places.map(function (place) {
-        var mapsUrl = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(place.mapsQuery);
         var cardClass = category.isEvents ? "place-card event-card" : "place-card";
-        var badge = category.isEvents ? '<span class="event-badge">' + labels.event[lang] + '</span>' : "";
+
+        if (place.beachType === "free") {
+          cardClass += " free-beach";
+        }
+
+        if (place.beachType === "paid") {
+          cardClass += " paid-beach";
+        }
+
+        var badge = "";
+
+        if (category.isEvents) {
+          badge = '<span class="event-badge">' + labels.event[lang] + '</span>';
+        }
+
+        if (place.beachType === "free") {
+          badge = '<span class="beach-badge free">' + labels.free[lang] + '</span>';
+        }
+
+        if (place.beachType === "paid") {
+          badge = '<span class="beach-badge paid">' + labels.paid[lang] + '</span>';
+        }
+
+        var note = place.note ? '<div class="beach-note">' + place.note[lang] + '</div>' : "";
 
         return `
           <article class="${cardClass}">
-            <img src="${place.image}" alt="${place.title[lang]}">
+            <img src="${place.image}" alt="${place.title[lang]}" onerror="this.onerror=null; this.src='assets/garden-main.jpg';">
             <div class="place-content">
               ${badge}
               <h3>${place.title[lang]}</h3>
               <p>${place.desc[lang]}</p>
+              ${note}
               <div class="place-actions">
                 <a class="place-btn" href="${place.infoUrl}" target="_blank">${category.isEvents ? labels.dates[lang] : labels.info[lang]}</a>
-                <a class="place-btn light" href="${mapsUrl}" target="_blank">${labels.maps[lang]}</a>
+                <a class="place-btn light" href="${getMapsUrl(place)}" target="_blank">${labels.maps[lang]}</a>
               </div>
             </div>
           </article>
@@ -697,6 +1224,9 @@
           <div class="place-category-header">
             <h2>${category.title[lang]}</h2>
             <p>${category.intro[lang]}</p>
+            <div class="category-top-actions">
+              <button class="back-to-place-categories" type="button" onclick="hidePlaceCategories()">${labels.back[lang]}</button>
+            </div>
           </div>
           <div class="places-grid">
             ${cards}
@@ -704,6 +1234,51 @@
         </div>
       `;
     }).join('');
+  }
+
+  function showPlaceCategory(categoryId) {
+    document.querySelectorAll('.place-category').forEach(function (section) {
+      section.classList.remove('active');
+    });
+
+    document.querySelectorAll('.place-choice').forEach(function (button) {
+      button.classList.remove('active');
+    });
+
+    var selected = document.getElementById(categoryId);
+
+    if (selected) {
+      selected.classList.add('active');
+    }
+
+    var buttons = document.querySelectorAll('.place-choice');
+    placeCategories.forEach(function (category, index) {
+      if (category.id === categoryId && buttons[index]) {
+        buttons[index].classList.add('active');
+      }
+    });
+
+    setTimeout(function () {
+      if (selected) {
+        selected.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 80);
+  }
+
+  function hidePlaceCategories() {
+    document.querySelectorAll('.place-category').forEach(function (section) {
+      section.classList.remove('active');
+    });
+
+    document.querySelectorAll('.place-choice').forEach(function (button) {
+      button.classList.remove('active');
+    });
+
+    var top = document.getElementById('place-choice-grid');
+
+    if (top) {
+      top.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
 
   function translatePage(lang) {
@@ -725,6 +1300,7 @@
       home.href = 'index.html#' + lang;
     }
 
+    renderPlaceChoiceButtons(lang);
     renderPlaces(lang);
 
     try {

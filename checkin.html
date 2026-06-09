@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Check-in / Check-out · A Casa di Marco</title>
-  <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#0f7f83">
   <link rel="apple-touch-icon" href="assets/icon-192.png">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -322,6 +321,91 @@
         padding:13px 14px;
       }
     }
+
+
+    .check-complete-message {
+      display: none;
+      margin-top: 16px;
+      background: #dff3f2;
+      border: 1px solid rgba(15,127,131,.18);
+      border-left: 6px solid var(--ottanio);
+      border-radius: 18px;
+      padding: 16px;
+      color: var(--ottanio-dark);
+      font-weight: 700;
+      text-align: center;
+      box-shadow: 0 10px 24px rgba(0,80,85,.10);
+    }
+
+    .check-complete-message.show {
+      display: block;
+    }
+
+    .confetti-layer {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 9999;
+    }
+
+    .confetti-piece {
+      position: absolute;
+      top: -14px;
+      width: 9px;
+      height: 14px;
+      border-radius: 3px;
+      animation: confettiFall 1.8s linear forwards;
+    }
+
+    @keyframes confettiFall {
+      0% {
+        transform: translateY(-20px) rotate(0deg);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(105vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    .scroll-hint {
+      position: fixed;
+      left: 50%;
+      bottom: 14px;
+      transform: translateX(-50%);
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(15, 127, 131, 0.85);
+      color: #fff;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      line-height: 1;
+      z-index: 999;
+      box-shadow: 0 8px 18px rgba(0, 70, 75, .22);
+      animation: scrollHintMove 1.4s infinite;
+    }
+
+    @keyframes scrollHintMove {
+      0%, 100% {
+        transform: translate(-50%, 0);
+      }
+
+      50% {
+        transform: translate(-50%, 5px);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .scroll-hint {
+        display: flex;
+      }
+    }
+
   </style>
 </head>
 
@@ -421,7 +505,7 @@
         </div>
       </details>
 
-      <details class="toggle-box">
+      <details id="checkout" class="toggle-box">
         <summary data-it="Check-out"
                  data-en="Check-out"
                  data-es="Check-out"
@@ -488,7 +572,7 @@
 
           <div class="checkout-checklist">
             <label class="check-item">
-              <input type="checkbox" class="checkout-checkbox">
+              <input type="checkbox" class="checkout-checkbox" data-check-key="lights">
               <span data-it="Ho spento tutte le luci."
                     data-en="I have turned off all the lights."
                     data-es="He apagado todas las luces."
@@ -496,7 +580,7 @@
             </label>
 
             <label class="check-item">
-              <input type="checkbox" class="checkout-checkbox">
+              <input type="checkbox" class="checkout-checkbox" data-check-key="taps">
               <span data-it="Ho chiuso tutti i rubinetti."
                     data-en="I have turned off all the taps."
                     data-es="He cerrado todos los grifos."
@@ -504,7 +588,7 @@
             </label>
 
             <label class="check-item">
-              <input type="checkbox" class="checkout-checkbox">
+              <input type="checkbox" class="checkout-checkbox" data-check-key="climate">
               <span data-it="Ho spento condizionatore e/o termosifoni."
                     data-en="I have turned off the air conditioning and/or radiators."
                     data-es="He apagado el aire acondicionado y/o los radiadores."
@@ -512,7 +596,7 @@
             </label>
 
             <label class="check-item">
-              <input type="checkbox" class="checkout-checkbox">
+              <input type="checkbox" class="checkout-checkbox" data-check-key="belongings">
               <span data-it="Ho controllato di non aver dimenticato oggetti personali."
                     data-en="I have checked that I have not forgotten any personal belongings."
                     data-es="He comprobado que no he olvidado objetos personales."
@@ -520,7 +604,7 @@
             </label>
 
             <label class="check-item">
-              <input type="checkbox" class="checkout-checkbox">
+              <input type="checkbox" class="checkout-checkbox" data-check-key="towels">
               <span data-it="Ho messo gli asciugamani usati nella lavatrice, senza avviarla."
                     data-en="I have placed the used towels in the washing machine, without starting it."
                     data-es="He puesto las toallas usadas en la lavadora, sin ponerla en marcha."
@@ -528,7 +612,7 @@
             </label>
 
             <label class="check-item">
-              <input type="checkbox" class="checkout-checkbox">
+              <input type="checkbox" class="checkout-checkbox" data-check-key="rubbish">
               <span data-it="Ho buttato la spazzatura."
                     data-en="I have taken out the rubbish."
                     data-es="He tirado la basura."
@@ -536,7 +620,7 @@
             </label>
 
             <label class="check-item">
-              <input type="checkbox" class="checkout-checkbox">
+              <input type="checkbox" class="checkout-checkbox" data-check-key="door">
               <span data-it="Ho chiuso bene la porta della casa."
                     data-en="I have properly closed the house door."
                     data-es="He cerrado bien la puerta de la casa."
@@ -544,7 +628,7 @@
             </label>
 
             <label class="check-item">
-              <input type="checkbox" class="checkout-checkbox">
+              <input type="checkbox" class="checkout-checkbox" data-check-key="keys">
               <span data-it="Ho lasciato le chiavi nella cassetta delle lettere “A Casa di Marco”."
                     data-en="I have left the keys in the “A Casa di Marco” mailbox."
                     data-es="He dejado las llaves en el buzón “A Casa di Marco”."
@@ -552,7 +636,7 @@
             </label>
 
             <label class="check-item">
-              <input type="checkbox" class="checkout-checkbox">
+              <input type="checkbox" class="checkout-checkbox" data-check-key="message">
               <span data-it="Ho inviato un messaggio per confermare il check-out."
                     data-en="I have sent a message to confirm check-out."
                     data-es="He enviado un mensaje para confirmar el check-out."
@@ -561,6 +645,16 @@
           </div>
 
           <div id="check-progress" class="check-progress">0/9 completati</div>
+
+
+
+          <div id="check-complete-message" class="check-complete-message"
+               data-it="🎉 Tutto fatto, grazie! Buon viaggio e speriamo di rivedervi presto ad A Casa di Marco."
+               data-en="🎉 All done, thank you! Have a safe trip and we hope to see you again soon at A Casa di Marco."
+               data-es="🎉 ¡Todo listo, gracias! Buen viaje y esperamos volver a veros pronto en A Casa di Marco."
+               data-fr="🎉 Tout est fait, merci ! Bon voyage et nous espérons vous revoir bientôt à A Casa di Marco.">
+            🎉 Tutto fatto, grazie! Buon viaggio e speriamo di rivedervi presto ad A Casa di Marco.
+          </div>
 
           <div class="final-reminder"
                data-it-html="<strong>Grazie!</strong> Questa piccola attenzione ci aiuta a preparare la casa al meglio per gli ospiti successivi."
@@ -576,6 +670,8 @@
 
   <script>
     var currentLang = 'it';
+
+    var checklistCompletedOnce = false;
 
     var checklistLabels = {
       it: {
@@ -639,28 +735,128 @@
         localStorage.setItem('guestGuideLang', lang);
       } catch (e) {}
 
-      updateChecklistProgress();
+      restoreChecklistProgress();
+      updateChecklistProgress(false);
     }
 
-    function updateChecklistProgress() {
+    function getChecklistStorageKey() {
+      return 'checkoutChecklist_' + currentLang;
+    }
+
+    function saveChecklistProgress() {
+      var state = {};
+      document.querySelectorAll('.checkout-checkbox').forEach(function (checkbox, index) {
+        var key = checkbox.getAttribute('data-check-key') || ('item' + index);
+        state[key] = checkbox.checked;
+      });
+
+      try {
+        localStorage.setItem(getChecklistStorageKey(), JSON.stringify(state));
+      } catch (e) {}
+    }
+
+    function restoreChecklistProgress() {
+      var state = null;
+
+      try {
+        var saved = localStorage.getItem(getChecklistStorageKey());
+        if (saved) state = JSON.parse(saved);
+      } catch (e) {}
+
+      document.querySelectorAll('.checkout-checkbox').forEach(function (checkbox, index) {
+        var key = checkbox.getAttribute('data-check-key') || ('item' + index);
+        checkbox.checked = !!(state && state[key]);
+      });
+    }
+
+    function launchConfetti() {
+      var layer = document.createElement('div');
+      layer.className = 'confetti-layer';
+      document.body.appendChild(layer);
+
+      var colors = ['#0f7f83', '#dff3f2', '#fff8e8', '#b08850', '#ff7a59', '#ffffff'];
+
+      for (var i = 0; i < 85; i++) {
+        var piece = document.createElement('span');
+        piece.className = 'confetti-piece';
+        piece.style.left = Math.random() * 100 + 'vw';
+        piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+        piece.style.animationDelay = (Math.random() * 0.35) + 's';
+        piece.style.transform = 'rotate(' + (Math.random() * 360) + 'deg)';
+        layer.appendChild(piece);
+      }
+
+      setTimeout(function () {
+        layer.remove();
+      }, 2400);
+    }
+
+    function updateChecklistProgress(allowConfetti) {
       var checkboxes = document.querySelectorAll('.checkout-checkbox');
       var checked = document.querySelectorAll('.checkout-checkbox:checked').length;
       var progress = document.getElementById('check-progress');
+      var completeMessage = document.getElementById('check-complete-message');
 
       if (!progress || !checkboxes.length) return;
 
       var labels = checklistLabels[currentLang] || checklistLabels.it;
+      var isComplete = checked === checkboxes.length;
 
-      if (checked === checkboxes.length) {
+      if (isComplete) {
         progress.textContent = labels.allDone;
+        if (completeMessage) completeMessage.classList.add('show');
+
+        if (allowConfetti && !checklistCompletedOnce) {
+          launchConfetti();
+        }
+
+        checklistCompletedOnce = true;
       } else {
-        progress.textContent = checked + "/" + checkboxes.length + " " + labels.completed;
+        progress.textContent = checked + '/' + checkboxes.length + ' ' + labels.completed;
+        if (completeMessage) completeMessage.classList.remove('show');
+        checklistCompletedOnce = false;
       }
+
+      saveChecklistProgress();
     }
 
     document.querySelectorAll('.checkout-checkbox').forEach(function (checkbox) {
-      checkbox.addEventListener('change', updateChecklistProgress);
+      checkbox.addEventListener('change', function () {
+        updateChecklistProgress(true);
+      });
     });
+
+    (function () {
+      var hash = window.location.hash ? window.location.hash.replace('#', '') : '';
+      if (hash === 'checkout') {
+        var checkoutDetails = document.getElementById('checkout');
+        if (checkoutDetails) {
+          checkoutDetails.open = true;
+          setTimeout(function () {
+            checkoutDetails.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 250);
+        }
+      }
+    })();
+
+    const scrollHint = document.getElementById('scrollHint');
+
+    function updateScrollHint() {
+      if (!scrollHint) return;
+
+      const scrollPosition = window.scrollY + window.innerHeight;
+      const pageHeight = document.documentElement.scrollHeight;
+
+      if (pageHeight - scrollPosition < 120) {
+        scrollHint.style.display = 'none';
+      } else {
+        scrollHint.style.display = window.innerWidth <= 720 ? 'flex' : 'none';
+      }
+    }
+
+    window.addEventListener('scroll', updateScrollHint);
+    window.addEventListener('resize', updateScrollHint);
+    window.addEventListener('load', updateScrollHint);
 
     translatePage(getLang());
   </script>

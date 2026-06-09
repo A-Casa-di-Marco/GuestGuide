@@ -935,6 +935,196 @@
       display: flex;
     }
   }
+
+
+    .checkout-reminder-banner {
+      display: none;
+      background: #fff8e8;
+      border-left: 6px solid var(--ottanio);
+      border-radius: 24px;
+      padding: 18px 20px;
+      margin: 20px 0;
+      box-shadow: 0 12px 34px rgba(0,70,75,.12);
+      border-top: 1px solid rgba(15,127,131,.12);
+      border-right: 1px solid rgba(15,127,131,.12);
+      border-bottom: 1px solid rgba(15,127,131,.12);
+    }
+
+    .checkout-reminder-banner.show {
+      display: block;
+    }
+
+    .checkout-reminder-banner h2 {
+      font-size: 30px;
+      color: var(--ottanio-dark);
+      margin-bottom: 8px;
+    }
+
+    .checkout-reminder-banner p {
+      color: var(--text);
+      font-size: 15px;
+      margin-bottom: 14px;
+      max-width: 850px;
+    }
+
+    .checkout-reminder-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .checkout-reminder-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--ottanio);
+      color: #fff;
+      border-radius: 999px;
+      padding: 11px 17px;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 8px 22px rgba(0, 90, 95, .16);
+    }
+
+    .checkout-reminder-small {
+      color: var(--muted) !important;
+      font-size: 13px !important;
+      margin: 8px 0 0 0 !important;
+    }
+
+    @media (max-width: 720px) {
+      .checkout-reminder-banner {
+        border-radius: 20px;
+        padding: 16px;
+      }
+
+      .checkout-reminder-banner h2 {
+        font-size: 25px;
+      }
+
+      .checkout-reminder-banner p {
+        font-size: 14px;
+      }
+
+      .checkout-reminder-btn {
+        width: 100%;
+        font-size: 13px;
+      }
+    }
+
+
+    .guest-setup-card {
+      background: #fff8e8;
+      border-left: 6px solid var(--ottanio);
+      border-radius: 24px;
+      padding: 20px;
+      margin: 20px 0;
+      box-shadow: 0 12px 34px rgba(0,70,75,.12);
+      border-top: 1px solid rgba(15,127,131,.12);
+      border-right: 1px solid rgba(15,127,131,.12);
+      border-bottom: 1px solid rgba(15,127,131,.12);
+    }
+
+    .guest-setup-card h2 {
+      font-size: 30px;
+      color: var(--ottanio-dark);
+      margin-bottom: 8px;
+    }
+
+    .guest-setup-card p {
+      color: var(--text);
+      font-size: 15px;
+      margin-bottom: 14px;
+      max-width: 850px;
+    }
+
+    .guest-setup-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .guest-setup-field label {
+      display: block;
+      color: var(--ottanio-dark);
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .guest-setup-field input {
+      width: 100%;
+      border: 1px solid rgba(15,127,131,.25);
+      border-radius: 16px;
+      padding: 12px 14px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      color: var(--text);
+      background: #fff;
+    }
+
+    .guest-setup-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .guest-setup-btn,
+    .guest-edit-btn {
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--ottanio);
+      color: #fff;
+      border-radius: 999px;
+      padding: 11px 17px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 8px 22px rgba(0, 90, 95, .16);
+    }
+
+    .guest-edit-btn {
+      margin-top: 12px;
+      background: #fff;
+      color: var(--ottanio-dark);
+      border: 1px solid rgba(15,127,131,.25);
+      box-shadow: none;
+    }
+
+    @media (max-width: 720px) {
+      .guest-setup-card {
+        border-radius: 20px;
+        padding: 16px;
+      }
+
+      .guest-setup-card h2 {
+        font-size: 25px;
+      }
+
+      .guest-setup-card p {
+        font-size: 14px;
+      }
+
+      .guest-setup-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .guest-setup-btn,
+      .guest-edit-btn {
+        width: 100%;
+        font-size: 13px;
+      }
+    }
+
   </style>
 </head>
 
@@ -1062,6 +1252,51 @@
         </div>
       </div>
 
+
+      <div id="guestStaySetup" class="guest-setup-card hidden">
+        <h2 data-it="Completa la tua guida" data-en="Complete your guide" data-es="Completa tu guía" data-fr="Complétez votre guide">Completa la tua guida</h2>
+        <p data-it="Inserisci il tuo nome e le date del soggiorno. Useremo questi dati solo su questo telefono per mostrarti i promemoria giusti durante il soggiorno."
+           data-en="Enter your name and stay dates. These details will only be saved on this phone to show you the right reminders during your stay."
+           data-es="Introduce tu nombre y las fechas de estancia. Estos datos se guardarán solo en este teléfono para mostrarte los recordatorios correctos durante la estancia."
+           data-fr="Indiquez votre nom et les dates du séjour. Ces informations seront enregistrées uniquement sur ce téléphone pour afficher les bons rappels pendant votre séjour.">
+          Inserisci il tuo nome e le date del soggiorno. Useremo questi dati solo su questo telefono per mostrarti i promemoria giusti durante il soggiorno.
+        </p>
+
+        <div class="guest-setup-grid">
+          <div class="guest-setup-field">
+            <label for="guestDisplayNameInput" data-it="Nome" data-en="Name" data-es="Nombre" data-fr="Nom">Nome</label>
+            <input id="guestDisplayNameInput" type="text" placeholder="Es. Famiglia Rossi">
+          </div>
+
+          <div class="guest-setup-field">
+            <label for="guestCheckinInput" data-it="Data check-in" data-en="Check-in date" data-es="Fecha de check-in" data-fr="Date de check-in">Data check-in</label>
+            <input id="guestCheckinInput" type="date">
+          </div>
+
+          <div class="guest-setup-field">
+            <label for="guestCheckoutInput" data-it="Data check-out" data-en="Check-out date" data-es="Fecha de check-out" data-fr="Date de check-out">Data check-out</label>
+            <input id="guestCheckoutInput" type="date">
+          </div>
+        </div>
+
+        <div class="guest-setup-actions">
+          <button type="button" id="saveGuestStayBtn" class="guest-setup-btn"
+                  data-it="Salva e apri la guida"
+                  data-en="Save and open guide"
+                  data-es="Guardar y abrir la guía"
+                  data-fr="Enregistrer et ouvrir le guide">Salva e apri la guida</button>
+        </div>
+      </div>
+
+      <div id="checkoutReminderBanner" class="checkout-reminder-banner">
+        <h2 id="checkoutReminderTitle">⏰ Promemoria</h2>
+        <p id="checkoutReminderText">Promemoria soggiorno.</p>
+        <div class="checkout-reminder-actions">
+          <a id="checkoutReminderLink" class="checkout-reminder-btn" href="check-in-out.html">Apri</a>
+        </div>
+        <p id="checkoutReminderDate" class="checkout-reminder-small"></p>
+      </div>
+
       <section id="welcome-home" class="home-welcome">
         <div id="guestWelcomeBox" class="guest-welcome hidden">
           <h2 id="guestWelcomeTitle">Benvenuti</h2>
@@ -1080,47 +1315,6 @@
           Benvenuti A Casa di Marco. Siamo felici di ospitarvi e speriamo che possiate sentirvi davvero a casa. In questa guida troverete tutte le informazioni utili per vivere al meglio il vostro soggiorno.
         </p>
       </section>
-
-      <div id="ownerGuestGenerator" class="owner-generator hidden">
-        <h3>Area proprietario</h3>
-
-        <p>Inserisci il tipo di ospite e il nome/cognome. Il sito tradurrà automaticamente “Famiglia”, “Signor”, “Signora” o “Ospiti” nella lingua scelta.</p>
-
-        <label for="guestTypeSelect">Tipo ospite</label>
-        <select id="guestTypeSelect">
-          <option value="family">Famiglia</option>
-          <option value="mr">Signor</option>
-          <option value="mrs">Signora</option>
-          <option value="guests">Ospiti</option>
-          <option value="custom">Testo personalizzato</option>
-        </select>
-
-        <label for="guestNameInput">Nome / cognome</label>
-        <input id="guestNameInput" type="text" placeholder="Esempio: Rossi">
-
-        <label for="guestCustomInput" id="guestCustomLabel" class="hidden">Testo personalizzato</label>
-        <input id="guestCustomInput" class="hidden" type="text" placeholder="Esempio: Gruppo Rossi">
-
-        <label for="guestLangSelect">Lingua iniziale</label>
-        <select id="guestLangSelect">
-          <option value="it">Italiano</option>
-          <option value="en">English</option>
-          <option value="es">Español</option>
-          <option value="fr">Français</option>
-        </select>
-
-        <button type="button" class="owner-btn" id="generateGuestLink">
-          Crea link ospite
-        </button>
-
-        <div id="generatedLinkBox" class="generated-link-box hidden">
-          <strong>Link da inviare:</strong>
-          <input id="generatedGuestLink" type="text" readonly>
-          <button type="button" class="owner-btn light" id="copyGuestLink">
-            Copia link
-          </button>
-        </div>
-      </div>
 
       <section id="home-menu" class="home-menu">
         <h2 data-it="Guida ospiti"
@@ -1494,18 +1688,24 @@
       var guestName = params.get("guestName") || "";
       var guestType = params.get("guestType") || "";
       var guestCustom = params.get("guestCustom") || "";
+      var checkinDate = params.get("checkin") || "";
+      var checkoutDate = params.get("checkout") || "";
 
-      if (guestName || guestType || guestCustom) {
+      if (guestName || guestType || guestCustom || checkinDate || checkoutDate) {
         try {
           localStorage.setItem("guestName", guestName);
           localStorage.setItem("guestType", guestType);
           localStorage.setItem("guestCustom", guestCustom);
+          localStorage.setItem("guestCheckin", checkinDate);
+          localStorage.setItem("guestCheckout", checkoutDate);
         } catch (e) {}
 
         return {
           name: guestName,
           type: guestType,
-          custom: guestCustom
+          custom: guestCustom,
+          checkin: checkinDate,
+          checkout: checkoutDate
         };
       }
 
@@ -1513,13 +1713,17 @@
         return {
           name: localStorage.getItem("guestName") || "",
           type: localStorage.getItem("guestType") || "",
-          custom: localStorage.getItem("guestCustom") || ""
+          custom: localStorage.getItem("guestCustom") || "",
+          checkin: localStorage.getItem("guestCheckin") || "",
+          checkout: localStorage.getItem("guestCheckout") || ""
         };
       } catch (e) {
         return {
           name: "",
           type: "",
-          custom: ""
+          custom: "",
+          checkin: "",
+          checkout: ""
         };
       }
     }
@@ -1620,12 +1824,14 @@
       var customInput = document.getElementById("guestCustomInput");
       var customLabel = document.getElementById("guestCustomLabel");
       var langSelect = document.getElementById("guestLangSelect");
+      var checkinInput = document.getElementById("guestCheckinInput");
+      var checkoutInput = document.getElementById("guestCheckoutInput");
       var generateBtn = document.getElementById("generateGuestLink");
       var generatedBox = document.getElementById("generatedLinkBox");
       var generatedInput = document.getElementById("generatedGuestLink");
       var copyBtn = document.getElementById("copyGuestLink");
 
-      if (!generator || !typeSelect || !input || !customInput || !customLabel || !langSelect || !generateBtn || !generatedBox || !generatedInput || !copyBtn) return;
+      if (!generator || !typeSelect || !input || !customInput || !customLabel || !langSelect || !checkinInput || !checkoutInput || !generateBtn || !generatedBox || !generatedInput || !copyBtn) return;
 
       if (!isAdmin) {
         generator.classList.add("hidden");
@@ -1648,6 +1854,8 @@
         var guestType = typeSelect.value;
         var guestName = input.value.trim();
         var guestCustom = customInput.value.trim();
+        var checkinDate = checkinInput.value || "";
+        var checkoutDate = checkoutInput.value || "";
         var lang = langSelect.value || "it";
 
         if (guestType !== "custom" && !guestName) {
@@ -1660,11 +1868,18 @@
           return;
         }
 
+        if (checkinDate && checkoutDate && checkoutDate <= checkinDate) {
+          alert("La data di check-out deve essere successiva alla data di check-in.");
+          return;
+        }
+
         var baseUrl = window.location.origin + window.location.pathname;
         var finalUrl = baseUrl
           + "?guestType=" + encodeURIComponent(guestType)
           + "&guestName=" + encodeURIComponent(guestName)
           + "&guestCustom=" + encodeURIComponent(guestCustom)
+          + "&checkin=" + encodeURIComponent(checkinDate)
+          + "&checkout=" + encodeURIComponent(checkoutDate)
           + "#" + lang;
 
         generatedInput.value = finalUrl;
@@ -1715,6 +1930,405 @@
       } catch (e) {}
     }
 
+
+    function getStayDatesFromUrl() {
+      var params = new URLSearchParams(window.location.search);
+      var checkinDate = params.get("checkin") || "";
+      var checkoutDate = params.get("checkout") || "";
+
+      if (checkinDate || checkoutDate) {
+        try {
+          localStorage.setItem("guestCheckin", checkinDate);
+          localStorage.setItem("guestCheckout", checkoutDate);
+        } catch (e) {}
+
+        return {
+          checkin: checkinDate,
+          checkout: checkoutDate
+        };
+      }
+
+      try {
+        return {
+          checkin: localStorage.getItem("guestCheckin") || "",
+          checkout: localStorage.getItem("guestCheckout") || ""
+        };
+      } catch (e) {
+        return {
+          checkin: "",
+          checkout: ""
+        };
+      }
+    }
+
+    function parseLocalDate(dateString) {
+      if (!dateString) return null;
+      var parts = dateString.split("-");
+      if (parts.length !== 3) return null;
+      return new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
+    }
+
+    function daysUntilDate(dateString) {
+      var target = parseLocalDate(dateString);
+      if (!target) return null;
+
+      var now = new Date();
+      var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      var diff = target.getTime() - today.getTime();
+      return Math.round(diff / 86400000);
+    }
+
+    function formatStayDate(dateString, lang) {
+      var date = parseLocalDate(dateString);
+      if (!date) return "";
+
+      var locales = {
+        it: "it-IT",
+        en: "en-GB",
+        es: "es-ES",
+        fr: "fr-FR"
+      };
+
+      try {
+        return date.toLocaleDateString(locales[lang] || "it-IT", {
+          day: "2-digit",
+          month: "long",
+          year: "numeric"
+        });
+      } catch (e) {
+        return dateString;
+      }
+    }
+
+    function updateCheckoutReminder() {
+      var lang = getCurrentLangForGuest();
+      var dates = getStayDatesFromUrl();
+      var banner = document.getElementById("checkoutReminderBanner");
+      var title = document.getElementById("checkoutReminderTitle");
+      var text = document.getElementById("checkoutReminderText");
+      var link = document.getElementById("checkoutReminderLink");
+      var dateText = document.getElementById("checkoutReminderDate");
+
+      if (!banner || !title || !text || !link || !dateText) return;
+
+      banner.classList.remove("show");
+
+      if (!dates.checkout) return;
+
+      var daysLeft = daysUntilDate(dates.checkout);
+      if (daysLeft === null || daysLeft < 0 || daysLeft > 1) return;
+
+      var texts = {
+        it: {
+          tomorrowTitle: "⏰ Promemoria check-out",
+          todayTitle: "🧳 Check-out oggi",
+          tomorrowText: "Domani è il giorno del check-out. Prima della partenza vi chiediamo gentilmente di aprire la sezione Check-out e completare la checklist.",
+          todayText: "Oggi è il giorno del check-out. Prima di lasciare la casa, completate la checklist per controllare di non aver dimenticato nulla.",
+          button: "✅ Apri checklist check-out",
+          date: "Data check-out: "
+        },
+        en: {
+          tomorrowTitle: "⏰ Check-out reminder",
+          todayTitle: "🧳 Check-out today",
+          tomorrowText: "Tomorrow is check-out day. Before departure, please open the Check-out section and complete the checklist.",
+          todayText: "Today is check-out day. Before leaving the house, please complete the checklist to make sure nothing has been forgotten.",
+          button: "✅ Open check-out checklist",
+          date: "Check-out date: "
+        },
+        es: {
+          tomorrowTitle: "⏰ Recordatorio de check-out",
+          todayTitle: "🧳 Check-out hoy",
+          tomorrowText: "Mañana es el día del check-out. Antes de salir, abrid la sección Check-out y completad la checklist.",
+          todayText: "Hoy es el día del check-out. Antes de dejar la casa, completad la checklist para comprobar que no olvidáis nada.",
+          button: "✅ Abrir checklist de check-out",
+          date: "Fecha de check-out: "
+        },
+        fr: {
+          tomorrowTitle: "⏰ Rappel check-out",
+          todayTitle: "🧳 Check-out aujourd’hui",
+          tomorrowText: "Demain est le jour du check-out. Avant le départ, merci d’ouvrir la section Check-out et de compléter la checklist.",
+          todayText: "Aujourd’hui est le jour du check-out. Avant de quitter la maison, complétez la checklist pour vérifier que rien n’a été oublié.",
+          button: "✅ Ouvrir la checklist check-out",
+          date: "Date de check-out : "
+        }
+      };
+
+      var t = texts[lang] || texts.it;
+
+      title.textContent = daysLeft === 0 ? t.todayTitle : t.tomorrowTitle;
+      text.textContent = daysLeft === 0 ? t.todayText : t.tomorrowText;
+      link.textContent = t.button;
+      link.href = "check-in-out.html?lang=" + lang + "#checkout";
+      dateText.textContent = t.date + formatStayDate(dates.checkout, lang);
+
+      banner.classList.add("show");
+    }
+
+
+    function getGuestProfile() {
+      try {
+        return {
+          name: localStorage.getItem("guestDisplayName") || "",
+          checkin: localStorage.getItem("guestCheckin") || "",
+          checkout: localStorage.getItem("guestCheckout") || ""
+        };
+      } catch (e) {
+        return { name: "", checkin: "", checkout: "" };
+      }
+    }
+
+    function saveGuestProfile(name, checkin, checkout) {
+      try {
+        localStorage.setItem("guestDisplayName", name || "");
+        localStorage.setItem("guestCheckin", checkin || "");
+        localStorage.setItem("guestCheckout", checkout || "");
+      } catch (e) {}
+    }
+
+    function hasCompleteGuestProfile() {
+      var profile = getGuestProfile();
+      return !!(profile.name && profile.checkin && profile.checkout);
+    }
+
+    function setupGuestStayForm() {
+      var card = document.getElementById("guestStaySetup");
+      var nameInput = document.getElementById("guestDisplayNameInput");
+      var checkinInput = document.getElementById("guestCheckinInput");
+      var checkoutInput = document.getElementById("guestCheckoutInput");
+      var saveBtn = document.getElementById("saveGuestStayBtn");
+
+      if (!card || !nameInput || !checkinInput || !checkoutInput || !saveBtn) return;
+
+      var profile = getGuestProfile();
+      nameInput.value = profile.name || "";
+      checkinInput.value = profile.checkin || "";
+      checkoutInput.value = profile.checkout || "";
+
+      if (hasCompleteGuestProfile()) {
+        card.classList.add("hidden");
+      } else {
+        card.classList.remove("hidden");
+      }
+
+      if (!saveBtn.dataset.listenerAttached) {
+        saveBtn.dataset.listenerAttached = "1";
+        saveBtn.addEventListener("click", function () {
+          var lang = getCurrentLangForGuest();
+          var name = nameInput.value.trim();
+          var checkin = checkinInput.value;
+          var checkout = checkoutInput.value;
+
+          var alerts = {
+            it: {
+              missing: "Inserisci nome, data di check-in e data di check-out.",
+              date: "La data di check-out deve essere successiva alla data di check-in."
+            },
+            en: {
+              missing: "Please enter name, check-in date and check-out date.",
+              date: "The check-out date must be after the check-in date."
+            },
+            es: {
+              missing: "Introduce nombre, fecha de check-in y fecha de check-out.",
+              date: "La fecha de check-out debe ser posterior a la fecha de check-in."
+            },
+            fr: {
+              missing: "Indiquez le nom, la date de check-in et la date de check-out.",
+              date: "La date de check-out doit être après la date de check-in."
+            }
+          };
+
+          var t = alerts[lang] || alerts.it;
+
+          if (!name || !checkin || !checkout) {
+            alert(t.missing);
+            return;
+          }
+
+          if (checkout <= checkin) {
+            alert(t.date);
+            return;
+          }
+
+          saveGuestProfile(name, checkin, checkout);
+          card.classList.add("hidden");
+          showGuestWelcome();
+          updateCheckoutReminder();
+        });
+      }
+    }
+
+    function showGuestWelcome() {
+      var profile = getGuestProfile();
+      var lang = getCurrentLangForGuest();
+
+      var box = document.getElementById("guestWelcomeBox");
+      var title = document.getElementById("guestWelcomeTitle");
+      var subtitle = document.getElementById("guestWelcomeSubtitle");
+
+      if (!box || !title || !subtitle) return;
+
+      if (!profile.name) {
+        box.classList.add("hidden");
+        return;
+      }
+
+      var welcomeTexts = {
+        it: "Benvenuti, ",
+        en: "Welcome, ",
+        es: "Bienvenidos, ",
+        fr: "Bienvenue, "
+      };
+
+      var stayTexts = {
+        it: "Soggiorno: ",
+        en: "Stay: ",
+        es: "Estancia: ",
+        fr: "Séjour : "
+      };
+
+      var editTexts = {
+        it: "Modifica dati soggiorno",
+        en: "Edit stay details",
+        es: "Modificar datos de estancia",
+        fr: "Modifier les informations du séjour"
+      };
+
+      title.textContent = (welcomeTexts[lang] || welcomeTexts.it) + profile.name;
+
+      if (profile.checkin && profile.checkout) {
+        subtitle.textContent = (stayTexts[lang] || stayTexts.it) + formatStayDate(profile.checkin, lang) + " · " + formatStayDate(profile.checkout, lang);
+      } else {
+        subtitle.textContent = "";
+      }
+
+      var oldBtn = box.querySelector(".guest-edit-btn");
+      if (oldBtn) oldBtn.remove();
+
+      var editBtn = document.createElement("button");
+      editBtn.type = "button";
+      editBtn.className = "guest-edit-btn";
+      editBtn.textContent = editTexts[lang] || editTexts.it;
+      editBtn.addEventListener("click", function () {
+        var card = document.getElementById("guestStaySetup");
+        if (card) {
+          card.classList.remove("hidden");
+          card.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      });
+      box.appendChild(editBtn);
+
+      box.classList.remove("hidden");
+    }
+
+    function updateCheckoutReminder() {
+      var lang = getCurrentLangForGuest();
+      var profile = getGuestProfile();
+      var banner = document.getElementById("checkoutReminderBanner");
+      var title = document.getElementById("checkoutReminderTitle");
+      var text = document.getElementById("checkoutReminderText");
+      var actions = banner ? banner.querySelector(".checkout-reminder-actions") : null;
+      var dateText = document.getElementById("checkoutReminderDate");
+
+      if (!banner || !title || !text || !actions || !dateText) return;
+
+      banner.classList.remove("show");
+      actions.innerHTML = "";
+      dateText.textContent = "";
+
+      if (!profile.checkin || !profile.checkout) return;
+
+      var checkinDays = daysUntilDate(profile.checkin);
+      var checkoutDays = daysUntilDate(profile.checkout);
+
+      var texts = {
+        it: {
+          checkinTitle: "🧳 Check-in oggi",
+          checkinText: "Benvenuti! Oggi è il giorno del check-in. Vi consigliamo di leggere le Regole della casa e il Manuale della casa, così sarà tutto più semplice durante il soggiorno.",
+          manual: "🏠 Apri manuale della casa",
+          rules: "📋 Apri regole della casa",
+          checkin: "🧳 Apri istruzioni check-in",
+          checkinDate: "Data check-in: ",
+          tomorrowTitle: "⏰ Promemoria check-out",
+          todayTitle: "🧳 Check-out oggi",
+          tomorrowText: "Domani è il giorno del check-out. Prima della partenza vi chiediamo gentilmente di aprire la sezione Check-out e completare la checklist.",
+          todayText: "Oggi è il giorno del check-out. Prima di lasciare la casa, completate la checklist per controllare di non aver dimenticato nulla.",
+          checkoutButton: "✅ Apri checklist check-out",
+          checkoutDate: "Data check-out: "
+        },
+        en: {
+          checkinTitle: "🧳 Check-in today",
+          checkinText: "Welcome! Today is check-in day. We recommend reading the House Rules and the House Manual, so everything will be easier during your stay.",
+          manual: "🏠 Open house manual",
+          rules: "📋 Open house rules",
+          checkin: "🧳 Open check-in instructions",
+          checkinDate: "Check-in date: ",
+          tomorrowTitle: "⏰ Check-out reminder",
+          todayTitle: "🧳 Check-out today",
+          tomorrowText: "Tomorrow is check-out day. Before departure, please open the Check-out section and complete the checklist.",
+          todayText: "Today is check-out day. Before leaving the house, please complete the checklist to make sure nothing has been forgotten.",
+          checkoutButton: "✅ Open check-out checklist",
+          checkoutDate: "Check-out date: "
+        },
+        es: {
+          checkinTitle: "🧳 Check-in hoy",
+          checkinText: "¡Bienvenidos! Hoy es el día del check-in. Os recomendamos leer las Reglas de la casa y el Manual de la casa, para que todo sea más sencillo durante la estancia.",
+          manual: "🏠 Abrir manual de la casa",
+          rules: "📋 Abrir reglas de la casa",
+          checkin: "🧳 Abrir instrucciones de check-in",
+          checkinDate: "Fecha de check-in: ",
+          tomorrowTitle: "⏰ Recordatorio de check-out",
+          todayTitle: "🧳 Check-out hoy",
+          tomorrowText: "Mañana es el día del check-out. Antes de salir, abrid la sección Check-out y completad la checklist.",
+          todayText: "Hoy es el día del check-out. Antes de dejar la casa, completad la checklist para comprobar que no olvidáis nada.",
+          checkoutButton: "✅ Abrir checklist de check-out",
+          checkoutDate: "Fecha de check-out: "
+        },
+        fr: {
+          checkinTitle: "🧳 Check-in aujourd’hui",
+          checkinText: "Bienvenue ! Aujourd’hui est le jour du check-in. Nous vous conseillons de lire le règlement de la maison et le manuel de la maison, afin que tout soit plus simple pendant votre séjour.",
+          manual: "🏠 Ouvrir le manuel de la maison",
+          rules: "📋 Ouvrir le règlement de la maison",
+          checkin: "🧳 Ouvrir les instructions check-in",
+          checkinDate: "Date de check-in : ",
+          tomorrowTitle: "⏰ Rappel check-out",
+          todayTitle: "🧳 Check-out aujourd’hui",
+          tomorrowText: "Demain est le jour du check-out. Avant le départ, merci d’ouvrir la section Check-out et de compléter la checklist.",
+          todayText: "Aujourd’hui est le jour du check-out. Avant de quitter la maison, complétez la checklist pour vérifier que rien n’a été oublié.",
+          checkoutButton: "✅ Ouvrir la checklist check-out",
+          checkoutDate: "Date de check-out : "
+        }
+      };
+
+      var t = texts[lang] || texts.it;
+
+      function addReminderButton(label, href) {
+        var a = document.createElement("a");
+        a.className = "checkout-reminder-btn";
+        a.href = href;
+        a.textContent = label;
+        actions.appendChild(a);
+      }
+
+      if (checkinDays === 0) {
+        title.textContent = t.checkinTitle;
+        text.textContent = t.checkinText;
+        addReminderButton(t.manual, "manuale.html?lang=" + lang);
+        addReminderButton(t.rules, "regole.html?lang=" + lang);
+        addReminderButton(t.checkin, "check-in-out.html?lang=" + lang + "#checkin");
+        dateText.textContent = t.checkinDate + formatStayDate(profile.checkin, lang);
+        banner.classList.add("show");
+        return;
+      }
+
+      if (checkoutDays !== null && checkoutDays >= 0 && checkoutDays <= 1) {
+        title.textContent = checkoutDays === 0 ? t.todayTitle : t.tomorrowTitle;
+        text.textContent = checkoutDays === 0 ? t.todayText : t.tomorrowText;
+        addReminderButton(t.checkoutButton, "check-in-out.html?lang=" + lang + "#checkout");
+        dateText.textContent = t.checkoutDate + formatStayDate(profile.checkout, lang);
+        banner.classList.add("show");
+      }
+    }
+
     function showSite(lang) {
       lang = lang || 'it';
 
@@ -1722,7 +2336,9 @@
       document.getElementById('site').style.display = 'block';
 
       translatePage(lang);
+      setupGuestStayForm();
       showGuestWelcome();
+      updateCheckoutReminder();
 
       if (typeof loadSalernoWeather === 'function') {
         loadSalernoWeather();
@@ -1752,7 +2368,6 @@
     })();
 
     showGuestWelcome();
-    setupOwnerGuestGenerator();
   </script>
 
   <script>

@@ -508,58 +508,70 @@
     text-align:center;
   }
 
-  /* LOCALI/RISTORANTI: 1 colonna, così non sono stretti */
+  /* LOCALI/RISTORANTI: 2 colonne sul telefono, come i luoghi */
   .restaurant-grid {
-    grid-template-columns:1fr !important;
-    gap:18px;
+    grid-template-columns:repeat(2, 1fr) !important;
+    gap:10px;
   }
 
   .restaurant-card {
-    border-radius:22px;
+    border-radius:18px;
     overflow:hidden;
   }
 
   .restaurant-card img {
-    height:185px !important;
+    height:110px !important;
     object-fit:cover;
   }
 
   .restaurant-content {
-    padding:15px;
+    padding:12px;
   }
 
   .restaurant-content h3 {
-    font-size:23px;
+    font-size:17px;
     line-height:1.25;
-    margin-bottom:8px;
+    margin-bottom:6px;
   }
 
   .restaurant-content p,
   .tip-box {
-    font-size:14px;
-    line-height:1.5;
+    font-size:12px;
+    line-height:1.4;
+  }
+
+  .tip-box {
+    padding:10px;
+    border-radius:14px;
   }
 
   .badge-row {
-    gap:7px;
+    gap:5px;
   }
 
   .walk-badge,
   .price-badge,
   .recommended-badge {
-    font-size:11px;
+    font-size:10px;
+    padding:5px 8px;
+  }
+
+  .recommended-ribbon {
+    top:9px;
+    left:9px;
+    font-size:10px;
     padding:5px 9px;
   }
 
   .restaurant-actions {
     flex-direction:column;
-    gap:8px;
+    gap:7px;
   }
 
   .restaurant-btn {
     width:100%;
-    font-size:13px;
-    padding:10px 14px;
+    font-size:11px;
+    padding:8px 8px;
   }
 
   .scroll-hint {
@@ -1160,10 +1172,10 @@
               fr: "Une adresse conseillée pour ceux qui veulent manger du poisson frais à Salerne, dans une ambiance simple et agréable."
             },
             tip: {
-              it: "Una delle nostre prime scelte per il pesce: chiedete sempre quali sono i piatti del giorno a base di pesce fresco.",
-              en: "One of our top choices for seafood: always ask for the daily fresh fish dishes.",
-              es: "Una de nuestras primeras opciones para pescado: preguntad siempre por los platos del día con pescado fresco.",
-              fr: "L’un de nos premiers choix pour le poisson : demandez toujours les plats du jour à base de poisson frais."
+              it: "Il pesce è di qualità. I camerieri sono un po’ sopra le righe: tendono a scherzare con i clienti e a rendere il servizio molto informale e vivace.",
+              en: "The seafood is high quality. The waiters are a little over the top: they tend to joke with guests and make the service very informal and lively.",
+              es: "El pescado es de calidad. Los camareros son un poco particulares: suelen bromear con los clientes y hacen que el servicio sea muy informal y animado.",
+              fr: "Le poisson est de qualité. Les serveurs sont un peu originaux : ils ont tendance à plaisanter avec les clients et rendent le service très informel et vivant."
             }
           },
           {
@@ -1799,6 +1811,21 @@
       } catch (e) {}
     }
 
+    function shouldShowTip(place) {
+      if (!place || !place.tip || !place.name || !place.name.it) return false;
+
+      var placesWithTip = [
+        "A Modo Bio",
+        "Bar Gelateria Nettuno",
+        "Antica Dolceria Pantaleone",
+        "Pasticceria Sal De Riso",
+        "Casa Ragùsa",
+        "Tramp Ristorante"
+      ];
+
+      return placesWithTip.indexOf(place.name.it) !== -1;
+    }
+
     function renderCategory(categoryKey) {
       var category = categories[categoryKey];
       var grid = document.getElementById('restaurant-grid');
@@ -1828,10 +1855,12 @@
               <h3>${place.name[currentLang]}</h3>
               <p>${place.desc[currentLang]}</p>
 
-              <div class="tip-box">
-                <strong>${labels.tip[currentLang]}:</strong>
-                ${place.tip[currentLang]}
-              </div>
+              ${shouldShowTip(place) ? `
+                <div class="tip-box">
+                  <strong>${labels.tip[currentLang]}:</strong>
+                  ${place.tip[currentLang]}
+                </div>
+              ` : ''}
 
               <div class="restaurant-actions">
                 <a class="restaurant-btn light" href="${mapsUrl}" target="_blank">

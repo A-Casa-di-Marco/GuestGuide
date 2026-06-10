@@ -173,22 +173,25 @@
       background: #dff3f2;
       border-left: 6px solid #0f7f83;
       border-radius: 22px;
-      padding: 18px 20px;
-      margin-bottom: 22px;
+      padding: 14px 18px;
+      margin-bottom: 0;
       box-shadow: 0 10px 26px rgba(0,80,85,.10);
     }
 
     .guest-welcome h2 {
       font-family: 'Pacifico', cursive;
-      font-size: 34px;
+      font-size: 31px;
       color: #075f63;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
+      line-height: 1.15;
     }
 
     .guest-welcome p {
       color: #263238;
-      font-size: 17px;
+      font-size: 14px;
+      line-height: 1.45;
       margin: 0;
+      max-width: 900px;
     }
 
     .owner-generator {
@@ -780,12 +783,20 @@
         line-height: 1.75;
       }
 
+      .guest-welcome {
+        padding: 12px 14px;
+        border-radius: 18px;
+      }
+
       .guest-welcome h2 {
-        font-size: 27px;
+        font-size: 24px;
+        line-height: 1.12;
+        margin-bottom: 3px;
       }
 
       .guest-welcome p {
-        font-size: 15px;
+        font-size: 12.5px;
+        line-height: 1.35;
       }
 
       .owner-btn {
@@ -1092,11 +1103,13 @@
     }
 
     .guest-edit-btn {
-      margin-top: 12px;
+      margin-top: 9px;
       background: #fff;
       color: var(--ottanio-dark);
       border: 1px solid rgba(15,127,131,.25);
       box-shadow: none;
+      padding: 8px 13px;
+      font-size: 12px;
     }
 
     @media (max-width: 720px) {
@@ -1300,15 +1313,17 @@
       <section id="welcome-home" class="home-welcome">
         <div id="guestWelcomeBox" class="guest-welcome hidden">
           <h2 id="guestWelcomeTitle">Benvenuti</h2>
-          <p id="guestWelcomeSubtitle">La vostra guida digitale per il soggiorno ad A Casa di Marco</p>
+          <p id="guestWelcomeSubtitle">Siamo felici di ospitarvi e speriamo che possiate sentirvi davvero a casa. In questa guida troverete tutte le informazioni utili per vivere al meglio il vostro soggiorno.</p>
         </div>
 
-        <h2 data-it="Benvenuti"
+        <h2 id="standardWelcomeTitle"
+            data-it="Benvenuti"
             data-en="Welcome"
             data-es="Bienvenidos"
             data-fr="Bienvenue">Benvenuti</h2>
 
-        <p data-it="Benvenuti A Casa di Marco. Siamo felici di ospitarvi e speriamo che possiate sentirvi davvero a casa. In questa guida troverete tutte le informazioni utili per vivere al meglio il vostro soggiorno."
+        <p id="standardWelcomeText"
+           data-it="Benvenuti A Casa di Marco. Siamo felici di ospitarvi e speriamo che possiate sentirvi davvero a casa. In questa guida troverete tutte le informazioni utili per vivere al meglio il vostro soggiorno."
            data-en="Welcome to A Casa di Marco. We are happy to host you and hope you will truly feel at home. In this guide you will find all the useful information to enjoy your stay."
            data-es="Bienvenidos A Casa di Marco. Nos alegra alojaros y esperamos que os sintáis como en casa. En esta guía encontraréis toda la información útil para disfrutar de vuestra estancia."
            data-fr="Bienvenue A Casa di Marco. Nous sommes heureux de vous accueillir et espérons que vous vous sentirez vraiment chez vous. Dans ce guide, vous trouverez toutes les informations utiles pour profiter de votre séjour.">
@@ -2164,11 +2179,15 @@
       var box = document.getElementById("guestWelcomeBox");
       var title = document.getElementById("guestWelcomeTitle");
       var subtitle = document.getElementById("guestWelcomeSubtitle");
+      var standardTitle = document.getElementById("standardWelcomeTitle");
+      var standardText = document.getElementById("standardWelcomeText");
 
       if (!box || !title || !subtitle) return;
 
       if (!profile.name) {
         box.classList.add("hidden");
+        if (standardTitle) standardTitle.classList.remove("hidden");
+        if (standardText) standardText.classList.remove("hidden");
         return;
       }
 
@@ -2179,11 +2198,11 @@
         fr: "Bienvenue, "
       };
 
-      var stayTexts = {
-        it: "Soggiorno: ",
-        en: "Stay: ",
-        es: "Estancia: ",
-        fr: "Séjour : "
+      var welcomeDescriptions = {
+        it: "Siamo felici di ospitarvi e speriamo che possiate sentirvi davvero a casa. In questa guida troverete tutte le informazioni utili per vivere al meglio il vostro soggiorno.",
+        en: "We are happy to host you and hope you will truly feel at home. In this guide you will find all the useful information to enjoy your stay.",
+        es: "Nos alegra alojaros y esperamos que os sintáis como en casa. En esta guía encontraréis toda la información útil para disfrutar de vuestra estancia.",
+        fr: "Nous sommes heureux de vous accueillir et espérons que vous vous sentirez vraiment chez vous. Dans ce guide, vous trouverez toutes les informations utiles pour profiter de votre séjour."
       };
 
       var editTexts = {
@@ -2194,12 +2213,10 @@
       };
 
       title.textContent = (welcomeTexts[lang] || welcomeTexts.it) + profile.name;
+      subtitle.textContent = welcomeDescriptions[lang] || welcomeDescriptions.it;
 
-      if (profile.checkin && profile.checkout) {
-        subtitle.textContent = (stayTexts[lang] || stayTexts.it) + formatStayDate(profile.checkin, lang) + " · " + formatStayDate(profile.checkout, lang);
-      } else {
-        subtitle.textContent = "";
-      }
+      if (standardTitle) standardTitle.classList.add("hidden");
+      if (standardText) standardText.classList.add("hidden");
 
       var oldBtn = box.querySelector(".guest-edit-btn");
       if (oldBtn) oldBtn.remove();

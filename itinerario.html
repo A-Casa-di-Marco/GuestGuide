@@ -220,6 +220,31 @@
       font-size:14px;
     }
 
+    .recommendations {
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:10px;
+    }
+
+    .rec-link {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:999px;
+      padding:7px 11px;
+      background:#fff;
+      color:var(--ottanio-dark);
+      border:1px solid rgba(15,127,131,.22);
+      font-size:12px;
+      font-weight:800;
+    }
+
+    .rec-link.food {
+      background:var(--sand);
+      border-color:rgba(176,136,80,.28);
+    }
+
     .tips-grid {
       display:grid;
       grid-template-columns:repeat(2, minmax(0, 1fr));
@@ -362,16 +387,16 @@
             </select>
           </div>
 
-          <div class="question">
-            <label for="foodMood">Cosa vi piace mangiare?</label>
-            <select id="foodMood">
-              <option value="typical">Cucina tipica campana</option>
-              <option value="pizza">Pizza</option>
-              <option value="fish">Pesce</option>
-              <option value="street">Street food / pranzo veloce</option>
-              <option value="dessert">Dolci e pasticceria</option>
-              <option value="view">Aperitivo vista mare</option>
-            </select>
+          <div class="question full">
+            <span class="question-title">Cosa vi piace mangiare? Potete scegliere più opzioni.</span>
+            <div class="choice-grid">
+              <label class="choice"><input type="checkbox" name="foodMood" value="typical" checked> Cucina tipica campana</label>
+              <label class="choice"><input type="checkbox" name="foodMood" value="pizza"> Pizza</label>
+              <label class="choice"><input type="checkbox" name="foodMood" value="fish"> Pesce</label>
+              <label class="choice"><input type="checkbox" name="foodMood" value="street"> Street food / pranzo veloce</label>
+              <label class="choice"><input type="checkbox" name="foodMood" value="dessert"> Dolci e pasticceria</label>
+              <label class="choice"><input type="checkbox" name="foodMood" value="view"> Aperitivo vista mare</label>
+            </div>
           </div>
 
           <div class="question">
@@ -534,12 +559,109 @@
       }
     };
 
+    const guideFood = {
+      pizza: [
+        ['A Modo Bio', 'mangiare.html'],
+        ['Crosta Pizza in Teglia', 'mangiare.html'],
+        ['Opificio - Il Laboratorio della Pizza', 'mangiare.html'],
+        ['Pizzeria Errico Porzio Salerno', 'mangiare.html'],
+        ['Giagiù', 'mangiare.html'],
+        ['Da Michele Salerno', 'mangiare.html']
+      ],
+      fish: [
+        ['Pescheria', 'mangiare.html'],
+        ['Controvento', 'mangiare.html'],
+        ['Bistrot di Pescheria', 'mangiare.html'],
+        ['Convivium Sea Food Restaurant', 'mangiare.html'],
+        ['Tramp Ristorante', 'mangiare.html']
+      ],
+      typical: [
+        ['Osteria Canali', 'mangiare.html'],
+        ['Il Brigante', 'mangiare.html'],
+        ['Da Nonna Maria', 'mangiare.html'],
+        ['La Botte Pazza', 'mangiare.html'],
+        ['Casa Ragùsa', 'mangiare.html']
+      ],
+      street: [
+        ['Crosta Pizza in Teglia', 'mangiare.html'],
+        ['A Modo Bio', 'mangiare.html'],
+        ['Al Dente Spaghetteria', 'mangiare.html']
+      ],
+      dessert: [
+        ['Bar Gelateria Nettuno', 'mangiare.html'],
+        ['Antica Dolceria Pantaleone', 'mangiare.html'],
+        ['Bar delle Sirene', 'mangiare.html']
+      ],
+      view: [
+        ['Lungomare di Salerno', 'luoghi.html'],
+        ['Piazza della Libertà', 'luoghi.html'],
+        ['Marina di Vietri', 'luoghi.html']
+      ]
+    };
+
+    const guidePlaces = {
+      salerno: [
+        ['Cattedrale di Salerno', 'luoghi.html'],
+        ['Giardino della Minerva', 'luoghi.html'],
+        ['Lungomare di Salerno', 'luoghi.html'],
+        ['Piazza della Libertà', 'luoghi.html']
+      ],
+      vietri: [
+        ['Vietri sul Mare', 'luoghi.html'],
+        ['Marina di Vietri', 'luoghi.html'],
+        ['Spiaggia La Baia - Vietri', 'luoghi.html'],
+        ['La Crestarella - Vietri', 'luoghi.html']
+      ],
+      amalfi: [
+        ['Amalfi e Duomo di Sant’Andrea', 'luoghi.html'],
+        ['Maiori e Minori', 'luoghi.html'],
+        ['Vietri sul Mare', 'luoghi.html']
+      ],
+      positano: [
+        ['Positano', 'luoghi.html'],
+        ['Sentiero degli Dei', 'luoghi.html'],
+        ['Amalfi e Duomo di Sant’Andrea', 'luoghi.html']
+      ],
+      family: [
+        ['Lungomare di Salerno', 'luoghi.html'],
+        ['Maiori e Minori', 'luoghi.html'],
+        ['Marina di Vietri', 'luoghi.html']
+      ],
+      nature: [
+        ['Castello di Arechi', 'luoghi.html'],
+        ['Giardino della Minerva', 'luoghi.html'],
+        ['Passeggiata sul Monte San Liberatore', 'luoghi.html'],
+        ['Badia di Cava de’ Tirreni', 'luoghi.html']
+      ],
+      paestum: [
+        ['Parco Archeologico di Paestum', 'luoghi.html']
+      ],
+      pompeii: [
+        ['Scavi di Pompei', 'luoghi.html']
+      ],
+      rainy: [
+        ['Cattedrale di Salerno', 'luoghi.html'],
+        ['Antica Dolceria Pantaleone', 'mangiare.html'],
+        ['Osteria Canali', 'mangiare.html']
+      ],
+      minori: [
+        ['Maiori e Minori', 'luoghi.html'],
+        ['Bar Gelateria Nettuno', 'mangiare.html'],
+        ['Bar delle Sirene', 'mangiare.html']
+      ]
+    };
+
     function getValue(id) {
       return document.getElementById(id).value;
     }
 
     function getInterests() {
       return Array.from(document.querySelectorAll('input[name="interest"]:checked')).map((item) => item.value);
+    }
+
+    function getFoodMoods() {
+      const selected = Array.from(document.querySelectorAll('input[name="foodMood"]:checked')).map((item) => item.value);
+      return selected.length ? selected : ['typical'];
     }
 
     function choosePlanPool(values) {
@@ -601,7 +723,7 @@
       return plan.evening;
     }
 
-    function adaptLunch(plan, values) {
+    function adaptLunch(plan, values, dayIndex) {
       const food = {
         typical: ['Pranzo tipico campano', 'Cercate cucina locale, primi semplici, verdure, mozzarella o piatti della tradizione.'],
         pizza: ['Pizza o pranzo informale', 'Soluzione comoda, veloce e adatta anche a famiglie e gruppi.'],
@@ -611,7 +733,57 @@
         view: ['Pranzo o aperitivo vista mare', 'Scegliete una pausa panoramica, anche solo per un drink e qualcosa di semplice.']
       };
 
-      return food[values.foodMood] || plan.lunch;
+      const mood = values.foodMoods[dayIndex % values.foodMoods.length] || 'typical';
+      return food[mood] || plan.lunch;
+    }
+
+    function uniqueRecommendations(items, limit) {
+      const seen = new Set();
+      const clean = [];
+
+      items.forEach((item) => {
+        const key = item[0];
+        if (!seen.has(key)) {
+          seen.add(key);
+          clean.push(item);
+        }
+      });
+
+      return clean.slice(0, limit);
+    }
+
+    function getFoodRecommendations(values, dayIndex) {
+      const mood = values.foodMoods[dayIndex % values.foodMoods.length] || 'typical';
+      const primary = guideFood[mood] || guideFood.typical;
+      const secondary = values.foodMoods
+        .filter((item) => item !== mood)
+        .flatMap((item) => guideFood[item] || []);
+
+      return uniqueRecommendations(primary.concat(secondary), 3);
+    }
+
+    function getPlaceRecommendations(planName, values) {
+      const base = guidePlaces[planName] || guidePlaces.salerno;
+      const extras = [];
+
+      if (values.interests.includes('culture')) extras.push(...guidePlaces.salerno);
+      if (values.interests.includes('sea')) extras.push(...guidePlaces.vietri, ...guidePlaces.minori);
+      if (values.interests.includes('nature')) extras.push(...guidePlaces.nature);
+      if (values.children !== 'none') extras.push(...guidePlaces.family);
+
+      return uniqueRecommendations(base.concat(extras), 4);
+    }
+
+    function renderRecommendations(items, type) {
+      if (!items.length) return '';
+
+      return `
+        <div class="recommendations">
+          ${items.map((item) => `
+            <a class="rec-link ${type === 'food' ? 'food' : ''}" href="${item[1]}">${item[0]}</a>
+          `).join('')}
+        </div>
+      `;
     }
 
     function buildTips(values) {
@@ -654,24 +826,29 @@
       const pool = uniqueLimited(choosePlanPool(values), Number(values.days));
       let textVersion = 'Itinerario A Casa di Marco\\n\\n';
 
-      summaryCard.textContent = `${values.days} ${values.days === '1' ? 'giorno' : 'giorni'} · ritmo ${label(values.pace)} · ${label(values.transport)} · interessi: ${values.interests.length ? values.interests.map(label).join(', ') : 'mix Salerno e dintorni'}.`;
+      summaryCard.textContent = `${values.days} ${values.days === '1' ? 'giorno' : 'giorni'} · ritmo ${label(values.pace)} · ${label(values.transport)} · interessi: ${values.interests.length ? values.interests.map(label).join(', ') : 'mix Salerno e dintorni'} · food: ${values.foodMoods.map(label).join(', ')}.`;
 
       output.innerHTML = pool.map((planName, index) => {
         const plan = plans[planName];
-        const lunch = adaptLunch(plan, values);
+        const lunch = adaptLunch(plan, values, index);
         const evening = adaptEvening(plan, values, index);
         const dayTitle = `Giorno ${index + 1} · ${plan.title}`;
+        const placeRecs = getPlaceRecommendations(planName, values);
+        const foodRecs = getFoodRecommendations(values, index);
 
         const slots = [
-          ['Mattina', plan.morning],
-          ['Pranzo', lunch],
-          ['Pomeriggio', plan.afternoon],
-          ['Sera', evening]
+          ['Mattina', plan.morning, placeRecs],
+          ['Pranzo', lunch, foodRecs, 'food'],
+          ['Pomeriggio', plan.afternoon, placeRecs.slice(1)],
+          ['Sera', evening, values.returnTime === 'late' ? foodRecs.slice(1) : [], 'food']
         ];
 
         textVersion += `${dayTitle}\\n`;
-        slots.forEach(([time, content]) => {
+        slots.forEach(([time, content, recs]) => {
           textVersion += `${time}: ${content[0]} - ${content[1]}\\n`;
+          if (recs && recs.length) {
+            textVersion += `Consigli dalla guida: ${recs.map((item) => item[0]).join(', ')}\\n`;
+          }
         });
         textVersion += '\\n';
 
@@ -679,12 +856,13 @@
           <article class="day-card">
             <h3>${dayTitle}</h3>
             <div class="timeline">
-              ${slots.map(([time, content]) => `
+              ${slots.map(([time, content, recs, type]) => `
                 <div class="slot">
                   <strong>${time}</strong>
                   <div>
                     <h4>${content[0]}</h4>
                     <p>${content[1]}</p>
+                    ${renderRecommendations(recs || [], type)}
                   </div>
                 </div>
               `).join('')}
@@ -725,7 +903,13 @@
         nature:'natura',
         shopping:'shopping',
         villages:'borghi',
-        romantic:'romantico'
+        romantic:'romantico',
+        typical:'tipico',
+        pizza:'pizza',
+        fish:'pesce',
+        street:'street food',
+        dessert:'dolci',
+        view:'vista mare'
       };
 
       return labels[value] || value;
@@ -742,7 +926,7 @@
         interests:getInterests(),
         children:getValue('children'),
         returnTime:getValue('returnTime'),
-        foodMood:getValue('foodMood'),
+        foodMoods:getFoodMoods(),
         budget:getValue('budget'),
         crowd:getValue('crowd'),
         season:getValue('season'),

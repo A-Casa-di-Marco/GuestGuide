@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crea il tuo itinerario · A Casa di Marco</title>
+  <meta name="theme-color" content="#0f7f83">
+  <link rel="apple-touch-icon" href="assets/icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Casa di Marco">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ottanio:#0f7f83;
+      --ottanio-dark:#075f63;
+      --ottanio-soft:#dff3f2;
+      --white:#fff;
+      --milk:#fbfbf8;
+      --text:#263238;
+      --muted:#6f7d80;
+      --sand:#fff8e8;
+      --gold:#b08850;
+      --shadow:0 18px 50px rgba(0,70,75,.20);
+      --radius:28px;
+    }
+
+    * { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { background:var(--milk); color:var(--text); font-family:'Poppins',sans-serif; line-height:1.65; }
+    h1,h2,h3 { font-family:'Pacifico',cursive; font-weight:400; color:var(--ottanio-dark); line-height:1.2; }
+    a { color:inherit; text-decoration:none; }
+
+    .page-hero {
+      min-height:42vh;
+      background:
+        linear-gradient(180deg, rgba(0,80,85,.24), rgba(0,80,85,.66)),
+        url("assets/garden-main.jpg") center/cover no-repeat;
+      color:#fff;
+      display:flex;
+      align-items:flex-end;
+      padding:38px 20px;
+    }
+
+    .page-hero div { max-width:1000px; margin:0 auto; width:100%; }
+    .page-hero h1 { color:#fff; font-size:clamp(38px, 7vw, 72px); text-shadow:0 5px 20px rgba(0,0,0,.35); }
+    .page-hero p { max-width:760px; margin-top:10px; font-size:clamp(15px, 2.4vw, 20px); text-shadow:0 3px 16px rgba(0,0,0,.35); }
+
+    main { max-width:1000px; margin:0 auto; padding:28px 16px 70px; }
+    section { background:#fff; border-radius:var(--radius); padding:28px; box-shadow:var(--shadow); margin-bottom:22px; border:1px solid #e8e0d4; }
+
+    .back-home {
+      display:inline-flex;
+      margin-bottom:18px;
+      background:var(--ottanio);
+      color:#fff;
+      border-radius:999px;
+      padding:11px 18px;
+      font-weight:700;
+    }
+
+    .intro-box {
+      background:linear-gradient(135deg, #fff, var(--sand) 52%, var(--ottanio-soft));
+      border-left:6px solid var(--ottanio);
+    }
+
+    .intro-box h2 { font-size:34px; margin-bottom:8px; }
+    .intro-box p { color:var(--muted); max-width:850px; }
+
+    .form-grid {
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:16px;
+      margin-top:18px;
+    }
+
+    .question {
+      background:var(--ottanio-soft);
+      border-radius:22px;
+      padding:18px;
+      border:1px solid rgba(15,127,131,.14);
+    }
+
+    .question.full { grid-column:1 / -1; }
+    .question label,
+    .question-title {
+      display:block;
+      color:var(--ottanio-dark);
+      font-weight:800;
+      margin-bottom:9px;
+    }
+
+    select,
+    textarea {
+      width:100%;
+      border:1px solid rgba(15,127,131,.22);
+      border-radius:16px;
+      padding:12px 13px;
+      font-family:'Poppins',sans-serif;
+      font-size:14px;
+      color:var(--text);
+      background:#fff;
+    }
+
+    textarea { resize:vertical; min-height:86px; }
+
+    .choice-grid {
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:9px;
+    }
+
+    .choice {
+      display:flex;
+      align-items:flex-start;
+      gap:8px;
+      background:rgba(255,255,255,.74);
+      border-radius:14px;
+      padding:10px;
+      color:var(--text);
+      font-size:13px;
+      cursor:pointer;
+      border:1px solid rgba(15,127,131,.10);
+    }
+
+    .choice input { margin-top:4px; accent-color:var(--ottanio); }
+
+    .actions {
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:18px;
+    }
+
+    .btn {
+      border:0;
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      background:var(--ottanio);
+      color:#fff;
+      border-radius:999px;
+      padding:13px 18px;
+      font-family:'Poppins',sans-serif;
+      font-size:14px;
+      font-weight:800;
+      box-shadow:0 10px 26px rgba(0,80,85,.16);
+    }
+
+    .btn.light {
+      background:#fff;
+      color:var(--ottanio-dark);
+      border:1px solid rgba(15,127,131,.25);
+      box-shadow:none;
+    }
+
+    .result-section { display:none; }
+    .result-section.show { display:block; }
+
+    .summary-card {
+      background:var(--sand);
+      border-radius:22px;
+      padding:18px;
+      margin-bottom:16px;
+      color:var(--ottanio-dark);
+      font-weight:700;
+    }
+
+    .day-card {
+      background:#fff;
+      border:1px solid rgba(15,127,131,.16);
+      border-radius:24px;
+      overflow:hidden;
+      margin-bottom:16px;
+      box-shadow:0 10px 26px rgba(0,80,85,.08);
+    }
+
+    .day-card h3 {
+      background:var(--ottanio);
+      color:#fff;
+      font-size:30px;
+      padding:16px 18px;
+    }
+
+    .timeline {
+      display:grid;
+      gap:12px;
+      padding:18px;
+    }
+
+    .slot {
+      display:grid;
+      grid-template-columns:108px 1fr;
+      gap:12px;
+      align-items:start;
+      background:var(--ottanio-soft);
+      border-radius:18px;
+      padding:14px;
+    }
+
+    .slot strong {
+      color:var(--ottanio-dark);
+      font-size:13px;
+      text-transform:uppercase;
+      letter-spacing:.05em;
+    }
+
+    .slot h4 {
+      color:var(--ottanio-dark);
+      font-size:18px;
+      margin-bottom:3px;
+    }
+
+    .slot p {
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .tips-grid {
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:12px;
+      margin-top:16px;
+    }
+
+    .tip {
+      background:#fff;
+      border-left:5px solid var(--gold);
+      border-radius:18px;
+      padding:14px;
+      color:var(--muted);
+      font-size:14px;
+      box-shadow:0 8px 20px rgba(0,80,85,.08);
+    }
+
+    .tip strong { display:block; color:var(--ottanio-dark); margin-bottom:4px; }
+
+    .small-note {
+      color:var(--muted);
+      font-size:13px;
+      margin-top:12px;
+    }
+
+    @media (max-width:720px) {
+      .page-hero { min-height:36vh; padding:34px 16px; }
+      main { padding:18px 10px 56px; }
+      section { padding:18px; border-radius:22px; margin-bottom:16px; }
+      .intro-box h2 { font-size:28px; }
+      .form-grid { grid-template-columns:1fr; gap:11px; }
+      .question { padding:14px; border-radius:18px; }
+      .choice-grid { grid-template-columns:1fr 1fr; gap:8px; }
+      .choice { font-size:12px; padding:8px; }
+      .actions { flex-direction:column; }
+      .btn { width:100%; min-height:46px; }
+      .slot { grid-template-columns:1fr; gap:5px; padding:12px; }
+      .day-card h3 { font-size:25px; padding:14px; }
+      .timeline { padding:12px; gap:10px; }
+      .tips-grid { grid-template-columns:1fr; }
+    }
+
+    @media (max-width:390px) {
+      .choice-grid { grid-template-columns:1fr; }
+      .page-hero h1 { font-size:38px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="page-hero">
+    <div>
+      <h1>Crea il tuo itinerario</h1>
+      <p>Rispondi a poche domande e ricevi un’idea di viaggio giorno per giorno, dalla mattina alla sera, partendo da A Casa di Marco.</p>
+    </div>
+  </header>
+
+  <main>
+    <a class="back-home" href="index.html">← Torna alla guida</a>
+
+    <section class="intro-box">
+      <h2>Dimmi che vacanza vuoi fare</h2>
+      <p>Il generatore combina Salerno, Costiera Amalfitana, mare, cultura, natura e consigli food in base al vostro ritmo. È una proposta orientativa: controllate sempre orari, meteo, traffico e disponibilità prima di partire.</p>
+    </section>
+
+    <section>
+      <h2>Le tue preferenze</h2>
+
+      <form id="itineraryForm">
+        <div class="form-grid">
+          <div class="question">
+            <label for="days">Quanti giorni vuoi organizzare?</label>
+            <select id="days">
+              <option value="1">1 giorno</option>
+              <option value="2">2 giorni</option>
+              <option value="3" selected>3 giorni</option>
+              <option value="4">4 giorni</option>
+              <option value="5">5 giorni</option>
+              <option value="6">6 giorni</option>
+              <option value="7">7 giorni</option>
+            </select>
+          </div>
+
+          <div class="question">
+            <label for="transport">Come vi muovete?</label>
+            <select id="transport">
+              <option value="car">Abbiamo l’auto</option>
+              <option value="no-car">Senza auto / mezzi pubblici</option>
+              <option value="mixed">Auto solo alcuni giorni</option>
+            </select>
+          </div>
+
+          <div class="question">
+            <label for="pace">Che ritmo preferite?</label>
+            <select id="pace">
+              <option value="relax">Relax, senza stress</option>
+              <option value="balanced" selected>Equilibrato</option>
+              <option value="full">Vogliamo vedere più cose possibile</option>
+            </select>
+          </div>
+
+          <div class="question">
+            <label for="walking">Quanto vi piace camminare?</label>
+            <select id="walking">
+              <option value="low">Poco</option>
+              <option value="medium" selected>Medio</option>
+              <option value="high">Tanto</option>
+            </select>
+          </div>
+
+          <div class="question full">
+            <span class="question-title">Cosa vi interessa di più?</span>
+            <div class="choice-grid">
+              <label class="choice"><input type="checkbox" name="interest" value="sea"> Mare e spiagge</label>
+              <label class="choice"><input type="checkbox" name="interest" value="coast" checked> Costiera Amalfitana</label>
+              <label class="choice"><input type="checkbox" name="interest" value="culture" checked> Cultura e centro storico</label>
+              <label class="choice"><input type="checkbox" name="interest" value="food"> Cibo e ristoranti</label>
+              <label class="choice"><input type="checkbox" name="interest" value="nature"> Natura e panorami</label>
+              <label class="choice"><input type="checkbox" name="interest" value="shopping"> Shopping e passeggiate</label>
+              <label class="choice"><input type="checkbox" name="interest" value="villages"> Borghi e ceramiche</label>
+              <label class="choice"><input type="checkbox" name="interest" value="romantic"> Atmosfera romantica</label>
+            </div>
+          </div>
+
+          <div class="question">
+            <label for="children">Ci sono bambini?</label>
+            <select id="children">
+              <option value="none">No</option>
+              <option value="small">Sì, piccoli</option>
+              <option value="big">Sì, grandi</option>
+            </select>
+          </div>
+
+          <div class="question">
+            <label for="returnTime">La sera preferite...</label>
+            <select id="returnTime">
+              <option value="early">Rientrare presto e rilassarvi</option>
+              <option value="late">Restare fuori anche la sera</option>
+              <option value="mixed" selected>Dipende dal giorno</option>
+            </select>
+          </div>
+
+          <div class="question">
+            <label for="foodMood">Cosa vi piace mangiare?</label>
+            <select id="foodMood">
+              <option value="typical">Cucina tipica campana</option>
+              <option value="pizza">Pizza</option>
+              <option value="fish">Pesce</option>
+              <option value="street">Street food / pranzo veloce</option>
+              <option value="dessert">Dolci e pasticceria</option>
+              <option value="view">Aperitivo vista mare</option>
+            </select>
+          </div>
+
+          <div class="question">
+            <label for="budget">Budget pasti</label>
+            <select id="budget">
+              <option value="easy">Economico</option>
+              <option value="medium" selected>Medio</option>
+              <option value="special">Qualcosa di speciale</option>
+            </select>
+          </div>
+
+          <div class="question">
+            <label for="crowd">Volete evitare folla e traffico?</label>
+            <select id="crowd">
+              <option value="yes" selected>Sì, il più possibile</option>
+              <option value="some">Un po’</option>
+              <option value="no">Non importa</option>
+            </select>
+          </div>
+
+          <div class="question">
+            <label for="season">Quando viaggiate?</label>
+            <select id="season">
+              <option value="summer" selected>Estate</option>
+              <option value="spring">Primavera / autunno</option>
+              <option value="winter">Inverno</option>
+              <option value="rain">Pioggia prevista</option>
+            </select>
+          </div>
+
+          <div class="question">
+            <label for="seaType">Se scegliete il mare, preferite...</label>
+            <select id="seaType">
+              <option value="easy">Spiaggia comoda</option>
+              <option value="beautiful">Acqua bella anche se più scomoda</option>
+              <option value="lido">Lido attrezzato</option>
+              <option value="walk">Passeggiata vista mare</option>
+            </select>
+          </div>
+
+          <div class="question">
+            <label for="experience">Esperienza extra</label>
+            <select id="experience">
+              <option value="none">Nessuna, semplice e libera</option>
+              <option value="boat">Tour in barca</option>
+              <option value="trail">Sentiero panoramico</option>
+              <option value="museums">Musei / archeologia</option>
+              <option value="local">Prodotti locali e borghi</option>
+            </select>
+          </div>
+
+          <div class="question full">
+            <label for="alreadySeen">Avete già visto qualcosa o avete richieste particolari?</label>
+            <textarea id="alreadySeen" placeholder="Esempio: abbiamo già visto Amalfi, vogliamo evitare Positano, cerchiamo posti comodi con bambini..."></textarea>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="btn" type="submit">Genera itinerario</button>
+          <button class="btn light" type="reset">Cancella risposte</button>
+        </div>
+
+        <p class="small-note">Suggerimento: se viaggiate in estate, partite presto per Costiera, Pompei o Paestum e lasciate spazio al rientro ad A Casa di Marco nelle ore più calde.</p>
+      </form>
+    </section>
+
+    <section class="result-section" id="resultSection">
+      <h2>Il tuo itinerario</h2>
+      <div class="summary-card" id="summaryCard"></div>
+      <div id="itineraryOutput"></div>
+
+      <div class="tips-grid" id="tipsGrid"></div>
+
+      <div class="actions">
+        <button class="btn" id="copyBtn" type="button">Copia itinerario</button>
+        <a class="btn light" href="mangiare.html">Apri consigli food</a>
+        <a class="btn light" href="luoghi.html">Apri luoghi da visitare</a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const form = document.getElementById('itineraryForm');
+    const resultSection = document.getElementById('resultSection');
+    const output = document.getElementById('itineraryOutput');
+    const summaryCard = document.getElementById('summaryCard');
+    const tipsGrid = document.getElementById('tipsGrid');
+    const copyBtn = document.getElementById('copyBtn');
+
+    const plans = {
+      salerno: {
+        title: 'Salerno con calma',
+        morning: ['Centro storico, Duomo e Via Mercanti', 'Iniziate da Salerno: Duomo, vicoli del centro e passeggiata senza fretta.'],
+        lunch: ['Pranzo in centro', 'Scegliete pizza, cucina tipica o street food in base al budget e alla voglia del momento.'],
+        afternoon: ['Giardino della Minerva e Lungomare', 'Un pomeriggio leggero tra vista, verde e passeggiata sul mare.'],
+        evening: ['Aperitivo o rientro tranquillo', 'Se siete stanchi, rientrate ad A Casa di Marco per cenare con calma e godervi il fresco.']
+      },
+      vietri: {
+        title: 'Vietri sul Mare e ceramiche',
+        morning: ['Vietri sul Mare', 'Passeggiata nel borgo, botteghe di ceramiche e scorci colorati.'],
+        lunch: ['Pranzo semplice vista mare', 'Perfetto per pizza, cucina locale o pranzo veloce prima della spiaggia.'],
+        afternoon: ['Marina di Vietri o Cetara', 'Scegliete spiaggia comoda a Vietri oppure Cetara se volete aggiungere sapore di borgo marinaro.'],
+        evening: ['Rientro con calma', 'Ottima giornata se volete mare senza spingervi troppo lontano in Costiera.']
+      },
+      amalfi: {
+        title: 'Amalfi e Ravello',
+        morning: ['Partenza presto per Amalfi', 'Visitate il centro, il Duomo e prendetevi tempo per una passeggiata.'],
+        lunch: ['Pranzo tra Amalfi e Atrani', 'Scegliete un pranzo medio o speciale, evitando gli orari più affollati se possibile.'],
+        afternoon: ['Ravello panoramica', 'Ravello è perfetta per viste, ville storiche e atmosfera più elegante.'],
+        evening: ['Rientro ad A Casa di Marco', 'Dopo Costiera e folla, il rientro in una zona tranquilla sarà la parte che apprezzerete di più.']
+      },
+      positano: {
+        title: 'Positano o Costiera iconica',
+        morning: ['Positano presto', 'Andate presto: è bellissima ma può essere molto affollata, soprattutto in estate.'],
+        lunch: ['Pranzo vista mare', 'Scegliete qualcosa di semplice o speciale in base al budget. Prenotate se volete un posto preciso.'],
+        afternoon: ['Praiano, Furore o rientro lento', 'Se avete energia, aggiungete una tappa panoramica; altrimenti rientrate prima del traffico serale.'],
+        evening: ['Serata leggera', 'Cena tranquilla o relax in giardino dopo una giornata intensa.']
+      },
+      family: {
+        title: 'Giornata facile con bambini',
+        morning: ['Lungomare e centro facile', 'Percorso semplice, con soste e senza troppe salite.'],
+        lunch: ['Pranzo comodo', 'Pizza, pasta o locale informale: meglio qualcosa di pratico e veloce.'],
+        afternoon: ['Pausa nelle ore più calde', 'Rientro a casa o spiaggia comoda, evitando troppe tappe nello stesso giorno.'],
+        evening: ['Gelato e passeggiata leggera', 'Una serata senza stress è spesso la scelta migliore con bambini.']
+      },
+      nature: {
+        title: 'Panorami e natura',
+        morning: ['Castello Arechi o sentiero panoramico', 'Scegliete Castello Arechi per una versione facile, sentieri solo se siete allenati.'],
+        lunch: ['Pranzo semplice o al sacco', 'Meglio organizzarsi con acqua, scarpe comode e orari freschi.'],
+        afternoon: ['Giardino della Minerva o Cava de’ Tirreni', 'Una seconda tappa verde e più tranquilla, senza esagerare.'],
+        evening: ['Doccia, cena e riposo', 'Dopo natura e camminate, rientrare in una casa silenziosa fa la differenza.']
+      },
+      paestum: {
+        title: 'Paestum e giornata ampia',
+        morning: ['Templi di Paestum', 'Partenza al mattino per visitare l’area archeologica con meno caldo.'],
+        lunch: ['Pranzo con prodotti locali', 'Zona perfetta per mozzarella, cucina campana e pranzo più lento.'],
+        afternoon: ['Museo o passeggiata verso il mare', 'Scegliete in base al meteo e alla stanchezza.'],
+        evening: ['Rientro a Salerno', 'Giornata ideale con auto e ritmo equilibrato.']
+      },
+      pompeii: {
+        title: 'Pompei o Napoli archeologica',
+        morning: ['Pompei presto', 'Perfetta per chi ama storia e archeologia. In estate evitate le ore centrali.'],
+        lunch: ['Pranzo pratico', 'Meglio una pausa semplice e non troppo lunga.'],
+        afternoon: ['Rientro o seconda tappa leggera', 'Se avete energie, aggiungete una passeggiata; se fa caldo, rientrate.'],
+        evening: ['Cena tranquilla', 'Chiudete con una serata senza troppi spostamenti.']
+      },
+      rainy: {
+        title: 'Piano alternativo se piove',
+        morning: ['Centro storico coperto e Duomo', 'Restate su Salerno: spostamenti brevi, pause caffè e luoghi al chiuso.'],
+        lunch: ['Pranzo tipico o pizza', 'Giornata perfetta per mangiare bene senza correre.'],
+        afternoon: ['Museo, shopping o guida food', 'Scegliete attività coperte e rimandate mare e Costiera.'],
+        evening: ['Cena e rientro comodo', 'Con pioggia conviene restare flessibili e vicini.']
+      },
+      minori: {
+        title: 'Maiori, Minori e dolci',
+        morning: ['Maiori o Minori', 'Più comode e gestibili rispetto ad altre tappe molto affollate.'],
+        lunch: ['Pranzo sul mare', 'Ottimo per una giornata mare più facile, anche con bambini.'],
+        afternoon: ['Passeggiata e dolci a Minori', 'Inserite una pausa dolce e una passeggiata rilassata.'],
+        evening: ['Rientro prima del caos', 'Meglio rientrare con calma e godersi la serata a casa.']
+      }
+    };
+
+    function getValue(id) {
+      return document.getElementById(id).value;
+    }
+
+    function getInterests() {
+      return Array.from(document.querySelectorAll('input[name="interest"]:checked')).map((item) => item.value);
+    }
+
+    function choosePlanPool(values) {
+      const interests = values.interests;
+      const pool = [];
+
+      if (values.season === 'rain') return ['rainy', 'salerno', 'pompeii'];
+      if (values.children !== 'none') pool.push('family', 'vietri', 'minori', 'salerno');
+      if (interests.includes('culture')) pool.push('salerno', 'pompeii', 'paestum');
+      if (interests.includes('coast')) pool.push('amalfi', 'vietri', 'positano', 'minori');
+      if (interests.includes('sea')) pool.push(values.seaType === 'easy' ? 'minori' : 'vietri', 'vietri');
+      if (interests.includes('nature')) pool.push('nature', 'amalfi');
+      if (interests.includes('villages')) pool.push('vietri', 'amalfi');
+      if (interests.includes('romantic')) pool.push('amalfi', 'positano', 'salerno');
+      if (interests.includes('shopping')) pool.push('salerno', 'vietri');
+      if (values.experience === 'museums') pool.push('pompeii', 'paestum');
+      if (values.experience === 'trail') pool.push('nature');
+      if (values.experience === 'boat') pool.push('amalfi', 'positano');
+      if (values.experience === 'local') pool.push('vietri', 'paestum', 'minori');
+
+      if (values.transport === 'no-car') {
+        return pool.filter((name) => !['paestum', 'pompeii'].includes(name)).concat(['salerno', 'vietri', 'amalfi']);
+      }
+
+      return pool.length ? pool : ['salerno', 'vietri', 'amalfi'];
+    }
+
+    function uniqueLimited(list, limit) {
+      const seen = new Set();
+      const clean = [];
+
+      list.forEach((item) => {
+        if (!seen.has(item) && plans[item]) {
+          seen.add(item);
+          clean.push(item);
+        }
+      });
+
+      const fallback = ['salerno', 'vietri', 'amalfi', 'minori', 'paestum', 'pompeii', 'nature'];
+      fallback.forEach((item) => {
+        if (clean.length < limit && !seen.has(item)) {
+          clean.push(item);
+          seen.add(item);
+        }
+      });
+
+      return clean.slice(0, limit);
+    }
+
+    function adaptEvening(plan, values, dayIndex) {
+      if (values.returnTime === 'early') {
+        return ['Rientro e relax ad A Casa di Marco', 'Serata tranquilla in casa o in giardino: ideale dopo caldo, folla e camminate.'];
+      }
+
+      if (values.returnTime === 'late' && dayIndex % 2 === 0) {
+        return ['Serata fuori', 'Aperitivo, cena o passeggiata serale a Salerno prima del rientro.'];
+      }
+
+      return plan.evening;
+    }
+
+    function adaptLunch(plan, values) {
+      const food = {
+        typical: ['Pranzo tipico campano', 'Cercate cucina locale, primi semplici, verdure, mozzarella o piatti della tradizione.'],
+        pizza: ['Pizza o pranzo informale', 'Soluzione comoda, veloce e adatta anche a famiglie e gruppi.'],
+        fish: ['Pesce o cucina di mare', 'Ideale a Vietri, Cetara, Salerno o in Costiera. Prenotate se volete un posto preciso.'],
+        street: ['Street food o pausa veloce', 'Perfetto per non perdere troppo tempo e continuare la giornata.'],
+        dessert: ['Pranzo leggero e pausa dolce', 'Lasciate spazio a gelato, pasticceria o dolci tipici, soprattutto se passate da Minori.'],
+        view: ['Pranzo o aperitivo vista mare', 'Scegliete una pausa panoramica, anche solo per un drink e qualcosa di semplice.']
+      };
+
+      return food[values.foodMood] || plan.lunch;
+    }
+
+    function buildTips(values) {
+      const tips = [];
+
+      if (values.season === 'summer') {
+        tips.push(['Estate', 'Partite presto per Costiera, Pompei o Paestum. Nelle ore più calde valutate pausa a casa o attività leggere.']);
+      }
+
+      if (values.crowd === 'yes') {
+        tips.push(['Folla e traffico', 'Per Costiera e Positano meglio mattina presto, traghetto quando possibile e rientro non troppo tardi.']);
+      }
+
+      if (values.transport === 'no-car') {
+        tips.push(['Senza auto', 'Preferite Salerno, Vietri, traghetti e percorsi semplici. Controllate sempre orari di bus e collegamenti.']);
+      }
+
+      if (values.children !== 'none') {
+        tips.push(['Bambini', 'Non mettete troppe tappe nello stesso giorno. Meglio mare comodo, pause e rientro nelle ore più calde.']);
+      }
+
+      if (values.walking === 'high') {
+        tips.push(['Camminate', 'Portate scarpe comode e acqua. Sentieri e siti archeologici sono più piacevoli al mattino.']);
+      }
+
+      if (values.returnTime === 'early') {
+        tips.push(['Rientro presto', 'L’itinerario lascia spazio per godersi calma, privacy e fresco di A Casa di Marco.']);
+      }
+
+      if (values.alreadySeen.trim()) {
+        tips.push(['Nota personale', 'Avete scritto: “' + values.alreadySeen.trim() + '”. Usate questa nota per sostituire le tappe già viste.']);
+      }
+
+      tips.push(['Food', 'Per indirizzi specifici aprite la sezione “Dove mangiare” della guida e scegliete in base alla zona del giorno.']);
+
+      return tips;
+    }
+
+    function generate(values) {
+      const pool = uniqueLimited(choosePlanPool(values), Number(values.days));
+      let textVersion = 'Itinerario A Casa di Marco\\n\\n';
+
+      summaryCard.textContent = `${values.days} ${values.days === '1' ? 'giorno' : 'giorni'} · ritmo ${label(values.pace)} · ${label(values.transport)} · interessi: ${values.interests.length ? values.interests.map(label).join(', ') : 'mix Salerno e dintorni'}.`;
+
+      output.innerHTML = pool.map((planName, index) => {
+        const plan = plans[planName];
+        const lunch = adaptLunch(plan, values);
+        const evening = adaptEvening(plan, values, index);
+        const dayTitle = `Giorno ${index + 1} · ${plan.title}`;
+
+        const slots = [
+          ['Mattina', plan.morning],
+          ['Pranzo', lunch],
+          ['Pomeriggio', plan.afternoon],
+          ['Sera', evening]
+        ];
+
+        textVersion += `${dayTitle}\\n`;
+        slots.forEach(([time, content]) => {
+          textVersion += `${time}: ${content[0]} - ${content[1]}\\n`;
+        });
+        textVersion += '\\n';
+
+        return `
+          <article class="day-card">
+            <h3>${dayTitle}</h3>
+            <div class="timeline">
+              ${slots.map(([time, content]) => `
+                <div class="slot">
+                  <strong>${time}</strong>
+                  <div>
+                    <h4>${content[0]}</h4>
+                    <p>${content[1]}</p>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </article>
+        `;
+      }).join('');
+
+      const tips = buildTips(values);
+      tipsGrid.innerHTML = tips.map((tip) => `
+        <div class="tip">
+          <strong>${tip[0]}</strong>
+          ${tip[1]}
+        </div>
+      `).join('');
+
+      tips.forEach((tip) => {
+        textVersion += `${tip[0]}: ${tip[1]}\\n`;
+      });
+
+      copyBtn.dataset.text = textVersion;
+      resultSection.classList.add('show');
+      resultSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function label(value) {
+      const labels = {
+        car:'con auto',
+        'no-car':'senza auto',
+        mixed:'auto alcuni giorni',
+        relax:'relax',
+        balanced:'equilibrato',
+        full:'intenso',
+        sea:'mare',
+        coast:'Costiera',
+        culture:'cultura',
+        food:'food',
+        nature:'natura',
+        shopping:'shopping',
+        villages:'borghi',
+        romantic:'romantico'
+      };
+
+      return labels[value] || value;
+    }
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const values = {
+        days:getValue('days'),
+        transport:getValue('transport'),
+        pace:getValue('pace'),
+        walking:getValue('walking'),
+        interests:getInterests(),
+        children:getValue('children'),
+        returnTime:getValue('returnTime'),
+        foodMood:getValue('foodMood'),
+        budget:getValue('budget'),
+        crowd:getValue('crowd'),
+        season:getValue('season'),
+        seaType:getValue('seaType'),
+        experience:getValue('experience'),
+        alreadySeen:document.getElementById('alreadySeen').value
+      };
+
+      if (values.pace === 'relax' && values.days > 4) {
+        values.interests = values.interests.filter((item) => item !== 'full');
+      }
+
+      generate(values);
+    });
+
+    form.addEventListener('reset', () => {
+      setTimeout(() => {
+        resultSection.classList.remove('show');
+        output.innerHTML = '';
+        tipsGrid.innerHTML = '';
+      }, 0);
+    });
+
+    copyBtn.addEventListener('click', async () => {
+      const text = copyBtn.dataset.text || '';
+
+      try {
+        await navigator.clipboard.writeText(text);
+        copyBtn.textContent = 'Itinerario copiato';
+        setTimeout(() => copyBtn.textContent = 'Copia itinerario', 1800);
+      } catch (error) {
+        alert(text);
+      }
+    });
+  </script>
+</body>
+</html>

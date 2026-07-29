@@ -386,6 +386,51 @@
   display: none;
 }
 
+.delivery-note {
+  background: linear-gradient(135deg, #fff8e8, #dff3f2);
+  border: 2px dashed var(--ottanio);
+  border-radius: 22px;
+  padding: 20px 22px;
+  margin: 6px 0 26px 0;
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.delivery-note strong {
+  color: var(--ottanio-dark);
+  display: block;
+  margin-bottom: 6px;
+  font-size: 16px;
+}
+
+.delivery-note .address {
+  background: #fff;
+  border-radius: 14px;
+  padding: 10px 14px;
+  margin: 10px 0;
+  font-weight: 600;
+  color: var(--ottanio-dark);
+  font-size: 13px;
+}
+
+@media (max-width: 720px) {
+  .delivery-note {
+    padding: 16px;
+    font-size: 13px;
+    border-radius: 18px;
+  }
+
+  .delivery-note strong {
+    font-size: 14px;
+  }
+
+  .delivery-note .address {
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+}
+
 /* FRECCETTA MOBILE */
 .scroll-hint {
   position: fixed;
@@ -693,6 +738,18 @@
            data-fr="Sushi, grec, mexicain et autres saveurs">Sushi, greco, messicano e altri sapori</small>
         </button>
       </div>
+
+      <div class="delivery-note">
+        <strong data-it="🚀 Ordina a domicilio" data-en="🚀 Order food delivery" data-es="🚀 Pide a domicilio" data-fr="🚀 Commandez à domicile">🚀 Ordina a domicilio</strong>
+        <p data-it="Potete ordinare con <strong>Deliveroo</strong>, <strong>Just Eat</strong> o altre piattaforme di food delivery. Inserite l'indirizzo esatto e dite al rider di citofonare a <strong>&quot;A Casa di Marco&quot;</strong>."
+           data-en="You can order with <strong>Deliveroo</strong>, <strong>Just Eat</strong> or other food delivery apps. Enter the exact address and tell the rider to ring <strong>&quot;A Casa di Marco&quot;</strong>."
+           data-es="Podéis pedir con <strong>Deliveroo</strong>, <strong>Just Eat</strong> u otras plataformas. Introducid la dirección exacta y decidle al rider que toque <strong>&quot;A Casa di Marco&quot;</strong>."
+           data-fr="Vous pouvez commander avec <strong>Deliveroo</strong>, <strong>Just Eat</strong> ou d'autres plateformes. Entrez l'adresse exacte et dites au livreur de sonner <strong>&quot;A Casa di Marco&quot;</strong>.">
+           Potete ordinare con <strong>Deliveroo</strong>, <strong>Just Eat</strong> o altre piattaforme di food delivery. Inserite l'indirizzo esatto e dite al rider di citofonare a <strong>"A Casa di Marco"</strong>.</p>
+        <div class="address">
+          📍 Via Brignano Inferiore 69, Parco Sala, Salerno
+        </div>
+      </div>
     </section>
 
     <section id="food-category" class="food-category">
@@ -748,53 +805,6 @@
             }
           },
 
-          {
-            image: "assets/crosta-pizza-in-teglia.jpg",
-            price: "€€",
-            mapsQuery: "Crosta Pizza in Teglia Salerno",
-            name: {
-              it: "Crosta Pizza in Teglia",
-              en: "Crosta Pizza in Teglia",
-              es: "Crosta Pizza in Teglia",
-              fr: "Crosta Pizza in Teglia"
-            },
-            desc: {
-              it: "Locale consigliato se avete voglia di pizza in teglia, più pratica e informale rispetto alla classica pizzeria. Perfetta per qualcosa di veloce ma sfizioso.",
-              en: "Recommended if you feel like tray pizza, more casual and practical than a traditional pizzeria. Perfect for something quick but tasty.",
-              es: "Recomendado si os apetece pizza en bandeja, más práctica e informal que una pizzería clásica. Perfecta para algo rápido pero sabroso.",
-              fr: "Conseillé si vous avez envie de pizza à la plaque, plus pratique et informelle qu’une pizzeria classique. Parfaite pour quelque chose de rapide mais gourmand."
-            },
-            tip: {
-              it: "Ottima scelta se volete mangiare pizza senza una cena troppo impegnativa.",
-              en: "A great choice if you want pizza without a full sit-down dinner.",
-              es: "Buena opción si queréis comer pizza sin una cena demasiado formal.",
-              fr: "Très bon choix si vous voulez manger une pizza sans faire un vrai dîner au restaurant."
-            }
-          },
-
-          {
-            image: "assets/opificio-laboratorio-pizza.jpg",
-            price: "€€",
-            mapsQuery: "Opificio Il Laboratorio della Pizza Salerno",
-            name: {
-              it: "Opificio - Il Laboratorio della Pizza",
-              en: "Opificio - Il Laboratorio della Pizza",
-              es: "Opificio - Il Laboratorio della Pizza",
-              fr: "Opificio - Il Laboratorio della Pizza"
-            },
-            desc: {
-              it: "Pizzeria consigliata per chi vuole provare una pizza più curata, con impasti e abbinamenti particolari. Adatta a chi cerca qualcosa di diverso dalla solita pizza.",
-              en: "Recommended for those who want a more refined pizza, with special doughs and combinations. Suitable if you are looking for something different from the usual pizza.",
-              es: "Pizzería recomendada para quien quiere probar una pizza más cuidada, con masas y combinaciones especiales. Ideal si buscáis algo diferente de la pizza habitual.",
-              fr: "Pizzeria conseillée pour ceux qui veulent goûter une pizza plus travaillée, avec des pâtes et associations particulières. Idéale si vous cherchez quelque chose de différent de la pizza classique."
-            },
-            tip: {
-              it: "Consigliata se vi piace provare pizze più particolari e non solo le classiche.",
-              en: "Recommended if you like trying more special pizzas, not only the classic ones.",
-              es: "Recomendada si os gusta probar pizzas más especiales, no solo las clásicas.",
-              fr: "Conseillée si vous aimez goûter des pizzas plus originales, pas seulement les classiques."
-            }
-          },
           {
             image: "assets/errico-porzio-salerno.jpg",
             price: "€€",
@@ -931,6 +941,52 @@
               en: "A great choice if you want something tasty and informal, also to take home.",
               es: "Una buena opción si queréis algo sabroso e informal, también para llevar a casa.",
               fr: "Un bon choix si vous voulez quelque chose de gourmand et informel, aussi à emporter."
+            }
+          },
+          {
+            image: "assets/crosta-pizza-in-teglia.jpg",
+            price: "€€",
+            mapsQuery: "Crosta Pizza in Teglia Salerno",
+            name: {
+              it: "Crosta Pizza in Teglia",
+              en: "Crosta Pizza in Teglia",
+              es: "Crosta Pizza in Teglia",
+              fr: "Crosta Pizza in Teglia"
+            },
+            desc: {
+              it: "Locale consigliato se avete voglia di pizza in teglia, più pratica e informale rispetto alla classica pizzeria. Perfetta per qualcosa di veloce ma sfizioso.",
+              en: "Recommended if you feel like tray pizza, more casual and practical than a traditional pizzeria. Perfect for something quick but tasty.",
+              es: "Recomendado si os apetece pizza en bandeja, más práctica e informal que una pizzería clásica. Perfecta para algo rápido pero sabroso.",
+              fr: "Conseillé si vous avez envie de pizza à la plaque, plus pratique et informelle qu'une pizzeria classique. Parfaite pour quelque chose de rapide mais gourmand."
+            },
+            tip: {
+              it: "Ottima scelta se volete mangiare pizza senza una cena troppo impegnativa.",
+              en: "A great choice if you want pizza without a full sit-down dinner.",
+              es: "Buena opción si queréis comer pizza sin una cena demasiado formal.",
+              fr: "Très bon choix si vous voulez manger une pizza sans faire un vrai dîner au restaurant."
+            }
+          },
+          {
+            image: "assets/opificio-laboratorio-pizza.jpg",
+            price: "€€",
+            mapsQuery: "Opificio Il Laboratorio della Pizza Salerno",
+            name: {
+              it: "Opificio - Il Laboratorio della Pizza",
+              en: "Opificio - Il Laboratorio della Pizza",
+              es: "Opificio - Il Laboratorio della Pizza",
+              fr: "Opificio - Il Laboratorio della Pizza"
+            },
+            desc: {
+              it: "Pizzeria consigliata per chi vuole provare una pizza più curata, con impasti e abbinamenti particolari. Adatta a chi cerca qualcosa di diverso dalla solita pizza.",
+              en: "Recommended for those who want a more refined pizza, with special doughs and combinations. Suitable if you are looking for something different from the usual pizza.",
+              es: "Pizzería recomendada para quien quiere probar una pizza más cuidada, con masas y combinaciones especiales. Ideal si buscáis algo diferente de la pizza habitual.",
+              fr: "Pizzeria conseillée pour ceux qui veulent goûter une pizza plus travaillée, avec des pâtes et associations particulières. Idéale si vous cherchez quelque chose de différent de la pizza classique."
+            },
+            tip: {
+              it: "Consigliata se vi piace provare pizze più particolari e non solo le classiche.",
+              en: "Recommended if you like trying more special pizzas, not only the classic ones.",
+              es: "Recomendada si os gusta probar pizzas más especiales, no solo las clásicas.",
+              fr: "Conseillée si vous aimez goûter des pizzas plus originales, pas seulement les classiques."
             }
           }
         ]
@@ -1419,6 +1475,29 @@
               en: "Try the lemon delight.",
               es: "Probad la delicia de limón.",
               fr: "Goûtez la délice au citron."
+            }
+          },
+          {
+            image: "assets/vietri-sul-mare.jpg",
+            price: "€€",
+            mapsQuery: "Eco del Mare gelateria Vietri sul Mare",
+            name: {
+              it: "Eco del Mare - Vietri",
+              en: "Eco del Mare - Vietri",
+              es: "Eco del Mare - Vietri",
+              fr: "Eco del Mare - Vietri"
+            },
+            desc: {
+              it: "Gelateria artigianale a Vietri sul Mare, perfetta per una pausa dolce dopo una passeggiata tra le ceramiche. Gelati buonissimi con vista mare.",
+              en: "Artisan gelato shop in Vietri sul Mare, perfect for a sweet break after a walk among the ceramics. Delicious gelato with sea views.",
+              es: "Heladería artesanal en Vietri sul Mare, perfecta para una pausa dulce tras un paseo entre cerámicas. Helados buenísimos con vistas al mar.",
+              fr: "Glacier artisanal à Vietri sul Mare, parfait pour une pause sucrée après une promenade parmi les céramiques. Glaces délicieuses avec vue mer."
+            },
+            tip: {
+              it: "Fermatevi dopo aver visitato Vietri: gelato artigianale e vista mare.",
+              en: "Stop by after visiting Vietri: artisan gelato and sea views.",
+              es: "Parad después de visitar Vietri: helado artesanal y vistas al mar.",
+              fr: "Arrêtez-vous après avoir visité Vietri : glace artisanale et vue mer."
             }
           }
         ]

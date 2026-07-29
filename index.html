@@ -513,6 +513,36 @@
       color: rgba(255,255,255,.9);
     }
 
+    .beta-link::after {
+      content: "BETA";
+      display: inline-block;
+      background: #f59e0b;
+      color: #1a1a1a;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .06em;
+      border-radius: 999px;
+      padding: 2px 8px;
+      margin-left: 6px;
+      vertical-align: middle;
+      line-height: 1;
+    }
+
+    .guide-btn.beta-btn::after {
+      content: "BETA";
+      display: inline-block;
+      background: #f59e0b;
+      color: #1a1a1a;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .06em;
+      border-radius: 999px;
+      padding: 2px 8px;
+      margin-left: 6px;
+      vertical-align: middle;
+      line-height: 1;
+    }
+
     .home-menu h2 {
       line-height: 1.35;
       padding-bottom: 6px;
@@ -1224,7 +1254,7 @@
 
         <a href="#contatti" data-it="Contatti" data-en="Contacts" data-es="Contactos" data-fr="Contacts">Contatti</a>
         <a href="#home-menu" data-it="Guida ospiti" data-en="Guest guide" data-es="Guía para huéspedes" data-fr="Guide des invités">Guida ospiti</a>
-        <a href="itinerario.html" data-it="Crea itinerario" data-en="Create itinerary" data-es="Crear itinerario" data-fr="Créer un itinéraire">Crea itinerario</a>
+        <a href="itinerario.html" data-it="Crea itinerario" data-en="Create itinerary" data-es="Crear itinerario" data-fr="Créer un itinéraire" class="beta-link">Crea itinerario</a>
         <a href="#marco-section" data-it="Chi è Marco?" data-en="Who is Marco?" data-es="¿Quién es Marco?" data-fr="Qui est Marco ?">Chi è Marco?</a>
       </div>
     </nav>
@@ -1363,7 +1393,7 @@
         </div>
 
         <div class="page-buttons">
-          <a class="guide-btn" href="itinerario.html"
+          <a class="guide-btn beta-btn" href="itinerario.html"
              data-it="🗺️ Crea il tuo itinerario"
              data-en="🗺️ Create your itinerary"
              data-es="🗺️ Crea tu itinerario"

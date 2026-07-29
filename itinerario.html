@@ -158,6 +158,40 @@
       box-shadow:none;
     }
 
+    .beta-badge {
+      display:inline-flex;
+      align-items:center;
+      background:#f59e0b;
+      color:#1a1a1a;
+      font-size:10px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      border-radius:999px;
+      padding:3px 10px;
+      margin-left:8px;
+      line-height:1;
+      animation:pulse-beta 2s infinite;
+    }
+
+    @keyframes pulse-beta {
+      0%,100% { opacity:1; }
+      50% { opacity:.65; }
+    }
+
+    .beta-note {
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      background:var(--sand);
+      border:1px solid rgba(245,158,11,.35);
+      border-radius:16px;
+      padding:10px 16px;
+      font-size:13px;
+      color:var(--muted);
+      margin-top:8px;
+    }
+
     .result-section { display:none; }
     .result-section.show { display:block; }
 
@@ -455,7 +489,7 @@
         </div>
 
         <div class="actions">
-          <button class="btn" type="submit">Genera itinerario</button>
+          <button class="btn" type="submit">Genera itinerario <span class="beta-badge">Beta</span></button>
           <button class="btn light" type="reset">Cancella risposte</button>
         </div>
 
@@ -526,12 +560,12 @@
         title: 'Panorami e natura',
         morning: ['Castello Arechi o sentiero panoramico', 'Scegliete Castello Arechi per una versione facile, sentieri solo se siete allenati.'],
         lunch: ['Pranzo semplice o al sacco', 'Meglio organizzarsi con acqua, scarpe comode e orari freschi.'],
-        afternoon: ['Giardino della Minerva o Cava de’ Tirreni', 'Una seconda tappa verde e più tranquilla, senza esagerare.'],
+        afternoon: ['Giardino della Minerva o Cava de\' Tirreni', 'Una seconda tappa verde e più tranquilla, senza esagerare.'],
         evening: ['Doccia, cena e riposo', 'Dopo natura e camminate, rientrare in una casa silenziosa fa la differenza.']
       },
       paestum: {
         title: 'Paestum e giornata ampia',
-        morning: ['Templi di Paestum', 'Partenza al mattino per visitare l’area archeologica con meno caldo.'],
+        morning: ['Templi di Paestum', 'Partenza al mattino per visitare l\'area archeologica con meno caldo.'],
         lunch: ['Pranzo con prodotti locali', 'Zona perfetta per mozzarella, cucina campana e pranzo più lento.'],
         afternoon: ['Museo o passeggiata verso il mare', 'Scegliete in base al meteo e alla stanchezza.'],
         evening: ['Rientro a Salerno', 'Giornata ideale con auto e ritmo equilibrato.']
@@ -559,95 +593,115 @@
       }
     };
 
+    // === ZONE SYSTEM ===
+    // Each plan is assigned to a geographic zone so food/place recommendations
+    // and multi-day ordering stay coherent with the actual travel route.
+    const planZone = {
+      salerno: 'salerno', vietri: 'vietri', amalfi: 'amalfi', positano: 'positano',
+      family: 'salerno', nature: 'salerno', paestum: 'paestum', pompeii: 'pompeii',
+      rainy: 'salerno', minori: 'minori'
+    };
+
+    // West-to-east zone order (Salerno is home base, then up the coast, then inland sites)
+    const zoneOrder = ['salerno', 'vietri', 'minori', 'amalfi', 'positano', 'paestum', 'pompeii'];
+
+    const zoneName = {
+      salerno: 'Salerno', vietri: 'Vietri/Cetara', minori: 'Maiori/Minori',
+      amalfi: 'Amalfi/Ravello', positano: 'Positano/Praiano', paestum: 'Paestum',
+      pompeii: 'Pompei/Napoli'
+    };
+
+    function getZone(planName) { return planZone[planName] || 'salerno'; }
+
     const guideFood = {
       pizza: [
-        ['A Modo Bio', 'mangiare.html'],
-        ['Crosta Pizza in Teglia', 'mangiare.html'],
-        ['Opificio - Il Laboratorio della Pizza', 'mangiare.html'],
-        ['Pizzeria Errico Porzio Salerno', 'mangiare.html'],
-        ['Giagiù', 'mangiare.html'],
-        ['Da Michele Salerno', 'mangiare.html']
+        ['A Modo Bio', 'mangiare.html', 'salerno'],
+        ['Crosta Pizza in Teglia', 'mangiare.html', 'salerno'],
+        ['Opificio - Il Laboratorio della Pizza', 'mangiare.html', 'salerno'],
+        ['Pizzeria Errico Porzio Salerno', 'mangiare.html', 'salerno'],
+        ['Giagiù', 'mangiare.html', 'salerno'],
+        ['Da Michele Salerno', 'mangiare.html', 'salerno']
       ],
       fish: [
-        ['Pescheria', 'mangiare.html'],
-        ['Controvento', 'mangiare.html'],
-        ['Bistrot di Pescheria', 'mangiare.html'],
-        ['Convivium Sea Food Restaurant', 'mangiare.html'],
-        ['Tramp Ristorante', 'mangiare.html']
+        ['Pescheria', 'mangiare.html', 'salerno'],
+        ['Controvento', 'mangiare.html', 'salerno'],
+        ['Bistrot di Pescheria', 'mangiare.html', 'salerno'],
+        ['Convivium Sea Food Restaurant', 'mangiare.html', 'salerno'],
+        ['Tramp Ristorante', 'mangiare.html', 'vietri']
       ],
       typical: [
-        ['Osteria Canali', 'mangiare.html'],
-        ['Il Brigante', 'mangiare.html'],
-        ['Da Nonna Maria', 'mangiare.html'],
-        ['La Botte Pazza', 'mangiare.html'],
-        ['Casa Ragùsa', 'mangiare.html']
+        ['Osteria Canali', 'mangiare.html', 'salerno'],
+        ['Il Brigante', 'mangiare.html', 'salerno'],
+        ['Da Nonna Maria', 'mangiare.html', 'salerno'],
+        ['La Botte Pazza', 'mangiare.html', 'salerno'],
+        ['Casa Ragùsa', 'mangiare.html', 'salerno']
       ],
       street: [
-        ['Crosta Pizza in Teglia', 'mangiare.html'],
-        ['A Modo Bio', 'mangiare.html'],
-        ['Al Dente Spaghetteria', 'mangiare.html']
+        ['Crosta Pizza in Teglia', 'mangiare.html', 'salerno'],
+        ['A Modo Bio', 'mangiare.html', 'salerno'],
+        ['Al Dente Spaghetteria', 'mangiare.html', 'salerno']
       ],
       dessert: [
-        ['Bar Gelateria Nettuno', 'mangiare.html'],
-        ['Antica Dolceria Pantaleone', 'mangiare.html'],
-        ['Bar delle Sirene', 'mangiare.html']
+        ['Bar Gelateria Nettuno', 'mangiare.html', 'minori'],
+        ['Antica Dolceria Pantaleone', 'mangiare.html', 'salerno'],
+        ['Bar delle Sirene', 'mangiare.html', 'minori']
       ],
       view: [
-        ['Lungomare di Salerno', 'luoghi.html'],
-        ['Piazza della Libertà', 'luoghi.html'],
-        ['Marina di Vietri', 'luoghi.html']
+        ['Lungomare di Salerno', 'luoghi.html', 'salerno'],
+        ['Piazza della Libertà', 'luoghi.html', 'salerno'],
+        ['Marina di Vietri', 'luoghi.html', 'vietri']
       ]
     };
 
     const guidePlaces = {
       salerno: [
-        ['Cattedrale di Salerno', 'luoghi.html'],
-        ['Giardino della Minerva', 'luoghi.html'],
-        ['Lungomare di Salerno', 'luoghi.html'],
-        ['Piazza della Libertà', 'luoghi.html']
+        ['Cattedrale di Salerno', 'luoghi.html', 'salerno'],
+        ['Giardino della Minerva', 'luoghi.html', 'salerno'],
+        ['Lungomare di Salerno', 'luoghi.html', 'salerno'],
+        ['Piazza della Libertà', 'luoghi.html', 'salerno']
       ],
       vietri: [
-        ['Vietri sul Mare', 'luoghi.html'],
-        ['Marina di Vietri', 'luoghi.html'],
-        ['Spiaggia La Baia - Vietri', 'luoghi.html'],
-        ['La Crestarella - Vietri', 'luoghi.html']
+        ['Vietri sul Mare', 'luoghi.html', 'vietri'],
+        ['Marina di Vietri', 'luoghi.html', 'vietri'],
+        ['Spiaggia La Baia - Vietri', 'luoghi.html', 'vietri'],
+        ['La Crestarella - Vietri', 'luoghi.html', 'vietri']
       ],
       amalfi: [
-        ['Amalfi e Duomo di Sant’Andrea', 'luoghi.html'],
-        ['Maiori e Minori', 'luoghi.html'],
-        ['Vietri sul Mare', 'luoghi.html']
+        ['Amalfi e Duomo di Sant\'Andrea', 'luoghi.html', 'amalfi'],
+        ['Maiori e Minori', 'luoghi.html', 'minori'],
+        ['Vietri sul Mare', 'luoghi.html', 'vietri']
       ],
       positano: [
-        ['Positano', 'luoghi.html'],
-        ['Sentiero degli Dei', 'luoghi.html'],
-        ['Amalfi e Duomo di Sant’Andrea', 'luoghi.html']
+        ['Positano', 'luoghi.html', 'positano'],
+        ['Sentiero degli Dei', 'luoghi.html', 'positano'],
+        ['Amalfi e Duomo di Sant\'Andrea', 'luoghi.html', 'amalfi']
       ],
       family: [
-        ['Lungomare di Salerno', 'luoghi.html'],
-        ['Maiori e Minori', 'luoghi.html'],
-        ['Marina di Vietri', 'luoghi.html']
+        ['Lungomare di Salerno', 'luoghi.html', 'salerno'],
+        ['Maiori e Minori', 'luoghi.html', 'minori'],
+        ['Marina di Vietri', 'luoghi.html', 'vietri']
       ],
       nature: [
-        ['Castello di Arechi', 'luoghi.html'],
-        ['Giardino della Minerva', 'luoghi.html'],
-        ['Passeggiata sul Monte San Liberatore', 'luoghi.html'],
-        ['Badia di Cava de’ Tirreni', 'luoghi.html']
+        ['Castello di Arechi', 'luoghi.html', 'salerno'],
+        ['Giardino della Minerva', 'luoghi.html', 'salerno'],
+        ['Passeggiata sul Monte San Liberatore', 'luoghi.html', 'salerno'],
+        ['Badia di Cava de\' Tirreni', 'luoghi.html', 'salerno']
       ],
       paestum: [
-        ['Parco Archeologico di Paestum', 'luoghi.html']
+        ['Parco Archeologico di Paestum', 'luoghi.html', 'paestum']
       ],
       pompeii: [
-        ['Scavi di Pompei', 'luoghi.html']
+        ['Scavi di Pompei', 'luoghi.html', 'pompeii']
       ],
       rainy: [
-        ['Cattedrale di Salerno', 'luoghi.html'],
-        ['Antica Dolceria Pantaleone', 'mangiare.html'],
-        ['Osteria Canali', 'mangiare.html']
+        ['Cattedrale di Salerno', 'luoghi.html', 'salerno'],
+        ['Antica Dolceria Pantaleone', 'mangiare.html', 'salerno'],
+        ['Osteria Canali', 'mangiare.html', 'salerno']
       ],
       minori: [
-        ['Maiori e Minori', 'luoghi.html'],
-        ['Bar Gelateria Nettuno', 'mangiare.html'],
-        ['Bar delle Sirene', 'mangiare.html']
+        ['Maiori e Minori', 'luoghi.html', 'minori'],
+        ['Bar Gelateria Nettuno', 'mangiare.html', 'minori'],
+        ['Bar delle Sirene', 'mangiare.html', 'minori']
       ]
     };
 
@@ -686,7 +740,12 @@
         return pool.filter((name) => !['paestum', 'pompeii'].includes(name)).concat(['salerno', 'vietri', 'amalfi']);
       }
 
-      return pool.length ? pool : ['salerno', 'vietri', 'amalfi'];
+      // Sort by geographic zone to keep multi-day itineraries coherent
+      return pool.length ? pool.sort((a, b) => {
+        const za = zoneOrder.indexOf(getZone(a));
+        const zb = zoneOrder.indexOf(getZone(b));
+        return za - zb;
+      }) : ['salerno', 'vietri', 'amalfi'];
     }
 
     function uniqueLimited(list, limit) {
@@ -723,9 +782,19 @@
       return plan.evening;
     }
 
-    function adaptLunch(plan, values, dayIndex) {
+    function adaptLunch(plan, values, dayIndex, planName) {
+      const zone = getZone(planName);
+
+      // Zone-aware mood suitability: fish/view less appropriate for inland zones
+      const coastalZones = ['salerno', 'vietri', 'minori', 'amalfi', 'positano'];
+      let availableMoods = [...values.foodMoods];
+      if (!coastalZones.includes(zone)) {
+        availableMoods = availableMoods.filter((m) => m !== 'fish' && m !== 'view');
+      }
+      if (!availableMoods.length) availableMoods = ['typical'];
+
       const food = {
-        typical: ['Pranzo tipico campano', 'Cercate cucina locale, primi semplici, verdure, mozzarella o piatti della tradizione.'],
+        typical: ['Pranzo tipico campano', 'Cercate cucina locale, primi semplici, verdure, mozzarella o piatti della tradizione nella zona di ' + (zoneName[zone] || zone) + '.'],
         pizza: ['Pizza o pranzo informale', 'Soluzione comoda, veloce e adatta anche a famiglie e gruppi.'],
         fish: ['Pesce o cucina di mare', 'Ideale a Vietri, Cetara, Salerno o in Costiera. Prenotate se volete un posto preciso.'],
         street: ['Street food o pausa veloce', 'Perfetto per non perdere troppo tempo e continuare la giornata.'],
@@ -733,7 +802,7 @@
         view: ['Pranzo o aperitivo vista mare', 'Scegliete una pausa panoramica, anche solo per un drink e qualcosa di semplice.']
       };
 
-      const mood = values.foodMoods[dayIndex % values.foodMoods.length] || 'typical';
+      const mood = availableMoods[dayIndex % availableMoods.length] || 'typical';
       return food[mood] || plan.lunch;
     }
 
@@ -752,24 +821,53 @@
       return clean.slice(0, limit);
     }
 
-    function getFoodRecommendations(values, dayIndex) {
-      const mood = values.foodMoods[dayIndex % values.foodMoods.length] || 'typical';
-      const primary = guideFood[mood] || guideFood.typical;
-      const secondary = values.foodMoods
-        .filter((item) => item !== mood)
-        .flatMap((item) => guideFood[item] || []);
+    function getFoodRecommendations(values, planName, dayIndex) {
+      const zone = getZone(planName);
+      const coastalZones = ['salerno', 'vietri', 'minori', 'amalfi', 'positano'];
 
-      return uniqueRecommendations(primary.concat(secondary), 3);
+      let availableMoods = [...values.foodMoods];
+      if (!coastalZones.includes(zone)) {
+        availableMoods = availableMoods.filter((m) => m !== 'fish' && m !== 'view');
+      }
+      if (!availableMoods.length) availableMoods = ['typical'];
+
+      const mood = availableMoods[dayIndex % availableMoods.length] || 'typical';
+
+      // Collect food recs filtered by the day's zone
+      const primary = (guideFood[mood] || guideFood.typical).filter((item) => item[2] === zone);
+
+      const secondary = availableMoods
+        .filter((m) => m !== mood)
+        .flatMap((m) => (guideFood[m] || []).filter((item) => item[2] === zone));
+
+      const filtered = uniqueRecommendations(primary.concat(secondary), 3);
+
+      // If no zone-specific recs found, provide a zone-aware generic tip as fallback
+      if (filtered.length) return filtered;
+
+      const zoneTip = {
+        salerno: 'Scegliete un locale in centro o sul lungomare di Salerno.',
+        vietri: 'Cercate una trattoria a Vietri o Cetara. Ottimo per pesce e cucina locale.',
+        minori: 'A Minori provate la pasticceria. A Maiori trovate locali sul lungomare.',
+        amalfi: 'Scegliete un ristorante tra Amalfi e Atrani: dai panoramici alle trattorie in centro.',
+        positano: 'A Positano prenotate in anticipo. Provate anche Praiano per qualcosa di più semplice.',
+        paestum: 'Fermatevi in un agriturismo o cercate mozzarella di bufala e prodotti tipici della zona.',
+        pompeii: 'Trovate pizzerie e ristoranti vicino agli scavi. Per autenticità, esplorate le stradine vicine.'
+      };
+
+      return [[zoneTip[zone] || 'Cercate un buon locale nella zona di ' + zone + '.', 'mangiare.html', zone]];
     }
 
     function getPlaceRecommendations(planName, values) {
-      const base = guidePlaces[planName] || guidePlaces.salerno;
+      const zone = getZone(planName);
+      const base = (guidePlaces[planName] || guidePlaces.salerno).filter((item) => (item[2] || 'salerno') === zone);
       const extras = [];
 
-      if (values.interests.includes('culture')) extras.push(...guidePlaces.salerno);
-      if (values.interests.includes('sea')) extras.push(...guidePlaces.vietri, ...guidePlaces.minori);
-      if (values.interests.includes('nature')) extras.push(...guidePlaces.nature);
-      if (values.children !== 'none') extras.push(...guidePlaces.family);
+      // Only add extras that match the day's zone
+      if (values.interests.includes('culture')) extras.push(...guidePlaces.salerno.filter((item) => (item[2] || 'salerno') === zone));
+      if (values.interests.includes('sea')) extras.push(...guidePlaces.vietri.filter((item) => (item[2] || 'vietri') === zone), ...guidePlaces.minori.filter((item) => (item[2] || 'minori') === zone));
+      if (values.interests.includes('nature')) extras.push(...guidePlaces.nature.filter((item) => (item[2] || 'salerno') === zone));
+      if (values.children !== 'none') extras.push(...guidePlaces.family.filter((item) => (item[2] || 'salerno') === zone));
 
       return uniqueRecommendations(base.concat(extras), 4);
     }
@@ -830,11 +928,11 @@
 
       output.innerHTML = pool.map((planName, index) => {
         const plan = plans[planName];
-        const lunch = adaptLunch(plan, values, index);
+        const lunch = adaptLunch(plan, values, index, planName);
         const evening = adaptEvening(plan, values, index);
         const dayTitle = `Giorno ${index + 1} · ${plan.title}`;
         const placeRecs = getPlaceRecommendations(planName, values);
-        const foodRecs = getFoodRecommendations(values, index);
+        const foodRecs = getFoodRecommendations(values, planName, index);
 
         const slots = [
           ['Mattina', plan.morning, placeRecs],

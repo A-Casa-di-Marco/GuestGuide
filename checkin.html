@@ -349,6 +349,80 @@
       z-index: 9999;
     }
 
+    .checkin-choice-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .checkin-choice-btn {
+      border: 2px solid rgba(15,127,131,.22);
+      background: #fff;
+      border-radius: 20px;
+      padding: 16px;
+      text-align: center;
+      font-family: 'Poppins',sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--ottanio-dark);
+      cursor: pointer;
+      transition: all .18s;
+    }
+
+    .checkin-choice-btn:hover {
+      border-color: var(--ottanio);
+      box-shadow: 0 6px 18px rgba(0,80,85,.12);
+      transform: translateY(-1px);
+    }
+
+    .checkin-choice-btn.active {
+      background: var(--ottanio);
+      color: #fff;
+      border-color: var(--ottanio);
+    }
+
+    .checkin-choice-btn span {
+      display: block;
+      font-size: 26px;
+      margin-bottom: 6px;
+    }
+
+    .checkin-panel {
+      display: none;
+    }
+
+    .checkin-panel.show {
+      display: block;
+    }
+
+    .self-map-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--ottanio);
+      color: #fff;
+      border-radius: 999px;
+      padding: 12px 20px;
+      font-weight: 700;
+      text-decoration: none;
+      margin: 14px 0;
+      font-size: 14px;
+    }
+
+    @media (max-width:720px) {
+      .checkin-choice-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .checkin-choice-btn {
+        padding: 14px;
+        font-size: 14px;
+      }
+    }
+
     .confetti-piece {
       position: absolute;
       top: -14px;
@@ -504,26 +578,56 @@
         <summary data-it="🛂 Check-in" data-en="🛂 Check-in" data-es="🛂 Check-in" data-fr="🛂 Check-in">🛂 Check-in</summary>
         <div class="toggle-content">
 
-          <h3 data-it="Prima di arrivare" data-en="Before arriving" data-es="Antes de llegar" data-fr="Avant d'arriver" style="font-family:'Poppins',sans-serif;font-size:18px;font-weight:700;color:var(--ottanio-dark);margin:0 0 10px 0;">Prima di arrivare</h3>
-          <ul class="info-list" style="margin-bottom:18px;">
-            <li data-it-html="Comunicateci in anticipo <strong>l&rsquo;orario di arrivo previsto</strong>, così possiamo organizzarci per accogliervi." data-en-html="Please let us know <strong>your expected arrival time</strong> in advance, so we can be ready to welcome you." data-es-html="Comunicadnos con antelación <strong>la hora prevista de llegada</strong> para que podamos organizarnos." data-fr-html="Communiquez-nous à l&rsquo;avance <strong>votre heure d&rsquo;arrivée prévue</strong> afin que nous puissions nous organiser.">Comunicateci in anticipo <strong>l'orario di arrivo previsto</strong>, così possiamo organizzarci per accogliervi.</li>
-            <li data-it-html="Inviateci un messaggio circa <strong>30 minuti prima del vostro arrivo</strong>, così saremo pronti ad accogliervi al cancello." data-en-html="Send us a message about <strong>30 minutes before your arrival</strong>, so we can be ready to welcome you at the gate." data-es-html="Enviadnos un mensaje unos <strong>30 minutos antes de vuestra llegada</strong> para que estemos listos en la cancela." data-fr-html="Envoyez-nous un message environ <strong>30 minutes avant votre arrivée</strong>, nous serons prêts à vous accueillir au portail.">Inviateci un messaggio circa <strong>30 minuti prima del vostro arrivo</strong>, così saremo pronti ad accogliervi al cancello.</li>
-          </ul>
-
-          <div class="photo-annotation">
-            <img src="assets/cancello-check-in.jpg" alt="Cancello per il check-in">
-            <span class="photo-badge gate" data-it="🚪 Qui davanti al cancello" data-en="🚪 Meet here at the gate" data-es="🚪 Aquí en la cancela" data-fr="🚪 Ici devant le portail">🚪 Qui davanti al cancello</span>
-            <span class="photo-badge mailbox" data-it="📬 Cassetta &quot;A Casa di Marco&quot;" data-en="📬 &quot;A Casa di Marco&quot; mailbox" data-es="📬 Buzón &quot;A Casa di Marco&quot;" data-fr="📬 Boîte &quot;A Casa di Marco&quot;">📬 Cassetta "A Casa di Marco"</span>
+          <div class="checkin-choice-grid">
+            <button class="checkin-choice-btn active" onclick="showCheckinPanel('presenza')" id="btnPresenza">
+              <span>🤝</span>
+              <span data-it="Check-in in presenza" data-en="In-person check-in" data-es="Check-in presencial" data-fr="Check-in en personne">Check-in in presenza</span>
+            </button>
+            <button class="checkin-choice-btn" onclick="showCheckinPanel('self')" id="btnSelf">
+              <span>🔑</span>
+              <span data-it="Self check-in" data-en="Self check-in" data-es="Auto check-in" data-fr="Self check-in">Self check-in</span>
+            </button>
           </div>
 
-          <h3 data-it="Al check-in" data-en="At check-in" data-es="En el check-in" data-fr="Lors du check-in" style="font-family:'Poppins',sans-serif;font-size:18px;font-weight:700;color:var(--ottanio-dark);margin:18px 0 10px 0;">Al check-in</h3>
-          <ul class="info-list">
-            <li data-it-html="Ci incontreremo <strong>davanti al cancello della struttura</strong>." data-en-html="We will meet you <strong>in front of the property gate</strong>." data-es-html="Nos encontraremos <strong>delante de la cancela de la propiedad</strong>." data-fr-html="Nous nous retrouverons <strong>devant le portail de la propriété</strong>.">Ci incontreremo <strong>davanti al cancello della struttura</strong>.</li>
-            <li data-it-html="Verranno richiesti i <strong>documenti di identità di tutti gli ospiti</strong>, inclusi <strong>i bambini</strong>." data-en-html="<strong>Identity documents of all guests</strong> will be required, including <strong>children</strong>." data-es-html="Se solicitarán los <strong>documentos de identidad de todos los huéspedes</strong>, incluidos <strong>los niños</strong>." data-fr-html="Les <strong>pièces d&rsquo;identité de tous les voyageurs</strong> seront demandées, y compris <strong>celles des enfants</strong>.">Verranno richiesti i <strong>documenti di identità di tutti gli ospiti</strong>, inclusi <strong>i bambini</strong>.</li>
-            <li data-it-html="Dovrà essere pagata la <strong>tassa di soggiorno</strong>: <strong>3 euro a persona al giorno</strong>, esclusi i bambini sotto gli 11 anni." data-en-html="The <strong>tourist tax</strong> must be paid: <strong>€3 per person per day</strong>, excluding children under 11." data-es-html="Deberá pagarse la <strong>tasa turística</strong>: <strong>3 euros por persona por día</strong>, excepto niños menores de 11 años." data-fr-html="La <strong>taxe de séjour</strong> devra être réglée : <strong>3 euros par personne et par jour</strong>, sauf pour les enfants de moins de 11 ans.">Dovrà essere pagata la <strong>tassa di soggiorno</strong>: <strong>3 euro a persona al giorno</strong>, esclusi i bambini sotto gli 11 anni.</li>
-            <li data-it-html="Per prenotazioni <strong>Booking</strong> verrà richiesto un <strong>deposito cauzionale di 100 euro</strong>, restituito tramite <strong>bonifico entro 48 ore dal check-out</strong>." data-en-html="For <strong>Booking</strong> reservations, a <strong>€100 security deposit</strong> is required, refunded by <strong>bank transfer within 48 hours of check-out</strong>." data-es-html="Para reservas de <strong>Booking</strong> se solicita un <strong>depósito de 100 euros</strong>, devuelto por <strong>transferencia en 48 horas tras el check-out</strong>." data-fr-html="Pour les réservations <strong>Booking</strong>, un <strong>dépôt de garantie de 100 euros</strong> est demandé, remboursé par <strong>virement sous 48h après le check-out</strong>.">Per prenotazioni <strong>Booking</strong> verrà richiesto un <strong>deposito cauzionale di 100 euro</strong>, restituito tramite <strong>bonifico entro 48 ore dal check-out</strong>.</li>
-            <li data-it-html="Pagamenti accettati: <strong>bonifico immediato</strong>, <strong>PayPal</strong> o <strong>contanti</strong>. <strong>Non abbiamo il POS.</strong>" data-en-html="Accepted payments: <strong>instant bank transfer</strong>, <strong>PayPal</strong> or <strong>cash</strong>. <strong>We do not have a card machine.</strong>" data-es-html="Pagos aceptados: <strong>transferencia inmediata</strong>, <strong>PayPal</strong> o <strong>efectivo</strong>. <strong>No tenemos TPV.</strong>" data-fr-html="Paiements acceptés : <strong>virement instantané</strong>, <strong>PayPal</strong> ou <strong>espèces</strong>. <strong>Nous n&rsquo;avons pas de TPE.</strong>">Pagamenti accettati: <strong>bonifico immediato</strong>, <strong>PayPal</strong> o <strong>contanti</strong>. <strong>Non abbiamo il POS.</strong></li>
-          </ul>
+          <div id="panelPresenza" class="checkin-panel show">
+            <h3 data-it="Prima di arrivare" data-en="Before arriving" data-es="Antes de llegar" data-fr="Avant d'arriver" style="font-family:'Poppins',sans-serif;font-size:18px;font-weight:700;color:var(--ottanio-dark);margin:0 0 10px 0;">Prima di arrivare</h3>
+            <ul class="info-list" style="margin-bottom:18px;">
+              <li data-it-html="Comunicateci in anticipo <strong>l&rsquo;orario di arrivo previsto</strong>, così possiamo organizzarci per accogliervi." data-en-html="Please let us know <strong>your expected arrival time</strong> in advance, so we can be ready to welcome you." data-es-html="Comunicadnos con antelación <strong>la hora prevista de llegada</strong> para que podamos organizarnos." data-fr-html="Communiquez-nous à l&rsquo;avance <strong>votre heure d&rsquo;arrivée prévue</strong> afin que nous puissions nous organiser.">Comunicateci in anticipo <strong>l'orario di arrivo previsto</strong>, così possiamo organizzarci per accogliervi.</li>
+              <li data-it-html="Inviateci un messaggio circa <strong>30 minuti prima del vostro arrivo</strong>, così saremo pronti ad accogliervi al cancello." data-en-html="Send us a message about <strong>30 minutes before your arrival</strong>, so we can be ready to welcome you at the gate." data-es-html="Enviadnos un mensaje unos <strong>30 minutos antes de vuestra llegada</strong> para que estemos listos en la cancela." data-fr-html="Envoyez-nous un message environ <strong>30 minutes avant votre arrivée</strong>, nous serons prêts à vous accueillir au portail.">Inviateci un messaggio circa <strong>30 minuti prima del vostro arrivo</strong>, così saremo pronti ad accogliervi al cancello.</li>
+            </ul>
+
+            <div class="photo-annotation">
+              <img src="assets/cancello-check-in.jpg" alt="Cancello per il check-in">
+              <span class="photo-badge gate" data-it="🚪 Qui davanti al cancello" data-en="🚪 Meet here at the gate" data-es="🚪 Aquí en la cancela" data-fr="🚪 Ici devant le portail">🚪 Qui davanti al cancello</span>
+              <span class="photo-badge mailbox" data-it="📬 Cassetta &quot;A Casa di Marco&quot;" data-en="📬 &quot;A Casa di Marco&quot; mailbox" data-es="📬 Buzón &quot;A Casa di Marco&quot;" data-fr="📬 Boîte &quot;A Casa di Marco&quot;">📬 Cassetta "A Casa di Marco"</span>
+            </div>
+
+            <h3 data-it="Al check-in" data-en="At check-in" data-es="En el check-in" data-fr="Lors du check-in" style="font-family:'Poppins',sans-serif;font-size:18px;font-weight:700;color:var(--ottanio-dark);margin:18px 0 10px 0;">Al check-in</h3>
+            <ul class="info-list">
+              <li data-it-html="Ci incontreremo <strong>davanti al cancello della struttura</strong>." data-en-html="We will meet you <strong>in front of the property gate</strong>." data-es-html="Nos encontraremos <strong>delante de la cancela de la propiedad</strong>." data-fr-html="Nous nous retrouverons <strong>devant le portail de la propriété</strong>.">Ci incontreremo <strong>davanti al cancello della struttura</strong>.</li>
+              <li data-it-html="Verranno richiesti i <strong>documenti di identità di tutti gli ospiti</strong>, inclusi <strong>i bambini</strong>." data-en-html="<strong>Identity documents of all guests</strong> will be required, including <strong>children</strong>." data-es-html="Se solicitarán los <strong>documentos de identidad de todos los huéspedes</strong>, incluidos <strong>los niños</strong>." data-fr-html="Les <strong>pièces d&rsquo;identité de tous les voyageurs</strong> seront demandées, y compris <strong>celles des enfants</strong>.">Verranno richiesti i <strong>documenti di identità di tutti gli ospiti</strong>, inclusi <strong>i bambini</strong>.</li>
+              <li data-it-html="Dovrà essere pagata la <strong>tassa di soggiorno</strong>: <strong>3 euro a persona al giorno</strong>, esclusi i bambini sotto gli 11 anni." data-en-html="The <strong>tourist tax</strong> must be paid: <strong>€3 per person per day</strong>, excluding children under 11." data-es-html="Deberá pagarse la <strong>tasa turística</strong>: <strong>3 euros por persona por día</strong>, excepto niños menores de 11 años." data-fr-html="La <strong>taxe de séjour</strong> devra être réglée : <strong>3 euros par personne et par jour</strong>, sauf pour les enfants de moins de 11 ans.">Dovrà essere pagata la <strong>tassa di soggiorno</strong>: <strong>3 euro a persona al giorno</strong>, esclusi i bambini sotto gli 11 anni.</li>
+              <li data-it-html="Per prenotazioni <strong>Booking</strong> verrà richiesto un <strong>deposito cauzionale di 100 euro</strong>, restituito tramite <strong>bonifico entro 48 ore dal check-out</strong>." data-en-html="For <strong>Booking</strong> reservations, a <strong>€100 security deposit</strong> is required, refunded by <strong>bank transfer within 48 hours of check-out</strong>." data-es-html="Para reservas de <strong>Booking</strong> se solicita un <strong>depósito de 100 euros</strong>, devuelto por <strong>transferencia en 48 horas tras el check-out</strong>." data-fr-html="Pour les réservations <strong>Booking</strong>, un <strong>dépôt de garantie de 100 euros</strong> est demandé, remboursé par <strong>virement sous 48h après le check-out</strong>.">Per prenotazioni <strong>Booking</strong> verrà richiesto un <strong>deposito cauzionale di 100 euro</strong>, restituito tramite <strong>bonifico entro 48 ore dal check-out</strong>.</li>
+              <li data-it-html="Pagamenti accettati: <strong>bonifico immediato</strong>, <strong>PayPal</strong> o <strong>contanti</strong>. <strong>Non abbiamo il POS.</strong>" data-en-html="Accepted payments: <strong>instant bank transfer</strong>, <strong>PayPal</strong> or <strong>cash</strong>. <strong>We do not have a card machine.</strong>" data-es-html="Pagos aceptados: <strong>transferencia inmediata</strong>, <strong>PayPal</strong> o <strong>efectivo</strong>. <strong>No tenemos TPV.</strong>" data-fr-html="Paiements acceptés : <strong>virement instantané</strong>, <strong>PayPal</strong> ou <strong>espèces</strong>. <strong>Nous n&rsquo;avons pas de TPE.</strong>">Pagamenti accettati: <strong>bonifico immediato</strong>, <strong>PayPal</strong> o <strong>contanti</strong>. <strong>Non abbiamo il POS.</strong></li>
+            </ul>
+          </div>
+
+          <div id="panelSelf" class="checkin-panel">
+            <h3 data-it="Self check-in" data-en="Self check-in" data-es="Auto check-in" data-fr="Self check-in" style="font-family:'Poppins',sans-serif;font-size:18px;font-weight:700;color:var(--ottanio-dark);margin:0 0 10px 0;">Self check-in</h3>
+
+            <a class="self-map-link" href="https://maps.app.goo.gl/tL37r51JpKZJc6j87" target="_blank" data-it="📍 Raggiungi la casa su Google Maps" data-en="📍 Reach the house on Google Maps" data-es="📍 Llega a la casa en Google Maps" data-fr="📍 Rejoignez la maison sur Google Maps">📍 Raggiungi la casa su Google Maps</a>
+
+            <ul class="info-list">
+              <li data-it-html="Arrivati davanti al <strong>cancello principale</strong>, se avete completato la procedura di check-in online, trovate le chiavi nella <strong>scatola con il codice</strong> situata tra la cassetta postale e il cancello principale." data-en-html="Once at the <strong>main gate</strong>, if you have completed the online check-in, find the keys in the <strong>lockbox</strong> located between the mailbox and the main gate." data-es-html="Al llegar a la <strong>cancela principal</strong>, si habéis completado el check-in online, encontrad las llaves en la <strong>caja con código</strong> situada entre el buzón y la cancela principal." data-fr-html="Arrivés devant le <strong>portail principal</strong>, si vous avez complété le check-in en ligne, trouvez les clés dans la <strong>boîte à code</strong> située entre la boîte aux lettres et le portail principal.">Arrivati davanti al <strong>cancello principale</strong>, se avete completato la procedura di check-in online, trovate le chiavi nella <strong>scatola con il codice</strong> situata tra la cassetta postale e il cancello principale.</li>
+              <li data-it-html="Con il <strong>pulsante B del telecomando</strong> potete aprire il cancello in autonomia." data-en-html="Use <strong>button B on the remote control</strong> to open the gate on your own." data-es-html="Con el <strong>botón B del mando</strong> podéis abrir la cancela por vuestra cuenta." data-fr-html="Avec le <strong>bouton B de la télécommande</strong>, vous pouvez ouvrir le portail en autonomie.">Con il <strong>pulsante B del telecomando</strong> potete aprire il cancello in autonomia.</li>
+              <li data-it-html="Dopo la discesa, al bivio andate a <strong>sinistra</strong>. Alla fine della strada voltate a <strong>destra</strong>: la casa è il <strong>primo cancello sulla destra</strong>." data-en-html="After the downhill, at the fork go <strong>left</strong>. At the end of the road, turn <strong>right</strong>: the house is the <strong>first gate on the right</strong>." data-es-html="Tras la bajada, en el cruce girad a la <strong>izquierda</strong>. Al final de la calle, girad a la <strong>derecha</strong>: la casa es la <strong>primera cancela a la derecha</strong>." data-fr-html="Après la descente, à l&rsquo;embranchement, allez à <strong>gauche</strong>. Au bout du chemin, tournez à <strong>droite</strong> : la maison est le <strong>premier portail sur la droite</strong>.">Dopo la discesa, al bivio andate a <strong>sinistra</strong>. Alla fine della strada voltate a <strong>destra</strong>: la casa è il <strong>primo cancello sulla destra</strong>.</li>
+              <li data-it-html="Parcheggiate l&rsquo;auto <strong>all&rsquo;interno del giardino</strong> nella zona pavimentata, facendo attenzione a <strong>non superare il giardino</strong>." data-en-html="Park the car <strong>inside the garden</strong> on the paved area, being careful <strong>not to go past the garden</strong>." data-es-html="Aparcad el coche <strong>dentro del jardín</strong> en la zona pavimentada, con cuidado de <strong>no sobrepasar el jardín</strong>." data-fr-html="Garez la voiture <strong>à l&rsquo;intérieur du jardin</strong> sur la zone pavée, en veillant à <strong>ne pas dépasser le jardin</strong>.">Parcheggiate l&rsquo;auto <strong>all&rsquo;interno del giardino</strong> nella zona pavimentata, facendo attenzione a <strong>non superare il giardino</strong>.</li>
+              <li data-it-html="Il <strong>cancello della struttura</strong> si apre <strong>manualmente</strong>." data-en-html="The <strong>property gate</strong> opens <strong>manually</strong>." data-es-html="La <strong>cancela de la propiedad</strong> se abre <strong>manualmente</strong>." data-fr-html="Le <strong>portail de la propriété</strong> s&rsquo;ouvre <strong>manuellement</strong>.">Il <strong>cancello della struttura</strong> si apre <strong>manualmente</strong>.</li>
+            </ul>
+
+            <a class="self-map-link" href="manuale.html#chiavi" data-it="🔑 Come funzionano le chiavi" data-en="🔑 How the keys work" data-es="🔑 Cómo funcionan las llaves" data-fr="🔑 Comment fonctionnent les clés">🔑 Come funzionano le chiavi</a>
+          </div>
+
         </div>
       </details>
     </section>
@@ -765,6 +869,17 @@
     window.addEventListener('scroll', updateScrollHint);
     window.addEventListener('resize', updateScrollHint);
     window.addEventListener('load', updateScrollHint);
+
+    function showCheckinPanel(panelId) {
+      document.querySelectorAll('.checkin-panel').forEach(function (p) { p.classList.remove('show'); });
+      document.querySelectorAll('.checkin-choice-btn').forEach(function (b) { b.classList.remove('active'); });
+
+      var panel = document.getElementById('panel' + (panelId === 'presenza' ? 'Presenza' : 'Self'));
+      var btn = document.getElementById(panelId === 'presenza' ? 'btnPresenza' : 'btnSelf');
+
+      if (panel) panel.classList.add('show');
+      if (btn) btn.classList.add('active');
+    }
 
     translatePage(getLang());
   </script>

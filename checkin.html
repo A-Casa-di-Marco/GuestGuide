@@ -152,7 +152,8 @@
       display:none;
     }
 
-    .toggle-box summary::after {
+    .toggle-box summary::after,
+    .animated-toggle summary::after {
       content:" ▼";
       margin-left:8px;
       font-size:11px;
@@ -161,14 +162,29 @@
       display: inline-block;
     }
 
-    .toggle-box[open] summary::after {
+    .toggle-box[open] summary::after,
+    .animated-toggle[open] summary::after {
       content:" ▲";
     }
 
     .toggle-content {
+      margin-top:16px;
+    }
+
+    .animated-toggle {
+      margin-top: 8px;
+    }
+
+    .animated-toggle .toggle-content {
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.4s ease, margin-top 0.4s ease;
+      background: var(--ottanio-soft);
+      border: 1px solid rgba(15,127,131,.18);
+      border-radius: 16px;
+      padding: 0 16px;
+      margin-bottom: 8px;
+      margin-top: 0;
     }
 
     .checklist-intro {
@@ -323,6 +339,15 @@
 
       .check-item {
         padding:13px 14px;
+      }
+
+      .animated-toggle summary {
+        font-size:14px;
+        padding:12px 18px;
+      }
+
+      .close-toggle {
+        font-size:12px;
       }
     }
 
@@ -672,7 +697,7 @@
               <li data-it-html="Arrivati davanti al <strong>cancello principale</strong>, se avete completato la procedura di check-in online, trovate le chiavi nella <strong>KeyBox</strong> situata tra la cassetta postale e il cancello principale." data-en-html="Once at the <strong>main gate</strong>, if you have completed the online check-in, find the keys in the <strong>KeyBox</strong> located between the mailbox and the main gate." data-es-html="Al llegar a la <strong>cancela principal</strong>, si habéis completado el check-in online, encontrad las llaves en la <strong>KeyBox</strong> situada entre el buzón y la cancela principal." data-fr-html="Arrivés devant le <strong>portail principal</strong>, si vous avez complété le check-in en ligne, trouvez les clés dans la <strong>KeyBox</strong> située entre la boîte aux lettres et le portail principal.">Arrivati davanti al <strong>cancello principale</strong>, se avete completato la procedura di check-in online, trovate le chiavi nella <strong>KeyBox</strong> situata tra la cassetta postale e il cancello principale.</li>
             </ul>
 
-            <details class="toggle-box" style="margin-top:8px;">
+            <details class="toggle-box animated-toggle" style="margin-top:8px;">
               <summary data-it="🔐 Istruzioni KeyBox" data-en="🔐 KeyBox instructions" data-es="🔐 Instrucciones KeyBox" data-fr="🔐 Instructions KeyBox">🔐 Istruzioni KeyBox</summary>
               <div class="toggle-content">
 
@@ -697,7 +722,7 @@
               <img src="assets/cancello-check-in.jpg" alt="Cancello principale">
             </div>
 
-            <details class="toggle-box" style="margin-top:8px;">
+            <details class="toggle-box animated-toggle" style="margin-top:8px;">
               <summary data-it="🔑 Istruzioni uso chiavi e telecomando" data-en="🔑 Keys and remote instructions" data-es="🔑 Instrucciones llaves y mando" data-fr="🔑 Mode d&rsquo;emploi clés et télécommande">🔑 Istruzioni uso chiavi e telecomando</summary>
               <div class="toggle-content">
 
@@ -987,7 +1012,7 @@
       });
     });
 
-    document.querySelectorAll('.toggle-box').forEach(function (details) {
+    document.querySelectorAll('.animated-toggle').forEach(function (details) {
       var summary = details.querySelector('summary');
       if (!summary) return;
 

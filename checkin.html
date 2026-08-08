@@ -392,6 +392,29 @@
       display: none;
     }
 
+    .close-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      margin-top: 14px;
+      padding: 10px;
+      border: 1px solid rgba(15,127,131,.18);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--ottanio-dark);
+      font-family: 'Poppins',sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+      transition: background .15s;
+    }
+
+    .close-toggle:hover {
+      background: var(--ottanio-soft);
+    }
+
     .checkin-panel.show {
       display: block;
     }
@@ -661,6 +684,8 @@
                 </ol>
 
                 <div class="note" style="margin-top:12px;" data-it-html="Dopo aver preso le chiavi, <strong>richiudi correttamente lo sportello</strong> della KeyBox. Per sicurezza, <strong>sposta le rotelle</strong> in modo che il codice non rimanga visibile." data-en-html="After taking the keys, <strong>close the KeyBox door properly</strong>. For safety, <strong>scramble the wheels</strong> so the code is no longer visible." data-es-html="Después de coger las llaves, <strong>cierra bien la puerta</strong> de la KeyBox. Por seguridad, <strong>mueve las ruedas</strong> para que el código no quede visible." data-fr-html="Après avoir pris les clés, <strong>refermez correctement la porte</strong> de la KeyBox. Par sécurité, <strong>brouillez les molettes</strong> pour que le code ne reste pas visible.">Dopo aver preso le chiavi, <strong>richiudi correttamente lo sportello</strong> della KeyBox. Per sicurezza, <strong>sposta le rotelle</strong> in modo che il codice non rimanga visibile.</div>
+
+                <button class="close-toggle" onclick="this.closest('details').open=false" data-it="▲ Chiudi" data-en="▲ Close" data-es="▲ Cerrar" data-fr="▲ Fermer">▲ Chiudi</button>
               </div>
             </details>
 
@@ -694,6 +719,8 @@
                 </ul>
 
                 <div class="note" data-it-html="<strong>Prima di uscire:</strong> assicuratevi sempre di avere con voi chiavi e telecomando. Prima del check-out, lasciate le chiavi nella cassetta delle lettere." data-en-html="<strong>Before leaving:</strong> always make sure you have the keys and remote with you. Before check-out, leave the keys in the mailbox." data-es-html="<strong>Antes de salir:</strong> aseguraos de llevar siempre las llaves y el mando. Antes del check-out, dejad las llaves en el buzón." data-fr-html="<strong>Avant de sortir :</strong> assurez-vous toujours d&rsquo;avoir les clés et la télécommande. Avant le check-out, laissez les clés dans la boîte aux lettres."><strong>Prima di uscire:</strong> assicuratevi sempre di avere con voi chiavi e telecomando. Prima del check-out, lasciate le chiavi nella cassetta delle lettere.</div>
+
+                <button class="close-toggle" onclick="this.closest('details').open=false" data-it="▲ Chiudi" data-en="▲ Close" data-es="▲ Cerrar" data-fr="▲ Fermer">▲ Chiudi</button>
               </div>
             </details>
 

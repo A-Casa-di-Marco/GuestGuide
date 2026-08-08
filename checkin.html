@@ -735,7 +735,7 @@
             </ul>
 
             <div class="photo-annotation">
-              <img src="assets/parcheggiogiardino.png" alt="Parcheggio giardino">
+              <img id="parkingImg" src="assets/parcheggiogiardino.png" alt="Parcheggio giardino">
             </div>
           </div>
 
@@ -852,6 +852,13 @@
       var home = document.querySelector('.back-home');
       if (home) {
         home.href = 'index.html#' + lang;
+      }
+
+      var parkingImg = document.getElementById('parkingImg');
+      if (parkingImg) {
+        var langMap = { it: 'giardino', en: 'inglese', es: 'spagnolo', fr: 'francese' };
+        var suffix = langMap[lang] || 'giardino';
+        parkingImg.src = 'assets/parcheggio' + suffix + '.png';
       }
 
       try {

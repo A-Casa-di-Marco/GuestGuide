@@ -157,6 +157,8 @@
       margin-left:8px;
       font-size:11px;
       line-height:1;
+      transition: transform 0.3s ease;
+      display: inline-block;
     }
 
     .toggle-box[open] summary::after {
@@ -164,7 +166,9 @@
     }
 
     .toggle-content {
-      margin-top:16px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, margin-top 0.4s ease;
     }
 
     .checklist-intro {
@@ -685,7 +689,7 @@
 
                 <div class="note" style="margin-top:12px;" data-it-html="Dopo aver preso le chiavi, <strong>richiudi correttamente lo sportello</strong> della KeyBox. Per sicurezza, <strong>sposta le rotelle</strong> in modo che il codice non rimanga visibile." data-en-html="After taking the keys, <strong>close the KeyBox door properly</strong>. For safety, <strong>scramble the wheels</strong> so the code is no longer visible." data-es-html="Después de coger las llaves, <strong>cierra bien la puerta</strong> de la KeyBox. Por seguridad, <strong>mueve las ruedas</strong> para que el código no quede visible." data-fr-html="Après avoir pris les clés, <strong>refermez correctement la porte</strong> de la KeyBox. Par sécurité, <strong>brouillez les molettes</strong> pour que le code ne reste pas visible.">Dopo aver preso le chiavi, <strong>richiudi correttamente lo sportello</strong> della KeyBox. Per sicurezza, <strong>sposta le rotelle</strong> in modo che il codice non rimanga visibile.</div>
 
-                <button class="close-toggle" onclick="var d=this.closest('details');d.open=false;d.scrollIntoView({behavior:'smooth',block:'start'})" data-it="▲ Chiudi" data-en="▲ Close" data-es="▲ Cerrar" data-fr="▲ Fermer">▲ Chiudi</button>
+                <button class="close-toggle" onclick="var d=this.closest('details');var c=d.querySelector('.toggle-content');c.style.maxHeight=c.scrollHeight+'px';requestAnimationFrame(function(){c.style.maxHeight='0px';c.style.marginTop='0px'});c.addEventListener('transitionend',function h(){c.removeEventListener('transitionend',h);d.open=false});d.scrollIntoView({behavior:'smooth',block:'start'})" data-it="▲ Chiudi" data-en="▲ Close" data-es="▲ Cerrar" data-fr="▲ Fermer">▲ Chiudi</button>
               </div>
             </details>
 
@@ -720,7 +724,7 @@
 
                 <div class="note" data-it-html="<strong>Prima di uscire:</strong> assicuratevi sempre di avere con voi chiavi e telecomando. Prima del check-out, lasciate le chiavi nella cassetta delle lettere." data-en-html="<strong>Before leaving:</strong> always make sure you have the keys and remote with you. Before check-out, leave the keys in the mailbox." data-es-html="<strong>Antes de salir:</strong> aseguraos de llevar siempre las llaves y el mando. Antes del check-out, dejad las llaves en el buzón." data-fr-html="<strong>Avant de sortir :</strong> assurez-vous toujours d&rsquo;avoir les clés et la télécommande. Avant le check-out, laissez les clés dans la boîte aux lettres."><strong>Prima di uscire:</strong> assicuratevi sempre di avere con voi chiavi e telecomando. Prima del check-out, lasciate le chiavi nella cassetta delle lettere.</div>
 
-                <button class="close-toggle" onclick="var d=this.closest('details');d.open=false;d.scrollIntoView({behavior:'smooth',block:'start'})" data-it="▲ Chiudi" data-en="▲ Close" data-es="▲ Cerrar" data-fr="▲ Fermer">▲ Chiudi</button>
+                <button class="close-toggle" onclick="var d=this.closest('details');var c=d.querySelector('.toggle-content');c.style.maxHeight=c.scrollHeight+'px';requestAnimationFrame(function(){c.style.maxHeight='0px';c.style.marginTop='0px'});c.addEventListener('transitionend',function h(){c.removeEventListener('transitionend',h);d.open=false});d.scrollIntoView({behavior:'smooth',block:'start'})" data-it="▲ Chiudi" data-en="▲ Close" data-es="▲ Cerrar" data-fr="▲ Fermer">▲ Chiudi</button>
               </div>
             </details>
 
@@ -980,6 +984,37 @@
     document.querySelectorAll('.checkout-checkbox').forEach(function (checkbox) {
       checkbox.addEventListener('change', function () {
         updateChecklistProgress(true);
+      });
+    });
+
+    document.querySelectorAll('.toggle-box').forEach(function (details) {
+      var summary = details.querySelector('summary');
+      if (!summary) return;
+
+      summary.addEventListener('click', function (e) {
+        e.preventDefault();
+        var content = details.querySelector('.toggle-content');
+        if (!content) return;
+
+        if (details.open) {
+          content.style.maxHeight = content.scrollHeight + 'px';
+          requestAnimationFrame(function () {
+            content.style.maxHeight = '0px';
+            content.style.marginTop = '0px';
+          });
+          content.addEventListener('transitionend', function handler() {
+            content.removeEventListener('transitionend', handler);
+            details.open = false;
+          });
+        } else {
+          details.open = true;
+          content.style.maxHeight = '0px';
+          content.style.marginTop = '0px';
+          requestAnimationFrame(function () {
+            content.style.maxHeight = content.scrollHeight + 'px';
+            content.style.marginTop = '16px';
+          });
+        }
       });
     });
 

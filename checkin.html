@@ -155,16 +155,27 @@
     .toggle-box summary::after,
     .animated-toggle summary::after {
       content:" ▼";
-      margin-left:8px;
-      font-size:11px;
+      margin-left:10px;
+      font-size:14px;
       line-height:1;
-      transition: transform 0.3s ease;
       display: inline-block;
     }
 
     .toggle-box[open] summary::after,
     .animated-toggle[open] summary::after {
       content:" ▲";
+    }
+
+    .toggle-box summary::before,
+    .animated-toggle summary::before {
+      content:"👆 ";
+      font-size:15px;
+      line-height:1;
+    }
+
+    .toggle-box[open] summary::before,
+    .animated-toggle[open] summary::before {
+      content:"";
     }
 
     .toggle-content {
@@ -344,6 +355,11 @@
       .animated-toggle summary {
         font-size:14px;
         padding:12px 18px;
+      }
+
+      .toggle-box summary::before,
+      .animated-toggle summary::before {
+        font-size:13px;
       }
 
       .close-toggle {
@@ -697,6 +713,14 @@
               <li data-it-html="Arrivati davanti al <strong>cancello principale</strong>, se avete completato la procedura di check-in online, trovate la <strong>KeyBox</strong> attaccata al cancello sotto il cartello della struttura (codice <strong>1705</strong>), come mostrato in foto." data-en-html="Once at the <strong>main gate</strong>, if you have completed the online check-in, find the <strong>KeyBox</strong> attached to the gate under the property sign (code <strong>1705</strong>), as shown in the photo." data-es-html="Al llegar a la <strong>cancela principal</strong>, si habéis completado el check-in online, encontrad la <strong>KeyBox</strong> sujeta a la cancela bajo el cartel de la propiedad (código <strong>1705</strong>), como se ve en la foto." data-fr-html="Arrivés devant le <strong>portail principal</strong>, si vous avez complété le check-in en ligne, trouvez la <strong>KeyBox</strong> fixée au portail sous le panneau de la propriété (code <strong>1705</strong>), comme sur la photo.">Arrivati davanti al <strong>cancello principale</strong>, se avete completato la procedura di check-in online, trovate la <strong>KeyBox</strong> attaccata al cancello sotto il cartello della struttura (codice <strong>1705</strong>), come mostrato in foto.</li>
             </ul>
 
+            <div class="photo-annotation">
+              <img src="assets/cancello-check-in.jpg" alt="Cancello principale">
+            </div>
+
+            <div class="photo-annotation">
+              <img src="assets/keyboxcancello.jpeg" alt="KeyBox attaccata al cancello">
+            </div>
+
             <details class="toggle-box animated-toggle" style="margin-top:8px;">
               <summary data-it="🔐 Istruzioni KeyBox" data-en="🔐 KeyBox instructions" data-es="🔐 Instrucciones KeyBox" data-fr="🔐 Instructions KeyBox">🔐 Istruzioni KeyBox</summary>
               <div class="toggle-content">
@@ -717,14 +741,6 @@
                 <button class="close-toggle" onclick="var d=this.closest('details');var c=d.querySelector('.toggle-content');c.style.maxHeight=c.scrollHeight+'px';requestAnimationFrame(function(){c.style.maxHeight='0px';c.style.marginTop='0px'});c.addEventListener('transitionend',function h(){c.removeEventListener('transitionend',h);d.open=false});d.scrollIntoView({behavior:'smooth',block:'start'})" data-it="▲ Chiudi" data-en="▲ Close" data-es="▲ Cerrar" data-fr="▲ Fermer">▲ Chiudi</button>
               </div>
             </details>
-
-            <div class="photo-annotation">
-              <img src="assets/cancello-check-in.jpg" alt="Cancello principale">
-            </div>
-
-            <div class="photo-annotation">
-              <img src="assets/keyboxcancello.jpeg" alt="KeyBox attaccata al cancello">
-            </div>
 
             <details class="toggle-box animated-toggle" style="margin-top:8px;">
               <summary data-it="🔑 Istruzioni uso chiavi e telecomando" data-en="🔑 Keys and remote instructions" data-es="🔑 Instrucciones llaves y mando" data-fr="🔑 Mode d&rsquo;emploi clés et télécommande">🔑 Istruzioni uso chiavi e telecomando</summary>

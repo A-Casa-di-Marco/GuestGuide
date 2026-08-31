@@ -1333,9 +1333,9 @@
            data-fr="Cafetière moka" data-de="Moka-Kanne und Kaffee">Moka e caffè</summary>
 
   <div class="manual-content">
-    <div class="manual-img contain">
-      <img src="assets/manuale-moka.jpg" alt="Istruzioni per usare la moka">
-    </div>
+     <div class="manual-img contain">
+       <img src="assets/manuale-moka.jpg" alt="Istruzioni per usare la moka">
+     </div>
 
     <div class="warning-box"
          data-it-html="<strong>Attenzione:</strong> la moka non va mai messa in lavastoviglie. Non usate detersivi aggressivi. Lavatela solo a mano con acqua calda, asciugatela bene dopo il lavaggio e non lasciate acqua nel serbatoio."
@@ -1344,6 +1344,11 @@
          data-fr-html="<strong>Attention :</strong> ne mettez jamais la moka au lave-vaisselle. N’utilisez pas de détergents agressifs. Lavez-la uniquement à la main avec de l’eau chaude, séchez-la bien après le lavage et ne laissez pas d’eau dans le réservoir." data-de-html="<strong>Achtung:</strong> die Moka-Kanne darf niemals in die Spülmaschine gestellt werden. Verwendet keine aggressiven Reinigungsmittel. Wascht sie nur von Hand mit heißem Wasser, trocknet sie nach dem Waschen gut ab und lasst kein Wasser im Tank.">
       <strong>Attenzione:</strong> la moka non va mai messa in lavastoviglie. Non usate detersivi aggressivi. Lavatela solo a mano con acqua calda, asciugatela bene dopo il lavaggio e non lasciate acqua nel serbatoio.
     </div>
+
+    <h3 data-it="Moka tradizionale"
+        data-en="Traditional moka pot"
+        data-es="Cafetera moka tradicional"
+        data-fr="Cafetière moka traditionnelle" data-de="Traditionelle Moka-Kanne">Moka tradizionale</h3>
 
     <h3 data-it="Come preparare il caffè con la moka"
         data-en="How to make coffee with the moka"
@@ -1421,6 +1426,33 @@
         Non lasciate acqua nel serbatoio.
       </li>
     </ul>
+
+    <h3 data-it="Moka con le capsule"
+        data-en="Pod moka coffee maker"
+        data-es="Cafetera moka con cápsulas"
+        data-fr="Cafetière moka à dosettes" data-de="Moka-Kanne mit Pads">Moka con le capsule</h3>
+
+    <p data-it="La MokaCiao funziona con le cialde. Seguite le immagini nella vostra lingua per preparare il caffè e smaltire correttamente la cialda."
+       data-en="MokaCiao uses coffee pods. Follow the images in your language to prepare the coffee and dispose of the pod correctly."
+       data-es="MokaCiao funciona con cápsulas de café. Seguid las imágenes en vuestro idioma para preparar el café y desechar correctamente la cápsula."
+       data-fr="MokaCiao fonctionne avec des dosettes de café. Suivez les images dans votre langue pour préparer le café et jeter correctement la dosette." data-de="MokaCiao funktioniert mit Kaffeepads. Folgt den Bildern in eurer Sprache, um den Kaffee zuzubereiten und das Pad richtig zu entsorgen.">
+      La MokaCiao funziona con le cialde. Seguite le immagini nella vostra lingua per preparare il caffè e smaltire correttamente la cialda.
+    </p>
+
+    <div class="moka-language-images" aria-live="polite">
+      <img class="moka-language-image" data-langs="it,en" src="assets/borboneitalianoinglese.jpeg" alt="Istruzioni Borbone italiano e inglese">
+      <img class="moka-language-image" data-langs="es" src="assets/borbonespagnolo.jpeg" alt="Instrucciones Borbone en español">
+      <img class="moka-language-image" data-langs="fr" src="assets/borbonefrancese.jpeg" alt="Instructions Borbone en français">
+      <img class="moka-language-image" data-langs="de" src="assets/borbonetedesco.jpeg" alt="Borbone-Anleitung auf Deutsch">
+    </div>
+
+    <div class="moka-language-images" aria-live="polite">
+      <img class="moka-language-image" data-langs="it" src="assets/spiegazioneitaliano.jpeg" alt="Spiegazione MokaCiao in italiano">
+      <img class="moka-language-image" data-langs="en" src="assets/spiegazioneinglese.jpeg" alt="MokaCiao explanation in English">
+      <img class="moka-language-image" data-langs="es" src="assets/spiegazionespagnolo.jpeg" alt="Explicación MokaCiao en español">
+      <img class="moka-language-image" data-langs="fr" src="assets/spiegazionefrancese.jpeg" alt="Explication MokaCiao en français">
+      <img class="moka-language-image" data-langs="de" src="assets/spiegazionetedesco.jpeg" alt="MokaCiao-Erklärung auf Deutsch">
+    </div>
   </div>
       </details>
 
@@ -2079,6 +2111,11 @@
         } else if (textTranslation) {
           el.textContent = textTranslation;
         }
+      });
+
+      document.querySelectorAll('.moka-language-image').forEach(function (image) {
+        var languages = (image.getAttribute('data-langs') || '').split(',');
+        image.classList.toggle('is-active', languages.indexOf(lang) !== -1);
       });
 
       var home = document.querySelector('.back-home');

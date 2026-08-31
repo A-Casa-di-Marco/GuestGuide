@@ -288,8 +288,59 @@
       object-fit: contain;
     }
 
-    .moka-language-image.is-active {
+.moka-language-image.is-active {
       display: block;
+    }
+
+    .moka-choice {
+      padding: 16px;
+      background: var(--ottanio-soft);
+      border-radius: 18px;
+      text-align: center;
+    }
+
+    .moka-choice p {
+      margin-bottom: 12px;
+      font-weight: 700;
+      color: var(--ottanio-dark);
+    }
+
+    .moka-choice-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .moka-choice-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--ottanio);
+      color: #fff;
+      border-radius: 999px;
+      padding: 13px 18px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      font-weight: 800;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 10px 26px rgba(0,80,85,.16);
+      transition: background .2s ease;
+    }
+
+    .moka-choice-button:hover,
+    .moka-choice-button:focus-visible {
+      background: var(--ottanio-dark);
+    }
+
+    .moka-choice-button.light {
+      background: #fff;
+      color: var(--ottanio-dark);
+      border: 1px solid rgba(15,127,131,.25);
+      box-shadow: none;
     }
 
     .manual-img.contain img {

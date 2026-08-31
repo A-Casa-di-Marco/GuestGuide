@@ -2680,6 +2680,18 @@
     return texts[lang] || texts.it;
   }
 
+  function weatherDetailsText(lang, minTemp, maxTemp, windSpeed, rainProbability) {
+    var texts = {
+      it: "Min " + minTemp + "° · Max " + maxTemp + "° · Vento " + windSpeed + " km/h · Probabilità pioggia " + rainProbability + "%",
+      en: "Min " + minTemp + "° · Max " + maxTemp + "° · Wind " + windSpeed + " km/h · Chance of rain " + rainProbability + "%",
+      es: "Mín " + minTemp + "° · Máx " + maxTemp + "° · Viento " + windSpeed + " km/h · Probabilidad de lluvia " + rainProbability + "%",
+      fr: "Min " + minTemp + "° · Max " + maxTemp + "° · Vent " + windSpeed + " km/h · Risque de pluie " + rainProbability + "%",
+      de: "Min. " + minTemp + "° · Max. " + maxTemp + "° · Wind " + windSpeed + " km/h · Regenwahrscheinlichkeit " + rainProbability + "%"
+    };
+
+    return texts[lang] || texts.it;
+  }
+
   function saveWeatherCache(weatherData) {
     try {
       localStorage.setItem("salernoWeatherCache", JSON.stringify(weatherData));
@@ -2733,9 +2745,15 @@
       return false;
     }
 
+    // Older cache entries contain text in the language used when saved.
+    // Fetch fresh data so changing language cannot show stale translations.
+    if (typeof cached.code !== "number") {
+      return false;
+    }
+
     weatherBox.classList.remove("hidden");
 
-    weatherSummary.textContent = cached.emoji + " " + cached.condition;
+    weatherSummary.textContent = cached.emoji + " " + weatherCodeText(cached.code, lang);
     weatherTemp.textContent = cached.temperature + "°";
 
     var updatedTime = formatWeatherUpdateTime(cached.savedAt, lang);
@@ -2745,7 +2763,7 @@
 
     weatherDetails.textContent =
       savedLabel + " · " +
-      cached.details +
+      weatherDetailsText(lang, cached.minTemp, cached.maxTemp, cached.windSpeed, cached.rainProbability) +
       (updatedTime ? " · " + updatedLabel + ": " + updatedTime : "");
 
     if (cached.shouldShowUmbrellaAlert) {
@@ -2831,13 +2849,7 @@
         var condition = weatherCodeText(code, lang);
         var emoji = weatherCodeEmoji(code, currentRain, currentWind);
 
-        var detailsTexts = {
-          it: "Min " + minTemp + "° · Max " + maxTemp + "° · Vento " + currentWind + " km/h · Probabilità pioggia " + rainProbability + "%",
-          en: "Min " + minTemp + "° · Max " + maxTemp + "° · Wind " + currentWind + " km/h · Rain chance " + rainProbability + "%",
-          es: "Min " + minTemp + "° · Max " + maxTemp + "° · Viento " + currentWind + " km/h · Probabilidad de lluvia " + rainProbability + "%",
-          fr: "Min " + minTemp + "° · Max " + maxTemp + "° · Vent " + currentWind + " km/h · Risque de pluie " + rainProbability + "%",
-          de: "Min " + minTemp + "° · Max " + maxTemp + "° · Wind " + currentWind + " km/h · Regenwahrscheinlichkeit " + rainProbability + "%"
-        };
+        var detailsText = weatherDetailsText(lang, minTemp, maxTemp, currentWind, rainProbability);
 
         var shouldShowUmbrellaAlert =
           isRainWeather(code, currentRain) ||
@@ -2847,9 +2859,12 @@
 
         var weatherData = {
           emoji: emoji,
-          condition: condition,
+          code: code,
           temperature: temperature,
-          details: detailsTexts[lang],
+          minTemp: minTemp,
+          maxTemp: maxTemp,
+          windSpeed: currentWind,
+          rainProbability: rainProbability,
           shouldShowUmbrellaAlert: shouldShowUmbrellaAlert,
           savedAt: new Date().toISOString()
         };
@@ -2858,7 +2873,7 @@
 
         weatherSummary.textContent = emoji + " " + condition;
         weatherTemp.textContent = temperature + "°";
-        weatherDetails.textContent = detailsTexts[lang];
+        weatherDetails.textContent = detailsText;
 
         if (shouldShowUmbrellaAlert) {
           umbrellaAlert.classList.remove("hidden");

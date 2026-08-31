@@ -271,6 +271,27 @@
       display: block;
     }
 
+    .moka-language-images {
+      display: grid;
+      gap: 14px;
+      margin-top: 16px;
+      justify-items: center;
+    }
+
+    .moka-language-image {
+      width: 100%;
+      max-width: 760px;
+      height: auto;
+      display: none;
+      border-radius: 20px;
+      box-shadow: 0 10px 28px rgba(0,80,85,.12);
+      object-fit: contain;
+    }
+
+    .moka-language-image.is-active {
+      display: block;
+    }
+
     .manual-img.contain img {
       object-fit: contain;
       background: #f7f7f2;

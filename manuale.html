@@ -1354,6 +1354,20 @@
            data-fr="Cafetière moka" data-de="Moka-Kanne und Kaffee">Moka e caffè</summary>
 
   <div class="manual-content">
+    <div class="moka-choice" role="group" aria-label="Scegli il tipo di moka">
+      <p data-it="Scegliete quale istruzione volete aprire:"
+         data-en="Choose which instructions you want to open:"
+         data-es="Elegid qué instrucciones queréis abrir:"
+         data-fr="Choisissez les instructions que vous souhaitez ouvrir :" data-de="Wählt aus, welche Anleitung ihr öffnen möchtet:">
+        Scegliete quale istruzione volete aprire:
+      </p>
+      <div class="moka-choice-buttons">
+        <button class="moka-choice-button" type="button" data-moka-target="traditionalMoka" data-it="Moka tradizionale" data-en="Traditional moka pot" data-es="Cafetera moka tradicional" data-fr="Cafetière moka traditionnelle" data-de="Traditionelle Moka-Kanne">Moka tradizionale</button>
+        <button class="moka-choice-button" type="button" data-moka-target="podMoka" data-it="Moka con le capsule" data-en="Pod moka coffee maker" data-es="Cafetera moka con cápsulas" data-fr="Cafetière moka à dosettes" data-de="Moka-Kanne mit Pads">Moka con le capsule</button>
+      </div>
+    </div>
+
+    <div id="traditionalMoka" class="moka-option" hidden>
      <div class="manual-img contain">
        <img src="assets/manuale-moka.jpg" alt="Istruzioni per usare la moka">
      </div>
@@ -1448,6 +1462,9 @@
       </li>
     </ul>
 
+    </div>
+
+    <div id="podMoka" class="moka-option" hidden>
     <h3 data-it="Moka con le capsule"
         data-en="Pod moka coffee maker"
         data-es="Cafetera moka con cápsulas"
@@ -1473,6 +1490,7 @@
       <img class="moka-language-image" data-langs="es" src="assets/spiegazionespagnolo.jpeg" alt="Explicación MokaCiao en español">
       <img class="moka-language-image" data-langs="fr" src="assets/spiegazionefrancese.jpeg" alt="Explication MokaCiao en français">
       <img class="moka-language-image" data-langs="de" src="assets/spiegazionetedesco.jpeg" alt="MokaCiao-Erklärung auf Deutsch">
+    </div>
     </div>
   </div>
       </details>
@@ -2137,6 +2155,14 @@
       document.querySelectorAll('.moka-language-image').forEach(function (image) {
         var languages = (image.getAttribute('data-langs') || '').split(',');
         image.classList.toggle('is-active', languages.indexOf(lang) !== -1);
+      });
+
+      document.querySelectorAll('.moka-choice-button').forEach(function (button) {
+        button.addEventListener('click', function () {
+          document.querySelectorAll('.moka-option').forEach(function (option) {
+            option.hidden = option.id !== button.getAttribute('data-moka-target');
+          });
+        });
       });
 
       var home = document.querySelector('.back-home');

@@ -557,30 +557,42 @@
     text-align:center;
   }
 
-  /* LOCALI/RISTORANTI: 2 colonne sul telefono, come i luoghi */
+  /* LOCALI/RISTORANTI: card orizzontali sul telefono, come i luoghi */
   .restaurant-grid {
-    grid-template-columns:repeat(2, 1fr) !important;
-    gap:10px;
+    grid-template-columns:1fr !important;
+    gap:12px;
   }
 
   .restaurant-card {
+    display:flex;
+    flex-direction:row;
+    align-items:flex-start;
     border-radius:18px;
     overflow:hidden;
+    padding:10px;
+    gap:12px;
   }
 
   .restaurant-card img {
-    height:110px !important;
+    width:108px;
+    height:108px;
+    flex:0 0 108px;
     object-fit:cover;
+    border-radius:14px;
   }
 
   .restaurant-content {
-    padding:12px;
+    flex:1 1 auto;
+    min-width:0;
+    padding:0;
+    display:flex;
+    flex-direction:column;
   }
 
   .restaurant-content h3 {
-    font-size:17px;
+    font-size:16px;
     line-height:1.25;
-    margin-bottom:6px;
+    margin-bottom:4px;
   }
 
   .restaurant-content p,
@@ -613,14 +625,19 @@
   }
 
   .restaurant-actions {
-    flex-direction:column;
+    flex-direction:row;
+    flex-wrap:wrap;
     gap:7px;
+    margin-top:auto;
+    padding-top:8px;
   }
 
   .restaurant-btn {
-    width:100%;
+    flex:0 0 auto;
+    width:auto;
     font-size:11px;
-    padding:8px 8px;
+    font-weight:600;
+    padding:7px 12px;
   }
 
   .scroll-hint {

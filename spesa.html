@@ -132,31 +132,66 @@
 
       .shop-grid {
         grid-template-columns: 1fr;
+        gap: 12px;
       }
 
       .shop-card {
-        padding: 15px;
-      }
-
-      .shop-card h3 {
-        font-size: 23px;
-      }
-
-      .shop-card p,
-      .shop-note {
-        font-size: 14px;
+        padding: 10px;
+        display: grid;
+        grid-template-columns: 108px 1fr;
+        column-gap: 12px;
+        align-items: start;
       }
 
       .shop-img {
-        height: 150px;
+        grid-column: 1;
+        grid-row: 1 / -1;
+        width: 108px;
+        height: 108px;
+        border-radius: 14px;
+        margin-bottom: 0;
+      }
+
+      .shop-card h3 {
+        grid-column: 2;
+        grid-row: 1;
+        font-size: 16px;
+        line-height: 1.25;
+        margin-bottom: 4px;
+      }
+
+      .shop-card p {
+        grid-column: 2;
+        grid-row: 2;
+        font-size: 12px;
+        line-height: 1.4;
+        margin-bottom: 8px;
+      }
+
+      .shop-note {
+        grid-column: 2;
+        grid-row: 3;
+        font-size: 12px;
+        line-height: 1.4;
+        margin-top: 0;
+        padding: 10px;
       }
 
       .shop-actions {
-        flex-direction: column;
+        grid-column: 2;
+        grid-row: 4;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 7px;
+        margin-top: 8px;
       }
 
       .shop-btn {
-        width: 100%;
+        flex: 0 0 auto;
+        width: auto;
+        font-size: 11px;
+        font-weight: 600;
+        padding: 7px 12px;
       }
     }
   </style>

@@ -235,16 +235,27 @@
 
   .place-actions {
     flex-direction: row;
+    flex-wrap: wrap;
     gap: 7px;
     margin-top: auto;
     padding-top: 8px;
   }
 
   .place-btn {
-    flex: 1 1 0;
+    flex: 0 0 auto;
     width: auto;
     font-size: 11px;
-    padding: 8px 8px;
+    font-weight: 600;
+    padding: 7px 12px;
+    border-radius: 999px;
+  }
+
+  .place-card-noimage {
+    display: block;
+  }
+
+  .place-card-noimage .place-content {
+    padding: 15px;
   }
 }
 
@@ -688,6 +699,7 @@
     {
       id: "spiagge",
       icon: "🏖️",
+      hideImage: true,
       title: {
         it: "Spiagge a Salerno e dintorni",
         en: "Beaches in Salerno and nearby",
@@ -1604,6 +1616,10 @@
       var cards = category.places.map(function (place) {
         var cardClass = category.isEvents ? "place-card event-card" : "place-card";
 
+        if (category.hideImage) {
+          cardClass += " place-card-noimage";
+        }
+
         if (place.beachType === "free") {
           cardClass += " free-beach";
         }
@@ -1630,7 +1646,7 @@
 
         return `
           <article class="${cardClass}">
-            ${place.image ? `<img src="${place.image}" alt="${place.title[lang]}" onerror="this.onerror=null; this.src='assets/garden-main.jpg';">` : `<div class="place-img-placeholder" aria-hidden="true">🏖️</div>`}
+            ${category.hideImage ? "" : (place.image ? `<img src="${place.image}" alt="${place.title[lang]}" onerror="this.onerror=null; this.src='assets/garden-main.jpg';">` : `<div class="place-img-placeholder" aria-hidden="true">🏖️</div>`)}
             <div class="place-content">
               ${badge}
               <h3>${place.title[lang]}</h3>

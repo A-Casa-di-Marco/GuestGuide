@@ -188,25 +188,36 @@
       color: rgba(15, 127, 131, .18);
     }
   
-/* MOBILE: luoghi in 2 colonne + freccetta */
+/* MOBILE: luoghi in orizzontale + freccetta */
 @media (max-width: 720px) {
   .places-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-columns: 1fr !important;
     gap: 10px;
   }
 
   .place-card {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
     border-radius: 18px;
     overflow: hidden;
   }
 
-  .place-card img {
-    height: 110px !important;
+  .place-card img,
+  .place-card .place-img-placeholder {
+    width: 118px;
+    height: auto;
+    min-height: 130px;
+    flex: 0 0 118px;
     object-fit: cover;
   }
 
   .place-content {
+    flex: 1 1 auto;
+    min-width: 0;
     padding: 12px;
+    display: flex;
+    flex-direction: column;
   }
 
   .place-content h3 {
@@ -221,12 +232,15 @@
   }
 
   .place-actions {
-    flex-direction: column;
+    flex-direction: row;
     gap: 7px;
+    margin-top: auto;
+    padding-top: 10px;
   }
 
   .place-btn {
-    width: 100%;
+    flex: 1 1 0;
+    width: auto;
     font-size: 11px;
     padding: 8px 8px;
   }

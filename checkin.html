@@ -27,6 +27,18 @@
       --radius:28px;
     }
 
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible,
+    summary:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid var(--ottanio);
+      outline-offset: 2px;
+      border-radius: 8px;
+    }
+
     * {
       box-sizing:border-box;
       margin:0;
@@ -331,6 +343,7 @@
       .toggle-box summary {
         font-size:14px;
         padding:12px 18px;
+        min-height:50px;
       }
 
       .info-list li {
@@ -355,6 +368,7 @@
       .animated-toggle summary {
         font-size:14px;
         padding:12px 18px;
+        min-height:50px;
       }
 
       .toggle-box summary::before,

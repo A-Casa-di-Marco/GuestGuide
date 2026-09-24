@@ -27,6 +27,18 @@
       --radius:28px;
     }
 
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible,
+    summary:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid var(--ottanio);
+      outline-offset: 2px;
+      border-radius: 8px;
+    }
+
     * {
       box-sizing:border-box;
       margin:0;
@@ -514,7 +526,7 @@
 
   /* CATEGORIE CIBO: 2 colonne */
   .food-choice-grid {
-    grid-template-columns:repeat(2, 1fr) !important;
+    grid-template-columns:repeat(2, 1fr);
     gap:12px;
   }
 
@@ -559,7 +571,7 @@
 
   /* LOCALI/RISTORANTI: card orizzontali sul telefono, come i luoghi */
   .restaurant-grid {
-    grid-template-columns:1fr !important;
+    grid-template-columns:1fr;
     gap:12px;
   }
 
@@ -635,6 +647,7 @@
   .restaurant-btn {
     flex:0 0 auto;
     width:auto;
+    min-height:36px;
     font-size:11px;
     font-weight:600;
     padding:7px 12px;
@@ -642,6 +655,46 @@
 
   .scroll-hint {
     display:flex;
+  }
+}
+
+@media (max-width:480px) {
+  .restaurant-card {
+    padding:9px;
+    gap:10px;
+  }
+
+  .restaurant-card img {
+    width:92px;
+    height:92px;
+    flex-basis:92px;
+  }
+
+  .restaurant-btn {
+    min-height:34px;
+  }
+
+  .food-choice-grid {
+    grid-template-columns:1fr;
+    gap:10px;
+  }
+
+  .food-choice {
+    min-height:0;
+    padding:13px 14px;
+    flex-direction:row;
+    text-align:left;
+    justify-content:flex-start;
+    gap:12px;
+  }
+
+  .food-choice span {
+    margin-bottom:0;
+    font-size:22px;
+  }
+
+  .food-choice small {
+    display:none;
   }
 }
 </style>

@@ -66,6 +66,18 @@
       text-decoration: none;
     }
 
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible,
+    summary:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid var(--ottanio);
+      outline-offset: 2px;
+      border-radius: 8px;
+    }
+
     #lang-screen {
       min-height: 100dvh;
       position: relative;
@@ -777,8 +789,11 @@
       }
 
       .topbar a {
-        padding: 8px 12px;
+        padding: 11px 14px;
         font-size: 12px;
+        min-height: 40px;
+        display: inline-flex;
+        align-items: center;
       }
 
       .carousel img {
@@ -882,6 +897,16 @@
         align-items: center;
         justify-content: center;
       }
+
+    @media (max-width: 480px) {
+      .page-buttons {
+        grid-template-columns: 1fr;
+      }
+
+      .guide-btn {
+        min-height: 50px;
+      }
+    }
 
       .cards-grid,
       .card-grid,
@@ -1086,6 +1111,12 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 12px;
       margin-top: 14px;
+    }
+
+    @media (max-width: 1024px) {
+      .guest-setup-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
     .guest-setup-field label {

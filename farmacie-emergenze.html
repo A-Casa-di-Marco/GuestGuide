@@ -28,6 +28,18 @@
       --radius:28px;
     }
 
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible,
+    summary:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid var(--ottanio);
+      outline-offset: 2px;
+      border-radius: 8px;
+    }
+
     * {
       box-sizing:border-box;
       margin:0;
@@ -277,7 +289,7 @@
   .quick-grid,
   .pharmacy-grid,
   .service-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-columns: repeat(2, 1fr);
     gap: 10px;
   }
 
@@ -318,8 +330,23 @@
 
   .btn {
     width: 100%;
+    min-height: 40px;
     font-size: 11px;
     padding: 8px 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .quick-grid,
+  .pharmacy-grid,
+  .service-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .quick-card,
+  .pharmacy-card,
+  .service-card {
+    padding: 14px;
   }
 }
 

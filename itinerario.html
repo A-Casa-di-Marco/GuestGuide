@@ -28,6 +28,18 @@
       --radius:28px;
     }
 
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible,
+    summary:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid var(--ottanio);
+      outline-offset: 2px;
+      border-radius: 8px;
+    }
+
     * { box-sizing:border-box; margin:0; padding:0; }
     html { scroll-behavior:smooth; }
     body { background:var(--milk); color:var(--text); font-family:'Poppins',sans-serif; line-height:1.65; }
@@ -84,6 +96,17 @@
       border:1px solid rgba(15,127,131,.14);
     }
 
+    @media (max-width: 1024px) {
+      .form-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .question {
+        padding: 14px;
+      }
+    }
+
     .question.full { grid-column:1 / -1; }
     .question label,
     .question-title {
@@ -124,6 +147,7 @@
       font-size:13px;
       cursor:pointer;
       border:1px solid rgba(15,127,131,.10);
+      min-height:44px;
     }
 
     .choice input { margin-top:4px; accent-color:var(--ottanio); }
@@ -312,7 +336,7 @@
       .form-grid { grid-template-columns:1fr; gap:11px; }
       .question { padding:14px; border-radius:18px; }
       .choice-grid { grid-template-columns:1fr 1fr; gap:8px; }
-      .choice { font-size:12px; padding:8px; }
+      .choice { font-size:12px; padding:8px; min-height:44px; }
       .actions { flex-direction:column; }
       .btn { width:100%; min-height:46px; }
       .slot { grid-template-columns:1fr; gap:5px; padding:12px; }

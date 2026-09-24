@@ -29,6 +29,18 @@
       --radius:28px;
     }
 
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible,
+    summary:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid var(--ottanio);
+      outline-offset: 2px;
+      border-radius: 8px;
+    }
+
     * {
       box-sizing:border-box;
       margin:0;
@@ -589,6 +601,32 @@
         padding:13px 15px;
       }
 
+      .manual-details summary::before,
+      .manual-details summary::after {
+        font-size:13px;
+      }
+
+      .manual-details summary {
+        min-height:48px;
+        align-items:center;
+      }
+
+      @media (max-width: 480px) {
+        .manual-details summary {
+          min-height:52px;
+          padding:14px;
+        }
+
+        .moka-choice-buttons {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .moka-choice-button {
+          width: 100%;
+        }
+      }
+
       .manual-content {
         padding:15px;
       }
@@ -673,15 +711,15 @@
       }
 
       .waste-table td:nth-child(1)::before {
-        content:"Categoria";
+        content: var(--waste-label-category);
       }
 
       .waste-table td:nth-child(2)::before {
-        content:"Cosa mettere";
+        content: var(--waste-label-what);
       }
 
       .waste-table td:nth-child(3)::before {
-        content:"Attenzione";
+        content: var(--waste-label-attention);
       }
 
       .remote-top-layout {
@@ -2266,13 +2304,28 @@
         image.classList.toggle('is-active', languages.indexOf(lang) !== -1);
       });
 
-      document.querySelectorAll('.moka-choice-button').forEach(function (button) {
+document.querySelectorAll('.moka-choice-button').forEach(function (button) {
         button.addEventListener('click', function () {
           document.querySelectorAll('.moka-option').forEach(function (option) {
             option.hidden = option.id !== button.getAttribute('data-moka-target');
           });
         });
       });
+
+      var wasteLabels = {
+        it: { category: 'Categoria', what: 'Cosa mettere', attention: 'Attenzione' },
+        en: { category: 'Category', what: 'What to put', attention: 'Pay attention' },
+        es: { category: 'Categoría', what: 'Qué poner', attention: 'Atención' },
+        fr: { category: 'Catégorie', what: 'Quoi jeter', attention: 'Attention' },
+        de: { category: 'Kategorie', what: 'Was hineingehört', attention: 'Achtung' }
+      };
+      var label = wasteLabels[lang] || wasteLabels.it;
+      var wasteTable = document.querySelector('.waste-table');
+      if (wasteTable) {
+        wasteTable.style.setProperty('--waste-label-category', JSON.stringify(label.category));
+        wasteTable.style.setProperty('--waste-label-what', JSON.stringify(label.what));
+        wasteTable.style.setProperty('--waste-label-attention', JSON.stringify(label.attention));
+      }
 
       var home = document.querySelector('.back-home');
       if (home) {

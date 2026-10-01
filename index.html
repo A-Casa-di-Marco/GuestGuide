@@ -467,24 +467,6 @@
       max-width: 820px;
     }
 
-    .carousel {
-      display: flex;
-      gap: 16px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      padding: 8px 0 12px;
-    }
-
-    .carousel img {
-      flex: 0 0 78%;
-      max-width: 520px;
-      height: 320px;
-      object-fit: cover;
-      border-radius: 24px;
-      scroll-snap-align: center;
-      box-shadow: 0 12px 35px rgba(0, 80, 85, .16);
-    }
-
     .page-buttons {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
@@ -493,15 +475,41 @@
     }
 
     .guide-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
       background: var(--ottanio);
       color: #fff;
-      border-radius: 999px;
-      padding: 14px 18px;
+      border-radius: 22px;
+      padding: 18px 16px;
+      min-height: 132px;
       text-align: center;
       font-family: 'Poppins', sans-serif;
-      font-weight: 600;
       box-shadow: 0 8px 22px rgba(0, 90, 95, .16);
       transition: transform .18s, box-shadow .18s;
+    }
+
+    .guide-btn .guide-icon {
+      font-size: 30px;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .guide-btn .guide-label {
+      display: block;
+      font-weight: 700;
+      font-size: 15px;
+      line-height: 1.3;
+    }
+
+    .guide-btn .guide-desc {
+      display: block;
+      font-size: 12px;
+      font-weight: 400;
+      color: rgba(255, 255, 255, .88);
+      line-height: 1.35;
     }
 
     .guide-btn:hover {
@@ -521,23 +529,8 @@
       transform: translateY(-2px);
     }
 
-    .guide-btn.emergency-btn small {
+    .guide-btn.emergency-btn .guide-desc {
       color: rgba(255,255,255,.9);
-    }
-
-    .beta-link::after {
-      content: "BETA";
-      display: inline-block;
-      background: #f59e0b;
-      color: #1a1a1a;
-      font-size: 9px;
-      font-weight: 800;
-      letter-spacing: .06em;
-      border-radius: 999px;
-      padding: 2px 8px;
-      margin-left: 6px;
-      vertical-align: middle;
-      line-height: 1;
     }
 
     .guide-btn.beta-btn::after {
@@ -550,8 +543,7 @@
       letter-spacing: .06em;
       border-radius: 999px;
       padding: 2px 8px;
-      margin-left: 6px;
-      vertical-align: middle;
+      margin-top: 6px;
       line-height: 1;
     }
 
@@ -796,11 +788,6 @@
         align-items: center;
       }
 
-      .carousel img {
-        flex-basis: 88%;
-        height: 240px;
-      }
-
       .weather-box {
         padding: 15px;
         border-radius: 20px;
@@ -889,18 +876,29 @@
       }
 
       .guide-btn {
-        padding: 12px 10px;
-        font-size: 13px;
-        line-height: 1.25;
-        min-height: 58px;
+        padding: 14px 12px;
+        min-height: 120px;
         display: flex;
         align-items: center;
         justify-content: center;
       }
 
+      .guide-btn .guide-icon {
+        font-size: 26px;
+        margin-bottom: 4px;
+      }
+
+      .guide-btn .guide-label {
+        font-size: 14px;
+      }
+
+      .guide-btn .guide-desc {
+        font-size: 11px;
+      }
+
     @media (max-width: 480px) {
       .guide-btn {
-        min-height: 50px;
+        min-height: 110px;
       }
     }
 
@@ -1441,188 +1439,78 @@
         </div>
 
         <div class="page-buttons">
-<a class="guide-btn beta-btn" href="itinerario.html"
-             data-it="🗺️ Crea il tuo itinerario"
-             data-en="🗺️ Create your itinerary"
-             data-es="🗺️ Crea tu itinerario"
-             data-fr="🗺️ Créer votre itinéraire"
-             data-de="🗺️ Reiseroute erstellen">🗺️ Crea il tuo itinerario</a>
+<a class="guide-btn beta-btn" href="itinerario.html">
+          <span class="guide-icon" aria-hidden="true">🗺️</span>
+          <span class="guide-label" data-it="Crea il tuo itinerario" data-en="Create your itinerary" data-es="Crea tu itinerario" data-fr="Créez votre itinéraire" data-de="Reiseroute erstellen">Crea il tuo itinerario</span>
+          <span class="guide-desc" data-it="Un piano su misura giorno per giorno" data-en="A personalised plan day by day" data-es="Un plan a medida día a día" data-fr="Un plan sur mesure jour après jour" data-de="Ein persönlicher Plan Tag für Tag">Un piano su misura giorno per giorno</span>
+        </a>
 
-<a class="guide-btn emergency-btn" data-href="farmacie-emergenze.html" href="farmacie-emergenze.html"
-             data-it="💊 Farmacie ed emergenze"
-             data-en="💊 Pharmacies and emergencies"
-             data-es="💊 Farmacias y emergencias"
-             data-fr="💊 Pharmacies et urgences"
-             data-de="💊 Apotheken und Notfälle">💊 Farmacie ed emergenze</a>
+<a class="guide-btn emergency-btn" data-href="farmacie-emergenze.html" href="farmacie-emergenze.html">
+          <span class="guide-icon" aria-hidden="true">💊</span>
+          <span class="guide-label" data-it="Farmacie ed emergenze" data-en="Pharmacies and emergencies" data-es="Farmacias y emergencias" data-fr="Pharmacies et urgences" data-de="Apotheken und Notfälle">Farmacie ed emergenze</span>
+          <span class="guide-desc" data-it="Numeri utili, farmacie e pronto soccorso" data-en="Useful numbers, pharmacies and first aid" data-es="Números útiles, farmacias y urgencias" data-fr="Numéros utiles, pharmacies et urgences" data-de="Wichtige Nummern, Apotheken und Notruf">Numeri utili, farmacie e pronto soccorso</span>
+        </a>
 
-          <a class="guide-btn" href="#contatti"
-             data-it="📞 Contatti"
-             data-en="📞 Contacts"
-             data-es="📞 Contactos"
-             data-fr="📞 Contacts"
-             data-de="📞 Kontakte">📞 Contatti</a>
+          <a class="guide-btn" href="#contatti">
+          <span class="guide-icon" aria-hidden="true">📞</span>
+          <span class="guide-label" data-it="Contatti" data-en="Contacts" data-es="Contactos" data-fr="Contacts" data-de="Kontakte">Contatti</span>
+          <span class="guide-desc" data-it="Come raggiungerci e parlarci" data-en="How to reach and contact us" data-es="Cómo contactarnos" data-fr="Comment nous joindre" data-de="So erreicht und kontaktiert ihr uns">Come raggiungerci e parlarci</span>
+        </a>
 
-          <a class="guide-btn" href="check-in-out.html"
-             data-it="🧳 Check-in / Check-out"
-             data-en="🧳 Check-in / Check-out"
-             data-es="🧳 Check-in / Check-out"
-             data-fr="🧳 Check-in / Check-out"
-             data-de="🧳 Check-in / Check-out">🧳 Check-in / Check-out</a>
+          <a class="guide-btn" href="check-in-out.html">
+          <span class="guide-icon" aria-hidden="true">🧳</span>
+          <span class="guide-label" data-it="Check-in / Check-out" data-en="Check-in / Check-out" data-es="Check-in / Check-out" data-fr="Check-in / Check-out" data-de="Check-in / Check-out">Check-in / Check-out</span>
+          <span class="guide-desc" data-it="Arrivo, chiavi e partenza" data-en="Arrival, keys and departure" data-es="Llegada, llaves y salida" data-fr="Arrivée, clés et départ" data-de="Ankunft, Schlüssel und Abreise">Arrivo, chiavi e partenza</span>
+        </a>
 
-          <a class="guide-btn" href="manuale.html"
-             data-it="🏠 Manuale della casa"
-             data-en="🏠 House manual"
-             data-es="🏠 Manual de la casa"
-             data-fr="🏠 Manuel de la maison"
-             data-de="🏠 Hausbuch">🏠 Manuale della casa</a>
+          <a class="guide-btn" href="manuale.html">
+          <span class="guide-icon" aria-hidden="true">🏠</span>
+          <span class="guide-label" data-it="Manuale della casa" data-en="House manual" data-es="Manual de la casa" data-fr="Manuel de la maison" data-de="Hausbuch">Manuale della casa</span>
+          <span class="guide-desc" data-it="Come usare tutto in casa" data-en="How to use everything at home" data-es="Cómo usar todo en casa" data-fr="Comment tout utiliser dans la maison" data-de="So nutzt ihr alles im Haus">Come usare tutto in casa</span>
+        </a>
 
-          <a class="guide-btn" href="regole.html"
-             data-it="📋 Regole della casa"
-             data-en="📋 House rules"
-             data-es="📋 Reglas de la casa"
-             data-fr="📋 Règlement de la maison"
-             data-de="📋 Hausregeln">📋 Regole della casa</a>
+          <a class="guide-btn" href="regole.html">
+          <span class="guide-icon" aria-hidden="true">📋</span>
+          <span class="guide-label" data-it="Regole della casa" data-en="House rules" data-es="Reglas de la casa" data-fr="Règlement de la maison" data-de="Hausregeln">Regole della casa</span>
+          <span class="guide-desc" data-it="Buone pratiche per il soggiorno" data-en="Good practices for your stay" data-es="Buenas prácticas para la estancia" data-fr="Bonnes pratiques pour le séjour" data-de="Gute Regeln für den Aufenthalt">Buone pratiche per il soggiorno</span>
+        </a>
 
-          <a class="guide-btn" href="luoghi.html"
-             data-it="📍 Luoghi da visitare"
-             data-en="📍 Places to visit"
-             data-es="📍 Lugares para visitar"
-             data-fr="📍 Lieux à visiter"
-             data-de="📍 Sehenswürdigkeiten">📍 Luoghi da visitare</a>
+          <a class="guide-btn" href="luoghi.html">
+          <span class="guide-icon" aria-hidden="true">📍</span>
+          <span class="guide-label" data-it="Luoghi da visitare" data-en="Places to visit" data-es="Lugares para visitar" data-fr="Lieux à visiter" data-de="Sehenswürdigkeiten">Luoghi da visitare</span>
+          <span class="guide-desc" data-it="Salerno, Costiera e dintorni" data-en="Salerno, the coast and nearby" data-es="Salerno, la costa y alrededores" data-fr="Salerne, la côte et alentours" data-de="Salerno, die Küste und Umgebung">Salerno, Costiera e dintorni</span>
+        </a>
 
-          <a class="guide-btn" href="mangiare.html"
-             data-it="🍽️ Dove andare a mangiare"
-             data-en="🍽️ Where to eat"
-             data-es="🍽️ Dónde comer"
-             data-fr="🍽️ Où manger"
-             data-de="🍽️ Essen gehen">🍽️ Dove andare a mangiare</a>
+          <a class="guide-btn" href="mangiare.html">
+          <span class="guide-icon" aria-hidden="true">🍽️</span>
+          <span class="guide-label" data-it="Dove andare a mangiare" data-en="Where to eat" data-es="Dónde comer" data-fr="Où manger" data-de="Essen gehen">Dove andare a mangiare</span>
+          <span class="guide-desc" data-it="Ristoranti, pizzerie e locali" data-en="Restaurants, pizzerias and bars" data-es="Restaurantes, pizzerías y locales" data-fr="Restaurants, pizzerias et bars" data-de="Restaurants, Pizzerien und Lokale">Ristoranti, pizzerie e locali</span>
+        </a>
 
-          <a class="guide-btn" href="parcheggio.html"
-             data-it="🅿️ Dove parcheggiare"
-             data-en="🅿️ Where to park"
-             data-es="🅿️ Dónde aparcar"
-             data-fr="🅿️ Où se garer"
-             data-de="🅿️ Parken">🅿️ Dove parcheggiare</a>
+          <a class="guide-btn" href="parcheggio.html">
+          <span class="guide-icon" aria-hidden="true">🅿️</span>
+          <span class="guide-label" data-it="Dove parcheggiare" data-en="Where to park" data-es="Dónde aparcar" data-fr="Où se garer" data-de="Parken">Dove parcheggiare</span>
+          <span class="guide-desc" data-it="Parcheggio a casa e in città" data-en="Parking at home and in town" data-es="Aparcamiento en casa y en la ciudad" data-fr="Parking à la maison et en ville" data-de="Parken zu Hause und in der Stadt">Parcheggio a casa e in città</span>
+        </a>
 
-          <a class="guide-btn" href="spesa.html"
-             data-it="🛒 Dove fare la spesa"
-             data-en="🛒 Grocery shopping"
-             data-es="🛒 Dónde hacer la compra"
-             data-fr="🛒 Où faire les courses"
-             data-de="🛒 Einkaufen">🛒 Dove fare la spesa</a>
+          <a class="guide-btn" href="spesa.html">
+          <span class="guide-icon" aria-hidden="true">🛒</span>
+          <span class="guide-label" data-it="Dove fare la spesa" data-en="Grocery shopping" data-es="Dónde hacer la compra" data-fr="Où faire les courses" data-de="Einkaufen">Dove fare la spesa</span>
+          <span class="guide-desc" data-it="Supermercati e minimarket vicini" data-en="Nearby supermarkets and minimarkets" data-es="Supermercados y minimarkets cercanos" data-fr="Supermarchés et supérettes proches" data-de="Supermärkte und Minimärkte in der Nähe">Supermercati e minimarket vicini</span>
+        </a>
 
-          <a class="guide-btn" href="colazione.html"
-             data-it="☕ Colazione"
-             data-en="☕ Breakfast"
-             data-es="☕ Desayuno"
-             data-fr="☕ Petit-déjeuner"
-             data-de="☕ Frühstück">☕ Colazione</a>
+          <a class="guide-btn" href="colazione.html">
+          <span class="guide-icon" aria-hidden="true">☕</span>
+          <span class="guide-label" data-it="Colazione" data-en="Breakfast" data-es="Desayuno" data-fr="Petit-déjeuner" data-de="Frühstück">Colazione</span>
+          <span class="guide-desc" data-it="Al Brignan Cafè convenzionato" data-en="At the partner café Brignan Cafè" data-es="En el Brignan Cafè asociado" data-fr="Au Brignan Cafè partenaire" data-de="Im Partnercafé Brignan Cafè">Al Brignan Cafè convenzionato</span>
+        </a>
 
-          <a class="guide-btn" href="trasporti.html"
-             data-it="🚌 Trasporti"
-             data-en="🚌 Transport"
-             data-es="🚌 Transportes"
-             data-fr="🚌 Transports"
-             data-de="🚌 Verkehrsmittel">🚌 Trasporti</a>
-        </div>
-      </section>
-
-      <section id="home-gallery" class="home-gallery">
-        <h2 data-it="La casa"
-            data-en="The house"
-            data-es="La casa"
-            data-fr="La maison"
-            data-de="Das Haus">La casa</h2>
-
-        <div class="carousel">
-          <img src="assets/casa-1.jpg" alt="Camera matrimoniale">
-          <img src="assets/casa-2.jpg" alt="Soggiorno">
-          <img src="assets/casa-3.jpg" alt="Cameretta">
-          <img src="assets/casa-4.jpg" alt="Bagno">
-          <img src="assets/casa-5.jpg" alt="Cucina">
-          <img src="assets/casa-6.jpg" alt="Cucina">
-          <img src="assets/casa-7.jpg" alt="Cucina">
-          <img src="assets/casa-8.jpg" alt="Cucina">
-          <img src="assets/casa-9.jpg" alt="Cucina">
-          <img src="assets/casa-10.jpg" alt="Cucina">
-        </div>
-      </section>
-
-      <section id="marco-section" class="marco-section">
-        <h2 data-it="Chi è Marco?"
-            data-en="Who is Marco?"
-            data-es="¿Quién es Marco?"
-            data-fr="Qui est Marco ?"
-            data-de="Wer ist Marco?">Chi è Marco?</h2>
-
-        <div class="marco-story">
-          <div class="marco-text">
-            <p class="greeting"
-               data-it="Gentili Ospiti,"
-               data-en="Dear Guests,"
-               data-es="Queridos huéspedes:"
-               data-fr="Chers hôtes,"
-               data-de="Liebe Gäste,">
-              Gentili Ospiti,
-            </p>
-
-            <p data-it="Forse avrete notato che prima di arrivare qui non avete mai parlato o chattato con Marco. E magari vi stareste chiedendo: “Sì, ma chi è Marco?” La verità è semplice... Questa casa non è gestita da Marco. È dedicata a lui."
-               data-en="Perhaps you may have noticed that before arriving here, you never actually spoke or chatted with Marco. And maybe you are wondering: “Yes, but who is Marco?” The truth is simple... This house is not managed by Marco. It is dedicated to him."
-               data-es="Quizá habréis notado que antes de llegar aquí nunca hablasteis ni chateasteis con Marco. Y tal vez os estaréis preguntando: “Sí, pero ¿quién es Marco?” La verdad es muy sencilla... Esta casa no está gestionada por Marco. Está dedicada a él."
-               data-fr="Vous avez peut-être remarqué qu’avant d’arriver ici, vous n’avez jamais parlé ni échangé de messages avec Marco. Et vous vous demandez peut-être : « Oui, mais qui est Marco ? » La vérité est simple... Cette maison n’est pas gérée par Marco. Elle lui est dédiée."
-               data-de="Vielleicht ist euch aufgefallen, dass ihr, bevor ihr hier angekommen seid, nie wirklich mit Marco gesprochen oder geschrieben habt. Und vielleicht fragt ihr euch: „Ja, aber wer ist Marco?“ Die Wahrheit ist einfach... Dieses Haus wird nicht von Marco verwaltet. Es ist ihm gewidmet.">
-              Forse avrete notato che prima di arrivare qui non avete mai parlato o chattato con Marco. E magari vi stareste chiedendo: “Sì, ma chi è Marco?” La verità è semplice... Questa casa non è gestita da Marco. È dedicata a lui.
-            </p>
-
-            <p data-it="Marco era nostro zio... Non viveva qui, ma con noi, ed era un po’ come un fratello maggiore. Era una capa fresca, smemorato, disorganizzato e capatosta come pochi, ma sempre allegro e con il sorriso facile. Lavorava tanto, a modo suo, e mangiare bene per lui non era mai abbastanza. Per il suo aspetto imponente e affettuoso lo chiamavamo affettuosamente “bambolotto”."
-               data-en="Marco was our uncle... He did not live here, but with us, and he was a bit like an older brother. He was free-spirited, forgetful, disorganised and stubborn like few others, but always cheerful and quick to smile. He worked hard, in his own way, and good food was never enough for him. Because of his big and affectionate presence, we lovingly called him “bambolotto”."
-               data-es="Marco era nuestro tío... No vivía aquí, sino con nosotras, y era un poco como un hermano mayor. Era una persona despreocupada, olvidadiza, desorganizada y muy testaruda, pero siempre alegre y con una sonrisa fácil. Trabajaba mucho, a su manera, y para él comer bien nunca era suficiente. Por su presencia imponente y cariñosa, le llamábamos con cariño “bambolotto”."
-               data-fr="Marco était notre oncle... Il ne vivait pas ici, mais avec nous, et il était un peu comme un grand frère. Il était insouciant, distrait, désorganisé et têtu comme peu de gens, mais toujours joyeux et avec le sourire facile. Il travaillait beaucoup, à sa manière, et pour lui, bien manger n’était jamais assez. Pour sa présence imposante et affectueuse, nous l’appelions tendrement « bambolotto »."
-               data-de="Marco war unser Onkel... Er lebte nicht hier, sondern bei uns, und er war ein bisschen wie ein großer Bruder. Er war sorglos, vergesslich, unorganisiert und störrisch wie nur wenige, aber immer fröhlich und mit einem leichten Lächeln. Er arbeitete viel, auf seine Weise, und gutes Essen war ihm nie genug. Wegen seiner imposanten und liebevollen Erscheinung nannten wir ihn liebevoll „bambolotto“.">
-              Marco era nostro zio... Non viveva qui, ma con noi, ed era un po’ come un fratello maggiore. Era una capa fresca, smemorato, disorganizzato e capatosta come pochi, ma sempre allegro e con il sorriso facile. Lavorava tanto, a modo suo, e mangiare bene per lui non era mai abbastanza. Per il suo aspetto imponente e affettuoso lo chiamavamo affettuosamente “bambolotto”.
-            </p>
-
-            <p data-it="Purtroppo Marco non è più con noi, ma questa casa è un modo per tenerlo vicino e ricordarlo ogni giorno. Aprire una casa come questa era uno dei suoi sogni, e noi l’abbiamo fatto anche per lui."
-               data-en="Sadly, Marco is no longer with us, but this house is a way to keep him close and remember him every day. Opening a home like this was one of his dreams, and we did it for him too."
-               data-es="Por desgracia, Marco ya no está con nosotras, pero esta casa es una forma de tenerlo cerca y recordarlo cada día. Abrir una casa como esta era uno de sus sueños, y también lo hicimos por él."
-               data-fr="Malheureusement, Marco n’est plus avec nous, mais cette maison est une façon de le garder près de nous et de nous souvenir de lui chaque jour. Ouvrir une maison comme celle-ci était l’un de ses rêves, et nous l’avons fait aussi pour lui."
-               data-de="Leider ist Marco nicht mehr bei uns, aber dieses Haus ist eine Möglichkeit, ihn nahe zu haben und jeden Tag an ihn zu erinnern. Ein Haus wie dieses zu eröffnen war einer seiner Träume, und wir haben es auch für ihn getan.">
-              Purtroppo Marco non è più con noi, ma questa casa è un modo per tenerlo vicino e ricordarlo ogni giorno. Aprire una casa come questa era uno dei suoi sogni, e noi l’abbiamo fatto anche per lui.
-            </p>
-
-            <p data-it="E a volte sembra proprio che Marco venga a farci visita… Se durante il vostro soggiorno vedete un pettirosso avvicinarsi alla casa, non spaventatelo. Ci capita spesso, a volte quando scendiamo a pulire oppure quando passiamo un pomeriggio qui... Non si fa toccare, ma a volte entra persino in casa."
-               data-en="And sometimes it really feels as if Marco comes to visit us… If during your stay you see a robin coming close to the house, please do not scare it away. It happens quite often, sometimes when we come down to clean or spend an afternoon here... It does not let itself be touched, but sometimes it even comes inside the house."
-               data-es="Y a veces realmente parece que Marco venga a visitarnos… Si durante vuestra estancia veis un petirrojo acercarse a la casa, no lo asustéis. Nos pasa a menudo, a veces cuando bajamos a limpiar o cuando pasamos aquí una tarde... No se deja tocar, pero a veces incluso entra en casa."
-               data-fr="Et parfois, on a vraiment l’impression que Marco vient nous rendre visite… Si pendant votre séjour vous voyez un rouge-gorge s’approcher de la maison, ne l’effrayez pas. Cela nous arrive souvent, parfois quand nous descendons pour nettoyer ou quand nous passons un après-midi ici... Il ne se laisse pas toucher, mais il entre parfois même dans la maison."
-               data-de="Und manchmal scheint es wirklich, als käme Marco uns besuchen... Wenn ihr während eures Aufenthalts ein Rotkehlchen seht, das sich dem Haus nähert, erschreckt es nicht. Das passiert uns oft, manchmal wenn wir zum Putzen herunterkommen oder einen Nachmittag hier verbringen... Es lässt sich nicht anfassen, aber manchmal kommt es sogar ins Haus.">
-              E a volte sembra proprio che Marco venga a farci visita… Se durante il vostro soggiorno vedete un pettirosso avvicinarsi alla casa, non spaventatelo. Ci capita spesso, a volte quando scendiamo a pulire oppure quando passiamo un pomeriggio qui... Non si fa toccare, ma a volte entra persino in casa.
-            </p>
-
-            <p data-it="Per il suo comportamento e anche per il suo aspetto chiatto, ci è venuto naturale pensare, nonostante siamo persone poco superstiziose, che sia Marco che passa a dare un’occhiata e a controllare che sia tutto a posto. Lo chiamiamo affettuosamente “il pettirosso chiatto”, perché anche lui, come nostro zio, non era certo uno che si teneva leggero."
-               data-en="Because of its behaviour and even its plump appearance, it felt natural to think — even though we are not very superstitious people — that it might be Marco stopping by to check that everything is all right. We lovingly call it “the chubby robin”, because, just like our uncle, he was certainly not someone who stayed skinny."
-               data-es="Por su comportamiento y también por su aspecto regordete, nos vino natural pensar, aunque no somos personas supersticiosas, que era Marco pasando a echar un vistazo y comprobar que todo estaba bien. Lo llamamos cariñosamente “el petirrojo gordito”, porque él también, como nuestro tío, no era precisamente de los que se mantenían ligeros."
-               data-fr="À cause de son comportement et même de son aspect un peu dodu, il nous est venu naturellement à l’esprit, même si nous ne sommes pas très superstitieuses, que c’était Marco qui passait jeter un coup d’œil pour vérifier que tout allait bien. Nous l’appelons affectueusement « le rouge-gorge dodu », car lui aussi, comme notre oncle, n’était pas vraiment du genre à rester léger."
-               data-de="Wegen seines Verhaltens und auch seines pummeligen Aussehens lag es für uns nahe zu denken, obwohl wir keine sehr abergläubischen Menschen sind, dass Marco vorbeikommt, um nachzusehen und zu prüfen, dass alles in Ordnung ist. Wir nennen es liebevoll „das pummelige Rotkehlchen“, denn auch er, wie unser Onkel, war sicherlich keiner, der auf sein Gewicht achtete.">
-              Per il suo comportamento e anche per il suo aspetto chiatto, ci è venuto naturale pensare, nonostante siamo persone poco superstiziose, che sia Marco che passa a dare un’occhiata e a controllare che sia tutto a posto. Lo chiamiamo affettuosamente “il pettirosso chiatto”, perché anche lui, come nostro zio, non era certo uno che si teneva leggero.
-            </p>
-
-            <p data-it="Se lo vedete, se vi va, potete anche mandarci una foto, ci farà sorridere pensare che Marco sia passato a trovarvi. Se qui vi sentirete bene, se vi sembrerà davvero di essere a casa, allora probabilmente Marco è passato. Ha guardato in giro, ha borbottato qualcosa… e se n’è andato soddisfatto."
-               data-en="If you see it, and if you feel like it, you can also send us a photo — it will make us smile to think that Marco stopped by to visit you. If you feel good here, if it truly feels like home, then Marco has probably passed by. He looked around, grumbled about something… and left satisfied."
-               data-es="Si lo veis, y si os apetece, también podéis enviarnos una foto: nos hará sonreír pensar que Marco ha pasado a visitaros. Si aquí os sentís bien, si de verdad os parece estar en casa, entonces probablemente Marco ha pasado por aquí. Ha mirado alrededor, ha gruñido algo… y se ha ido satisfecho."
-               data-fr="Si vous le voyez, et si vous en avez envie, vous pouvez aussi nous envoyer une photo : cela nous fera sourire de penser que Marco est passé vous rendre visite. Si vous vous sentez bien ici, si vous avez vraiment l’impression d’être chez vous, alors Marco est probablement passé. Il a regardé autour de lui, a marmonné quelque chose… puis il est reparti satisfait."
-               data-de="Wenn ihr es seht und Lust habt, könnt ihr uns auch ein Foto schicken — es wird uns zum Lächeln bringen zu denken, dass Marco bei euch vorbeigekommen ist. Wenn ihr euch hier wohlfühlt, wenn es sich wirklich wie zu Hause anfühlt, dann ist Marco wahrscheinlich vorbeigekommen. Er hat sich umgesehen, etwas vor sich hin gemurmelt… und ist zufrieden gegangen.">
-              Se lo vedete, se vi va, potete anche mandarci una foto, ci farà sorridere pensare che Marco sia passato a trovarvi. Se qui vi sentirete bene, se vi sembrerà davvero di essere a casa, allora probabilmente Marco è passato. Ha guardato in giro, ha borbottato qualcosa… e se n’è andato soddisfatto.
-            </p>
-
-            <p class="marco-sign"
-               data-it="— Stefania, Ambra, Asja"
-               data-en="— Stefania, Ambra, Asja"
-               data-es="— Stefania, Ambra, Asja"
-               data-fr="— Stefania, Ambra, Asja"
-               data-de="— Stefania, Ambra, Asja">
-              — Stefania, Ambra, Asja
-            </p>
-          </div>
+          <a class="guide-btn" href="trasporti.html">
+          <span class="guide-icon" aria-hidden="true">🚌</span>
+          <span class="guide-label" data-it="Trasporti" data-en="Transport" data-es="Transportes" data-fr="Transports" data-de="Verkehrsmittel">Trasporti</span>
+          <span class="guide-desc" data-it="Bus, traghetti, taxi e Uber" data-en="Buses, ferries, taxis and Uber" data-es="Autobuses, ferris, taxis y Uber" data-fr="Bus, ferries, taxis et Uber" data-de="Bus, Fähren, Taxi und Uber">Bus, traghetti, taxi e Uber</span>
+        </a>
+        </div></div>
 
           <div class="marco-photo">
             <img src="assets/pettirosso1.png" alt="Il pettirosso di Marco">

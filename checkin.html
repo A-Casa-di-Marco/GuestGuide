@@ -301,6 +301,30 @@
       text-align:center;
     }
 
+    .check-progress-track {
+      height: 10px;
+      background: var(--ottanio-soft);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+
+    .check-progress-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--ottanio);
+      border-radius: 999px;
+      transition: width .3s ease;
+    }
+
+    .check-progress-fill.done {
+      background: #2e9e6b;
+    }
+
+    .check-progress-text {
+      font-size: 13px;
+    }
+
     .final-reminder {
       margin-top:16px;
       background:#fff8e8;
@@ -419,7 +443,7 @@
       border: 2px solid rgba(15,127,131,.22);
       background: #fff;
       border-radius: 20px;
-      padding: 16px;
+      padding: 18px 14px;
       text-align: center;
       font-family: 'Poppins',sans-serif;
       font-size: 15px;
@@ -427,6 +451,12 @@
       color: var(--ottanio-dark);
       cursor: pointer;
       transition: all .18s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      min-height: 130px;
     }
 
     .checkin-choice-btn:hover {
@@ -441,14 +471,45 @@
       border-color: var(--ottanio);
     }
 
-    .checkin-choice-btn span {
+    .checkin-choice-btn .choice-icon {
       display: block;
-      font-size: 26px;
-      margin-bottom: 6px;
+      font-size: 30px;
+      line-height: 1;
+    }
+
+    .checkin-choice-btn .choice-label {
+      display: block;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    .checkin-choice-btn .choice-desc {
+      display: block;
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+
+    .checkin-choice-btn.active .choice-desc {
+      color: rgba(255,255,255,.9);
     }
 
     .checkin-panel {
       display: none;
+    }
+
+    .section-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--ottanio-dark);
+      margin: 18px 0 10px 0;
+    }
+
+    .section-title:first-child {
+      margin-top: 0;
     }
 
     .close-toggle {
@@ -685,19 +746,21 @@
         <summary data-it="🛂 Check-in" data-en="🛂 Check-in" data-es="🛂 Check-in" data-fr="🛂 Check-in" data-de="🛂 Check-in">🛂 Check-in</summary>
         <div class="toggle-content">
 
-          <div class="checkin-choice-grid">
+<div class="checkin-choice-grid">
             <button class="checkin-choice-btn" onclick="showCheckinPanel('presenza')" id="btnPresenza">
-              <span>🤝</span>
-              <span data-it="Check-in in presenza" data-en="In-person check-in" data-es="Check-in presencial" data-fr="Check-in en personne" data-de="Check-in in Präsenz">Check-in in presenza</span>
+              <span class="choice-icon" aria-hidden="true">🤝</span>
+              <span class="choice-label" data-it="Check-in in presenza" data-en="In-person check-in" data-es="Check-in presencial" data-fr="Check-in en personne" data-de="Check-in in Präsenz">Check-in in presenza</span>
+              <span class="choice-desc" data-it="Vi aspettiamo al cancello" data-en="We will meet you at the gate" data-es="Os esperamos en la cancela" data-fr="Nous vous attendons au portail" data-de="Wir erwarten euch am Tor">Vi aspettiamo al cancello</span>
             </button>
             <button class="checkin-choice-btn" onclick="showCheckinPanel('self')" id="btnSelf">
-              <span>🔑</span>
-              <span data-it="Self check-in" data-en="Self check-in" data-es="Auto check-in" data-fr="Self check-in" data-de="Self check-in">Self check-in</span>
+              <span class="choice-icon" aria-hidden="true">🔑</span>
+              <span class="choice-label" data-it="Self check-in" data-en="Self check-in" data-es="Auto check-in" data-fr="Self check-in" data-de="Self check-in">Self check-in</span>
+              <span class="choice-desc" data-it="Arrivo in autonomia con la KeyBox" data-en="Arrive on your own with the KeyBox" data-es="Llegada autónoma con la KeyBox" data-fr="Arrivée autonome avec la KeyBox" data-de="Autonome Ankunft mit der KeyBox">Arrivo in autonomia con la KeyBox</span>
             </button>
           </div>
 
           <div id="panelPresenza" class="checkin-panel">
-            <h3 data-it="Prima di arrivare" data-en="Before arriving" data-es="Antes de llegar" data-fr="Avant d'arriver" data-de="Vor der Ankunft" style="font-family:'Poppins',sans-serif;font-size:18px;font-weight:700;color:var(--ottanio-dark);margin:0 0 10px 0;">Prima di arrivare</h3>
+            <h3 class="section-title" data-it="Prima di arrivare" data-en="Before arriving" data-es="Antes de llegar" data-fr="Avant d'arriver" data-de="Vor der Ankunft">Prima di arrivare</h3>
             <ul class="info-list" style="margin-bottom:18px;">
               <li data-it-html="Comunicateci in anticipo <strong>l&rsquo;orario di arrivo previsto</strong>, così possiamo organizzarci per accogliervi." data-en-html="Please let us know <strong>your expected arrival time</strong> in advance, so we can be ready to welcome you." data-es-html="Comunicadnos con antelación <strong>la hora prevista de llegada</strong> para que podamos organizarnos." data-fr-html="Communiquez-nous à l&rsquo;avance <strong>votre heure d&rsquo;arrivée prévue</strong> afin que nous puissions nous organiser." data-de-html="Teilt uns im Voraus <strong>eure voraussichtliche Ankunftszeit</strong> mit, damit wir uns auf euren Empfang vorbereiten können.">Comunicateci in anticipo <strong>l'orario di arrivo previsto</strong>, così possiamo organizzarci per accogliervi.</li>
               <li data-it-html="Inviateci un messaggio circa <strong>30 minuti prima del vostro arrivo</strong>, così saremo pronti ad accogliervi al cancello." data-en-html="Send us a message about <strong>30 minutes before your arrival</strong>, so we can be ready to welcome you at the gate." data-es-html="Enviadnos un mensaje unos <strong>30 minutos antes de vuestra llegada</strong> para que estemos listos en la cancela." data-fr-html="Envoyez-nous un message environ <strong>30 minutes avant votre arrivée</strong>, nous serons prêts à vous accueillir au portail." data-de-html="Schreibt uns etwa <strong>30 Minuten vor eurer Ankunft</strong>, damit wir bereit sind, euch am Tor zu empfangen.">Inviateci un messaggio circa <strong>30 minuti prima del vostro arrivo</strong>, così saremo pronti ad accogliervi al cancello.</li>
@@ -709,7 +772,7 @@
               <span class="photo-badge mailbox" data-it="📬 Cassetta &quot;A Casa di Marco&quot;" data-en="📬 &quot;A Casa di Marco&quot; mailbox" data-es="📬 Buzón &quot;A Casa di Marco&quot;" data-fr="📬 Boîte &quot;A Casa di Marco&quot;" data-de="📬 Briefkasten &quot;A Casa di Marco&quot;">📬 Cassetta "A Casa di Marco"</span>
             </div>
 
-            <h3 data-it="Al check-in" data-en="At check-in" data-es="En el check-in" data-fr="Lors du check-in" data-de="Beim Check-in" style="font-family:'Poppins',sans-serif;font-size:18px;font-weight:700;color:var(--ottanio-dark);margin:18px 0 10px 0;">Al check-in</h3>
+            <h3 class="section-title" data-it="Al check-in" data-en="At check-in" data-es="En el check-in" data-fr="Lors du check-in" data-de="Beim Check-in">Al check-in</h3>
             <ul class="info-list">
               <li data-it-html="Ci incontreremo <strong>davanti al cancello della struttura</strong>." data-en-html="We will meet you <strong>in front of the property gate</strong>." data-es-html="Nos encontraremos <strong>delante de la cancela de la propiedad</strong>." data-fr-html="Nous nous retrouverons <strong>devant le portail de la propriété</strong>." data-de-html="Wir treffen uns <strong>vor dem Tor der Unterkunft</strong>.">Ci incontreremo <strong>davanti al cancello della struttura</strong>.</li>
               <li data-it-html="Verranno richiesti i <strong>documenti di identità di tutti gli ospiti</strong>, inclusi <strong>i bambini</strong>." data-en-html="<strong>Identity documents of all guests</strong> will be required, including <strong>children</strong>." data-es-html="Se solicitarán los <strong>documentos de identidad de todos los huéspedes</strong>, incluidos <strong>los niños</strong>." data-fr-html="Les <strong>pièces d&rsquo;identité de tous les voyageurs</strong> seront demandées, y compris <strong>celles des enfants</strong>." data-de-html="Es werden die <strong>Ausweisdokumente aller Gäste</strong> verlangt, einschließlich <strong>der Kinder</strong>.">Verranno richiesti i <strong>documenti di identità di tutti gli ospiti</strong>, inclusi <strong>i bambini</strong>.</li>
@@ -720,7 +783,7 @@
           </div>
 
           <div id="panelSelf" class="checkin-panel">
-            <h3 data-it="Self check-in" data-en="Self check-in" data-es="Auto check-in" data-fr="Self check-in" data-de="Self check-in" style="font-family:'Poppins',sans-serif;font-size:18px;font-weight:700;color:var(--ottanio-dark);margin:0 0 10px 0;">Self check-in</h3>
+            <h3 class="section-title" data-it="Self check-in" data-en="Self check-in" data-es="Auto check-in" data-fr="Self check-in" data-de="Self check-in">Self check-in</h3>
 
             <a class="self-map-link" href="https://maps.app.goo.gl/tL37r51JpKZJc6j87" target="_blank" data-it="📍 Raggiungi la casa su Google Maps" data-en="📍 Reach the house on Google Maps" data-es="📍 Llega a la casa en Google Maps" data-fr="📍 Rejoignez la maison sur Google Maps" data-de="📍 Erreicht das Haus über Google Maps">📍 Raggiungi la casa su Google Maps</a>
 
@@ -765,13 +828,13 @@
 
                 <div class="note" data-it-html="<strong>Importante:</strong> durante il soggiorno custodite con cura le chiavi e il telecomando. In caso di smarrimento potrebbe essere applicata una penale." data-en-html="<strong>Important:</strong> during your stay, please take good care of the keys and remote. In case of loss, a penalty may be applied." data-es-html="<strong>Importante:</strong> durante la estancia, cuidad bien las llaves y el mando. En caso de pérdida, podría aplicarse una penalización." data-fr-html="<strong>Important :</strong> pendant votre séjour, prenez soin des clés et de la télécommande. En cas de perte, une pénalité peut être appliquée." data-de-html="<strong>Wichtig:</strong> Während des Aufenthalts verwahrt die Schlüssel und die Fernbedienung sorgfältig. Bei Verlust kann eine Strafe erhoben werden."><strong>Importante:</strong> durante il soggiorno custodite con cura le chiavi e il telecomando. In caso di smarrimento potrebbe essere applicata una penale.</div>
 
-                <h3 data-it="Telecomando dei cancelli" data-en="Gate remote control" data-es="Mando de las puertas" data-fr="Télécommande des portails" data-de="Fernbedienung der Tore" style="font-family:'Poppins',sans-serif;font-size:18px;font-weight:700;color:var(--ottanio-dark);margin:16px 0 10px 0;">Telecomando dei cancelli</h3>
+                <h3 class="section-title" data-it="Telecomando dei cancelli" data-en="Gate remote control" data-es="Mando de las puertas" data-fr="Télécommande des portails" data-de="Fernbedienung der Tore">Telecomando dei cancelli</h3>
                 <ul class="info-list">
                   <li data-it-html="<strong>Tasto B:</strong> apre il cancello condominiale." data-en-html="<strong>Button B:</strong> opens the condominium gate." data-es-html="<strong>Botón B:</strong> abre la cancela comunitaria." data-fr-html="<strong>Bouton B :</strong> ouvre le portail de la copropriété." data-de-html="<strong>Taste B:</strong> öffnet das Tor der Wohnanlage."><strong>Tasto B:</strong> apre il cancello condominiale.</li>
                   <li data-it-html="<strong>Tasti C e D:</strong> non hanno nessuna funzionalità per la casa." data-en-html="<strong>Buttons C and D:</strong> they have no function for the house." data-es-html="<strong>Botones C y D:</strong> no tienen ninguna función para la casa." data-fr-html="<strong>Boutons C et D :</strong> ils n&rsquo;ont aucune fonction pour la maison." data-de-html="<strong>Tasten C und D:</strong> haben keine Funktion für das Haus."><strong>Tasti C e D:</strong> non hanno nessuna funzionalità per la casa.</li>
                 </ul>
 
-                <h3 data-it="Chiave lunga" data-en="Long key" data-es="Llave larga" data-fr="Clé longue" data-de="Langer Schlüssel" style="font-family:'Poppins',sans-serif;font-size:18px;font-weight:700;color:var(--ottanio-dark);margin:16px 0 10px 0;">Chiave lunga</h3>
+                <h3 class="section-title" data-it="Chiave lunga" data-en="Long key" data-es="Llave larga" data-fr="Clé longue" data-de="Langer Schlüssel">Chiave lunga</h3>
                 <ul class="info-list">
                   <li data-it-html="La <strong>chiave lunga</strong> apre la porta della veranda, cioè la porta d&rsquo;ingresso della casa." data-en-html="The <strong>long key</strong> opens the veranda door, which is the entrance door to the house." data-es-html="La <strong>llave larga</strong> abre la puerta de la veranda, es decir, la puerta de entrada de la casa." data-fr-html="La <strong>clé longue</strong> ouvre la porte de la véranda, c&rsquo;est-à-dire la porte d&rsquo;entrée de la maison." data-de-html="Der <strong>lange Schlüssel</strong> öffnet die Verandatür, also die Eingangstür des Hauses.">La <strong>chiave lunga</strong> apre la porta della veranda, cioè la porta d&rsquo;ingresso della casa.</li>
                   <li data-it-html="Per aprire correttamente la porta, inserite la chiave con la parte dritta con lo scalino rivolta verso <strong>l&rsquo;alto</strong> e <strong>girate verso sinistra</strong>." data-en-html="To open correctly, insert the key with the straight stepped side facing <strong>upwards</strong> and <strong>turn left</strong>." data-es-html="Para abrir correctamente, introducid la llave con la parte recta con el escalón hacia <strong>arriba</strong> y <strong>girad a la izquierda</strong>." data-fr-html="Pour ouvrir correctement, insérez la clé avec la partie droite avec l&rsquo;encoche orientée vers <strong>le haut</strong> et <strong>tournez à gauche</strong>." data-de-html="Um die Tür richtig zu öffnen, steckt den Schlüssel mit dem geraden Teil mit der Stufe nach <strong>oben</strong> und <strong>dreht nach links</strong>.">Per aprire correttamente la porta, inserite la chiave con la parte dritta con lo scalino rivolta verso <strong>l&rsquo;alto</strong> e <strong>girate verso sinistra</strong>.</li>
@@ -779,7 +842,7 @@
 
                 <img class="key-img" src="assets/serratura.jpeg" alt="Serratura" style="margin-top:6px;">
 
-                <h3 data-it="Altra chiave" data-en="Other key" data-es="Otra llave" data-fr="Autre clé" data-de="Anderer Schlüssel" style="font-family:'Poppins',sans-serif;font-size:18px;font-weight:700;color:var(--ottanio-dark);margin:16px 0 10px 0;">Altra chiave</h3>
+                <h3 class="section-title" data-it="Altra chiave" data-en="Other key" data-es="Otra llave" data-fr="Autre clé" data-de="Anderer Schlüssel">Altra chiave</h3>
                 <ul class="info-list">
                   <li data-it-html="L&rsquo;altra chiave apre il <strong>cancelletto</strong> vicino al cancello del giardino." data-en-html="The other key opens the <strong>small gate</strong> next to the garden gate." data-es-html="La otra llave abre la <strong>pequeña cancela</strong> junto a la cancela del jardín." data-fr-html="L&rsquo;autre clé ouvre le <strong>petit portail</strong> à côté du portail du jardin." data-de-html="Der andere Schlüssel öffnet das <strong>kleine Tor</strong> neben dem Gartentor.">L&rsquo;altra chiave apre il <strong>cancelletto</strong> vicino al cancello del giardino.</li>
                 </ul>
@@ -874,7 +937,10 @@
             <label class="check-item"><input type="checkbox" class="checkout-checkbox" data-check-key="message"><span data-it="Ho inviato un messaggio per confermare il check-out." data-en="I have sent a message to confirm check-out." data-es="He enviado un mensaje para confirmar el check-out." data-fr="J&rsquo;ai envoyé un message pour confirmer le check-out." data-de="Ich habe eine Nachricht gesendet, um den Check-out zu bestätigen.">Ho inviato un messaggio per confermare il check-out.</span></label>
           </div>
 
-          <div id="check-progress" class="check-progress"></div>
+          <div id="check-progress" class="check-progress">
+            <div class="check-progress-track"><div class="check-progress-fill" id="check-progress-fill"></div></div>
+            <span class="check-progress-text" id="check-progress-text"></span>
+          </div>
 
           <div id="check-complete-message" class="check-complete-message" data-it="🎉 Tutto fatto, grazie! Buon viaggio e speriamo di rivedervi presto ad A Casa di Marco." data-en="🎉 All done, thank you! Have a safe trip and we hope to see you again soon at A Casa di Marco." data-es="🎉 ¡Todo listo, gracias! Buen viaje y esperamos volver a veros pronto en A Casa di Marco." data-fr="🎉 Tout est fait, merci ! Bon voyage et nous espérons vous revoir bientôt à A Casa di Marco." data-de="🎉 Alles erledigt, danke! Gute Reise und wir hoffen, euch bald wieder bei A Casa di Marco zu sehen.">🎉 Tutto fatto, grazie! Buon viaggio e speriamo di rivedervi presto ad A Casa di Marco.</div>
 
@@ -1018,15 +1084,23 @@
       var checkboxes = document.querySelectorAll('.checkout-checkbox');
       var checked = document.querySelectorAll('.checkout-checkbox:checked').length;
       var progress = document.getElementById('check-progress');
+      var progressText = document.getElementById('check-progress-text');
+      var progressFill = document.getElementById('check-progress-fill');
       var completeMessage = document.getElementById('check-complete-message');
 
       if (!progress || !checkboxes.length) return;
 
       var labels = checklistLabels[currentLang] || checklistLabels.it;
       var isComplete = checked === checkboxes.length;
+      var percent = Math.round((checked / checkboxes.length) * 100);
+
+      if (progressFill) {
+        progressFill.style.width = percent + '%';
+        progressFill.classList.toggle('done', isComplete);
+      }
 
       if (isComplete) {
-        progress.textContent = labels.allDone;
+        if (progressText) progressText.textContent = labels.allDone;
         if (completeMessage) completeMessage.classList.add('show');
 
         if (allowConfetti && !checklistCompletedOnce) {
@@ -1035,7 +1109,7 @@
 
         checklistCompletedOnce = true;
       } else {
-        progress.textContent = checked + '/' + checkboxes.length + ' ' + labels.completed;
+        if (progressText) progressText.textContent = checked + '/' + checkboxes.length + ' ' + labels.completed;
         if (completeMessage) completeMessage.classList.remove('show');
         checklistCompletedOnce = false;
       }

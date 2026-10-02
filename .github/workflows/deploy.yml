@@ -2,7 +2,7 @@ name: Deploy su Cloudflare Workers
 
 on:
   push:
-    branches: [main]
+    branches: [main, feat/cloudflare]
   workflow_dispatch:
 
 jobs:

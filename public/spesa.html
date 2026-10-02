@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+
+<html lang="it">
+<head><script>window.guideStay={name:"",checkin:"",checkout:""};</script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dove fare la spesa · A Casa di Marco</title>
+<link href="manifest.webmanifest" rel="manifest"/>
+<meta content="#193c50" name="theme-color"/>
+<link href="assets/icon-192.png" rel="apple-touch-icon"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="Casa di Marco" name="apple-mobile-web-app-title"/>
+<meta content="default" name="apple-mobile-web-app-status-bar-style"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&amp;family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root { --ottanio:#0f7f83; --ottanio-dark:#075f63; --ottanio-soft:#dff3f2; --white:#fff; --milk:#fbfbf8; --text:#263238; --muted:#6f7d80; --shadow:0 18px 50px rgba(0,70,75,.20); --radius:28px; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible,
+    summary:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid var(--ottanio);
+      outline-offset: 2px;
+      border-radius: 8px;
+    }
+    body { background:var(--milk); color:var(--text); font-family:'Poppins',sans-serif; line-height:1.65; }
+    h1,h2,h3 { font-family:'Pacifico',cursive; font-weight:400; color:var(--ottanio-dark); }
+    .page-hero { min-height:38vh; background:linear-gradient(180deg, rgba(0,80,85,.25), rgba(0,80,85,.55)), url("assets/garden-main.jpg") center/cover no-repeat; color:#fff; display:flex; align-items:flex-end; padding:38px 20px; }
+    .page-hero div { max-width:1000px; margin:0 auto; width:100%; }
+    .page-hero h1 { color:#fff; font-size:clamp(38px, 7vw, 68px); text-shadow:0 5px 20px rgba(0,0,0,.35); }
+    main { max-width:1000px; margin:0 auto; padding:28px 16px 60px; }
+    section { background:#fff; border-radius:28px; padding:28px; box-shadow:var(--shadow); margin-bottom:22px; }
+    .back-home { display:inline-flex; margin-bottom:18px; background:var(--ottanio); color:#fff; text-decoration:none; border-radius:999px; padding:11px 18px; font-weight:600; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:14px; margin-top:14px; }
+    .card { background:var(--ottanio-soft); border-radius:18px; padding:16px; }
+    .card strong { display:block; color:var(--ottanio-dark); margin-bottom:6px; }
+
+    .shop-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .shop-card {
+      background: var(--ottanio-soft);
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: 0 10px 28px rgba(0, 80, 85, .10);
+    }
+
+    .shop-img {
+      width: 100%;
+      height: 170px;
+      border-radius: 18px;
+      overflow: hidden;
+      margin-bottom: 14px;
+      background: #f7f7f2;
+    }
+
+    .shop-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .shop-card.featured {
+      background: #fff8e8;
+      border-left: 5px solid var(--ottanio);
+    }
+
+    .shop-card h3 {
+      font-size: 25px;
+      margin-bottom: 8px;
+    }
+
+    .shop-card p {
+      font-size: 15px;
+      margin-bottom: 10px;
+    }
+
+    .shop-note {
+      background: #fff;
+      border-radius: 15px;
+      padding: 12px;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    .shop-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .shop-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--ottanio);
+      color: #fff;
+      border-radius: 999px;
+      padding: 10px 15px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    @media (max-width: 720px) {
+      body {
+        font-size: 14px;
+        line-height: 1.55;
+      }
+
+      .page-hero {
+        min-height: 26vh;
+        padding: 26px 16px;
+      }
+
+      .page-hero h1 {
+        font-size: 34px;
+        line-height: 1.15;
+      }
+
+      main {
+        padding: 18px 12px 44px;
+      }
+
+      section {
+        padding: 18px;
+        border-radius: 22px;
+      }
+
+      h2 {
+        font-size: 26px;
+      }
+
+      .shop-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .shop-card {
+        padding: 10px;
+        display: grid;
+        grid-template-columns: 108px 1fr;
+        column-gap: 12px;
+        row-gap: 6px;
+        align-items: start;
+      }
+
+      .shop-img {
+        grid-column: 1;
+        grid-row: 1 / -1;
+        width: 108px;
+        height: 108px;
+        border-radius: 14px;
+        margin-bottom: 0;
+        align-self: start;
+      }
+
+      .shop-card h3 {
+        grid-column: 2;
+        grid-row: 1;
+        font-size: 16px;
+        line-height: 1.25;
+        margin-bottom: 0;
+      }
+
+      .shop-card p {
+        grid-column: 2;
+        grid-row: 2;
+        font-size: 12px;
+        line-height: 1.4;
+        margin-bottom: 0;
+      }
+
+      .shop-note {
+        grid-column: 2;
+        grid-row: 3;
+        font-size: 12px;
+        line-height: 1.4;
+        margin-top: 4px;
+        padding: 9px 11px;
+        border-radius: 12px;
+      }
+
+      .shop-actions {
+        grid-column: 2;
+        grid-row: 4;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 7px;
+        margin-top: 8px;
+      }
+
+      .shop-btn {
+        flex: 0 0 auto;
+        width: auto;
+        min-height: 36px;
+        font-size: 11px;
+        font-weight: 600;
+        padding: 7px 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .shop-card {
+        grid-template-columns: 92px 1fr;
+        column-gap: 10px;
+        padding: 9px;
+      }
+
+      .shop-img {
+        width: 92px;
+        height: 92px;
+      }
+
+      .shop-btn {
+        min-height: 34px;
+      }
+    }
+  </style>
+<link href="guide-pages.css" rel="stylesheet"/><link href="assets/icon-192.png" rel="icon" type="image/png"/><link href="guide-polish.css" rel="stylesheet"/><script defer="" src="https://cdn.jsdelivr.net/npm/lucide@0.468.0/dist/umd/lucide.min.js"></script></head>
+<body class="polished-guide guide-inner">
+<div class="scroll-hint" id="scrollHint">⌄</div>
+<header class="page-hero"><div><h1 data-de="Lebensmittel einkaufen" data-en="Grocery shopping" data-es="Dónde hacer la compra" data-fr="Où faire les courses" data-it="Dove fare la spesa">Dove fare la spesa</h1></div></header>
+<main>
+<a class="back-home" data-de="← Zurück zur Startseite" data-en="← Back to home" data-es="← Volver a la home" data-fr="← Retour à l'accueil" data-it="← Torna alla home" href="index.html">← Torna alla home</a>
+<section>
+<h2 data-de="Lebensmittel einkaufen" data-en="Grocery shopping" data-es="Dónde hacer la compra" data-fr="Où faire les courses" data-it="Dove fare la spesa">Dove fare la spesa</h2>
+<p data-de="Hier findet ihr Minimärkte, Supermärkte und nützliche Geschäfte in der Nähe des Hauses oder bequem mit dem Auto erreichbar." data-en="Here you will find minimarkets, supermarkets and useful shops near the house or easy to reach by car." data-es="Aquí encontraréis minimarkets, supermercados y tiendas útiles cerca de la casa o fáciles de alcanzar en coche." data-fr="Vous trouverez ici des supérettes, supermarchés et magasins utiles près de la maison ou faciles d'accès en voiture." data-it="Qui trovate minimarket, supermercati e negozi utili vicino alla casa o comodi da raggiungere in auto.">
+        Qui trovate minimarket, supermercati e negozi utili vicino alla casa o comodi da raggiungere in auto.
+      </p>
+<div class="shop-grid">
+<div class="shop-card featured">
+<div class="shop-img">
+<img alt="Minimarket da Nello" src="assets/da-nello.jpg"/>
+</div>
+<h3 data-de="Minimarket da Nello" data-en="Minimarket da Nello" data-es="Minimarket da Nello" data-fr="Minimarket da Nello" data-it="Minimarket da Nello">Minimarket da Nello</h3>
+<p data-de="Das ist der Minimarkt in der Nähe des Hauses, zu Fuß erreichbar. Praktisch für kleine Besorgungen, Wasser, Snacks, Grundprodukte oder einen schnellen Einkauf ohne Auto." data-en="This is the minimarket near the house, reachable on foot. Convenient for small needs, water, snacks, essentials or a quick shop without taking the car." data-es="Es el minimarket cerca de la casa, se puede llegar a pie. Cómodo para pequeñas necesidades, agua, snacks, productos básicos o una compra rápida sin usar el coche." data-fr="C'est la supérette près de la maison, accessible à pied. Pratique pour les petites courses, l'eau, les snacks, les produits essentiels ou un achat rapide sans prendre la voiture." data-it="È il minimarket vicino casa, raggiungibile a piedi. Comodo per piccole necessità, acqua, snack, prodotti essenziali o una spesa veloce senza prendere l'auto.">
+            È il minimarket vicino casa, raggiungibile a piedi. Comodo per piccole necessità, acqua, snack, prodotti essenziali o una spesa veloce senza prendere l'auto.
+          </p>
+<div class="shop-note" data-de="Empfohlen für: schnellen Einkauf und Grundprodukte." data-en="Recommended for: quick shopping and essentials." data-es="Recomendado para: compra rápida y productos básicos." data-fr="Conseillé pour : petites courses et produits essentiels." data-it="Consigliato per: spesa veloce e prodotti essenziali.">
+            Consigliato per: spesa veloce e prodotti essenziali.
+          </div>
+<div class="shop-actions">
+<a class="shop-btn" data-de="📍 Bring mich hin" data-en="📍 Take me there" data-es="📍 Llévame allí" data-fr="📍 M’y emmener" data-it="📍 Portami lì" href="https://www.google.com/maps/search/?api=1&amp;query=Minimarket+Da+Nello+Brignano+Salerno" target="_blank">📍 Portami lì</a>
+</div>
+</div>
+<div class="shop-card">
+<div class="shop-img">
+<img alt="CONAD Superstore Le Cotoniere" src="assets/conad-cotoniere.jpg"/>
+</div>
+<h3 data-de="CONAD Superstore - Le Cotoniere" data-en="CONAD Superstore - Le Cotoniere" data-es="CONAD Superstore - Le Cotoniere" data-fr="CONAD Superstore - Le Cotoniere" data-it="CONAD Superstore - Le Cotoniere">CONAD Superstore - Le Cotoniere</h3>
+<p data-de="Empfohlen für den großen Wocheneinkauf: Es ist groß, gut sortiert und liegt im Einkaufszentrum Le Cotoniere. Ihr findet Feinkosttheke, Fischtheke, Metzgerei, Obst, Gemüse und abgepackte Produkte." data-en="Recommended for your main grocery shopping: it is large, well-stocked and located inside Le Cotoniere shopping centre. You will find deli counter, fish counter, butcher, fruit, vegetables and packaged products." data-es="Recomendado para la compra principal: es grande, bien abastecido y está dentro del centro comercial Le Cotoniere. Encontraréis charcutería, pescadería, carnicería, fruta, verdura y productos envasados." data-fr="Conseillé pour les grandes courses : il est grand, bien fourni et situé dans le centre commercial Le Cotoniere. Vous y trouverez traiteur, poissonnerie, boucherie, fruits, légumes et produits emballés." data-it="Consigliato per la spesa principale: è grande, ben fornito e si trova nel centro commerciale Le Cotoniere. Trovate banco gastronomia, pescheria, macelleria, frutta, verdura e prodotti confezionati.">
+            Consigliato per la spesa principale: è grande, ben fornito e si trova nel centro commerciale Le Cotoniere. Trovate banco gastronomia, pescheria, macelleria, frutta, verdura e prodotti confezionati.
+          </p>
+<div class="shop-note" data-de="Ungefähre Öffnungszeiten: täglich 09:00–21:00 Uhr. Parken im Einkaufszentrum möglich." data-en="Indicative opening hours: every day 09:00–21:00. Parking available at the shopping centre." data-es="Horario orientativo: todos los días 09:00–21:00. Aparcamiento disponible en el centro comercial." data-fr="Horaires indicatifs : tous les jours 09h00–21h00. Parking disponible dans le centre commercial." data-it="Orario indicativo: tutti i giorni 09:00–21:00. Parcheggio disponibile nel centro commerciale.">
+            Orario indicativo: tutti i giorni 09:00–21:00. Parcheggio disponibile nel centro commerciale.
+          </div>
+<div class="shop-actions">
+<a class="shop-btn" data-de="📍 Bring mich hin" data-en="📍 Take me there" data-es="📍 Llévame allí" data-fr="📍 M’y emmener" data-it="📍 Portami lì" href="https://www.google.com/maps/search/?api=1&amp;query=CONAD+Superstore+Le+Cotoniere+Salerno" target="_blank">📍 Portami lì</a>
+</div>
+</div>
+<div class="shop-card">
+<div class="shop-img">
+<img alt="MD" onerror="this.onerror=null; this.src='assets/garden-main.jpg';" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/MD_Italia_Logo.svg/500px-MD_Italia_Logo.svg.png"/>
+</div>
+<h3 data-de="MD - Via Irno" data-en="MD - Via Irno" data-es="MD - Via Irno" data-fr="MD - Via Irno" data-it="MD - Via Irno">MD - Via Irno</h3>
+<p data-de="Ein bequemer und leicht erreichbarer Supermarkt/Discounter, bekannt für günstige Preise, vor allem bei Obst, Gemüse und Alltagsprodukten." data-en="A convenient and easy-to-reach discount supermarket, known for affordable prices, especially for fruit, vegetables and everyday products." data-es="Supermercado/discount cómodo y fácil de alcanzar, conocido por sus precios convenientes, especialmente en fruta, verdura y productos de uso diario." data-fr="Supermarché discount pratique et facile d'accès, connu pour ses prix avantageux, surtout pour les fruits, légumes et produits du quotidien." data-it="Supermercato/discount comodo e facile da raggiungere, conosciuto per prezzi convenienti, soprattutto per frutta, verdura e prodotti di uso quotidiano.">
+            Supermercato/discount comodo e facile da raggiungere, conosciuto per prezzi convenienti, soprattutto per frutta, verdura e prodotti di uso quotidiano.
+          </p>
+<div class="shop-note" data-de="Ungefähre Öffnungszeiten: Mo 08:30–20:30, Di 08:00–20:30, Mi–Fr 08:30–20:30, Sa geschlossen, So 08:30–13:30." data-en="Indicative hours: Mon 08:30–20:30, Tue 08:00–20:30, Wed-Fri 08:30–20:30, Sat closed, Sun 08:30–13:30." data-es="Horario orientativo: lun 08:30–20:30, mar 08:00–20:30, mié-vie 08:30–20:30, sáb cerrado, dom 08:30–13:30." data-fr="Horaires indicatifs : lun 08h30–20h30, mar 08h00–20h30, mer-ven 08h30–20h30, sam fermé, dim 08h30–13h30." data-it="Orari indicativi: lun 08:30–20:30, mar 08:00–20:30, mer-ven 08:30–20:30, sab chiuso, dom 08:30–13:30.">
+            Orari indicativi: lun 08:30–20:30, mar 08:00–20:30, mer-ven 08:30–20:30, sab chiuso, dom 08:30–13:30.
+          </div>
+<div class="shop-actions">
+<a class="shop-btn" data-de="📍 Bring mich hin" data-en="📍 Take me there" data-es="📍 Llévame allí" data-fr="📍 M’y emmener" data-it="📍 Portami lì" href="https://www.google.com/maps/search/?api=1&amp;query=MD+Via+Irno+Salerno" target="_blank">📍 Portami lì</a>
+</div>
+</div>
+<div class="shop-card">
+<div class="shop-img">
+<img alt="Sole 365" onerror="this.onerror=null; this.src='assets/garden-main.jpg';" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Sole_365_Logo.svg/500px-Sole_365_Logo.svg.png"/>
+</div>
+<h3 data-de="Sole 365 - Gebiet Vinciprova" data-en="Sole 365 - Vinciprova area" data-es="Sole 365 - Zona Vinciprova" data-fr="Sole 365 - Quartier Vinciprova" data-it="Sole 365 - Zona Vinciprova">Sole 365 - Zona Vinciprova</h3>
+<p data-de="Ein praktischer Supermarkt, wenn ihr im Gebiet Vinciprova oder in der Nähe des Bahnhofs seid. Nützlich für den kompletten Einkauf, frische Produkte und Alltagsgegenstände." data-en="A convenient supermarket if you are in the Vinciprova area or near the station. Useful for a full grocery shop, fresh products and everyday items." data-es="Supermercado cómodo si estáis en la zona de Vinciprova o cerca de la estación. Útil para una compra completa, productos frescos y artículos diarios." data-fr="Supermarché pratique si vous êtes dans le quartier Vinciprova ou près de la gare. Utile pour des courses complètes, des produits frais et les achats du quotidien." data-it="Supermercato comodo se vi trovate in zona Vinciprova o vicino alla stazione. È utile per una spesa completa, prodotti freschi e acquisti quotidiani.">
+            Supermercato comodo se vi trovate in zona Vinciprova o vicino alla stazione. È utile per una spesa completa, prodotti freschi e acquisti quotidiani.
+          </p>
+<div class="shop-note" data-de="Empfohlen, wenn ihr schon in der Stadt seid oder vom Bereich Bahnhof/Vinciprova zurückkommt." data-en="Recommended if you are already in town or coming back from the station/Vinciprova area." data-es="Recomendado si ya estáis en la ciudad o volvéis de la zona estación/Vinciprova." data-fr="Conseillé si vous êtes déjà en ville ou si vous revenez de la zone gare/Vinciprova." data-it="Consigliato se siete già in città o rientrate dalla zona stazione/Vinciprova.">
+            Consigliato se siete già in città o rientrate dalla zona stazione/Vinciprova.
+          </div>
+<div class="shop-actions">
+<a class="shop-btn" data-de="📍 Bring mich hin" data-en="📍 Take me there" data-es="📍 Llévame allí" data-fr="📍 M’y emmener" data-it="📍 Portami lì" href="https://www.google.com/maps/search/?api=1&amp;query=Sole+365+Vinciprova+Salerno" target="_blank">📍 Portami lì</a>
+</div>
+</div>
+<div class="shop-card">
+<div class="shop-img">
+<img alt="Eurospin" onerror="this.onerror=null; this.src='assets/garden-main.jpg';" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Eurospin_New_Logo.svg/500px-Eurospin_New_Logo.svg.png"/>
+</div>
+<h3 data-de="Eurospin - Gebiet Grand Hotel Salerno" data-en="Eurospin - Grand Hotel Salerno area" data-es="Eurospin - Zona Grand Hotel Salerno" data-fr="Eurospin - Quartier Grand Hotel Salerno" data-it="Eurospin - Zona Grand Hotel Salerno">Eurospin - Zona Grand Hotel Salerno</h3>
+<p data-de="Ein großer und günstiger Discounter, nützlich, wenn ihr sparen oder mehrere Produkte kaufen wollt. Praktisch, wenn ihr durch das Gebiet des Grand Hotel Salerno fahrt." data-en="A large and affordable discount supermarket, useful if you want to save money or buy several products. Convenient if you pass through the Grand Hotel Salerno area." data-es="Discount grande y económico, útil si queréis ahorrar o comprar varios productos. Cómodo si pasáis por la zona del Grand Hotel Salerno." data-fr="Grand supermarché discount économique, utile si vous voulez faire des économies ou acheter plusieurs produits. Pratique si vous passez par le quartier du Grand Hotel Salerno." data-it="Discount grande e conveniente, utile se volete fare una spesa più economica o comprare diversi prodotti. È comodo se passate dalla zona del Grand Hotel Salerno.">
+            Discount grande e conveniente, utile se volete fare una spesa più economica o comprare diversi prodotti. È comodo se passate dalla zona del Grand Hotel Salerno.
+          </p>
+<div class="shop-note" data-de="Empfohlen für: günstigen Einkauf, abgepackte Produkte, Getränke, Snacks und Vorräte für mehrere Tage." data-en="Recommended for: budget shopping, packaged products, drinks, snacks and supplies for several days." data-es="Recomendado para: compra económica, productos envasados, bebidas, snacks y productos para varios días." data-fr="Conseillé pour : courses économiques, produits emballés, boissons, snacks et achats pour plusieurs jours." data-it="Consigliato per: spesa conveniente, prodotti confezionati, bibite, snack e prodotti per più giorni.">
+            Consigliato per: spesa conveniente, prodotti confezionati, bibite, snack e prodotti per più giorni.
+          </div>
+<div class="shop-actions">
+<a class="shop-btn" data-de="📍 Bring mich hin" data-en="📍 Take me there" data-es="📍 Llévame allí" data-fr="📍 M’y emmener" data-it="📍 Portami lì" href="https://www.google.com/maps/search/?api=1&amp;query=Eurospin+Grand+Hotel+Salerno" target="_blank">📍 Portami lì</a>
+</div>
+</div>
+<div class="shop-card">
+<div class="shop-img">
+<img alt="Lidl" onerror="this.onerror=null; this.src='assets/garden-main.jpg';" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Lidl-Logo.svg/500px-Lidl-Logo.svg.png"/>
+</div>
+<h3 data-de="Lidl - Mariconda" data-en="Lidl - Mariconda" data-es="Lidl - Mariconda" data-fr="Lidl - Mariconda" data-it="Lidl - Mariconda">Lidl - Mariconda</h3>
+<p data-de="Deutscher Discounter im Gebiet Mariconda, praktisch für einen günstigen und gut sortierten Einkauf. Ideal für Backwaren, Obst, Gemüse und Wochenangebote." data-en="German discount supermarket in the Mariconda area, convenient for budget-friendly and well-stocked shopping. Great for baked goods, fruit, vegetables and weekly offers." data-es="Discount alemán en la zona Mariconda, cómodo para una compra económica y bien surtida. Ideal para productos de panadería, fruta, verdura y ofertas semanales." data-fr="Discount allemand dans le quartier Mariconda, pratique pour des courses économiques et bien fournies. Idéal pour les produits de boulangerie, fruits, légumes et offres hebdomadaires." data-it="Discount tedesco in zona Mariconda, comodo per una spesa economica e ben fornita. Ottimo per prodotti da forno, frutta, verdura e offerte settimanali.">
+            Discount tedesco in zona Mariconda, comodo per una spesa economica e ben fornita. Ottimo per prodotti da forno, frutta, verdura e offerte settimanali.
+          </p>
+<div class="shop-note" data-de="Ungefähre Öffnungszeiten: täglich 08:00–21:00, Sonntag 08:30–20:30. Parken möglich." data-en="Indicative hours: every day 08:00–21:00, Sunday 08:30–20:30. Parking available." data-es="Horario orientativo: todos los días 08:00–21:00, domingo 08:30–20:30. Aparcamiento disponible." data-fr="Horaires indicatifs : tous les jours 08h00–21h00, dimanche 08h30–20h30. Parking disponible." data-it="Orario indicativo: tutti i giorni 08:00–21:00, domenica 08:30–20:30. Parcheggio disponibile.">
+            Orario indicativo: tutti i giorni 08:00–21:00, domenica 08:30–20:30. Parcheggio disponibile.
+          </div>
+<div class="shop-actions">
+<a class="shop-btn" data-de="📍 Bring mich hin" data-en="📍 Take me there" data-es="📍 Llévame allí" data-fr="📍 M'y emmener" data-it="📍 Portami lì" href="https://www.google.com/maps/search/?api=1&amp;query=Lidl+Mariconda+Salerno" target="_blank">📍 Portami lì</a>
+</div>
+</div>
+<div class="shop-card">
+<div class="shop-img">
+<img alt="La Contadina Via Irno Salerno" src="assets/la-contadina.jpg"/>
+</div>
+<h3 data-de="La Contadina - Via Irno" data-en="La Contadina - Via Irno" data-es="La Contadina - Via Irno" data-fr="La Contadina - Via Irno" data-it="La Contadina - Via Irno">La Contadina - Via Irno</h3>
+<p data-de="Geschäft/Käserei, empfohlen für den Kauf von kampanischer Büffelmozzarella, Milchprodukten und frischen Produkten. Es ist kein Restaurant, aber perfekt, wenn ihr etwas Typisches kaufen und zu Hause genießen wollt." data-en="Recommended dairy shop to buy buffalo mozzarella from Campania, dairy products and fresh products. It is not a restaurant, but it is perfect if you want to buy something local to enjoy at home." data-es="Tienda/caseificio recomendado para comprar mozzarella de búfala campana, lácteos y productos frescos. No es un restaurante, pero es perfecto si queréis comprar algo típico para disfrutar en casa." data-fr="Boutique/fromagerie conseillée pour acheter de la mozzarella di bufala campana, des produits laitiers et des produits frais. Ce n’est pas un restaurant, mais c’est parfait si vous voulez acheter quelque chose de typique à déguster à la maison." data-it="Negozio/caseificio consigliato per acquistare mozzarella di bufala campana, latticini e prodotti freschi. Non è un ristorante, ma è perfetto se volete comprare qualcosa di tipico da gustare a casa.">
+            Negozio/caseificio consigliato per acquistare mozzarella di bufala campana, latticini e prodotti freschi. Non è un ristorante, ma è perfetto se volete comprare qualcosa di tipico da gustare a casa.
+          </p>
+<div class="shop-note" data-de="Empfohlen für: Büffelmozzarella, frische Milchprodukte und typische Produkte aus Kampanien." data-en="Recommended for: buffalo mozzarella, fresh dairy products and typical Campania products." data-es="Recomendado para: mozzarella de búfala, lácteos frescos y productos típicos de Campania." data-fr="Conseillé pour : mozzarella di bufala, produits laitiers frais et produits typiques de Campanie." data-it="Consigliato per: mozzarella di bufala, latticini freschi e prodotti tipici campani.">
+            Consigliato per: mozzarella di bufala, latticini freschi e prodotti tipici campani.
+          </div>
+<div class="shop-actions">
+<a class="shop-btn" data-de="📍 Bring mich hin" data-en="📍 Take me there" data-es="📍 Llévame allí" data-fr="📍 M’y emmener" data-it="📍 Portami lì" href="https://www.google.com/maps/search/?api=1&amp;query=La+Contadina+Via+Irno+Salerno" target="_blank">📍 Portami lì</a>
+</div>
+</div>
+</div>
+</section>
+</main>
+<script>
+  function getLang() {
+    var params = new URLSearchParams(window.location.search);
+    var lang = params.get('lang');
+
+    if (lang === 'it' || lang === 'en' || lang === 'es' || lang === 'fr' || lang === 'de') {
+      return lang;
+    }
+
+    try {
+      lang = localStorage.getItem('guestGuideLang');
+    } catch (e) {}
+
+    if (lang === 'it' || lang === 'en' || lang === 'es' || lang === 'fr' || lang === 'de') {
+      return lang;
+    }
+
+    return 'it';
+  }
+
+  function translatePage(lang) {
+    document.documentElement.lang = lang;
+
+    document.querySelectorAll('[data-it], [data-it-html]').forEach(function (el) {
+      var htmlTranslation = el.getAttribute('data-' + lang + '-html');
+      var textTranslation = el.getAttribute('data-' + lang);
+
+      if (htmlTranslation) {
+        el.innerHTML = htmlTranslation;
+      } else if (textTranslation) {
+        el.textContent = textTranslation;
+      }
+    });
+
+    var home = document.querySelector('.back-home');
+    if (home) {
+      home.href = 'index.html#' + lang;
+    }
+
+    try {
+      localStorage.setItem('guestGuideLang', lang);
+    } catch (e) {}
+  }
+
+  translatePage(getLang());
+</script>
+<script src="guide-pages.js"></script><script defer="" src="guide-polish.js"></script><script src="guide-experience.js"></script><script src="guide-personal.js"></script></body>
+</html>

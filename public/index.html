@@ -1,0 +1,2550 @@
+<!DOCTYPE html>
+
+<html lang="it">
+<head><script>window.guideStay={name:"",checkin:"",checkout:""};</script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>A Casa di Marco · Guest Guide</title>
+<meta content="Guida digitale per gli ospiti di A Casa di Marco, Garden Cottage Escape a Salerno." name="description"/>
+<meta content="#193c50" name="theme-color"/>
+<link href="assets/icon-192.png" rel="apple-touch-icon"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="Casa di Marco" name="apple-mobile-web-app-title"/>
+<meta content="default" name="apple-mobile-web-app-status-bar-style"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&amp;family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root {
+      --ottanio: #0f7f83;
+      --ottanio-dark: #075f63;
+      --ottanio-soft: #dff3f2;
+      --white: #ffffff;
+      --milk: #fbfbf8;
+      --text: #263238;
+      --muted: #6f7d80;
+      --shadow: 0 18px 50px rgba(0, 70, 75, .20);
+      --radius: 28px;
+      --navy: #1a3a4a;
+      --teal: #2a7f8f;
+      --teal2: #3a9aaa;
+      --cream: #f7f3ec;
+      --sand: #e8dfd0;
+      --gold: #b08850;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--white);
+      color: var(--text);
+      font-family: 'Poppins', system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Pacifico', cursive;
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible,
+    summary:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid var(--ottanio);
+      outline-offset: 2px;
+      border-radius: 8px;
+    }
+
+    #lang-screen {
+      min-height: 100dvh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      overflow: hidden;
+      background: var(--ottanio);
+    }
+
+    #lang-screen::before {
+      content: "";
+      position: absolute;
+      inset: -14px;
+      background: url("assets/garden-main.jpg") center / cover no-repeat;
+      filter: blur(8px) brightness(.78);
+      transform: scale(1.08);
+      z-index: 0;
+    }
+
+    #lang-screen::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          180deg,
+          rgba(15, 127, 131, .50) 0%,
+          rgba(15, 127, 131, .68) 100%
+        );
+      z-index: 1;
+    }
+
+    .lang-box {
+      position: relative;
+      z-index: 2;
+      width: min(480px, 100%);
+      background: rgba(255, 255, 255, .88);
+      border: 1px solid rgba(255, 255, 255, .75);
+      border-radius: 34px;
+      padding: 42px 30px 34px;
+      text-align: center;
+      color: var(--text);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .lang-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--ottanio-soft);
+      color: var(--ottanio-dark);
+      border-radius: 999px;
+      padding: 7px 16px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .lang-box h1 {
+      font-size: clamp(34px, 8vw, 54px);
+      color: var(--ottanio);
+      margin-bottom: 8px;
+    }
+
+    .lang-subtitle {
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    .lang-welcome {
+      margin-bottom: 28px;
+      line-height: 1.7;
+    }
+
+    .lang-welcome strong {
+      display: block;
+      font-family: 'Pacifico', cursive;
+      font-size: clamp(24px, 6vw, 36px);
+      font-weight: 400;
+      color: var(--ottanio-dark);
+    }
+
+    .lang-welcome span {
+      display: block;
+      margin-top: 6px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .guest-welcome {
+      background: #dff3f2;
+      border-left: 6px solid #0f7f83;
+      border-radius: 22px;
+      padding: 14px 18px;
+      margin-bottom: 0;
+      box-shadow: 0 10px 26px rgba(0,80,85,.10);
+    }
+
+    .guest-welcome h2 {
+      font-family: 'Pacifico', cursive;
+      font-size: 31px;
+      color: #075f63;
+      margin-bottom: 4px;
+      line-height: 1.15;
+    }
+
+    .guest-welcome p {
+      color: #263238;
+      font-size: 14px;
+      line-height: 1.45;
+      margin: 0;
+      max-width: 900px;
+    }
+
+    .owner-generator {
+      background: #fff8e8;
+      border-left: 6px solid #0f7f83;
+      border-radius: 22px;
+      padding: 20px;
+      margin: 22px 0;
+    }
+
+    .owner-generator h3 {
+      font-family: 'Pacifico', cursive;
+      color: #075f63;
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .owner-generator p {
+      color: #6f7d80;
+      margin-bottom: 14px;
+    }
+
+    .owner-generator label {
+      display: block;
+      font-weight: 700;
+      color: #075f63;
+      margin: 12px 0 6px;
+    }
+
+    .owner-generator input,
+    .owner-generator select {
+      width: 100%;
+      border: 1px solid rgba(15,127,131,.25);
+      border-radius: 16px;
+      padding: 12px 14px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px;
+      background: #fff;
+      color: #263238;
+    }
+
+    .owner-btn {
+      margin-top: 14px;
+      border: none;
+      cursor: pointer;
+      background: #0f7f83;
+      color: #fff;
+      border-radius: 999px;
+      padding: 11px 18px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+    }
+
+    .owner-btn.light {
+      background: #fff;
+      color: #075f63;
+      border: 1px solid rgba(15,127,131,.25);
+    }
+
+    .generated-link-box {
+      margin-top: 18px;
+      background: #dff3f2;
+      border-radius: 18px;
+      padding: 15px;
+    }
+
+    .generated-link-box strong {
+      display: block;
+      color: #075f63;
+      margin-bottom: 8px;
+    }
+
+    .lang-btns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .lang-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--white);
+      color: var(--ottanio-dark);
+      border: 1px solid rgba(15, 127, 131, .22);
+      border-radius: 999px;
+      padding: 13px 16px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 8px 22px rgba(0, 90, 95, .12);
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
+    }
+
+    .lang-btn:hover {
+      transform: translateY(-2px);
+      background: var(--ottanio);
+      color: var(--white);
+      box-shadow: 0 12px 28px rgba(0, 90, 95, .22);
+    }
+
+    .lang-btn .flag {
+      font-size: 21px;
+      line-height: 1;
+    }
+
+    @media (max-width: 520px) {
+      .lang-box {
+        padding: 34px 20px 28px;
+        border-radius: 28px;
+      }
+
+      .lang-btns {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    #site {
+      display: none;
+    }
+
+    .hero {
+      min-height: 68vh;
+      position: relative;
+      background:
+        linear-gradient(180deg, rgba(0, 80, 85, .25) 0%, rgba(0, 80, 85, .45) 100%),
+        url("assets/garden-main.jpg") center / cover no-repeat;
+      display: flex;
+      align-items: flex-end;
+      color: #fff;
+      padding: 42px 20px;
+    }
+
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+      padding-bottom: 24px;
+    }
+
+    .hero-guide-title {
+      font-family: 'Pacifico', cursive;
+      font-size: clamp(34px, 5.5vw, 64px);
+      line-height: 1.1;
+      color: #fff;
+      margin-bottom: 8px;
+      text-shadow: 0 5px 22px rgba(0,0,0,.35);
+    }
+
+    .hero h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: clamp(52px, 8vw, 88px);
+      line-height: 1.06;
+      margin-bottom: 12px;
+      color: #fff;
+      text-shadow: 0 5px 22px rgba(0,0,0,.35);
+    }
+
+    .hero p {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(16px, 2.4vw, 23px);
+      max-width: 680px;
+      margin-bottom: 22px;
+      text-shadow: 0 3px 16px rgba(0,0,0,.35);
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255, 255, 255, .94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 5px 18px rgba(0, 80, 85, .10);
+      padding: 10px 14px;
+    }
+
+    .topbar-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    .lang-select-wrap {
+      position: relative;
+      flex: 0 0 auto;
+    }
+
+    .lang-select {
+      appearance: none;
+      -webkit-appearance: none;
+      background: var(--ottanio);
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      padding: 10px 42px 10px 16px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(0, 90, 95, .16);
+    }
+
+    .lang-select-wrap::after {
+      content: "👇";
+      position: absolute;
+      right: 13px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      font-size: 14px;
+      line-height: 1;
+    }
+
+    .topbar a {
+      display: inline-block;
+      background: var(--white);
+      border: 1px solid rgba(15, 127, 131, .18);
+      border-radius: 999px;
+      padding: 9px 14px;
+      font-size: 13px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      color: var(--ottanio-dark);
+      cursor: pointer;
+      transition: background .18s, color .18s, transform .18s;
+    }
+
+    .topbar a:hover {
+      background: var(--ottanio);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px 16px 64px;
+    }
+
+    section {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 28px;
+      margin: 20px 0;
+      border: 1px solid #e8e0d4;
+    }
+
+    .home-welcome p,
+    .marco-section p {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 820px;
+    }
+
+    .page-buttons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .guide-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      background: var(--ottanio);
+      color: #fff;
+      border-radius: 22px;
+      padding: 18px 16px;
+      min-height: 132px;
+      text-align: center;
+      font-family: 'Poppins', sans-serif;
+      box-shadow: 0 8px 22px rgba(0, 90, 95, .16);
+      transition: transform .18s, box-shadow .18s;
+    }
+
+    .guide-btn .guide-icon {
+      font-size: 30px;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .guide-btn .guide-label {
+      display: block;
+      font-weight: 700;
+      font-size: 15px;
+      line-height: 1.3;
+    }
+
+    .guide-btn .guide-desc {
+      display: block;
+      font-size: 12px;
+      font-weight: 400;
+      color: rgba(255, 255, 255, .88);
+      line-height: 1.35;
+    }
+
+    .guide-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(0, 90, 95, .22);
+    }
+
+    .guide-btn.emergency-btn {
+      background: #b93a32;
+      color: #fff;
+      box-shadow: 0 14px 34px rgba(185, 58, 50, .28);
+      border: 2px solid rgba(255,255,255,.45);
+    }
+
+    .guide-btn.emergency-btn:hover {
+      background: #9f2f29;
+      transform: translateY(-2px);
+    }
+
+    .guide-btn.emergency-btn .guide-desc {
+      color: rgba(255,255,255,.9);
+    }
+
+    .guide-btn.beta-btn::after {
+      content: "BETA";
+      display: inline-block;
+      background: #f59e0b;
+      color: #1a1a1a;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .06em;
+      border-radius: 999px;
+      padding: 2px 8px;
+      margin-top: 6px;
+      line-height: 1;
+    }
+
+    .home-menu h2 {
+      line-height: 1.35;
+      padding-bottom: 6px;
+      margin-bottom: 16px;
+    }
+
+    .install-app-btn {
+      display: none;
+      width: fit-content;
+      max-width: 100%;
+      border: none;
+      cursor: pointer;
+      background: #0f7f83;
+      color: #fff;
+      border-radius: 999px;
+      padding: 13px 22px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      line-height: 1.25;
+      box-shadow: 0 10px 26px rgba(0,80,85,.20);
+      margin: 0 0 20px 0;
+    }
+
+    .install-app-btn.show {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .install-note {
+      display: none;
+    }
+
+    .weather-box {
+      background: #fff;
+      border-radius: 24px;
+      padding: 18px;
+      margin: 20px 0;
+      box-shadow: 0 12px 34px rgba(0,70,75,.14);
+      border: 1px solid rgba(15,127,131,.14);
+    }
+
+    .weather-main {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .weather-label {
+      display: block;
+      color: #6f7d80;
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+
+    .weather-main strong {
+      color: #075f63;
+      font-size: 18px;
+    }
+
+    .weather-temp {
+      min-width: 72px;
+      text-align: center;
+      background: #dff3f2;
+      color: #075f63;
+      border-radius: 18px;
+      padding: 10px 12px;
+      font-weight: 800;
+      font-size: 24px;
+    }
+
+    .weather-details {
+      margin-top: 10px;
+      color: #6f7d80;
+      font-size: 14px;
+    }
+
+    .umbrella-alert {
+      margin-top: 14px;
+      background: #fff0ec;
+      border-left: 6px solid #d96b4c;
+      border-radius: 18px;
+      padding: 14px 16px;
+    }
+
+    .umbrella-alert strong {
+      display: block;
+      color: #9b2f1e;
+      margin-bottom: 4px;
+    }
+
+    .umbrella-alert p {
+      margin: 0;
+      color: #263238;
+    }
+
+    .marco-story {
+      display: grid;
+      grid-template-columns: 1.45fr .85fr;
+      gap: 24px;
+      align-items: start;
+      margin-top: 18px;
+    }
+
+    .marco-text {
+      background: var(--milk);
+      border: 1px solid #eee5d8;
+      border-radius: 24px;
+      padding: 24px;
+    }
+
+    .marco-text p {
+      max-width: none;
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .marco-text .greeting {
+      font-weight: 600;
+      color: var(--ottanio-dark);
+    }
+
+    .marco-sign {
+      margin-top: 8px;
+      font-weight: 600;
+      color: var(--ottanio-dark);
+    }
+
+    .marco-photo img {
+      width: 100%;
+      border-radius: 24px;
+      box-shadow: 0 12px 35px rgba(0, 80, 85, .14);
+      object-fit: cover;
+    }
+
+    .marco-photo small {
+      display: block;
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .contact-card {
+      background: var(--ottanio-soft);
+      border-radius: 20px;
+      padding: 18px;
+    }
+
+    .contact-card strong {
+      display: block;
+      color: var(--ottanio-dark);
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+
+    .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--ottanio);
+      color: #fff;
+      border-radius: 999px;
+      padding: 10px 16px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 8px 18px rgba(0, 90, 95, .16);
+    }
+
+    .contact-btn.light {
+      background: #fff;
+      color: var(--ottanio-dark);
+      border: 1px solid rgba(15, 127, 131, .25);
+    }
+
+    .emergency-box {
+      margin-top: 18px;
+      background: #fff8e8;
+      border-left: 5px solid var(--ottanio);
+      border-radius: 18px;
+      padding: 16px;
+    }
+
+    footer {
+      background: var(--navy);
+      color: #fff;
+      text-align: center;
+      padding: 32px 20px;
+      font-size: 15px;
+    }
+
+    footer p {
+      margin: 4px 0;
+    }
+
+    @media (max-width: 720px) {
+      .hero {
+        min-height: 60vh;
+        padding: 34px 18px;
+      }
+
+      .hero-guide-title {
+        font-size: 28px;
+        margin-bottom: 6px;
+      }
+
+      .hero h1 {
+        font-size: 46px;
+      }
+
+      .topbar {
+        padding: 9px 8px;
+      }
+
+      .topbar a {
+        padding: 11px 14px;
+        font-size: 12px;
+        min-height: 40px;
+        display: inline-flex;
+        align-items: center;
+      }
+
+      .weather-box {
+        padding: 15px;
+        border-radius: 20px;
+      }
+
+      .weather-main strong {
+        font-size: 16px;
+      }
+
+      .weather-temp {
+        font-size: 21px;
+        min-width: 64px;
+      }
+
+      .marco-story {
+        grid-template-columns: 1fr;
+      }
+
+      .marco-text {
+        padding: 18px;
+      }
+
+      .marco-text p {
+        font-size: 14px;
+        line-height: 1.75;
+      }
+
+      .guest-welcome {
+        padding: 12px 14px;
+        border-radius: 18px;
+      }
+
+      .guest-welcome h2 {
+        font-size: 24px;
+        line-height: 1.12;
+        margin-bottom: 3px;
+      }
+
+      .guest-welcome p {
+        font-size: 12.5px;
+        line-height: 1.35;
+      }
+
+      .owner-btn {
+        width: 100%;
+      }
+
+      .contact-card {
+        padding: 15px;
+      }
+
+      .contact-btn {
+        font-size: 13px;
+        padding: 9px 14px;
+      }
+    }
+
+        .install-note {
+      display: none;
+    }
+
+    .save-guide-box {
+      background: #dff3f2;
+      border-left: 5px solid #0f7f83;
+      border-radius: 18px;
+      padding: 14px 16px;
+      margin: -8px 0 20px 0;
+      color: #263238;
+      font-size: 14px;
+    }
+
+    .save-guide-box p {
+      margin-bottom: 10px;
+    }
+
+    .save-guide-box p:last-child {
+      margin-bottom: 0;
+    }
+
+        /* MOBILE: pulsanti e card in 2 colonne */
+    @media (max-width: 720px) {
+
+      .page-buttons {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+
+      .guide-btn {
+        padding: 14px 12px;
+        min-height: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .guide-btn .guide-icon {
+        font-size: 26px;
+        margin-bottom: 4px;
+      }
+
+      .guide-btn .guide-label {
+        font-size: 14px;
+      }
+
+      .guide-btn .guide-desc {
+        font-size: 11px;
+      }
+
+    @media (max-width: 480px) {
+      .guide-btn {
+        min-height: 110px;
+      }
+    }
+
+      .cards-grid,
+      .card-grid,
+      .food-grid,
+      .places-grid,
+      .restaurant-grid,
+      .restaurant-list,
+      .location-grid,
+      .supermarket-grid,
+      .pharmacy-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .card,
+      .food-card,
+      .place-card,
+      .restaurant-card,
+      .location-card,
+      .supermarket-card,
+      .pharmacy-card {
+        border-radius: 18px;
+        overflow: hidden;
+      }
+
+      .card img,
+      .food-card img,
+      .place-card img,
+      .restaurant-card img,
+      .location-card img,
+      .supermarket-card img,
+      .pharmacy-card img {
+        height: 120px;
+        object-fit: cover;
+      }
+
+      .card h3,
+      .food-card h3,
+      .place-card h3,
+      .restaurant-card h3,
+      .location-card h3,
+      .supermarket-card h3,
+      .pharmacy-card h3 {
+        font-size: 18px;
+        line-height: 1.25;
+      }
+
+      .card p,
+      .food-card p,
+      .place-card p,
+      .restaurant-card p,
+      .location-card p,
+      .supermarket-card p,
+      .pharmacy-card p {
+        font-size: 13px;
+        line-height: 1.45;
+      }
+    }
+    .scroll-hint {
+    position: fixed;
+    left: 50%;
+    bottom: 14px;
+    transform: translateX(-50%);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(15, 127, 131, 0.85);
+    color: #fff;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    line-height: 1;
+    z-index: 999;
+    box-shadow: 0 8px 18px rgba(0, 70, 75, .22);
+    animation: scrollHintMove 1.4s infinite;
+  }
+
+  @keyframes scrollHintMove {
+    0%, 100% {
+      transform: translate(-50%, 0);
+    }
+
+    50% {
+      transform: translate(-50%, 5px);
+    }
+  }
+
+  @media (max-width: 720px) {
+    .scroll-hint {
+      display: flex;
+    }
+  }
+
+
+    .checkout-reminder-banner {
+      display: none;
+      background: #fff8e8;
+      border-left: 6px solid var(--ottanio);
+      border-radius: 24px;
+      padding: 18px 20px;
+      margin: 20px 0;
+      box-shadow: 0 12px 34px rgba(0,70,75,.12);
+      border-top: 1px solid rgba(15,127,131,.12);
+      border-right: 1px solid rgba(15,127,131,.12);
+      border-bottom: 1px solid rgba(15,127,131,.12);
+    }
+
+    .checkout-reminder-banner.show {
+      display: block;
+    }
+
+    .checkout-reminder-banner h2 {
+      font-size: 30px;
+      color: var(--ottanio-dark);
+      margin-bottom: 8px;
+    }
+
+    .checkout-reminder-banner p {
+      color: var(--text);
+      font-size: 15px;
+      margin-bottom: 14px;
+      max-width: 850px;
+    }
+
+    .checkout-reminder-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .checkout-reminder-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--ottanio);
+      color: #fff;
+      border-radius: 999px;
+      padding: 11px 17px;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 8px 22px rgba(0, 90, 95, .16);
+    }
+
+    .checkout-reminder-small {
+      color: var(--muted) !important;
+      font-size: 13px !important;
+      margin: 8px 0 0 0 !important;
+    }
+
+    @media (max-width: 720px) {
+      .checkout-reminder-banner {
+        border-radius: 20px;
+        padding: 16px;
+      }
+
+      .checkout-reminder-banner h2 {
+        font-size: 25px;
+      }
+
+      .checkout-reminder-banner p {
+        font-size: 14px;
+      }
+
+      .checkout-reminder-btn {
+        width: 100%;
+        font-size: 13px;
+      }
+    }
+
+
+    .guest-setup-card {
+      background: #fff8e8;
+      border-left: 6px solid var(--ottanio);
+      border-radius: 24px;
+      padding: 20px;
+      margin: 20px 0;
+      box-shadow: 0 12px 34px rgba(0,70,75,.12);
+      border-top: 1px solid rgba(15,127,131,.12);
+      border-right: 1px solid rgba(15,127,131,.12);
+      border-bottom: 1px solid rgba(15,127,131,.12);
+    }
+
+    .guest-setup-card h2 {
+      font-size: 30px;
+      color: var(--ottanio-dark);
+      margin-bottom: 8px;
+    }
+
+    .guest-setup-card p {
+      color: var(--text);
+      font-size: 15px;
+      margin-bottom: 14px;
+      max-width: 850px;
+    }
+
+    .guest-setup-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    @media (max-width: 1024px) {
+      .guest-setup-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .guest-setup-field label {
+      display: block;
+      color: var(--ottanio-dark);
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .guest-setup-field input {
+      width: 100%;
+      border: 1px solid rgba(15,127,131,.25);
+      border-radius: 16px;
+      padding: 12px 14px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      color: var(--text);
+      background: #fff;
+    }
+
+    .guest-setup-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .guest-setup-btn,
+    .guest-edit-btn {
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--ottanio);
+      color: #fff;
+      border-radius: 999px;
+      padding: 11px 17px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 8px 22px rgba(0, 90, 95, .16);
+    }
+
+    .guest-edit-btn {
+      margin-top: 9px;
+      background: #fff;
+      color: var(--ottanio-dark);
+      border: 1px solid rgba(15,127,131,.25);
+      box-shadow: none;
+      padding: 8px 13px;
+      font-size: 12px;
+    }
+
+    @media (max-width: 720px) {
+      .guest-setup-card {
+        border-radius: 20px;
+        padding: 16px;
+      }
+
+      .guest-setup-card h2 {
+        font-size: 25px;
+      }
+
+      .guest-setup-card p {
+        font-size: 14px;
+      }
+
+      .guest-setup-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .guest-setup-btn,
+      .guest-edit-btn {
+        width: 100%;
+        font-size: 13px;
+      }
+    }
+
+  </style>
+<link href="guide-redesign.css" rel="stylesheet"/><link href="assets/icon-192.png" rel="icon" type="image/png"/><script>window.guideInitialHash=location.hash;</script><link href="guide-polish.css" rel="stylesheet"/><script defer="" src="https://cdn.jsdelivr.net/npm/lucide@0.468.0/dist/umd/lucide.min.js"></script></head>
+<body class="polished-guide guide-home">
+<div class="scroll-hint" id="scrollHint">⌄</div>
+<div id="lang-screen">
+<div class="lang-box">
+<div class="lang-badge" data-de="Gäste-Guide" data-en="Guest guide" data-es="Guía para huéspedes" data-fr="Guide des invités" data-it="Guida ospiti">Guest Guide</div>
+<h1 data-de="A Casa di Marco" data-en="A Casa di Marco" data-es="A Casa di Marco" data-fr="A Casa di Marco" data-it="A Casa di Marco">A Casa di Marco</h1>
+<p class="lang-subtitle" data-de="Garden Cottage Escape · Salerno" data-en="Garden Cottage Escape · Salerno" data-es="Garden Cottage Escape · Salerno" data-fr="Garden Cottage Escape · Salerno" data-it="Garden Cottage Escape · Salerno">Garden Cottage Escape · Salerno</p>
+<div class="lang-welcome">
+<strong data-de="Willkommen" data-en="Welcome" data-es="Bienvenidos" data-fr="Bienvenue" data-it="Benvenuti">Benvenuti</strong>
+<span data-de="Welcome · Bienvenidos · Bienvenue" data-en="Welcome · Bienvenidos · Bienvenue" data-es="Welcome · Bienvenidos · Bienvenue" data-fr="Welcome · Bienvenidos · Bienvenue" data-it="Welcome · Bienvenidos · Bienvenue">Welcome · Bienvenidos · Bienvenue</span>
+</div>
+<div class="lang-btns">
+<button class="lang-btn" data-de="Italienisch" data-en="Italian" data-es="Italiano" data-fr="Italien" data-it="Italiano" onclick="showSite('it')"><span class="flag">🇮🇹</span> Italiano</button>
+<button class="lang-btn" data-de="Englisch" data-en="English" data-es="Inglés" data-fr="Anglais" data-it="English" onclick="showSite('en')"><span class="flag">🇬🇧</span> English</button>
+<button class="lang-btn" data-de="Spanisch" data-en="Spanish" data-es="Español" data-fr="Espagnol" data-it="Español" onclick="showSite('es')"><span class="flag">🇪🇸</span> Español</button>
+<button class="lang-btn" data-de="Französisch" data-en="French" data-es="Francés" data-fr="Français" data-it="Français" onclick="showSite('fr')"><span class="flag">🇫🇷</span> Français</button>
+<button class="lang-btn" data-de="Deutsch" data-en="German" data-es="Alemán" data-fr="Allemand" data-it="Deutsch" onclick="showSite('de')"><span class="flag">🇩🇪</span> Deutsch</button>
+</div>
+</div>
+</div>
+<div id="site">
+<header class="hero">
+<div class="hero-inner">
+<div class="hero-guide-title" data-de="Gäste-Guide" data-en="Guest Guide" data-es="Guía para huéspedes" data-fr="Guide des invités" data-it="Guida per gli ospiti">
+          Guida per gli ospiti
+        </div>
+<h1 data-de="A Casa di Marco" data-en="A Casa di Marco" data-es="A Casa di Marco" data-fr="A Casa di Marco" data-it="A Casa di Marco">
+          A Casa di Marco
+        </h1>
+<p data-de="Garden Cottage Escape · Salerno" data-en="Garden Cottage Escape · Salerno" data-es="Garden Cottage Escape · Salerno" data-fr="Garden Cottage Escape · Salerno" data-it="Garden Cottage Escape · Salerno">
+          Garden Cottage Escape · Salerno
+        </p>
+</div>
+</header>
+<nav class="topbar">
+<div class="topbar-inner"><a class="guide-brand" href="index.html">A Casa di Marco</a>
+<div class="lang-select-wrap">
+<select aria-label="Seleziona lingua" class="lang-select" onchange="showSite(this.value)">
+<option data-de="Sprache wählen" data-en="Select language" data-es="Selecciona idioma" data-fr="Sélectionner la langue" data-it="Seleziona lingua" disabled="" selected="" value="">Seleziona lingua</option>
+<option data-de="🇮🇹 Italienisch" data-en="🇮🇹 Italian" data-es="🇮🇹 Italiano" data-fr="🇮🇹 Italien" data-it="🇮🇹 Italiano" value="it">🇮🇹 Italiano</option>
+<option data-de="🇬🇧 Englisch" data-en="🇬🇧 English" data-es="🇬🇧 Inglés" data-fr="🇬🇧 Anglais" data-it="🇬🇧 English" value="en">🇬🇧 English</option>
+<option data-de="🇪🇸 Spanisch" data-en="🇪🇸 Spanish" data-es="🇪🇸 Español" data-fr="🇪🇸 Espagnol" data-it="🇪🇸 Español" value="es">🇪🇸 Español</option>
+<option data-de="🇫🇷 Französisch" data-en="🇫🇷 French" data-es="🇫🇷 Francés" data-fr="🇫🇷 Français" data-it="🇫🇷 Français" value="fr">🇫🇷 Français</option>
+<option data-de="🇩🇪 Deutsch" data-en="🇩🇪 German" data-es="🇩🇪 Alemán" data-fr="🇩🇪 Allemand" data-it="🇩🇪 Deutsch" value="de">🇩🇪 Deutsch</option>
+</select>
+</div>
+<a class="header-help" data-de="Hilfe" data-en="Help" data-es="Ayuda" data-fr="Assistance" data-it="Assistenza" href="#contatti">Assistenza</a><a class="header-sections" data-de="Bereiche" data-en="Sections" data-es="Secciones" data-fr="Rubriques" data-guide-link="#section-menu" data-it="Sezioni" href="#section-menu">Sezioni</a></div>
+</nav>
+<main><section class="home-menu" id="home-menu"><h2 data-de="Für euren Aufenthalt" data-en="For your stay" data-es="Para tu estancia" data-fr="Pour votre séjour" data-it="Per il tuo soggiorno">Per il tuo soggiorno</h2>
+
+        <button class="install-app-btn show" id="saveGuideBtn"
+                data-it="📲 Salva questa guida sul telefono"
+                data-en="📲 Save this guide on your phone"
+                data-es="📲 Guarda esta guía en tu teléfono"
+                data-fr="📲 Enregistrer ce guide sur le téléphone"
+                data-de="📲 Speichert diesen Guide auf dem Handy">
+          📲 Salva questa guida sul telefono
+        </button>
+
+        <div id="saveGuideInstructions" class="save-guide-box hidden">
+          <p data-it-html="<strong>Android:</strong> apri il menu del browser ⋮ e scegli “Aggiungi alla schermata Home”. Verrà salvato un collegamento veloce al sito."
+            data-en-html="<strong>Android:</strong> open the browser menu ⋮ and choose “Add to Home screen”. A quick shortcut to the website will be saved."
+            data-es-html="<strong>Android:</strong> abre el menú del navegador ⋮ y elige “Añadir a pantalla de inicio”. Se guardará un acceso rápido al sitio."
+            data-fr-html="<strong>Android :</strong> ouvrez le menu du navigateur ⋮ et choisissez “Ajouter à l’écran d’accueil”. Un raccourci rapide vers le site sera enregistré."
+            data-de-html="<strong>Android:</strong> öffnet das Browsermenü ⋮ und wählt „Zum Startbildschirm hinzufügen“. Es wird eine Schnellverknüpfung zur Website gespeichert.">
+            <strong>Android:</strong> apri il menu del browser ⋮ e scegli “Aggiungi alla schermata Home”. Verrà salvato un collegamento veloce al sito.
+          </p>
+
+          <p data-it-html="<strong>iPhone:</strong> apri il sito con Safari, premi Condividi e scegli “Aggiungi alla schermata Home”."
+            data-en-html="<strong>iPhone:</strong> open the site with Safari, tap Share and choose “Add to Home Screen”."
+            data-es-html="<strong>iPhone:</strong> abre el sitio con Safari, toca Compartir y elige “Añadir a pantalla de inicio”."
+            data-fr-html="<strong>iPhone :</strong> ouvrez le site avec Safari, touchez Partager puis “Ajouter à l’écran d’accueil”."
+            data-de-html="<strong>iPhone:</strong> öffnet die Website mit Safari, tippt auf Teilen und wählt „Zum Startbildschirm hinzufügen“.">
+            <strong>iPhone:</strong> apri il sito con Safari, premi Condividi e scegli “Aggiungi alla schermata Home”.
+          </p>
+        </div><div aria-label="Momento del soggiorno" class="stay-tabs" role="tablist"><button aria-controls="stay-panel-0" aria-selected="true" data-de="Vor der Ankunft" data-en="Before arrival" data-es="Antes de llegar" data-fr="Avant l’arrivée" data-it="Prima di arrivare" data-phase="0" id="stay-tab-0" role="tab" type="button">Prima di arrivare</button><button aria-controls="stay-panel-1" aria-selected="false" data-de="Im Haus" data-en="At the house" data-es="Estoy en casa" data-fr="À la maison" data-it="Sono in casa" data-phase="1" id="stay-tab-1" role="tab" type="button">Sono in casa</button><button aria-controls="stay-panel-2" aria-selected="false" data-de="Vor der Abreise" data-en="Before departure" data-es="Antes de salir" data-fr="Avant le départ" data-it="Prima di partire" data-phase="2" id="stay-tab-2" role="tab" type="button">Prima di partire</button></div><div aria-labelledby="stay-tab-0" class="stay-panel" id="stay-panel-0" role="tabpanel"><div class="stay-highlight"><span class="stay-kicker" data-de="Vor der Ankunft" data-en="Before arrival" data-es="Antes de llegar" data-fr="Avant l’arrivée" data-it="Prima di arrivare">Prima di arrivare</span><h3 data-de="Entspannt ankommen" data-en="A smooth arrival" data-es="Llegar sin preocupaciones" data-fr="Arriver sereinement" data-it="Arrivare senza pensieri">Arrivare senza pensieri</h3><p data-de="Schließt vor dem Check-in-Tag den Online-Check-in ab: Sendet die Ausweisdokumente und bezahlt die Kurtaxe und die Kaution. Bei unvollständigem Check-in liegen die Schlüssel nicht in der KeyBox." data-en="Before check-in day, complete the online check-in: send your identity documents and pay the tourist tax and security deposit. If the procedure is incomplete, the keys will not be in the KeyBox." data-es="Antes del día del check-in, completad el check-in online: enviad los documentos y pagad la tasa turística y el depósito de garantía. Si la gestión no está completada, no encontraréis las llaves en la KeyBox." data-fr="Avant le jour de votre arrivée, terminez le check-in en ligne : envoyez les documents d’identité et payez la taxe de séjour et le dépôt de garantie. Si la procédure n’est pas terminée, les clés ne seront pas dans la KeyBox." data-it="Prima del giorno del check-in, completate il check-in online: inviate i documenti e pagate la tassa di soggiorno e la cauzione. Senza la procedura completata, non troverete le chiavi nella KeyBox.">Prima del giorno del check-in, completate il check-in online: inviate i documenti e pagate la tassa di soggiorno e la cauzione. Senza la procedura completata, non troverete le chiavi nella KeyBox.</p><p data-de="Probleme mit dem Verfahren oder möchtet ihr persönlich einchecken? Schreibt uns sofort auf WhatsApp. Der persönliche Check-in muss vereinbart werden; die Kosten variieren je nach Saison." data-en="Having trouble with the procedure or prefer an in-person check-in? Message us immediately on WhatsApp. In-person check-in must be arranged and has a charge that varies by season." data-es="¿Problemas con el trámite o preferís el check-in presencial? Escribidnos inmediatamente por WhatsApp. El check-in presencial debe acordarse y tiene un coste que varía según la temporada." data-fr="Un problème avec la procédure ou vous préférez un accueil en personne ? Écrivez-nous immédiatement sur WhatsApp. Cet accueil doit être convenu et son coût varie selon la saison." data-it="Problemi con la procedura o preferite il check-in in presenza? Scriveteci subito su WhatsApp. Il check-in in presenza va concordato e ha un costo che varia secondo la stagione.">Problemi con la procedura o preferite il check-in in presenza? Scriveteci subito su WhatsApp. Il check-in in presenza va concordato e ha un costo che varia secondo la stagione.</p><div class="stay-card-actions"><a class="stay-action" data-de="Check-in-Anweisungen" data-en="Check-in instructions" data-es="Instrucciones de check-in" data-fr="Consignes d’arrivée" data-guide-link="checkin.html#checkin" data-it="Istruzioni di check-in" href="checkin.html#checkin">Istruzioni di check-in</a><a class="stay-action secondary" data-de="Schreibt uns auf WhatsApp" data-en="Message us on WhatsApp" data-es="Escríbenos por WhatsApp" data-fr="Écrivez-nous sur WhatsApp" data-it="Scrivici su WhatsApp" href="https://wa.me/393923064010">Scrivici su WhatsApp</a></div></div></div><div aria-labelledby="stay-tab-1" class="stay-panel" hidden="" id="stay-panel-1" role="tabpanel"><div class="stay-highlight"><span class="stay-kicker" data-de="Im Haus" data-en="At the house" data-es="Estoy en casa" data-fr="À la maison" data-it="Sono in casa">Sono in casa</span><h3 data-de="Alles, um sich zu Hause zu fühlen" data-en="Everything to feel at home" data-es="Todo para sentirte en casa" data-fr="Tout pour se sentir chez soi" data-it="Tutto per sentirti a casa">Tutto per sentirti a casa</h3><p data-de="Lest bitte die Hausregeln. Schaut vor der Nutzung unbekannter Geräte ins Handbuch: Es erklärt die weniger intuitiven Ausstattungen. Falls eine Anleitung fehlt oder ihr Fragen habt, schreibt uns auf WhatsApp." data-en="Please read the house rules. Before using anything unfamiliar, consult the manual: it explains equipment that is not intuitive. If an instruction is missing or you have questions, message us on WhatsApp." data-es="Leed las reglas de la casa. Antes de usar algo cuyo funcionamiento no conocéis, consultad el manual: explica los equipos que no son intuitivos. Si falta una instrucción o tenéis dudas, escribidnos por WhatsApp." data-fr="Lisez le règlement de la maison. Avant d’utiliser un équipement dont vous ne connaissez pas le fonctionnement, consultez le manuel : il explique les équipements moins intuitifs. S’il manque une instruction ou si vous avez un doute, écrivez-nous sur WhatsApp." data-it="Leggete le regole della casa. Prima di usare qualcosa di cui non conoscete il funzionamento, consultate il manuale: contiene le spiegazioni delle dotazioni che non sono intuitive. Se non trovate un’istruzione o avete dubbi, scriveteci su WhatsApp.">Leggete le regole della casa. Prima di usare qualcosa di cui non conoscete il funzionamento, consultate il manuale: contiene le spiegazioni delle dotazioni che non sono intuitive. Se non trovate un’istruzione o avete dubbi, scriveteci su WhatsApp.</p><div class="stay-card-actions"><a class="stay-action" data-de="Hausregeln" data-en="House rules" data-es="Reglas de la casa" data-fr="Règlement de la maison" data-guide-link="regole.html" data-it="Regole della casa" href="regole.html">Regole della casa</a><a class="stay-action secondary" data-de="Haushandbuch" data-en="House manual" data-es="Manual de la casa" data-fr="Manuel de la maison" data-guide-link="manuale.html" data-it="Manuale della casa" href="manuale.html">Manuale della casa</a></div></div></div><div aria-labelledby="stay-tab-2" class="stay-panel" hidden="" id="stay-panel-2" role="tabpanel"><div class="stay-highlight"><span class="stay-kicker" data-de="Vor der Abreise" data-en="Before departure" data-es="Antes de salir" data-fr="Avant le départ" data-it="Prima di partire">Prima di partire</span><h3 data-de="Ein einfacher Check-out" data-en="An easy check-out" data-es="Un check-out sencillo" data-fr="Un départ tout simple" data-it="Un check-out semplice">Un check-out semplice</h3><p data-de="Befolgt vor der Abreise alle Check-out-Anweisungen und hinterlasst das Haus in gutem Zustand. Prüft die Checkliste, haltet die Abreisezeit ein und legt die Schlüssel in den Briefkasten „A Casa di Marco“, nicht in die KeyBox." data-en="Before leaving, follow all check-out instructions and leave the house in good condition. Check the checklist, respect the departure time and leave the keys in the “A Casa di Marco” letterbox, not in the KeyBox." data-es="Antes de salir, seguid todas las instrucciones de check-out y dejad la casa en buenas condiciones. Revisad la lista, respetad el horario y dejad las llaves en el buzón de correo “A Casa di Marco”, no en la KeyBox." data-fr="Avant de partir, suivez toutes les consignes de départ et laissez la maison en bon état. Vérifiez la checklist, respectez l’horaire et déposez les clés dans la boîte aux lettres « A Casa di Marco », pas dans la KeyBox." data-it="Prima di partire, seguite tutte le istruzioni di check-out e lasciate la casa in buone condizioni. Controllate la checklist, rispettate l’orario e lasciate le chiavi nella cassetta della posta “A Casa di Marco”, non nella KeyBox.">Prima di partire, seguite tutte le istruzioni di check-out e lasciate la casa in buone condizioni. Controllate la checklist, rispettate l’orario e lasciate le chiavi nella cassetta della posta “A Casa di Marco”, non nella KeyBox.</p><div class="stay-card-actions"><a class="stay-action" data-de="Check-out-Checkliste" data-en="Check-out checklist" data-es="Lista de check-out" data-fr="Checklist de départ" data-guide-link="checkin.html#checkout" data-it="Checklist di check-out" href="checkin.html#checkout">Checklist di check-out</a><a class="stay-action secondary" data-de="Schreibt uns auf WhatsApp" data-en="Message us on WhatsApp" data-es="Escríbenos por WhatsApp" data-fr="Écrivez-nous sur WhatsApp" data-it="Scrivici su WhatsApp" href="https://wa.me/393923064010">Scrivici su WhatsApp</a></div></div></div></section><section class="home-welcome" id="welcome-home">
+<div class="guest-welcome hidden" id="guestWelcomeBox">
+<h2 id="guestWelcomeTitle">Benvenuti</h2>
+<p id="guestWelcomeSubtitle">Siamo felici di ospitarvi e speriamo che possiate sentirvi davvero a casa. In questa guida troverete tutte le informazioni utili per vivere al meglio il vostro soggiorno.</p>
+</div>
+<h2 data-de="Willkommen" data-en="Welcome" data-es="Bienvenidos" data-fr="Bienvenue" data-it="Benvenuti" id="standardWelcomeTitle">Benvenuti</h2>
+</section><div class="checkout-reminder-banner" id="checkoutReminderBanner">
+<h2 id="checkoutReminderTitle">⏰ Promemoria</h2>
+<p id="checkoutReminderText">Promemoria soggiorno.</p>
+<div class="checkout-reminder-actions">
+<a class="checkout-reminder-btn" href="check-in-out.html" id="checkoutReminderLink">Apri</a>
+</div>
+<p class="checkout-reminder-small" id="checkoutReminderDate"></p>
+</div><section class="section-menu" id="section-menu"><h2 data-de="Euer Guide, euer Tempo" data-en="Your guide, your way" data-es="Tu guía, a tu manera" data-fr="Votre guide, à votre rythme" data-it="La guida, a modo tuo">La guida, a modo tuo</h2><div class="section-grid"><a class="section-tile" data-guide-link="checkin.html#checkin" href="checkin.html#checkin"><i aria-hidden="true" data-lucide="key-round"></i><strong data-de="Check-in" data-en="Check-in" data-es="Check-in" data-fr="Check-in" data-it="Check-in">Check-in</strong><small data-de="Ankunft und Zugang" data-en="Arrival and access" data-es="Llegada y acceso" data-fr="Arrivée et accès" data-it="Arrivo e accesso">Arrivo e accesso</small></a><a class="section-tile" data-guide-link="checkin.html#checkout" href="checkin.html#checkout"><i aria-hidden="true" data-lucide="log-out"></i><strong data-de="Check-out" data-en="Check-out" data-es="Check-out" data-fr="Check-out" data-it="Check-out">Check-out</strong><small data-de="Vor der Abreise" data-en="Before departure" data-es="Antes de salir" data-fr="Avant de partir" data-it="Prima di partire">Prima di partire</small></a><a class="section-tile" data-guide-link="manuale.html" href="manuale.html"><i aria-hidden="true" data-lucide="book-open"></i><strong data-de="Das Haus" data-en="The house" data-es="La casa" data-fr="La maison" data-it="La casa">La casa</strong><small data-de="WLAN und Hausbuch" data-en="Wi-Fi and manual" data-es="Wi-Fi y manual" data-fr="Wi-Fi et mode d’emploi" data-it="Wi-Fi e manuale">Wi-Fi e manuale</small></a><a class="section-tile" data-guide-link="regole.html" href="regole.html"><i aria-hidden="true" data-lucide="clipboard-list"></i><strong data-de="Hausregeln" data-en="House rules" data-es="Normas" data-fr="Règlement" data-it="Regole">Regole</strong><small data-de="Ein angenehmer Aufenthalt" data-en="A comfortable stay" data-es="Una estancia tranquila" data-fr="Un séjour serein" data-it="Un soggiorno sereno">Un soggiorno sereno</small></a><a class="section-tile" data-guide-link="mangiare.html" href="mangiare.html"><i aria-hidden="true" data-lucide="utensils"></i><strong data-de="Essen gehen" data-en="Where to eat" data-es="Dónde comer" data-fr="Où manger" data-it="Dove mangiare">Dove mangiare</strong><small data-de="Restaurants und Cafés" data-en="Restaurants and cafés" data-es="Restaurantes y bares" data-fr="Restaurants et cafés" data-it="Ristoranti e locali">Ristoranti e locali</small></a><a class="section-tile" data-guide-link="luoghi.html" href="luoghi.html"><i aria-hidden="true" data-lucide="compass"></i><strong data-de="Entdecken" data-en="Explore" data-es="Descubrir" data-fr="À découvrir" data-it="Da scoprire">Da scoprire</strong><small data-de="Salerno und Umgebung" data-en="Salerno and beyond" data-es="Salerno y alrededores" data-fr="Salerne et alentours" data-it="Salerno e dintorni">Salerno e dintorni</small></a><a class="section-tile" data-guide-link="trasporti.html" href="trasporti.html"><i aria-hidden="true" data-lucide="bus"></i><strong data-de="Verkehr" data-en="Transport" data-es="Transporte" data-fr="Transports" data-it="Trasporti">Trasporti</strong><small data-de="Bus, Fähren und Taxi" data-en="Buses, ferries and taxis" data-es="Bus, ferris y taxis" data-fr="Bus, ferries et taxis" data-it="Bus, traghetti e taxi">Bus, traghetti e taxi</small></a><a class="section-tile" data-guide-link="spesa.html" href="spesa.html"><i aria-hidden="true" data-lucide="shopping-basket"></i><strong data-de="Einkaufen" data-en="Groceries" data-es="La compra" data-fr="Les courses" data-it="La spesa">La spesa</strong><small data-de="Geschäfte in der Nähe" data-en="Nearby shops" data-es="Tiendas cercanas" data-fr="Commerces proches" data-it="Negozi vicini">Negozi vicini</small></a><a class="section-tile" data-guide-link="colazione.html" href="colazione.html"><i aria-hidden="true" data-lucide="coffee"></i><strong data-de="Frühstück" data-en="Breakfast" data-es="Desayuno" data-fr="Petit-déjeuner" data-it="Colazione">Colazione</strong><small data-de="Den Tag beginnen" data-en="Start your day" data-es="Empieza el día" data-fr="Commencez la journée" data-it="Inizia la giornata">Inizia la giornata</small></a><a class="section-tile" data-guide-link="parcheggio.html" href="parcheggio.html"><i aria-hidden="true" data-lucide="square-parking"></i><strong data-de="Parken" data-en="Parking" data-es="Aparcamiento" data-fr="Parking" data-it="Parcheggi">Parcheggi</strong><small data-de="Am Haus und in der Stadt" data-en="At home and in town" data-es="En casa y en la ciudad" data-fr="À la maison et en ville" data-it="A casa e in città">A casa e in città</small></a><a class="section-tile" data-guide-link="itinerario.html" href="itinerario.html"><i aria-hidden="true" data-lucide="route"></i><strong data-de="Reiseplan" data-en="Itinerary" data-es="Itinerario" data-fr="Itinéraire" data-it="Itinerario">Itinerario</strong><small data-de="Ein Tag nach euren Wünschen" data-en="A day your way" data-es="Un día a tu medida" data-fr="Une journée sur mesure" data-it="Una giornata su misura">Una giornata su misura</small></a><a class="section-tile" data-guide-link="farmacie-emergenze.html" href="farmacie-emergenze.html"><i aria-hidden="true" data-lucide="cross"></i><strong data-de="Apotheken und Hilfe" data-en="Pharmacies and help" data-es="Farmacias y ayuda" data-fr="Pharmacies et aide" data-it="Farmacie e aiuto">Farmacie e aiuto</strong><small data-de="Dienste und Notfälle" data-en="Services and emergencies" data-es="Servicios y emergencias" data-fr="Services et urgences" data-it="Servizi ed emergenze">Servizi ed emergenze</small></a></div></section><div class="weather-box hidden" id="weatherBox">
+<div class="weather-main">
+<div>
+<span class="weather-label" data-de="Wetter heute in Salerno" data-en="Today’s weather in Salerno" data-es="Tiempo hoy en Salerno" data-fr="Météo aujourd’hui à Salerne" data-it="Meteo oggi a Salerno">
+              Meteo oggi a Salerno
+            </span>
+<strong id="weatherSummary">Caricamento meteo...</strong>
+</div>
+<div class="weather-temp" id="weatherTemp">--°</div>
+</div>
+<div class="weather-details" id="weatherDetails"></div>
+<div class="umbrella-alert hidden" id="umbrellaAlert">
+<strong data-de="Achtung Sonnenschirm" data-en="Garden umbrella warning" data-es="Atención sombrilla" data-fr="Attention parasol" data-it="Attenzione ombrellone">
+            Attenzione ombrellone
+          </strong>
+<p data-de="Bei Regen oder Wind bitten wir euch, den Sonnenschirm zu schließen, bevor ihr das Haus verlasst oder wenn ihr nicht im Garten seid." data-en="In case of rain or wind, please close the garden umbrella before leaving or when you are not in the garden." data-es="En caso de lluvia o viento, os pedimos que cerréis la sombrilla antes de salir o cuando no estéis en el jardín." data-fr="En cas de pluie ou de vent, merci de refermer le parasol avant de sortir ou lorsque vous n’êtes pas dans le jardin." data-it="In caso di pioggia o vento, vi chiediamo di chiudere l’ombrellone prima di uscire o quando non siete in giardino.">
+            In caso di pioggia o vento, vi chiediamo di chiudere l’ombrellone prima di uscire o quando non siete in giardino.
+          </p>
+</div>
+</div>
+<section class="contacts-section" id="contatti">
+<h2 data-de="Kontakte" data-en="Contacts" data-es="Contactos" data-fr="Contacts" data-it="Contatti">Contatti</h2>
+<p data-de="Bei dringenden Anliegen könnt ihr uns anrufen. Für alle anderen Anfragen schreibt uns bitte auf WhatsApp: Wir antworten so schnell wie möglich." data-en="For urgent matters, you can call us. For all other requests, please message us on WhatsApp: we will reply as soon as possible." data-es="Para comunicaciones urgentes podéis llamarnos. Para todas las demás solicitudes, escribidnos por WhatsApp: responderemos lo antes posible." data-fr="Pour les communications urgentes, vous pouvez nous appeler. Pour toute autre demande, écrivez-nous sur WhatsApp : nous répondrons dès que possible." data-it="Per comunicazioni urgenti potete chiamarci. Per tutte le altre richieste, scriveteci su WhatsApp: risponderemo il prima possibile.">
+          Per comunicazioni urgenti potete chiamarci. Per tutte le altre richieste, scriveteci su WhatsApp: risponderemo il prima possibile.
+        </p>
+<p data-de="Wir bitten euch, Anrufe nur für dringende Anliegen zu nutzen, damit wir alle Anfragen bestmöglich bearbeiten können." data-en="Please use phone calls only for urgent matters, so we can manage all requests in the best possible way." data-es="Os pedimos que utilicéis las llamadas solo para asuntos urgentes, así podremos gestionar mejor todas las solicitudes." data-fr="Merci d'utiliser les appels uniquement pour les situations urgentes, afin que nous puissions gérer au mieux toutes les demandes." data-it="Vi chiediamo di utilizzare le chiamate solo per comunicazioni urgenti, così riusciamo a gestire al meglio tutte le richieste.">
+          Vi chiediamo di utilizzare le chiamate solo per comunicazioni urgenti, così riusciamo a gestire al meglio tutte le richieste.
+        </p>
+<div class="contact-grid">
+<div class="contact-card">
+<strong>Asja</strong>
+<p data-de="Hauptkontakt für euren Aufenthalt." data-en="Main contact for your stay." data-es="Contacto principal para vuestra estancia." data-fr="Contact principal pour votre séjour." data-it="Contatto principale per il vostro soggiorno.">
+              Contatto principale per il vostro soggiorno.
+            </p>
+<div class="contact-actions">
+<a class="contact-btn" data-de="📞 Anrufen" data-en="📞 Call" data-es="📞 Llamar" data-fr="📞 Appeler" data-it="📞 Chiama" href="tel:+393923064010">📞 Chiama</a>
+<a class="contact-btn light" data-de="💬 WhatsApp" data-en="💬 WhatsApp" data-es="💬 WhatsApp" data-fr="💬 WhatsApp" data-it="💬 WhatsApp" href="https://wa.me/393923064010" target="_blank">💬 WhatsApp</a>
+</div>
+</div>
+<div class="contact-card">
+<strong>Ambra</strong>
+<p data-de="Zweiter Kontakt im Bedarfsfall." data-en="Second useful contact if needed." data-es="Segundo contacto útil en caso de necesidad." data-fr="Deuxième contact utile en cas de besoin." data-it="Secondo contatto utile in caso di necessità.">
+              Secondo contatto utile in caso di necessità.
+            </p>
+<div class="contact-actions">
+<a class="contact-btn" data-de="📞 Anrufen" data-en="📞 Call" data-es="📞 Llamar" data-fr="📞 Appeler" data-it="📞 Chiama" href="tel:+393397009276">📞 Chiama</a>
+<a class="contact-btn light" data-de="💬 WhatsApp" data-en="💬 WhatsApp" data-es="💬 WhatsApp" data-fr="💬 WhatsApp" data-it="💬 WhatsApp" href="https://wa.me/393397009276" target="_blank">💬 WhatsApp</a>
+</div>
+</div>
+<div class="contact-card">
+<strong>Email</strong>
+<p data-de="Für nicht dringende Anliegen könnt ihr uns auch per E-Mail schreiben." data-en="For non-urgent communications, you can also email us." data-es="Para comunicaciones no urgentes, también podéis escribirnos por email." data-fr="Pour les communications non urgentes, vous pouvez aussi nous écrire par email." data-it="Per comunicazioni non urgenti potete scriverci anche via email.">
+              Per comunicazioni non urgenti potete scriverci anche via email.
+            </p>
+<div class="contact-actions">
+<a class="contact-btn" data-de="✉️ E-Mail schreiben" data-en="✉️ Send email" data-es="✉️ Enviar email" data-fr="✉️ Envoyer un email" data-it="✉️ Scrivi email" href="mailto:acasadimarco17@gmail.com">✉️ Scrivi email</a>
+</div>
+</div>
+</div>
+<div class="emergency-box">
+<strong data-de="Notrufnummern" data-en="Emergency numbers" data-es="Números de emergencia" data-fr="Numéros d'urgence" data-it="Numeri di emergenza">Numeri di emergenza</strong>
+<p data-de="Bei einem medizinischen Notfall ruft 118 an. Für allgemeine Notfälle ruft 112 an." data-en="In case of medical emergency, call 118. For general emergencies, call 112." data-es="En caso de emergencia sanitaria, llamad al 118. Para emergencias generales, llamad al 112." data-fr="En cas d'urgence médicale, appelez le 118. Pour les urgences générales, appelez le 112." data-it="In caso di emergenza sanitaria chiamare il 118. Per emergenze generali chiamare il 112.">
+            In caso di emergenza sanitaria chiamare il 118. Per emergenze generali chiamare il 112.
+          </p>
+<div class="contact-actions">
+<a class="contact-btn" data-de="🚑 118 anrufen" data-en="🚑 Call 118" data-es="🚑 Llamar 118" data-fr="🚑 Appeler 118" data-it="🚑 Chiama 118" href="tel:118">🚑 Chiama 118</a>
+<a class="contact-btn" data-de="🚨 112 anrufen" data-en="🚨 Call 112" data-es="🚨 Llamar 112" data-fr="🚨 Appeler 112" data-it="🚨 Chiama 112" href="tel:112">🚨 Chiama 112</a>
+</div>
+</div>
+</section><section class="marco-section" id="marco-section">
+<h2 data-de="Wer ist Marco?" data-en="Who is Marco?" data-es="¿Quién es Marco?" data-fr="Qui est Marco ?" data-it="Chi è Marco?">Chi è Marco?</h2>
+<div class="marco-story">
+<div class="marco-text">
+<p class="greeting" data-de="Liebe Gäste," data-en="Dear Guests," data-es="Queridos huéspedes:" data-fr="Chers hôtes," data-it="Gentili Ospiti,">
+              Gentili Ospiti,
+            </p>
+<p data-de="Vielleicht ist euch aufgefallen, dass ihr, bevor ihr hier angekommen seid, nie wirklich mit Marco gesprochen oder geschrieben habt. Und vielleicht fragt ihr euch: „Ja, aber wer ist Marco?“ Die Wahrheit ist einfach... Dieses Haus wird nicht von Marco verwaltet. Es ist ihm gewidmet." data-en="Perhaps you may have noticed that before arriving here, you never actually spoke or chatted with Marco. And maybe you are wondering: “Yes, but who is Marco?” The truth is simple... This house is not managed by Marco. It is dedicated to him." data-es="Quizá habréis notado que antes de llegar aquí nunca hablasteis ni chateasteis con Marco. Y tal vez os estaréis preguntando: “Sí, pero ¿quién es Marco?” La verdad es muy sencilla... Esta casa no está gestionada por Marco. Está dedicada a él." data-fr="Vous avez peut-être remarqué qu’avant d’arriver ici, vous n’avez jamais parlé ni échangé de messages avec Marco. Et vous vous demandez peut-être : « Oui, mais qui est Marco ? » La vérité est simple... Cette maison n’est pas gérée par Marco. Elle lui est dédiée." data-it="Forse avrete notato che prima di arrivare qui non avete mai parlato o chattato con Marco. E magari vi stareste chiedendo: “Sì, ma chi è Marco?” La verità è semplice... Questa casa non è gestita da Marco. È dedicata a lui.">
+              Forse avrete notato che prima di arrivare qui non avete mai parlato o chattato con Marco. E magari vi stareste chiedendo: “Sì, ma chi è Marco?” La verità è semplice... Questa casa non è gestita da Marco. È dedicata a lui.
+            </p>
+<p data-de="Marco war unser Onkel... Er lebte nicht hier, sondern bei uns, und er war ein bisschen wie ein großer Bruder. Er war sorglos, vergesslich, unorganisiert und störrisch wie nur wenige, aber immer fröhlich und mit einem leichten Lächeln. Er arbeitete viel, auf seine Weise, und gutes Essen war ihm nie genug. Wegen seiner imposanten und liebevollen Erscheinung nannten wir ihn liebevoll „bambolotto“." data-en="Marco was our uncle... He did not live here, but with us, and he was a bit like an older brother. He was free-spirited, forgetful, disorganised and stubborn like few others, but always cheerful and quick to smile. He worked hard, in his own way, and good food was never enough for him. Because of his big and affectionate presence, we lovingly called him “bambolotto”." data-es="Marco era nuestro tío... No vivía aquí, sino con nosotras, y era un poco como un hermano mayor. Era una persona despreocupada, olvidadiza, desorganizada y muy testaruda, pero siempre alegre y con una sonrisa fácil. Trabajaba mucho, a su manera, y para él comer bien nunca era suficiente. Por su presencia imponente y cariñosa, le llamábamos con cariño “bambolotto”." data-fr="Marco était notre oncle... Il ne vivait pas ici, mais avec nous, et il était un peu comme un grand frère. Il était insouciant, distrait, désorganisé et têtu comme peu de gens, mais toujours joyeux et avec le sourire facile. Il travaillait beaucoup, à sa manière, et pour lui, bien manger n’était jamais assez. Pour sa présence imposante et affectueuse, nous l’appelions tendrement « bambolotto »." data-it="Marco era nostro zio... Non viveva qui, ma con noi, ed era un po’ come un fratello maggiore. Era una capa fresca, smemorato, disorganizzato e capatosta come pochi, ma sempre allegro e con il sorriso facile. Lavorava tanto, a modo suo, e mangiare bene per lui non era mai abbastanza. Per il suo aspetto imponente e affettuoso lo chiamavamo affettuosamente “bambolotto”.">
+              Marco era nostro zio... Non viveva qui, ma con noi, ed era un po’ come un fratello maggiore. Era una capa fresca, smemorato, disorganizzato e capatosta come pochi, ma sempre allegro e con il sorriso facile. Lavorava tanto, a modo suo, e mangiare bene per lui non era mai abbastanza. Per il suo aspetto imponente e affettuoso lo chiamavamo affettuosamente “bambolotto”.
+            </p>
+<p data-de="Leider ist Marco nicht mehr bei uns, aber dieses Haus ist eine Möglichkeit, ihn nahe zu haben und jeden Tag an ihn zu erinnern. Ein Haus wie dieses zu eröffnen war einer seiner Träume, und wir haben es auch für ihn getan." data-en="Sadly, Marco is no longer with us, but this house is a way to keep him close and remember him every day. Opening a home like this was one of his dreams, and we did it for him too." data-es="Por desgracia, Marco ya no está con nosotras, pero esta casa es una forma de tenerlo cerca y recordarlo cada día. Abrir una casa como esta era uno de sus sueños, y también lo hicimos por él." data-fr="Malheureusement, Marco n’est plus avec nous, mais cette maison est une façon de le garder près de nous et de nous souvenir de lui chaque jour. Ouvrir une maison comme celle-ci était l’un de ses rêves, et nous l’avons fait aussi pour lui." data-it="Purtroppo Marco non è più con noi, ma questa casa è un modo per tenerlo vicino e ricordarlo ogni giorno. Aprire una casa come questa era uno dei suoi sogni, e noi l’abbiamo fatto anche per lui.">
+              Purtroppo Marco non è più con noi, ma questa casa è un modo per tenerlo vicino e ricordarlo ogni giorno. Aprire una casa come questa era uno dei suoi sogni, e noi l’abbiamo fatto anche per lui.
+            </p>
+<p data-de="Und manchmal scheint es wirklich, als käme Marco uns besuchen... Wenn ihr während eures Aufenthalts ein Rotkehlchen seht, das sich dem Haus nähert, erschreckt es nicht. Das passiert uns oft, manchmal wenn wir zum Putzen herunterkommen oder einen Nachmittag hier verbringen... Es lässt sich nicht anfassen, aber manchmal kommt es sogar ins Haus." data-en="And sometimes it really feels as if Marco comes to visit us… If during your stay you see a robin coming close to the house, please do not scare it away. It happens quite often, sometimes when we come down to clean or spend an afternoon here... It does not let itself be touched, but sometimes it even comes inside the house." data-es="Y a veces realmente parece que Marco venga a visitarnos… Si durante vuestra estancia veis un petirrojo acercarse a la casa, no lo asustéis. Nos pasa a menudo, a veces cuando bajamos a limpiar o cuando pasamos aquí una tarde... No se deja tocar, pero a veces incluso entra en casa." data-fr="Et parfois, on a vraiment l’impression que Marco vient nous rendre visite… Si pendant votre séjour vous voyez un rouge-gorge s’approcher de la maison, ne l’effrayez pas. Cela nous arrive souvent, parfois quand nous descendons pour nettoyer ou quand nous passons un après-midi ici... Il ne se laisse pas toucher, mais il entre parfois même dans la maison." data-it="E a volte sembra proprio che Marco venga a farci visita… Se durante il vostro soggiorno vedete un pettirosso avvicinarsi alla casa, non spaventatelo. Ci capita spesso, a volte quando scendiamo a pulire oppure quando passiamo un pomeriggio qui... Non si fa toccare, ma a volte entra persino in casa.">
+              E a volte sembra proprio che Marco venga a farci visita… Se durante il vostro soggiorno vedete un pettirosso avvicinarsi alla casa, non spaventatelo. Ci capita spesso, a volte quando scendiamo a pulire oppure quando passiamo un pomeriggio qui... Non si fa toccare, ma a volte entra persino in casa.
+            </p>
+<p data-de="Wegen seines Verhaltens und auch seines pummeligen Aussehens lag es für uns nahe zu denken, obwohl wir keine sehr abergläubischen Menschen sind, dass Marco vorbeikommt, um nachzusehen und zu prüfen, dass alles in Ordnung ist. Wir nennen es liebevoll „das pummelige Rotkehlchen“, denn auch er, wie unser Onkel, war sicherlich keiner, der auf sein Gewicht achtete." data-en="Because of its behaviour and even its plump appearance, it felt natural to think — even though we are not very superstitious people — that it might be Marco stopping by to check that everything is all right. We lovingly call it “the chubby robin”, because, just like our uncle, he was certainly not someone who stayed skinny." data-es="Por su comportamiento y también por su aspecto regordete, nos vino natural pensar, aunque no somos personas supersticiosas, que era Marco pasando a echar un vistazo y comprobar que todo estaba bien. Lo llamamos cariñosamente “el petirrojo gordito”, porque él también, como nuestro tío, no era precisamente de los que se mantenían ligeros." data-fr="À cause de son comportement et même de son aspect un peu dodu, il nous est venu naturellement à l’esprit, même si nous ne sommes pas très superstitieuses, que c’était Marco qui passait jeter un coup d’œil pour vérifier que tout allait bien. Nous l’appelons affectueusement « le rouge-gorge dodu », car lui aussi, comme notre oncle, n’était pas vraiment du genre à rester léger." data-it="Per il suo comportamento e anche per il suo aspetto chiatto, ci è venuto naturale pensare, nonostante siamo persone poco superstiziose, che sia Marco che passa a dare un’occhiata e a controllare che sia tutto a posto. Lo chiamiamo affettuosamente “il pettirosso chiatto”, perché anche lui, come nostro zio, non era certo uno che si teneva leggero.">
+              Per il suo comportamento e anche per il suo aspetto chiatto, ci è venuto naturale pensare, nonostante siamo persone poco superstiziose, che sia Marco che passa a dare un’occhiata e a controllare che sia tutto a posto. Lo chiamiamo affettuosamente “il pettirosso chiatto”, perché anche lui, come nostro zio, non era certo uno che si teneva leggero.
+            </p>
+<p data-de="Wenn ihr es seht und Lust habt, könnt ihr uns auch ein Foto schicken — es wird uns zum Lächeln bringen zu denken, dass Marco bei euch vorbeigekommen ist. Wenn ihr euch hier wohlfühlt, wenn es sich wirklich wie zu Hause anfühlt, dann ist Marco wahrscheinlich vorbeigekommen. Er hat sich umgesehen, etwas vor sich hin gemurmelt… und ist zufrieden gegangen." data-en="If you see it, and if you feel like it, you can also send us a photo — it will make us smile to think that Marco stopped by to visit you. If you feel good here, if it truly feels like home, then Marco has probably passed by. He looked around, grumbled about something… and left satisfied." data-es="Si lo veis, y si os apetece, también podéis enviarnos una foto: nos hará sonreír pensar que Marco ha pasado a visitaros. Si aquí os sentís bien, si de verdad os parece estar en casa, entonces probablemente Marco ha pasado por aquí. Ha mirado alrededor, ha gruñido algo… y se ha ido satisfecho." data-fr="Si vous le voyez, et si vous en avez envie, vous pouvez aussi nous envoyer une photo : cela nous fera sourire de penser que Marco est passé vous rendre visite. Si vous vous sentez bien ici, si vous avez vraiment l’impression d’être chez vous, alors Marco est probablement passé. Il a regardé autour de lui, a marmonné quelque chose… puis il est reparti satisfait." data-it="Se lo vedete, se vi va, potete anche mandarci una foto, ci farà sorridere pensare che Marco sia passato a trovarvi. Se qui vi sentirete bene, se vi sembrerà davvero di essere a casa, allora probabilmente Marco è passato. Ha guardato in giro, ha borbottato qualcosa… e se n’è andato soddisfatto.">
+              Se lo vedete, se vi va, potete anche mandarci una foto, ci farà sorridere pensare che Marco sia passato a trovarvi. Se qui vi sentirete bene, se vi sembrerà davvero di essere a casa, allora probabilmente Marco è passato. Ha guardato in giro, ha borbottato qualcosa… e se n’è andato soddisfatto.
+            </p>
+<p class="marco-sign" data-de="— Stefania, Ambra, Asja" data-en="— Stefania, Ambra, Asja" data-es="— Stefania, Ambra, Asja" data-fr="— Stefania, Ambra, Asja" data-it="— Stefania, Ambra, Asja">
+              — Stefania, Ambra, Asja
+            </p>
+</div>
+<div class="marco-photo">
+<img alt="Il pettirosso di Marco" src="assets/pettirosso1.png"/>
+<small data-de="Unser „pummeliges Rotkehlchen“. Wenn ihr es seht, schickt uns ein Foto 💛" data-en="Our “chubby robin”. If you see it, send us a photo 💛" data-es="Nuestro “petirrojo gordito”. Si lo veis, enviadnos una foto 💛" data-fr="Notre « rouge-gorge dodu ». Si vous le voyez, envoyez-nous une photo 💛" data-it="Il nostro “pettirosso chiatto”. Se lo vedete, mandateci una foto 💛">
+              Il nostro “pettirosso chiatto”. Se lo vedete, mandateci una foto 💛
+            </small>
+</div>
+</div>
+</section></main></div>
+<footer>
+<p data-de-html="&lt;strong&gt;A Casa di Marco – Gäste-Guide&lt;/strong&gt; · Garden Cottage Escape · Salerno" data-en-html="&lt;strong&gt;A Casa di Marco – Guest Guide&lt;/strong&gt; · Garden Cottage Escape · Salerno" data-es-html="&lt;strong&gt;A Casa di Marco – Guía para huéspedes&lt;/strong&gt; · Garden Cottage Escape · Salerno" data-fr-html="&lt;strong&gt;A Casa di Marco – Guide des invités&lt;/strong&gt; · Garden Cottage Escape · Salerno" data-it-html="&lt;strong&gt;A Casa di Marco – Guida ospiti&lt;/strong&gt; · Garden Cottage Escape · Salerno">
+<strong>A Casa di Marco – Guest Guide</strong> · Garden Cottage Escape · Salerno
+      </p>
+<p data-de="Danke, dass ihr unser Haus gewählt habt." data-en="Thank you for choosing our home." data-es="Gracias por elegir nuestra casa." data-fr="Merci d'avoir choisi notre maison." data-it="Grazie per aver scelto la nostra casa.">
+        Grazie per aver scelto la nostra casa.
+      </p>
+</footer>
+<script>
+    function getCurrentLangForGuest() {
+      var hash = window.location.hash ? window.location.hash.replace("#", "") : "";
+      var params = new URLSearchParams(window.location.search);
+      var langParam = params.get("lang");
+
+      if (langParam === "it" || langParam === "en" || langParam === "es" || langParam === "fr" || langParam === "de") {
+        return langParam;
+      }
+
+      if (hash === "it" || hash === "en" || hash === "es" || hash === "fr" || hash === "de") {
+        return hash;
+      }
+
+      try {
+        var savedLang = localStorage.getItem("guestGuideLang");
+        if (savedLang === "it" || savedLang === "en" || savedLang === "es" || savedLang === "fr" || savedLang === "de") {
+          return savedLang;
+        }
+      } catch (e) {}
+
+      return "it";
+    }
+
+    function getGuestDataFromUrl() {
+      var params = new URLSearchParams(window.location.search);
+      var guestName = params.get("guestName") || "";
+      var guestType = params.get("guestType") || "";
+      var guestCustom = params.get("guestCustom") || "";
+      var checkinDate = params.get("checkin") || "";
+      var checkoutDate = params.get("checkout") || "";
+
+      if (guestName || guestType || guestCustom || checkinDate || checkoutDate) {
+        try {
+          localStorage.setItem("guestName", guestName);
+          localStorage.setItem("guestType", guestType);
+          localStorage.setItem("guestCustom", guestCustom);
+          localStorage.setItem("guestCheckin", checkinDate);
+          localStorage.setItem("guestCheckout", checkoutDate);
+        } catch (e) {}
+
+        return {
+          name: guestName,
+          type: guestType,
+          custom: guestCustom,
+          checkin: checkinDate,
+          checkout: checkoutDate
+        };
+      }
+
+      try {
+        return {
+          name: localStorage.getItem("guestName") || "",
+          type: localStorage.getItem("guestType") || "",
+          custom: localStorage.getItem("guestCustom") || "",
+          checkin: (window.guideStay || {}).checkin || "",
+          checkout: (window.guideStay || {}).checkout || ""
+        };
+      } catch (e) {
+        return {
+          name: "",
+          type: "",
+          custom: "",
+          checkin: "",
+          checkout: ""
+        };
+      }
+    }
+
+    function formatGuestName(type, name, custom, lang) {
+      name = name ? name.trim() : "";
+      custom = custom ? custom.trim() : "";
+
+      var translations = {
+        family: {
+          it: "Famiglia " + name,
+          en: name + " Family",
+          es: "Familia " + name,
+          fr: "Famille " + name,
+          de: "Familie " + name
+        },
+        mr: {
+          it: "Signor " + name,
+          en: "Mr. " + name,
+          es: "Señor " + name,
+          fr: "Monsieur " + name,
+          de: "Herr " + name
+        },
+        mrs: {
+          it: "Signora " + name,
+          en: "Mrs. " + name,
+          es: "Señora " + name,
+          fr: "Madame " + name,
+          de: "Frau " + name
+        },
+        guests: {
+          it: name ? "Ospiti " + name : "Ospiti",
+          en: name ? name + " Guests" : "Guests",
+          es: name ? "Huéspedes " + name : "Huéspedes",
+          fr: name ? "Hôtes " + name : "Hôtes",
+          de: name ? "Gäste " + name : "Gäste"
+        },
+        custom: {
+          it: custom || name,
+          en: custom || name,
+          es: custom || name,
+          fr: custom || name,
+          de: custom || name
+        }
+      };
+
+      if (!translations[type]) {
+        return name || custom;
+      }
+
+      return translations[type][lang] || translations[type].it;
+    }
+
+    function showGuestWelcome() {
+      var guestData = getGuestDataFromUrl();
+      var lang = getCurrentLangForGuest();
+
+      var box = document.getElementById("guestWelcomeBox");
+      var title = document.getElementById("guestWelcomeTitle");
+      var subtitle = document.getElementById("guestWelcomeSubtitle");
+
+      if (!box || !title || !subtitle) return;
+
+      var finalGuestName = formatGuestName(
+        guestData.type,
+        guestData.name,
+        guestData.custom,
+        lang
+      );
+
+      if (!finalGuestName) {
+        box.classList.add("hidden");
+        return;
+      }
+
+      var welcomeTexts = {
+        it: "Benvenuti, ",
+        en: "Welcome, ",
+        es: "Bienvenidos, ",
+        fr: "Bienvenue, ",
+        de: "Willkommen, "
+      };
+
+      var subtitleTexts = {
+        it: "La vostra guida digitale per il soggiorno ad A Casa di Marco",
+        en: "Your digital guide for your stay at A Casa di Marco",
+        es: "Vuestra guía digital para la estancia en A Casa di Marco",
+        fr: "Votre guide numérique pour votre séjour à A Casa di Marco",
+        de: "Euer digitaler Guide für euren Aufenthalt bei A Casa di Marco"
+      };
+
+      title.textContent = welcomeTexts[lang] + finalGuestName;
+      subtitle.textContent = subtitleTexts[lang];
+
+      box.classList.remove("hidden");
+    }
+
+    function setupOwnerGuestGenerator() {
+      var params = new URLSearchParams(window.location.search);
+      var isAdmin = params.get("admin") === "1";
+
+      var generator = document.getElementById("ownerGuestGenerator");
+      var typeSelect = document.getElementById("guestTypeSelect");
+      var input = document.getElementById("guestNameInput");
+      var customInput = document.getElementById("guestCustomInput");
+      var customLabel = document.getElementById("guestCustomLabel");
+      var langSelect = document.getElementById("guestLangSelect");
+      var checkinInput = document.getElementById("guestCheckinInput");
+      var checkoutInput = document.getElementById("guestCheckoutInput");
+      var generateBtn = document.getElementById("generateGuestLink");
+      var generatedBox = document.getElementById("generatedLinkBox");
+      var generatedInput = document.getElementById("generatedGuestLink");
+      var copyBtn = document.getElementById("copyGuestLink");
+
+      if (!generator || !typeSelect || !input || !customInput || !customLabel || !langSelect || !checkinInput || !checkoutInput || !generateBtn || !generatedBox || !generatedInput || !copyBtn) return;
+
+      if (!isAdmin) {
+        generator.classList.add("hidden");
+        return;
+      }
+
+      generator.classList.remove("hidden");
+
+      typeSelect.addEventListener("change", function () {
+        if (typeSelect.value === "custom") {
+          customInput.classList.remove("hidden");
+          customLabel.classList.remove("hidden");
+        } else {
+          customInput.classList.add("hidden");
+          customLabel.classList.add("hidden");
+        }
+      });
+
+      generateBtn.addEventListener("click", function () {
+        var guestType = typeSelect.value;
+        var guestName = input.value.trim();
+        var guestCustom = customInput.value.trim();
+        var checkinDate = checkinInput.value || "";
+        var checkoutDate = checkoutInput.value || "";
+        var lang = langSelect.value || "it";
+
+        if (guestType !== "custom" && !guestName) {
+          alert("Inserisci il cognome o il nome dell’ospite.");
+          return;
+        }
+
+        if (guestType === "custom" && !guestCustom) {
+          alert("Inserisci il testo personalizzato.");
+          return;
+        }
+
+        if (checkinDate && checkoutDate && checkoutDate <= checkinDate) {
+          alert("La data di check-out deve essere successiva alla data di check-in.");
+          return;
+        }
+
+        var baseUrl = window.location.origin + window.location.pathname;
+        var finalUrl = baseUrl
+          + "?guestType=" + encodeURIComponent(guestType)
+          + "&guestName=" + encodeURIComponent(guestName)
+          + "&guestCustom=" + encodeURIComponent(guestCustom)
+          + "&checkin=" + encodeURIComponent(checkinDate)
+          + "&checkout=" + encodeURIComponent(checkoutDate)
+          + "#" + lang;
+
+        generatedInput.value = finalUrl;
+        generatedBox.classList.remove("hidden");
+      });
+
+      copyBtn.addEventListener("click", function () {
+        generatedInput.select();
+        generatedInput.setSelectionRange(0, 99999);
+
+        try {
+          navigator.clipboard.writeText(generatedInput.value);
+          copyBtn.textContent = "Copiato!";
+          setTimeout(function () {
+            copyBtn.textContent = "Copia link";
+          }, 1800);
+        } catch (e) {
+          document.execCommand("copy");
+          copyBtn.textContent = "Copiato!";
+          setTimeout(function () {
+            copyBtn.textContent = "Copia link";
+          }, 1800);
+        }
+      });
+    }
+
+    function translatePage(lang) {
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll('[data-it], [data-it-html]').forEach(function (el) {
+        var htmlTranslation = el.getAttribute('data-' + lang + '-html');
+        var textTranslation = el.getAttribute('data-' + lang);
+
+        if (htmlTranslation) {
+          el.innerHTML = htmlTranslation;
+        } else if (textTranslation) {
+          el.textContent = textTranslation;
+        }
+      });
+
+      document.querySelectorAll('[data-href]').forEach(function (link) {
+        var base = link.getAttribute('data-href');
+        link.href = base + '?lang=' + lang;
+      });
+
+      try {
+        localStorage.setItem('guestGuideLang', lang);
+      } catch (e) {}
+    }
+
+
+    function getStayDatesFromUrl() {
+      var params = new URLSearchParams(window.location.search);
+      var checkinDate = params.get("checkin") || "";
+      var checkoutDate = params.get("checkout") || "";
+
+      if (checkinDate || checkoutDate) {
+        try {
+          localStorage.setItem("guestCheckin", checkinDate);
+          localStorage.setItem("guestCheckout", checkoutDate);
+        } catch (e) {}
+
+        return {
+          checkin: checkinDate,
+          checkout: checkoutDate
+        };
+      }
+
+      try {
+        return {
+          checkin: (window.guideStay || {}).checkin || "",
+          checkout: (window.guideStay || {}).checkout || ""
+        };
+      } catch (e) {
+        return {
+          checkin: "",
+          checkout: ""
+        };
+      }
+    }
+
+    function parseLocalDate(dateString) {
+      if (!dateString) return null;
+      var parts = dateString.split("-");
+      if (parts.length !== 3) return null;
+      return new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
+    }
+
+    function daysUntilDate(dateString) {
+      var target = parseLocalDate(dateString);
+      if (!target) return null;
+
+      var now = new Date();
+      var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      var diff = target.getTime() - today.getTime();
+      return Math.round(diff / 86400000);
+    }
+
+    function formatStayDate(dateString, lang) {
+      var date = parseLocalDate(dateString);
+      if (!date) return "";
+
+      var locales = {
+        it: "it-IT",
+        en: "en-GB",
+        es: "es-ES",
+        fr: "fr-FR",
+        de: "de-DE"
+      };
+
+      try {
+        return date.toLocaleDateString(locales[lang] || "it-IT", {
+          day: "2-digit",
+          month: "long",
+          year: "numeric"
+        });
+      } catch (e) {
+        return dateString;
+      }
+    }
+
+    function updateCheckoutReminder() {
+      var lang = getCurrentLangForGuest();
+      var dates = getStayDatesFromUrl();
+      var banner = document.getElementById("checkoutReminderBanner");
+      var title = document.getElementById("checkoutReminderTitle");
+      var text = document.getElementById("checkoutReminderText");
+      var link = document.getElementById("checkoutReminderLink");
+      var dateText = document.getElementById("checkoutReminderDate");
+
+      if (!banner || !title || !text || !link || !dateText) return;
+
+      banner.classList.remove("show");
+
+      if (!dates.checkout) return;
+
+      var daysLeft = daysUntilDate(dates.checkout);
+      if (daysLeft === null || daysLeft < 0 || daysLeft > 1) return;
+
+      var texts = {
+        it: {
+          tomorrowTitle: "⏰ Promemoria check-out",
+          todayTitle: "🧳 Check-out oggi",
+          tomorrowText: "Domani è il giorno del check-out. Prima della partenza vi chiediamo gentilmente di aprire la sezione Check-out e completare la checklist.",
+          todayText: "Oggi è il giorno del check-out. Prima di lasciare la casa, completate la checklist per controllare di non aver dimenticato nulla.",
+          button: "✅ Apri checklist check-out",
+          date: "Data check-out: "
+        },
+        en: {
+          tomorrowTitle: "⏰ Check-out reminder",
+          todayTitle: "🧳 Check-out today",
+          tomorrowText: "Tomorrow is check-out day. Before departure, please open the Check-out section and complete the checklist.",
+          todayText: "Today is check-out day. Before leaving the house, please complete the checklist to make sure nothing has been forgotten.",
+          button: "✅ Open check-out checklist",
+          date: "Check-out date: "
+        },
+        es: {
+          tomorrowTitle: "⏰ Recordatorio de check-out",
+          todayTitle: "🧳 Check-out hoy",
+          tomorrowText: "Mañana es el día del check-out. Antes de salir, abrid la sección Check-out y completad la checklist.",
+          todayText: "Hoy es el día del check-out. Antes de dejar la casa, completad la checklist para comprobar que no olvidáis nada.",
+          button: "✅ Abrir checklist de check-out",
+          date: "Fecha de check-out: "
+        },
+        fr: {
+          tomorrowTitle: "⏰ Rappel check-out",
+          todayTitle: "🧳 Check-out aujourd’hui",
+          tomorrowText: "Demain est le jour du check-out. Avant le départ, merci d’ouvrir la section Check-out et de compléter la checklist.",
+          todayText: "Aujourd’hui est le jour du check-out. Avant de quitter la maison, complétez la checklist pour vérifier que rien n’a été oublié.",
+          button: "✅ Ouvrir la checklist check-out",
+          date: "Date de check-out : "
+        },
+        de: {
+          tomorrowTitle: "⏰ Check-out-Erinnerung",
+          todayTitle: "🧳 Heute Check-out",
+          tomorrowText: "Morgen ist der Tag des Check-out. Bitte öffnet vor der Abreise den Bereich Check-out und füllt die Checkliste aus.",
+          todayText: "Heute ist der Tag des Check-out. Füllt vor dem Verlassen des Hauses die Checkliste aus, um sicherzugehen, dass ihr nichts vergessen habt.",
+          button: "✅ Check-out-Checkliste öffnen",
+          date: "Check-out-Datum: "
+        }
+      };
+
+      var t = texts[lang] || texts.it;
+
+      title.textContent = daysLeft === 0 ? t.todayTitle : t.tomorrowTitle;
+      text.textContent = daysLeft === 0 ? t.todayText : t.tomorrowText;
+      link.textContent = t.button;
+      link.href = "check-in-out.html?lang=" + lang + "#checkout";
+      dateText.textContent = t.date + formatStayDate(dates.checkout, lang);
+
+      banner.classList.add("show");
+    }
+
+
+    function getGuestProfile() {
+      try {
+        return {
+          name: (window.guideStay || {}).name || "",
+          checkin: (window.guideStay || {}).checkin || "",
+          checkout: (window.guideStay || {}).checkout || ""
+        };
+      } catch (e) {
+        return { name: "", checkin: "", checkout: "" };
+      }
+    }
+
+    function saveGuestProfile(name, checkin, checkout) {
+      try {
+        localStorage.setItem("guestDisplayName", name || "");
+        localStorage.setItem("guestCheckin", checkin || "");
+        localStorage.setItem("guestCheckout", checkout || "");
+      } catch (e) {}
+    }
+
+    function hasCompleteGuestProfile() {
+      var profile = getGuestProfile();
+      return !!(profile.name && profile.checkin && profile.checkout);
+    }
+
+    function setupGuestStayForm() {
+      var card = document.getElementById("guestStaySetup");
+      var nameInput = document.getElementById("guestDisplayNameInput");
+      var checkinInput = document.getElementById("guestCheckinInput");
+      var checkoutInput = document.getElementById("guestCheckoutInput");
+      var saveBtn = document.getElementById("saveGuestStayBtn");
+
+      if (!card || !nameInput || !checkinInput || !checkoutInput || !saveBtn) return;
+
+      var profile = getGuestProfile();
+      nameInput.value = profile.name || "";
+      checkinInput.value = profile.checkin || "";
+      checkoutInput.value = profile.checkout || "";
+
+      if (hasCompleteGuestProfile()) {
+        card.classList.add("hidden");
+      } else {
+        card.classList.remove("hidden");
+      }
+
+      if (!saveBtn.dataset.listenerAttached) {
+        saveBtn.dataset.listenerAttached = "1";
+        saveBtn.addEventListener("click", function () {
+          var lang = getCurrentLangForGuest();
+          var name = nameInput.value.trim();
+          var checkin = checkinInput.value;
+          var checkout = checkoutInput.value;
+
+          var alerts = {
+            it: {
+              missing: "Inserisci nome, data di check-in e data di check-out.",
+              date: "La data di check-out deve essere successiva alla data di check-in."
+            },
+            en: {
+              missing: "Please enter name, check-in date and check-out date.",
+              date: "The check-out date must be after the check-in date."
+            },
+            es: {
+              missing: "Introduce nombre, fecha de check-in y fecha de check-out.",
+              date: "La fecha de check-out debe ser posterior a la fecha de check-in."
+            },
+            fr: {
+              missing: "Indiquez le nom, la date de check-in et la date de check-out.",
+              date: "La date de check-out doit être après la date de check-in."
+            },
+            de: {
+              missing: "Bitte geben Sie Name, Check-in-Datum und Check-out-Datum ein.",
+              date: "Das Check-out-Datum muss nach dem Check-in-Datum liegen."
+            }
+          };
+
+          var t = alerts[lang] || alerts.it;
+
+          if (!name || !checkin || !checkout) {
+            alert(t.missing);
+            return;
+          }
+
+          if (checkout <= checkin) {
+            alert(t.date);
+            return;
+          }
+
+          saveGuestProfile(name, checkin, checkout);
+          card.classList.add("hidden");
+          showGuestWelcome();
+          updateCheckoutReminder();
+        });
+      }
+    }
+
+    function showGuestWelcome() {
+      var profile = getGuestProfile();
+      var lang = getCurrentLangForGuest();
+
+      var box = document.getElementById("guestWelcomeBox");
+      var title = document.getElementById("guestWelcomeTitle");
+      var subtitle = document.getElementById("guestWelcomeSubtitle");
+      var standardTitle = document.getElementById("standardWelcomeTitle");
+      var standardText = document.getElementById("standardWelcomeText");
+
+      if (!box || !title || !subtitle) return;
+
+      if (!profile.name) {
+        box.classList.add("hidden");
+        if (standardTitle) standardTitle.classList.remove("hidden");
+        if (standardText) standardText.classList.remove("hidden");
+        return;
+      }
+
+      var welcomeTexts = {
+        it: "Benvenuti, ",
+        en: "Welcome, ",
+        es: "Bienvenidos, ",
+        fr: "Bienvenue, ",
+        de: "Willkommen, "
+      };
+
+      var welcomeDescriptions = {
+        it: "Siamo felici di ospitarvi e speriamo che possiate sentirvi davvero a casa. In questa guida troverete tutte le informazioni utili per vivere al meglio il vostro soggiorno.",
+        en: "We are happy to host you and hope you will truly feel at home. In this guide you will find all the useful information to enjoy your stay.",
+        es: "Nos alegra alojaros y esperamos que os sintáis como en casa. En esta guía encontraréis toda la información útil para disfrutar de vuestra estancia.",
+        fr: "Nous sommes heureux de vous accueillir et espérons que vous vous sentirez vraiment chez vous. Dans ce guide, vous trouverez toutes les informations utiles pour profiter de votre séjour.",
+        de: "Wir freuen uns, euch bei uns willkommen zu heißen, und hoffen, dass ihr euch wirklich wie zu Hause fühlt. In diesem Guide findet ihr alle nützlichen Informationen, um euren Aufenthalt zu genießen."
+      };
+
+      var editTexts = {
+        it: "Modifica dati soggiorno",
+        en: "Edit stay details",
+        es: "Modificar datos de estancia",
+        fr: "Modifier les informations du séjour",
+        de: "Aufenthaltsdaten bearbeiten"
+      };
+
+      title.textContent = (welcomeTexts[lang] || welcomeTexts.it) + profile.name;
+      subtitle.textContent = welcomeDescriptions[lang] || welcomeDescriptions.it;
+
+      if (standardTitle) standardTitle.classList.add("hidden");
+      if (standardText) standardText.classList.add("hidden");
+
+      box.classList.remove("hidden");
+    }
+
+    function updateCheckoutReminder() {
+      var lang = getCurrentLangForGuest();
+      var profile = getGuestProfile();
+      var banner = document.getElementById("checkoutReminderBanner");
+      var title = document.getElementById("checkoutReminderTitle");
+      var text = document.getElementById("checkoutReminderText");
+      var actions = banner ? banner.querySelector(".checkout-reminder-actions") : null;
+      var dateText = document.getElementById("checkoutReminderDate");
+
+      if (!banner || !title || !text || !actions || !dateText) return;
+
+      banner.classList.remove("show");
+      actions.innerHTML = "";
+      dateText.textContent = "";
+
+      if (!profile.checkin || !profile.checkout) return;
+
+      var checkinDays = daysUntilDate(profile.checkin);
+      var checkoutDays = daysUntilDate(profile.checkout);
+
+      var texts = {
+        it: {
+          checkinTitle: "🧳 Check-in oggi",
+          checkinText: "Benvenuti! Oggi è il giorno del check-in. Vi consigliamo di leggere le Regole della casa e il Manuale della casa, così sarà tutto più semplice durante il soggiorno.",
+          manual: "🏠 Apri manuale della casa",
+          rules: "📋 Apri regole della casa",
+          checkin: "🧳 Apri istruzioni check-in",
+          checkinDate: "Data check-in: ",
+          tomorrowTitle: "⏰ Promemoria check-out",
+          todayTitle: "🧳 Check-out oggi",
+          tomorrowText: "Domani è il giorno del check-out. Prima della partenza vi chiediamo gentilmente di aprire la sezione Check-out e completare la checklist.",
+          todayText: "Oggi è il giorno del check-out. Prima di lasciare la casa, completate la checklist per controllare di non aver dimenticato nulla.",
+          checkoutButton: "✅ Apri checklist check-out",
+          checkoutDate: "Data check-out: "
+        },
+        en: {
+          checkinTitle: "🧳 Check-in today",
+          checkinText: "Welcome! Today is check-in day. We recommend reading the House Rules and the House Manual, so everything will be easier during your stay.",
+          manual: "🏠 Open house manual",
+          rules: "📋 Open house rules",
+          checkin: "🧳 Open check-in instructions",
+          checkinDate: "Check-in date: ",
+          tomorrowTitle: "⏰ Check-out reminder",
+          todayTitle: "🧳 Check-out today",
+          tomorrowText: "Tomorrow is check-out day. Before departure, please open the Check-out section and complete the checklist.",
+          todayText: "Today is check-out day. Before leaving the house, please complete the checklist to make sure nothing has been forgotten.",
+          checkoutButton: "✅ Open check-out checklist",
+          checkoutDate: "Check-out date: "
+        },
+        es: {
+          checkinTitle: "🧳 Check-in hoy",
+          checkinText: "¡Bienvenidos! Hoy es el día del check-in. Os recomendamos leer las Reglas de la casa y el Manual de la casa, para que todo sea más sencillo durante la estancia.",
+          manual: "🏠 Abrir manual de la casa",
+          rules: "📋 Abrir reglas de la casa",
+          checkin: "🧳 Abrir instrucciones de check-in",
+          checkinDate: "Fecha de check-in: ",
+          tomorrowTitle: "⏰ Recordatorio de check-out",
+          todayTitle: "🧳 Check-out hoy",
+          tomorrowText: "Mañana es el día del check-out. Antes de salir, abrid la sección Check-out y completad la checklist.",
+          todayText: "Hoy es el día del check-out. Antes de dejar la casa, completad la checklist para comprobar que no olvidáis nada.",
+          checkoutButton: "✅ Abrir checklist de check-out",
+          checkoutDate: "Fecha de check-out: "
+        },
+        fr: {
+          checkinTitle: "🧳 Check-in aujourd’hui",
+          checkinText: "Bienvenue ! Aujourd’hui est le jour du check-in. Nous vous conseillons de lire le règlement de la maison et le manuel de la maison, afin que tout soit plus simple pendant votre séjour.",
+          manual: "🏠 Ouvrir le manuel de la maison",
+          rules: "📋 Ouvrir le règlement de la maison",
+          checkin: "🧳 Ouvrir les instructions check-in",
+          checkinDate: "Date de check-in : ",
+          tomorrowTitle: "⏰ Rappel check-out",
+          todayTitle: "🧳 Check-out aujourd’hui",
+          tomorrowText: "Demain est le jour du check-out. Avant le départ, merci d’ouvrir la section Check-out et de compléter la checklist.",
+          todayText: "Aujourd’hui est le jour du check-out. Avant de quitter la maison, complétez la checklist pour vérifier que rien n’a été oublié.",
+          checkoutButton: "✅ Ouvrir la checklist check-out",
+          checkoutDate: "Date de check-out : "
+        },
+        de: {
+          checkinTitle: "🧳 Heute Check-in",
+          checkinText: "Willkommen! Heute ist der Tag des Check-in. Wir empfehlen euch, die Hausregeln und das Hausbuch zu lesen, damit während des Aufenthalts alles einfacher ist.",
+          manual: "🏠 Hausbuch öffnen",
+          rules: "📋 Hausregeln öffnen",
+          checkin: "🧳 Check-in-Anleitung öffnen",
+          checkinDate: "Check-in-Datum: ",
+          tomorrowTitle: "⏰ Check-out-Erinnerung",
+          todayTitle: "🧳 Heute Check-out",
+          tomorrowText: "Morgen ist der Tag des Check-out. Bitte öffnet vor der Abreise den Bereich Check-out und füllt die Checkliste aus.",
+          todayText: "Heute ist der Tag des Check-out. Füllt vor dem Verlassen des Hauses die Checkliste aus, um sicherzugehen, dass ihr nichts vergessen habt.",
+          checkoutButton: "✅ Check-out-Checkliste öffnen",
+          checkoutDate: "Check-out-Datum: "
+        }
+      };
+
+      var t = texts[lang] || texts.it;
+
+      function addReminderButton(label, href) {
+        var a = document.createElement("a");
+        a.className = "checkout-reminder-btn";
+        a.href = href;
+        a.textContent = label;
+        actions.appendChild(a);
+      }
+
+      if (checkinDays === 0) {
+        title.textContent = t.checkinTitle;
+        text.textContent = t.checkinText;
+        addReminderButton(t.manual, "manuale.html?lang=" + lang);
+        addReminderButton(t.rules, "regole.html?lang=" + lang);
+        addReminderButton(t.checkin, "check-in-out.html?lang=" + lang + "#checkin");
+        dateText.textContent = t.checkinDate + formatStayDate(profile.checkin, lang);
+        banner.classList.add("show");
+        return;
+      }
+
+      if (checkoutDays !== null && checkoutDays >= 0 && checkoutDays <= 1) {
+        title.textContent = checkoutDays === 0 ? t.todayTitle : t.tomorrowTitle;
+        text.textContent = checkoutDays === 0 ? t.todayText : t.tomorrowText;
+        addReminderButton(t.checkoutButton, "check-in-out.html?lang=" + lang + "#checkout");
+        dateText.textContent = t.checkoutDate + formatStayDate(profile.checkout, lang);
+        banner.classList.add("show");
+      }
+    }
+
+    function showSite(lang) {
+      lang = lang || 'it';
+
+      document.getElementById('lang-screen').style.display = 'none';
+      document.getElementById('site').style.display = 'block';
+
+      translatePage(lang);
+      setupGuestStayForm();
+      showGuestWelcome();
+      updateCheckoutReminder();
+
+      if (typeof loadSalernoWeather === 'function') {
+        loadSalernoWeather();
+      }
+
+      if (location.hash !== '#' + lang) {
+        history.pushState(null, '', '#' + lang);
+      }
+    }
+
+    function showLangScreen() {
+      document.getElementById('lang-screen').style.display = 'flex';
+      document.getElementById('site').style.display = 'none';
+
+      if (location.hash !== '#lang') {
+        history.pushState(null, '', '#lang');
+      }
+    }
+
+    (function () {
+      var hash = location.hash.replace('#', '');
+      if (hash === 'it' || hash === 'en' || hash === 'es' || hash === 'fr' || hash === 'de') {
+        showSite(hash);
+      } else {
+        showLangScreen();
+      }
+    })();
+
+    showGuestWelcome();
+  </script>
+<script>
+  var salernoWeatherRequestId = 0;
+
+  function getWeatherLang() {
+    var hash = window.location.hash ? window.location.hash.replace("#", "") : "";
+
+    if (hash === "it" || hash === "en" || hash === "es" || hash === "fr" || hash === "de") {
+      return hash;
+    }
+
+    try {
+      var savedLang = localStorage.getItem("guestGuideLang");
+      if (savedLang === "it" || savedLang === "en" || savedLang === "es" || savedLang === "fr" || savedLang === "de") {
+        return savedLang;
+      }
+    } catch (e) {}
+
+    return "it";
+  }
+
+  function weatherCodeText(code, lang) {
+    var texts = {
+      clear: {
+        it: "Sereno",
+        en: "Clear",
+        es: "Despejado",
+        fr: "Dégagé",
+        de: "Klar"
+      },
+      partly: {
+        it: "Poco nuvoloso",
+        en: "Partly cloudy",
+        es: "Parcialmente nublado",
+        fr: "Partiellement nuageux",
+        de: "Teilweise bewölkt"
+      },
+      cloudy: {
+        it: "Nuvoloso",
+        en: "Cloudy",
+        es: "Nublado",
+        fr: "Nuageux",
+        de: "Bewölkt"
+      },
+      fog: {
+        it: "Nebbia",
+        en: "Fog",
+        es: "Niebla",
+        fr: "Brouillard",
+        de: "Nebel"
+      },
+      drizzle: {
+        it: "Pioviggine",
+        en: "Drizzle",
+        es: "Llovizna",
+        fr: "Bruine",
+        de: "Nieselregen"
+      },
+      rain: {
+        it: "Pioggia",
+        en: "Rain",
+        es: "Lluvia",
+        fr: "Pluie",
+        de: "Regen"
+      },
+      storm: {
+        it: "Temporale",
+        en: "Thunderstorm",
+        es: "Tormenta",
+        fr: "Orage",
+        de: "Gewitter"
+      },
+      snow: {
+        it: "Neve",
+        en: "Snow",
+        es: "Nieve",
+        fr: "Neige",
+        de: "Schnee"
+      }
+    };
+
+    if (code === 0) return texts.clear[lang];
+    if ([1, 2].includes(code)) return texts.partly[lang];
+    if (code === 3) return texts.cloudy[lang];
+    if ([45, 48].includes(code)) return texts.fog[lang];
+    if ([51, 53, 55, 56, 57].includes(code)) return texts.drizzle[lang];
+    if ([61, 63, 65, 66, 67, 80, 81, 82].includes(code)) return texts.rain[lang];
+    if ([95, 96, 99].includes(code)) return texts.storm[lang];
+    if ([71, 73, 75, 77, 85, 86].includes(code)) return texts.snow[lang];
+
+    return texts.cloudy[lang];
+  }
+
+  function weatherCodeEmoji(code, precipitation, windSpeed) {
+    if (windSpeed >= 25) return "💨";
+    if ([95, 96, 99].includes(code)) return "⛈️";
+    if ([61, 63, 65, 66, 67, 80, 81, 82].includes(code) || precipitation > 0) return "🌧️";
+    if ([51, 53, 55, 56, 57].includes(code)) return "🌦️";
+    if ([71, 73, 75, 77, 85, 86].includes(code)) return "❄️";
+    if ([45, 48].includes(code)) return "🌫️";
+    if (code === 0) return "☀️";
+    if ([1, 2].includes(code)) return "🌤️";
+    if (code === 3) return "☁️";
+    return "🌤️";
+  }
+
+  function isRainWeather(code, precipitation) {
+    var rainCodes = [51, 53, 55, 56, 57, 61, 63, 65, 66, 67, 80, 81, 82, 95, 96, 99];
+    return rainCodes.includes(code) || precipitation > 0;
+  }
+
+  function getWeatherFallbackText(lang) {
+    var texts = {
+      it: "Meteo non disponibile",
+      en: "Weather not available",
+      es: "Tiempo no disponible",
+      fr: "Météo non disponible",
+      de: "Wetter nicht verfügbar"
+    };
+
+    return texts[lang] || texts.it;
+  }
+
+  function getWeatherLoadingText(lang) {
+    var texts = {
+      it: "Caricamento meteo...",
+      en: "Loading weather...",
+      es: "Cargando tiempo...",
+      fr: "Chargement météo...",
+      de: "Wetter wird geladen..."
+    };
+
+    return texts[lang] || texts.it;
+  }
+
+  function getSavedWeatherText(lang) {
+    var texts = {
+      it: "Ultimo meteo disponibile",
+      en: "Last available weather",
+      es: "Último tiempo disponible",
+      fr: "Dernière météo disponible",
+      de: "Letztes verfügbares Wetter"
+    };
+
+    return texts[lang] || texts.it;
+  }
+
+  function getUpdatedText(lang) {
+    var texts = {
+      it: "Aggiornato",
+      en: "Updated",
+      es: "Actualizado",
+      fr: "Mis à jour",
+      de: "Aktualisiert"
+    };
+
+    return texts[lang] || texts.it;
+  }
+
+  function weatherDetailsText(lang, minTemp, maxTemp, windSpeed, rainProbability) {
+    var texts = {
+      it: "Min " + minTemp + "° · Max " + maxTemp + "° · Vento " + windSpeed + " km/h · Probabilità pioggia " + rainProbability + "%",
+      en: "Min " + minTemp + "° · Max " + maxTemp + "° · Wind " + windSpeed + " km/h · Chance of rain " + rainProbability + "%",
+      es: "Mín " + minTemp + "° · Máx " + maxTemp + "° · Viento " + windSpeed + " km/h · Probabilidad de lluvia " + rainProbability + "%",
+      fr: "Min " + minTemp + "° · Max " + maxTemp + "° · Vent " + windSpeed + " km/h · Risque de pluie " + rainProbability + "%",
+      de: "Min. " + minTemp + "° · Max. " + maxTemp + "° · Wind " + windSpeed + " km/h · Regenwahrscheinlichkeit " + rainProbability + "%"
+    };
+
+    return texts[lang] || texts.it;
+  }
+
+  function saveWeatherCache(weatherData) {
+    try {
+      localStorage.setItem("salernoWeatherCache", JSON.stringify(weatherData));
+    } catch (e) {}
+  }
+
+  function getWeatherCache() {
+    try {
+      var saved = localStorage.getItem("salernoWeatherCache");
+      if (!saved) return null;
+      return JSON.parse(saved);
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function formatWeatherUpdateTime(timestamp, lang) {
+    if (!timestamp) return "";
+
+    try {
+      var date = new Date(timestamp);
+
+      return date.toLocaleString(lang === "en" ? "en-GB" : lang + "-IT", {
+        day: "2-digit",
+        month: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit"
+      });
+    } catch (e) {
+      return "";
+    }
+  }
+
+  function renderWeatherFromCache(lang) {
+    var weatherBox = document.getElementById("weatherBox");
+    var weatherSummary = document.getElementById("weatherSummary");
+    var weatherTemp = document.getElementById("weatherTemp");
+    var weatherDetails = document.getElementById("weatherDetails");
+    var umbrellaAlert = document.getElementById("umbrellaAlert");
+
+    if (!weatherBox || !weatherSummary || !weatherTemp || !weatherDetails || !umbrellaAlert) return false;
+
+    var cached = getWeatherCache();
+
+    if (!cached) {
+      weatherBox.classList.remove("hidden");
+      weatherSummary.textContent = "🌤️ " + getWeatherFallbackText(lang);
+      weatherTemp.textContent = "--°";
+      weatherDetails.textContent = "";
+      umbrellaAlert.classList.add("hidden");
+      return false;
+    }
+
+    // Older cache entries contain text in the language used when saved.
+    // Fetch fresh data so changing language cannot show stale translations.
+    if (typeof cached.code !== "number") {
+      return false;
+    }
+
+    weatherBox.classList.remove("hidden");
+
+    weatherSummary.textContent = cached.emoji + " " + weatherCodeText(cached.code, lang);
+    weatherTemp.textContent = cached.temperature + "°";
+
+    var updatedTime = formatWeatherUpdateTime(cached.savedAt, lang);
+
+    var savedLabel = getSavedWeatherText(lang);
+    var updatedLabel = getUpdatedText(lang);
+
+    weatherDetails.textContent =
+      savedLabel + " · " +
+      weatherDetailsText(lang, cached.minTemp, cached.maxTemp, cached.windSpeed, cached.rainProbability) +
+      (updatedTime ? " · " + updatedLabel + ": " + updatedTime : "");
+
+    if (cached.shouldShowUmbrellaAlert) {
+      umbrellaAlert.classList.remove("hidden");
+    } else {
+      umbrellaAlert.classList.add("hidden");
+    }
+
+    return true;
+  }
+
+  function loadSalernoWeather() {
+    var requestId = ++salernoWeatherRequestId;
+    var lang = getWeatherLang();
+
+    var weatherBox = document.getElementById("weatherBox");
+    var weatherSummary = document.getElementById("weatherSummary");
+    var weatherTemp = document.getElementById("weatherTemp");
+    var weatherDetails = document.getElementById("weatherDetails");
+    var umbrellaAlert = document.getElementById("umbrellaAlert");
+
+    if (!weatherBox || !weatherSummary || !weatherTemp || !weatherDetails || !umbrellaAlert) return;
+
+    weatherBox.classList.remove("hidden");
+
+    /*
+      Prima prova a mostrare subito l’ultimo meteo salvato.
+      Così il box è sempre pieno e non sparisce.
+    */
+    var hasCache = renderWeatherFromCache(lang);
+
+    if (!hasCache) {
+      weatherSummary.textContent = "🌤️ " + getWeatherLoadingText(lang);
+      weatherTemp.textContent = "--°";
+      weatherDetails.textContent = "";
+      umbrellaAlert.classList.add("hidden");
+    }
+
+    var latitude = 40.6824;
+    var longitude = 14.7681;
+
+    var apiUrl =
+      "https://api.open-meteo.com/v1/forecast" +
+      "?latitude=" + latitude +
+      "&longitude=" + longitude +
+      "&current=temperature_2m,weather_code,wind_speed_10m,precipitation" +
+      "&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,wind_speed_10m_max" +
+      "&timezone=Europe%2FRome";
+
+    var timeout = new Promise(function (_, reject) {
+      setTimeout(function () {
+        reject(new Error("Timeout meteo"));
+      }, 7000);
+    });
+
+    Promise.race([
+      fetch(apiUrl).then(function (response) {
+        return response.json();
+      }),
+      timeout
+    ])
+      .then(function (data) {
+        if (requestId !== salernoWeatherRequestId) return;
+
+        if (!data || !data.current || !data.daily) {
+          renderWeatherFromCache(lang);
+          return;
+        }
+
+        var current = data.current;
+        var daily = data.daily;
+
+        var temperature = Math.round(current.temperature_2m);
+        var currentWind = Math.round(current.wind_speed_10m || 0);
+        var currentRain = current.precipitation || 0;
+        var code = current.weather_code;
+
+        var maxTemp = Math.round(daily.temperature_2m_max[0]);
+        var minTemp = Math.round(daily.temperature_2m_min[0]);
+        var rainProbability = daily.precipitation_probability_max[0] || 0;
+        var maxWind = Math.round(daily.wind_speed_10m_max[0] || 0);
+
+        var condition = weatherCodeText(code, lang);
+        var emoji = weatherCodeEmoji(code, currentRain, currentWind);
+
+        var detailsText = weatherDetailsText(lang, minTemp, maxTemp, currentWind, rainProbability);
+
+        var shouldShowUmbrellaAlert =
+          isRainWeather(code, currentRain) ||
+          rainProbability >= 40 ||
+          currentWind >= 25 ||
+          maxWind >= 35;
+
+        var weatherData = {
+          emoji: emoji,
+          code: code,
+          temperature: temperature,
+          minTemp: minTemp,
+          maxTemp: maxTemp,
+          windSpeed: currentWind,
+          rainProbability: rainProbability,
+          shouldShowUmbrellaAlert: shouldShowUmbrellaAlert,
+          savedAt: new Date().toISOString()
+        };
+
+        saveWeatherCache(weatherData);
+
+        weatherSummary.textContent = emoji + " " + condition;
+        weatherTemp.textContent = temperature + "°";
+        weatherDetails.textContent = detailsText;
+
+        if (shouldShowUmbrellaAlert) {
+          umbrellaAlert.classList.remove("hidden");
+        } else {
+          umbrellaAlert.classList.add("hidden");
+        }
+      })
+      .catch(function () {
+        if (requestId !== salernoWeatherRequestId) return;
+
+        /*
+          Se il meteo non carica, mostra l’ultimo meteo salvato.
+          Se non esiste, mostra “Meteo non disponibile”.
+        */
+        renderWeatherFromCache(lang);
+      });
+  }
+
+  loadSalernoWeather();
+</script>
+<script>
+    const saveGuideBtn = document.getElementById('saveGuideBtn');
+    const saveGuideInstructions = document.getElementById('saveGuideInstructions');
+
+    if (saveGuideBtn && saveGuideInstructions) {
+      saveGuideBtn.addEventListener('click', function () {
+        saveGuideInstructions.classList.toggle('hidden');
+      });
+    }
+  </script>
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then(function (registrations) {
+      registrations.forEach(function (registration) {
+        registration.unregister();
+      });
+    });
+  }
+
+  if ('caches' in window) {
+    caches.keys().then(function (cacheNames) {
+      cacheNames.forEach(function (cacheName) {
+        caches.delete(cacheName);
+      });
+    });
+  }
+</script>
+<script>
+  const scrollHint = document.getElementById('scrollHint');
+
+  function updateScrollHint() {
+    if (!scrollHint) return;
+
+    const scrollPosition = window.scrollY + window.innerHeight;
+    const pageHeight = document.documentElement.scrollHeight;
+
+    if (pageHeight - scrollPosition < 120) {
+      scrollHint.style.display = 'none';
+    } else {
+      scrollHint.style.display = window.innerWidth <= 720 ? 'flex' : 'none';
+    }
+  }
+
+  window.addEventListener('scroll', updateScrollHint);
+  window.addEventListener('resize', updateScrollHint);
+  window.addEventListener('load', updateScrollHint);
+</script>
+<script src="guide-redesign.js"></script><script defer="" src="guide-polish.js"></script><script src="guide-experience.js"></script><script src="guide-personal.js"></script></body>
+</html>

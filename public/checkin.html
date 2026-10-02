@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+
+<html lang="it">
+<head><script>window.guideStay={name:"",checkin:"",checkout:""};</script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Check-in / Check-out · A Casa di Marco</title>
+<meta content="#193c50" name="theme-color"/>
+<link href="assets/icon-192.png" rel="apple-touch-icon"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="Casa di Marco" name="apple-mobile-web-app-title"/>
+<meta content="default" name="apple-mobile-web-app-status-bar-style"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&amp;family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root {
+      --ottanio:#0f7f83;
+      --ottanio-dark:#075f63;
+      --ottanio-soft:#dff3f2;
+      --white:#fff;
+      --milk:#fbfbf8;
+      --text:#263238;
+      --muted:#6f7d80;
+      --shadow:0 18px 50px rgba(0,70,75,.20);
+      --radius:28px;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible,
+    summary:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid var(--ottanio);
+      outline-offset: 2px;
+      border-radius: 8px;
+    }
+
+    * {
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    body {
+      background:var(--milk);
+      color:var(--text);
+      font-family:'Poppins',sans-serif;
+      line-height:1.65;
+    }
+
+    h1,h2,h3 {
+      font-family:'Pacifico',cursive;
+      font-weight:400;
+      color:var(--ottanio-dark);
+    }
+
+    .page-hero {
+      min-height:38vh;
+      background:
+        linear-gradient(180deg, rgba(0,80,85,.25), rgba(0,80,85,.55)),
+        url("assets/garden-main.jpg") center/cover no-repeat;
+      color:#fff;
+      display:flex;
+      align-items:flex-end;
+      padding:38px 20px;
+    }
+
+    .page-hero div {
+      max-width:1000px;
+      margin:0 auto;
+      width:100%;
+    }
+
+    .page-hero h1 {
+      color:#fff;
+      font-size:clamp(38px, 7vw, 68px);
+      text-shadow:0 5px 20px rgba(0,0,0,.35);
+    }
+
+    main {
+      max-width:1000px;
+      margin:0 auto;
+      padding:28px 16px 60px;
+    }
+
+    section {
+      background:#fff;
+      border-radius:28px;
+      padding:28px;
+      box-shadow:var(--shadow);
+      margin-bottom:22px;
+    }
+
+    .back-home {
+      display:inline-flex;
+      margin-bottom:18px;
+      background:var(--ottanio);
+      color:#fff;
+      text-decoration:none;
+      border-radius:999px;
+      padding:11px 18px;
+      font-weight:600;
+    }
+
+    .img-card img {
+      width:100%;
+      border-radius:22px;
+      margin:18px 0;
+    }
+
+    .info-list {
+      list-style:none;
+      display:grid;
+      gap:12px;
+      margin-top:14px;
+    }
+
+    .info-list li {
+      background:var(--ottanio-soft);
+      border-radius:18px;
+      padding:14px 16px;
+    }
+
+    .info-list li strong {
+      color:var(--ottanio-dark);
+      font-weight:700;
+    }
+
+    .note {
+      background:#fff8e8;
+      border-left:5px solid var(--ottanio);
+      border-radius:16px;
+      padding:14px 16px;
+      margin:16px 0;
+    }
+
+    .toggle-box {
+      margin-top:18px;
+      background:transparent;
+      border:none;
+    }
+
+    .toggle-box summary {
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:var(--ottanio);
+      color:#fff;
+      border-radius:999px;
+      padding:14px 22px;
+      font-family:'Poppins', sans-serif;
+      font-size:16px;
+      font-weight:700;
+      cursor:pointer;
+      box-shadow:0 8px 22px rgba(0, 90, 95, .16);
+      list-style:none;
+    }
+
+    .toggle-box summary::-webkit-details-marker {
+      display:none;
+    }
+
+    .toggle-box summary::after,
+    .animated-toggle summary::after {
+      content:" ▼";
+      margin-left:10px;
+      font-size:14px;
+      line-height:1;
+      display: inline-block;
+    }
+
+    .toggle-box[open] summary::after,
+    .animated-toggle[open] summary::after {
+      content:" ▲";
+    }
+
+    .toggle-box summary::before,
+    .animated-toggle summary::before {
+      content:"👆 ";
+      font-size:15px;
+      line-height:1;
+    }
+
+    .toggle-box[open] summary::before,
+    .animated-toggle[open] summary::before {
+      content:"";
+    }
+
+    .toggle-content {
+      margin-top:16px;
+    }
+
+    .animated-toggle {
+      margin-top: 8px;
+    }
+
+    .animated-toggle .toggle-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, margin-top 0.4s ease;
+      background: var(--ottanio-soft);
+      border: 1px solid rgba(15,127,131,.18);
+      border-radius: 16px;
+      padding: 0 16px;
+      margin-bottom: 8px;
+      margin-top: 0;
+    }
+
+    .checklist-intro {
+      margin-top:22px;
+      background:#fff8e8;
+      border-left:5px solid var(--ottanio);
+      border-radius:18px;
+      padding:16px;
+    }
+
+    .checklist-intro h3 {
+      font-size:28px;
+      margin-bottom:8px;
+    }
+
+    .checklist-intro p {
+      color:var(--text);
+      font-size:15px;
+    }
+
+    .checkout-checklist {
+      margin-top:16px;
+      display:grid;
+      gap:12px;
+    }
+
+    .check-item {
+      display:flex;
+      align-items:flex-start;
+      gap:12px;
+      background:var(--ottanio-soft);
+      border:1px solid rgba(15,127,131,.16);
+      border-radius:18px;
+      padding:14px 16px;
+      cursor:pointer;
+      transition:transform .15s ease, background .15s ease, box-shadow .15s ease;
+    }
+
+    .check-item:hover {
+      transform:translateY(-1px);
+      box-shadow:0 8px 18px rgba(0,80,85,.10);
+    }
+
+    .check-item input {
+      appearance:none;
+      -webkit-appearance:none;
+      flex:0 0 auto;
+      width:23px;
+      height:23px;
+      border:2px solid var(--ottanio);
+      border-radius:8px;
+      background:#fff;
+      margin-top:2px;
+      cursor:pointer;
+      position:relative;
+    }
+
+    .check-item input:checked {
+      background:var(--ottanio);
+    }
+
+    .check-item input:checked::after {
+      content:"✓";
+      position:absolute;
+      left:50%;
+      top:50%;
+      transform:translate(-50%, -55%);
+      color:#fff;
+      font-size:17px;
+      font-weight:800;
+    }
+
+    .check-item span {
+      font-size:15px;
+      color:var(--text);
+    }
+
+    .check-item input:checked + span {
+      text-decoration:line-through;
+      color:var(--muted);
+    }
+
+    .check-progress {
+      margin-top:14px;
+      background:#fff;
+      border:1px solid rgba(15,127,131,.18);
+      border-radius:18px;
+      padding:13px 15px;
+      color:var(--ottanio-dark);
+      font-weight:700;
+      text-align:center;
+    }
+
+    .check-progress-track {
+      height: 10px;
+      background: var(--ottanio-soft);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+
+    .check-progress-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--ottanio);
+      border-radius: 999px;
+      transition: width .3s ease;
+    }
+
+    .check-progress-fill.done {
+      background: #2e9e6b;
+    }
+
+    .check-progress-text {
+      font-size: 13px;
+    }
+
+    .final-reminder {
+      margin-top:16px;
+      background:#fff8e8;
+      border-radius:18px;
+      padding:15px;
+      font-size:15px;
+    }
+
+    .final-reminder strong {
+      color:var(--ottanio-dark);
+    }
+
+    @media (max-width:720px) {
+      body {
+        font-size:14px;
+      }
+
+      .page-hero {
+        min-height:28vh;
+        padding:28px 16px;
+      }
+
+      .page-hero h1 {
+        font-size:34px;
+      }
+
+      main {
+        padding:20px 12px 44px;
+      }
+
+      section {
+        padding:20px;
+        border-radius:22px;
+      }
+
+      h2 {
+        font-size:26px;
+      }
+
+      .toggle-box summary {
+        font-size:14px;
+        padding:12px 18px;
+        min-height:50px;
+      }
+
+      .info-list li {
+        font-size:14px;
+        padding:13px 14px;
+      }
+
+      .checklist-intro h3 {
+        font-size:25px;
+      }
+
+      .checklist-intro p,
+      .check-item span,
+      .final-reminder {
+        font-size:14px;
+      }
+
+      .check-item {
+        padding:13px 14px;
+      }
+
+      .animated-toggle summary {
+        font-size:14px;
+        padding:12px 18px;
+        min-height:50px;
+      }
+
+      .toggle-box summary::before,
+      .animated-toggle summary::before {
+        font-size:13px;
+      }
+
+      .close-toggle {
+        font-size:12px;
+      }
+    }
+
+
+    .check-complete-message {
+      display: none;
+      margin-top: 16px;
+      background: #dff3f2;
+      border: 1px solid rgba(15,127,131,.18);
+      border-left: 6px solid var(--ottanio);
+      border-radius: 18px;
+      padding: 16px;
+      color: var(--ottanio-dark);
+      font-weight: 700;
+      text-align: center;
+      box-shadow: 0 10px 24px rgba(0,80,85,.10);
+    }
+
+    .check-complete-message.show {
+      display: block;
+    }
+
+    .confetti-layer {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 9999;
+    }
+
+    .checkin-choice-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .checkin-choice-btn {
+      border: 2px solid rgba(15,127,131,.22);
+      background: #fff;
+      border-radius: 20px;
+      padding: 18px 14px;
+      text-align: center;
+      font-family: 'Poppins',sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--ottanio-dark);
+      cursor: pointer;
+      transition: all .18s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      min-height: 130px;
+    }
+
+    .checkin-choice-btn:hover {
+      border-color: var(--ottanio);
+      box-shadow: 0 6px 18px rgba(0,80,85,.12);
+      transform: translateY(-1px);
+    }
+
+    .checkin-choice-btn.active {
+      background: var(--ottanio);
+      color: #fff;
+      border-color: var(--ottanio);
+    }
+
+    .checkin-choice-btn .choice-icon {
+      display: block;
+      font-size: 30px;
+      line-height: 1;
+    }
+
+    .checkin-choice-btn .choice-label {
+      display: block;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    .checkin-choice-btn .choice-desc {
+      display: block;
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+
+    .checkin-choice-btn.active .choice-desc {
+      color: rgba(255,255,255,.9);
+    }
+
+    .checkin-panel {
+      display: none;
+    }
+
+    .section-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--ottanio-dark);
+      margin: 18px 0 10px 0;
+    }
+
+    .section-title:first-child {
+      margin-top: 0;
+    }
+
+    .close-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      margin-top: 14px;
+      padding: 10px;
+      border: 1px solid rgba(15,127,131,.18);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--ottanio-dark);
+      font-family: 'Poppins',sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+      transition: background .15s;
+    }
+
+    .close-toggle:hover {
+      background: var(--ottanio-soft);
+    }
+
+    .checkin-panel.show {
+      display: block;
+    }
+
+    .self-map-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--ottanio);
+      color: #fff;
+      border-radius: 999px;
+      padding: 12px 20px;
+      font-weight: 700;
+      text-decoration: none;
+      margin: 14px 0;
+      font-size: 14px;
+    }
+
+    .key-section {
+      margin-top: 18px;
+      border-top: 2px dashed rgba(15,127,131,.25);
+      padding-top: 18px;
+    }
+
+    .key-section h3 {
+      font-family:'Poppins',sans-serif;
+      font-size:18px;
+      font-weight:700;
+      color:var(--ottanio-dark);
+      margin:16px 0 10px 0;
+    }
+
+    .key-img {
+      width: 100%;
+      max-width: 320px;
+      border-radius: 16px;
+      margin: 0 auto 14px auto;
+      display: block;
+      object-fit: contain;
+      background: #f7f7f2;
+    }
+
+    @media (max-width:720px) {
+      .checkin-choice-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .checkin-choice-btn {
+        padding: 14px;
+        font-size: 14px;
+      }
+    }
+
+    .confetti-piece {
+      position: absolute;
+      top: -14px;
+      width: 9px;
+      height: 14px;
+      border-radius: 3px;
+      animation: confettiFall 1.8s linear forwards;
+    }
+
+    .quick-contact {
+      background: linear-gradient(135deg, var(--ottanio), var(--ottanio-dark));
+      padding: 8px 12px;
+      margin-bottom: 12px;
+    }
+
+    .quick-contact a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #25D366;
+      color: #fff;
+      border-radius: 999px;
+      padding: 14px 22px;
+      font-weight: 700;
+      font-size: 15px;
+      text-decoration: none;
+      box-shadow: 0 6px 20px rgba(37,211,102,.35);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+
+    .section-icon {
+      font-size: 32px;
+      line-height: 1;
+    }
+
+    .photo-annotation {
+      position: relative;
+      margin: 16px 0;
+    }
+
+    .photo-annotation img {
+      width: 100%;
+      border-radius: 22px;
+    }
+
+    .photo-badge {
+      position: absolute;
+      background: var(--ottanio);
+      color: #fff;
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 700;
+      box-shadow: 0 4px 14px rgba(0,0,0,.25);
+      white-space: nowrap;
+    }
+
+    .photo-badge.gate {
+      bottom: 16px;
+      left: 16px;
+    }
+
+    .photo-badge.mailbox {
+      bottom: 16px;
+      right: 16px;
+    }
+
+    @media (max-width:720px) {
+      .photo-badge {
+        font-size: 11px;
+        padding: 5px 10px;
+      }
+    }
+
+    @keyframes confettiFall {
+      0% {
+        transform: translateY(-20px) rotate(0deg);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(105vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    .scroll-hint {
+      position: fixed;
+      left: 50%;
+      bottom: 14px;
+      transform: translateX(-50%);
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(15, 127, 131, 0.85);
+      color: #fff;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      line-height: 1;
+      z-index: 999;
+      box-shadow: 0 8px 18px rgba(0, 70, 75, .22);
+      animation: scrollHintMove 1.4s infinite;
+    }
+
+    @keyframes scrollHintMove {
+      0%, 100% {
+        transform: translate(-50%, 0);
+      }
+
+      50% {
+        transform: translate(-50%, 5px);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .scroll-hint {
+        display: flex;
+      }
+    }
+
+  </style>
+<link href="guide-pages.css" rel="stylesheet"/><link href="assets/icon-192.png" rel="icon" type="image/png"/><link href="guide-polish.css" rel="stylesheet"/><script defer="" src="https://cdn.jsdelivr.net/npm/lucide@0.468.0/dist/umd/lucide.min.js"></script></head>
+<body class="polished-guide guide-inner">
+<div class="scroll-hint" id="scrollHint">⌄</div>
+<header class="page-hero">
+<div>
+<h1 data-de="Check-in / Check-out" data-en="Check-in / Check-out" data-es="Check-in / Check-out" data-fr="Check-in / Check-out" data-it="Check-in / Check-out">Check-in / Check-out</h1>
+</div>
+</header>
+<main>
+<a class="back-home" data-de="← Zurück zur Startseite" data-en="← Back to home" data-es="← Volver a la home" data-fr="← Retour à l'accueil" data-it="← Torna alla home" href="index.html">← Torna alla home</a><div aria-label="Check-in e check-out" class="journey-tabs" role="tablist"><button aria-controls="checkin" aria-selected="true" data-de="Ankommen" data-en="Arrive" data-es="Llegar" data-fr="Arriver" data-it="Arrivare" data-journey="checkin" role="tab" type="button">Arrivare</button><button aria-controls="checkout" aria-selected="false" data-de="Abreisen" data-en="Depart" data-es="Salir" data-fr="Partir" data-it="Ripartire" data-journey="checkout" role="tab" type="button">Ripartire</button></div>
+<section class="quick-contact">
+<a data-de="📲 Bei Schwierigkeiten kontaktiert uns über WhatsApp" data-en="📲 If you need help, contact us on WhatsApp" data-es="📲 Si tienes dificultades, contáctanos por WhatsApp" data-fr="📲 En cas de difficulté, contactez-nous sur WhatsApp" data-it="📲 In caso di difficoltà, contattaci su WhatsApp" href="https://wa.me/393923064010" target="_blank">📲 In caso di difficoltà, contattaci su WhatsApp</a>
+</section>
+<section class="journey-section" data-journey-section="checkin">
+<details class="journey-detail" id="checkin">
+<summary class="journey-summary" data-de="🛂 Check-in" data-en="🛂 Check-in" data-es="🛂 Check-in" data-fr="🛂 Check-in" data-it="🛂 Check-in">🛂 Check-in</summary>
+<div class="toggle-content">
+<div class="checkin-choice-grid">
+<button class="checkin-choice-btn" id="btnPresenza" onclick="showCheckinPanel('presenza')">
+<span aria-hidden="true" class="choice-icon">🤝</span>
+<span class="choice-label" data-de="Check-in in Präsenz" data-en="In-person check-in" data-es="Check-in presencial" data-fr="Check-in en personne" data-it="Check-in in presenza">Check-in in presenza</span>
+<span class="choice-desc" data-de="Wir erwarten euch am Tor" data-en="We will meet you at the gate" data-es="Os esperamos en la cancela" data-fr="Nous vous attendons au portail" data-it="Vi aspettiamo al cancello">Vi aspettiamo al cancello</span>
+</button>
+<button class="checkin-choice-btn" id="btnSelf" onclick="showCheckinPanel('self')">
+<span aria-hidden="true" class="choice-icon">🔑</span>
+<span class="choice-label" data-de="Self check-in" data-en="Self check-in" data-es="Auto check-in" data-fr="Self check-in" data-it="Self check-in">Self check-in</span>
+<span class="choice-desc" data-de="Autonome Ankunft mit der KeyBox" data-en="Arrive on your own with the KeyBox" data-es="Llegada autónoma con la KeyBox" data-fr="Arrivée autonome avec la KeyBox" data-it="Arrivo in autonomia con la KeyBox">Arrivo in autonomia con la KeyBox</span>
+</button>
+</div>
+<div class="checkin-panel" id="panelPresenza">
+<h3 class="section-title" data-de="Vor der Ankunft" data-en="Before arriving" data-es="Antes de llegar" data-fr="Avant d'arriver" data-it="Prima di arrivare">Prima di arrivare</h3>
+<ul class="info-list" style="margin-bottom:18px;">
+<li data-de-html="Teilt uns im Voraus &lt;strong&gt;eure voraussichtliche Ankunftszeit&lt;/strong&gt; mit, damit wir uns auf euren Empfang vorbereiten können." data-en-html="Please let us know &lt;strong&gt;your expected arrival time&lt;/strong&gt; in advance, so we can be ready to welcome you." data-es-html="Comunicadnos con antelación &lt;strong&gt;la hora prevista de llegada&lt;/strong&gt; para que podamos organizarnos." data-fr-html="Communiquez-nous à l’avance &lt;strong&gt;votre heure d’arrivée prévue&lt;/strong&gt; afin que nous puissions nous organiser." data-it-html="Comunicateci in anticipo &lt;strong&gt;l’orario di arrivo previsto&lt;/strong&gt;, così possiamo organizzarci per accogliervi.">Comunicateci in anticipo <strong>l'orario di arrivo previsto</strong>, così possiamo organizzarci per accogliervi.</li>
+<li data-de-html="Schreibt uns etwa &lt;strong&gt;30 Minuten vor eurer Ankunft&lt;/strong&gt;, damit wir bereit sind, euch am Tor zu empfangen." data-en-html="Send us a message about &lt;strong&gt;30 minutes before your arrival&lt;/strong&gt;, so we can be ready to welcome you at the gate." data-es-html="Enviadnos un mensaje unos &lt;strong&gt;30 minutos antes de vuestra llegada&lt;/strong&gt; para que estemos listos en la cancela." data-fr-html="Envoyez-nous un message environ &lt;strong&gt;30 minutes avant votre arrivée&lt;/strong&gt;, nous serons prêts à vous accueillir au portail." data-it-html="Inviateci un messaggio circa &lt;strong&gt;30 minuti prima del vostro arrivo&lt;/strong&gt;, così saremo pronti ad accogliervi al cancello.">Inviateci un messaggio circa <strong>30 minuti prima del vostro arrivo</strong>, così saremo pronti ad accogliervi al cancello.</li>
+</ul>
+<div class="photo-annotation">
+<img alt="Cancello per il check-in" src="assets/cancello-check-in.jpg"/>
+<span class="photo-badge gate" data-de="🚪 Hier vor dem Tor" data-en="🚪 Meet here at the gate" data-es="🚪 Aquí en la cancela" data-fr="🚪 Ici devant le portail" data-it="🚪 Qui davanti al cancello">🚪 Qui davanti al cancello</span>
+<span class="photo-badge mailbox" data-de='📬 Briefkasten "A Casa di Marco"' data-en='📬 "A Casa di Marco" mailbox' data-es='📬 Buzón "A Casa di Marco"' data-fr='📬 Boîte "A Casa di Marco"' data-it='📬 Cassetta "A Casa di Marco"'>📬 Cassetta "A Casa di Marco"</span>
+</div>
+<h3 class="section-title" data-de="Beim Check-in" data-en="At check-in" data-es="En el check-in" data-fr="Lors du check-in" data-it="Al check-in">Al check-in</h3>
+<ul class="info-list">
+<li data-de-html="Wir treffen uns &lt;strong&gt;vor dem Tor der Unterkunft&lt;/strong&gt;." data-en-html="We will meet you &lt;strong&gt;in front of the property gate&lt;/strong&gt;." data-es-html="Nos encontraremos &lt;strong&gt;delante de la cancela de la propiedad&lt;/strong&gt;." data-fr-html="Nous nous retrouverons &lt;strong&gt;devant le portail de la propriété&lt;/strong&gt;." data-it-html="Ci incontreremo &lt;strong&gt;davanti al cancello della struttura&lt;/strong&gt;.">Ci incontreremo <strong>davanti al cancello della struttura</strong>.</li>
+<li data-de-html="Es werden die &lt;strong&gt;Ausweisdokumente aller Gäste&lt;/strong&gt; verlangt, einschließlich &lt;strong&gt;der Kinder&lt;/strong&gt;." data-en-html="&lt;strong&gt;Identity documents of all guests&lt;/strong&gt; will be required, including &lt;strong&gt;children&lt;/strong&gt;." data-es-html="Se solicitarán los &lt;strong&gt;documentos de identidad de todos los huéspedes&lt;/strong&gt;, incluidos &lt;strong&gt;los niños&lt;/strong&gt;." data-fr-html="Les &lt;strong&gt;pièces d’identité de tous les voyageurs&lt;/strong&gt; seront demandées, y compris &lt;strong&gt;celles des enfants&lt;/strong&gt;." data-it-html="Verranno richiesti i &lt;strong&gt;documenti di identità di tutti gli ospiti&lt;/strong&gt;, inclusi &lt;strong&gt;i bambini&lt;/strong&gt;.">Verranno richiesti i <strong>documenti di identità di tutti gli ospiti</strong>, inclusi <strong>i bambini</strong>.</li>
+<li data-de-html="Die &lt;strong&gt;Tourismusabgabe&lt;/strong&gt; muss bezahlt werden: &lt;strong&gt;3 Euro pro Person und Tag&lt;/strong&gt;, ausgenommen Kinder unter 11 Jahren." data-en-html="The &lt;strong&gt;tourist tax&lt;/strong&gt; must be paid: &lt;strong&gt;€3 per person per day&lt;/strong&gt;, excluding children under 11." data-es-html="Deberá pagarse la &lt;strong&gt;tasa turística&lt;/strong&gt;: &lt;strong&gt;3 euros por persona por día&lt;/strong&gt;, excepto niños menores de 11 años." data-fr-html="La &lt;strong&gt;taxe de séjour&lt;/strong&gt; devra être réglée : &lt;strong&gt;3 euros par personne et par jour&lt;/strong&gt;, sauf pour les enfants de moins de 11 ans." data-it-html="Dovrà essere pagata la &lt;strong&gt;tassa di soggiorno&lt;/strong&gt;: &lt;strong&gt;3 euro a persona al giorno&lt;/strong&gt;, esclusi i bambini sotto gli 11 anni.">Dovrà essere pagata la <strong>tassa di soggiorno</strong>: <strong>3 euro a persona al giorno</strong>, esclusi i bambini sotto gli 11 anni.</li>
+<li data-de-html="Für &lt;strong&gt;Booking&lt;/strong&gt;-Buchungen wird eine &lt;strong&gt;Kaution von 100 Euro&lt;/strong&gt; verlangt, die per &lt;strong&gt;Überweisung innerhalb von 48 Stunden nach dem Check-out&lt;/strong&gt; zurückerstattet wird." data-en-html="For &lt;strong&gt;Booking&lt;/strong&gt; reservations, a &lt;strong&gt;€100 security deposit&lt;/strong&gt; is required, refunded by &lt;strong&gt;bank transfer within 48 hours of check-out&lt;/strong&gt;." data-es-html="Para reservas de &lt;strong&gt;Booking&lt;/strong&gt; se solicita un &lt;strong&gt;depósito de 100 euros&lt;/strong&gt;, devuelto por &lt;strong&gt;transferencia en 48 horas tras el check-out&lt;/strong&gt;." data-fr-html="Pour les réservations &lt;strong&gt;Booking&lt;/strong&gt;, un &lt;strong&gt;dépôt de garantie de 100 euros&lt;/strong&gt; est demandé, remboursé par &lt;strong&gt;virement sous 48h après le check-out&lt;/strong&gt;." data-it-html="Per prenotazioni &lt;strong&gt;Booking&lt;/strong&gt; verrà richiesto un &lt;strong&gt;deposito cauzionale di 100 euro&lt;/strong&gt;, restituito tramite &lt;strong&gt;bonifico entro 48 ore dal check-out&lt;/strong&gt;.">Per prenotazioni <strong>Booking</strong> verrà richiesto un <strong>deposito cauzionale di 100 euro</strong>, restituito tramite <strong>bonifico entro 48 ore dal check-out</strong>.</li>
+<li data-de-html="Akzeptierte Zahlungen: &lt;strong&gt;sofortige Überweisung&lt;/strong&gt;, &lt;strong&gt;PayPal&lt;/strong&gt; oder &lt;strong&gt;bar&lt;/strong&gt;. &lt;strong&gt;Wir haben kein Kartenlesegerät.&lt;/strong&gt;" data-en-html="Accepted payments: &lt;strong&gt;instant bank transfer&lt;/strong&gt;, &lt;strong&gt;PayPal&lt;/strong&gt; or &lt;strong&gt;cash&lt;/strong&gt;. &lt;strong&gt;We do not have a card machine.&lt;/strong&gt;" data-es-html="Pagos aceptados: &lt;strong&gt;transferencia inmediata&lt;/strong&gt;, &lt;strong&gt;PayPal&lt;/strong&gt; o &lt;strong&gt;efectivo&lt;/strong&gt;. &lt;strong&gt;No tenemos TPV.&lt;/strong&gt;" data-fr-html="Paiements acceptés : &lt;strong&gt;virement instantané&lt;/strong&gt;, &lt;strong&gt;PayPal&lt;/strong&gt; ou &lt;strong&gt;espèces&lt;/strong&gt;. &lt;strong&gt;Nous n’avons pas de TPE.&lt;/strong&gt;" data-it-html="Pagamenti accettati: &lt;strong&gt;bonifico immediato&lt;/strong&gt;, &lt;strong&gt;PayPal&lt;/strong&gt; o &lt;strong&gt;contanti&lt;/strong&gt;. &lt;strong&gt;Non abbiamo il POS.&lt;/strong&gt;">Pagamenti accettati: <strong>bonifico immediato</strong>, <strong>PayPal</strong> o <strong>contanti</strong>. <strong>Non abbiamo il POS.</strong></li>
+</ul>
+</div>
+<div class="checkin-panel" data-arrival-target="true" id="panelSelf">
+<h3 class="section-title" data-de="Self check-in" data-en="Self check-in" data-es="Auto check-in" data-fr="Self check-in" data-it="Self check-in">Self check-in</h3><a class="self-map-link" data-de="📍 Erreicht das Haus über Google Maps" data-en="📍 Reach the house on Google Maps" data-es="📍 Llega a la casa en Google Maps" data-fr="📍 Rejoignez la maison sur Google Maps" data-it="📍 Raggiungi la casa su Google Maps" href="https://maps.app.goo.gl/tL37r51JpKZJc6j87" target="_blank">📍 Raggiungi la casa su Google Maps</a><div aria-label="Passaggi self check-in" class="step-strip"><button aria-label="1" aria-pressed="true" data-arrival-step="0" type="button">1</button><button aria-label="2" aria-pressed="false" data-arrival-step="1" type="button">2</button><button aria-label="3" aria-pressed="false" data-arrival-step="2" type="button">3</button><button aria-label="4" aria-pressed="false" data-arrival-step="3" type="button">4</button><button aria-label="5" aria-pressed="false" data-arrival-step="4" type="button">5</button><button aria-label="6" aria-pressed="false" data-arrival-step="5" type="button">6</button><button aria-label="7" aria-pressed="false" data-arrival-step="6" type="button">7</button></div><div class="arrival-steps"><section class="arrival-step" data-step="0"><h3 data-de="Schlüssel abholen" data-en="Collect the keys" data-es="Recoge las llaves" data-fr="Récupérez les clés" data-it="Ritira le chiavi">Ritira le chiavi</h3><ul class="info-list">
+<li data-de-html="Vor dem &lt;strong&gt;Haupttor&lt;/strong&gt; angekommen, findet ihr, falls ihr das Online-Check-in abgeschlossen habt, die &lt;strong&gt;KeyBox&lt;/strong&gt; am Tor unter dem Schild der Unterkunft (Code &lt;strong&gt;1705&lt;/strong&gt;), wie auf dem Foto gezeigt." data-en-html="Once at the &lt;strong&gt;main gate&lt;/strong&gt;, if you have completed the online check-in, find the &lt;strong&gt;KeyBox&lt;/strong&gt; attached to the gate under the property sign (code &lt;strong&gt;1705&lt;/strong&gt;), as shown in the photo." data-es-html="Al llegar a la &lt;strong&gt;cancela principal&lt;/strong&gt;, si habéis completado el check-in online, encontrad la &lt;strong&gt;KeyBox&lt;/strong&gt; sujeta a la cancela bajo el cartel de la propiedad (código &lt;strong&gt;1705&lt;/strong&gt;), como se ve en la foto." data-fr-html="Arrivés devant le &lt;strong&gt;portail principal&lt;/strong&gt;, si vous avez complété le check-in en ligne, trouvez la &lt;strong&gt;KeyBox&lt;/strong&gt; fixée au portail sous le panneau de la propriété (code &lt;strong&gt;1705&lt;/strong&gt;), comme sur la photo." data-it-html="Arrivati davanti al &lt;strong&gt;cancello principale&lt;/strong&gt;, se avete completato la procedura di check-in online, trovate la &lt;strong&gt;KeyBox&lt;/strong&gt; attaccata al cancello sotto il cartello della struttura (codice &lt;strong&gt;1705&lt;/strong&gt;), come mostrato in foto.">Arrivati davanti al <strong>cancello principale</strong>, se avete completato la procedura di check-in online, trovate la <strong>KeyBox</strong> attaccata al cancello sotto il cartello della struttura (codice <strong>1705</strong>), come mostrato in foto.</li>
+</ul><div class="photo-annotation">
+<img alt="Cancello principale" src="assets/cancello-check-in.jpg"/>
+</div><div class="photo-annotation">
+<img alt="KeyBox attaccata al cancello" src="assets/keyboxcancello.jpeg"/>
+</div><details class="step-instructions" style="margin-top:8px;">
+<summary data-de="🔐 KeyBox-Anleitung" data-en="🔐 KeyBox instructions" data-es="🔐 Instrucciones KeyBox" data-fr="🔐 Instructions KeyBox" data-it="🔐 Istruzioni KeyBox">🔐 Istruzioni KeyBox</summary>
+<div class="toggle-content">
+<img alt="KeyBox" class="key-img" src="assets/keybox.png" style="margin-top:12px;"/>
+<ol class="info-list" style="list-style:decimal;padding-left:20px;">
+<li data-de-html="&lt;strong&gt;Findet die KeyBox&lt;/strong&gt;: Sie ist am Haupttor unter dem Schild der Unterkunft befestigt, wie auf dem Foto oben gezeigt." data-en-html="&lt;strong&gt;Find the KeyBox&lt;/strong&gt;: it is attached to the main gate under the property sign, as shown in the photo above." data-es-html="&lt;strong&gt;Encuentra la KeyBox&lt;/strong&gt;: está sujeta a la cancela principal bajo el cartel de la propiedad, como se ve en la foto de arriba." data-fr-html="&lt;strong&gt;Trouvez la KeyBox&lt;/strong&gt; : elle est fixée au portail principal sous le panneau de la propriété, comme sur la photo ci-dessus." data-it-html="&lt;strong&gt;Trova la KeyBox&lt;/strong&gt;: è attaccata al cancello principale sotto il cartello della struttura, come mostrato nella foto sopra."><strong>Trova la KeyBox</strong>: è attaccata al cancello principale sotto il cartello della struttura, come mostrato nella foto sopra.</li>
+<li data-de-html="&lt;strong&gt;Öffnet die Schutzklappe&lt;/strong&gt;: Schiebt die große schwarze Klappe oben an der KeyBox nach unten." data-en-html="&lt;strong&gt;Open the protective cover&lt;/strong&gt;: slide down the large black cover at the top of the KeyBox." data-es-html="&lt;strong&gt;Abre la tapa de protección&lt;/strong&gt;: desliza hacia abajo la tapa negra grande de la parte superior de la KeyBox." data-fr-html="&lt;strong&gt;Ouvrez le volet de protection&lt;/strong&gt; : faites glisser vers le bas le grand volet noir situé en haut de la KeyBox." data-it-html="&lt;strong&gt;Apri lo sportellino di protezione&lt;/strong&gt;: fai scorrere verso il basso lo sportellino nero grande posto nella parte superiore della KeyBox."><strong>Apri lo sportellino di protezione</strong>: fai scorrere verso il basso lo sportellino nero grande posto nella parte superiore della KeyBox.</li>
+<li data-de-html="&lt;strong&gt;Dreht die vier Zahlenräder&lt;/strong&gt;." data-en-html="&lt;strong&gt;Turn the four numbered wheels&lt;/strong&gt;." data-es-html="&lt;strong&gt;Gira las cuatro ruedas numéricas&lt;/strong&gt;." data-fr-html="&lt;strong&gt;Tournez les quatre molettes numériques&lt;/strong&gt;." data-it-html="&lt;strong&gt;Ruota le quattro rotelle numeriche&lt;/strong&gt;."><strong>Ruota le quattro rotelle numeriche</strong>.</li>
+<li data-de-html="&lt;strong&gt;Gebt den Code 1705 ein&lt;/strong&gt;." data-en-html="&lt;strong&gt;Enter the code 1705&lt;/strong&gt;." data-es-html="&lt;strong&gt;Introduce el código 1705&lt;/strong&gt;." data-fr-html="&lt;strong&gt;Entrez le code 1705&lt;/strong&gt;." data-it-html="&lt;strong&gt;Inserisci il codice 1705&lt;/strong&gt;."><strong>Inserisci il codice 1705</strong>.</li>
+<li data-de-html="&lt;strong&gt;Öffnet die KeyBox&lt;/strong&gt;: Nach Eingabe des Codes drückt den schwarzen Hebel links von den Zahlenrädern nach unten." data-en-html="&lt;strong&gt;Open the KeyBox&lt;/strong&gt;: after entering the code, push down the black lever to the left of the numbered wheels." data-es-html="&lt;strong&gt;Abre la KeyBox&lt;/strong&gt;: tras introducir el código, empuja hacia abajo la palanca negra a la izquierda de las ruedas." data-fr-html="&lt;strong&gt;Ouvrez la KeyBox&lt;/strong&gt; : après avoir entré le code, poussez le levier noir vers le bas, à gauche des molettes." data-it-html="&lt;strong&gt;Apri la KeyBox&lt;/strong&gt;: dopo aver inserito il codice, spingi verso il basso la levetta nera situata a sinistra delle rotelle numeriche."><strong>Apri la KeyBox</strong>: dopo aver inserito il codice, spingi verso il basso la levetta nera situata a sinistra delle rotelle numeriche.</li>
+<li data-de-html="&lt;strong&gt;Nehmt die Schlüssel&lt;/strong&gt;: Öffnet die Tür der KeyBox und holt die Schlüssel heraus." data-en-html="&lt;strong&gt;Take the keys&lt;/strong&gt;: open the KeyBox door and take the keys inside." data-es-html="&lt;strong&gt;Coge las llaves&lt;/strong&gt;: abre la puerta de la KeyBox y coge las llaves del interior." data-fr-html="&lt;strong&gt;Prenez les clés&lt;/strong&gt; : ouvrez la porte de la KeyBox et prenez les clés à l’intérieur." data-it-html="&lt;strong&gt;Prendi le chiavi&lt;/strong&gt;: apri lo sportello della KeyBox e preleva le chiavi all’interno."><strong>Prendi le chiavi</strong>: apri lo sportello della KeyBox e preleva le chiavi all’interno.</li>
+</ol>
+<div class="note" data-de-html="Nachdem ihr die Schlüssel genommen habt, &lt;strong&gt;schließt die Tür der KeyBox richtig&lt;/strong&gt;. Zur Sicherheit &lt;strong&gt;verstellt die Räder&lt;/strong&gt;, damit der Code nicht sichtbar bleibt." data-en-html="After taking the keys, &lt;strong&gt;close the KeyBox door properly&lt;/strong&gt;. For safety, &lt;strong&gt;scramble the wheels&lt;/strong&gt; so the code is no longer visible." data-es-html="Después de coger las llaves, &lt;strong&gt;cierra bien la puerta&lt;/strong&gt; de la KeyBox. Por seguridad, &lt;strong&gt;mueve las ruedas&lt;/strong&gt; para que el código no quede visible." data-fr-html="Après avoir pris les clés, &lt;strong&gt;refermez correctement la porte&lt;/strong&gt; de la KeyBox. Par sécurité, &lt;strong&gt;brouillez les molettes&lt;/strong&gt; pour que le code ne reste pas visible." data-it-html="Dopo aver preso le chiavi, &lt;strong&gt;richiudi correttamente lo sportello&lt;/strong&gt; della KeyBox. Per sicurezza, &lt;strong&gt;sposta le rotelle&lt;/strong&gt; in modo che il codice non rimanga visibile." style="margin-top:12px;">Dopo aver preso le chiavi, <strong>richiudi correttamente lo sportello</strong> della KeyBox. Per sicurezza, <strong>sposta le rotelle</strong> in modo che il codice non rimanga visibile.</div>
+<button class="close-toggle" data-de="▲ Schließen" data-en="▲ Close" data-es="▲ Cerrar" data-fr="▲ Fermer" data-it="▲ Chiudi" onclick="var d=this.closest('details');var c=d.querySelector('.toggle-content');c.style.maxHeight=c.scrollHeight+'px';requestAnimationFrame(function(){c.style.maxHeight='0px';c.style.marginTop='0px'});c.addEventListener('transitionend',function h(){c.removeEventListener('transitionend',h);d.open=false});d.scrollIntoView({behavior:'smooth',block:'start'})">▲ Chiudi</button>
+</div>
+</details></section><section class="arrival-step" data-step="1" hidden=""><h3 data-de="Haupttor öffnen" data-en="Open the main gate" data-es="Abre la cancela principal" data-fr="Ouvrez le portail principal" data-it="Apri il cancello condominiale">Apri il cancello condominiale</h3><ul class="info-list">
+<li data-de-html="Mit &lt;strong&gt;Taste B auf der Fernbedienung&lt;/strong&gt; könnt ihr das Tor der Wohnanlage selbst öffnen." data-en-html="Use &lt;strong&gt;button B on the remote control&lt;/strong&gt; to open the condominium gate on your own." data-es-html="Con el &lt;strong&gt;botón B del mando&lt;/strong&gt; podéis abrir la cancela comunitaria por vuestra cuenta." data-fr-html="Avec le &lt;strong&gt;bouton B de la télécommande&lt;/strong&gt;, vous pouvez ouvrir le portail de la copropriété en autonomie." data-it-html="Con il &lt;strong&gt;pulsante B del telecomando&lt;/strong&gt; potete aprire il cancello condominiale in autonomia.">Con il <strong>pulsante B del telecomando</strong> potete aprire il cancello condominiale in autonomia.</li>
+<li data-de-html="Nach der Abfahrt geht an der Weggabelung nach &lt;strong&gt;links&lt;/strong&gt;." data-en-html="After the downhill, at the fork go &lt;strong&gt;left&lt;/strong&gt;." data-es-html="Tras la bajada, en el cruce girad a la &lt;strong&gt;izquierda&lt;/strong&gt;." data-fr-html="Après la descente, à l’embranchement, allez à &lt;strong&gt;gauche&lt;/strong&gt;." data-it-html="Dopo la discesa, al bivio andate a &lt;strong&gt;sinistra&lt;/strong&gt;.">Dopo la discesa, al bivio andate a <strong>sinistra</strong>.</li>
+</ul><div class="photo-annotation">
+<img alt="Gira a sinistra" src="assets/giraasinistra.png"/>
+</div></section><section class="arrival-step" data-step="2" hidden=""><h3 data-de="Am Ende der Straße rechts" data-en="Turn right at the end of the road" data-es="Al final de la calle, a la derecha" data-fr="Au bout de la route, à droite" data-it="Alla fine della strada, a destra">Alla fine della strada, a destra</h3><ul class="info-list">
+<li data-de-html="Am Ende der Straße biegt nach &lt;strong&gt;rechts&lt;/strong&gt; ab." data-en-html="At the end of the road, turn &lt;strong&gt;right&lt;/strong&gt;." data-es-html="Al final de la calle, girad a la &lt;strong&gt;derecha&lt;/strong&gt;." data-fr-html="Au bout du chemin, tournez à &lt;strong&gt;droite&lt;/strong&gt;." data-it-html="Alla fine della strada voltate a &lt;strong&gt;destra&lt;/strong&gt;.">Alla fine della strada voltate a <strong>destra</strong>.</li>
+</ul><div class="photo-annotation">
+<img alt="Gira a destra" src="assets/giraadestra.png"/>
+</div></section><section class="arrival-step" data-step="3" hidden=""><h3 data-de="Das Haustor finden" data-en="Find the house gate" data-es="Encuentra la cancela de la casa" data-fr="Repérez le portail de la maison" data-it="Trova il cancello della casa">Trova il cancello della casa</h3><ul class="info-list">
+<li data-de-html="Das Haus ist das &lt;strong&gt;erste Tor auf der rechten Seite&lt;/strong&gt;." data-en-html="The house is the &lt;strong&gt;first gate on the right&lt;/strong&gt;." data-es-html="La casa es la &lt;strong&gt;primera cancela a la derecha&lt;/strong&gt;." data-fr-html="La maison est le &lt;strong&gt;premier portail sur la droite&lt;/strong&gt;." data-it-html="La casa è il &lt;strong&gt;primo cancello sulla destra&lt;/strong&gt;.">La casa è il <strong>primo cancello sulla destra</strong>.</li>
+</ul><div class="photo-annotation">
+<img alt="Cancello della casa cerchiato" src="assets/cancellocerchiato.png"/>
+</div></section><section class="arrival-step" data-step="4" hidden=""><h3 data-de="Das Haustor öffnen" data-en="Open the house gate" data-es="Abre la cancela de la casa" data-fr="Ouvrez le portail de la maison" data-it="Apri il cancello della casa">Apri il cancello della casa</h3><ul class="info-list">
+<li data-de="Zum Öffnen des Haustors drückt die Taste A auf der Fernbedienung am Schlüsselbund." data-en="To open the house gate, press button A on the remote attached to the keys." data-es="Para abrir la cancela de la casa, pulsad el botón A del mando unido a las llaves." data-fr="Pour ouvrir le portail de la maison, appuyez sur le bouton A de la télécommande attachée aux clés." data-it="Per aprire il cancello della casa, premete il tasto A del telecomando attaccato alle chiavi.">Per aprire il cancello della casa, premete il tasto A del telecomando attaccato alle chiavi.</li>
+</ul><div class="photo-annotation">
+<img alt="Cancello della casa" src="assets/cancello-casa.jpeg"/>
+</div></section><section class="arrival-step" data-step="5" hidden=""><h3 data-de="Im Garten parken" data-en="Park in the garden" data-es="Aparca en el jardín" data-fr="Garez-vous dans le jardin" data-it="Parcheggia nel giardino">Parcheggia nel giardino</h3><ul class="info-list">
+<li data-de-html="Parkt das Auto &lt;strong&gt;innerhalb des Gartens&lt;/strong&gt; auf dem gepflasterten Bereich und achtet darauf, &lt;strong&gt;den Garten nicht zu überschreiten&lt;/strong&gt;." data-en-html="Park the car &lt;strong&gt;inside the garden&lt;/strong&gt; on the paved area, being careful &lt;strong&gt;not to go past the garden&lt;/strong&gt;." data-es-html="Aparcad el coche &lt;strong&gt;dentro del jardín&lt;/strong&gt; en la zona pavimentada, con cuidado de &lt;strong&gt;no sobrepasar el jardín&lt;/strong&gt;." data-fr-html="Garez la voiture &lt;strong&gt;à l’intérieur du jardin&lt;/strong&gt; sur la zone pavée, en veillant à &lt;strong&gt;ne pas dépasser le jardin&lt;/strong&gt;." data-it-html="Parcheggiate l’auto &lt;strong&gt;all’interno del giardino&lt;/strong&gt; nella zona pavimentata, facendo attenzione a &lt;strong&gt;non superare il giardino&lt;/strong&gt;.">Parcheggiate l’auto <strong>all’interno del giardino</strong> nella zona pavimentata, facendo attenzione a <strong>non superare il giardino</strong>.</li>
+</ul><div class="photo-annotation">
+<img alt="Parcheggio giardino" id="parkingImg" src="assets/parcheggiogiardino.png"/>
+</div></section><section class="arrival-step" data-step="6" hidden=""><h3 data-de="Das Haus betreten" data-en="Enter the house" data-es="Entra en casa" data-fr="Entrez dans la maison" data-it="Entra in casa">Entra in casa</h3><details class="step-instructions" style="margin-top:8px;">
+<summary data-de="🔑 Anleitung für Schlüssel und Fernbedienung" data-en="🔑 Keys and remote instructions" data-es="🔑 Instrucciones llaves y mando" data-fr="🔑 Mode d’emploi clés et télécommande" data-it="🔑 Istruzioni uso chiavi e telecomando">🔑 Istruzioni uso chiavi e telecomando</summary>
+<div class="toggle-content">
+<img alt="Chiavi e telecomando" class="key-img" src="assets/manuale-chiavi.jpg" style="margin-top:12px;"/>
+<div class="note" data-de-html="&lt;strong&gt;Wichtig:&lt;/strong&gt; Während des Aufenthalts verwahrt die Schlüssel und die Fernbedienung sorgfältig. Bei Verlust kann eine Strafe erhoben werden." data-en-html="&lt;strong&gt;Important:&lt;/strong&gt; during your stay, please take good care of the keys and remote. In case of loss, a penalty may be applied." data-es-html="&lt;strong&gt;Importante:&lt;/strong&gt; durante la estancia, cuidad bien las llaves y el mando. En caso de pérdida, podría aplicarse una penalización." data-fr-html="&lt;strong&gt;Important :&lt;/strong&gt; pendant votre séjour, prenez soin des clés et de la télécommande. En cas de perte, une pénalité peut être appliquée." data-it-html="&lt;strong&gt;Importante:&lt;/strong&gt; durante il soggiorno custodite con cura le chiavi e il telecomando. In caso di smarrimento potrebbe essere applicata una penale."><strong>Importante:</strong> durante il soggiorno custodite con cura le chiavi e il telecomando. In caso di smarrimento potrebbe essere applicata una penale.</div>
+<h3 class="section-title" data-de="Fernbedienung der Tore" data-en="Gate remote control" data-es="Mando de las puertas" data-fr="Télécommande des portails" data-it="Telecomando dei cancelli">Telecomando dei cancelli</h3>
+<ul class="info-list">
+<li data-de-html="&lt;strong&gt;Taste A:&lt;/strong&gt; öffnet das Tor des Hauses, das den Zugang zum Garten ermöglicht." data-en-html="&lt;strong&gt;Button A:&lt;/strong&gt; opens the house gate, the one that gives access to the garden." data-es-html="&lt;strong&gt;Botón A:&lt;/strong&gt; abre la puerta de la casa, la que permite acceder al jardín." data-fr-html="&lt;strong&gt;Bouton A :&lt;/strong&gt; ouvre le portail de la maison, celui qui permet d’accéder au jardin." data-it-html="&lt;strong&gt;Tasto A:&lt;/strong&gt; apre il cancello della casa, quello che permette di accedere al giardino.">
+<strong>Tasto A:</strong> apre il cancello della casa, quello che permette di accedere al giardino.
+            </li><li data-de-html="&lt;strong&gt;Taste B:&lt;/strong&gt; öffnet das Tor der Wohnanlage." data-en-html="&lt;strong&gt;Button B:&lt;/strong&gt; opens the condominium gate." data-es-html="&lt;strong&gt;Botón B:&lt;/strong&gt; abre la cancela comunitaria." data-fr-html="&lt;strong&gt;Bouton B :&lt;/strong&gt; ouvre le portail de la copropriété." data-it-html="&lt;strong&gt;Tasto B:&lt;/strong&gt; apre il cancello condominiale."><strong>Tasto B:</strong> apre il cancello condominiale.</li>
+<li data-de-html="&lt;strong&gt;Tasten C und D:&lt;/strong&gt; haben keine Funktion für das Haus." data-en-html="&lt;strong&gt;Buttons C and D:&lt;/strong&gt; they have no function for the house." data-es-html="&lt;strong&gt;Botones C y D:&lt;/strong&gt; no tienen ninguna función para la casa." data-fr-html="&lt;strong&gt;Boutons C et D :&lt;/strong&gt; ils n’ont aucune fonction pour la maison." data-it-html="&lt;strong&gt;Tasti C e D:&lt;/strong&gt; non hanno nessuna funzionalità per la casa."><strong>Tasti C e D:</strong> non hanno nessuna funzionalità per la casa.</li>
+</ul>
+<h3 class="section-title" data-de="Langer Schlüssel" data-en="Long key" data-es="Llave larga" data-fr="Clé longue" data-it="Chiave lunga">Chiave lunga</h3>
+<ul class="info-list">
+<li data-de-html="Der &lt;strong&gt;lange Schlüssel&lt;/strong&gt; öffnet die Verandatür, also die Eingangstür des Hauses." data-en-html="The &lt;strong&gt;long key&lt;/strong&gt; opens the veranda door, which is the entrance door to the house." data-es-html="La &lt;strong&gt;llave larga&lt;/strong&gt; abre la puerta de la veranda, es decir, la puerta de entrada de la casa." data-fr-html="La &lt;strong&gt;clé longue&lt;/strong&gt; ouvre la porte de la véranda, c’est-à-dire la porte d’entrée de la maison." data-it-html="La &lt;strong&gt;chiave lunga&lt;/strong&gt; apre la porta della veranda, cioè la porta d’ingresso della casa.">La <strong>chiave lunga</strong> apre la porta della veranda, cioè la porta d’ingresso della casa.</li>
+<li data-de-html="Um die Tür richtig zu öffnen, steckt den Schlüssel mit dem geraden Teil mit der Stufe nach &lt;strong&gt;oben&lt;/strong&gt; und &lt;strong&gt;dreht nach links&lt;/strong&gt;." data-en-html="To open correctly, insert the key with the straight stepped side facing &lt;strong&gt;upwards&lt;/strong&gt; and &lt;strong&gt;turn left&lt;/strong&gt;." data-es-html="Para abrir correctamente, introducid la llave con la parte recta con el escalón hacia &lt;strong&gt;arriba&lt;/strong&gt; y &lt;strong&gt;girad a la izquierda&lt;/strong&gt;." data-fr-html="Pour ouvrir correctement, insérez la clé avec la partie droite avec l’encoche orientée vers &lt;strong&gt;le haut&lt;/strong&gt; et &lt;strong&gt;tournez à gauche&lt;/strong&gt;." data-it-html="Per aprire correttamente la porta, inserite la chiave con la parte dritta con lo scalino rivolta verso &lt;strong&gt;l’alto&lt;/strong&gt; e &lt;strong&gt;girate verso sinistra&lt;/strong&gt;.">Per aprire correttamente la porta, inserite la chiave con la parte dritta con lo scalino rivolta verso <strong>l’alto</strong> e <strong>girate verso sinistra</strong>.</li>
+</ul>
+<img alt="Serratura" class="key-img" src="assets/serratura.jpeg" style="margin-top:6px;"/>
+<h3 class="section-title" data-de="Anderer Schlüssel" data-en="Other key" data-es="Otra llave" data-fr="Autre clé" data-it="Altra chiave">Altra chiave</h3>
+<ul class="info-list">
+<li data-de-html="Der andere Schlüssel öffnet das &lt;strong&gt;kleine Tor&lt;/strong&gt; neben dem Gartentor." data-en-html="The other key opens the &lt;strong&gt;small gate&lt;/strong&gt; next to the garden gate." data-es-html="La otra llave abre la &lt;strong&gt;pequeña cancela&lt;/strong&gt; junto a la cancela del jardín." data-fr-html="L’autre clé ouvre le &lt;strong&gt;petit portail&lt;/strong&gt; à côté du portail du jardin." data-it-html="L’altra chiave apre il &lt;strong&gt;cancelletto&lt;/strong&gt; vicino al cancello del giardino.">L’altra chiave apre il <strong>cancelletto</strong> vicino al cancello del giardino.</li>
+</ul>
+<div class="note" data-de="Legt die Schlüssel in den Briefkasten „A Casa di Marco“ außerhalb des Tors der Wohnanlage, oben rechts. Das ist der Briefkasten für die Post: NICHT die KeyBox, aus der ihr die Schlüssel abgeholt habt." data-en="Leave the keys in the “A Casa di Marco” letterbox outside the condominium gate, at the top right. It is the box used to receive mail: NOT the KeyBox where you collected the keys." data-es="Dejad las llaves en el buzón “A Casa di Marco”, fuera de la cancela comunitaria, arriba a la derecha. Es el buzón donde se recibe el correo: NO es la KeyBox donde recogisteis las llaves." data-fr="Déposez les clés dans la boîte aux lettres « A Casa di Marco », à l’extérieur du portail de la copropriété, en haut à droite. C’est la boîte qui reçoit le courrier : ce n’est PAS la KeyBox où vous avez récupéré les clés." data-it="Lasciate le chiavi nella cassetta delle lettere “A Casa di Marco”, fuori dal cancello condominiale, in alto a destra. È la cassetta dove si riceve la posta: NON è la KeyBox da cui avete ritirato le chiavi.">Lasciate le chiavi nella cassetta delle lettere “A Casa di Marco”, fuori dal cancello condominiale, in alto a destra. È la cassetta dove si riceve la posta: NON è la KeyBox da cui avete ritirato le chiavi.</div>
+<button class="close-toggle" data-de="▲ Schließen" data-en="▲ Close" data-es="▲ Cerrar" data-fr="▲ Fermer" data-it="▲ Chiudi" onclick="var d=this.closest('details');var c=d.querySelector('.toggle-content');c.style.maxHeight=c.scrollHeight+'px';requestAnimationFrame(function(){c.style.maxHeight='0px';c.style.marginTop='0px'});c.addEventListener('transitionend',function h(){c.removeEventListener('transitionend',h);d.open=false});d.scrollIntoView({behavior:'smooth',block:'start'})">▲ Chiudi</button>
+</div>
+</details></section></div><div class="step-controls"><button data-de="Zurück" data-en="Back" data-es="Atrás" data-fr="Précédent" data-it="Indietro" id="arrival-prev" type="button">Indietro</button><span aria-live="polite" id="arrival-step-count"></span><button data-de="Weiter" data-en="Next" data-es="Siguiente" data-fr="Suivant" data-it="Avanti" id="arrival-next" type="button">Avanti</button></div></div>
+</div>
+</details>
+</section>
+<section class="journey-section" data-journey-section="checkout">
+<details class="journey-detail" id="checkout">
+<summary class="journey-summary" data-de="🧹 Check-out" data-en="🧹 Check-out" data-es="🧹 Check-out" data-fr="🧹 Check-out" data-it="🧹 Check-out">🧹 Check-out</summary>
+<div class="toggle-content"><div class="checkout-headline"><span class="eyebrow" data-de="Check-out bis" data-en="Check out by" data-es="Salida antes de las" data-fr="Départ avant" data-it="Check-out entro le">Check-out entro le</span><strong>10:00</strong><p data-de="Sofern nicht anders vereinbart. Die Schlüssel gehören in den Briefkasten „A Casa di Marco“ für die Post, nicht in die KeyBox." data-en="Unless otherwise agreed. Put the keys in the “A Casa di Marco” letterbox used for mail, not in the KeyBox." data-es="Salvo otros acuerdos. Las llaves van en el buzón de correo “A Casa di Marco”, no en la KeyBox." data-fr="Sauf accord différent. Les clés vont dans la boîte aux lettres « A Casa di Marco » qui reçoit le courrier, pas dans la KeyBox." data-it="Salvo diversi accordi. Le chiavi vanno nella cassetta delle lettere “A Casa di Marco”, quella della posta, non nella KeyBox.">Salvo diversi accordi. Le chiavi vanno nella cassetta delle lettere “A Casa di Marco”, quella della posta, non nella KeyBox.</p></div>
+<div class="photo-annotation">
+<img alt="Cancello e cassetta delle lettere" src="assets/cancello-check-in.jpg"/>
+<span class="photo-badge mailbox" data-de="📬 Briefkasten oben rechts" data-en="📬 Mailbox top right" data-es="📬 Buzón arriba a la derecha" data-fr="📬 Boîte en haut à droite" data-it="📬 Cassetta in alto a destra" style="top:12px;right:16px;bottom:auto;">📬 Cassetta in alto a destra</span>
+</div>
+<ul class="info-list">
+<li data-de-html="Der Check-out muss &lt;strong&gt;bis 10:00 Uhr&lt;/strong&gt; erfolgen, sofern nichts anderes vereinbart ist." data-en-html="Check-out must be completed &lt;strong&gt;by 10:00 AM&lt;/strong&gt;, unless otherwise agreed." data-es-html="El check-out debe realizarse &lt;strong&gt;antes de las 10:00&lt;/strong&gt;, salvo acuerdo previo." data-fr-html="Le check-out doit être effectué &lt;strong&gt;avant 10h00&lt;/strong&gt;, sauf accord préalable." data-it-html="Il check-out deve essere effettuato &lt;strong&gt;entro le ore 10:00&lt;/strong&gt;, salvo diversi accordi.">Il check-out deve essere effettuato <strong>entro le ore 10:00</strong>, salvo diversi accordi.</li>
+<li data-de-html="Prüft, dass &lt;strong&gt;Lichter, Wasserhähne, Klimaanlage und Heizkörper&lt;/strong&gt; ausgeschaltet sind." data-en-html="Make sure &lt;strong&gt;lights, taps, air conditioning and radiators&lt;/strong&gt; are turned off." data-es-html="Comprobad que estén apagados &lt;strong&gt;luces, grifos, aire acondicionado y radiadores&lt;/strong&gt;." data-fr-html="Vérifiez que &lt;strong&gt;lumières, robinets, climatisation et radiateurs&lt;/strong&gt; sont éteints." data-it-html="Controllate che siano spenti &lt;strong&gt;luci, rubinetti, condizionatore e termosifoni&lt;/strong&gt;.">Controllate che siano spenti <strong>luci, rubinetti, condizionatore e termosifoni</strong>.</li>
+<li data-de="Benutzte Handtücher nach Möglichkeit in den Wäschekorb legen." data-en="If possible, leave used towels in the laundry basket." data-es="Si es posible, dejar las toallas usadas en la cesta de ropa sucia." data-fr="Si possible, déposez les serviettes utilisées dans le panier à linge sale." data-it="Se possibile, lasciare gli asciugamani utilizzati nella cesta dei panni sporchi.">Se possibile, lasciare gli asciugamani utilizzati nella cesta dei panni sporchi.</li>
+<li class="checkout-waste-instructions" data-de="Bringt den Müll vor dem Check-out in die vorgesehenen gemeinschaftlichen Mülltonnen und beachtet die Mülltrennung und Entsorgungshinweise. Lasst ihn nicht in den Tonnen im Haus oder im Garten. Falls ihr ihn nicht zu den gemeinschaftlichen Tonnen bringen könnt, stellt zumindest sicher, dass er korrekt getrennt ist, und informiert den Gastgeber. Bei Missachtung der Mülltrennung wird die in den Hausregeln vorgesehene Gebühr für die korrekte Entsorgung von bis zu 50 € von der Kaution einbehalten. In Salerno kann eine nicht regelkonforme Müllentsorgung zu kommunalen Bußgeldern führen." data-en="Before check-out, take rubbish to the designated communal bins, following waste sorting and disposal instructions. Do not leave it in the bins inside the house or in the garden. If you cannot take it to the communal bins, at least ensure it is correctly separated and inform the host. If waste sorting rules are not followed, the house-rule charge for correct disposal will apply, up to €50, deducted from the security deposit. Incorrect waste disposal in Salerno may result in municipal fines." data-es="Antes del check-out, llevad los residuos a los contenedores comunitarios correspondientes, respetando la separación y las indicaciones de depósito. No los dejéis en los cubos de la casa ni del jardín. Si no podéis llevarlos a los contenedores comunitarios, aseguraos al menos de que estén correctamente separados y avisad al anfitrión. Si no se respeta la separación, se aplicará el cargo previsto en las normas de la casa para su correcta eliminación, de hasta 50 €, descontado del depósito de garantía. En Salerno, el depósito incorrecto de residuos puede conllevar multas municipales." data-fr="Avant le départ, déposez les déchets dans les conteneurs collectifs prévus, en respectant le tri et les consignes de dépôt. Ne les laissez pas dans les poubelles de la maison ou du jardin. Si vous ne pouvez pas les apporter aux conteneurs collectifs, assurez-vous au moins qu’ils sont correctement triés et prévenez l’hôte. En cas de tri non respecté, les frais prévus par le règlement de la maison pour leur élimination correcte seront appliqués, jusqu’à 50 €, retenus sur le dépôt de garantie. À Salerne, un dépôt non conforme peut entraîner des amendes municipales." data-it="Prima del check-out, portate i rifiuti negli appositi bidoni condominiali, rispettando la raccolta differenziata e le indicazioni di conferimento. Non lasciateli nei bidoni in casa o in quelli del giardino. Se non riuscite a portarli nei bidoni condominiali, assicuratevi almeno che siano correttamente separati e avvisate l’host. In caso di raccolta differenziata non rispettata, sarà applicata la penale prevista dalle regole della casa per il corretto smaltimento, fino a 50 €, con trattenuta dal deposito cauzionale. A Salerno il conferimento non conforme alle regole può comportare sanzioni comunali.">Prima del check-out, portate i rifiuti negli appositi bidoni condominiali, rispettando la raccolta differenziata e le indicazioni di conferimento. Non lasciateli nei bidoni in casa o in quelli del giardino. Se non riuscite a portarli nei bidoni condominiali, assicuratevi almeno che siano correttamente separati e avvisate l’host. In caso di raccolta differenziata non rispettata, sarà applicata la penale prevista dalle regole della casa per il corretto smaltimento, fino a 50 €, con trattenuta dal deposito cauzionale. A Salerno il conferimento non conforme alle regole può comportare sanzioni comunali.</li>
+<li data-de="Legt die Schlüssel in den Briefkasten „A Casa di Marco“ außerhalb des Tors der Wohnanlage, oben rechts. Das ist der Briefkasten für die Post: NICHT die KeyBox, aus der ihr die Schlüssel abgeholt habt." data-en="Leave the keys in the “A Casa di Marco” letterbox outside the condominium gate, at the top right. It is the box used to receive mail: NOT the KeyBox where you collected the keys." data-es="Dejad las llaves en el buzón “A Casa di Marco”, fuera de la cancela comunitaria, arriba a la derecha. Es el buzón donde se recibe el correo: NO es la KeyBox donde recogisteis las llaves." data-fr="Déposez les clés dans la boîte aux lettres « A Casa di Marco », à l’extérieur du portail de la copropriété, en haut à droite. C’est la boîte qui reçoit le courrier : ce n’est PAS la KeyBox où vous avez récupéré les clés." data-it="Lasciate le chiavi nella cassetta delle lettere “A Casa di Marco”, fuori dal cancello condominiale, in alto a destra. È la cassetta dove si riceve la posta: NON è la KeyBox da cui avete ritirato le chiavi.">Lasciate le chiavi nella cassetta delle lettere “A Casa di Marco”, fuori dal cancello condominiale, in alto a destra. È la cassetta dove si riceve la posta: NON è la KeyBox da cui avete ritirato le chiavi.</li>
+<li data-de-html="Schickt uns &lt;strong&gt;eine Nachricht, um den Check-out zu bestätigen&lt;/strong&gt;." data-en-html="Send us &lt;strong&gt;a message to confirm check-out&lt;/strong&gt;." data-es-html="Enviadnos &lt;strong&gt;un mensaje para confirmar el check-out&lt;/strong&gt;." data-fr-html="Envoyez-nous &lt;strong&gt;un message pour confirmer le check-out&lt;/strong&gt;." data-it-html="Inviateci &lt;strong&gt;un messaggio per confermare il check-out&lt;/strong&gt;.">Inviateci <strong>un messaggio per confermare il check-out</strong>.</li>
+</ul>
+<div class="checklist-intro">
+<h3 data-de="Checkliste vor der Abreise" data-en="Checklist before leaving" data-es="Checklist antes de salir" data-fr="Checklist avant de partir" data-it="Checklist prima di partire">Checklist prima di partire</h3>
+<p data-de="Hakt jeden Punkt ab, bevor ihr geht: So seid ihr sicher, nichts vergessen zu haben." data-en="Tick each item before leaving: this way you can be sure you have not forgotten anything." data-es="Marcad cada punto antes de salir: así estáis seguros de no olvidar nada." data-fr="Cochez chaque point avant de partir : ainsi vous êtes sûrs de ne rien oublier." data-it="Spuntate ogni punto prima di uscire: così siete sicuri di non dimenticare nulla.">Spuntate ogni punto prima di uscire: così siete sicuri di non dimenticare nulla.</p>
+</div><div class="check-progress" id="check-progress">
+<div class="check-progress-track"><div class="check-progress-fill" id="check-progress-fill"></div></div>
+<span class="check-progress-text" id="check-progress-text"></span>
+</div>
+<div class="checkout-checklist">
+<label class="check-item"><input class="checkout-checkbox" data-check-key="lights" type="checkbox"/><span aria-hidden="true" class="check-number">1</span><span data-de="Ich habe alle Lichter ausgeschaltet." data-en="I have turned off all the lights." data-es="He apagado todas las luces." data-fr="J’ai éteint toutes les lumières." data-it="Ho spento tutte le luci.">Ho spento tutte le luci.</span></label>
+<label class="check-item"><input class="checkout-checkbox" data-check-key="taps" type="checkbox"/><span aria-hidden="true" class="check-number">2</span><span data-de="Ich habe alle Wasserhähne zugedreht." data-en="I have turned off all the taps." data-es="He cerrado todos los grifos." data-fr="J’ai fermé tous les robinets." data-it="Ho chiuso tutti i rubinetti.">Ho chiuso tutti i rubinetti.</span></label>
+<label class="check-item"><input class="checkout-checkbox" data-check-key="climate" type="checkbox"/><span aria-hidden="true" class="check-number">3</span><span data-de="Ich habe die Klimaanlage und/oder die Heizkörper ausgeschaltet." data-en="I have turned off the air conditioning and/or radiators." data-es="He apagado el aire acondicionado y/o los radiadores." data-fr="J’ai éteint la climatisation et/ou les radiateurs." data-it="Ho spento condizionatore e/o termosifoni.">Ho spento condizionatore e/o termosifoni.</span></label>
+<label class="check-item"><input class="checkout-checkbox" data-check-key="belongings" type="checkbox"/><span aria-hidden="true" class="check-number">4</span><span data-de="Ich habe geprüft, dass ich keine persönlichen Gegenstände vergessen habe." data-en="I have checked that I have not forgotten any personal belongings." data-es="He comprobado que no he olvidado objetos personales." data-fr="J’ai vérifié que je n’ai oublié aucun effet personnel." data-it="Ho controllato di non aver dimenticato oggetti personali.">Ho controllato di non aver dimenticato oggetti personali.</span></label>
+<label class="check-item"><input class="checkout-checkbox" data-check-key="towels" type="checkbox"/><span aria-hidden="true" class="check-number">5</span><span data-de="Ich habe benutzte Handtücher nach Möglichkeit in den Wäschekorb gelegt." data-en="If possible, I have left used towels in the laundry basket." data-es="Si es posible, he dejado las toallas usadas en la cesta de ropa sucia." data-fr="Si possible, j’ai déposé les serviettes utilisées dans le panier à linge sale." data-it="Se possibile, ho lasciato gli asciugamani utilizzati nella cesta dei panni sporchi.">Se possibile, ho lasciato gli asciugamani utilizzati nella cesta dei panni sporchi.</span></label>
+<label class="check-item"><input class="checkout-checkbox" data-check-key="rubbish" type="checkbox"/><span aria-hidden="true" class="check-number">6</span><span data-de="Ich habe den Müll in die gemeinschaftlichen Tonnen gebracht oder, falls nicht möglich, korrekt getrennt und den Gastgeber informiert." data-en="I have taken rubbish to the communal bins or, if unable, separated it correctly and informed the host." data-es="He llevado los residuos a los contenedores comunitarios o, si no era posible, los he separado correctamente y he avisado al anfitrión." data-fr="J’ai déposé les déchets dans les conteneurs collectifs ou, si cela était impossible, je les ai correctement triés et j’ai prévenu l’hôte." data-it="Ho portato i rifiuti nei bidoni condominiali oppure, se non possibile, li ho separati correttamente e ho avvisato l’host.">Ho portato i rifiuti nei bidoni condominiali oppure, se non possibile, li ho separati correttamente e ho avvisato l’host.</span></label>
+<label class="check-item"><input class="checkout-checkbox" data-check-key="door" type="checkbox"/><span aria-hidden="true" class="check-number">7</span><span data-de="Ich habe die Haustür richtig geschlossen." data-en="I have properly closed the house door." data-es="He cerrado bien la puerta de la casa." data-fr="J’ai bien fermé la porte de la maison." data-it="Ho chiuso bene la porta della casa.">Ho chiuso bene la porta della casa.</span></label>
+<label class="check-item"><input class="checkout-checkbox" data-check-key="keys" type="checkbox"/><span aria-hidden="true" class="check-number">8</span><span data-de="Ich habe die Schlüssel im Briefkasten „A Casa di Marco“ für die Post hinterlassen, nicht in der KeyBox." data-en="I have left the keys in the “A Casa di Marco” letterbox for mail, not in the KeyBox." data-es="He dejado las llaves en el buzón de correo “A Casa di Marco”, no en la KeyBox." data-fr="J’ai déposé les clés dans la boîte aux lettres « A Casa di Marco », pas dans la KeyBox." data-it="Ho lasciato le chiavi nella cassetta della posta “A Casa di Marco”, non nella KeyBox.">Ho lasciato le chiavi nella cassetta della posta “A Casa di Marco”, non nella KeyBox.</span></label>
+<label class="check-item"><input class="checkout-checkbox" data-check-key="message" type="checkbox"/><span aria-hidden="true" class="check-number">9</span><span data-de="Ich habe eine Nachricht gesendet, um den Check-out zu bestätigen." data-en="I have sent a message to confirm check-out." data-es="He enviado un mensaje para confirmar el check-out." data-fr="J’ai envoyé un message pour confirmer le check-out." data-it="Ho inviato un messaggio per confermare il check-out.">Ho inviato un messaggio per confermare il check-out.</span></label>
+</div><a class="departure-message" data-de="Abreise über WhatsApp mitteilen" data-en="Let us know on WhatsApp" data-es="Avísanos por WhatsApp" data-fr="Prévenez-nous sur WhatsApp" data-it="Avvisa della partenza su WhatsApp" href="https://wa.me/393923064010" rel="noopener" target="_blank">Avvisa della partenza su WhatsApp</a>
+<div class="check-complete-message" data-de="🎉 Alles erledigt, danke! Gute Reise und wir hoffen, euch bald wieder bei A Casa di Marco zu sehen." data-en="🎉 All done, thank you! Have a safe trip and we hope to see you again soon at A Casa di Marco." data-es="🎉 ¡Todo listo, gracias! Buen viaje y esperamos volver a veros pronto en A Casa di Marco." data-fr="🎉 Tout est fait, merci ! Bon voyage et nous espérons vous revoir bientôt à A Casa di Marco." data-it="🎉 Tutto fatto, grazie! Buon viaggio e speriamo di rivedervi presto ad A Casa di Marco." id="check-complete-message">🎉 Tutto fatto, grazie! Buon viaggio e speriamo di rivedervi presto ad A Casa di Marco.</div>
+<div class="final-reminder" data-de-html="&lt;strong&gt;Danke!&lt;/strong&gt; Diese kleine Aufmerksamkeit hilft uns, das Haus bestmöglich für die nächsten Gäste vorzubereiten." data-en-html="&lt;strong&gt;Thank you!&lt;/strong&gt; This small attention helps us prepare the house in the best possible way for the next guests." data-es-html="&lt;strong&gt;¡Gracias!&lt;/strong&gt; Esta pequeña atención nos ayuda a preparar la casa de la mejor manera para los próximos huéspedes." data-fr-html="&lt;strong&gt;Merci !&lt;/strong&gt; Cette petite attention nous aide à préparer la maison au mieux pour les prochains hôtes." data-it-html="&lt;strong&gt;Grazie!&lt;/strong&gt; Questa piccola attenzione ci aiuta a preparare la casa al meglio per gli ospiti successivi."><strong>Grazie!</strong> Questa piccola attenzione ci aiuta a preparare la casa al meglio per gli ospiti successivi.</div>
+<details class="late-checkout"><summary data-de="Möchtet ihr später abreisen?" data-en="Need to leave later?" data-es="¿Necesitas salir más tarde?" data-fr="Besoin de partir plus tard ?" data-it="Hai bisogno di partire più tardi?">Hai bisogno di partire più tardi?</summary><div class="note" data-de="Bis 10:00 Uhr. Bei einer nicht vereinbarten Verspätung, die organisatorische Probleme oder zusätzliche Kosten verursacht, können 20 € je zusätzlicher Stunde berechnet und von der Kaution einbehalten werden." data-en="By 10:00. An unagreed delay causing organisational problems or additional costs may incur a charge of €20 per additional hour. The amount may be deducted from the security deposit." data-es="Antes de las 10:00. Un retraso no acordado que cause problemas organizativos o costes adicionales podrá conllevar un suplemento de 20 € por cada hora adicional, deducible del depósito de garantía." data-fr="Avant 10 h. Un retard non convenu entraînant des difficultés d’organisation ou des frais supplémentaires pourra donner lieu à un supplément de 20 € par heure supplémentaire, pouvant être retenu sur le dépôt de garantie." data-it="Entro le 10:00. In caso di ritardo non concordato che comporti problemi organizzativi o costi aggiuntivi, potrà essere richiesto un supplemento di 20 € per ogni ora aggiuntiva. L’importo potrà essere trattenuto dal deposito cauzionale.">Entro le 10:00. In caso di ritardo non concordato che comporti problemi organizzativi o costi aggiuntivi, potrà essere richiesto un supplemento di 20 € per ogni ora aggiuntiva. L’importo potrà essere trattenuto dal deposito cauzionale.</div></details></div>
+</details>
+</section>
+</main>
+<script>
+    var currentLang = 'it';
+
+    var checklistCompletedOnce = false;
+
+    var checklistLabels = {
+      it: {
+        completed: "completati",
+        allDone: "Tutto fatto! Grazie per la collaborazione 💛"
+      },
+      en: {
+        completed: "completed",
+        allDone: "All done! Thank you for your cooperation 💛"
+      },
+      es: {
+        completed: "completados",
+        allDone: "¡Todo listo! Gracias por vuestra colaboración 💛"
+      },
+      fr: {
+        completed: "terminés",
+        allDone: "Tout est fait ! Merci pour votre collaboration 💛"
+      }
+    };
+
+    function getLang() {
+      var params = new URLSearchParams(window.location.search);
+      var lang = params.get('lang');
+
+      if (lang === 'it' || lang === 'en' || lang === 'es' || lang === 'fr' || lang === 'de') {
+        return lang;
+      }
+
+      try {
+        lang = localStorage.getItem('guestGuideLang');
+      } catch (e) {}
+
+      if (lang === 'it' || lang === 'en' || lang === 'es' || lang === 'fr' || lang === 'de') {
+        return lang;
+      }
+
+      return 'it';
+    }
+
+    function translatePage(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll('[data-it], [data-it-html]').forEach(function (el) {
+        var htmlTranslation = el.getAttribute('data-' + lang + '-html');
+        var textTranslation = el.getAttribute('data-' + lang);
+
+        if (htmlTranslation) {
+          el.innerHTML = htmlTranslation;
+        } else if (textTranslation) {
+          el.textContent = textTranslation;
+        }
+      });
+
+      var home = document.querySelector('.back-home');
+      if (home) {
+        home.href = 'index.html#' + lang;
+      }
+
+      var parkingImg = document.getElementById('parkingImg');
+      if (parkingImg) {
+        var langMap = { it: 'giardino', en: 'inglese', es: 'spagnolo', fr: 'francese' };
+        var suffix = langMap[lang] || 'giardino';
+        parkingImg.src = 'assets/parcheggio' + suffix + '.png';
+      }
+
+      try {
+        localStorage.setItem('guestGuideLang', lang);
+      } catch (e) {}
+
+      restoreChecklistProgress();
+      updateChecklistProgress(false);
+    }
+
+    function getChecklistStorageKey() {
+      return 'checkoutChecklist_' + currentLang;
+    }
+
+    function saveChecklistProgress() {
+      var state = {};
+      document.querySelectorAll('.checkout-checkbox').forEach(function (checkbox, index) {
+        var key = checkbox.getAttribute('data-check-key') || ('item' + index);
+        state[key] = checkbox.checked;
+      });
+
+      try {
+        localStorage.setItem(getChecklistStorageKey(), JSON.stringify(state));
+      } catch (e) {}
+    }
+
+    function restoreChecklistProgress() {
+      var state = null;
+
+      try {
+        var saved = localStorage.getItem(getChecklistStorageKey());
+        if (saved) state = JSON.parse(saved);
+      } catch (e) {}
+
+      document.querySelectorAll('.checkout-checkbox').forEach(function (checkbox, index) {
+        var key = checkbox.getAttribute('data-check-key') || ('item' + index);
+        checkbox.checked = !!(state && state[key]);
+      });
+    }
+
+    function launchConfetti() {
+      var layer = document.createElement('div');
+      layer.className = 'confetti-layer';
+      document.body.appendChild(layer);
+
+      var colors = ['#0f7f83', '#dff3f2', '#fff8e8', '#b08850', '#ff7a59', '#ffffff'];
+
+      for (var i = 0; i < 85; i++) {
+        var piece = document.createElement('span');
+        piece.className = 'confetti-piece';
+        piece.style.left = Math.random() * 100 + 'vw';
+        piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+        piece.style.animationDelay = (Math.random() * 0.35) + 's';
+        piece.style.transform = 'rotate(' + (Math.random() * 360) + 'deg)';
+        layer.appendChild(piece);
+      }
+
+      setTimeout(function () {
+        layer.remove();
+      }, 2400);
+    }
+
+    function updateChecklistProgress(allowConfetti) {
+      var checkboxes = document.querySelectorAll('.checkout-checkbox');
+      var checked = document.querySelectorAll('.checkout-checkbox:checked').length;
+      var progress = document.getElementById('check-progress');
+      var progressText = document.getElementById('check-progress-text');
+      var progressFill = document.getElementById('check-progress-fill');
+      var completeMessage = document.getElementById('check-complete-message');
+
+      if (!progress || !checkboxes.length) return;
+
+      var labels = checklistLabels[currentLang] || checklistLabels.it;
+      var isComplete = checked === checkboxes.length;
+      var percent = Math.round((checked / checkboxes.length) * 100);
+
+      if (progressFill) {
+        progressFill.style.width = percent + '%';
+        progressFill.classList.toggle('done', isComplete);
+      }
+
+      if (isComplete) {
+        if (progressText) progressText.textContent = labels.allDone;
+        if (completeMessage) completeMessage.classList.add('show');
+
+        if (allowConfetti && !checklistCompletedOnce) {
+          launchConfetti();
+        }
+
+        checklistCompletedOnce = true;
+      } else {
+        if (progressText) progressText.textContent = checked + '/' + checkboxes.length + ' ' + labels.completed;
+        if (completeMessage) completeMessage.classList.remove('show');
+        checklistCompletedOnce = false;
+      }
+
+      saveChecklistProgress();
+    }
+
+    document.querySelectorAll('.checkout-checkbox').forEach(function (checkbox) {
+      checkbox.addEventListener('change', function () {
+        updateChecklistProgress(true);
+      });
+    });
+
+    document.querySelectorAll('.animated-toggle').forEach(function (details) {
+      var summary = details.querySelector('summary');
+      if (!summary) return;
+
+      summary.addEventListener('click', function (e) {
+        e.preventDefault();
+        var content = details.querySelector('.toggle-content');
+        if (!content) return;
+
+        if (details.open) {
+          content.style.maxHeight = content.scrollHeight + 'px';
+          requestAnimationFrame(function () {
+            content.style.maxHeight = '0px';
+            content.style.marginTop = '0px';
+          });
+          content.addEventListener('transitionend', function handler() {
+            content.removeEventListener('transitionend', handler);
+            details.open = false;
+          });
+        } else {
+          details.open = true;
+          content.style.maxHeight = '0px';
+          content.style.marginTop = '0px';
+          requestAnimationFrame(function () {
+            content.style.maxHeight = content.scrollHeight + 'px';
+            content.style.marginTop = '16px';
+          });
+        }
+      });
+    });
+
+    (function () {
+      var hash = window.location.hash ? window.location.hash.replace('#', '') : '';
+      if (hash === 'checkout') {
+        var checkoutDetails = document.getElementById('checkout');
+        if (checkoutDetails) {
+          checkoutDetails.open = true;
+          setTimeout(function () {
+            checkoutDetails.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 250);
+        }
+      }
+    })();
+
+    const scrollHint = document.getElementById('scrollHint');
+
+    function updateScrollHint() {
+      if (!scrollHint) return;
+
+      const scrollPosition = window.scrollY + window.innerHeight;
+      const pageHeight = document.documentElement.scrollHeight;
+
+      if (pageHeight - scrollPosition < 120) {
+        scrollHint.style.display = 'none';
+      } else {
+        scrollHint.style.display = window.innerWidth <= 720 ? 'flex' : 'none';
+      }
+    }
+
+    window.addEventListener('scroll', updateScrollHint);
+    window.addEventListener('resize', updateScrollHint);
+    window.addEventListener('load', updateScrollHint);
+
+    function showCheckinPanel(panelId) {
+      document.querySelectorAll('.checkin-panel').forEach(function (p) { p.classList.remove('show'); });
+      document.querySelectorAll('.checkin-choice-btn').forEach(function (b) { b.classList.remove('active'); });
+
+      var panel = document.getElementById('panel' + (panelId === 'presenza' ? 'Presenza' : 'Self'));
+      var btn = document.getElementById(panelId === 'presenza' ? 'btnPresenza' : 'btnSelf');
+
+      if (panel) panel.classList.add('show');
+      if (btn) btn.classList.add('active');
+    }
+
+    translatePage(getLang());
+  </script>
+<script src="guide-pages.js"></script><script defer="" src="guide-polish.js"></script><script src="guide-experience.js"></script><script src="guide-personal.js"></script></body>
+</html>

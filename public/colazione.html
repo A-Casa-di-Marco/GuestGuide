@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+
+<html lang="it">
+<head><script>window.guideStay={name:"",checkin:"",checkout:""};</script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Colazione · A Casa di Marco</title>
+<link href="manifest.webmanifest" rel="manifest"/>
+<meta content="#193c50" name="theme-color"/>
+<link href="assets/icon-192.png" rel="apple-touch-icon"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="Casa di Marco" name="apple-mobile-web-app-title"/>
+<meta content="default" name="apple-mobile-web-app-status-bar-style"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&amp;family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root {
+      --ottanio:#0f7f83;
+      --ottanio-dark:#075f63;
+      --ottanio-soft:#dff3f2;
+      --white:#fff;
+      --milk:#fbfbf8;
+      --text:#263238;
+      --muted:#6f7d80;
+      --shadow:0 18px 50px rgba(0,70,75,.20);
+      --radius:28px;
+      --warning:#fff0ec;
+      --warning-border:#d96b4c;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible,
+    summary:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid var(--ottanio);
+      outline-offset: 2px;
+      border-radius: 8px;
+    }
+
+    * {
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    body {
+      background:var(--milk);
+      color:var(--text);
+      font-family:'Poppins',sans-serif;
+      line-height:1.65;
+    }
+
+    h1,h2,h3 {
+      font-family:'Pacifico',cursive;
+      font-weight:400;
+      color:var(--ottanio-dark);
+    }
+
+    .page-hero {
+      min-height:38vh;
+      background:
+        linear-gradient(180deg, rgba(0,80,85,.25), rgba(0,80,85,.55)),
+        url("assets/garden-main.jpg") center/cover no-repeat;
+      color:#fff;
+      display:flex;
+      align-items:flex-end;
+      padding:38px 20px;
+    }
+
+    .page-hero div {
+      max-width:1000px;
+      margin:0 auto;
+      width:100%;
+    }
+
+    .page-hero h1 {
+      color:#fff;
+      font-size:clamp(38px, 7vw, 68px);
+      text-shadow:0 5px 20px rgba(0,0,0,.35);
+    }
+
+    main {
+      max-width:1000px;
+      margin:0 auto;
+      padding:28px 16px 60px;
+    }
+
+    section {
+      background:#fff;
+      border-radius:28px;
+      padding:28px;
+      box-shadow:var(--shadow);
+      margin-bottom:22px;
+    }
+
+    .back-home {
+      display:inline-flex;
+      margin-bottom:18px;
+      background:var(--ottanio);
+      color:#fff;
+      text-decoration:none;
+      border-radius:999px;
+      padding:11px 18px;
+      font-weight:600;
+    }
+
+    .intro {
+      color:var(--muted);
+      margin-top:8px;
+      max-width:850px;
+    }
+
+    .info-list {
+      list-style:none;
+      display:grid;
+      gap:12px;
+      margin-top:14px;
+    }
+
+    .info-list li {
+      background:var(--ottanio-soft);
+      border-radius:18px;
+      padding:14px 16px;
+    }
+
+    .info-list strong {
+      color:var(--ottanio-dark);
+    }
+
+    .btn {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      margin-top:16px;
+      margin-right:12px;
+      background:var(--ottanio);
+      color:#fff;
+      text-decoration:none;
+      border-radius:999px;
+      padding:11px 18px;
+      font-weight:600;
+      border:none;
+      cursor:pointer;
+      font-family:'Poppins',sans-serif;
+      font-size:15px;
+    }
+
+    .btn.light {
+      background:#fff;
+      color:var(--ottanio-dark);
+      border:1px solid rgba(15,127,131,.25);
+    }
+
+    .breakfast-order-box {
+      margin-top:26px;
+      background:#fff8e8;
+      border-left:6px solid var(--ottanio);
+      border-radius:22px;
+      padding:20px;
+    }
+
+    .breakfast-order-box h3 {
+      font-size:30px;
+      margin-bottom:8px;
+    }
+
+    .breakfast-order-box p {
+      color:var(--text);
+      margin-bottom:12px;
+    }
+
+    .breakfast-warning {
+      background:var(--warning);
+      border-left:5px solid var(--warning-border);
+      border-radius:18px;
+      padding:14px 16px;
+      margin:16px 0;
+    }
+
+    .breakfast-warning strong {
+      color:#9b2f1e;
+    }
+
+    .form-group {
+      margin-top:16px;
+    }
+
+    label {
+      display:block;
+      font-weight:700;
+      color:var(--ottanio-dark);
+      margin-bottom:8px;
+    }
+
+    select,
+    input {
+      width:100%;
+      border:1px solid rgba(15,127,131,.25);
+      border-radius:16px;
+      padding:12px 14px;
+      font-family:'Poppins',sans-serif;
+      font-size:15px;
+      background:#fff;
+      color:var(--text);
+    }
+
+    .guest-snacks {
+      display:grid;
+      gap:14px;
+      margin-top:18px;
+    }
+
+    .guest-snack-card {
+      background:var(--ottanio-soft);
+      border-radius:18px;
+      padding:15px;
+    }
+
+    .guest-snack-card strong {
+      display:block;
+      color:var(--ottanio-dark);
+      margin-bottom:8px;
+    }
+
+    .order-status {
+      margin-top:14px;
+      font-size:14px;
+      color:var(--muted);
+    }
+
+    .order-closed {
+      opacity:.65;
+      pointer-events:none;
+    }
+
+    .hidden {
+      display:none;
+    }
+
+    @media (max-width:720px) {
+      body {
+        font-size:14px;
+      }
+
+      .page-hero {
+        min-height:28vh;
+        padding:28px 16px;
+      }
+
+      .page-hero h1 {
+        font-size:34px;
+      }
+
+      main {
+        padding:20px 12px 44px;
+      }
+
+      section {
+        padding:20px;
+        border-radius:22px;
+      }
+
+      .breakfast-order-box {
+        padding:17px;
+      }
+
+      .breakfast-order-box h3 {
+        font-size:25px;
+      }
+
+      .btn {
+        width:100%;
+        margin-right:0;
+      }
+    }
+  </style>
+<link href="guide-pages.css" rel="stylesheet"/><link href="assets/icon-192.png" rel="icon" type="image/png"/><link href="guide-polish.css" rel="stylesheet"/><script defer="" src="https://cdn.jsdelivr.net/npm/lucide@0.468.0/dist/umd/lucide.min.js"></script></head>
+<body class="polished-guide guide-inner">
+<div class="scroll-hint" id="scrollHint">⌄</div>
+<header class="page-hero">
+<div>
+<h1 data-de="Frühstück" data-en="Breakfast" data-es="Desayuno" data-fr="Petit-déjeuner" data-it="Colazione">Colazione</h1>
+</div>
+</header>
+<main>
+<a class="back-home" data-de="← Zurück zur Startseite" data-en="← Back to home" data-es="← Volver a la home" data-fr="← Retour à l'accueil" data-it="← Torna alla home" href="index.html">← Torna alla home</a>
+<section>
+<h2 data-de="Frühstück" data-en="Breakfast" data-es="Desayuno" data-fr="Petit-déjeuner" data-it="Colazione">Colazione</h2>
+<p class="intro" data-de="Das Frühstück wird im Brignan Cafè serviert, einem Partnercafé von A Casa di Marco." data-en="Breakfast is served at Brignan Cafè, partner café of A Casa di Marco." data-es="El desayuno se sirve en Brignan Cafè, cafetería asociada con A Casa di Marco." data-fr="Le petit-déjeuner est servi au Brignan Cafè, café partenaire de A Casa di Marco." data-it="La colazione è servita presso Brignan Cafè, bar convenzionato con A Casa di Marco.">
+        La colazione è servita presso Brignan Cafè, bar convenzionato con A Casa di Marco.
+      </p>
+<ul class="info-list">
+<li data-de="Das Frühstück ist von 7:30 bis 10:30 Uhr verfügbar." data-en="Breakfast is available from 7:30 to 10:30." data-es="El desayuno está disponible de 7:30 a 10:30." data-fr="Le petit-déjeuner est disponible de 7h30 à 10h30." data-it="La colazione è disponibile dalle 7:30 alle 10:30.">
+          La colazione è disponibile dalle 7:30 alle 10:30.
+        </li>
+<li data-de="Für jede Person könnt ihr ein Getränk, heiß oder kalt, und einen Snack wählen." data-en="Each person can choose one drink, hot or cold, and one snack." data-es="Cada persona puede elegir una bebida, caliente o fría, y un snack." data-fr="Chaque personne peut choisir une boisson, chaude ou froide, et un snack." data-it="Per ogni persona è possibile scegliere una bevanda, calda o fredda, e uno snack.">
+          Per ogni persona è possibile scegliere una bevanda, calda o fredda, e uno snack.
+        </li>
+<li data-de="Die gewählten Snacks müssen bis 19:00 Uhr am Vortag mitgeteilt werden, damit wir euch einen besseren Service garantieren können." data-en="Chosen snacks must be communicated by 7:00 PM the day before, so we can ensure a better service." data-es="Los snacks elegidos deben comunicarse antes de las 19:00 del día anterior, para garantizar un mejor servicio." data-fr="Les snacks choisis doivent être communiqués avant 19h00 la veille, afin de garantir un meilleur service." data-it="Gli snack scelti devono essere comunicati entro le 19:00 del giorno precedente, così da garantirvi un servizio migliore.">
+          Gli snack scelti devono essere comunicati entro le 19:00 del giorno precedente, così da garantirvi un servizio migliore.
+        </li>
+<li data-de="Das Menü umfasst heiße Getränke, kalte Getränke und Snacks." data-en="The menu includes hot drinks, cold drinks and snacks." data-es="El menú incluye bebidas calientes, bebidas frías y snacks." data-fr="Le menu comprend des boissons chaudes, des boissons froides et des snacks." data-it="Il menù comprende bevande calde, bevande fredde e snack.">
+          Il menù comprende bevande calde, bevande fredde e snack.
+        </li>
+</ul>
+<a class="btn" data-de="Frühstücksmenü öffnen" data-en="Open breakfast menu" data-es="Abrir menú desayuno" data-fr="Ouvrir le menu du petit-déjeuner" data-it="Apri menù colazione" href="assets/colazione.pdf" target="_blank">
+        Apri menù colazione
+      </a>
+<a class="btn light" data-de="📍 Bring mich hin" data-en="📍 Take me there" data-es="📍 Llévame allí" data-fr="📍 M’y emmener" data-it="📍 Portami lì" href="https://www.google.com/maps/dir//Brignan+Caf%C3%A8+di+Gervasi+Maria,+Via+Brignano+Inferiore,+67+A%2FB,+84135+Salerno+SA/@40.6747437,14.7926561,13z/data=!4m8!4m7!1m0!1m5!1m1!1s0x133bc3afcb063bcd:0x1cd0e1ea5b6cc7ad!2m2!1d14.787072!2d40.6916037?entry=ttu&amp;g_ep=EgoyMDI2MDUxMy4wIKXMDSoASAFQAw%3D%3D" target="_blank">
+        📍 Portami lì
+      </a>
+<div class="breakfast-order-box" id="breakfastOrderBox">
+<h3 data-de="Snacks für das Frühstück morgen" data-en="Snacks for tomorrow’s breakfast" data-es="Snacks para el desayuno de mañana" data-fr="Snacks pour le petit-déjeuner de demain" data-it="Snack per la colazione di domani">Snack per la colazione di domani</h3>
+<p data-de="Teilt uns hier mit, welche Snacks ihr morgen zum Frühstück haben möchtet. Für jeden Gast kann ein Snack gewählt werden." data-en="Let us know here which snacks you would like for tomorrow’s breakfast. Each guest can choose one snack." data-es="Comunicadnos aquí qué snacks queréis para el desayuno de mañana. Cada huésped puede elegir un snack." data-fr="Indiquez ici les snacks souhaités pour le petit-déjeuner de demain. Chaque hôte peut choisir un snack." data-it="Comunicateci qui gli snack che desiderate trovare a colazione domani. È possibile scegliere uno snack per ogni ospite.">
+          Comunicateci qui gli snack che desiderate trovare a colazione domani. È possibile scegliere uno snack per ogni ospite.
+        </p>
+<div class="breakfast-warning" data-de-html="&lt;strong&gt;Wichtig:&lt;/strong&gt; Snack-Bestellungen können nur bis &lt;strong&gt;19:00 Uhr am Vortag&lt;/strong&gt; mitgeteilt werden. Nach dieser Uhrzeit ist es nicht mehr möglich, die Anfrage für den nächsten Tag zu senden." data-en-html="&lt;strong&gt;Important:&lt;/strong&gt; snack orders can only be sent by &lt;strong&gt;7:00 PM the day before&lt;/strong&gt;. After this time, it will no longer be possible to send the request for the next day." data-es-html="&lt;strong&gt;Importante:&lt;/strong&gt; los pedidos de snacks solo pueden enviarse antes de las &lt;strong&gt;19:00 del día anterior&lt;/strong&gt;. Después de esa hora ya no será posible enviar la solicitud para el día siguiente." data-fr-html="&lt;strong&gt;Important :&lt;/strong&gt; les commandes de snacks peuvent être envoyées uniquement avant &lt;strong&gt;19h00 la veille&lt;/strong&gt;. Après cet horaire, il ne sera plus possible d’envoyer la demande pour le lendemain." data-it-html="&lt;strong&gt;Importante:&lt;/strong&gt; gli ordini degli snack possono essere comunicati solo entro le &lt;strong&gt;19:00 del giorno precedente&lt;/strong&gt;. Dopo questo orario non sarà più possibile inviare la richiesta per il giorno successivo.">
+<strong>Importante:</strong> gli ordini degli snack possono essere comunicati solo entro le <strong>19:00 del giorno precedente</strong>. Dopo questo orario non sarà più possibile inviare la richiesta per il giorno successivo.
+        </div>
+<div class="breakfast-warning" data-de-html="&lt;strong&gt;Hinweis:&lt;/strong&gt; gebt die korrekte Anzahl der in der Buchung enthaltenen Gäste an. Wenn eine höhere Anzahl eingegeben wird, werden nur die ersten Bestellungen berücksichtigt, die der tatsächlich gebuchten Anzahl an Gästen entsprechen." data-en-html="&lt;strong&gt;Note:&lt;/strong&gt; please enter the correct number of guests included in the booking. If a higher number is entered, only the first orders matching the actual number of booked guests will be considered." data-es-html="&lt;strong&gt;Nota:&lt;/strong&gt; indicad el número correcto de huéspedes incluidos en la reserva. Si se introduce un número superior, solo se tendrán en cuenta los primeros pedidos correspondientes al número real de huéspedes reservados." data-fr-html="&lt;strong&gt;Note :&lt;/strong&gt; veuillez indiquer le nombre correct d’hôtes inclus dans la réservation. Si un nombre supérieur est indiqué, seules les premières commandes correspondant au nombre réel d’hôtes réservés seront prises en compte." data-it-html="&lt;strong&gt;Nota:&lt;/strong&gt; indicate il numero corretto di ospiti presenti nella prenotazione. Se viene inserito un numero superiore rispetto agli ospiti dichiarati, verranno considerati solo i primi ordini corrispondenti al numero di ospiti realmente prenotati.">
+<strong>Nota:</strong> indicate il numero corretto di ospiti presenti nella prenotazione. Se viene inserito un numero superiore rispetto agli ospiti dichiarati, verranno considerati solo i primi ordini corrispondenti al numero di ospiti realmente prenotati.
+        </div>
+<div id="orderFormArea">
+<div class="form-group">
+<label data-de="Wie viele Gäste seid ihr?" data-en="How many guests are you?" data-es="¿Cuántos huéspedes sois?" data-fr="Combien d’hôtes êtes-vous ?" data-it="Quanti ospiti siete?" for="guestCount">Quanti ospiti siete?</label>
+<select id="guestCount">
+<option data-de="Anzahl der Gäste auswählen" data-en="Select number of guests" data-es="Selecciona número de huéspedes" data-fr="Sélectionnez le nombre d’hôtes" data-it="Seleziona numero ospiti" value="">Seleziona numero ospiti</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+</select>
+</div>
+<div class="guest-snacks" id="snackSelections"></div>
+<button class="btn hidden" data-de="📲 Snack-Bestellung per WhatsApp senden" data-en="📲 Send snack order on WhatsApp" data-es="📲 Enviar pedido de snacks por WhatsApp" data-fr="📲 Envoyer la commande de snacks sur WhatsApp" data-it="📲 Invia ordine snack su WhatsApp" id="sendBreakfastOrder" type="button">
+            📲 Invia ordine snack su WhatsApp
+          </button>
+<div class="order-status" id="orderStatus"></div>
+</div>
+</div>
+</section>
+</main>
+<script>
+    /*
+      IMPORTANTE:
+      Sostituisci questo numero con il tuo numero WhatsApp in formato internazionale.
+      Esempio: +39 333 1234567 diventa 393331234567
+    */
+    const WHATSAPP_NUMBER = "3923064010";
+
+    const SNACK_OPTIONS = {
+      it: [
+        "Cornetto Crema",
+        "Cornetto Cioccolato",
+        "Cornetto Cioccolato Bianco",
+        "Cornetto Pinguino",
+        "Cornetto Marmellata",
+        "Cornetto Vuoto",
+        "Cornetto Frutti di Bosco",
+        "Cornetto Vegano",
+        "Danese alle Mandorle"
+      ],
+      en: [
+        "Croissant with Custard",
+        "Croissant with Chocolate",
+        "Croissant White Chocolate",
+        "Pinguin Croissant",
+        "Croissant with Jam",
+        "Plain Croissant",
+        "Croissant with Mixed Berries",
+        "Vegan Croissant",
+        "Almond Danish"
+      ],
+      es: [
+        "Croissant con crema",
+        "Croissant con chocolate",
+        "Croissant con chocolate blanco",
+        "Croissant Pinguino",
+        "Croissant con mermelada",
+        "Croissant vacío",
+        "Croissant con frutos del bosque",
+        "Croissant vegano",
+        "Danesa de almendras"
+      ],
+      fr: [
+        "Croissant à la crème",
+        "Croissant au chocolat",
+        "Croissant au chocolat blanc",
+        "Croissant Pinguino",
+        "Croissant à la confiture",
+        "Croissant nature",
+        "Croissant aux fruits rouges",
+        "Croissant vegan",
+        "Danoise aux amandes"
+      ],
+      de: [
+        "Croissant mit Pudding",
+        "Croissant mit Schokolade",
+        "Croissant mit weißer Schokolade",
+        "Croissant Pinguino",
+        "Croissant mit Marmelade",
+        "Croissant ohne Füllung",
+        "Croissant mit Waldbeeren",
+        "Veganes Croissant",
+        "Mandel-Dänischer"
+      ]
+    };
+
+    const FORM_TEXTS = {
+      guest: {
+        it: "Ospite",
+        en: "Guest",
+        es: "Huésped",
+        fr: "Hôte",
+        de: "Gast"
+      },
+      chooseSnack: {
+        it: "Scegli uno snack",
+        en: "Choose one snack",
+        es: "Elige un snack",
+        fr: "Choisissez un snack",
+        de: "Wähle einen Snack"
+      },
+      selectSnack: {
+        it: "Seleziona snack",
+        en: "Select snack",
+        es: "Selecciona snack",
+        fr: "Sélectionnez un snack",
+        de: "Snack auswählen"
+      },
+      complete: {
+        it: "Selezionate uno snack per ogni ospite prima di inviare.",
+        en: "Please select one snack for each guest before sending.",
+        es: "Seleccionad un snack para cada huésped antes de enviar.",
+        fr: "Veuillez sélectionner un snack pour chaque hôte avant d’envoyer.",
+        de: "Bitte wählt vor dem Senden einen Snack für jeden Gast aus."
+      },
+      closed: {
+        it: "Le richieste per la colazione di domani sono disponibili solo fino alle 19:00. Dopo questo orario potete comunque contattarci su WhatsApp, ma non possiamo garantire la disponibilità degli snack scelti.",
+        en: "Requests for tomorrow’s breakfast are available only until 7:00 PM. After this time, you can still contact us on WhatsApp, but we cannot guarantee the availability of the chosen snacks.",
+        es: "Las solicitudes para el desayuno de mañana están disponibles solo hasta las 19:00. Después de esa hora podéis contactarnos por WhatsApp, pero no podemos garantizar la disponibilidad de los snacks elegidos.",
+        fr: "Les demandes pour le petit-déjeuner de demain sont disponibles uniquement jusqu’à 19h00. Après cet horaire, vous pouvez tout de même nous contacter sur WhatsApp, mais nous ne pouvons pas garantir la disponibilité des snacks choisis.",
+        de: "Anfragen für das Frühstück morgen sind nur bis 19:00 Uhr möglich. Danach könnt ihr uns weiterhin per WhatsApp kontaktieren, aber wir können die Verfügbarkeit der gewählten Snacks nicht garantieren."
+      },
+      open: {
+        it: "Potete inviare la scelta degli snack fino alle 19:00.",
+        en: "You can send your snack choices until 7:00 PM.",
+        es: "Podéis enviar la elección de snacks hasta las 19:00.",
+        fr: "Vous pouvez envoyer le choix des snacks jusqu’à 19h00.",
+        de: "Ihr könnt eure Snack-Auswahl bis 19:00 Uhr senden."
+      }
+    };
+
+    function getLang() {
+      var params = new URLSearchParams(window.location.search);
+      var lang = params.get('lang');
+
+      if (lang === 'it' || lang === 'en' || lang === 'es' || lang === 'fr' || lang === 'de') {
+        return lang;
+      }
+
+      try {
+        lang = localStorage.getItem('guestGuideLang');
+      } catch (e) {}
+
+      if (lang === 'it' || lang === 'en' || lang === 'es' || lang === 'fr' || lang === 'de') {
+        return lang;
+      }
+
+      return 'it';
+    }
+
+    function translatePage(lang) {
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll('[data-it], [data-it-html]').forEach(function (el) {
+        var htmlTranslation = el.getAttribute('data-' + lang + '-html');
+        var textTranslation = el.getAttribute('data-' + lang);
+
+        if (htmlTranslation) {
+          el.innerHTML = htmlTranslation;
+        } else if (textTranslation) {
+          el.textContent = textTranslation;
+        }
+      });
+
+      var home = document.querySelector('.back-home');
+      if (home) {
+        home.href = 'index.html#' + lang;
+      }
+
+      try {
+        localStorage.setItem('guestGuideLang', lang);
+      } catch (e) {}
+    }
+
+    function isBeforeDeadline() {
+      var now = new Date();
+      var hour = now.getHours();
+      var minutes = now.getMinutes();
+
+      if (hour < 19) return true;
+      if (hour === 19 && minutes === 0) return true;
+
+      return false;
+    }
+
+    function createSnackSelections(count, lang) {
+      var container = document.getElementById("snackSelections");
+      var sendButton = document.getElementById("sendBreakfastOrder");
+
+      container.innerHTML = "";
+
+      if (!count) {
+        sendButton.classList.add("hidden");
+        return;
+      }
+
+      for (var i = 1; i <= count; i++) {
+        var card = document.createElement("div");
+        card.className = "guest-snack-card";
+
+        var title = document.createElement("strong");
+        title.textContent = FORM_TEXTS.guest[lang] + " " + i;
+
+        var label = document.createElement("label");
+        label.setAttribute("for", "snackGuest" + i);
+        label.textContent = FORM_TEXTS.chooseSnack[lang];
+
+        var select = document.createElement("select");
+        select.id = "snackGuest" + i;
+        select.className = "snack-select";
+
+        var emptyOption = document.createElement("option");
+        emptyOption.value = "";
+        emptyOption.textContent = FORM_TEXTS.selectSnack[lang];
+        select.appendChild(emptyOption);
+
+        SNACK_OPTIONS[lang].forEach(function (snack) {
+          var option = document.createElement("option");
+          option.value = snack;
+          option.textContent = snack;
+          select.appendChild(option);
+        });
+
+        card.appendChild(title);
+        card.appendChild(label);
+        card.appendChild(select);
+
+        container.appendChild(card);
+      }
+
+      sendButton.classList.remove("hidden");
+    }
+
+    function setupBreakfastOrder(lang) {
+      var orderFormArea = document.getElementById("orderFormArea");
+      var guestCount = document.getElementById("guestCount");
+      var sendButton = document.getElementById("sendBreakfastOrder");
+      var orderStatus = document.getElementById("orderStatus");
+
+      if (!isBeforeDeadline()) {
+        orderFormArea.classList.add("order-closed");
+        orderStatus.textContent = FORM_TEXTS.closed[lang];
+        sendButton.classList.add("hidden");
+        return;
+      }
+
+      orderStatus.textContent = FORM_TEXTS.open[lang];
+
+      guestCount.addEventListener("change", function () {
+        var count = parseInt(guestCount.value, 10);
+        createSnackSelections(count, lang);
+      });
+
+      sendButton.addEventListener("click", function () {
+        var count = parseInt(guestCount.value, 10);
+
+        if (!count) {
+          orderStatus.textContent = FORM_TEXTS.complete[lang];
+          return;
+        }
+
+        var selectedSnacks = [];
+        var selects = document.querySelectorAll(".snack-select");
+
+        for (var i = 0; i < selects.length; i++) {
+          if (!selects[i].value) {
+            orderStatus.textContent = FORM_TEXTS.complete[lang];
+            return;
+          }
+
+          selectedSnacks.push(selects[i].value);
+        }
+
+        var today = new Date();
+        var tomorrow = new Date(today);
+        tomorrow.setDate(today.getDate() + 1);
+
+        var tomorrowText = tomorrow.toLocaleDateString("it-IT", {
+          weekday: "long",
+          day: "2-digit",
+          month: "2-digit",
+          year: "numeric"
+        });
+
+        var message = "Buongiorno, vorremmo comunicare gli snack per la colazione di domani.\n\n";
+        message += "📅 Colazione per: " + tomorrowText + "\n";
+        message += "👥 Numero ospiti indicato: " + count + "\n\n";
+        message += "Ordine snack:\n";
+
+        selectedSnacks.forEach(function (snack, index) {
+          message += (index + 1) + ". " + snack + "\n";
+        });
+
+        message += "\nNota: se il numero indicato è superiore agli ospiti presenti nella prenotazione, verranno considerati solo i primi ordini corrispondenti al numero di ospiti realmente prenotati.";
+
+        var whatsappUrl = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message);
+        window.open(whatsappUrl, "_blank");
+      });
+    }
+
+    var currentLang = getLang();
+    translatePage(currentLang);
+    setupBreakfastOrder(currentLang);
+  </script>
+<script src="guide-pages.js"></script><script defer="" src="guide-polish.js"></script><script src="guide-experience.js"></script><script src="guide-personal.js"></script></body>
+</html>

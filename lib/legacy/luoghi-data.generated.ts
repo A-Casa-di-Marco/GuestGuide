@@ -1,0 +1,1235 @@
+// AUTO-GENERATO da scripts/build-experience-data.mjs — non modificare a mano.
+// Fonte: public/luoghi.html (dati verbatim, 5 lingue).
+import type { Lang } from "@/lib/i18n";
+
+export type Place = {
+  image?: string;
+  infoUrl?: string;
+  mapsUrl?: string;
+  mapsQuery?: string;
+  beachType?: string;
+  note?: Record<Lang, string>;
+  title: Record<Lang, string>;
+  desc: Record<Lang, string>;
+};
+
+export type PlaceCategory = {
+  id: string;
+  icon: string;
+  isEvents?: boolean;
+  hideImage?: boolean;
+  title: Record<Lang, string>;
+  short: Record<Lang, string>;
+  intro: Record<Lang, string>;
+  places: Place[];
+};
+
+export const placeCategories: PlaceCategory[] = [
+    {
+      id: "salerno-provincia",
+      icon: "🏛️",
+      title: {
+        it: "Salerno e provincia",
+        en: "Salerno and surroundings",
+        es: "Salerno y provincia",
+        fr: "Salerne et province",
+        de: "Salerno und Umgebung",
+      },
+      short: {
+        it: "Centro, panorami e luoghi vicini",
+        en: "City centre, views and nearby places",
+        es: "Centro, vistas y lugares cercanos",
+        fr: "Centre, panoramas et lieux proches",
+        de: "Zentrum, Panoramen und nahegelegene Orte",
+      },
+      intro: {
+        it: "Luoghi comodi da visitare a Salerno e nei dintorni, perfetti anche se avete poco tempo.",
+        en: "Places to visit in Salerno and nearby, perfect even if you have little time.",
+        es: "Lugares para visitar en Salerno y alrededores, perfectos también si tenéis poco tiempo.",
+        fr: "Lieux à visiter à Salerne et aux alentours, parfaits même si vous avez peu de temps.",
+        de: "Orte in Salerno und Umgebung, die ihr bequem besuchen könnt, perfekt auch wenn ihr wenig Zeit habt.",
+      },
+      places: [
+        {
+          image: "assets/brignano.jpg",
+          infoUrl: "https://www.google.com/search?q=Brignano+Salerno",
+          mapsQuery: "Via Brignano Inferiore, Salerno",
+          title: {
+            it: "Via Brignano Inferiore",
+            en: "Via Brignano Inferiore",
+            es: "Via Brignano Inferiore",
+            fr: "Via Brignano Inferiore",
+            de: "Via Brignano Inferiore",
+          },
+          desc: {
+            it: "Una zona tranquilla e verde, perfetta per una passeggiata lenta vicino casa e per scoprire angoli più autentici di Salerno.",
+            en: "A quiet and green area, perfect for a slow walk near the house and for discovering a more authentic side of Salerno.",
+            es: "Una zona tranquila y verde, perfecta para pasear cerca de la casa y descubrir una parte más auténtica de Salerno.",
+            fr: "Un quartier calme et verdoyant, idéal pour une promenade près de la maison et pour découvrir un côté plus authentique de Salerne.",
+            de: "Ein ruhiges und grünes Viertel, ideal für einen Spaziergang in der Nähe des Hauses und um eine authentischere Seite von Salerno zu entdecken.",
+          }
+        },
+        {
+          image: "https://commons.wikimedia.org/wiki/Special:FilePath/Via%20dei%20Mercanti%2C%20Salerno%2C%20Italy%20-%20May%202010%20%2828%29.jpg?width=500",
+          infoUrl: "https://www.google.com/search?q=Via+dei+Mercanti+Salerno",
+          mapsQuery: "Via dei Mercanti, Salerno",
+          title: {
+            it: "Via Mercanti",
+            en: "Via Mercanti (Merchants’ Street)",
+            es: "Via Mercanti",
+            fr: "Via Mercanti",
+            de: "Via Mercanti",
+          },
+          desc: {
+            it: "L’antica strada principale del centro storico di Salerno, ricca di botteghe, palazzi e oratori medievali. Perfetta per passeggiare, fare shopping e ammirare l’Arco di Arechi alla fine della via.",
+            en: "The ancient main street of Salerno’s historic centre, full of shops, historic buildings and medieval oratories. Perfect for a stroll, some shopping and seeing the Arechi Arch at the end of the street.",
+            es: "La antigua calle principal del centro histórico de Salerno, llena de tiendas, palacios y oratorios medievales. Perfecta para pasear, ir de compras y ver el Arco de Arechi al final de la calle.",
+            fr: "L’ancienne rue principale du centre historique de Salerne, riche en boutiques, palais et oratoires médiévaux. Parfaite pour se promener, faire du shopping et admirer l’arc d’Arechi au bout de la rue.",
+            de: "Die alte Hauptstraße der Altstadt von Salerno, voller Geschäfte, Paläste und mittelalterlicher Oratorien. Perfekt für einen Spaziergang, zum Shoppen und um den Arco di Arechi am Ende der Straße zu sehen.",
+          }
+        },
+        {
+          image: "https://commons.wikimedia.org/wiki/Special:FilePath/Bastiglia%20Salerno.JPG?width=500",
+          infoUrl: "https://www.google.com/search?q=Bastiglia+Salerno",
+          mapsQuery: "Bastiglia, Salerno",
+          title: {
+            it: "La Bastiglia",
+            en: "La Bastiglia",
+            es: "La Bastiglia",
+            fr: "La Bastiglia",
+            de: "La Bastiglia",
+          },
+          desc: {
+            it: "Torre di avvistamento medievale sulle colline di Salerno, costruita nel 1075. Offre una vista spettacolare sul golfo ed è raggiungibile con una breve escursione dal Castello di Arechi.",
+            en: "A medieval watchtower on the hills of Salerno, built in 1075. It offers a spectacular view over the gulf and is reachable with a short hike from Arechi Castle.",
+            es: "Torre de vigilancia medieval en las colinas de Salerno, construida en 1075. Ofrece una vista espectacular del golfo y se llega con una breve caminata desde el Castillo de Arechi.",
+            fr: "Une tour de guet médiévale sur les collines de Salerne, construite en 1075. Elle offre une vue spectaculaire sur le golfe et se rejoint par une courte randonnée depuis le château d’Arechi.",
+            de: "Ein mittelalterlicher Wachturm auf den Hügeln von Salerno, erbaut 1075. Er bietet einen spektakulären Blick über den Golf und ist über einen kurzen Fußweg von der Burg Arechi erreichbar.",
+          }
+        },
+        {
+          image: "https://commons.wikimedia.org/wiki/Special:FilePath/Villa%20comunale%20Sa.jpg?width=500",
+          infoUrl: "https://www.google.com/search?q=Villa+Comunale+Salerno",
+          mapsQuery: "Villa Comunale, Salerno",
+          title: {
+            it: "Villa Comunale",
+            en: "Villa Comunale",
+            es: "Villa Comunale",
+            fr: "Villa Comunale",
+            de: "Villa Comunale",
+          },
+          desc: {
+            it: "Il giardino storico della città, affacciato sul mare e sul porto. Da vedere soprattutto durante le Luci d’Artista, quando si trasforma in uno spettacolo di luci.",
+            en: "The city’s historic garden, overlooking the sea and the port. Especially worth seeing during the Luci d’Artista light festival, when it becomes a magical light show.",
+            es: "El jardín histórico de la ciudad, frente al mar y al puerto. Merece la pena sobre todo durante las Luci d’Artista, cuando se convierte en un espectáculo de luces.",
+            fr: "Le jardin historique de la ville, face à la mer et au port. À voir surtout pendant les Luci d’Artista, quand il se transforme en un spectacle de lumières.",
+            de: "Der historische Garten der Stadt, direkt am Meer und am Hafen gelegen. Besonders sehenswert während des Lichterfests Luci d’Artista, wenn er sich in ein Lichtermeer verwandelt.",
+          }
+        },
+        {
+          image: "https://commons.wikimedia.org/wiki/Special:FilePath/Salerno%20-%20Museo%20Diocesano.jpg?width=500",
+          infoUrl: "https://www.google.com/search?q=Museo+Diocesano+Salerno",
+          mapsQuery: "Museo Diocesano di Salerno, Salerno",
+          title: {
+            it: "Museo Diocesano",
+            en: "Diocesan Museum",
+            es: "Museo Diocesano",
+            fr: "Musée diocésain",
+            de: "Diözesanmuseum",
+          },
+          desc: {
+            it: "Nel cuore del centro storico, custodisce una delle più ricche collezioni d’arte di Salerno, tra cui i celebri avori salernitani del XII secolo.",
+            en: "In the heart of the historic centre, it houses one of Salerno’s richest art collections, including the famous 12th-century Salernitan ivories.",
+            es: "En el corazón del centro histórico, alberga una de las colecciones de arte más ricas de Salerno, incluidos los célebres marfiles salernitanos del siglo XII.",
+            fr: "Au cœur du centre historique, il conserve l’une des collections d’art les plus riches de Salerne, dont les célèbres ivoires salernitains du XIIe siècle.",
+            de: "Im Herzen der Altstadt beherbergt es eine der reichsten Kunstsammlungen von Salerno, darunter die berühmten Elfenbeinschnitzereien aus dem 12. Jahrhundert.",
+          }
+        },
+        {
+          image: "https://commons.wikimedia.org/wiki/Special:FilePath/Museo%20Arch%20sa.jpg?width=500",
+          infoUrl: "https://www.google.com/search?q=Museo+Archeologico+Provinciale+Salerno",
+          mapsQuery: "Museo Archeologico Provinciale, Salerno",
+          title: {
+            it: "Museo Archeologico Provinciale",
+            en: "Provincial Archaeological Museum",
+            es: "Museo Arqueológico Provincial",
+            fr: "Musée archéologique provincial",
+            de: "Archäologisches Provinzmuseum",
+          },
+          desc: {
+            it: "Ospitato nell’ex monastero di San Benedetto, conserva reperti dalla Preistoria all’età romana, trovati in città e nei principali siti archeologici della provincia.",
+            en: "Housed in the former monastery of San Benedetto, it preserves finds from Prehistory to the Roman era, discovered in the city and in the main archaeological sites of the province.",
+            es: "Ubicado en el antiguo monasterio de San Benedetto, conserva hallazgos desde la Prehistoria hasta la época romana, encontrados en la ciudad y en los principales yacimientos de la provincia.",
+            fr: "Installé dans l’ancien monastère de San Benedetto, il conserve des vestiges de la Préhistoire à l’époque romaine, découverts en ville et sur les principaux sites archéologiques de la province.",
+            de: "Untergebracht im ehemaligen Kloster San Benedetto, bewahrt es Funde von der Vorgeschichte bis zur Römerzeit, die in der Stadt und an den wichtigsten archäologischen Stätten der Provinz entdeckt wurden.",
+          }
+        },
+        {
+          image: "https://commons.wikimedia.org/wiki/Special:FilePath/MuseoVirtualedella%20ScuolaMedicaSalernitana.jpg?width=500",
+          infoUrl: "https://www.google.com/search?q=Museo+Virtuale+della+Scuola+Medica+Salernitana",
+          mapsQuery: "Museo Virtuale della Scuola Medica Salernitana, Salerno",
+          title: {
+            it: "Museo Virtuale della Scuola Medica Salernitana",
+            en: "Virtual Museum of the Salerno Medical School",
+            es: "Museo Virtual de la Escuela Médica Salernitana",
+            fr: "Musée virtuel de l’École médicale de Salerne",
+            de: "Virtuelles Museum der Medizinschule von Salerno",
+          },
+          desc: {
+            it: "Dedicato alla celebre Scuola Medica Salernitana, il più antico centro di studi medici del Medioevo. Interattivo e perfetto per capire la storia della medicina a Salerno.",
+            en: "Dedicated to the famous Salerno Medical School, the oldest medical study centre of the Middle Ages. Interactive and perfect for understanding the history of medicine in Salerno.",
+            es: "Dedicado a la célebre Escuela Médica Salernitana, el centro de estudios médicos más antiguo de la Edad Media. Interactivo y perfecto para entender la historia de la medicina en Salerno.",
+            fr: "Dédié à la célèbre École médicale de Salerne, le plus ancien centre d’études médicales du Moyen Âge. Interactif et idéal pour comprendre l’histoire de la médecine à Salerne.",
+            de: "Gewidmet der berühmten Medizinschule von Salerno, dem ältesten medizinischen Studienzentrum des Mittelalters. Interaktiv und perfekt, um die Geschichte der Medizin in Salerno zu verstehen.",
+          }
+        },
+        {
+          image: "assets/lungomare-salerno.jpg",
+          infoUrl: "https://www.google.com/search?q=Lungomare+Trieste+Salerno",
+          mapsQuery: "Lungomare Trieste, Salerno",
+          title: {
+            it: "Lungomare di Salerno",
+            en: "Salerno Seafront",
+            es: "Paseo marítimo de Salerno",
+            fr: "Front de mer de Salerne",
+            de: "Die Uferpromenade von Salerno",
+          },
+          desc: {
+            it: "Una passeggiata elegante e panoramica sul mare, perfetta per rilassarsi, camminare o godersi un tramonto sul golfo.",
+            en: "An elegant and scenic seafront promenade, perfect for relaxing, walking or enjoying a sunset over the gulf.",
+            es: "Un paseo marítimo elegante y panorámico, perfecto para relajarse, caminar o disfrutar de una puesta de sol sobre el golfo.",
+            fr: "Une promenade élégante et panoramique en bord de mer, idéale pour se détendre, marcher ou admirer le coucher du soleil sur le golfe.",
+            de: "Eine elegante, panoramische Uferpromenade am Meer, perfekt zum Entspannen, Spazierengehen oder um den Sonnenuntergang über dem Golf zu genießen.",
+          }
+        },
+        {
+          image: "assets/piazza-della-liberta.jpg",
+          infoUrl: "https://www.google.com/search?q=Piazza+della+Libert%C3%A0+Salerno",
+          mapsQuery: "Piazza della Libertà, Salerno",
+          title: {
+            it: "Piazza della Libertà",
+            en: "Piazza della Libertà",
+            es: "Piazza della Libertà",
+            fr: "Piazza della Libertà",
+            de: "Piazza della Libertà",
+          },
+          desc: {
+            it: "Una delle piazze più moderne e scenografiche di Salerno, affacciata sul mare.",
+            en: "One of Salerno’s most modern and scenic squares, overlooking the sea.",
+            es: "Una de las plazas más modernas y escénicas de Salerno, frente al mar.",
+            fr: "L’une des places les plus modernes et spectaculaires de Salerne, face à la mer.",
+            de: "Einer der modernsten und eindrucksvollsten Plätze von Salerno, direkt am Meer gelegen.",
+          }
+        },
+        {
+          image: "assets/castello-arechi.jpg",
+          infoUrl: "https://www.castelloarechi.sa.it/",
+          mapsQuery: "Castello di Arechi, Salerno",
+          title: {
+            it: "Castello di Arechi",
+            en: "Arechi Castle",
+            es: "Castillo de Arechi",
+            fr: "Château d’Arechi",
+            de: "Burg von Arechi",
+          },
+          desc: {
+            it: "Un castello medievale con una vista spettacolare su Salerno e sul golfo. Ideale al tramonto, con scarpe comode e acqua.",
+            en: "A medieval castle with a spectacular view over Salerno and the gulf. Ideal at sunset, with comfortable shoes and water.",
+            es: "Un castillo medieval con una vista espectacular de Salerno y del golfo. Ideal al atardecer, con calzado cómodo y agua.",
+            fr: "Un château médiéval avec une vue spectaculaire sur Salerne et le golfe. Idéal au coucher du soleil, avec des chaussures confortables et de l’eau.",
+            de: "Eine mittelalterliche Burg mit spektakulärem Blick über Salerno und den Golf. Ideal bei Sonnenuntergang, mit bequemen Schuhen und Wasser.",
+          }
+        },
+        {
+          image: "assets/duomo-salerno.jpg",
+          infoUrl: "https://www.google.com/search?q=Cattedrale+di+Salerno",
+          mapsQuery: "Cattedrale di Santa Maria degli Angeli San Matteo e San Gregorio VII, Salerno",
+          title: {
+            it: "Cattedrale di Salerno",
+            en: "Salerno Cathedral",
+            es: "Catedral de Salerno",
+            fr: "Cathédrale de Salerne",
+            de: "Kathedrale von Salerno",
+          },
+          desc: {
+            it: "Uno dei simboli della città, con una facciata medievale e una cripta barocca molto suggestiva.",
+            en: "One of the city’s landmarks, with a medieval façade and a very evocative baroque crypt.",
+            es: "Uno de los símbolos de la ciudad, con una fachada medieval y una cripta barroca muy evocadora.",
+            fr: "L’un des symboles de la ville, avec une façade médiévale et une crypte baroque très suggestive.",
+            de: "Eines der Wahrzeichen der Stadt, mit mittelalterlicher Fassade und sehr eindrucksvoller Barockkrypta.",
+          }
+        },
+        {
+          image: "assets/giardino-minerva.jpg",
+          infoUrl: "https://comune.salerno.it/luogo/giardino-della-minerva",
+          mapsQuery: "Giardino della Minerva, Salerno",
+          title: {
+            it: "Giardino della Minerva",
+            en: "Minerva Garden",
+            es: "Jardín de la Minerva",
+            fr: "Jardin de la Minerve",
+            de: "Garten der Minerva",
+          },
+          desc: {
+            it: "Un antico orto botanico nel cuore del centro storico, legato alla Scuola Medica Salernitana. Tranquillo, panoramico e molto particolare.",
+            en: "An ancient botanical garden in the historic centre, connected to the Salerno Medical School. Peaceful, panoramic and very unique.",
+            es: "Un antiguo jardín botánico en el centro histórico, vinculado a la Escuela Médica Salernitana. Tranquilo, panorámico y muy especial.",
+            fr: "Un ancien jardin botanique au cœur du centre historique, lié à l’École médicale de Salerne. Calme, panoramique et très particulier.",
+            de: "Ein alter botanischer Garten im Herzen der Altstadt, verbunden mit der Medizinschule von Salerno. Ruhig, mit Panoramablick und sehr besonders.",
+          }
+        },
+        {
+          image: "assets/ruderi-saragnano.jpg",
+          infoUrl: "https://www.google.com/search?q=Ruderi+della+Chiesa+di+Saragnano+Cava+de%27+Tirreni",
+          mapsQuery: "Ruderi della Chiesa di Saragnano, Cava de' Tirreni",
+          title: {
+            it: "Ruderi della Chiesa di Saragnano",
+            en: "Ruins of Saragnano Church",
+            es: "Ruinas de la Iglesia de Saragnano",
+            fr: "Ruines de l’église de Saragnano",
+            de: "Ruinen der Kirche von Saragnano",
+          },
+          desc: {
+            it: "Un posto suggestivo e molto instagrammabile, perfetto per una passeggiata in montagna tra natura e silenzio. Bello per scattare qualche foto e godersi un angolo meno conosciuto della zona.",
+            en: "A very evocative and Instagrammable place, perfect for a mountain walk surrounded by nature and silence. Great for taking photos and discovering a lesser-known corner of the area.",
+            es: "Un lugar muy sugerente e instagrameable, perfecto para una caminata por la montaña entre naturaleza y silencio. Ideal para hacer fotos y descubrir un rincón menos conocido de la zona.",
+            fr: "Un lieu très suggestif et instagrammable, parfait pour une promenade en montagne entre nature et silence. Idéal pour prendre quelques photos et découvrir un coin moins connu de la région.",
+            de: "Ein sehr reizvoller und fotogener Ort, perfekt für eine Wanderung in den Bergen zwischen Natur und Stille. Ideal, um ein paar Fotos zu machen und eine weniger bekannte Ecke der Region zu entdecken.",
+          }
+        },
+        {
+          image: "assets/badia-cava.jpg",
+          infoUrl: "https://www.badiadicava.it/",
+          mapsQuery: "Badia di Cava de' Tirreni",
+          title: {
+            it: "Badia di Cava de’ Tirreni",
+            en: "Abbey of Cava de’ Tirreni",
+            es: "Abadía de Cava de’ Tirreni",
+            fr: "Abbaye de Cava de’ Tirreni",
+            de: "Abtei von Cava de’ Tirreni",
+          },
+          desc: {
+            it: "Un complesso storico e religioso di grande fascino, immerso nel verde. Perfetto per una visita tranquilla tra arte, spiritualità, architettura e storia.",
+            en: "A fascinating historic and religious complex surrounded by greenery. Perfect for a peaceful visit combining art, spirituality, architecture and history.",
+            es: "Un complejo histórico y religioso de gran encanto, rodeado de vegetación. Perfecto para una visita tranquila entre arte, espiritualidad, arquitectura e historia.",
+            fr: "Un complexe historique et religieux plein de charme, entouré de verdure. Parfait pour une visite paisible entre art, spiritualité, architecture et histoire.",
+            de: "Ein bezaubernder historischer und religiöser Komplex, umgeben von Grün. Perfekt für einen ruhigen Besuch zwischen Kunst, Spiritualität, Architektur und Geschichte.",
+          }
+        },
+        {
+          image: "assets/monte-san-liberatore.jpg",
+          infoUrl: "https://www.google.com/search?q=Monte+San+Liberatore+Salerno+sentiero",
+          mapsQuery: "Monte San Liberatore, Salerno",
+          title: {
+            it: "Passeggiata sul Monte San Liberatore",
+            en: "Walk on Monte San Liberatore",
+            es: "Paseo por el Monte San Liberatore",
+            fr: "Promenade sur le Monte San Liberatore",
+            de: "Wanderung auf den Monte San Liberatore",
+          },
+          desc: {
+            it: "Una bella passeggiata in montagna con panorama sul golfo di Salerno e sulla Costiera. Consigliata a chi ama camminare, respirare aria pulita e scattare foto panoramiche.",
+            en: "A lovely mountain walk with views over the Gulf of Salerno and the Amalfi Coast. Recommended for those who enjoy walking, fresh air and panoramic photos.",
+            es: "Una bonita caminata por la montaña con vistas al golfo de Salerno y a la Costa Amalfitana. Recomendada para quien ama caminar, respirar aire limpio y hacer fotos panorámicas.",
+            fr: "Une belle promenade en montagne avec vue sur le golfe de Salerne et la Côte Amalfitaine. Recommandée à ceux qui aiment marcher, respirer l’air pur et prendre des photos panoramiques.",
+            de: "Ein wunderschöner Bergspaziergang mit Blick auf den Golf von Salerno und die Amalfiküste. Empfohlen für alle, die gerne wandern, frische Luft atmen und Panoramafotos machen.",
+          }
+        },
+        {
+          image: "assets/piccolo-ranch-terminio.jpg",
+          infoUrl: "https://www.google.com/search?q=Il+Piccolo+Ranch+Terminio",
+          mapsQuery: "Il Piccolo Ranch Terminio",
+          title: {
+            it: "Il Piccolo Ranch – Terminio",
+            en: "Il Piccolo Ranch – Terminio",
+            es: "Il Piccolo Ranch – Terminio",
+            fr: "Il Piccolo Ranch – Terminio",
+            de: "Il Piccolo Ranch – Terminio",
+          },
+          desc: {
+            it: "Un posto immerso nel verde, ideale per famiglie e per chi vuole trascorrere qualche ora nella natura tra animali, relax e attività all’aperto. Da controllare in base a disponibilità, orari e stagione.",
+            en: "A green place ideal for families and for anyone who wants to spend a few hours in nature with animals, relaxation and outdoor activities. Check availability, opening times and season.",
+            es: "Un lugar rodeado de naturaleza, ideal para familias y para quien quiera pasar unas horas al aire libre entre animales, relax y actividades. Comprobad disponibilidad, horarios y temporada.",
+            fr: "Un lieu entouré de verdure, idéal pour les familles et pour ceux qui veulent passer quelques heures dans la nature entre animaux, détente et activités en plein air. Vérifiez disponibilité, horaires et saison.",
+            de: "Ein von Grün umgebener Ort, ideal für Familien und alle, die ein paar Stunden in der Natur mit Tieren, Entspannung und Outdoor-Aktivitäten verbringen möchten. Prüft Verfügbarkeit, Öffnungszeiten und Saison.",
+          }
+        }
+      ]
+    },
+    {
+      id: "spiagge",
+      icon: "🏖️",
+      hideImage: true,
+      title: {
+        it: "Spiagge a Salerno e dintorni",
+        en: "Beaches in Salerno and nearby",
+        es: "Playas en Salerno y alrededores",
+        fr: "Plages à Salerne et alentours",
+        de: "Strände in Salerno und Umgebung",
+      },
+      short: {
+        it: "Libere e a pagamento, Salerno-Paestum",
+        en: "Free and paid, Salerno-Paestum",
+        es: "Libres y de pago, Salerno-Paestum",
+        fr: "Gratuites et payantes, Salerne-Paestum",
+        de: "Frei und kostenpflichtig, Salerno-Paestum",
+      },
+      intro: {
+        it: "Spiagge comode da Salerno, Vietri e zona Paestum. Abbiamo distinto le spiagge libere da quelle a pagamento.",
+        en: "Beaches easy to reach from Salerno, Vietri and the Paestum area. We have separated free beaches from paid beach clubs.",
+        es: "Playas fáciles desde Salerno, Vietri y Paestum. Hemos separado playas libres y de pago.",
+        fr: "Plages faciles depuis Salerne, Vietri et la zone de Paestum. Nous avons séparé plages gratuites et payantes.",
+        de: "Strände, die von Salerno, Vietri und der Gegend um Paestum aus bequem zu erreichen sind. Wir haben freie Strände und Strandbäder getrennt aufgelistet.",
+      },
+      places: [
+        {
+          image: "",
+          beachType: "free",
+          infoUrl: "https://www.google.com/search?q=Spiaggia+Mercatello+Salerno",
+          mapsQuery: "Spiaggia Mercatello, Salerno",
+          title: {
+            it: "Spiaggia Mercatello",
+            en: "Mercatello Beach",
+            es: "Playa Mercatello",
+            fr: "Plage Mercatello",
+            de: "Mercatello-Strand",
+          },
+          desc: {
+            it: "Spiaggia libera nella zona Mercatello di Salerno, comoda per una giornata di mare senza allontanarsi troppo. Controllate la mappa per il punto esatto.",
+            en: "Free beach in the Mercatello area of Salerno, convenient for a beach day without going too far. Check the map for the exact spot.",
+            es: "Playa libre en la zona Mercatello de Salerno, cómoda para un día de mar sin alejarse demasiado. Consultad el mapa para el punto exacto.",
+            fr: "Plage gratuite dans le quartier Mercatello de Salerne, pratique pour une journée à la mer sans trop s'éloigner. Vérifiez la carte pour l'emplacement exact.",
+            de: "Freier Strand im Viertel Mercatello in Salerno, praktisch für einen Tag am Meer, ohne sich zu weit zu entfernen. Prüft die Karte für den genauen Standort.",
+          },
+          note: {
+            it: "Libera: portate telo, acqua e tutto il necessario. Controllate sempre accesso e parcheggio prima di partire.",
+            en: "Free beach: bring towel, water and everything you need. Always check access and parking before leaving.",
+            es: "Playa libre: llevad toalla, agua y todo lo necesario. Comprobad siempre acceso y aparcamiento antes de salir.",
+            fr: "Plage gratuite : apportez serviette, eau et tout le nécessaire. Vérifiez toujours l'accès et le parking avant de partir.",
+            de: "Freier Strand: bringt Handtuch, Wasser und alles Notwendige mit. Prüft vor der Abfahrt immer Zugang und Parkmöglichkeiten.",
+          }
+        },
+
+        {
+          image: "",
+          beachType: "paid",
+          infoUrl: "https://www.google.com/search?q=Lido+La+Conchiglia+Salerno",
+          mapsQuery: "Lido La Conchiglia, Salerno",
+          title: {
+            it: "Lido La Conchiglia",
+            en: "Lido La Conchiglia",
+            es: "Lido La Conchiglia",
+            fr: "Lido La Conchiglia",
+            de: "Lido La Conchiglia",
+          },
+          desc: {
+            it: "Stabilimento balneare a Salerno, comodo se preferite lettini, ombrelloni e servizi.",
+            en: "A beach club in Salerno, convenient if you prefer sunbeds, umbrellas and services.",
+            es: "Establecimiento balneario en Salerno, cómodo si preferís tumbonas, sombrillas y servicios.",
+            fr: "Établissement balnéaire à Salerne, pratique si vous préférez transats, parasols et services.",
+            de: "Strandbad in Salerno, praktisch wenn ihr Liegen, Sonnenschirme und Service bevorzugt.",
+          },
+          note: {
+            it: "A pagamento: consigliato controllare disponibilità e prezzi prima di andare.",
+            en: "Paid beach club: check availability and prices before going.",
+            es: "De pago: se recomienda comprobar disponibilidad y precios antes de ir.",
+            fr: "Payant : il est conseillé de vérifier disponibilité et tarifs avant d’y aller.",
+            de: "Kostenpflichtig: es wird empfohlen, vor dem Besuch Verfügbarkeit und Preise zu prüfen.",
+          }
+        },
+        {
+          image: "",
+          beachType: "free",
+          infoUrl: "https://www.google.com/search?q=Spiaggia+La+Baia+Vietri+sul+Mare",
+          mapsQuery: "Spiaggia La Baia, Vietri sul Mare",
+          title: {
+            it: "Spiaggia La Baia - Vietri",
+            en: "La Baia Beach - Vietri",
+            es: "Playa La Baia - Vietri",
+            fr: "Plage La Baia - Vietri",
+            de: "La-Baia-Strand - Vietri",
+          },
+          desc: {
+            it: "Una delle spiagge più ampie di Vietri, comoda arrivando da Salerno. In zona possono esserci sia tratti liberi sia lidi.",
+            en: "One of the widest beaches in Vietri, convenient when coming from Salerno. The area may have both free sections and beach clubs.",
+            es: "Una de las playas más amplias de Vietri, cómoda llegando desde Salerno. En la zona puede haber tramos libres y lidos.",
+            fr: "L’une des plages les plus larges de Vietri, pratique en arrivant de Salerne. La zone peut proposer des parties gratuites et des lidos.",
+            de: "Einer der breitesten Strände von Vietri, bequem zu erreichen, wenn ihr aus Salerno kommt. In der Gegend gibt es sowohl freie Abschnitte als auch Lidos.",
+          },
+          note: {
+            it: "Mista: controllate sul posto se volete la zona libera o uno stabilimento.",
+            en: "Mixed: check on site if you prefer the free area or a beach club.",
+            es: "Mixta: comprobad en el lugar si preferís zona libre o establecimiento.",
+            fr: "Mixte : vérifiez sur place si vous préférez la zone gratuite ou un établissement.",
+            de: "Gemischt: prüft vor Ort, ob ihr den freien Bereich oder ein Strandbad bevorzugt.",
+          }
+        },
+        {
+          image: "",
+          beachType: "free",
+          infoUrl: "https://www.google.com/search?q=Marina+di+Vietri+spiaggia",
+          mapsQuery: "Spiaggia Marina di Vietri, Vietri sul Mare",
+          title: {
+            it: "Marina di Vietri",
+            en: "Marina di Vietri",
+            es: "Marina di Vietri",
+            fr: "Marina di Vietri",
+            de: "Marina di Vietri",
+          },
+          desc: {
+            it: "Zona mare di Vietri con spiaggia, ristoranti e servizi vicini. Buona scelta se volete restare vicino a Salerno ma vedere già un po’ di Costiera.",
+            en: "Vietri’s seaside area with beach, restaurants and nearby services. A good choice if you want to stay close to Salerno but already see a bit of the Amalfi Coast.",
+            es: "Zona de mar de Vietri con playa, restaurantes y servicios cercanos. Buena opción si queréis quedaros cerca de Salerno pero ver ya un poco de Costa Amalfitana.",
+            fr: "Zone balnéaire de Vietri avec plage, restaurants et services proches. Bon choix si vous voulez rester près de Salerne tout en découvrant déjà un peu la Côte Amalfitaine.",
+            de: "Meeresgebiet von Vietri mit Strand, Restaurants und nahegelegenen Dienstleistungen. Eine gute Wahl, wenn ihr in der Nähe von Salerno bleiben, aber schon ein wenig Amalfiküste sehen möchtet.",
+          },
+          note: {
+            it: "Mista: ci sono zone libere e stabilimenti.",
+            en: "Mixed: there are free areas and beach clubs.",
+            es: "Mixta: hay zonas libres y establecimientos.",
+            fr: "Mixte : il y a des zones gratuites et des établissements.",
+            de: "Gemischt: es gibt freie Bereiche und Strandbäder.",
+          }
+        },
+        {
+          image: "",
+          beachType: "paid",
+          infoUrl: "https://www.google.com/search?q=Spiaggia+La+Crestarella+Vietri+sul+Mare",
+          mapsQuery: "Spiaggia La Crestarella, Vietri sul Mare",
+          title: {
+            it: "La Crestarella - Vietri",
+            en: "La Crestarella - Vietri",
+            es: "La Crestarella - Vietri",
+            fr: "La Crestarella - Vietri",
+            de: "La Crestarella - Vietri",
+          },
+          desc: {
+            it: "Spiaggia molto suggestiva vicino alla torre, più raccolta e scenografica. Ideale se cercate una giornata mare più organizzata.",
+            en: "A very scenic beach near the tower, smaller and picturesque. Ideal if you want a more organised beach day.",
+            es: "Playa muy bonita cerca de la torre, más recogida y escénica. Ideal si queréis un día de playa más organizado.",
+            fr: "Plage très suggestive près de la tour, plus intime et pittoresque. Idéale si vous cherchez une journée mer plus organisée.",
+            de: "Ein sehr reizvoller Strand nahe dem Turm, kleiner und malerischer. Ideal, wenn ihr einen organisierteren Tag am Meer sucht.",
+          },
+          note: {
+            it: "A pagamento / con servizi: meglio controllare disponibilità e prenotazione.",
+            en: "Paid / with services: it is better to check availability and booking.",
+            es: "De pago / con servicios: mejor comprobar disponibilidad y reserva.",
+            fr: "Payante / avec services : mieux vaut vérifier disponibilité et réservation.",
+            de: "Kostenpflichtig / mit Service: besser Verfügbarkeit und Reservierung prüfen.",
+          }
+        },
+        {
+          image: "",
+          beachType: "free",
+          infoUrl: "https://www.google.com/search?q=Marina+d%27Albori+Vietri+sul+Mare",
+          mapsQuery: "Marina d'Albori, Vietri sul Mare",
+          title: {
+            it: "Marina d’Albori - Vietri",
+            en: "Marina d’Albori - Vietri",
+            es: "Marina d’Albori - Vietri",
+            fr: "Marina d’Albori - Vietri",
+            de: "Marina d’Albori - Vietri",
+          },
+          desc: {
+            it: "Spiaggia più particolare e meno immediata da raggiungere, adatta a chi ama posti più tranquilli e caratteristici.",
+            en: "A more particular beach and less immediate to reach, suitable for those who love quieter and more characteristic places.",
+            es: "Playa más particular y menos inmediata de alcanzar, adecuada para quien busca lugares más tranquilos y característicos.",
+            fr: "Plage plus particulière et moins directe d’accès, adaptée à ceux qui aiment les lieux plus calmes et typiques.",
+            de: "Ein besonderer Strand, der etwas schwieriger zu erreichen ist, geeignet für alle, die ruhigere und charakteristische Orte mögen.",
+          },
+          note: {
+            it: "Accesso meno comodo: valutate scarpe adatte e controllate prima il percorso.",
+            en: "Less convenient access: consider suitable shoes and check the route first.",
+            es: "Acceso menos cómodo: llevad calzado adecuado y comprobad antes el recorrido.",
+            fr: "Accès moins pratique : prévoyez des chaussures adaptées et vérifiez le parcours avant.",
+            de: "Weniger bequemer Zugang: plant passende Schuhe ein und prüft vorher die Route.",
+          }
+        },
+        {
+          image: "",
+          beachType: "paid",
+          infoUrl: "https://www.google.com/search?q=Lido+Nettuno+Paestum+stabilimento",
+          mapsQuery: "Lido Nettuno, Paestum",
+          title: {
+            it: "Lido Nettuno - Paestum",
+            en: "Lido Nettuno - Paestum",
+            es: "Lido Nettuno - Paestum",
+            fr: "Lido Nettuno - Paestum",
+            de: "Lido Nettuno - Paestum",
+          },
+          desc: {
+            it: "Stabilimento balneare nella zona di Paestum, con sabbia dorata, mare pulito e tutti i servizi. Parcheggio comodo.",
+            en: "Beach club in the Paestum area, with golden sand, clean water and full facilities. Convenient parking.",
+            es: "Establecimiento balneario en la zona de Paestum, con arena dorada, mar limpio y todos los servicios. Aparcamiento cómodo.",
+            fr: "Établissement balnéaire dans la zone de Paestum, avec sable doré, mer propre et tous les services. Parking pratique.",
+            de: "Strandbad in der Gegend von Paestum, mit goldenem Sand, sauberem Meer und allen Services. Bequemes Parken.",
+          },
+          note: {
+            it: "A pagamento: zona Paestum, raggiungibile in auto. Controllate disponibilità e prezzi.",
+            en: "Paid: Paestum area, reachable by car. Check availability and prices.",
+            es: "De pago: zona Paestum, accesible en coche. Comprobad disponibilidad y precios.",
+            fr: "Payant : zone de Paestum, accessible en voiture. Vérifiez disponibilité et tarifs.",
+            de: "Kostenpflichtig: Gegend von Paestum, mit dem Auto erreichbar. Prüft Verfügbarkeit und Preise.",
+          }
+        },
+        {
+          image: "",
+          beachType: "paid",
+          infoUrl: "https://www.google.com/search?q=Mythos+Beach+Club+Paestum",
+          mapsQuery: "Mythos Beach Club, Paestum",
+          title: {
+            it: "Mythos Beach Club - Paestum",
+            en: "Mythos Beach Club - Paestum",
+            es: "Mythos Beach Club - Paestum",
+            fr: "Mythos Beach Club - Paestum",
+            de: "Mythos Beach Club - Paestum",
+          },
+          desc: {
+            it: "Stabilimento moderno e curato a Paestum, con ristorante, bar e ottimi servizi. Atmosfera rilassata e adatta a famiglie.",
+            en: "Modern and well-kept beach club in Paestum, with restaurant, bar and excellent facilities. Relaxed atmosphere, family-friendly.",
+            es: "Establecimiento moderno y cuidado en Paestum, con restaurante, bar y buenos servicios. Ambiente relajado, ideal para familias.",
+            fr: "Établissement moderne et soigné à Paestum, avec restaurant, bar et très bons services. Ambiance détendue, adaptée aux familles.",
+            de: "Modernes und gepflegtes Strandbad in Paestum, mit Restaurant, Bar und sehr guten Services. Entspannte Atmosphäre, familienfreundlich.",
+          },
+          note: {
+            it: "A pagamento: consigliato prenotare in alta stagione.",
+            en: "Paid: booking recommended in high season.",
+            es: "De pago: se recomienda reservar en temporada alta.",
+            fr: "Payant : réservation recommandée en haute saison.",
+            de: "Kostenpflichtig: Reservierung in der Hochsaison empfohlen.",
+          }
+        },
+        {
+          image: "",
+          beachType: "free",
+          infoUrl: "https://www.google.com/search?q=spiagge+libere+Paestum+Agropoli",
+          mapsQuery: "Spiagge libere Paestum",
+          title: {
+            it: "Spiagge libere di Paestum",
+            en: "Free beaches of Paestum",
+            es: "Playas libres de Paestum",
+            fr: "Plages gratuites de Paestum",
+            de: "Freie Strände von Paestum",
+          },
+          desc: {
+            it: "Nella zona di Paestum ci sono molti tratti di spiaggia libera con sabbia fine e fondali dolci. Lungo la costa trovate sia lidi che ampi spazi liberi dove piantare l'ombrellone.",
+            en: "The Paestum area has many long stretches of free beach with fine sand and gentle seabeds. Along the coast you will find both beach clubs and wide open spaces to set up your umbrella.",
+            es: "En la zona de Paestum hay muchos tramos de playa libre con arena fina y fondos suaves. A lo largo de la costa encontraréis tanto lidos como amplios espacios libres para poner la sombrilla.",
+            fr: "Dans la zone de Paestum, il y a de longs tronçons de plage gratuite avec sable fin et fonds doux. Le long de la côte, vous trouverez à la fois des lidos et de vastes espaces libres pour planter le parasol.",
+            de: "In der Gegend von Paestum gibt es viele freie Strandabschnitte mit feinem Sand und sanftem Meeresboden. Entlang der Küste findet ihr sowohl Lidos als auch weite freie Flächen, um euren Sonnenschirm aufzustellen.",
+          },
+          note: {
+            it: "Libera: trovate il vostro spazio e godetevi il mare. In zona Paestum-Agropoli ci sono km di spiagge libere.",
+            en: "Free: find your spot and enjoy the sea. The Paestum-Agropoli area has kilometres of free beaches.",
+            es: "Libre: encontrad vuestro espacio y disfrutad del mar. La zona Paestum-Agropoli tiene km de playas libres.",
+            fr: "Gratuite : trouvez votre coin et profitez de la mer. La zone Paestum-Agropoli offre des kilomètres de plages gratuites.",
+            de: "Frei: findet euren Platz und genießt das Meer. Die Gegend Paestum-Agropoli bietet kilometerlange freie Strände.",
+          }
+        }
+      ]
+    },
+    {
+      id: "costiera",
+      icon: "🌊",
+      title: {
+        it: "Costiera Amalfitana",
+        en: "Amalfi Coast",
+        es: "Costa Amalfitana",
+        fr: "Côte Amalfitaine",
+        de: "Amalfiküste",
+      },
+      short: {
+        it: "Vietri, Cetara, Amalfi, Ravello, Positano",
+        en: "Vietri, Cetara, Amalfi, Ravello, Positano",
+        es: "Vietri, Cetara, Amalfi, Ravello, Positano",
+        fr: "Vietri, Cetara, Amalfi, Ravello, Positano",
+        de: "Vietri, Cetara, Amalfi, Ravello, Positano",
+      },
+      intro: {
+        it: "Borghi sul mare, panorami meravigliosi e luoghi iconici della Costiera.",
+        en: "Seaside villages, beautiful views and iconic places on the Amalfi Coast.",
+        es: "Pueblos junto al mar, vistas maravillosas y lugares icónicos de la Costa Amalfitana.",
+        fr: "Villages en bord de mer, vues magnifiques et lieux emblématiques de la Côte Amalfitaine.",
+        de: "Dörfer am Meer, wunderschöne Aussichten und ikonische Orte an der Amalfiküste.",
+      },
+      places: [
+        {
+          image: "assets/vietri-sul-mare.jpg",
+          infoUrl: "https://www.google.com/search?q=Vietri+sul+Mare+cosa+vedere",
+          mapsQuery: "Vietri sul Mare",
+          title: {
+            it: "Vietri sul Mare",
+            en: "Vietri sul Mare",
+            es: "Vietri sul Mare",
+            fr: "Vietri sul Mare",
+            de: "Vietri sul Mare",
+          },
+          desc: {
+            it: "La prima perla della Costiera Amalfitana arrivando da Salerno. Famosa per le ceramiche colorate, il centro storico, la cupola maiolicata e le spiagge.",
+            en: "The first gem of the Amalfi Coast when coming from Salerno. Famous for its colourful ceramics, historic centre, majolica dome and beaches.",
+            es: "La primera joya de la Costa Amalfitana llegando desde Salerno. Famosa por sus cerámicas coloridas, el centro histórico, la cúpula de mayólica y las playas.",
+            fr: "La première perle de la Côte Amalfitaine en arrivant de Salerne. Célèbre pour ses céramiques colorées, son centre historique, sa coupole en majolique et ses plages.",
+            de: "Die erste Perle der Amalfiküste, wenn man aus Salerno kommt. Berühmt für ihre bunten Keramiken, die Altstadt, die Majolika-Kuppel und die Strände.",
+          }
+        },
+        {
+          image: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Cetara_%2834079520144%29.jpg/500px-Cetara_%2834079520144%29.jpg",
+          infoUrl: "https://www.google.com/search?q=Cetara+Costiera+Amalfitana+cosa+vedere",
+          mapsQuery: "Cetara, Costiera Amalfitana",
+          title: {
+            it: "Cetara",
+            en: "Cetara",
+            es: "Cetara",
+            fr: "Cetara",
+            de: "Cetara",
+          },
+          desc: {
+            it: "Borgo marinaro autentico, famoso per la colatura di alici e il tonno. Un gioiello meno turistico con un bel porticciolo, spiaggette e ristoranti di pesce eccellenti.",
+            en: "Authentic fishing village, famous for anchovy colatura and tuna. A less touristy gem with a lovely harbour, small beaches and excellent fish restaurants.",
+            es: "Pueblo marinero auténtico, famoso por la colatura de anchoas y el atún. Una joya menos turística con un bonito puerto, pequeñas playas y excelentes restaurantes de pescado.",
+            fr: "Village de pêcheurs authentique, célèbre pour la colature d'anchois et le thon. Un joyau moins touristique avec un joli petit port, des plages et d'excellents restaurants de poisson.",
+            de: "Ein authentisches Fischerdorf, berühmt für Colatura di alici und Thunfisch. Ein weniger touristisches Juwel mit einem schönen kleinen Hafen, kleinen Stränden und ausgezeichneten Fischrestaurants.",
+          }
+        },
+        {
+          image: "assets/costiera-amalfitana.jpg",
+          infoUrl: "https://www.google.com/search?q=Maiori+Minori+Costiera+Amalfitana",
+          mapsQuery: "Maiori Minori Costiera Amalfitana",
+          title: {
+            it: "Maiori e Minori",
+            en: "Maiori and Minori",
+            es: "Maiori y Minori",
+            fr: "Maiori et Minori",
+            de: "Maiori und Minori",
+          },
+          desc: {
+            it: "Due località comode e piacevoli in Costiera: Maiori ha una spiaggia ampia, Minori è famosa anche per i dolci e Sal De Riso.",
+            en: "Two pleasant and convenient towns on the Coast: Maiori has a wide beach, Minori is also famous for desserts and Sal De Riso.",
+            es: "Dos localidades cómodas y agradables de la Costa: Maiori tiene una playa amplia, Minori es famosa también por los dulces y Sal De Riso.",
+            fr: "Deux localités agréables et pratiques de la Côte : Maiori a une grande plage, Minori est aussi connue pour les desserts et Sal De Riso.",
+            de: "Zwei angenehme und praktische Orte an der Küste: Maiori hat einen breiten Strand, Minori ist auch für seine Desserts und Sal De Riso bekannt.",
+          }
+        },
+        {
+          image: "assets/duomo-amalfi.jpg",
+          infoUrl: "https://www.google.com/search?q=Duomo+di+Sant%27Andrea+Amalfi",
+          mapsQuery: "Duomo di Sant'Andrea, Amalfi",
+          title: {
+            it: "Amalfi e Duomo di Sant'Andrea",
+            en: "Amalfi and Saint Andrew's Cathedral",
+            es: "Amalfi y Catedral de San Andrés",
+            fr: "Amalfi et cathédrale Saint-André",
+            de: "Amalfi und die Kathedrale Sant'Andrea",
+          },
+          desc: {
+            it: "Amalfi è uno dei gioielli della Costiera, con il suo Duomo scenografico, le stradine vivaci e la storia da antica Repubblica Marinara.",
+            en: "Amalfi is one of the jewels of the coast, with its stunning cathedral, lively streets and history as a former Maritime Republic.",
+            es: "Amalfi es una de las joyas de la costa, con su impresionante catedral, calles animadas e historia como antigua República Marinera.",
+            fr: "Amalfi est l'un des joyaux de la côte, avec sa cathédrale spectaculaire, ses ruelles animées et son histoire d'ancienne République maritime.",
+            de: "Amalfi ist eines der Juwelen der Küste, mit seiner spektakulären Kathedrale, den lebhaften Gassen und der Geschichte einer ehemaligen Seerepublik.",
+          }
+        },
+        {
+          image: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Ravello-coastline.jpg/500px-Ravello-coastline.jpg",
+          infoUrl: "https://www.google.com/search?q=Ravello+Villa+Rufolo+Villa+Cimbrone",
+          mapsQuery: "Ravello, Costiera Amalfitana",
+          title: {
+            it: "Ravello",
+            en: "Ravello",
+            es: "Ravello",
+            fr: "Ravello",
+            de: "Ravello",
+          },
+          desc: {
+            it: "Arroccata sopra Amalfi, Ravello regala panorami indimenticabili. Visitate Villa Rufolo e Villa Cimbrone con il suo Terrazzo dell'Infinito, tra i più belli della Costiera.",
+            en: "Perched above Amalfi, Ravello offers unforgettable views. Visit Villa Rufolo and Villa Cimbrone with its Terrace of Infinity, among the most beautiful on the Coast.",
+            es: "Encumbrada sobre Amalfi, Ravello ofrece vistas inolvidables. Visitad Villa Rufolo y Villa Cimbrone con su Terraza del Infinito, entre las más bonitas de la Costa.",
+            fr: "Perchée au-dessus d'Amalfi, Ravello offre des panoramas inoubliables. Visitez la Villa Rufolo et la Villa Cimbrone avec sa Terrasse de l'Infini, parmi les plus belles de la Côte.",
+            de: "Hoch über Amalfi gelegen, bietet Ravello unvergessliche Ausblicke. Besucht die Villa Rufolo und die Villa Cimbrone mit ihrer Terrasse des Unendlichen, eine der schönsten an der Küste.",
+          }
+        },
+        {
+          image: "assets/costiera-amalfitana.jpg",
+          infoUrl: "https://www.google.com/search?q=Positano+cosa+vedere",
+          mapsQuery: "Positano",
+          title: {
+            it: "Positano",
+            en: "Positano",
+            es: "Positano",
+            fr: "Positano",
+            de: "Positano",
+          },
+          desc: {
+            it: "Uno dei luoghi più famosi della Costiera, con case colorate, vicoli panoramici, negozi e scorci fotografici.",
+            en: "One of the most famous places on the Coast, with colourful houses, scenic alleys, shops and photo spots.",
+            es: "Uno de los lugares más famosos de la Costa, con casas coloridas, callejuelas panorámicas, tiendas y rincones fotográficos.",
+            fr: "L’un des lieux les plus célèbres de la Côte, avec maisons colorées, ruelles panoramiques, boutiques et points photo.",
+            de: "Einer der berühmtesten Orte der Küste, mit bunten Häusern, panoramischen Gassen, Geschäften und fotogenen Aussichten.",
+          }
+        },
+        {
+          image: "assets/sentiero-degli-dei.jpg",
+          infoUrl: "https://www.google.com/search?q=Sentiero+degli+Dei+Agerola+Nocelle",
+          mapsQuery: "Sentiero degli Dei, Agerola",
+          title: {
+            it: "Sentiero degli Dei",
+            en: "Path of the Gods",
+            es: "Sendero de los Dioses",
+            fr: "Sentier des Dieux",
+            de: "Pfad der Götter",
+          },
+          desc: {
+            it: "Un trekking panoramico da Agerola a Nocelle, sopra Positano, con viste incredibili sulla Costiera e Capri. Portate acqua e scarpe adatte.",
+            en: "A scenic hike from Agerola to Nocelle, above Positano, with incredible views of the coast and Capri. Bring water and proper shoes.",
+            es: "Una ruta panorámica de Agerola a Nocelle, sobre Positano, con vistas increíbles de la costa y Capri. Llevad agua y calzado adecuado.",
+            fr: "Une randonnée panoramique d’Agerola à Nocelle, au-dessus de Positano, avec des vues incroyables sur la côte et Capri. Prévoyez de l’eau et des chaussures adaptées.",
+            de: "Eine panoramische Wanderung von Agerola nach Nocelle, oberhalb von Positano, mit unglaublichen Blicken auf die Küste und Capri. Bringt Wasser und passende Schuhe mit.",
+          }
+        }
+      ]
+    },
+    {
+      id: "napoli",
+      icon: "🌋",
+      title: {
+        it: "Napoli",
+        en: "Naples",
+        es: "Nápoles",
+        fr: "Naples",
+        de: "Neapel",
+      },
+      short: {
+        it: "Centro storico, monumenti e panorami",
+        en: "Historic centre, monuments and views",
+        es: "Centro histórico, monumentos y vistas",
+        fr: "Centre historique, monuments et panoramas",
+        de: "Altstadt, Monumente und Panoramen",
+      },
+      intro: {
+        it: "Una gita a Napoli tra centro storico, monumenti iconici, musei e street food. Partendo da Salerno si raggiunge in circa 50 minuti di auto o 30-40 minuti di treno.",
+        en: "A trip to Naples with historic centre, iconic monuments, museums and street food. From Salerno about 50 minutes by car or 30-40 minutes by train.",
+        es: "Una excursión a Nápoles con centro histórico, monumentos icónicos, museos y street food. Desde Salerno, unos 50 minutos en coche o 30-40 en tren.",
+        fr: "Une excursion à Naples entre centre historique, monuments emblématiques, musées et street food. Depuis Salerne, environ 50 minutes en voiture ou 30-40 minutes en train.",
+        de: "Ein Ausflug nach Neapel zwischen Altstadt, ikonischen Monumenten, Museen und Streetfood. Von Salerno aus in etwa 50 Minuten mit dem Auto oder 30-40 Minuten mit dem Zug erreichbar.",
+      },
+      places: [
+        {
+          image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Naples_spaccanapoli.JPG/500px-Naples_spaccanapoli.JPG",
+          infoUrl: "https://www.google.com/search?q=Spaccanapoli+Napoli",
+          mapsQuery: "Spaccanapoli, Napoli",
+          title: {
+            it: "Spaccanapoli",
+            en: "Spaccanapoli",
+            es: "Spaccanapoli",
+            fr: "Spaccanapoli",
+            de: "Spaccanapoli",
+          },
+          desc: {
+            it: "Il cuore del centro storico di Napoli, tra chiese, vicoli, botteghe, presepi e street food.",
+            en: "The heart of Naples’ historic centre, with churches, alleys, shops, nativity scenes and street food.",
+            es: "El corazón del centro histórico de Nápoles, entre iglesias, callejuelas, tiendas, belenes y street food.",
+            fr: "Le cœur du centre historique de Naples, entre églises, ruelles, boutiques, crèches et street food.",
+            de: "Das Herz der Altstadt von Neapel, zwischen Kirchen, Gassen, Läden, Krippen und Streetfood.",
+          }
+        },
+        {
+          image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/P.Plebiscito_Napoli.jpg/500px-P.Plebiscito_Napoli.jpg",
+          infoUrl: "https://www.google.com/search?q=Piazza+del+Plebiscito+Napoli",
+          mapsQuery: "Piazza del Plebiscito, Napoli",
+          title: {
+            it: "Piazza del Plebiscito",
+            en: "Piazza del Plebiscito",
+            es: "Piazza del Plebiscito",
+            fr: "Piazza del Plebiscito",
+            de: "Piazza del Plebiscito",
+          },
+          desc: {
+            it: "Una delle piazze simbolo di Napoli, vicina al Teatro San Carlo, Palazzo Reale e al lungomare.",
+            en: "One of Naples’ landmark squares, close to Teatro San Carlo, the Royal Palace and the seafront.",
+            es: "Una de las plazas símbolo de Nápoles, cerca del Teatro San Carlo, Palacio Real y paseo marítimo.",
+            fr: "L’une des places emblématiques de Naples, près du Teatro San Carlo, du Palais Royal et du front de mer.",
+            de: "Einer der symbolträchtigsten Plätze von Neapel, in der Nähe des Teatro San Carlo, des Königspalasts und der Uferpromenade.",
+          }
+        },
+        {
+          image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Castel_dell%27_Ovo.jpg/500px-Castel_dell%27_Ovo.jpg",
+          infoUrl: "https://www.google.com/search?q=Castel+dell%27Ovo+Napoli",
+          mapsQuery: "Castel dell'Ovo, Napoli",
+          title: {
+            it: "Castel dell’Ovo e Lungomare",
+            en: "Castel dell’Ovo and seafront",
+            es: "Castel dell’Ovo y paseo marítimo",
+            fr: "Castel dell’Ovo et front de mer",
+            de: "Castel dell’Ovo und Uferpromenade",
+          },
+          desc: {
+            it: "Zona panoramica perfetta per una passeggiata vista Vesuvio e per scattare foto sul mare.",
+            en: "A scenic area perfect for a walk with views of Vesuvius and photos by the sea.",
+            es: "Zona panorámica perfecta para pasear con vistas al Vesubio y hacer fotos junto al mar.",
+            fr: "Zone panoramique parfaite pour une promenade avec vue sur le Vésuve et des photos au bord de la mer.",
+            de: "Panoramische Zone, perfekt für einen Spaziergang mit Blick auf den Vesuv und Fotos am Meer.",
+          }
+        },
+        {
+          image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Municip.jpg/500px-Municip.jpg",
+          infoUrl: "https://www.google.com/search?q=Maschio+Angioino+Castel+Nuovo+Napoli",
+          mapsQuery: "Maschio Angioino (Castel Nuovo), Napoli",
+          title: {
+            it: "Maschio Angioino (Castel Nuovo)",
+            en: "Maschio Angioino (Castel Nuovo)",
+            es: "Maschio Angioino (Castel Nuovo)",
+            fr: "Maschio Angioino (Castel Nuovo)",
+            de: "Maschio Angioino (Castel Nuovo)",
+          },
+          desc: {
+            it: "Il castello medievale simbolo di Napoli, con l'Arco di Trionfo e viste sul porto. Ospita mostre e la Cappella Palatina.",
+            en: "The medieval castle symbol of Naples, with the Triumphal Arch and port views. Hosts exhibitions and the Palatine Chapel.",
+            es: "El castillo medieval símbolo de Nápoles, con el Arco de Triunfo y vistas al puerto. Alberga exposiciones y la Capilla Palatina.",
+            fr: "Le château médiéval symbole de Naples, avec l'Arc de Triomphe et vue sur le port. Accueille des expositions et la Chapelle Palatine.",
+            de: "Die mittelalterliche Burg, ein Symbol Neapels, mit dem Triumphbogen und Blick auf den Hafen. Hier finden Ausstellungen und die Palatinkapelle statt.",
+          }
+        },
+        {
+          image: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Cappellaentrance.jpg/500px-Cappellaentrance.jpg",
+          infoUrl: "https://www.museosansevero.it/",
+          mapsQuery: "Cappella Sansevero, Napoli",
+          title: {
+            it: "Cappella Sansevero e Cristo Velato",
+            en: "Sansevero Chapel and the Veiled Christ",
+            es: "Capilla Sansevero y Cristo Velado",
+            fr: "Chapelle Sansevero et le Christ voilé",
+            de: "Kapelle Sansevero und der verschleierte Christus",
+          },
+          desc: {
+            it: "Un capolavoro della scultura barocca: la statua del Cristo Velato di Giuseppe Sanmartino è straordinaria. Biglietto online consigliato.",
+            en: "A masterpiece of Baroque sculpture: the Veiled Christ by Giuseppe Sanmartino is extraordinary. Online ticket recommended.",
+            es: "Una obra maestra de la escultura barroca: el Cristo Velado de Giuseppe Sanmartino es extraordinario. Se recomienda entrada online.",
+            fr: "Un chef-d'œuvre de la sculpture baroque : le Christ voilé de Giuseppe Sanmartino est extraordinaire. Billet en ligne recommandé.",
+            de: "Ein Meisterwerk der Barockbildhauerei: die Statue des verschleierten Christus von Giuseppe Sanmartino ist außergewöhnlich. Online-Ticket empfohlen.",
+          }
+        },
+        {
+          image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Napoli_Sotterranea_1.jpg/500px-Napoli_Sotterranea_1.jpg",
+          infoUrl: "https://www.napolisotterranea.org/",
+          mapsQuery: "Napoli Sotterranea, Piazza San Gaetano, Napoli",
+          title: {
+            it: "Napoli Sotterranea",
+            en: "Naples Underground",
+            es: "Nápoles Subterránea",
+            fr: "Naples Souterraine",
+            de: "Das unterirdische Neapel",
+          },
+          desc: {
+            it: "Un affascinante percorso sotto la città tra cunicoli greci, acquedotti romani e rifugi della Seconda Guerra Mondiale. Visita guidata di circa 1 ora.",
+            en: "A fascinating underground route through Greek tunnels, Roman aqueducts and WWII shelters. Guided tour of about 1 hour.",
+            es: "Un fascinante recorrido subterráneo entre túneles griegos, acueductos romanos y refugios de la Segunda Guerra Mundial. Visita guiada de 1 hora.",
+            fr: "Un fascinant parcours souterrain à travers tunnels grecs, aqueducs romains et abris de la Seconde Guerre mondiale. Visite guidée d'environ 1 heure.",
+            de: "Ein faszinierender unterirdischer Rundgang durch griechische Tunnel, römische Aquädukte und Luftschutzbunker aus dem Zweiten Weltkrieg. Geführte Tour von etwa 1 Stunde.",
+          }
+        },
+        {
+          image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Natmuseumnaples.jpg/500px-Natmuseumnaples.jpg",
+          infoUrl: "https://mann-napoli.it/",
+          mapsQuery: "Museo Archeologico Nazionale, Napoli",
+          title: {
+            it: "Museo Archeologico Nazionale (MANN)",
+            en: "National Archaeological Museum (MANN)",
+            es: "Museo Arqueológico Nacional (MANN)",
+            fr: "Musée Archéologique National (MANN)",
+            de: "Nationales Archäologisches Museum (MANN)",
+          },
+          desc: {
+            it: "Uno dei musei archeologici più importanti al mondo. Ospita i tesori di Pompei, Ercolano e la collezione Farnese.",
+            en: "One of the most important archaeological museums in the world. Houses treasures from Pompeii, Herculaneum and the Farnese collection.",
+            es: "Uno de los museos arqueológicos más importantes del mundo. Alberga los tesoros de Pompeya, Herculano y la colección Farnesio.",
+            fr: "L'un des musées archéologiques les plus importants au monde. Abrite les trésors de Pompéi, Herculanum et la collection Farnèse.",
+            de: "Eines der bedeutendsten archäologischen Museen der Welt. Beherbergt die Schätze von Pompeji, Herculanum und die Farnese-Sammlung.",
+          }
+        },
+        {
+          image: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Inside_of_Galleria_Umberto_I_-_Naples_2013-05-16_14-11-46_1_DxO.jpg/500px-Inside_of_Galleria_Umberto_I_-_Naples_2013-05-16_14-11-46_1_DxO.jpg",
+          infoUrl: "https://www.google.com/search?q=Galleria+Umberto+I+Napoli",
+          mapsQuery: "Galleria Umberto I, Napoli",
+          title: {
+            it: "Galleria Umberto I",
+            en: "Galleria Umberto I",
+            es: "Galería Umberto I",
+            fr: "Galerie Umberto I",
+            de: "Galleria Umberto I",
+          },
+          desc: {
+            it: "Elegante galleria commerciale ottocentesca con mosaici, vetrate e cupola in ferro. Perfetta per una pausa tra shopping e caffè.",
+            en: "Elegant 19th-century shopping gallery with mosaics, stained glass and an iron dome. Perfect for a break with shopping and coffee.",
+            es: "Elegante galería comercial del siglo XIX con mosaicos, vidrieras y cúpula de hierro. Perfecta para una pausa entre compras y café.",
+            fr: "Élégante galerie commerciale du XIXe siècle avec mosaïques, vitraux et coupole en fer. Parfaite pour une pause shopping et café.",
+            de: "Elegante Einkaufsgalerie aus dem 19. Jahrhundert mit Mosaiken, Glasfenstern und eiserner Kuppel. Perfekt für eine Pause zwischen Shopping und Kaffee.",
+          }
+        },
+        {
+          image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/N%C3%A1poles_vista_do_alto_-_2_%283838983981%29.jpg/500px-N%C3%A1poles_vista_do_alto_-_2_%283838983981%29.jpg",
+          infoUrl: "https://www.google.com/search?q=Quartieri+Spagnoli+Napoli",
+          mapsQuery: "Quartieri Spagnoli, Napoli",
+          title: {
+            it: "Quartieri Spagnoli",
+            en: "Spanish Quarters",
+            es: "Barrios Españoles",
+            fr: "Quartiers Espagnols",
+            de: "Spanisches Viertel",
+          },
+          desc: {
+            it: "Vicoli autentici e pieni di vita nel cuore di Napoli. Tra murales, panni stesi e profumo di pizza, è la Napoli più vera.",
+            en: "Authentic alleys full of life in the heart of Naples. Among murals, hanging laundry and the scent of pizza, it's Naples at its most genuine.",
+            es: "Callejuelas auténticas llenas de vida en el corazón de Nápoles. Entre murales, ropa tendida y aroma a pizza, es la Nápoles más auténtica.",
+            fr: "Ruelles authentiques et pleines de vie au cœur de Naples. Entre fresques, linges suspendus et parfum de pizza, c'est la Naples la plus vraie.",
+            de: "Authentische, lebendige Gassen im Herzen von Neapel. Zwischen Wandmalereien, Wäscheleinen und Pizzaduft ist dies das echte Neapel.",
+          }
+        }
+      ]
+    },
+    {
+      id: "campania",
+      icon: "🏺",
+      title: {
+        it: "Campania e dintorni",
+        en: "Campania and surroundings",
+        es: "Campania y alrededores",
+        fr: "Campanie et alentours",
+        de: "Kampanien und Umgebung",
+      },
+      short: {
+        it: "Pompei, Paestum, Caserta e grotte",
+        en: "Pompeii, Paestum, Caserta and caves",
+        es: "Pompeya, Paestum, Caserta y cuevas",
+        fr: "Pompéi, Paestum, Caserte et grottes",
+        de: "Pompeji, Paestum, Caserta und Höhlen",
+      },
+      intro: {
+        it: "Gite fuori porta tra archeologia, storia, natura e luoghi famosi.",
+        en: "Day trips among archaeology, history, nature and famous places.",
+        es: "Excursiones entre arqueología, historia, naturaleza y lugares famosos.",
+        fr: "Excursions entre archéologie, histoire, nature et lieux célèbres.",
+        de: "Ausflüge zwischen Archäologie, Geschichte, Natur und berühmten Orten.",
+      },
+      places: [
+        {
+          image: "assets/paestum.jpg",
+          infoUrl: "https://museopaestum.cultura.gov.it/",
+          mapsQuery: "Parco Archeologico di Paestum",
+          title: {
+            it: "Parco Archeologico di Paestum",
+            en: "Paestum Archaeological Park",
+            es: "Parque Arqueológico de Paestum",
+            fr: "Parc archéologique de Paestum",
+            de: "Archäologischer Park von Paestum",
+          },
+          desc: {
+            it: "Uno dei siti archeologici più belli della Campania, famoso per i templi greci tra i meglio conservati al mondo.",
+            en: "One of the most beautiful archaeological sites in Campania, famous for some of the best-preserved Greek temples in the world.",
+            es: "Uno de los sitios arqueológicos más bonitos de Campania, famoso por sus templos griegos muy bien conservados.",
+            fr: "L’un des plus beaux sites archéologiques de Campanie, célèbre pour ses temples grecs parmi les mieux conservés au monde.",
+            de: "Eine der schönsten archäologischen Stätten Kampaniens, berühmt für ihre griechischen Tempel, die zu den am besten erhaltenen der Welt gehören.",
+          }
+        },
+        {
+          image: "assets/pompei.jpg",
+          infoUrl: "https://pompeiisites.org/",
+          mapsQuery: "Scavi di Pompei",
+          title: {
+            it: "Scavi di Pompei",
+            en: "Pompeii Ruins",
+            es: "Ruinas de Pompeya",
+            fr: "Ruines de Pompéi",
+            de: "Ausgrabungen von Pompeji",
+          },
+          desc: {
+            it: "Un viaggio indietro nel tempo nella città romana sepolta dall’eruzione del Vesuvio nel 79 d.C. Una visita unica e affascinante.",
+            en: "A journey back in time through the Roman city buried by the eruption of Mount Vesuvius in 79 AD. A unique and fascinating visit.",
+            es: "Un viaje al pasado por la ciudad romana sepultada por la erupción del Vesubio en el año 79 d.C. Una visita única y fascinante.",
+            fr: "Un voyage dans le temps dans la ville romaine ensevelie par l’éruption du Vésuve en 79 après J.-C. Une visite unique et fascinante.",
+            de: "Eine Reise in die Vergangenheit in die römische Stadt, die beim Ausbruch des Vesuvs im Jahr 79 n. Chr. verschüttet wurde. Ein einzigartiger und faszinierender Besuch.",
+          }
+        },
+        {
+          image: "assets/reggia-caserta.jpg",
+          infoUrl: "https://reggiadicaserta.cultura.gov.it/biglietti/",
+          mapsQuery: "Reggia di Caserta",
+          title: {
+            it: "Reggia di Caserta",
+            en: "Royal Palace of Caserta",
+            es: "Palacio Real de Caserta",
+            fr: "Palais royal de Caserte",
+            de: "Königspalast von Caserta",
+          },
+          desc: {
+            it: "Una residenza reale monumentale con appartamenti storici, grandi giardini, fontane scenografiche e il Giardino Inglese.",
+            en: "A monumental royal residence with historic apartments, vast gardens, dramatic fountains and the English Garden.",
+            es: "Una residencia real monumental con apartamentos históricos, grandes jardines, fuentes escénicas y el Jardín Inglés.",
+            fr: "Une résidence royale monumentale avec appartements historiques, grands jardins, fontaines spectaculaires et Jardin anglais.",
+            de: "Eine monumentale königliche Residenz mit historischen Appartements, großen Gärten, spektakulären Brunnen und dem Englischen Garten.",
+          }
+        },
+        {
+          image: "assets/grotte-pertosa.jpg",
+          infoUrl: "https://comune.auletta.sa.it/vivere-il-comune/luoghi/le-grotte-di-pertosa-auletta/",
+          mapsQuery: "Grotte di Pertosa-Auletta",
+          title: {
+            it: "Grotte di Pertosa-Auletta",
+            en: "Pertosa-Auletta Caves",
+            es: "Cuevas de Pertosa-Auletta",
+            fr: "Grottes de Pertosa-Auletta",
+            de: "Höhlen von Pertosa-Auletta",
+          },
+          desc: {
+            it: "Grotte spettacolari nel Cilento, con un tratto navigabile su fiume sotterraneo. Consigliate scarpe comode e una giacca.",
+            en: "Spectacular caves in Cilento, with a navigable underground river section. Comfortable shoes and a jacket are recommended.",
+            es: "Cuevas espectaculares en el Cilento, con un tramo navegable por un río subterráneo. Se recomiendan zapatos cómodos y una chaqueta.",
+            fr: "Grottes spectaculaires dans le Cilento, avec une partie navigable sur une rivière souterraine. Chaussures confortables et veste recommandées.",
+            de: "Spektakuläre Höhlen im Cilento, mit einem befahrbaren Abschnitt auf einem unterirdischen Fluss. Bequeme Schuhe und eine Jacke werden empfohlen.",
+          }
+        },
+
+      ]
+    },
+    {
+      id: "eventi",
+      icon: "🎭",
+      isEvents: true,
+      title: {
+        it: "Eventi e cose speciali",
+        en: "Events and special things",
+        es: "Eventos y cosas especiales",
+        fr: "Événements et choses spéciales",
+        de: "Veranstaltungen und besondere Dinge",
+      },
+      short: {
+        it: "Estate, teatro e appuntamenti",
+        en: "Summer, theatre and events",
+        es: "Verano, teatro y eventos",
+        fr: "Été, théâtre et événements",
+        de: "Sommer, Theater und Termine",
+      },
+      intro: {
+        it: "Eventi stagionali, sagre e appuntamenti da controllare in base al periodo del soggiorno.",
+        en: "Seasonal events, festivals and appointments to check depending on your stay period.",
+        es: "Eventos de temporada, fiestas y citas para comprobar según el periodo de vuestra estancia.",
+        fr: "Événements saisonniers, fêtes et rendez-vous à vérifier selon la période de votre séjour.",
+        de: "Saisonale Veranstaltungen, Feste und Termine, die ihr je nach Aufenthaltszeitraum prüfen solltet.",
+      },
+      places: [
+        {
+          image: "assets/teatro-verdi.jpg",
+          infoUrl: "https://www.google.com/search?q=Teatro+Verdi+Salerno+programma",
+          mapsQuery: "Teatro Municipale Giuseppe Verdi, Salerno",
+          title: {
+            it: "Teatro Verdi",
+            en: "Teatro Verdi",
+            es: "Teatro Verdi",
+            fr: "Teatro Verdi",
+            de: "Teatro Verdi",
+          },
+          desc: {
+            it: "Lo storico teatro di Salerno, perfetto per una serata culturale tra concerti, opera, spettacoli e appuntamenti speciali.",
+            en: "Salerno’s historic theatre, perfect for a cultural evening with concerts, opera, performances and special events.",
+            es: "El teatro histórico de Salerno, perfecto para una noche cultural con conciertos, ópera, espectáculos y eventos especiales.",
+            fr: "Le théâtre historique de Salerne, idéal pour une soirée culturelle avec concerts, opéra, spectacles et événements spéciaux.",
+            de: "Das historische Theater von Salerno, ideal für einen kulturellen Abend mit Konzerten, Oper, Aufführungen und besonderen Veranstaltungen.",
+          }
+        },
+        {
+          image: "assets/chiena-campagna.jpg",
+          infoUrl: "https://www.google.com/search?q=Chiena+Campagna+programma",
+          mapsQuery: "Campagna, Salerno",
+          title: {
+            it: "La Chiena di Campagna",
+            en: "La Chiena in Campagna",
+            es: "La Chiena de Campagna",
+            fr: "La Chiena de Campagna",
+            de: "Die Chiena von Campagna",
+          },
+          desc: {
+            it: "Evento estivo molto particolare a Campagna: le strade del centro storico vengono attraversate dall’acqua creando un’atmosfera fresca, divertente e unica. Consigliato controllare il programma prima di andare.",
+            en: "A very unusual summer event in Campagna: water flows through the streets of the historic centre, creating a fresh, fun and unique atmosphere. Check the programme before going.",
+            es: "Evento de verano muy particular en Campagna: el agua recorre las calles del centro histórico creando un ambiente fresco, divertido y único. Conviene comprobar el programa antes de ir.",
+            fr: "Événement estival très particulier à Campagna : l’eau traverse les rues du centre historique, créant une atmosphère fraîche, amusante et unique. Vérifiez le programme avant d’y aller.",
+            de: "Ein sehr besonderes Sommerereignis in Campagna: Wasser fließt durch die Straßen der Altstadt und schafft eine frische, lustige und einzigartige Atmosphäre. Prüft vorher das Programm.",
+          }
+        },
+        {
+          image: "assets/giffoni-film-festival.jpg",
+          infoUrl: "https://www.giffoni.it/",
+          mapsQuery: "Giffoni Valle Piana",
+          title: {
+            it: "Giffoni Film Festival",
+            en: "Giffoni Film Festival",
+            es: "Giffoni Film Festival",
+            fr: "Giffoni Film Festival",
+            de: "Giffoni Film Festival",
+          },
+          desc: {
+            it: "Festival internazionale dedicato al cinema per ragazzi e famiglie. L’edizione 2026 è indicata dal 17 al 25 luglio: controllate sempre il sito ufficiale per programma, ospiti e biglietti.",
+            en: "An international film festival dedicated to children, teenagers and families. The 2026 edition is listed from 17 to 25 July: always check the official website for programme, guests and tickets.",
+            es: "Festival internacional dedicado al cine para niños, jóvenes y familias. La edición 2026 está indicada del 17 al 25 de julio: comprobad siempre la web oficial para programa, invitados y entradas.",
+            fr: "Festival international dédié au cinéma pour enfants, jeunes et familles. L’édition 2026 est indiquée du 17 au 25 juillet : vérifiez toujours le site officiel pour le programme, les invités et les billets.",
+            de: "Internationales Filmfestival für Kinder, Jugendliche und Familien. Die Ausgabe 2026 ist vom 17. bis 25. Juli angesetzt: prüft für Programm, Gäste und Tickets immer die offizielle Website.",
+          }
+        }
+      ]
+    }
+  ];
+
+export const labels: Record<string, Record<Lang, string>> = {
+    info: {
+      it: "Info",
+      en: "Info",
+      es: "Info",
+      fr: "Infos",
+      de: "Infos",
+    },
+    dates: {
+      it: "Date / Programma",
+      en: "Dates / Programme",
+      es: "Fechas / Programa",
+      fr: "Dates / Programme",
+      de: "Daten / Programm",
+    },
+    event: {
+      it: "Evento",
+      en: "Event",
+      es: "Evento",
+      fr: "Événement",
+      de: "Veranstaltung",
+    },
+    maps: {
+      it: "📍 Apri su Maps",
+      en: "📍 Open in Maps",
+      es: "📍 Abrir en Maps",
+      fr: "📍 Ouvrir sur Maps",
+      de: "📍 Auf Maps öffnen",
+    },
+    back: {
+      it: "← Torna alle categorie",
+      en: "← Back to categories",
+      es: "← Volver a las categorías",
+      fr: "← Retour aux catégories",
+      de: "← Zurück zu den Kategorien",
+    },
+    free: {
+      it: "Spiaggia libera",
+      en: "Free beach",
+      es: "Playa libre",
+      fr: "Plage gratuite",
+      de: "Freier Strand",
+    },
+    paid: {
+      it: "A pagamento",
+      en: "Paid beach",
+      es: "De pago",
+      fr: "Payante",
+      de: "Kostenpflichtig",
+    }
+  };
+
+export function mapsUrlFor(place: Place): string {
+  if (place.mapsUrl) return place.mapsUrl;
+  return "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(place.mapsQuery || "");
+}

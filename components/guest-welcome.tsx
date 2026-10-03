@@ -220,7 +220,7 @@ export function GuestWelcome({ lang, welcomeTitleKey }: { lang: Lang; welcomeTit
         aria-label={tHome(welcomeTitleKey, lang)}
         className="mt-6 rounded-[22px] border-l-[6px] border-l-primary bg-secondary p-4 text-secondary-foreground"
       >
-        <h2 className="font-serif text-3xl leading-tight">
+        <h2 className="font-serif text-2xl leading-tight sm:text-3xl">
           {name ? `${WELCOME[lang]}${name}` : tHome(welcomeTitleKey, lang)}
         </h2>
         <p className="m-0 mt-1 max-w-3xl text-sm leading-relaxed">
@@ -229,8 +229,8 @@ export function GuestWelcome({ lang, welcomeTitleKey }: { lang: Lang; welcomeTit
       </section>
 
       {showCheckinBanner ? (
-        <div className="mt-5 rounded-[24px] border border-border border-l-[6px] border-l-primary bg-accent p-5 text-accent-foreground">
-          <h2 className="font-serif text-3xl">{r.checkinTitle}</h2>
+        <div className="mt-5 rounded-[24px] border border-border border-l-[6px] border-l-primary bg-accent p-4 text-accent-foreground sm:p-5">
+          <h2 className="font-serif text-2xl sm:text-3xl">{r.checkinTitle}</h2>
           <p className="mt-2 max-w-3xl text-[15px]">{r.checkinText}</p>
           <div className="mt-3 flex flex-wrap gap-2.5">
             <a href={withLang("manuale.html", lang)} className="inline-flex min-h-[44px] items-center rounded-full bg-primary px-4 py-2 text-sm font-bold text-primary-foreground no-underline">
@@ -251,8 +251,8 @@ export function GuestWelcome({ lang, welcomeTitleKey }: { lang: Lang; welcomeTit
       ) : null}
 
       {showCheckoutBanner ? (
-        <div className="mt-5 rounded-[24px] border border-border border-l-[6px] border-l-primary bg-accent p-5 text-accent-foreground">
-          <h2 className="font-serif text-3xl">
+        <div className="mt-5 rounded-[24px] border border-border border-l-[6px] border-l-primary bg-accent p-4 text-accent-foreground sm:p-5">
+          <h2 className="font-serif text-2xl sm:text-3xl">
             {checkoutDays === 0 ? r.todayTitle : r.tomorrowTitle}
           </h2>
           <p className="mt-2 max-w-3xl text-[15px]">
@@ -271,8 +271,8 @@ export function GuestWelcome({ lang, welcomeTitleKey }: { lang: Lang; welcomeTit
       ) : null}
 
       {showLateOffer ? (
-        <div className="mt-5 rounded-[24px] border border-border border-l-[6px] border-l-primary bg-secondary p-5 text-secondary-foreground">
-          <h2 className="font-serif text-3xl">
+        <div className="mt-5 rounded-[24px] border border-border border-l-[6px] border-l-primary bg-secondary p-4 text-secondary-foreground sm:p-5">
+          <h2 className="font-serif text-2xl sm:text-3xl">
             <THome k={lateOffer.title} lang={lang} />
           </h2>
           <p className="mt-2 max-w-3xl text-[15px]">

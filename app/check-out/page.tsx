@@ -4,7 +4,6 @@ import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { SiteHeader } from "@/components/site-header";
 import { CheckoutChecklist } from "@/components/checkout-checklist";
-import { SiteFooter } from "@/components/site-footer";
 import { LanguageSync } from "@/components/language-sync";
 import { checkout, linkifyStrong, tCheckin } from "@/lib/content-checkin";
 import { parseLang } from "@/lib/i18n";
@@ -18,12 +17,12 @@ function CheckOutInner() {
   return (
     <>
       <SiteHeader lang={lang} />
-      <main className="mx-auto max-w-4xl px-4 pb-16 pt-6">
+      <main className="mx-auto max-w-4xl px-4 pb-16 pt-6 sm:px-6">
         <div className="grid gap-3 border-b border-border pb-6">
           <p className="m-0 text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
             <TCheckin k={checkout.eyebrow} lang={lang} />
           </p>
-          <strong className="font-serif text-6xl font-normal text-foreground">10:00</strong>
+          <strong className="font-serif text-5xl font-normal text-foreground sm:text-6xl">10:00</strong>
           <p className="m-0 max-w-2xl text-foreground">
             <TCheckin k={checkout.headlineNote} lang={lang} />
           </p>
@@ -58,7 +57,6 @@ function CheckOutInner() {
 
         <CheckoutChecklist lang={lang} />
       </main>
-      <SiteFooter lang={lang} />
     </>
   );
 }

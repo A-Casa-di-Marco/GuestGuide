@@ -74,7 +74,7 @@ export function CheckoutChecklist({ lang }: { lang: Lang }) {
   return (
     <div className="mt-6">
       <div className="py-5">
-        <strong className="font-serif text-[28px] font-normal text-foreground">
+        <strong className="font-serif text-2xl font-normal text-foreground sm:text-[28px]">
           <TCheckin k={checkout.listTitle} lang={lang} />
         </strong>
         <p className="mt-1 text-foreground">

@@ -27,8 +27,10 @@ export function ColazioneForm({ lang }: { lang: Lang }) {
 
   if (!isBeforeDeadline()) {
     return (
-      <div className="breakfast-order-box">
-        <p className="order-status">{FORM_TEXTS.closed[lang]}</p>
+      <div className="legacy-content">
+        <div className="breakfast-order-box">
+          <p className="order-status">{FORM_TEXTS.closed[lang]}</p>
+        </div>
       </div>
     );
   }
@@ -68,7 +70,8 @@ export function ColazioneForm({ lang }: { lang: Lang }) {
   };
 
   return (
-    <div className="breakfast-order-box">
+    <div className="legacy-content">
+      <div className="breakfast-order-box">
       <div className="form-group">
         <label htmlFor="guestCount">{guestCountLabel[lang]}</label>
         <select
@@ -114,6 +117,7 @@ export function ColazioneForm({ lang }: { lang: Lang }) {
       ) : null}
       <div className="order-status" role="status">
         {status ?? FORM_TEXTS.open[lang]}
+      </div>
       </div>
     </div>
   );

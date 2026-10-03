@@ -103,7 +103,7 @@ export function MangiareIsland({ lang }: { lang: Lang }) {
     : [];
 
   return (
-    <>
+    <div className="legacy-content">
       <div className="food-choice-grid">
         {buttons.map((b) => (
           <button
@@ -136,6 +136,6 @@ export function MangiareIsland({ lang }: { lang: Lang }) {
           </div>
         </section>
       ) : null}
-    </>
+    </div>
   );
 }

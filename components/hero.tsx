@@ -19,10 +19,7 @@ export function Hero({ lang }: { lang: Lang }) {
       />
       <div className="absolute inset-0 flex items-center">
         <div className="px-6 md:px-10">
-          <p className="mb-1 text-xs font-semibold uppercase tracking-[0.14em] text-white">
-            <THome k={hero.badge} lang={lang} />
-          </p>
-          <h1 className="font-serif text-5xl text-white [text-shadow:0_2px_18px_rgba(0,0,0,0.45)] md:text-6xl">
+          <h1 className="font-serif text-4xl text-white [text-shadow:0_2px_18px_rgba(0,0,0,0.45)] sm:text-5xl md:text-6xl">
             <THome k={hero.title} lang={lang} />
           </h1>
           <p className="mt-2 text-[15px] text-white">

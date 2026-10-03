@@ -205,18 +205,3 @@ export function ContactsCard({ lang }: { lang: Lang }) {
     </div>
   );
 }
-
-export function ContactsSection({ lang }: { lang: Lang }) {
-  return (
-    <section aria-labelledby="contatti" className="mt-8 border-t border-border pt-8">
-      <h2 id="contatti" className="font-serif text-3xl text-foreground">
-        {ct(contacts.title, lang)}
-      </h2>
-      <p className="mt-2 max-w-3xl text-muted-foreground">{ct(contacts.intro1, lang)}</p>
-      <p className="mt-2 max-w-3xl text-muted-foreground">{ct(contacts.intro2, lang)}</p>
-      <div className="mt-4">
-        <ContactsCard lang={lang} />
-      </div>
-    </section>
-  );
-}

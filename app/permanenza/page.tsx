@@ -1,6 +1,7 @@
 import { SiteHeader } from "@/components/site-header";
 import { ProjectCard } from "@/components/ui/project-card";
 import { cardCta, guideTiles, tHome } from "@/lib/content-home";
+import { hubDesc } from "@/lib/legacy/hub-desc.generated";
 import { resolveLang, withLang } from "@/lib/lang-server";
 
 export const dynamic = "force-dynamic";
@@ -25,17 +26,21 @@ export default async function Permanenza({
           originali, senza modifiche ai contenuti.
         </p>
         <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {tiles.map((tile) => (
-            <ProjectCard
-              key={tile.href}
-              imgSrc={tile.image}
-              title={tHome(tile.titleKey, lang)}
-              description={tHome(tile.descKey, lang)}
-              link={withLang(tile.href, lang)}
-              linkText={cardCta[lang]}
-              external={false}
-            />
-          ))}
+          {tiles.map((tile) => {
+            const slug = tile.href.split("/").pop() || "";
+            const desc = hubDesc[slug]?.[lang] || tHome(tile.descKey, lang);
+            return (
+              <ProjectCard
+                key={tile.href}
+                imgSrc={tile.image}
+                title={tHome(tile.titleKey, lang)}
+                description={desc}
+                link={withLang(tile.href, lang)}
+                linkText={cardCta[lang]}
+                external={false}
+              />
+            );
+          })}
         </div>
       </main>
     </>

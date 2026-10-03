@@ -27,7 +27,7 @@ export const cardCta: Record<Lang, string> = {
 export const guideTiles: GuideTile[] = [
   { titleKey: "index_049", descKey: "index_050", href: "/check-in", icon: "key-round", image: "/assets/cancello-check-in.jpg" },
   { titleKey: "index_051", descKey: "index_052", href: "/check-out", icon: "log-out", image: "/assets/cancello-casa.jpeg" },
-  { titleKey: "index_053", descKey: "index_054", href: "/permanenza/manuale", icon: "book-open", image: "/assets/manuale-chiavi.jpg" },
+  { titleKey: "index_053", descKey: "index_054", href: "/permanenza/manuale", icon: "book-open", image: "/assets/manuale-condizionatore-telecomando.jpg" },
   { titleKey: "index_055", descKey: "index_056", href: "/permanenza/regole", icon: "clipboard-list", image: "/assets/casa-1.jpg" },
   { titleKey: "index_057", descKey: "index_058", href: "/permanenza/mangiare", icon: "utensils", image: "/assets/da-michele-salerno.jpg" },
   { titleKey: "index_059", descKey: "index_060", href: "/permanenza/luoghi", icon: "map", image: "/assets/costiera-amalfitana.jpg" },

@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 import { notFound } from "next/navigation";
 import { SiteHeader } from "@/components/site-header";
 import { LanguageSync } from "@/components/language-sync";
@@ -8,6 +9,7 @@ import { ColazioneForm } from "@/components/colazione-form";
 import { LuoghiIsland } from "@/components/luoghi-island";
 import { MangiareIsland } from "@/components/mangiare-island";
 import { ItinerarioIsland } from "@/components/itinerario-island";
+import { ManualeCards } from "@/components/manuale-cards";
 import { resolveLang, withLang } from "@/lib/lang-server";
 import type { Lang } from "@/lib/i18n";
 import "../legacy-compat.css";
@@ -102,14 +104,19 @@ export default async function LegacyPage({
       <main className="mx-auto max-w-4xl px-4 pb-16 pt-6 sm:px-6">
         <Link
           href={withLang("/permanenza", lang)}
-          className="mb-4 inline-block py-2 text-[15px] font-semibold text-primary no-underline"
+          className="mb-4 inline-flex min-h-[44px] items-center gap-2 rounded-full bg-secondary px-4 py-2 text-sm font-semibold text-secondary-foreground no-underline"
         >
+          <ArrowLeft className="h-4 w-4" aria-hidden />
           {BACK[lang]}
         </Link>
         <h1 className="font-serif text-3xl text-foreground sm:text-4xl">{mod.title[lang]}</h1>
-        <div className="mt-4">
-          <LegacyContent html={mod.html[lang]} lang={lang} />
-        </div>
+        {slug === "manuale" ? (
+          <ManualeCards lang={lang} />
+        ) : (
+          <div className="mt-4">
+            <LegacyContent html={mod.html[lang]} lang={lang} />
+          </div>
+        )}
         {slug === "colazione" ? (
           <div className="mt-2">
             <ColazioneForm lang={lang} />

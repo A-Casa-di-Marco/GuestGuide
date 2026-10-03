@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { MarcoChat } from "@/components/marco-chat";
 
 export const metadata: Metadata = {
   title: "A Casa di Marco · Guida per gli Ospiti",
@@ -23,7 +24,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="it" suppressHydrationWarning>
       <body className="antialiased">
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          {children}
+          <MarcoChat />
+        </ThemeProvider>
       </body>
     </html>
   );

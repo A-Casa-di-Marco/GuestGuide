@@ -106,3 +106,10 @@ pnpm dev
 - Carosello: effetto slide senza peek (via creative con card dietro), frecce laterali in rilievo nascoste agli estremi, card 8 con serratura tra Telecomando e Chiave lunga, lightbox immagini con zoom, Maps e WhatsApp pari dimensioni con WhatsApp dopo le scelte.
 - Logo PWA icon-192 nel brand header + metadata manifest/theme-color/icone (favicon.svg non esisteva).
 - Home: card consigli-meteo sotto il meteo (sole/città/interni/vento x5 lingue, link luoghi+mangiare).
+
+## Marco chat (LLM via OpenRouter)
+
+- Card consigli-meteo rimossa; resta l'avviso ombrellone per pioggia/vento. Frecce carosello ancorate all'altezza dell'immagine attiva.
+- Pulsante pettirosso fisso in basso a destra su ogni pagina (layout) + chat overlay con stile token-based (bolle primary/secondary, typing, invio).
+- POST /api/marco-chat: prompt Marco (solo dati guida, itinerari solo da guida, lingua utente, risposte brevi), KB in lib/marco-kb.ts, modello openrouter/free (override MARCO_MODEL), throttle 10/min, timeout 20s. Verifica: 400/429/503 localizzati, fallback WhatsApp senza chiave.
+- Secret OPENROUTER_API_KEY: GitHub Settings->Secrets->Actions + wrangler secret put in deploy.yml; locale via .dev.vars (ignorato). README aggiornato con guida passo-passo.

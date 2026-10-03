@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import { A11y, Keyboard, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -42,11 +42,37 @@ export function CheckinCarousel({ slides, className, ariaLabel, prevLabel, nextL
   const [swiper, setSwiper] = useState<SwiperType | null>(null);
   const [index, setIndex] = useState(0);
   const [zoom, setZoom] = useState<{ src: string; alt: string } | null>(null);
+  const [arrowTop, setArrowTop] = useState<number | null>(null);
+  const rootRef = useRef<HTMLDivElement>(null);
 
-  if (slides.length === 0) return null;
   const single = slides.length === 1;
   const atStart = index === 0;
   const atEnd = index === slides.length - 1;
+
+  // Le frecce seguono l'altezza della card attiva (centro verticale dell'immagine).
+  useEffect(() => {
+    const sync = () => {
+      const root = rootRef.current;
+      if (!root) return;
+      const img = root.querySelector(".swiper-slide-active img") as HTMLElement | null;
+      if (!img) return;
+      const rootBox = root.getBoundingClientRect();
+      const imgBox = img.getBoundingClientRect();
+      setArrowTop(imgBox.top - rootBox.top + imgBox.height / 2);
+    };
+    sync();
+    window.addEventListener("resize", sync);
+    if (document.fonts?.ready) {
+      document.fonts.ready.then(sync).catch(() => undefined);
+    }
+    const t = window.setTimeout(sync, 300);
+    return () => {
+      window.removeEventListener("resize", sync);
+      window.clearTimeout(t);
+    };
+  }, [index, slides.length]);
+
+  if (slides.length === 0) return null;
 
   const imgButton = (src: string, alt: string, contain?: boolean) => (
     <button
@@ -70,6 +96,7 @@ export function CheckinCarousel({ slides, className, ariaLabel, prevLabel, nextL
 
   return (
     <div
+      ref={rootRef}
       className={cn("relative w-full", className)}
       role="region"
       aria-roledescription="carousel"
@@ -87,7 +114,11 @@ export function CheckinCarousel({ slides, className, ariaLabel, prevLabel, nextL
           type="button"
           onClick={() => swiper?.slidePrev()}
           aria-label={prevLabel}
-          className="absolute -left-2 top-[38%] z-10 inline-flex min-h-[48px] min-w-[48px] -translate-y-1/2 items-center justify-center rounded-full border border-border bg-card text-card-foreground shadow-lg sm:-left-5"
+          style={arrowTop !== null ? { top: arrowTop } : undefined}
+          className={cn(
+            "absolute -left-2 z-10 inline-flex min-h-[48px] min-w-[48px] -translate-y-1/2 items-center justify-center rounded-full border border-border bg-card text-card-foreground shadow-lg sm:-left-5",
+            arrowTop === null && "top-[38%]",
+          )}
         >
           <ChevronLeftIcon className="h-6 w-6" aria-hidden />
         </button>
@@ -97,7 +128,11 @@ export function CheckinCarousel({ slides, className, ariaLabel, prevLabel, nextL
           type="button"
           onClick={() => swiper?.slideNext()}
           aria-label={nextLabel}
-          className="absolute -right-2 top-[38%] z-10 inline-flex min-h-[48px] min-w-[48px] -translate-y-1/2 items-center justify-center rounded-full border border-border bg-card text-card-foreground shadow-lg sm:-right-5"
+          style={arrowTop !== null ? { top: arrowTop } : undefined}
+          className={cn(
+            "absolute -right-2 z-10 inline-flex min-h-[48px] min-w-[48px] -translate-y-1/2 items-center justify-center rounded-full border border-border bg-card text-card-foreground shadow-lg sm:-right-5",
+            arrowTop === null && "top-[38%]",
+          )}
         >
           <ChevronRightIcon className="h-6 w-6" aria-hidden />
         </button>

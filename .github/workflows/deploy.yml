@@ -51,3 +51,10 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           OWNER_PASSWORD: ${{ secrets.OWNER_PASSWORD }}
+
+      - name: Imposta chiave OpenRouter (chat di Marco)
+        run: echo "$OPENROUTER_API_KEY" | npx wrangler secret put OPENROUTER_API_KEY --config dist/server/wrangler.json
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}

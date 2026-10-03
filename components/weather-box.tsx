@@ -1,10 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { CloudSun, Sun, Umbrella, Wind } from "lucide-react";
 import { weather } from "@/lib/content-home";
 import type { Lang } from "@/lib/i18n";
-import { withLang } from "@/lib/lang-server";
 import { THome } from "@/components/t-home";
 
 type Cache = {
@@ -86,57 +84,6 @@ type WeatherApi = {
   };
 };
 
-type SuggestionKind = "coast" | "town" | "indoor" | "wind";
-
-const SUGGESTION: Record<SuggestionKind, Record<Lang, { title: string; text: string }>> = {
-  coast: {
-    it: { title: "Giornata da mare e Costiera", text: "Cielo sereno: perfetta per spiagge, lungomare e un giro in Costiera Amalfitana. Partite presto e portate acqua e crema solare." },
-    en: { title: "Beach and coast day", text: "Clear skies: perfect for beaches, the seafront and a trip along the Amalfi Coast. Leave early and bring water and sunscreen." },
-    es: { title: "Día de playa y Costiera", text: "Cielo despejado: perfecto para playas, paseo marítimo y una excursión por la Costa Amalfitana. Salid temprano y llevad agua y protector solar." },
-    fr: { title: "Journée mer et côte", text: "Ciel dégagé : parfait pour les plages, le front de mer et une excursion sur la côte amalfitaine. Partez tôt, avec eau et crème solaire." },
-    de: { title: "Strand- und Küstentag", text: "Klarer Himmel: perfekt für Strand, Promenade und einen Ausflug an die Amalfiküste. Fahrt früh los, mit Wasser und Sonnencreme." },
-  },
-  town: {
-    it: { title: "Giornata da centro e borghi", text: "Cielo variabile: ideale per Salerno, il centro storico e i borghi come Vietri, senza allontanarvi troppo." },
-    en: { title: "Town and villages day", text: "Changeable skies: ideal for Salerno, the historic centre and villages like Vietri, without going too far." },
-    es: { title: "Día de ciudad y pueblos", text: "Cielo variable: ideal para Salerno, el centro histórico y pueblos como Vietri, sin alejaros demasiado." },
-    fr: { title: "Journée ville et villages", text: "Ciel variable : idéal pour Salerne, le centre historique et des villages comme Vietri, sans aller trop loin." },
-    de: { title: "Stadt- und Dörfer-Tag", text: "Wechselhaftes Wetter: ideal für Salerno, die Altstadt und Dörfer wie Vietri, ohne weit zu fahren." },
-  },
-  indoor: {
-    it: { title: "Giornata da interni", text: "Con pioggia vi consigliamo centro storico, Duomo, musei e una sosta golosa: aprite le guide di luoghi e cibo." },
-    en: { title: "Indoor day", text: "With rain we recommend the historic centre, the Duomo, museums and a tasty break: open the places and food guides." },
-    es: { title: "Día de interiores", text: "Con lluvia os recomendamos centro histórico, Duomo, museos y una pausa golosa: abrid las guías de lugares y comida." },
-    fr: { title: "Journée à l’abri", text: "Avec la pluie, préférez le centre historique, le Duomo, les musées et une pause gourmande : ouvrez les guides lieux et food." },
-    de: { title: "Tag drinnen", text: "Bei Regen empfehlen wir Altstadt, Dom, Museen und eine leckere Pause: öffnet die Guides für Orte und Essen." },
-  },
-  wind: {
-    it: { title: "Giornata ventosa", text: "Con vento forte meglio evitare mare e traghetti: perfetta per passeggiate in centro, shopping e un aperitivo al riparo." },
-    en: { title: "Windy day", text: "With strong wind, better avoid the sea and ferries: perfect for city walks, shopping and a sheltered aperitivo." },
-    es: { title: "Día de viento", text: "Con viento fuerte mejor evitar mar y ferris: perfecto para paseos por la ciudad, compras y un aperitivo al reparo." },
-    fr: { title: "Journée venteuse", text: "Par grand vent, mieux vaut éviter mer et ferries : parfait pour flâner en ville, le shopping et un apéritif à l’abri." },
-    de: { title: "Windiger Tag", text: "Bei starkem Wind lieber Meer und Fähren meiden: perfekt für Stadtbummel, Shopping und einen Aperitif im Trockenen." },
-  },
-};
-
-const SUGGEST_CTA: Record<Lang, { places: string; food: string }> = {
-  it: { places: "Apri luoghi da visitare", food: "Apri dove mangiare" },
-  en: { places: "Open places to visit", food: "Open where to eat" },
-  es: { places: "Abrir lugares para visitar", food: "Abrir dónde comer" },
-  fr: { places: "Ouvrir les lieux à visiter", food: "Ouvrir où manger" },
-  de: { places: "Orte ansehen", food: "Essen ansehen" },
-};
-
-function suggestionFor(code: number, wind: number): SuggestionKind {
-  if (wind >= 25) return "wind";
-  const k = codeKey(code);
-  if (k === "clear") return "coast";
-  if (k === "partly" || k === "cloudy") return "town";
-  return "indoor";
-}
-
-const SUGGEST_ICON = { coast: Sun, town: CloudSun, indoor: Umbrella, wind: Wind } as const;
-
 function detailsText(lang: Lang, min: number, max: number, wind: number, rain: number): string {
   const map: Record<Lang, string> = {
     it: `Min ${min}° · Max ${max}° · Vento ${wind} km/h · Probabilità pioggia ${rain}%`,
@@ -153,7 +100,6 @@ export function WeatherBox({ lang }: { lang: Lang }) {
   const [temp, setTemp] = useState("--°");
   const [details, setDetails] = useState("");
   const [umbrella, setUmbrella] = useState(false);
-  const [suggest, setSuggest] = useState<SuggestionKind | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -163,7 +109,6 @@ export function WeatherBox({ lang }: { lang: Lang }) {
       setTemp(`${c.temperature}°`);
       setDetails(detailsText(lang, c.minTemp, c.maxTemp, c.windSpeed, c.rainProbability));
       setUmbrella(c.shouldShowUmbrellaAlert);
-      setSuggest(suggestionFor(c.code, c.windSpeed));
     };
 
     try {
@@ -220,12 +165,8 @@ export function WeatherBox({ lang }: { lang: Lang }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lang]);
 
-  const suggestion = suggest ? SUGGESTION[suggest][lang] : null;
-  const SuggestIcon = suggest ? SUGGEST_ICON[suggest] : null;
-
   return (
-    <>
-      <div className="mt-6 rounded-[12px] border border-border bg-card p-[18px] text-card-foreground">
+    <div className="mt-6 rounded-[12px] border border-border bg-card p-[18px] text-card-foreground">
         <div className="flex items-center justify-between gap-3">
           <div>
             <span className="mb-1 block text-[13px] text-muted-foreground">
@@ -251,39 +192,6 @@ export function WeatherBox({ lang }: { lang: Lang }) {
             </p>
           </div>
         ) : null}
-      </div>
-      {suggestion && SuggestIcon ? (
-        <section
-          aria-label={suggestion.title}
-          className="mt-4 rounded-[14px] border border-border bg-card p-5 text-card-foreground sm:p-6"
-        >
-          <div className="flex items-start gap-3">
-            <span aria-hidden className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full bg-secondary text-secondary-foreground">
-              <SuggestIcon className="h-5 w-5" />
-            </span>
-            <div>
-              <h2 className="font-serif text-xl text-foreground sm:text-2xl">{suggestion.title}</h2>
-              <p className="mt-1 text-sm leading-relaxed text-muted-foreground sm:text-[15px]">
-                {suggestion.text}
-              </p>
-            </div>
-          </div>
-          <div className="mt-4 flex flex-wrap gap-2">
-            <a
-              href={withLang("/permanenza/luoghi", lang)}
-              className="inline-flex min-h-[44px] items-center justify-center rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground no-underline"
-            >
-              {SUGGEST_CTA[lang].places}
-            </a>
-            <a
-              href={withLang("/permanenza/mangiare", lang)}
-              className="inline-flex min-h-[44px] items-center justify-center rounded-full border border-border bg-card px-4 py-2 text-sm font-semibold text-card-foreground no-underline"
-            >
-              {SUGGEST_CTA[lang].food}
-            </a>
-          </div>
-        </section>
-      ) : null}
-    </>
+    </div>
   );
 }

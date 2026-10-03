@@ -3,5 +3,7 @@ declare namespace Cloudflare {
     DB?: D1Database;
     BUCKET?: R2Bucket;
     OWNER_PASSWORD?: string;
+    OPENROUTER_API_KEY?: string;
+    MARCO_MODEL?: string;
   }
 }

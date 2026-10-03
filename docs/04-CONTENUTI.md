@@ -69,3 +69,10 @@ Tile con stessi titoli delle statiche: Manuale della casa, Regole, Luoghi, Mangi
 ode scripts/build-content.mjs legge public/index.html (ora index-legacy.html) e public/checkin.html ed emette lib/content-index.generated.ts (103 voci) + lib/content-checkin.generated.ts (86 voci). Alias semantici in lib/content-home.ts / lib/content-checkin.ts (split per non caricare 73KB di testi nel bundle client). Mappa chiavi in docs/i18n-keys.md.
 - Legacy: public/index.html originale conservato tale e quale in public/index-legacy.html (stesso file, solo rinominato). Era necessario: il file statico oscurava la rotta Next /. I vecchi link /index.html (inclusi ?g= e ?lang=) sono intercettati da pp/index.html/route.ts che redirige a / preservando la query. Le altre pagine legacy (checkin.html, manuale.html, ...) sono invariate.
 - Link personalizzati host: /gestione genera ora /?g=<uuid> (prima /index.html?g=); la Home risolve ?g= via /api/guide e riusa le stesse chiavi localStorage dello statico.
+
+## 4.7 Migrazione Permanenza (9/10 pagine)
+
+- Statiche (manuale, regole, trasporti, spesa, parcheggio, farmacie-emergenze, colazione-testi): scripts/build-legacy-pages.mjs risolve il <main> in 5 varianti verbatim (sostituzione data-*, rimozione script/back-home/scroll-hint/form-ordine, rewrite asset/link con ?lang=). Output lib/legacy/<slug>.generated.ts. Verifica erify-legacy.js: 424/424 valori IT ritrovati.
+- Dinamiche: scripts/build-experience-data.mjs estrae placeCategories+labels (luoghi) e categories+labels+placesWithTip+pulsanti+back-label (mangiare), validati con eval JS. Dati colazione in lib/legacy/colazione-data.generated.ts.
+- Render: rotta pp/permanenza/[slug] + LegacyContent + legacy-compat.css (solo token) + isole LuoghiIsland/MangiareIsland + ColazioneForm. File legacy in public/ intatti come fallback.
+- Differita: itinerario.html (planner JS 67KB) resta legacy -> Fase 6.

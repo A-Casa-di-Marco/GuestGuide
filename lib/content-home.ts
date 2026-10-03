@@ -44,9 +44,9 @@ export const stayPhases: StayPhase[] = [
     titleKey: "index_035",
     textKey: "index_036",
     ctaKey: "index_037",
-    ctaHref: "regole.html",
+    ctaHref: "/permanenza/regole",
     cta2Key: "index_038",
-    cta2Href: "manuale.html",
+    cta2Href: "/permanenza/manuale",
   },
   {
     tabKey: "index_027",
@@ -66,16 +66,16 @@ export const guideTitleKey = "index_048";
 export const guideTiles: GuideTile[] = [
   { titleKey: "index_049", descKey: "index_050", href: "/check-in", icon: "key-round" },
   { titleKey: "index_051", descKey: "index_052", href: "/check-out", icon: "log-out" },
-  { titleKey: "index_053", descKey: "index_054", href: "manuale.html", icon: "book-open" },
-  { titleKey: "index_055", descKey: "index_056", href: "regole.html", icon: "clipboard-list" },
-  { titleKey: "index_057", descKey: "index_058", href: "mangiare.html", icon: "utensils" },
-  { titleKey: "index_059", descKey: "index_060", href: "luoghi.html", icon: "map" },
-  { titleKey: "index_061", descKey: "index_062", href: "trasporti.html", icon: "bus" },
-  { titleKey: "index_063", descKey: "index_064", href: "spesa.html", icon: "basket" },
-  { titleKey: "index_065", descKey: "index_066", href: "colazione.html", icon: "coffee" },
-  { titleKey: "index_067", descKey: "index_068", href: "parcheggio.html", icon: "parking" },
+  { titleKey: "index_053", descKey: "index_054", href: "/permanenza/manuale", icon: "book-open" },
+  { titleKey: "index_055", descKey: "index_056", href: "/permanenza/regole", icon: "clipboard-list" },
+  { titleKey: "index_057", descKey: "index_058", href: "/permanenza/mangiare", icon: "utensils" },
+  { titleKey: "index_059", descKey: "index_060", href: "/permanenza/luoghi", icon: "map" },
+  { titleKey: "index_061", descKey: "index_062", href: "/permanenza/trasporti", icon: "bus" },
+  { titleKey: "index_063", descKey: "index_064", href: "/permanenza/spesa", icon: "basket" },
+  { titleKey: "index_065", descKey: "index_066", href: "/permanenza/colazione", icon: "coffee" },
+  { titleKey: "index_067", descKey: "index_068", href: "/permanenza/parcheggio", icon: "parking" },
   { titleKey: "index_069", descKey: "index_070", href: "itinerario.html", icon: "route" },
-  { titleKey: "index_071", descKey: "index_072", href: "farmacie-emergenze.html", icon: "cross" },
+  { titleKey: "index_071", descKey: "index_072", href: "/permanenza/farmacie-emergenze", icon: "cross" },
 ];
 
 // ---- Offerta partenza posticipata ----

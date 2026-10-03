@@ -8,16 +8,17 @@ import { THome } from "@/components/t-home";
 export const dynamic = "force-dynamic";
 
 const DESCRIPTIONS: Record<string, string> = {
-  "manuale.html": "Wi-Fi, clima, moka e consigli utili",
-  "regole.html": "Un soggiorno sereno",
-  "luoghi.html": "Cosa visitare in zona",
-  "mangiare.html": "Ristoranti e pizzerie",
-  "trasporti.html": "Bus e spostamenti",
-  "spesa.html": "Supermercati e negozi",
-  "parcheggio.html": "Dove parcheggiare",
+  "/permanenza/manuale": "Wi-Fi, clima, moka e consigli utili",
+  "/permanenza/regole": "Un soggiorno sereno",
+  "/permanenza/luoghi": "Cosa visitare in zona",
+  "/permanenza/mangiare": "Ristoranti e pizzerie",
+  "/permanenza/trasporti": "Bus e spostamenti",
+  "/permanenza/spesa": "Supermercati e negozi",
+  "/permanenza/parcheggio": "Dove parcheggiare",
+  "/permanenza/itinerario": "Costiera e dintorni",
+  "/permanenza/colazione": "Bar e pasticcerie",
+  "/permanenza/farmacie-emergenze": "Numeri e punti utili",
   "itinerario.html": "Costiera e dintorni",
-  "colazione.html": "Bar e pasticcerie",
-  "farmacie-emergenze.html": "Numeri e punti utili",
 };
 
 export default async function Permanenza({
@@ -26,7 +27,9 @@ export default async function Permanenza({
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const lang = await resolveLang(await searchParams);
-  const tiles = guideTiles.filter((tile) => tile.href.endsWith(".html"));
+  const tiles = guideTiles.filter(
+    (tile) => tile.href.startsWith("/permanenza/") || tile.href.endsWith(".html"),
+  );
 
   return (
     <>

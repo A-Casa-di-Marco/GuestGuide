@@ -1,0 +1,988 @@
+/* Stili di compatibilità per i contenuti legacy migrati (verbatim).
+   Solo token semantici: nessun hex/rgba. Light + dark via .dark. */
+
+.legacy-content {
+  color: var(--foreground);
+  font-size: 16px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.legacy-content h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(26px, 4vw, 34px);
+  color: var(--foreground);
+  margin: 0 0 12px;
+}
+
+.legacy-content h3 {
+  font-family: var(--font-serif);
+  font-size: clamp(22px, 3vw, 28px);
+  color: var(--foreground);
+  margin: 22px 0 10px;
+}
+
+.legacy-content h4 {
+  font-size: 15px;
+  color: var(--foreground);
+  margin: 18px 0 8px;
+}
+
+.legacy-content p {
+  margin: 0 0 12px;
+  color: var(--muted-foreground);
+}
+
+.legacy-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+.legacy-content a {
+  color: var(--primary);
+}
+
+/* Link/bottoni generici */
+.legacy-content .btn,
+.legacy-content .shop-btn,
+.legacy-content .parking-btn,
+.legacy-content .transport-btn,
+.legacy-content .manual-help {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  border-radius: 8px;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  padding: 10px 18px;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.legacy-content .btn.light,
+.legacy-content .shop-btn.light,
+.legacy-content .transport-btn.light {
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+}
+
+.legacy-content .actions,
+.legacy-content .shop-actions,
+.legacy-content .parking-actions,
+.legacy-content .transport-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+/* Box di nota */
+.legacy-content .note,
+.legacy-content .tip-box,
+.legacy-content .transport-note,
+.legacy-content .shop-note,
+.legacy-content .parking-note,
+.legacy-content .intro {
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin: 16px 0;
+}
+
+.legacy-content .warning-box,
+.legacy-content .breakfast-warning,
+.legacy-content .remote-warning {
+  background: var(--warning);
+  border-left: 5px solid var(--warning-accent);
+  border-radius: 16px;
+  padding: 14px 16px;
+  margin: 16px 0;
+  color: var(--foreground);
+}
+
+.legacy-content .warning-box strong,
+.legacy-content .breakfast-warning strong {
+  color: var(--warning-foreground);
+}
+
+.legacy-content .deposit-note {
+  background: var(--secondary);
+  border-left: 4px solid var(--primary);
+  border-radius: 0 12px 12px 0;
+  padding: 22px 24px;
+  margin: 28px 0;
+  color: var(--secondary-foreground);
+}
+
+/* Liste semplici */
+.legacy-content .simple-list,
+.legacy-content .info-list {
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  margin: 12px 0 0;
+  padding: 0;
+}
+
+.legacy-content .simple-list li,
+.legacy-content .info-list li {
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+  border-radius: 16px;
+  padding: 13px 15px;
+}
+
+.legacy-content .simple-list strong,
+.legacy-content .info-list strong {
+  color: var(--foreground);
+}
+
+/* Liste numerate */
+.legacy-content .step-list {
+  list-style: none;
+  counter-reset: step;
+  display: grid;
+  gap: 12px;
+  margin: 14px 0 0;
+  padding: 0;
+}
+
+.legacy-content .step-list li {
+  counter-increment: step;
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+  border-radius: 18px;
+  padding: 14px 16px 14px 54px;
+  position: relative;
+}
+
+.legacy-content .step-list li::before {
+  content: counter(step);
+  position: absolute;
+  left: 16px;
+  top: 14px;
+  width: 27px;
+  height: 27px;
+  border-radius: 999px;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+/* Griglie di card */
+.legacy-content .info-grid,
+.legacy-content .transport-grid,
+.legacy-content .shop-grid,
+.legacy-content .parking-grid,
+.legacy-content .quick-grid,
+.legacy-content .pharmacy-grid,
+.legacy-content .service-grid,
+.legacy-content .do-dont {
+  display: grid;
+  gap: 14px;
+  margin-top: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+}
+
+.legacy-content .transport-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.legacy-content .info-card,
+.legacy-content .transport-card,
+.legacy-content .shop-card,
+.legacy-content .parking-card,
+.legacy-content .quick-card,
+.legacy-content .pharmacy-card,
+.legacy-content .service-card,
+.legacy-content .do-box,
+.legacy-content .dont-box {
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--card-foreground);
+  border-radius: 14px;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.legacy-content .do-box {
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+  border: 0;
+}
+
+.legacy-content .dont-box {
+  background: var(--warning);
+  color: var(--foreground);
+  border: 0;
+}
+
+.legacy-content .shop-card img,
+.legacy-content .pharmacy-card img,
+.legacy-content .parking-card img,
+.legacy-content .manual-img img,
+.legacy-content .thermostat-visual img,
+.legacy-content .img-card img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  background: var(--secondary);
+  border-radius: 12px;
+  display: block;
+}
+
+.legacy-content .manual-img,
+.legacy-content .thermostat-visual,
+.legacy-content .img-card {
+  margin: 16px 0;
+}
+
+.legacy-content .featured {
+  border-color: var(--primary);
+}
+
+.legacy-content .badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.legacy-content .badge {
+  background: var(--accent);
+  color: var(--accent-foreground);
+  border-radius: 8px;
+  padding: 5px 8px;
+  font-size: 12px;
+}
+
+/* Tabelle */
+.legacy-content .waste-table,
+.legacy-content .program-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+  margin-top: 14px;
+}
+
+.legacy-content .waste-table th,
+.legacy-content .program-table th {
+  text-align: left;
+  color: var(--foreground);
+  font-size: 14px;
+  padding: 0 12px 4px;
+}
+
+.legacy-content .waste-table td,
+.legacy-content .program-table td {
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+  padding: 12px;
+  font-size: 14px;
+  vertical-align: top;
+}
+
+.legacy-content .waste-table td:first-child,
+.legacy-content .program-table td:first-child {
+  border-radius: 14px 0 0 14px;
+  font-weight: 700;
+  color: var(--foreground);
+}
+
+.legacy-content .waste-table td:last-child,
+.legacy-content .program-table td:last-child {
+  border-radius: 0 14px 14px 0;
+}
+
+/* Accordion manuale */
+.legacy-content .manual-details {
+  margin-top: 18px;
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+}
+
+.legacy-content .manual-details > summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 24px 6px;
+  font-size: 18px;
+  color: var(--foreground);
+  min-height: 48px;
+}
+
+.legacy-content .manual-details > summary::-webkit-details-marker {
+  display: none;
+}
+
+.legacy-content .manual-content {
+  padding: 10px 6px 28px;
+}
+
+.legacy-content .manual-index {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 34px;
+}
+
+.legacy-content .manual-index a {
+  display: flex;
+  align-items: center;
+  min-height: 64px;
+  padding: 16px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: var(--card-foreground);
+  font-size: 15px;
+  text-decoration: none;
+}
+
+/* Regole */
+.legacy-content .rules-highlights {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 28px 0;
+}
+
+.legacy-content .rules-highlights > * {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.legacy-content .rules-index {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 24px 0;
+}
+
+.legacy-content .rules-index a {
+  padding: 12px 16px;
+  background: var(--secondary);
+  border-radius: 24px;
+  color: var(--secondary-foreground);
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.legacy-content .rules-group {
+  scroll-margin-top: 100px;
+  margin: 42px 0;
+}
+
+.legacy-content .rules-group > h3 {
+  padding-bottom: 14px;
+  border-bottom: 2px solid var(--foreground);
+}
+
+.legacy-content .rule-row {
+  display: grid;
+  grid-template-columns: 190px minmax(0, 1fr);
+  gap: 24px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.legacy-content .rule-row h4 {
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0;
+  color: var(--foreground);
+}
+
+.legacy-content .rule-row p {
+  margin: 0;
+  font-size: 15px;
+  color: var(--muted-foreground);
+}
+
+.legacy-content .rules-thanks {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  padding: 24px 0;
+  color: var(--foreground);
+}
+
+/* Telecomando / termostato */
+.legacy-content .remote-top-layout {
+  display: grid;
+  grid-template-columns: minmax(260px, 360px) 1fr;
+  gap: 22px;
+  align-items: start;
+  margin: 18px 0 20px;
+}
+
+.legacy-content .remote-image-box {
+  background: var(--secondary);
+  border-radius: 24px;
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.legacy-content .remote-image-box img {
+  width: 100%;
+  max-width: 260px;
+}
+
+.legacy-content .remote-highlight-list,
+.legacy-content .remote-guide {
+  display: grid;
+  gap: 12px;
+}
+
+.legacy-content .remote-card {
+  border-radius: 18px;
+  padding: 15px 16px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 6px solid var(--primary);
+  color: var(--card-foreground);
+}
+
+.legacy-content .remote-card strong {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 15px;
+}
+
+.legacy-content .remote-card p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.legacy-content .remote-red,
+.legacy-content .remote-yellow {
+  background: var(--warning);
+  border: 0;
+  border-left: 6px solid var(--warning-accent);
+  color: var(--foreground);
+}
+
+.legacy-content .remote-blue,
+.legacy-content .remote-cyan {
+  background: var(--secondary);
+  border: 0;
+  border-left: 6px solid var(--primary);
+  color: var(--secondary-foreground);
+}
+
+.legacy-content .remote-purple {
+  background: var(--accent);
+  border: 0;
+  border-left: 6px solid var(--primary);
+  color: var(--accent-foreground);
+}
+
+.legacy-content .remote-white {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 6px solid var(--border);
+}
+
+.legacy-content .remote-subtitle {
+  margin: 22px 0 10px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--foreground);
+}
+
+/* Moka */
+.legacy-content .moka-choice {
+  padding: 16px;
+  background: var(--secondary);
+  border-radius: 18px;
+  text-align: center;
+  color: var(--secondary-foreground);
+}
+
+.legacy-content .moka-choice-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.legacy-content .moka-choice-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  border-radius: 999px;
+  padding: 13px 18px;
+  font-size: 14px;
+  font-weight: 800;
+  border: 0;
+  cursor: pointer;
+  min-height: 48px;
+}
+
+.legacy-content .moka-choice-button.light {
+  background: var(--card);
+  color: var(--card-foreground);
+  border: 1px solid var(--border);
+}
+
+.legacy-content .moka-language-images {
+  display: grid;
+  gap: 14px;
+  margin-top: 16px;
+  justify-items: center;
+}
+
+.legacy-content .moka-language-image {
+  width: 100%;
+  max-width: 760px;
+  display: none;
+  border-radius: 20px;
+  object-fit: contain;
+}
+
+.legacy-content .moka-language-image.is-active {
+  display: block;
+}
+
+.legacy-content .moka-option[hidden] {
+  display: none;
+}
+
+/* Colazione form legacy residuo */
+.legacy-content .breakfast-order-box {
+  border-radius: 14px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 20px;
+  margin: 20px 0;
+  color: var(--card-foreground);
+}
+
+.legacy-content .form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.legacy-content select {
+  width: 100%;
+  max-width: 100%;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--foreground);
+  padding: 12px 14px;
+  min-height: 48px;
+}
+
+.legacy-content .order-status {
+  margin-top: 12px;
+  font-size: 14px;
+  color: var(--muted-foreground);
+}
+
+.legacy-content .guest-snacks {
+  display: grid;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.legacy-content .guest-snack-card {
+  background: var(--secondary);
+  border-radius: 14px;
+  padding: 14px 16px;
+  display: grid;
+  gap: 6px;
+}
+
+.legacy-content .guest-snack-card strong {
+  color: var(--foreground);
+}
+
+.legacy-content .guest-snack-card label {
+  font-size: 14px;
+  color: var(--muted-foreground);
+}
+
+/* Scelta categoria (mangiare / luoghi) */
+.legacy-content .food-choice-grid,
+.legacy-content .place-choice-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.legacy-content .food-choice,
+.legacy-content .place-choice {
+  border-radius: 12px;
+  background: var(--card);
+  color: var(--foreground);
+  border: 1px solid var(--border);
+  min-height: 104px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 15px;
+}
+
+.legacy-content .food-choice strong,
+.legacy-content .place-choice strong {
+  font-size: 15px;
+  line-height: 1.35;
+}
+
+.legacy-content .food-choice small,
+.legacy-content .place-choice small {
+  font-size: 13px;
+  color: var(--muted-foreground);
+}
+
+.legacy-content .food-choice.active,
+.legacy-content .place-choice.active {
+  background: var(--foreground);
+  color: var(--background);
+  border-color: var(--foreground);
+}
+
+.legacy-content .food-choice.active small,
+.legacy-content .place-choice.active small {
+  color: var(--background);
+  opacity: 0.85;
+}
+
+/* Sezioni categoria */
+.legacy-content .food-category,
+.legacy-content .place-category {
+  margin-top: 20px;
+}
+
+.legacy-content .category-header,
+.legacy-content .place-category-header {
+  padding: 16px 0;
+  margin-bottom: 16px;
+}
+
+.legacy-content .category-top-actions {
+  margin-top: 12px;
+}
+
+.legacy-content .back-category,
+.legacy-content .back-to-place-categories {
+  min-height: 44px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--foreground);
+  padding: 10px 16px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.legacy-content .delivery-note,
+.legacy-content .beach-note {
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+  border-radius: 10px;
+  padding: 11px;
+  margin: 12px 0;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.legacy-content .price-legend {
+  font-size: 13px;
+  color: var(--muted-foreground);
+  margin-top: 10px;
+}
+
+/* Card ristoranti / luoghi */
+.legacy-content .restaurant-grid,
+.legacy-content .places-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 14px;
+}
+
+.legacy-content .restaurant-card,
+.legacy-content .place-card {
+  display: grid;
+  grid-template-columns: clamp(110px, 24%, 220px) minmax(0, 1fr);
+  align-items: start;
+  position: relative;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--card-foreground);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.legacy-content .restaurant-card > img,
+.legacy-content .place-card > img,
+.legacy-content .place-card > .place-img-placeholder {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  margin: 16px 0 16px 16px;
+  max-width: calc(100% - 16px);
+  border-radius: 10px;
+}
+
+.legacy-content .place-card-noimage {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.legacy-content .place-img-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  background: var(--secondary);
+}
+
+.legacy-content .restaurant-content,
+.legacy-content .place-content {
+  min-width: 0;
+  padding: 16px;
+  overflow-wrap: anywhere;
+}
+
+.legacy-content .restaurant-content h3,
+.legacy-content .place-content h3 {
+  font-family: var(--font-serif);
+  font-size: clamp(20px, 2.4vw, 26px);
+  margin: 0 0 8px;
+  line-height: 1.25;
+  color: var(--foreground);
+}
+
+.legacy-content .restaurant-content p,
+.legacy-content .place-content p {
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--muted-foreground);
+  margin: 8px 0;
+}
+
+.legacy-content .recommended-ribbon {
+  display: none;
+}
+
+.legacy-content .recommended-badge {
+  background: var(--accent);
+  color: var(--accent-foreground);
+  padding: 5px 8px;
+  font-size: 12px;
+  border-radius: 8px;
+}
+
+.legacy-content .walk-badge,
+.legacy-content .price-badge {
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+  padding: 5px 8px;
+  font-size: 12px;
+  border-radius: 8px;
+}
+
+.legacy-content .price-symbol {
+  font-weight: 700;
+}
+
+.legacy-content .beach-badge.free {
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+  padding: 5px 8px;
+  font-size: 12px;
+  border-radius: 8px;
+}
+
+.legacy-content .beach-badge.paid {
+  background: var(--accent);
+  color: var(--accent-foreground);
+  padding: 5px 8px;
+  font-size: 12px;
+  border-radius: 8px;
+}
+
+.legacy-content .event-badge {
+  background: var(--accent);
+  color: var(--accent-foreground);
+  padding: 5px 8px;
+  font-size: 12px;
+  border-radius: 8px;
+}
+
+.legacy-content .tip-box {
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+  padding: 11px;
+  margin: 12px 0;
+  font-size: 14px;
+  line-height: 1.55;
+  border-radius: 10px;
+}
+
+.legacy-content .restaurant-actions,
+.legacy-content .place-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.legacy-content .restaurant-btn,
+.legacy-content .place-btn {
+  min-height: 44px;
+  padding: 10px 14px;
+  font-size: 14px;
+  border-radius: 8px;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 110px;
+}
+
+.legacy-content .restaurant-btn.light,
+.legacy-content .place-btn.light {
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+}
+
+@media (max-width: 600px) {
+  .legacy-content .restaurant-card,
+  .legacy-content .place-card {
+    grid-template-columns: clamp(78px, 28%, 140px) minmax(0, 1fr);
+  }
+
+  .legacy-content .restaurant-card > img,
+  .legacy-content .place-card > img,
+  .legacy-content .place-card > .place-img-placeholder {
+    margin: 12px 0 12px 12px;
+    max-width: calc(100% - 12px);
+  }
+
+  .legacy-content .restaurant-content h3,
+  .legacy-content .place-content h3 {
+    font-size: 20px;
+  }
+
+  .legacy-content .place-card-noimage {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 720px) {
+  .legacy-content {
+    font-size: 14px;
+  }
+
+  .legacy-content .transport-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .legacy-content .manual-index {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .legacy-content .rules-highlights {
+    gap: 8px;
+  }
+
+  .legacy-content .rule-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .legacy-content .remote-top-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .legacy-content .waste-table thead,
+  .legacy-content .program-table thead {
+    display: none;
+  }
+
+  .legacy-content .waste-table,
+  .legacy-content .waste-table tbody,
+  .legacy-content .waste-table tr,
+  .legacy-content .waste-table td,
+  .legacy-content .program-table,
+  .legacy-content .program-table tbody,
+  .legacy-content .program-table tr,
+  .legacy-content .program-table td {
+    display: block;
+  }
+
+  .legacy-content .waste-table tr,
+  .legacy-content .program-table tr {
+    background: var(--secondary);
+    border-radius: 16px;
+    padding: 12px;
+    margin-bottom: 10px;
+  }
+
+  .legacy-content .waste-table td,
+  .legacy-content .program-table td {
+    background: transparent;
+    padding: 5px 0;
+  }
+
+  .legacy-content .waste-table td::before {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--muted-foreground);
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+
+  .legacy-content .waste-table td:nth-child(1)::before {
+    content: var(--waste-label-category);
+  }
+
+  .legacy-content .waste-table td:nth-child(2)::before {
+    content: var(--waste-label-what);
+  }
+
+  .legacy-content .waste-table td:nth-child(3)::before {
+    content: var(--waste-label-attention);
+  }
+
+  .legacy-content .do-dont {
+    grid-template-columns: 1fr;
+  }
+
+  .legacy-content .moka-choice-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

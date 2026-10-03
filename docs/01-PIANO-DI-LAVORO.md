@@ -42,10 +42,17 @@
 3. [x] Checklist 9 item + progress `role="progressbar"` + confetti (solo su completamento, mai con reduced-motion) + `Avvisa della partenza su WhatsApp` + storage `checkoutChecklist_{lang}` come legacy.
 4. [x] Penale rifiuti 50€ e tolleranza 15min/20€ verbatim (nessuna riformulazione legale).
 
-## Fase 4 — Permanenza (hub, non rewrite) ✅ implementata
+## Fase 4 — Permanenza ✅ migrata 9/10 (itinerario resta legacy, vedi Fase 6)
 
-- [x] Pagina hub con tile multilingua verso `manuale.html`, `regole.html`, `luoghi.html`, `mangiare.html`, `trasporti.html`, `spesa.html`, `parcheggio.html`, `itinerario.html`, `colazione.html`, `farmacie-emergenze.html` (stessi href relativi, `?lang=` preservato).
-- [x] Nessuna duplicazione contenuti; migrazione completa a Next in fase successiva solo se richiesta.
+- [x] 7 pagine statiche migrate in `/permanenza/<slug>` (manuale, regole, trasporti, spesa, parcheggio, farmacie-emergenze, colazione-contenuti): HTML verbatim risolto per-lingua via `scripts/build-legacy-pages.mjs` → `lib/legacy/*.generated.ts` (verifica automatica: 424/424 testi IT ritrovati, 0 persi), stili token-based in `legacy-compat.css` (light+dark), enhancer `LegacyContent` (moka, anchor-details, label tabella rifiuti). Script legacy e `data-*` eliminati dal markup servito.
+- [x] `colazione`: form ordine snack nativo (`ColazioneForm`: 1-6 ospiti, cutoff 19:00, messaggio WhatsApp identico al legacy).
+- [x] `luoghi` + `mangiare`: dati verbatim estratti (`build-experience-data.mjs`, validati come JS) + isole React (`LuoghiIsland`, `MangiareIsland`: filtri categoria, ordinamento recommended-first, badge, `?cat=` con popstate come legacy).
+- [x] Hub + griglia home puntano alle nuove rotte (9 voci); `itinerario.html` resta linkato legacy.
+- [x] Verifica: 9 slug × IT + spot EN, form, moka, tabelle, assenza `data-*`/JS legacy nel markup; `tsc`/`eslint`/`validate-tokens` verdi, `build` verde con rotta `/permanenza/:slug`.
+
+## Fase 6 — Port nativo planner itinerario (deferito, da pianificare)
+
+- `public/itinerario.html` (67KB di logica: questionario → pool piani → raccomandazioni cibo/luoghi → tips) resta servito legacy e linkato da hub/griglia. Il port richiede reimplementazione del motore + QA dedicata: stimare a parte, non in questa PR.
 
 ## Fase 5 — Hardening & CI/CD 🔄 automatica verde, resta QA visiva manuale
 

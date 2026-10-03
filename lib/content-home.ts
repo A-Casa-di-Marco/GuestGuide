@@ -13,56 +13,10 @@ export function isHomeHtml(key: string): boolean {
 }
 
 // ---- Hero ----
-export const hero = { badge: "index_010", title: "index_011", sub: "index_012" } as const;
+export const hero = { title: "index_011", sub: "index_012" } as const;
 
-// ---- Fasi del soggiorno (stay-tabs + pannelli) ----
-export const stayTabs = ["index_025", "index_026", "index_027"] as const;
-export type StayPhase = {
-  tabKey: string;
-  kickerKey: string;
-  titleKey: string;
-  textKey: string;
-  ctaKey: string;
-  ctaHref: string;
-  cta2Key?: string;
-  cta2Href?: string;
-};
-export const stayPhases: StayPhase[] = [
-  {
-    tabKey: "index_025",
-    kickerKey: "index_028",
-    titleKey: "index_029",
-    textKey: "index_030",
-    ctaKey: "index_032",
-    ctaHref: "/check-in",
-    cta2Key: "index_033",
-    cta2Href: "https://wa.me/393923064010",
-  },
-  {
-    tabKey: "index_026",
-    kickerKey: "index_034",
-    titleKey: "index_035",
-    textKey: "index_036",
-    ctaKey: "index_037",
-    ctaHref: "/permanenza/regole",
-    cta2Key: "index_038",
-    cta2Href: "/permanenza/manuale",
-  },
-  {
-    tabKey: "index_027",
-    kickerKey: "index_039",
-    titleKey: "index_040",
-    textKey: "index_041",
-    ctaKey: "index_042",
-    ctaHref: "/check-out",
-    cta2Key: "index_043",
-    cta2Href: "https://wa.me/393923064010",
-  },
-];
-
-// ---- Griglia guide (12 tile, href legacy preservati) ----
+// ---- Griglia guide (12 tile, usata dall'hub Permanenza) ----
 export type GuideTile = { titleKey: string; descKey: string; href: string; icon: string };
-export const guideTitleKey = "index_048";
 export const guideTiles: GuideTile[] = [
   { titleKey: "index_049", descKey: "index_050", href: "/check-in", icon: "key-round" },
   { titleKey: "index_051", descKey: "index_052", href: "/check-out", icon: "log-out" },

@@ -27,6 +27,7 @@ function walk(dir) {
       lines.forEach((line, i) => {
         if (line.includes("content.generated.ts")) return;
         if (line.includes("palette:legacy")) return;
+        if (line.includes("themeColor")) return; // metadata PWA, non colore UI
         if (line.trim().startsWith("//") || line.trim().startsWith("*")) return;
         const hexes = line.match(HEX);
         if (hexes) {

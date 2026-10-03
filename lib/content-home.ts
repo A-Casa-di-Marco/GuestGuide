@@ -16,20 +16,27 @@ export function isHomeHtml(key: string): boolean {
 export const hero = { title: "index_011", sub: "index_012" } as const;
 
 // ---- Griglia guide (12 tile, usata dall'hub Permanenza) ----
-export type GuideTile = { titleKey: string; descKey: string; href: string; icon: string };
+export type GuideTile = { titleKey: string; descKey: string; href: string; icon: string; image: string };
+export const cardCta: Record<Lang, string> = {
+  it: "Apri guida",
+  en: "Open guide",
+  es: "Abrir guía",
+  fr: "Ouvrir le guide",
+  de: "Guide öffnen",
+};
 export const guideTiles: GuideTile[] = [
-  { titleKey: "index_049", descKey: "index_050", href: "/check-in", icon: "key-round" },
-  { titleKey: "index_051", descKey: "index_052", href: "/check-out", icon: "log-out" },
-  { titleKey: "index_053", descKey: "index_054", href: "/permanenza/manuale", icon: "book-open" },
-  { titleKey: "index_055", descKey: "index_056", href: "/permanenza/regole", icon: "clipboard-list" },
-  { titleKey: "index_057", descKey: "index_058", href: "/permanenza/mangiare", icon: "utensils" },
-  { titleKey: "index_059", descKey: "index_060", href: "/permanenza/luoghi", icon: "map" },
-  { titleKey: "index_061", descKey: "index_062", href: "/permanenza/trasporti", icon: "bus" },
-  { titleKey: "index_063", descKey: "index_064", href: "/permanenza/spesa", icon: "basket" },
-  { titleKey: "index_065", descKey: "index_066", href: "/permanenza/colazione", icon: "coffee" },
-  { titleKey: "index_067", descKey: "index_068", href: "/permanenza/parcheggio", icon: "parking" },
-  { titleKey: "index_069", descKey: "index_070", href: "/permanenza/itinerario", icon: "route" },
-  { titleKey: "index_071", descKey: "index_072", href: "/permanenza/farmacie-emergenze", icon: "cross" },
+  { titleKey: "index_049", descKey: "index_050", href: "/check-in", icon: "key-round", image: "/assets/cancello-check-in.jpg" },
+  { titleKey: "index_051", descKey: "index_052", href: "/check-out", icon: "log-out", image: "/assets/cancello-casa.jpeg" },
+  { titleKey: "index_053", descKey: "index_054", href: "/permanenza/manuale", icon: "book-open", image: "/assets/manuale-chiavi.jpg" },
+  { titleKey: "index_055", descKey: "index_056", href: "/permanenza/regole", icon: "clipboard-list", image: "/assets/casa-1.jpg" },
+  { titleKey: "index_057", descKey: "index_058", href: "/permanenza/mangiare", icon: "utensils", image: "/assets/da-michele-salerno.jpg" },
+  { titleKey: "index_059", descKey: "index_060", href: "/permanenza/luoghi", icon: "map", image: "/assets/costiera-amalfitana.jpg" },
+  { titleKey: "index_061", descKey: "index_062", href: "/permanenza/trasporti", icon: "bus", image: "/assets/piazza-della-liberta.jpg" },
+  { titleKey: "index_063", descKey: "index_064", href: "/permanenza/spesa", icon: "basket", image: "/assets/sole-365-vinciprova.jpg" },
+  { titleKey: "index_065", descKey: "index_066", href: "/permanenza/colazione", icon: "coffee", image: "/assets/breakfast.jpg" },
+  { titleKey: "index_067", descKey: "index_068", href: "/permanenza/parcheggio", icon: "parking", image: "/assets/parcheggio.jpg" },
+  { titleKey: "index_069", descKey: "index_070", href: "/permanenza/itinerario", icon: "route", image: "/assets/sentiero-degli-dei.jpg" },
+  { titleKey: "index_071", descKey: "index_072", href: "/permanenza/farmacie-emergenze", icon: "cross", image: "/assets/lungomare-salerno.jpg" },
 ];
 
 // ---- Offerta partenza posticipata ----

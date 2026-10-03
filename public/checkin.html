@@ -5,24 +5,24 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Check-in / Check-out · A Casa di Marco</title>
-<meta content="#193c50" name="theme-color"/>
+<meta content="#22331f" name="theme-color"/>
 <link href="assets/icon-192.png" rel="apple-touch-icon"/>
 <meta content="yes" name="apple-mobile-web-app-capable"/>
 <meta content="Casa di Marco" name="apple-mobile-web-app-title"/>
 <meta content="default" name="apple-mobile-web-app-status-bar-style"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Pacifico&amp;family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&amp;family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <style>
     :root {
-      --ottanio:#0f7f83;
-      --ottanio-dark:#075f63;
-      --ottanio-soft:#dff3f2;
+      --ottanio:#3a5a40;
+      --ottanio-dark:#22331f;
+      --ottanio-soft:#e7ede3;
       --white:#fff;
-      --milk:#fbfbf8;
-      --text:#263238;
-      --muted:#6f7d80;
-      --shadow:0 18px 50px rgba(0,70,75,.20);
+      --milk:#f6f4ec;
+      --text:#2b3327;
+      --muted:#5f6a5b;
+      --shadow:0 18px 50px rgba(34,51,31,.20);
       --radius:28px;
     }
 
@@ -52,7 +52,7 @@
     }
 
     h1,h2,h3 {
-      font-family:'Pacifico',cursive;
+      font-family:'Fraunces',Georgia,serif;
       font-weight:400;
       color:var(--ottanio-dark);
     }
@@ -60,7 +60,7 @@
     .page-hero {
       min-height:38vh;
       background:
-        linear-gradient(180deg, rgba(0,80,85,.25), rgba(0,80,85,.55)),
+        linear-gradient(180deg, rgba(34,51,31,.25), rgba(34,51,31,.55)),
         url("assets/garden-main.jpg") center/cover no-repeat;
       color:#fff;
       display:flex;
@@ -130,7 +130,7 @@
     }
 
     .note {
-      background:#fff8e8;
+      background:#f7f2e2;
       border-left:5px solid var(--ottanio);
       border-radius:16px;
       padding:14px 16px;
@@ -155,7 +155,7 @@
       font-size:16px;
       font-weight:700;
       cursor:pointer;
-      box-shadow:0 8px 22px rgba(0, 90, 95, .16);
+      box-shadow:0 8px 22px rgba(34,51,31, .16);
       list-style:none;
     }
 
@@ -202,7 +202,7 @@
       overflow: hidden;
       transition: max-height 0.4s ease, margin-top 0.4s ease;
       background: var(--ottanio-soft);
-      border: 1px solid rgba(15,127,131,.18);
+      border: 1px solid rgba(58,90,64,.18);
       border-radius: 16px;
       padding: 0 16px;
       margin-bottom: 8px;
@@ -211,7 +211,7 @@
 
     .checklist-intro {
       margin-top:22px;
-      background:#fff8e8;
+      background:#f7f2e2;
       border-left:5px solid var(--ottanio);
       border-radius:18px;
       padding:16px;
@@ -238,7 +238,7 @@
       align-items:flex-start;
       gap:12px;
       background:var(--ottanio-soft);
-      border:1px solid rgba(15,127,131,.16);
+      border:1px solid rgba(58,90,64,.16);
       border-radius:18px;
       padding:14px 16px;
       cursor:pointer;
@@ -247,7 +247,7 @@
 
     .check-item:hover {
       transform:translateY(-1px);
-      box-shadow:0 8px 18px rgba(0,80,85,.10);
+      box-shadow:0 8px 18px rgba(34,51,31,.10);
     }
 
     .check-item input {
@@ -292,7 +292,7 @@
     .check-progress {
       margin-top:14px;
       background:#fff;
-      border:1px solid rgba(15,127,131,.18);
+      border:1px solid rgba(58,90,64,.18);
       border-radius:18px;
       padding:13px 15px;
       color:var(--ottanio-dark);
@@ -317,7 +317,7 @@
     }
 
     .check-progress-fill.done {
-      background: #2e9e6b;
+      background: #3a5a40;
     }
 
     .check-progress-text {
@@ -326,7 +326,7 @@
 
     .final-reminder {
       margin-top:16px;
-      background:#fff8e8;
+      background:#f7f2e2;
       border-radius:18px;
       padding:15px;
       font-size:15px;
@@ -408,15 +408,15 @@
     .check-complete-message {
       display: none;
       margin-top: 16px;
-      background: #dff3f2;
-      border: 1px solid rgba(15,127,131,.18);
+      background: #e7ede3;
+      border: 1px solid rgba(58,90,64,.18);
       border-left: 6px solid var(--ottanio);
       border-radius: 18px;
       padding: 16px;
       color: var(--ottanio-dark);
       font-weight: 700;
       text-align: center;
-      box-shadow: 0 10px 24px rgba(0,80,85,.10);
+      box-shadow: 0 10px 24px rgba(34,51,31,.10);
     }
 
     .check-complete-message.show {
@@ -439,7 +439,7 @@
     }
 
     .checkin-choice-btn {
-      border: 2px solid rgba(15,127,131,.22);
+      border: 2px solid rgba(58,90,64,.22);
       background: #fff;
       border-radius: 20px;
       padding: 18px 14px;
@@ -460,7 +460,7 @@
 
     .checkin-choice-btn:hover {
       border-color: var(--ottanio);
-      box-shadow: 0 6px 18px rgba(0,80,85,.12);
+      box-shadow: 0 6px 18px rgba(34,51,31,.12);
       transform: translateY(-1px);
     }
 
@@ -518,7 +518,7 @@
       gap: 4px;
       margin-top: 14px;
       padding: 10px;
-      border: 1px solid rgba(15,127,131,.18);
+      border: 1px solid rgba(58,90,64,.18);
       border-radius: 999px;
       background: #fff;
       color: var(--ottanio-dark);
@@ -555,7 +555,7 @@
 
     .key-section {
       margin-top: 18px;
-      border-top: 2px dashed rgba(15,127,131,.25);
+      border-top: 2px dashed rgba(58,90,64,.25);
       padding-top: 18px;
     }
 
@@ -574,7 +574,7 @@
       margin: 0 auto 14px auto;
       display: block;
       object-fit: contain;
-      background: #f7f7f2;
+      background: #f6f4ec;
     }
 
     @media (max-width:720px) {
@@ -690,7 +690,7 @@
       width: 28px;
       height: 28px;
       border-radius: 50%;
-      background: rgba(15, 127, 131, 0.85);
+      background: rgba(58,90,64, 0.85);
       color: #fff;
       display: none;
       align-items: center;
@@ -698,7 +698,7 @@
       font-size: 18px;
       line-height: 1;
       z-index: 999;
-      box-shadow: 0 8px 18px rgba(0, 70, 75, .22);
+      box-shadow: 0 8px 18px rgba(34,51,31, .22);
       animation: scrollHintMove 1.4s infinite;
     }
 
@@ -850,6 +850,7 @@
 </div>
 <ul class="info-list">
 <li data-de-html="Der Check-out muss &lt;strong&gt;bis 10:00 Uhr&lt;/strong&gt; erfolgen, sofern nichts anderes vereinbart ist." data-en-html="Check-out must be completed &lt;strong&gt;by 10:00 AM&lt;/strong&gt;, unless otherwise agreed." data-es-html="El check-out debe realizarse &lt;strong&gt;antes de las 10:00&lt;/strong&gt;, salvo acuerdo previo." data-fr-html="Le check-out doit être effectué &lt;strong&gt;avant 10h00&lt;/strong&gt;, sauf accord préalable." data-it-html="Il check-out deve essere effettuato &lt;strong&gt;entro le ore 10:00&lt;/strong&gt;, salvo diversi accordi.">Il check-out deve essere effettuato <strong>entro le ore 10:00</strong>, salvo diversi accordi.</li>
+<li data-de-html="&lt;strong&gt;Toleranz von 15 Minuten:&lt;/strong&gt; ab der 16. Minute einer nicht vereinbarten Verspätung werden die ersten 20 € der ersten Stunde von der Kaution einbehalten." data-en-html="&lt;strong&gt;15-minute grace period:&lt;/strong&gt; from the 16th minute of an unagreed delay, the first €20 of the first hour are deducted from the security deposit." data-es-html="&lt;strong&gt;Período de gracia de 15 minutos:&lt;/strong&gt; a partir del minuto 16 de un retraso no acordado se retienen los primeros 20 € de la primera hora del depósito de garantía." data-fr-html="&lt;strong&gt;Délai de grâce de 15 minutes :&lt;/strong&gt; à partir de la 16e minute de retard non convenu, les premiers 20 € de la première heure sont retenus sur le dépôt de garantie." data-it-html="&lt;strong&gt;Tolleranza di 15 minuti:&lt;/strong&gt; dal 16° minuto di ritardo non concordato si applicano i primi 20 € della prima ora, trattenuti dal deposito cauzionale."><strong>Tolleranza di 15 minuti:</strong> dal 16° minuto di ritardo non concordato si applicano i primi 20 € della prima ora, trattenuti dal deposito cauzionale.</li>
 <li data-de-html="Prüft, dass &lt;strong&gt;Lichter, Wasserhähne, Klimaanlage und Heizkörper&lt;/strong&gt; ausgeschaltet sind." data-en-html="Make sure &lt;strong&gt;lights, taps, air conditioning and radiators&lt;/strong&gt; are turned off." data-es-html="Comprobad que estén apagados &lt;strong&gt;luces, grifos, aire acondicionado y radiadores&lt;/strong&gt;." data-fr-html="Vérifiez que &lt;strong&gt;lumières, robinets, climatisation et radiateurs&lt;/strong&gt; sont éteints." data-it-html="Controllate che siano spenti &lt;strong&gt;luci, rubinetti, condizionatore e termosifoni&lt;/strong&gt;.">Controllate che siano spenti <strong>luci, rubinetti, condizionatore e termosifoni</strong>.</li>
 <li data-de="Benutzte Handtücher nach Möglichkeit in den Wäschekorb legen." data-en="If possible, leave used towels in the laundry basket." data-es="Si es posible, dejar las toallas usadas en la cesta de ropa sucia." data-fr="Si possible, déposez les serviettes utilisées dans le panier à linge sale." data-it="Se possibile, lasciare gli asciugamani utilizzati nella cesta dei panni sporchi.">Se possibile, lasciare gli asciugamani utilizzati nella cesta dei panni sporchi.</li>
 <li class="checkout-waste-instructions" data-de="Bringt den Müll vor dem Check-out in die vorgesehenen gemeinschaftlichen Mülltonnen und beachtet die Mülltrennung und Entsorgungshinweise. Lasst ihn nicht in den Tonnen im Haus oder im Garten. Falls ihr ihn nicht zu den gemeinschaftlichen Tonnen bringen könnt, stellt zumindest sicher, dass er korrekt getrennt ist, und informiert den Gastgeber. Bei Missachtung der Mülltrennung wird die in den Hausregeln vorgesehene Gebühr für die korrekte Entsorgung von bis zu 50 € von der Kaution einbehalten. In Salerno kann eine nicht regelkonforme Müllentsorgung zu kommunalen Bußgeldern führen." data-en="Before check-out, take rubbish to the designated communal bins, following waste sorting and disposal instructions. Do not leave it in the bins inside the house or in the garden. If you cannot take it to the communal bins, at least ensure it is correctly separated and inform the host. If waste sorting rules are not followed, the house-rule charge for correct disposal will apply, up to €50, deducted from the security deposit. Incorrect waste disposal in Salerno may result in municipal fines." data-es="Antes del check-out, llevad los residuos a los contenedores comunitarios correspondientes, respetando la separación y las indicaciones de depósito. No los dejéis en los cubos de la casa ni del jardín. Si no podéis llevarlos a los contenedores comunitarios, aseguraos al menos de que estén correctamente separados y avisad al anfitrión. Si no se respeta la separación, se aplicará el cargo previsto en las normas de la casa para su correcta eliminación, de hasta 50 €, descontado del depósito de garantía. En Salerno, el depósito incorrecto de residuos puede conllevar multas municipales." data-fr="Avant le départ, déposez les déchets dans les conteneurs collectifs prévus, en respectant le tri et les consignes de dépôt. Ne les laissez pas dans les poubelles de la maison ou du jardin. Si vous ne pouvez pas les apporter aux conteneurs collectifs, assurez-vous au moins qu’ils sont correctement triés et prévenez l’hôte. En cas de tri non respecté, les frais prévus par le règlement de la maison pour leur élimination correcte seront appliqués, jusqu’à 50 €, retenus sur le dépôt de garantie. À Salerne, un dépôt non conforme peut entraîner des amendes municipales." data-it="Prima del check-out, portate i rifiuti negli appositi bidoni condominiali, rispettando la raccolta differenziata e le indicazioni di conferimento. Non lasciateli nei bidoni in casa o in quelli del giardino. Se non riuscite a portarli nei bidoni condominiali, assicuratevi almeno che siano correttamente separati e avvisate l’host. In caso di raccolta differenziata non rispettata, sarà applicata la penale prevista dalle regole della casa per il corretto smaltimento, fino a 50 €, con trattenuta dal deposito cauzionale. A Salerno il conferimento non conforme alle regole può comportare sanzioni comunali.">Prima del check-out, portate i rifiuti negli appositi bidoni condominiali, rispettando la raccolta differenziata e le indicazioni di conferimento. Non lasciateli nei bidoni in casa o in quelli del giardino. Se non riuscite a portarli nei bidoni condominiali, assicuratevi almeno che siano correttamente separati e avvisate l’host. In caso di raccolta differenziata non rispettata, sarà applicata la penale prevista dalle regole della casa per il corretto smaltimento, fino a 50 €, con trattenuta dal deposito cauzionale. A Salerno il conferimento non conforme alle regole può comportare sanzioni comunali.</li>
@@ -876,7 +877,7 @@
 </div><a class="departure-message" data-de="Abreise über WhatsApp mitteilen" data-en="Let us know on WhatsApp" data-es="Avísanos por WhatsApp" data-fr="Prévenez-nous sur WhatsApp" data-it="Avvisa della partenza su WhatsApp" href="https://wa.me/393923064010" rel="noopener" target="_blank">Avvisa della partenza su WhatsApp</a>
 <div class="check-complete-message" data-de="🎉 Alles erledigt, danke! Gute Reise und wir hoffen, euch bald wieder bei A Casa di Marco zu sehen." data-en="🎉 All done, thank you! Have a safe trip and we hope to see you again soon at A Casa di Marco." data-es="🎉 ¡Todo listo, gracias! Buen viaje y esperamos volver a veros pronto en A Casa di Marco." data-fr="🎉 Tout est fait, merci ! Bon voyage et nous espérons vous revoir bientôt à A Casa di Marco." data-it="🎉 Tutto fatto, grazie! Buon viaggio e speriamo di rivedervi presto ad A Casa di Marco." id="check-complete-message">🎉 Tutto fatto, grazie! Buon viaggio e speriamo di rivedervi presto ad A Casa di Marco.</div>
 <div class="final-reminder" data-de-html="&lt;strong&gt;Danke!&lt;/strong&gt; Diese kleine Aufmerksamkeit hilft uns, das Haus bestmöglich für die nächsten Gäste vorzubereiten." data-en-html="&lt;strong&gt;Thank you!&lt;/strong&gt; This small attention helps us prepare the house in the best possible way for the next guests." data-es-html="&lt;strong&gt;¡Gracias!&lt;/strong&gt; Esta pequeña atención nos ayuda a preparar la casa de la mejor manera para los próximos huéspedes." data-fr-html="&lt;strong&gt;Merci !&lt;/strong&gt; Cette petite attention nous aide à préparer la maison au mieux pour les prochains hôtes." data-it-html="&lt;strong&gt;Grazie!&lt;/strong&gt; Questa piccola attenzione ci aiuta a preparare la casa al meglio per gli ospiti successivi."><strong>Grazie!</strong> Questa piccola attenzione ci aiuta a preparare la casa al meglio per gli ospiti successivi.</div>
-<details class="late-checkout"><summary data-de="Möchtet ihr später abreisen?" data-en="Need to leave later?" data-es="¿Necesitas salir más tarde?" data-fr="Besoin de partir plus tard ?" data-it="Hai bisogno di partire più tardi?">Hai bisogno di partire più tardi?</summary><div class="note" data-de="Bis 10:00 Uhr. Bei einer nicht vereinbarten Verspätung, die organisatorische Probleme oder zusätzliche Kosten verursacht, können 20 € je zusätzlicher Stunde berechnet und von der Kaution einbehalten werden." data-en="By 10:00. An unagreed delay causing organisational problems or additional costs may incur a charge of €20 per additional hour. The amount may be deducted from the security deposit." data-es="Antes de las 10:00. Un retraso no acordado que cause problemas organizativos o costes adicionales podrá conllevar un suplemento de 20 € por cada hora adicional, deducible del depósito de garantía." data-fr="Avant 10 h. Un retard non convenu entraînant des difficultés d’organisation ou des frais supplémentaires pourra donner lieu à un supplément de 20 € par heure supplémentaire, pouvant être retenu sur le dépôt de garantie." data-it="Entro le 10:00. In caso di ritardo non concordato che comporti problemi organizzativi o costi aggiuntivi, potrà essere richiesto un supplemento di 20 € per ogni ora aggiuntiva. L’importo potrà essere trattenuto dal deposito cauzionale.">Entro le 10:00. In caso di ritardo non concordato che comporti problemi organizzativi o costi aggiuntivi, potrà essere richiesto un supplemento di 20 € per ogni ora aggiuntiva. L’importo potrà essere trattenuto dal deposito cauzionale.</div></details></div>
+</div>
 </details>
 </section>
 </main>
@@ -993,7 +994,7 @@
       layer.className = 'confetti-layer';
       document.body.appendChild(layer);
 
-      var colors = ['#0f7f83', '#dff3f2', '#fff8e8', '#b08850', '#ff7a59', '#ffffff'];
+      var colors = ['#3a5a40', '#e7ede3', '#f7f2e2', '#caa75d', '#a35c3c', '#ffffff'];
 
       for (var i = 0; i < 85; i++) {
         var piece = document.createElement('span');

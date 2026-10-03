@@ -21,6 +21,7 @@ fetch('/api/guide?g='+encodeURIComponent(id),{cache:'no-store'}).then(function(r
  if(!data.stay)return;
  window.guideStay={name:data.stay.name,checkin:data.stay.checkin,checkout:data.stay.checkout};render();
  if(typeof window.updateCheckoutReminder==='function')window.updateCheckoutReminder();
+ if(typeof window.updateLateOfferBanner==='function')window.updateLateOfferBanner();
  if(data.stay.checkin&&data.stay.checkout){var today=new Date().toLocaleDateString('en-CA');var index=today>=data.stay.checkout?2:today>=data.stay.checkin?1:0;var btn=document.querySelector('[data-phase="'+index+'"]');if(btn)btn.click();}
  links();
 }).catch(function(){/* The general guide stays available when personalization cannot load. */});

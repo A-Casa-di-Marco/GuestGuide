@@ -29,9 +29,12 @@ function visit(){
   {transform:'translate('+(x+(right?-60:60))+'px,'+(y-60)+'px) scaleX('+flip+')',opacity:1,offset:.85},
   {transform:'translate('+finish+'px,'+(h*.18)+'px) scaleX('+flip+')',opacity:0}
  ].map(function(frame){frame.easing='ease-in-out';return frame;}),{duration:14000,easing:'linear',fill:'forwards'});
- function clean(){cancelAnimationFrame(raf);if(dialog){dialog.remove();dialog=null;}bird.remove();active=false;}
+ function clean(){cancelAnimationFrame(raf);window.removeEventListener('scroll',onScroll);if(dialog){dialog.remove();dialog=null;}bird.remove();active=false;}
  function tick(){var t=Number(anim.currentTime)||0;var next=t<3000?'flying':t<3640?'landing':t<10800?'perched':'flying';if(next!==state){bird.classList.remove('landing','perched');if(next!=='flying')bird.classList.add(next);state=next;}raf=requestAnimationFrame(tick);}
  tick();anim.onfinish=clean;
+ var lastY=window.scrollY;
+ function onScroll(){var d=Math.abs(window.scrollY-lastY);if(d<24)return;lastY=window.scrollY;if(dialog)return;var t=Number(anim.currentTime)||0;if(t>=3000&&t<10800)anim.currentTime=10800;}
+ window.addEventListener('scroll',onScroll,{passive:true});
  function dismiss(){if(dialog){dialog.close();dialog.remove();dialog=null;}bird.classList.remove('invitation-open');anim.play();bird.focus({preventScroll:true});}
  function story(){
   var lang=language();if(dialog){dialog.close();dialog.remove();dialog=null;}anim.cancel();clean();

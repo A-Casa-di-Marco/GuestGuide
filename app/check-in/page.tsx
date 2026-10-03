@@ -105,12 +105,15 @@ function selfSlides(lang: Lang): CheckinSlide[] {
       contain: true,
       bullets: [],
       sections: [
-        { title: tCheckin(checkin.remoteTitle, lang), bullets: bullets([checkin.remoteA, checkin.remoteB, checkin.remoteCD], lang) },
+        {
+          title: tCheckin(checkin.remoteTitle, lang),
+          bullets: bullets([checkin.remoteA, checkin.remoteB, checkin.remoteCD], lang),
+          imageAfter: { src: "/assets/serratura.jpeg", alt: "Serratura", contain: true },
+        },
         { title: tCheckin(checkin.longKeyTitle, lang), bullets: bullets([checkin.longKey1, checkin.longKey2], lang) },
         { title: tCheckin(checkin.otherKeyTitle, lang), bullets: bullets([checkin.otherKey1], lang) },
       ],
       note: tCheckin(checkin.keysNote, lang),
-      belowImages: [{ src: "/assets/serratura.jpeg", alt: "Serratura", contain: true }],
     },
   ];
 }
@@ -135,16 +138,6 @@ function CheckInInner() {
             className="flex min-h-[48px] w-full max-w-md items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-[15px] font-semibold text-primary-foreground no-underline"
           >
             <TCheckin k={checkin.mapsCta} lang={lang} />
-          </a>
-        </div>
-        <div className="mt-3 flex justify-center">
-          <a
-            href={WHATSAPP_ASJA}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full border border-border bg-card px-5 py-2 text-sm font-semibold text-card-foreground no-underline"
-          >
-            <TCheckin k={checkin.helpCta} lang={lang} />
           </a>
         </div>
 
@@ -178,6 +171,17 @@ function CheckInInner() {
               </span>
             </button>
           ))}
+        </div>
+
+        <div className="mt-4 flex justify-center">
+          <a
+            href={WHATSAPP_ASJA}
+            target="_blank"
+            rel="noreferrer"
+            className="flex min-h-[48px] w-full max-w-md items-center justify-center gap-2 rounded-full border border-border bg-card px-5 py-3 text-[15px] font-semibold text-card-foreground no-underline"
+          >
+            <TCheckin k={checkin.helpCta} lang={lang} />
+          </a>
         </div>
 
         {mode === "presenza" ? (

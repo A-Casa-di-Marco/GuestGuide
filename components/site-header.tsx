@@ -50,8 +50,17 @@ export function SiteHeader({ lang }: Props) {
       <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-2 px-3 py-2 md:flex-nowrap md:gap-4 md:px-6">
         <Link
           href={withLang("/", lang)}
-          className="mr-auto text-base font-semibold text-foreground no-underline md:text-lg"
+          className="mr-auto flex items-center gap-2 text-base font-semibold text-foreground no-underline md:text-lg"
         >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/assets/icon-192.png"
+            alt=""
+            aria-hidden="true"
+            width={28}
+            height={28}
+            className="h-7 w-7 rounded-full object-cover"
+          />
           {ui.brand[lang]}
         </Link>
 

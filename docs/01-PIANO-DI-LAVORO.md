@@ -100,3 +100,9 @@ pnpm dev
 - Dropdown trasparente: mancavano i token shadcn --popover/--ring/--input (bg-popover assente nel CSS). Aggiunti light+dark, verificato g-popover nel build.
 - Isole/colazione fuori scope .legacy-content: ora avvolte, stili applicati.
 - Home ridotta (hero senza badge, niente fasi/griglia/contatti/footer); check-in con titolo Check-in, ordine Maps->WhatsApp->scelte, presenza senza foto/nav singola, carosello con frecce laterali senza loop/peek, card chiavi con keybox sotto il testo, lightbox immagini con zoom, nota cassetta rimossa; footer rimosso ovunque; type-scale responsive mobile-first.
+
+## Fix UX 2 (feedback ospite)
+
+- Carosello: effetto slide senza peek (via creative con card dietro), frecce laterali in rilievo nascoste agli estremi, card 8 con serratura tra Telecomando e Chiave lunga, lightbox immagini con zoom, Maps e WhatsApp pari dimensioni con WhatsApp dopo le scelte.
+- Logo PWA icon-192 nel brand header + metadata manifest/theme-color/icone (favicon.svg non esisteva).
+- Home: card consigli-meteo sotto il meteo (sole/città/interni/vento x5 lingue, link luoghi+mangiare).

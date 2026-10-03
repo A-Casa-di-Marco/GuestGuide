@@ -2,11 +2,10 @@
 
 import React, { useState } from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
-import { A11y, EffectCreative, Keyboard, Pagination } from "swiper/modules";
+import { A11y, Keyboard, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper";
 import "swiper/css";
-import "swiper/css/effect-creative";
 import "swiper/css/pagination";
 import { cn } from "@/lib/utils";
 import { ui, type Lang } from "@/lib/i18n";
@@ -21,7 +20,7 @@ export type CheckinSlide = {
   contain?: boolean;
   belowImages?: { src: string; alt: string; contain?: boolean }[];
   bullets: string[];
-  sections?: { title: string; bullets: string[] }[];
+  sections?: { title: string; bullets: string[]; imageAfter?: { src: string; alt: string; contain?: boolean } }[];
   note?: string;
 };
 
@@ -107,17 +106,14 @@ export function CheckinCarousel({ slides, className, ariaLabel, prevLabel, nextL
       <Swiper
         onSwiper={setSwiper}
         onSlideChange={(s) => setIndex(s.realIndex ?? s.activeIndex)}
-        effect="creative"
         grabCursor={!single}
         allowTouchMove={!single}
-        centeredSlides={false}
         slidesPerView={1}
-        spaceBetween={16}
+        spaceBetween={0}
         loop={false}
         keyboard={{ enabled: true }}
         pagination={single ? false : { clickable: true }}
-        creativeEffect={{ prev: { shadow: true, translate: [0, 0, -400] }, next: { translate: ["100%", 0, 0] } }}
-        modules={[EffectCreative, Pagination, Keyboard, A11y]}
+        modules={[Pagination, Keyboard, A11y]}
         className="checkin-swiper"
       >
         {slides.map((slide) => (
@@ -152,6 +148,11 @@ export function CheckinCarousel({ slides, className, ariaLabel, prevLabel, nextL
                         />
                       ))}
                     </ul>
+                    {sec.imageAfter ? (
+                      <div className="mt-3 overflow-hidden rounded-xl">
+                        {imgButton(sec.imageAfter.src, sec.imageAfter.alt, sec.imageAfter.contain ?? true)}
+                      </div>
+                    ) : null}
                   </div>
                 ))}
                 {slide.note ? (

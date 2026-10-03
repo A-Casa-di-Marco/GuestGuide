@@ -79,13 +79,12 @@ ${MARCO_KB}`;
 }
 
 export const MARCO_UI = {
-  title: { it: "Marco", en: "Marco", es: "Marco", fr: "Marco", de: "Marco" },
-  subtitle: {
-    it: "Il pettirosso della guida",
-    en: "Your guide robin",
-    es: "El petirrojo de la guía",
-    fr: "Le rouge-gorge du guide",
-    de: "Das Rotkehlchen des Guides",
+  title: {
+    it: "Marco il tuo pettirosso guida",
+    en: "Marco, your guide robin",
+    es: "Marco, tu petirrojo guía",
+    fr: "Marco, ton rouge-gorge guide",
+    de: "Marco, dein Guide-Rotkehlchen",
   },
   greeting: {
     it: "Ciao! Sono Marco 🐦 Chiedimi pure: check-in, check-out, casa, cosa visitare e dove mangiare.",

@@ -150,7 +150,6 @@ function ChatPanel({ lang, onClose }: { lang: Lang; onClose: () => void }) {
           />
           <div>
             <h3 className="font-serif text-base text-foreground">{MARCO_UI.title[lang]}</h3>
-            <p className="m-0 text-xs text-muted-foreground">{MARCO_UI.subtitle[lang]}</p>
           </div>
         </div>
         <button
@@ -238,7 +237,7 @@ export function MarcoChat() {
               transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/assets/robin-mascot.png" alt="" aria-hidden="true" className="h-full w-full object-cover" />
+              <img src="/assets/robin-perched.png" alt="" aria-hidden="true" className="h-full w-full object-cover" />
             </motion.span>
           </motion.button>
         )}

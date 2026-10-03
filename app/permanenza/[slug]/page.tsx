@@ -2,7 +2,6 @@ import { Suspense } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SiteHeader } from "@/components/site-header";
-import { SiteFooter } from "@/components/site-footer";
 import { LanguageSync } from "@/components/language-sync";
 import { LegacyContent } from "@/components/legacy-content";
 import { ColazioneForm } from "@/components/colazione-form";
@@ -100,14 +99,14 @@ export default async function LegacyPage({
         <LanguageSync />
       </Suspense>
       <SiteHeader lang={lang} />
-      <main className="mx-auto max-w-4xl px-4 pb-16 pt-6">
+      <main className="mx-auto max-w-4xl px-4 pb-16 pt-6 sm:px-6">
         <Link
           href={withLang("/permanenza", lang)}
           className="mb-4 inline-block py-2 text-[15px] font-semibold text-primary no-underline"
         >
           {BACK[lang]}
         </Link>
-        <h1 className="font-serif text-4xl text-foreground">{mod.title[lang]}</h1>
+        <h1 className="font-serif text-3xl text-foreground sm:text-4xl">{mod.title[lang]}</h1>
         <div className="mt-4">
           <LegacyContent html={mod.html[lang]} lang={lang} />
         </div>
@@ -132,7 +131,6 @@ export default async function LegacyPage({
           </div>
         ) : null}
       </main>
-      <SiteFooter lang={lang} />
     </>
   );
 }

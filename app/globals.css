@@ -3,6 +3,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
+  color-scheme: light;
   --background: #f6f4ec;
   --foreground: #2b3327;
   --card: #ffffff;
@@ -15,7 +16,11 @@
   --muted-foreground: #3a5a40;
   --accent: #f7f2e2;
   --accent-foreground: #22331f;
+  --popover: #ffffff;
+  --popover-foreground: #2b3327;
   --border: rgba(58, 90, 64, 0.18);
+  --input: rgba(58, 90, 64, 0.28);
+  --ring: #3a5a40;
   --focus: #caa75d;
   --destructive: #9f2f29;
   --destructive-foreground: #ffffff;
@@ -25,6 +30,7 @@
 }
 
 .dark {
+  color-scheme: dark;
   --background: #121a11;
   --foreground: #f6f4ec;
   --card: #1c261b;
@@ -37,7 +43,11 @@
   --muted-foreground: #cfd8c9;
   --accent: #2a2a1e;
   --accent-foreground: #f6f4ec;
+  --popover: #1c261b;
+  --popover-foreground: #f6f4ec;
   --border: rgba(231, 237, 227, 0.18);
+  --input: rgba(231, 237, 227, 0.3);
+  --ring: #9db89f;
   --focus: #caa75d;
   --destructive: #e08a82;
   --destructive-foreground: #121a11;
@@ -60,6 +70,10 @@
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
   --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
   --color-destructive: var(--destructive);
   --color-warning: var(--warning);
   --color-warning-accent: var(--warning-accent);
@@ -68,37 +82,39 @@
   --font-serif: "Fraunces", Georgia, serif;
 }
 
-* {
-  box-sizing: border-box;
-}
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
 
-body {
-  margin: 0;
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans);
-  font-size: 16px;
-  line-height: 1.65;
-  -webkit-font-smoothing: antialiased;
-}
+  body {
+    margin: 0;
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
 
-h1,
-h2,
-h3 {
-  font-family: var(--font-serif);
-  font-weight: 400;
-  line-height: 1.2;
-  letter-spacing: -0.025em;
-}
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+  }
 
-a {
-  color: inherit;
-}
+  a {
+    color: inherit;
+  }
 
-:focus-visible {
-  outline: 3px solid var(--focus);
-  outline-offset: 2px;
-  border-radius: 8px;
+  :focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+    border-radius: 8px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

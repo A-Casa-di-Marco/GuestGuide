@@ -80,6 +80,36 @@ export const ui = {
     fr: "<strong>iPhone :</strong> ouvrez le site avec Safari, touchez Partager puis “Ajouter à l’écran d’accueil”.",
     de: "<strong>iPhone:</strong> öffnet die Website mit Safari, tippt auf Teilen und wählt „Zum Startbildschirm hinzufügen“.",
   },
+  enlargeImage: {
+    it: "Ingrandisci immagine",
+    en: "Enlarge image",
+    es: "Ampliar imagen",
+    fr: "Agrandir l’image",
+    de: "Bild vergrößern",
+  },
+  closeViewer: {
+    it: "Chiudi visualizzazione",
+    en: "Close viewer",
+    es: "Cerrar vista",
+    fr: "Fermer la vue",
+    de: "Ansicht schließen",
+  },
+  zoomIn: { it: "Ingrandisci", en: "Zoom in", es: "Acercar", fr: "Zoom avant", de: "Vergrößern" },
+  zoomOut: { it: "Riduci", en: "Zoom out", es: "Alejar", fr: "Zoom arrière", de: "Verkleinern" },
+  previousSlide: {
+    it: "Card precedente",
+    en: "Previous card",
+    es: "Tarjeta anterior",
+    fr: "Carte précédente",
+    de: "Vorherige Karte",
+  },
+  nextSlide: {
+    it: "Card successiva",
+    en: "Next card",
+    es: "Tarjeta siguiente",
+    fr: "Carte suivante",
+    de: "Nächste Karte",
+  },
 } as const;
 
 export type UiKey = keyof typeof ui;

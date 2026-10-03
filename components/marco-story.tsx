@@ -6,11 +6,11 @@ import { THome } from "@/components/t-home";
 export function MarcoStory({ lang }: { lang: Lang }) {
   return (
     <section aria-labelledby="chi-marco" className="mt-8 border-t border-border pt-8">
-      <h2 id="chi-marco" className="font-serif text-3xl text-foreground">
+      <h2 id="chi-marco" className="font-serif text-2xl text-foreground sm:text-3xl">
         <THome k={marco.title} lang={lang} />
       </h2>
       <div className="mt-4 grid gap-6 md:grid-cols-[1.45fr_0.85fr]">
-        <div className="grid gap-4 text-[15px] leading-8 text-foreground">
+        <div className="grid gap-4 text-sm leading-7 text-foreground sm:text-[15px] sm:leading-8">
           <p className="m-0 font-semibold">
             <THome k={marco.greeting} lang={lang} />
           </p>

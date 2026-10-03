@@ -93,3 +93,10 @@ pnpm dev
 - CSS build (dist/client/_next/static/css): varianti .dark x142, token warning, prefers-reduced-motion, focus-visible oro, font Fraunces presenti.
 - Nota: i check PowerShell su stringhe non-ASCII danno falsi FAIL per encoding console (mojibake); usare lo script Python per verifiche byte-exact.
 - Resta manuale (browser fisico): viewport 375/768/1280, toggle tema, tastiera/screen reader, Lighthouse >=90.
+
+## Fix UX (feedback ospite)
+
+- Causa scritte nere su pulsanti scuri: {color:inherit} non in @layer batteva le utility Tailwind sui link-pulsante. Fix: stili base in @layer base (le utility ora vincono).
+- Dropdown trasparente: mancavano i token shadcn --popover/--ring/--input (bg-popover assente nel CSS). Aggiunti light+dark, verificato g-popover nel build.
+- Isole/colazione fuori scope .legacy-content: ora avvolte, stili applicati.
+- Home ridotta (hero senza badge, niente fasi/griglia/contatti/footer); check-in con titolo Check-in, ordine Maps->WhatsApp->scelte, presenza senza foto/nav singola, carosello con frecce laterali senza loop/peek, card chiavi con keybox sotto il testo, lightbox immagini con zoom, nota cassetta rimossa; footer rimosso ovunque; type-scale responsive mobile-first.

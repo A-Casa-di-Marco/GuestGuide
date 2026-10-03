@@ -78,7 +78,7 @@ export function LuoghiIsland({ lang }: { lang: Lang }) {
   };
 
   return (
-    <>
+    <div className="legacy-content">
       <div className="place-choice-grid" id="place-choice-grid">
         {placeCategories.map((c) => (
           <button
@@ -114,6 +114,6 @@ export function LuoghiIsland({ lang }: { lang: Lang }) {
           </div>
         ) : null}
       </div>
-    </>
+    </div>
   );
 }

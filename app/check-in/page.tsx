@@ -4,7 +4,6 @@ import { Suspense, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { SiteHeader } from "@/components/site-header";
 import { CheckinCarousel, type CheckinSlide } from "@/components/checkin-carousel";
-import { SiteFooter } from "@/components/site-footer";
 import { LanguageSync } from "@/components/language-sync";
 import { MAPS_URL, PARKING_IMG_BY_LANG, WHATSAPP_ASJA } from "@/lib/site";
 import { checkin, tCheckin } from "@/lib/content-checkin";
@@ -40,8 +39,8 @@ function selfSlides(lang: Lang): CheckinSlide[] {
       title: tCheckin(checkin.s1Title, lang),
       image: "/assets/cancello-check-in.jpg",
       imageAlt: tCheckin(checkin.inBadgeGate, lang),
-      extraImages: [{ src: "/assets/keyboxcancello.jpeg", alt: "KeyBox", contain: true }],
       bullets: [tCheckin(checkin.s1Lead, lang)],
+      belowImages: [{ src: "/assets/keyboxcancello.jpeg", alt: "KeyBox", contain: true }],
     },
     {
       id: "keybox",
@@ -104,7 +103,6 @@ function selfSlides(lang: Lang): CheckinSlide[] {
       image: "/assets/manuale-chiavi.jpg",
       imageAlt: tCheckin(checkin.keysTitle, lang),
       contain: true,
-      extraImages: [{ src: "/assets/serratura.jpeg", alt: "Serratura", contain: true }],
       bullets: [],
       sections: [
         { title: tCheckin(checkin.remoteTitle, lang), bullets: bullets([checkin.remoteA, checkin.remoteB, checkin.remoteCD], lang) },
@@ -112,6 +110,7 @@ function selfSlides(lang: Lang): CheckinSlide[] {
         { title: tCheckin(checkin.otherKeyTitle, lang), bullets: bullets([checkin.otherKey1], lang) },
       ],
       note: tCheckin(checkin.keysNote, lang),
+      belowImages: [{ src: "/assets/serratura.jpeg", alt: "Serratura", contain: true }],
     },
   ];
 }
@@ -125,30 +124,31 @@ function CheckInInner() {
   return (
     <>
       <SiteHeader lang={lang} />
-      <main className="mx-auto max-w-4xl px-4 pb-16 pt-6">
-        <h1 className="font-serif text-4xl text-foreground">
-          <TCheckin k={checkin.title} lang={lang} />
-        </h1>
-        <a
-          href={WHATSAPP_ASJA}
-          target="_blank"
-          rel="noreferrer"
-          className="mt-3 inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full border border-border bg-card px-5 py-2 text-sm font-semibold text-card-foreground no-underline"
-        >
-          <TCheckin k={checkin.helpCta} lang={lang} />
-        </a>
-        <div className="mt-4 text-center">
+      <main className="mx-auto max-w-4xl px-4 pb-16 pt-6 sm:px-6">
+        <h1 className="text-center font-serif text-3xl text-foreground sm:text-4xl">Check-in</h1>
+
+        <div className="mt-4 flex justify-center">
           <a
             href={MAPS_URL}
             target="_blank"
             rel="noreferrer"
-            className="mx-auto flex min-h-[48px] max-w-md items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-[15px] font-semibold text-primary-foreground no-underline"
+            className="flex min-h-[48px] w-full max-w-md items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-[15px] font-semibold text-primary-foreground no-underline"
           >
             <TCheckin k={checkin.mapsCta} lang={lang} />
           </a>
         </div>
+        <div className="mt-3 flex justify-center">
+          <a
+            href={WHATSAPP_ASJA}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full border border-border bg-card px-5 py-2 text-sm font-semibold text-card-foreground no-underline"
+          >
+            <TCheckin k={checkin.helpCta} lang={lang} />
+          </a>
+        </div>
 
-        <div className="mt-4 grid gap-3 sm:grid-cols-2">
+        <div className="mx-auto mt-4 grid max-w-2xl gap-3 sm:grid-cols-2">
           {(
             [
               { id: "presenza", icon: "🤝", title: checkin.choiceInTitle, desc: checkin.choiceInDesc },
@@ -161,7 +161,7 @@ function CheckInInner() {
               onClick={() => setMode(c.id)}
               aria-pressed={mode === c.id}
               className={cn(
-                "rounded-[12px] border p-5 text-left",
+                "rounded-[12px] border p-5 text-center sm:text-left",
                 mode === c.id
                   ? "border-primary bg-primary text-primary-foreground"
                   : "border-border bg-card text-card-foreground",
@@ -182,39 +182,25 @@ function CheckInInner() {
 
         {mode === "presenza" ? (
           <div className="mt-6">
-            <h2 className="font-serif text-2xl text-foreground">
+            <h2 className="text-center font-serif text-xl text-foreground sm:text-left sm:text-2xl">
               <TCheckin k={checkin.inSection1} lang={lang} />
             </h2>
             <ul className="mt-3 grid list-none gap-3 p-0">
               {[checkin.inB1, checkin.inB2].map((k) => (
                 <li
                   key={k}
-                  className="rounded-[18px] bg-secondary px-4 py-3 text-secondary-foreground"
+                  className="rounded-[18px] bg-secondary px-4 py-3 text-[15px] text-secondary-foreground"
                   dangerouslySetInnerHTML={{ __html: tCheckin(k, lang) }}
                 />
               ))}
             </ul>
-            <figure className="relative m-0 mt-4 overflow-hidden rounded-[22px]">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/assets/cancello-check-in.jpg"
-                alt={tCheckin(checkin.inBadgeGate, lang)}
-                className="w-full rounded-[22px]"
-                loading="lazy"
-              />
-              <figcaption className="absolute bottom-4 left-4 rounded-full bg-primary px-3.5 py-1.5 text-xs font-bold text-primary-foreground">
-                <TCheckin k={checkin.inBadgeGate} lang={lang} />
-              </figcaption>
-              <span className="absolute bottom-4 right-4 rounded-full bg-primary px-3.5 py-1.5 text-xs font-bold text-primary-foreground">
-                <TCheckin k={checkin.inBadgeMailbox} lang={lang} />
-              </span>
-            </figure>
             <div className="mt-6">
               <CheckinCarousel
                 slides={slides}
                 ariaLabel={tCheckin(checkin.choiceInTitle, lang)}
                 prevLabel={tCheckin(checkin.prev, lang)}
                 nextLabel={tCheckin(checkin.next, lang)}
+                lang={lang}
               />
             </div>
           </div>
@@ -226,15 +212,11 @@ function CheckInInner() {
               ariaLabel={tCheckin(checkin.selfTitle, lang)}
               prevLabel={tCheckin(checkin.prev, lang)}
               nextLabel={tCheckin(checkin.next, lang)}
-            />
-            <p
-              className="mt-4 rounded-[16px] border-l-[5px] border-l-primary bg-accent p-4 text-[15px] text-accent-foreground"
-              dangerouslySetInnerHTML={{ __html: tCheckin(checkin.keysMailboxNote, lang) }}
+              lang={lang}
             />
           </div>
         ) : null}
       </main>
-      <SiteFooter lang={lang} />
     </>
   );
 }

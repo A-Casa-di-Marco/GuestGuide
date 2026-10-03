@@ -1,5 +1,4 @@
 import { SiteHeader } from "@/components/site-header";
-import { SiteFooter } from "@/components/site-footer";
 import { guideTiles } from "@/lib/content-home";
 import { resolveLang } from "@/lib/lang-server";
 import { withLang } from "@/lib/lang-server";
@@ -33,8 +32,8 @@ export default async function Permanenza({
   return (
     <>
       <SiteHeader lang={lang} />
-      <main className="mx-auto max-w-6xl px-4 pb-16 pt-6">
-        <h1 className="font-serif text-4xl text-foreground">Permanenza</h1>
+      <main className="mx-auto max-w-6xl px-4 pb-16 pt-6 sm:px-6">
+        <h1 className="font-serif text-3xl text-foreground sm:text-4xl">Permanenza</h1>
         <p className="mt-2 max-w-3xl text-muted-foreground">
           Guida della casa e cosa visitare in zona. Le guide complete restano nelle pagine
           originali, senza modifiche ai contenuti.
@@ -59,7 +58,6 @@ export default async function Permanenza({
           ))}
         </div>
       </main>
-      <SiteFooter lang={lang} />
     </>
   );
 }

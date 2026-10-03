@@ -50,9 +50,14 @@
 - [x] Hub + griglia home puntano alle nuove rotte (9 voci); `itinerario.html` resta linkato legacy.
 - [x] Verifica: 9 slug × IT + spot EN, form, moka, tabelle, assenza `data-*`/JS legacy nel markup; `tsc`/`eslint`/`validate-tokens` verdi, `build` verde con rotta `/permanenza/:slug`.
 
-## Fase 6 — Port nativo planner itinerario (deferito, da pianificare)
+## Fase 6 — Port nativo planner itinerario ✅ completata e verificata
 
-- `public/itinerario.html` (67KB di logica: questionario → pool piani → raccomandazioni cibo/luoghi → tips) resta servito legacy e linkato da hub/griglia. Il port richiede reimplementazione del motore + QA dedicata: stimare a parte, non in questa PR.
+- [x] Dati verbatim estratti (`build-experience-data.mjs`: plans/planZone/zoneOrder/zoneName/guideFood/guidePlaces/ui/labels, validati con eval JS) → `lib/legacy/itinerario-data.generated.ts`.
+- [x] Motore portato in `lib/itinerario-engine.ts` (stesse regole: pool, zone, mood costieri, fallback, raccomandazioni, tips, summary, copy-text). **Parità provata**: 60/60 confronti legacy-vs-port su 3 set × 5 lingue identici, salvo i `\n` del testo copiato.
+- [x] Deviazione documentata (bugfix, non cambio contenuti): nel legacy il testo "Copia itinerario" conteneva `\n` letterali (doppio escape nel sorgente) invece di a-capo; il port produce a-capo veri. Parole identiche.
+- [x] `ItinerarioIsland`: form statico verbatim + submit/reset/copy come legacy, link reccomandazioni alle nuove rotte.
+- [x] Verifica: rotta IT/EN/DE, form, risultati, assenza JS legacy; `tsc`/`eslint`/`validate-tokens` verdi, `build` verde.
+- [x] Tutte le 10 pagine Permanenza ora sono rotte Next (`/permanenza/<slug>`); `public/*.html` restano come fallback.
 
 ## Fase 5 — Hardening & CI/CD 🔄 automatica verde, resta QA visiva manuale
 

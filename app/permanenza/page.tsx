@@ -18,7 +18,6 @@ const DESCRIPTIONS: Record<string, string> = {
   "/permanenza/itinerario": "Costiera e dintorni",
   "/permanenza/colazione": "Bar e pasticcerie",
   "/permanenza/farmacie-emergenze": "Numeri e punti utili",
-  "itinerario.html": "Costiera e dintorni",
 };
 
 export default async function Permanenza({

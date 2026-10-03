@@ -8,6 +8,7 @@ import { LegacyContent } from "@/components/legacy-content";
 import { ColazioneForm } from "@/components/colazione-form";
 import { LuoghiIsland } from "@/components/luoghi-island";
 import { MangiareIsland } from "@/components/mangiare-island";
+import { ItinerarioIsland } from "@/components/itinerario-island";
 import { resolveLang, withLang } from "@/lib/lang-server";
 import type { Lang } from "@/lib/i18n";
 import "../legacy-compat.css";
@@ -24,6 +25,7 @@ const SLUGS = [
   "colazione",
   "luoghi",
   "mangiare",
+  "itinerario",
 ] as const;
 
 type Slug = (typeof SLUGS)[number];
@@ -56,6 +58,8 @@ async function load(slug: Slug) {
       return import("@/lib/legacy/luoghi.generated");
     case "mangiare":
       return import("@/lib/legacy/mangiare.generated");
+    case "itinerario":
+      return import("@/lib/legacy/itinerario.generated");
   }
 }
 
@@ -120,6 +124,11 @@ export default async function LegacyPage({
         {slug === "mangiare" ? (
           <div className="mt-2">
             <MangiareIsland lang={lang} />
+          </div>
+        ) : null}
+        {slug === "itinerario" ? (
+          <div className="mt-2">
+            <ItinerarioIsland lang={lang} />
           </div>
         ) : null}
       </main>

@@ -74,7 +74,7 @@ export const guideTiles: GuideTile[] = [
   { titleKey: "index_063", descKey: "index_064", href: "/permanenza/spesa", icon: "basket" },
   { titleKey: "index_065", descKey: "index_066", href: "/permanenza/colazione", icon: "coffee" },
   { titleKey: "index_067", descKey: "index_068", href: "/permanenza/parcheggio", icon: "parking" },
-  { titleKey: "index_069", descKey: "index_070", href: "itinerario.html", icon: "route" },
+  { titleKey: "index_069", descKey: "index_070", href: "/permanenza/itinerario", icon: "route" },
   { titleKey: "index_071", descKey: "index_072", href: "/permanenza/farmacie-emergenze", icon: "cross" },
 ];
 

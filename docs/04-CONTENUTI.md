@@ -76,3 +76,4 @@ ode scripts/build-content.mjs legge public/index.html (ora index-legacy.html) e 
 - Dinamiche: scripts/build-experience-data.mjs estrae placeCategories+labels (luoghi) e categories+labels+placesWithTip+pulsanti+back-label (mangiare), validati con eval JS. Dati colazione in lib/legacy/colazione-data.generated.ts.
 - Render: rotta pp/permanenza/[slug] + LegacyContent + legacy-compat.css (solo token) + isole LuoghiIsland/MangiareIsland + ColazioneForm. File legacy in public/ intatti come fallback.
 - Differita: itinerario.html (planner JS 67KB) resta legacy -> Fase 6.
+- Itinerario: dati + motore portati (itinerario-data.generated.ts, lib/itinerario-engine.ts), parita 60/60; fix a-capo nel testo copiato (bug legacy: sequenze \n letterali).

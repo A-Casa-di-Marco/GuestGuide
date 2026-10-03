@@ -6,7 +6,7 @@
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 
 const LANGS = ["it", "en", "es", "fr", "de"];
-const SLUGS = ["manuale", "regole", "trasporti", "spesa", "parcheggio", "farmacie-emergenze", "colazione", "luoghi", "mangiare"];
+const SLUGS = ["manuale", "regole", "trasporti", "spesa", "parcheggio", "farmacie-emergenze", "colazione", "luoghi", "mangiare", "itinerario"];
 // regioni dinamiche rese da isole React (il resto del <main> è chrome verbatim)
 const STRIP_IDS = {
   colazione: ["orderFormArea"],

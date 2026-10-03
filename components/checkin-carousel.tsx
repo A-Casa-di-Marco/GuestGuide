@@ -20,7 +20,12 @@ export type CheckinSlide = {
   contain?: boolean;
   belowImages?: { src: string; alt: string; contain?: boolean }[];
   bullets: string[];
-  sections?: { title: string; bullets: string[]; imageAfter?: { src: string; alt: string; contain?: boolean } }[];
+  sections?: {
+    title: string;
+    bullets: string[];
+    imageBefore?: { src: string; alt: string; contain?: boolean };
+    imageAfter?: { src: string; alt: string; contain?: boolean };
+  }[];
   note?: string;
 };
 
@@ -173,6 +178,11 @@ export function CheckinCarousel({ slides, className, ariaLabel, prevLabel, nextL
                 </ul>
                 {slide.sections?.map((sec) => (
                   <div key={sec.title} className="mt-4">
+                    {sec.imageBefore ? (
+                      <div className="mb-3 overflow-hidden rounded-xl">
+                        {imgButton(sec.imageBefore.src, sec.imageBefore.alt, sec.imageBefore.contain ?? true)}
+                      </div>
+                    ) : null}
                     <h4 className="text-[18px] font-bold text-card-foreground">{sec.title}</h4>
                     <ul className="mt-2 grid list-none gap-2 p-0">
                       {sec.bullets.map((b, i) => (

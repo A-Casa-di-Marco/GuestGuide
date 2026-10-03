@@ -108,10 +108,13 @@ function selfSlides(lang: Lang): CheckinSlide[] {
         {
           title: tCheckin(checkin.remoteTitle, lang),
           bullets: bullets([checkin.remoteA, checkin.remoteB, checkin.remoteCD], lang),
-          imageAfter: { src: "/assets/serratura.jpeg", alt: "Serratura", contain: true },
         },
         { title: tCheckin(checkin.longKeyTitle, lang), bullets: bullets([checkin.longKey1, checkin.longKey2], lang) },
-        { title: tCheckin(checkin.otherKeyTitle, lang), bullets: bullets([checkin.otherKey1], lang) },
+        {
+          title: tCheckin(checkin.otherKeyTitle, lang),
+          bullets: bullets([checkin.otherKey1], lang),
+          imageBefore: { src: "/assets/serratura.jpeg", alt: "Serratura", contain: true },
+        },
       ],
       note: tCheckin(checkin.keysNote, lang),
     },

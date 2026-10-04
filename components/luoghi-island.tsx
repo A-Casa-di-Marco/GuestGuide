@@ -29,22 +29,27 @@ function PlaceCard({ place, lang, isEvents, hideImage }: { place: Place; lang: L
   return (
     <Card
       className={cn(
-        "grid overflow-hidden rounded-[14px]",
-        hideImage ? "grid-cols-1" : "grid-cols-[clamp(110px,24%,220px)_minmax(0,1fr)]",
+        "grid min-w-0 grid-cols-1 overflow-hidden rounded-[14px]",
+        !hideImage && "sm:grid-cols-[clamp(140px,26%,220px)_minmax(0,1fr)]",
       )}
     >
       {!hideImage &&
         (place.image && !err ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={imgSrc(place.image)}
-            alt={place.title[lang]}
-            loading="lazy"
-            onError={() => setErr(true)}
-            className="aspect-square h-full w-full object-cover"
-          />
+          <div className="relative aspect-[16/10] w-full min-w-0 overflow-hidden sm:aspect-auto sm:h-full sm:min-h-[190px]">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={imgSrc(place.image)}
+              alt={place.title[lang]}
+              loading="lazy"
+              onError={() => setErr(true)}
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+          </div>
         ) : (
-          <div className="flex aspect-square h-full w-full items-center justify-center bg-secondary text-4xl" aria-hidden="true">
+          <div
+            className="flex aspect-[16/10] w-full min-w-0 items-center justify-center bg-secondary text-4xl sm:aspect-auto sm:h-full sm:min-h-[190px]"
+            aria-hidden="true"
+          >
             🏖️
           </div>
         ))}

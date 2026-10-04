@@ -67,7 +67,8 @@ function rewriteUrls(html, lang) {
   });
 }
 
-const ICONS = { "manual-0": "KeyRound", wifi: "Wifi", rifiuti: "Recycle", clima: "Thermometer", "manual-4": "Umbrella", moka: "Coffee", "manual-6": "CookingPot", "manual-7": "WashingMachine", "manual-8": "ShowerHead", "manual-9": "UtensilsCrossed", "manual-10": "LifeBuoy" };
+const ICONS = { "manual-0": "KeyRound", wifi: "Wifi", rifiuti: "Recycle", clima: "Thermometer", "manual-4": "Umbrella", moka: "Coffee", "manual-6": "CookingPot", "manual-7": "WashingMachine", "manual-8": "ShowerHead", "manual-9": "UtensilsCrossed" };
+const EXCLUDE = new Set(["manual-10"]);
 const IMAGES = { "manual-0": "assets/manuale-chiavi.jpg", clima: "assets/manuale-termostato.jpg", "manual-4": "assets/manuale-ombrellone.png", moka: "assets/manuale-moka.jpg", "manual-7": "assets/manuale-lavatrice-comandi.jpg", "manual-9": "assets/manuale-lavastoviglie-cassetto.jpg" };
 const TAGS = {
   "manual-0": { it: "Chiavi", en: "Keys", es: "Llaves", fr: "Clés", de: "Schlüssel" },
@@ -80,7 +81,6 @@ const TAGS = {
   "manual-7": { it: "Lavatrice", en: "Washing machine", es: "Lavadora", fr: "Lave-linge", de: "Waschmaschine" },
   "manual-8": { it: "Doccia", en: "Shower", es: "Ducha", fr: "Douche", de: "Dusche" },
   "manual-9": { it: "Lavastoviglie", en: "Dishwasher", es: "Lavavajillas", fr: "Lave-vaisselle", de: "Geschirrspüler" },
-  "manual-10": { it: "Aiuto", en: "Help", es: "Ayuda", fr: "Aide", de: "Hilfe" },
 };
 
 // ---------- MANUALE CARDS ----------
@@ -89,8 +89,9 @@ const TAGS = {
   const cards = [];
   let i = 0;
   for (const m of h.matchAll(/<details class="manual-details" id="([^"]+)">([\s\S]*?)<\/details>/g)) {
-    i++;
     const sid = m[1];
+    if (EXCLUDE.has(sid)) continue;
+    i++;
     const summaryOpen = m[0].match(/<summary[^>]*>/)[0];
     const summaryVals = dataAttrs(summaryOpen);
     const content = m[0].slice(m[0].indexOf('<div class="manual-content">'));
@@ -139,3 +140,41 @@ const TAGS = {
   );
 }
 console.log("done -> lib/legacy/manuale-cards.generated.ts + hub-desc.generated.ts");
+
+// ---------- REGOLE CARDS (5 gruppi, verbatim x5 lingue) ----------
+{
+  const h = readFileSync("public/regole.html", "utf8");
+  const ICONS = { "rules-arrival": "KeyRound", "rules-people": "Users", "rules-clean": "Sparkles", "rules-care": "House", "rules-safe": "Zap" };
+  const TAGS = {
+    "rules-arrival": { it: "Arrivo", en: "Arrival", es: "Llegada", fr: "Arrivée", de: "Ankunft" },
+    "rules-people": { it: "Ospiti", en: "Guests", es: "Huéspedes", fr: "Voyageurs", de: "Gäste" },
+    "rules-clean": { it: "Pulizia", en: "Cleaning", es: "Limpieza", fr: "Propreté", de: "Sauberkeit" },
+    "rules-care": { it: "Cura", en: "Care", es: "Cuidado", fr: "Soin", de: "Pflege" },
+    "rules-safe": { it: "Energia", en: "Energy", es: "Energía", fr: "Énergie", de: "Energie" },
+  };
+  const cards = [];
+  let i = 0;
+  for (const m of h.matchAll(/<section class="rules-group" id="([^"]+)">([\s\S]*?)<\/section>/g)) {
+    i++;
+    const sid = m[1];
+    const h3open = m[0].match(/<h3[^>]*>/)[0];
+    const titleVals = dataAttrs(h3open);
+    let inner = m[0].slice(m[0].indexOf(">") + 1, m[0].lastIndexOf("</section>"));
+    inner = inner.replace(/<h3[^>]*>[\s\S]*?<\/h3>/, "");
+    const per = {};
+    for (const lang of LANGS) {
+      let html = resolveLang(inner, lang);
+      html = rewriteUrls(html, lang);
+      if (/\sdata-(it|en|es|fr|de)(-html)?="/.test(html)) throw new Error(`regole ${sid}/${lang}: residui`);
+      per[lang] = html.trim();
+    }
+    const title = {};
+    for (const lang of LANGS) title[lang] = titleVals[lang] ?? titleVals.it ?? "";
+    cards.push({ id: sid, index: String(i).padStart(3, "0"), icon: ICONS[sid] || "Info", image: null, tag: TAGS[sid], title, body: per });
+  }
+  writeFileSync(
+    "lib/legacy/regole-cards.generated.ts",
+    `// AUTO-GENERATO da scripts/build-manuale-cards.mjs — non modificare a mano.\n// Fonte: public/regole.html (5 gruppi, verbatim x5 lingue).\nimport type { Lang } from "@/lib/i18n";\n\nexport type RegoleCard = { id: string; index: string; icon: string; image: string | null; tag: Record<Lang, string>; title: Record<Lang, string>; body: Record<Lang, string> };\n\nexport const regoleCards: RegoleCard[] = ${JSON.stringify(cards)};\n`,
+  );
+  console.log(`regole-cards: ${cards.length} card`);
+}

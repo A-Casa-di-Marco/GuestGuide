@@ -113,3 +113,10 @@ pnpm dev
 - Pulsante pettirosso fisso in basso a destra su ogni pagina (layout) + chat overlay con stile token-based (bolle primary/secondary, typing, invio).
 - POST /api/marco-chat: prompt Marco (solo dati guida, itinerari solo da guida, lingua utente, risposte brevi), KB in lib/marco-kb.ts, modello openrouter/free (override MARCO_MODEL), throttle 10/min, timeout 20s. Verifica: 400/429/503 localizzati, fallback WhatsApp senza chiave.
 - Secret OPENROUTER_API_KEY: GitHub Settings->Secrets->Actions + wrangler secret put in deploy.yml; locale via .dev.vars (ignorato). README aggiornato con guida passo-passo.
+
+## RAG simulata + fix navbar/hub/manuale/back
+
+- Navbar mobile: testi ridotti (11px pill, brand troncato).
+- lib/kb/guide-kb.json (28 voci categorizzate IT+EN, tag multilingua) + lib/marco-retrieval.ts (keyword scoring, top-5, soglia 2): l'API inietta solo i brani pertinenti; senza match risponde direttamente con fallback WhatsApp. Test: 10/10 query tipiche.
+- Hub: immagini richieste (fallback per regole.png/traghetto.jpg/parcheggioconcordia.jpg/farmaciaartemis.jpg mancanti: servono i file in public/assets).
+- Back: pill senza freccia nel testo, outer.back() con fallback hub. Manuale: card a icone senza numeri, moka fixato (enhancer su mount overlay), clima impilato, card problemi rimossa. Regole: 5 card + overlay. Isole con Card/Badge/Button shadcn.

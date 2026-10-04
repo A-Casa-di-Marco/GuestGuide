@@ -16,7 +16,7 @@ type Lang = keyof typeof WASTE_LABELS;
  * Ripristina i comportamenti nativi dello statico dentro HTML verbatim:
  * selettore moka, apertura <details> da anchor, label responsive rifiuti.
  */
-export function useLegacyEnhancers(ref: RefObject<HTMLElement | null>, lang: Lang) {
+export function useLegacyEnhancers(ref: RefObject<HTMLElement | null>, lang: Lang, contentKey?: string | null) {
   useEffect(() => {
     const root = ref.current;
     if (!root) return;
@@ -58,5 +58,5 @@ export function useLegacyEnhancers(ref: RefObject<HTMLElement | null>, lang: Lan
       mokaBtns.forEach((b) => b.removeEventListener("click", onMoka));
       window.removeEventListener("hashchange", openFromHash);
     };
-  }, [ref, lang]);
+  }, [ref, lang, contentKey]);
 }

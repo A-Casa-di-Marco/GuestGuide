@@ -64,7 +64,7 @@ Crea `.dev.vars` nella root (già ignorato da git):
 OPENROUTER_API_KEY=sk-or-…
 ```
 
-e riavvia `pnpm dev`. Senza chiave, la chat risponde con un messaggio che invita a contattare l'host su WhatsApp (verificabile subito, senza chiave).
+e riavvia `pnpm dev`. Nota Windows: scrivi il file in UTF-8 senza BOM (es. con un editor di testo, non con `echo` in PowerShell che usa UTF-16 e Wrangler lo ignorerebbe). Senza chiave, la chat risponde con un messaggio che invita a contattare l'host su WhatsApp (verificabile subito, senza chiave).
 
 ## CI/CD
 

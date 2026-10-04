@@ -33,6 +33,7 @@ export default async function Permanenza({
               <ProjectCard
                 key={tile.href}
                 imgSrc={tile.image}
+                fallbackSrc={tile.fallbackImage}
                 title={tHome(tile.titleKey, lang)}
                 description={desc}
                 link={withLang(tile.href, lang)}

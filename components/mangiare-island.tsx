@@ -1,6 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   backLabel,
   buttons,
@@ -19,36 +22,37 @@ function imgSrc(src?: string): string {
 
 function RestaurantCard({ place, lang }: { place: Restaurant; lang: Lang }) {
   return (
-    <article className={place.featured ? "restaurant-card featured" : "restaurant-card"}>
-      {place.recommended ? <div className="recommended-ribbon">{labels.recommended[lang]}</div> : null}
+    <Card className="grid grid-cols-[clamp(110px,24%,220px)_minmax(0,1fr)] overflow-hidden rounded-[14px]">
       {place.image ? (
         // eslint-disable-next-line @next/next/no-img-element
-        <img src={imgSrc(place.image)} alt={place.name[lang]} loading="lazy" />
+        <img src={imgSrc(place.image)} alt={place.name[lang]} loading="lazy" className="aspect-square h-full w-full object-cover" />
       ) : null}
-      <div className="restaurant-content">
-        <div className="badge-row">
-          {place.recommended ? <div className="recommended-badge">{labels.recommended[lang]}</div> : null}
-          {place.walkable ? <div className="walk-badge">{labels.walkable[lang]}</div> : null}
+      <CardContent className="min-w-0 p-4 md:p-5">
+        <div className="flex flex-wrap gap-1.5">
+          {place.recommended ? <Badge variant="secondary">{labels.recommended[lang]}</Badge> : null}
+          {place.walkable ? <Badge variant="secondary">{labels.walkable[lang]}</Badge> : null}
           {place.price ? (
-            <div className="price-badge" title={labels.price[lang]}>
-              <span className="price-symbol">{place.price}</span>
-            </div>
+            <Badge variant="outline" title={labels.price[lang]}>
+              {place.price}
+            </Badge>
           ) : null}
         </div>
-        <h3>{place.name[lang]}</h3>
-        <p>{place.desc[lang]}</p>
+        <h3 className="mt-1 font-serif text-xl text-foreground sm:text-2xl">{place.name[lang]}</h3>
+        <p className="mt-1 text-sm leading-relaxed text-muted-foreground sm:text-[15px]">{place.desc[lang]}</p>
         {shouldShowTip(place) && place.tip ? (
-          <div className="tip-box">
+          <div className="tip-box mt-2">
             <strong>{labels.tip[lang]}:</strong> {place.tip[lang]}
           </div>
         ) : null}
-        <div className="restaurant-actions">
-          <a className="restaurant-btn light" href={mapsUrlFor(place)} target="_blank" rel="noreferrer">
-            {labels.maps[lang]}
-          </a>
+        <div className="mt-3">
+          <Button asChild size="sm" variant="secondary">
+            <a href={mapsUrlFor(place)} target="_blank" rel="noreferrer">
+              {labels.maps[lang]}
+            </a>
+          </Button>
         </div>
-      </div>
-    </article>
+      </CardContent>
+    </Card>
   );
 }
 

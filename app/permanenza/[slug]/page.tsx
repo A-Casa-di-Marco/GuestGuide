@@ -33,7 +33,7 @@ const SLUGS = [
 type Slug = (typeof SLUGS)[number];
 
 const BACK: Record<Lang, string> = {
-  it: "Torna a Permanenza",
+  it: "Torna al soggiorno",
   en: "Back to Stay",
   es: "Volver a Estancia",
   fr: "Retour au Séjour",

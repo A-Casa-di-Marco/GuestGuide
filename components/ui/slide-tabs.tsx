@@ -29,6 +29,7 @@ export function SlideTabs({ tabs, value, onChange, ariaLabel, className }: Props
     tabs.findIndex((t) => t.id === value),
   );
   const itemsRef = useRef<Array<HTMLLIElement | null>>([]);
+  const labelsKey = tabs.map((t) => t.label).join("|");
 
   useEffect(() => {
     const sync = () => {
@@ -42,7 +43,7 @@ export function SlideTabs({ tabs, value, onChange, ariaLabel, className }: Props
     const fontsReady = document.fonts?.ready.then(sync).catch(() => undefined);
     void fontsReady;
     return () => window.removeEventListener("resize", sync);
-  }, [selected, tabs.length]);
+  }, [selected, tabs.length, labelsKey]);
 
   return (
     <nav aria-label={ariaLabel} className={className}>

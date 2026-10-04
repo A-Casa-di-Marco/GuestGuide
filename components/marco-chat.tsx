@@ -60,7 +60,7 @@ function MessageBubble({ message }: { message: Msg }) {
             src="/assets/robin-mascot.png"
             alt=""
             aria-hidden="true"
-            className="h-8 w-8 shrink-0 rounded-full bg-secondary object-cover"
+            className="h-8 w-8 shrink-0 object-contain"
           />
         )}
         <div

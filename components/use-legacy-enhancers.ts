@@ -21,15 +21,17 @@ export function useLegacyEnhancers(ref: RefObject<HTMLElement | null>, lang: Lan
     const root = ref.current;
     if (!root) return;
 
-    const mokaBtns = Array.from(root.querySelectorAll<HTMLButtonElement>("[data-moka-target]"));
-    const onMoka = (e: Event) => {
-      const btn = e.currentTarget as HTMLButtonElement;
+    // 1. Moka: delega sul contenitore (funziona anche se il contenuto cambia
+    // dopo il mount, es. overlay che si apre in un secondo momento).
+    const onMokaClick = (e: Event) => {
+      const btn = (e.target as HTMLElement).closest?.("[data-moka-target]") as HTMLButtonElement | null;
+      if (!btn || !root.contains(btn)) return;
       const target = btn.getAttribute("data-moka-target");
       root.querySelectorAll(".moka-option").forEach((opt) => {
         (opt as HTMLElement).hidden = opt.id !== target;
       });
     };
-    mokaBtns.forEach((b) => b.addEventListener("click", onMoka));
+    root.addEventListener("click", onMokaClick);
 
     const waste = root.querySelector<HTMLElement>(".waste-table");
     if (waste) {
@@ -55,7 +57,7 @@ export function useLegacyEnhancers(ref: RefObject<HTMLElement | null>, lang: Lan
     window.addEventListener("hashchange", openFromHash);
 
     return () => {
-      mokaBtns.forEach((b) => b.removeEventListener("click", onMoka));
+      root.removeEventListener("click", onMokaClick);
       window.removeEventListener("hashchange", openFromHash);
     };
   }, [ref, lang, contentKey]);

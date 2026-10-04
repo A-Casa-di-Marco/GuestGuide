@@ -1,11 +1,41 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ui, type Lang } from "@/lib/i18n";
 
+function isStandalone(): boolean {
+  if (typeof window === "undefined") return false;
+  try {
+    if (window.matchMedia("(display-mode: standalone)").matches) return true;
+    if ((window.navigator as Navigator & { standalone?: boolean }).standalone === true) return true;
+    if (document.referrer.startsWith("android-app://")) return true;
+  } catch {
+    /* ignora */
+  }
+  return false;
+}
+
 export function SaveGuideButton({ lang }: { lang: Lang }) {
   const [open, setOpen] = useState(false);
+  const [installed, setInstalled] = useState(false);
+
+  useEffect(() => {
+    const sync = () => setInstalled(isStandalone());
+    sync();
+    const mq = window.matchMedia("(display-mode: standalone)");
+    const onChange = () => sync();
+    mq.addEventListener?.("change", onChange);
+    window.addEventListener("appinstalled", onChange);
+    return () => {
+      mq.removeEventListener?.("change", onChange);
+      window.removeEventListener("appinstalled", onChange);
+    };
+  }, []);
+
+  // Guida già installata come app: il pulsante non serve.
+  if (installed) return null;
+
   return (
     <div className="mb-5">
       <Button

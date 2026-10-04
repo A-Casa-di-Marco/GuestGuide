@@ -20,7 +20,7 @@ export default async function Permanenza({
     <>
       <SiteHeader lang={lang} />
       <main className="mx-auto max-w-6xl px-4 pb-16 pt-6 sm:px-6">
-        <h1 className="font-serif text-3xl text-foreground sm:text-4xl">Permanenza</h1>
+        <h1 className="font-serif text-3xl text-foreground sm:text-4xl">Soggiorno</h1>
         <p className="mt-2 max-w-3xl text-[15px] text-muted-foreground sm:text-base">
           Guida della casa e cosa visitare in zona. Le guide complete restano nelle pagine
           originali, senza modifiche ai contenuti.

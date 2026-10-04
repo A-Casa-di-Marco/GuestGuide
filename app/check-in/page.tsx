@@ -181,7 +181,7 @@ function CheckInInner() {
             href={WHATSAPP_ASJA}
             target="_blank"
             rel="noreferrer"
-            className="flex min-h-[48px] w-full max-w-md items-center justify-center gap-2 rounded-full border border-border bg-card px-5 py-3 text-[15px] font-semibold text-card-foreground no-underline"
+            className="flex min-h-[48px] w-full max-w-md items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-center text-[15px] font-semibold text-primary-foreground no-underline"
           >
             <TCheckin k={checkin.helpCta} lang={lang} />
           </a>

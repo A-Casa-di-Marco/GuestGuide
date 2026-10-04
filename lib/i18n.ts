@@ -33,7 +33,7 @@ export const ui = {
   nav: {
     home: { it: "Home", en: "Home", es: "Inicio", fr: "Accueil", de: "Start" },
     "check-in": { it: "Check-In", en: "Check-in", es: "Check-in", fr: "Check-in", de: "Check-in" },
-    permanenza: { it: "Permanenza", en: "Stay", es: "Estancia", fr: "Séjour", de: "Aufenthalt" },
+    permanenza: { it: "Soggiorno", en: "Stay", es: "Estancia", fr: "Séjour", de: "Aufenthalt" },
     "check-out": { it: "Check-Out", en: "Check-out", es: "Check-out", fr: "Check-out", de: "Check-out" },
   },
   changeLanguage: {

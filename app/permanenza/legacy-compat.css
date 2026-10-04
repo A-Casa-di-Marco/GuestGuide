@@ -423,8 +423,8 @@
 /* Telecomando / termostato */
 .legacy-content .remote-top-layout {
   display: grid;
-  grid-template-columns: minmax(260px, 360px) 1fr;
-  gap: 22px;
+  grid-template-columns: 1fr;
+  gap: 18px;
   align-items: start;
   margin: 18px 0 20px;
 }

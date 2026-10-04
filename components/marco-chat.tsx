@@ -229,15 +229,15 @@ export function MarcoChat() {
               setOpen(true);
             }}
             aria-label={MARCO_UI.openChat[lang]}
-            className="fixed bottom-4 right-4 z-[90] block h-14 w-14 overflow-hidden rounded-full border-2 border-card bg-secondary p-0 shadow-xl"
+            className="fixed bottom-4 right-4 z-[90] block h-16 w-16 bg-transparent p-0"
           >
             <motion.span
-              className="block h-full w-full"
+              className="block h-full w-full drop-shadow-[0_6px_12px_rgba(0,0,0,0.35)]"
               animate={reduceMotion ? {} : { y: [0, -3, 0] }}
               transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/assets/robin-perched.png" alt="" aria-hidden="true" className="h-full w-full object-cover" />
+              <img src="/assets/robin-perched.png" alt="" aria-hidden="true" className="h-full w-full object-contain" />
             </motion.span>
           </motion.button>
         )}

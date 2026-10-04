@@ -50,7 +50,7 @@ export function SiteHeader({ lang }: Props) {
       <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-2 px-3 py-2 md:flex-nowrap md:gap-4 md:px-6">
         <Link
           href={withLang("/", lang)}
-          className="mr-auto flex items-center gap-2 text-base font-semibold text-foreground no-underline md:text-lg"
+          className="mr-auto flex min-w-0 items-center gap-1.5 text-sm font-semibold text-foreground no-underline sm:gap-2 sm:text-base md:text-lg"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -59,9 +59,9 @@ export function SiteHeader({ lang }: Props) {
             aria-hidden="true"
             width={28}
             height={28}
-            className="h-7 w-7 rounded-full object-cover"
+            className="h-6 w-6 shrink-0 rounded-full object-cover sm:h-7 sm:w-7"
           />
-          {ui.brand[lang]}
+          <span className="truncate">{ui.brand[lang]}</span>
         </Link>
 
         <div className="order-3 w-full overflow-x-auto pb-1 md:order-2 md:w-auto md:pb-0">

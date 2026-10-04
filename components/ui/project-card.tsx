@@ -6,6 +6,8 @@ import { cn } from "@/lib/utils";
 
 export interface ProjectCardProps extends React.HTMLAttributes<HTMLDivElement> {
   imgSrc: string;
+  /** Immagine di riserva se imgSrc non esiste (es. asset da aggiungere). */
+  fallbackSrc?: string;
   title: string;
   description: string;
   link: string;
@@ -15,7 +17,9 @@ export interface ProjectCardProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const ProjectCard = React.forwardRef<HTMLDivElement, ProjectCardProps>(
-  ({ className, imgSrc, title, description, link, linkText = "View Project", external = true, ...props }, ref) => {
+  ({ className, imgSrc, fallbackSrc, title, description, link, linkText = "View Project", external = true, ...props }, ref) => {
+    const [src, setSrc] = React.useState(imgSrc);
+    React.useEffect(() => setSrc(imgSrc), [imgSrc]);
     return (
       <div
         ref={ref}
@@ -28,8 +32,11 @@ const ProjectCard = React.forwardRef<HTMLDivElement, ProjectCardProps>(
         <div className="aspect-video overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={imgSrc}
+            src={src}
             alt={title}
+            onError={() => {
+              if (fallbackSrc && src !== fallbackSrc) setSrc(fallbackSrc);
+            }}
             className="h-full w-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-110"
             loading="lazy"
           />

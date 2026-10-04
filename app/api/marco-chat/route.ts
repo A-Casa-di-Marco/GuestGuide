@@ -1,6 +1,7 @@
 import { env } from "cloudflare:workers";
 import { isLang, type Lang } from "../../../lib/i18n";
 import { marcoSystemPrompt, MARCO_UI } from "../../../lib/marco-kb";
+import { retrieve } from "../../../lib/marco-retrieval";
 
 export const dynamic = "force-dynamic";
 
@@ -61,6 +62,16 @@ export async function POST(request: Request) {
     return Response.json({ error: MARCO_UI.offline[lang] }, { status: 503 });
   }
 
+  // RAG simulata: solo i brani pertinenti entrano nel prompt.
+  const chunks = retrieve(message, lang);
+  if (chunks.length === 0) {
+    return Response.json(
+      { reply: MARCO_UI.unknown[lang] },
+      { headers: { "Cache-Control": "no-store" } },
+    );
+  }
+  const context = chunks.map((c) => `- ${c.text}`).join("\n");
+
   const ctrl = new AbortController();
   const timeout = setTimeout(() => ctrl.abort(), TIMEOUT_MS);
   try {
@@ -78,13 +89,14 @@ export async function POST(request: Request) {
         temperature: 0.3,
         max_tokens: 400,
         messages: [
-          { role: "system", content: marcoSystemPrompt(lang) },
+          { role: "system", content: marcoSystemPrompt(lang, context) },
           ...history,
           { role: "user", content: message },
         ],
       }),
     });
     if (!res.ok) {
+      console.error("marco-chat openrouter", res.status, model);
       return Response.json({ error: MARCO_UI.offline[lang] }, { status: 502 });
     }
     const data = (await res.json()) as { choices?: { message?: { content?: string } }[] };
@@ -93,7 +105,8 @@ export async function POST(request: Request) {
       return Response.json({ error: MARCO_UI.offline[lang] }, { status: 502 });
     }
     return Response.json({ reply }, { headers: { "Cache-Control": "no-store" } });
-  } catch {
+  } catch (err) {
+    console.error("marco-chat fetch failed", err instanceof Error ? err.message : err);
     return Response.json({ error: MARCO_UI.offline[lang] }, { status: 502 });
   } finally {
     clearTimeout(timeout);

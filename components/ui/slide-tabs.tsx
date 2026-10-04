@@ -77,7 +77,7 @@ export function SlideTabs({ tabs, value, onChange, ariaLabel, className }: Props
                 onChange(tab.id);
               }}
               className={cn(
-                "block cursor-pointer rounded-full px-3 py-1.5 text-xs font-semibold uppercase tracking-wide no-underline md:px-5 md:py-2.5 md:text-sm",
+                "block cursor-pointer rounded-full px-2 py-1.5 text-[11px] font-semibold uppercase tracking-wide no-underline sm:px-3 md:px-5 md:py-2.5 md:text-sm",
                 i === selected ? "text-primary-foreground" : "text-secondary-foreground",
               )}
             >

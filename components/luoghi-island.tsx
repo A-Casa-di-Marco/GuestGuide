@@ -1,6 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   labels,
   mapsUrlFor,
@@ -8,6 +11,7 @@ import {
   type Place,
 } from "@/lib/legacy/luoghi-data.generated";
 import type { Lang } from "@/lib/i18n";
+import { cn } from "@/lib/utils";
 
 function imgSrc(src?: string): string {
   if (!src) return "";
@@ -16,45 +20,55 @@ function imgSrc(src?: string): string {
 
 function PlaceCard({ place, lang, isEvents, hideImage }: { place: Place; lang: Lang; isEvents?: boolean; hideImage?: boolean }) {
   const [err, setErr] = useState(false);
-  let cardClass = "place-card";
-  if (isEvents) cardClass += " event-card";
-  if (hideImage) cardClass += " place-card-noimage";
-  if (place.beachType === "free") cardClass += " free-beach";
-  if (place.beachType === "paid") cardClass += " paid-beach";
 
   let badge = null;
-  if (isEvents) badge = <span className="event-badge">{labels.event[lang]}</span>;
-  if (place.beachType === "free") badge = <span className="beach-badge free">{labels.free[lang]}</span>;
-  if (place.beachType === "paid") badge = <span className="beach-badge paid">{labels.paid[lang]}</span>;
+  if (isEvents) badge = <Badge variant="secondary">{labels.event[lang]}</Badge>;
+  if (place.beachType === "free") badge = <Badge variant="secondary">{labels.free[lang]}</Badge>;
+  if (place.beachType === "paid") badge = <Badge variant="secondary">{labels.paid[lang]}</Badge>;
 
   return (
-    <article className={cardClass}>
+    <Card
+      className={cn(
+        "grid overflow-hidden rounded-[14px]",
+        hideImage ? "grid-cols-1" : "grid-cols-[clamp(110px,24%,220px)_minmax(0,1fr)]",
+      )}
+    >
       {!hideImage &&
         (place.image && !err ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={imgSrc(place.image)} alt={place.title[lang]} loading="lazy" onError={() => setErr(true)} />
+          <img
+            src={imgSrc(place.image)}
+            alt={place.title[lang]}
+            loading="lazy"
+            onError={() => setErr(true)}
+            className="aspect-square h-full w-full object-cover"
+          />
         ) : (
-          <div className="place-img-placeholder" aria-hidden="true">
+          <div className="flex aspect-square h-full w-full items-center justify-center bg-secondary text-4xl" aria-hidden="true">
             🏖️
           </div>
         ))}
-      <div className="place-content">
+      <CardContent className="min-w-0 p-4 md:p-5">
         {badge}
-        <h3>{place.title[lang]}</h3>
-        <p>{place.desc[lang]}</p>
-        {place.note ? <div className="beach-note">{place.note[lang]}</div> : null}
-        <div className="place-actions">
+        <h3 className="mt-1 font-serif text-xl text-foreground sm:text-2xl">{place.title[lang]}</h3>
+        <p className="mt-1 text-sm leading-relaxed text-muted-foreground sm:text-[15px]">{place.desc[lang]}</p>
+        {place.note ? <div className="beach-note mt-2">{place.note[lang]}</div> : null}
+        <div className="mt-3 flex flex-wrap gap-2">
           {place.infoUrl ? (
-            <a className="place-btn" href={place.infoUrl} target="_blank" rel="noreferrer">
-              {isEvents ? labels.dates[lang] : labels.info[lang]}
-            </a>
+            <Button asChild size="sm">
+              <a href={place.infoUrl} target="_blank" rel="noreferrer">
+                {isEvents ? labels.dates[lang] : labels.info[lang]}
+              </a>
+            </Button>
           ) : null}
-          <a className="place-btn light" href={mapsUrlFor(place)} target="_blank" rel="noreferrer">
-            {labels.maps[lang]}
-          </a>
+          <Button asChild size="sm" variant="secondary">
+            <a href={mapsUrlFor(place)} target="_blank" rel="noreferrer">
+              {labels.maps[lang]}
+            </a>
+          </Button>
         </div>
-      </div>
-    </article>
+      </CardContent>
+    </Card>
   );
 }
 

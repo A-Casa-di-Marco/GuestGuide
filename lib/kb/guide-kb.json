@@ -1,0 +1,919 @@
+{
+  "version": 1,
+  "entries": [
+    {
+      "id": "identita",
+      "cat": "casa",
+      "tags_it": [
+        "marco",
+        "casa",
+        "chi",
+        "storia",
+        "pettirosso",
+        "zio",
+        "bambolotto"
+      ],
+      "tags_en": [
+        "marco",
+        "house",
+        "who",
+        "story",
+        "robin",
+        "uncle"
+      ],
+      "it": "A Casa di Marco è una casa vacanze (Garden Cottage Escape) a Salerno, dedicata a Marco, lo zio delle host. Se vedi un pettirosso vicino alla casa, non spaventarlo: lo chiamiamo affettuosamente il pettirosso chiatto.",
+      "en": "A Casa di Marco is a holiday home (Garden Cottage Escape) in Salerno, dedicated to Marco, the hosts' uncle. If you see a robin near the house, do not scare it away.",
+      "tags_all": [
+        "geschichte",
+        "haus",
+        "histoire",
+        "maison"
+      ]
+    },
+    {
+      "id": "contatti-asja",
+      "cat": "contatti",
+      "tags_it": [
+        "contatti",
+        "telefono",
+        "asja",
+        "chiamare",
+        "whatsapp",
+        "numero",
+        "aiuto",
+        "assistenza"
+      ],
+      "tags_en": [
+        "contacts",
+        "phone",
+        "asja",
+        "call",
+        "whatsapp",
+        "number",
+        "help"
+      ],
+      "it": "Contatto principale: Asja, tel +39 392 3064010, WhatsApp https://wa.me/393923064010. Per comunicazioni urgenti chiamare; per le altre richieste scrivere su WhatsApp.",
+      "en": "Main contact: Asja, tel +39 392 3064010, WhatsApp https://wa.me/393923064010. Call for urgent matters; message on WhatsApp for anything else.",
+      "tags_all": [
+        "anrufen",
+        "llamar",
+        "telefon",
+        "telephoner"
+      ]
+    },
+    {
+      "id": "contatti-ambra",
+      "cat": "contatti",
+      "tags_it": [
+        "ambra",
+        "secondo",
+        "contatto",
+        "telefono",
+        "email"
+      ],
+      "tags_en": [
+        "ambra",
+        "second",
+        "contact",
+        "phone",
+        "email"
+      ],
+      "it": "Secondo contatto: Ambra, tel +39 339 7009276, WhatsApp https://wa.me/393397009276. Email per comunicazioni non urgenti: acasadimarco17@gmail.com.",
+      "en": "Second contact: Ambra, tel +39 339 7009276, WhatsApp https://wa.me/393397009276. Email for non-urgent matters: acasadimarco17@gmail.com.",
+      "tags_all": [
+        "correo",
+        "email"
+      ]
+    },
+    {
+      "id": "emergenze",
+      "cat": "emergenze",
+      "tags_it": [
+        "emergenza",
+        "118",
+        "112",
+        "ambulanza",
+        "medico",
+        "ospedale",
+        "farmacia",
+        "aiuto urgente"
+      ],
+      "tags_en": [
+        "emergency",
+        "118",
+        "112",
+        "ambulance",
+        "doctor",
+        "hospital",
+        "pharmacy"
+      ],
+      "it": "Emergenza sanitaria: chiamare il 118. Emergenze generali: chiamare il 112. La pagina Farmacie ed emergenze della guida elenca farmacie e numeri utili.",
+      "en": "Medical emergency: call 118. General emergencies: call 112. The guide's Pharmacies and emergencies page lists pharmacies and useful numbers.",
+      "tags_all": [
+        "ambulancia",
+        "apotheke",
+        "emergencia",
+        "farmacia",
+        "notfall",
+        "pharmacie",
+        "urgence"
+      ]
+    },
+    {
+      "id": "posizione-maps",
+      "cat": "contatti",
+      "tags_it": [
+        "dove",
+        "posizione",
+        "indirizzo",
+        "maps",
+        "arrivare",
+        "strada",
+        "navigatore"
+      ],
+      "tags_en": [
+        "where",
+        "location",
+        "address",
+        "maps",
+        "arrive",
+        "directions"
+      ],
+      "it": "Posizione della casa su Google Maps: https://maps.app.goo.gl/tL37r51JpKZJc6j87",
+      "en": "House location on Google Maps: https://maps.app.goo.gl/tL37r51JpKZJc6j87",
+      "tags_all": [
+        "adresse",
+        "direccion",
+        "donde",
+        "llegar",
+        "ou",
+        "wo"
+      ]
+    },
+    {
+      "id": "checkin-presenza-orario",
+      "cat": "checkin",
+      "tags_it": [
+        "check-in",
+        "presenza",
+        "orario",
+        "arrivo",
+        "accoglienza",
+        "cancello",
+        "30 minuti"
+      ],
+      "tags_en": [
+        "check-in",
+        "in-person",
+        "time",
+        "arrival",
+        "welcome",
+        "gate"
+      ],
+      "it": "Check-in in presenza: comunicate in anticipo l'orario di arrivo previsto e inviate un messaggio circa 30 minuti prima, così vi accogliamo al cancello. Ci si incontra davanti al cancello della struttura.",
+      "en": "In-person check-in: share your expected arrival time in advance and message about 30 minutes before, so we can welcome you at the gate.",
+      "tags_all": [
+        "ankunft",
+        "arrivee",
+        "llegada",
+        "retard",
+        "retraso",
+        "verspatung"
+      ]
+    },
+    {
+      "id": "checkin-documenti-tassa",
+      "cat": "checkin",
+      "tags_it": [
+        "documenti",
+        "identità",
+        "bambini",
+        "tassa",
+        "soggiorno",
+        "pagare",
+        "cauzione",
+        "deposito",
+        "booking",
+        "100 euro",
+        "pos",
+        "paypal",
+        "bonifico",
+        "contanti"
+      ],
+      "tags_en": [
+        "documents",
+        "identity",
+        "children",
+        "tourist tax",
+        "pay",
+        "deposit",
+        "booking",
+        "pos",
+        "paypal",
+        "transfer",
+        "cash"
+      ],
+      "it": "Al check-in servono i documenti di identità di tutti gli ospiti, inclusi i bambini. Tassa di soggiorno: 3 euro a persona al giorno, esclusi i bambini sotto gli 11 anni. Prenotazioni Booking: deposito cauzionale di 100 euro, restituito con bonifico entro 48 ore dal check-out. Pagamenti: bonifico immediato, PayPal o contanti. Non c'è il POS.",
+      "en": "At check-in we need ID documents of all guests, including children. Tourist tax: €3 per person per day, excluding children under 11. Booking reservations: €100 security deposit, refunded by bank transfer within 48 hours of check-out. Payments: instant transfer, PayPal or cash. No card machine.",
+      "tags_all": [
+        "deposito",
+        "documentos",
+        "documents",
+        "dokumente",
+        "enfants",
+        "kinder",
+        "ninos",
+        "steuer",
+        "tasa",
+        "taxe"
+      ]
+    },
+    {
+      "id": "self-keybox",
+      "cat": "checkin",
+      "tags_it": [
+        "self",
+        "autonomia",
+        "keybox",
+        "chiavi",
+        "codice",
+        "1705",
+        "cancello",
+        "ritirare"
+      ],
+      "tags_en": [
+        "self",
+        "keybox",
+        "keys",
+        "code",
+        "1705",
+        "gate",
+        "collect"
+      ],
+      "it": "Self check-in (solo se avete completato il check-in online): la KeyBox è attaccata al cancello principale sotto il cartello (codice 1705). Aprite lo sportellino nero, impostate 1705, spingete la levetta nera a sinistra, prendete le chiavi, richiudete e spostate le rotelle.",
+      "en": "Self check-in (only after completing online check-in): the KeyBox is attached to the main gate under the sign (code 1705). Open the black cover, set 1705, push the black lever on the left, take the keys, close it and scramble the wheels.",
+      "tags_all": [
+        "cles",
+        "codigo",
+        "llaves",
+        "safecode",
+        "schluessel"
+      ]
+    },
+    {
+      "id": "self-percorso",
+      "cat": "checkin",
+      "tags_it": [
+        "cancello",
+        "condominiale",
+        "telecomando",
+        "pulsante",
+        "sinistra",
+        "destra",
+        "strada",
+        "bivio",
+        "casa",
+        "parcheggio",
+        "giardino"
+      ],
+      "tags_en": [
+        "gate",
+        "condominium",
+        "remote",
+        "button",
+        "left",
+        "right",
+        "road",
+        "house",
+        "parking",
+        "garden"
+      ],
+      "it": "Con il pulsante B si apre il cancello condominiale; dopo la discesa, al bivio a sinistra. Alla fine della strada a destra: la casa è il primo cancello sulla destra. Con il tasto A si apre il cancello della casa. Parcheggiate all'interno del giardino nella zona pavimentata, senza superarlo.",
+      "en": "Button B opens the condominium gate; after the downhill, go left at the fork. At the end of the road turn right: the house is the first gate on the right. Button A opens the house gate. Park inside the garden on the paved area.",
+      "tags_all": [
+        "aparcamiento",
+        "derecha",
+        "droite",
+        "gauche",
+        "izquierda",
+        "jardin",
+        "links",
+        "parking",
+        "rechts"
+      ]
+    },
+    {
+      "id": "chiavi-telecomando",
+      "cat": "casa",
+      "tags_it": [
+        "telecomando",
+        "tasto",
+        "chiave",
+        "lunga",
+        "cancelletto",
+        "veranda",
+        "porta",
+        "smarrito",
+        "perso",
+        "penale"
+      ],
+      "tags_en": [
+        "remote",
+        "button",
+        "key",
+        "long",
+        "gate",
+        "veranda",
+        "door",
+        "lost",
+        "penalty"
+      ],
+      "it": "Tasto A: cancello della casa. Tasto B: cancello condominiale. Tasti C e D: nessuna funzione. Chiave lunga: porta della veranda (inserire con lo scalino verso l'alto, girare a sinistra). L'altra chiave apre il cancelletto. Custodite tutto con cura: in caso di smarrimento può esserci una penale.",
+      "en": "Button A: house gate. Button B: condominium gate. Buttons C and D: no function. Long key: veranda door (insert with the step facing up, turn left). The other key opens the small gate. Keep everything safe: loss may incur a penalty.",
+      "tags_all": [
+        "fernbedienung",
+        "mando",
+        "perdido",
+        "perdu",
+        "telecommande",
+        "verloren"
+      ]
+    },
+    {
+      "id": "checkout-orario",
+      "cat": "checkout",
+      "tags_it": [
+        "check-out",
+        "partenza",
+        "orario",
+        "10",
+        "ritardo",
+        "tolleranza",
+        "15 minuti",
+        "20 euro"
+      ],
+      "tags_en": [
+        "check-out",
+        "departure",
+        "time",
+        "10",
+        "late",
+        "tolerance",
+        "deposit"
+      ],
+      "it": "Check-out entro le ore 10:00 salvo diversi accordi. Tolleranza di 15 minuti; dal 16° minuto di ritardo non concordato si applicano i primi 20 euro della prima ora, trattenuti dal deposito cauzionale.",
+      "en": "Check-out by 10:00 AM unless otherwise agreed. 15-minute grace period; from the 16th minute of unagreed delay, the first €20 of the first hour apply, deducted from the deposit.",
+      "tags_all": [
+        "abreise",
+        "heure",
+        "hora",
+        "salida",
+        "sortie",
+        "uhrzeit"
+      ]
+    },
+    {
+      "id": "checkout-casa",
+      "cat": "checkout",
+      "tags_it": [
+        "luci",
+        "rubinetti",
+        "condizionatore",
+        "termosifoni",
+        "spegnere",
+        "asciugamani",
+        "cesta",
+        "panni",
+        "porta"
+      ],
+      "tags_en": [
+        "lights",
+        "taps",
+        "air conditioning",
+        "radiators",
+        "towels",
+        "door",
+        "close"
+      ],
+      "it": "Prima di uscire: spegnete luci, rubinetti, condizionatore e termosifoni. Lasciate gli asciugamani usati nella cesta dei panni sporchi. Chiudete bene la porta di casa.",
+      "en": "Before leaving: turn off lights, taps, air conditioning and radiators. Leave used towels in the laundry basket. Close the house door properly.",
+      "tags_all": [
+        "apagar",
+        "ausschalten",
+        "eteindre",
+        "handtucher",
+        "serviettes",
+        "toallas"
+      ]
+    },
+    {
+      "id": "checkout-rifiuti",
+      "cat": "checkout",
+      "tags_it": [
+        "rifiuti",
+        "spazzatura",
+        "bidoni",
+        "differenziata",
+        "50 euro",
+        "sanzioni",
+        "comune",
+        "salerno"
+      ],
+      "tags_en": [
+        "rubbish",
+        "garbage",
+        "bins",
+        "waste",
+        "sorting",
+        "fine",
+        "50"
+      ],
+      "it": "Portate i rifiuti nei bidoni condominiali con raccolta differenziata (non in casa né in giardino). Se impossibile, separateli e avvisate l'host. Differenziata non rispettata: penale fino a 50 euro. A Salerno il conferimento scorretto può comportare sanzioni comunali.",
+      "en": "Take rubbish to the communal bins with waste sorting (not inside the house or garden). If impossible, separate it and inform the host. Unsorted waste: charge up to €50. In Salerno, incorrect disposal may bring municipal fines.",
+      "tags_all": [
+        "basura",
+        "dechets",
+        "mull",
+        "poubelle"
+      ]
+    },
+    {
+      "id": "checkout-chiavi-messaggio",
+      "cat": "checkout",
+      "tags_it": [
+        "chiavi",
+        "cassetta",
+        "lettere",
+        "posta",
+        "keybox",
+        "lasciare",
+        "messaggio",
+        "confermare",
+        "partenza"
+      ],
+      "tags_en": [
+        "keys",
+        "letterbox",
+        "mailbox",
+        "leave",
+        "message",
+        "confirm",
+        "departure"
+      ],
+      "it": "Lasciate le chiavi nella cassetta delle lettere “A Casa di Marco” fuori dal cancello condominiale, in alto a destra (quella della posta, NON la KeyBox). Inviateci un messaggio WhatsApp per confermare il check-out.",
+      "en": "Leave the keys in the “A Casa di Marco” letterbox outside the condominium gate, top right (the mail box, NOT the KeyBox). Send us a WhatsApp message to confirm check-out.",
+      "tags_all": [
+        "boite",
+        "buzon",
+        "cles",
+        "llaves",
+        "schluessel"
+      ]
+    },
+    {
+      "id": "wifi",
+      "cat": "casa",
+      "tags_it": [
+        "wifi",
+        "wi-fi",
+        "internet",
+        "password",
+        "rete",
+        "connessione",
+        "non funziona"
+      ],
+      "tags_en": [
+        "wifi",
+        "internet",
+        "password",
+        "network",
+        "connection",
+        "not working"
+      ],
+      "it": "Wi-Fi rete “A Casa di Marco - Wifi”, password “ACASADIMARCO!17”. Se non funziona, disattivate e riattivate il Wi-Fi dal telefono; se continua, scriveteci su WhatsApp.",
+      "en": "Wi-Fi network “A Casa di Marco - Wifi”, password “ACASADIMARCO!17”. If it does not work, turn Wi-Fi off and on again on your phone; if it persists, message us on WhatsApp.",
+      "tags_all": [
+        "clave",
+        "contrasena",
+        "mot",
+        "passe",
+        "passwort"
+      ]
+    },
+    {
+      "id": "clima-termostato",
+      "cat": "casa",
+      "tags_it": [
+        "riscaldamento",
+        "termosifoni",
+        "termostato",
+        "freddo",
+        "caldo",
+        "temperatura",
+        "on",
+        "off",
+        "manopola"
+      ],
+      "tags_en": [
+        "heating",
+        "radiators",
+        "thermostat",
+        "cold",
+        "temperature"
+      ],
+      "it": "Termosifoni: premete ON e girate la manopola alla temperatura desiderata; attendete circa 1 ora. Per spegnere servono ENTRAMBE le cose: premere OFF e girare la manopola su 0.",
+      "en": "Radiators: press ON and turn the dial to the desired temperature; wait about 1 hour. To switch off you must do BOTH: press OFF and turn the dial to 0.",
+      "tags_all": [
+        "calefaccion",
+        "chauffage",
+        "frio",
+        "froid",
+        "heizung",
+        "kalt"
+      ]
+    },
+    {
+      "id": "clima-condizionatore",
+      "cat": "casa",
+      "tags_it": [
+        "condizionatore",
+        "aria",
+        "clima",
+        "telecomando",
+        "mode",
+        "temp",
+        "fan",
+        "sleep",
+        "freddo",
+        "caldo"
+      ],
+      "tags_en": [
+        "air conditioner",
+        "remote",
+        "mode",
+        "temp",
+        "fan",
+        "sleep",
+        "cool",
+        "heat"
+      ],
+      "it": "Telecomando condizionatore: ON/OFF accende e spegne. MODE sceglie freddo, caldo, deumidificazione, ventilazione o automatico. TEMP alza/abbassa i gradi. FAN SPEED regola la velocità dell'aria (media o automatica se incerti). SLEEP è la modalità notte.",
+      "en": "Air conditioner remote: ON/OFF switches on/off. MODE selects cool, heat, dry, fan or auto. TEMP raises/lowers degrees. FAN SPEED sets airflow (medium or auto if unsure). SLEEP is night mode.",
+      "tags_all": [
+        "aire",
+        "climatisation",
+        "klimaanlage"
+      ]
+    },
+    {
+      "id": "differenziata",
+      "cat": "casa",
+      "tags_it": [
+        "differenziata",
+        "organico",
+        "plastica",
+        "vetro",
+        "carta",
+        "indifferenziato",
+        "pile",
+        "farmaci",
+        "olio",
+        "sacchi neri"
+      ],
+      "tags_en": [
+        "recycling",
+        "organic",
+        "plastic",
+        "glass",
+        "paper",
+        "waste",
+        "batteries",
+        "oil"
+      ],
+      "it": "Differenziata: organico (sacchetti compostabili, no plastica), plastica/acciaio/alluminio, carta e cartone, vetro, indifferenziato. Farmaci, pile e olio usato negli appositi contenitori (farmacie/raccolta). Non usate sacchi neri e non lasciate l'organico sotto al lavandino. I bidoncini del giardino non vanno portati in casa.",
+      "en": "Waste sorting: organic (compostable bags, no plastic), plastic/steel/aluminium, paper/cardboard, glass, non-recyclable. Expired medicines, batteries and used oil go to dedicated containers. Do not use black bags. Garden bins must stay outside.",
+      "tags_all": [
+        "glas",
+        "mulltrennung",
+        "reciclaje",
+        "recyclage",
+        "tri",
+        "verre",
+        "vetro"
+      ]
+    },
+    {
+      "id": "cucina-moka",
+      "cat": "casa",
+      "tags_it": [
+        "moka",
+        "caffè",
+        "cucina",
+        "fornelli",
+        "capsule",
+        "cucinare"
+      ],
+      "tags_en": [
+        "moka",
+        "coffee",
+        "kitchen",
+        "stove",
+        "pods",
+        "cook"
+      ],
+      "it": "La pagina Manuale spiega moka tradizionale e con capsule, cucina e piano cottura. Per dubbi, chiedeteci su WhatsApp prima di usare qualcosa nel modo sbagliato.",
+      "en": "The House manual page explains the traditional and pod moka pot, kitchen and hob. When in doubt, ask us on WhatsApp before using anything the wrong way."
+    },
+    {
+      "id": "lavatrice-lavastoviglie",
+      "cat": "casa",
+      "tags_it": [
+        "lavatrice",
+        "lavastoviglie",
+        "bucato",
+        "piatti",
+        "programmi",
+        "detersivo"
+      ],
+      "tags_en": [
+        "washing machine",
+        "dishwasher",
+        "laundry",
+        "dishes",
+        "programs"
+      ],
+      "it": "La pagina Manuale spiega lavatrice (comandi, cassetto, programmi) e lavastoviglie con foto passo-passo.",
+      "en": "The House manual page explains the washing machine (controls, drawer, programs) and the dishwasher with step-by-step photos."
+    },
+    {
+      "id": "ombrellone",
+      "cat": "casa",
+      "tags_it": [
+        "ombrellone",
+        "giardino",
+        "pioggia",
+        "vento",
+        "chiudere",
+        "sole"
+      ],
+      "tags_en": [
+        "umbrella",
+        "garden",
+        "rain",
+        "wind",
+        "close"
+      ],
+      "it": "In caso di pioggia o vento, chiudete l'ombrellone del giardino prima di uscire o quando non siete in giardino. La pagina Manuale mostra come fare.",
+      "en": "In case of rain or wind, close the garden umbrella before going out or when you are not in the garden. The House manual page shows how."
+    },
+    {
+      "id": "colazione",
+      "cat": "servizi",
+      "tags_it": [
+        "colazione",
+        "bar",
+        "brignan",
+        "cornetto",
+        "snack",
+        "bevanda",
+        "ordinare",
+        "19:00",
+        "whatsapp"
+      ],
+      "tags_en": [
+        "breakfast",
+        "bar",
+        "croissant",
+        "snack",
+        "drink",
+        "order"
+      ],
+      "it": "Colazione al Brignan Café (bar convenzionato), dalle 7:30 alle 10:30: una bevanda e uno snack a persona. Gli snack per il giorno dopo vanno comunicati entro le 19:00 del giorno prima con il modulo nella pagina Colazione (invio via WhatsApp).",
+      "en": "Breakfast at Brignan Café (partner bar), 7:30–10:30 AM: one drink and one snack per person. Next-day snacks must be ordered by 7:00 PM the day before via the form on the Breakfast page (sent on WhatsApp).",
+      "tags_all": [
+        "croissant",
+        "dejeuner",
+        "desayuno",
+        "fruhstuck"
+      ]
+    },
+    {
+      "id": "luoghi",
+      "cat": "servizi",
+      "tags_it": [
+        "visitare",
+        "vedere",
+        "luoghi",
+        "salerno",
+        "costiera",
+        "amalfi",
+        "paestum",
+        "pompei",
+        "napoli",
+        "spiagge",
+        "duomo",
+        "cosa fare",
+        "gita",
+        "escursione"
+      ],
+      "tags_en": [
+        "visit",
+        "see",
+        "places",
+        "salerno",
+        "coast",
+        "amalfi",
+        "paestum",
+        "pompeii",
+        "naples",
+        "beaches",
+        "what to do",
+        "trip"
+      ],
+      "it": "La pagina Luoghi divide le mete per zona (Salerno e provincia, spiagge, Costiera, Napoli) con foto, info e link Maps. Per un piano su misura c'è il generatore nella pagina Itinerario.",
+      "en": "The Places page groups destinations by area (Salerno and surroundings, beaches, Coast, Naples) with photos, info and Maps links. For a tailored plan, use the generator on the Itinerary page.",
+      "tags_all": [
+        "besuchen",
+        "hacer",
+        "plage",
+        "playa",
+        "que",
+        "strand",
+        "visiter",
+        "voir"
+      ]
+    },
+    {
+      "id": "mangiare",
+      "cat": "servizi",
+      "tags_it": [
+        "mangiare",
+        "ristoranti",
+        "pizzeria",
+        "pizza",
+        "cena",
+        "pranzo",
+        "gelato",
+        "sushi",
+        "dove"
+      ],
+      "tags_en": [
+        "eat",
+        "restaurants",
+        "pizzeria",
+        "pizza",
+        "dinner",
+        "lunch",
+        "gelato",
+        "sushi",
+        "where"
+      ],
+      "it": "La pagina Dove mangiare raccoglie pizzerie, ristoranti, gelaterie e locali per categoria, con indicazioni su prezzo, passeggiate a piedi e consigli.",
+      "en": "The Where to eat page lists pizzerias, restaurants, gelaterias and venues by category, with price, walkability and tips.",
+      "tags_all": [
+        "comer",
+        "essen",
+        "manger",
+        "pizzeria",
+        "restaurante"
+      ]
+    },
+    {
+      "id": "trasporti",
+      "cat": "servizi",
+      "tags_it": [
+        "trasporti",
+        "bus",
+        "traghetto",
+        "taxi",
+        "auto",
+        "muoversi",
+        "orari",
+        "parcheggiare"
+      ],
+      "tags_en": [
+        "transport",
+        "bus",
+        "ferry",
+        "taxi",
+        "car",
+        "getting around",
+        "timetables"
+      ],
+      "it": "La pagina Trasporti spiega come muoversi (bus, traghetti, taxi) con orari e la pagina Parcheggi dove lasciare l'auto in casa e in città.",
+      "en": "The Transport page explains how to get around (bus, ferries, taxi) with timetables, and the Parking page where to leave the car.",
+      "tags_all": [
+        "bus",
+        "ferry",
+        "taxi",
+        "transport",
+        "transporte"
+      ]
+    },
+    {
+      "id": "spesa",
+      "cat": "servizi",
+      "tags_it": [
+        "spesa",
+        "supermercato",
+        "negozi",
+        "comprare",
+        "cibo"
+      ],
+      "tags_en": [
+        "groceries",
+        "supermarket",
+        "shops",
+        "buy",
+        "food"
+      ],
+      "it": "La pagina Spesa elenca minimarket, supermercati e negozi utili vicini alla casa.",
+      "en": "The Grocery shopping page lists minimarkets, supermarkets and useful shops near the house."
+    },
+    {
+      "id": "regole",
+      "cat": "servizi",
+      "tags_it": [
+        "regole",
+        "vietato",
+        "fumare",
+        "feste",
+        "rumore",
+        "silenzio",
+        "animali",
+        "orari"
+      ],
+      "tags_en": [
+        "rules",
+        "forbidden",
+        "smoking",
+        "parties",
+        "noise",
+        "quiet",
+        "pets"
+      ],
+      "it": "La pagina Regole spiega come vivere un soggiorno sereno (orari, cauzione, rispetto della casa). Leggetela a inizio soggiorno insieme al Manuale.",
+      "en": "The Rules page explains how to enjoy a peaceful stay (times, deposit, respect for the house). Read it at the start together with the Manual.",
+      "tags_all": [
+        "calme",
+        "interdit",
+        "prohibido",
+        "regeln",
+        "reglas",
+        "regles",
+        "ruhe",
+        "silencio",
+        "verboten"
+      ]
+    },
+    {
+      "id": "itinerario",
+      "cat": "servizi",
+      "tags_it": [
+        "itinerario",
+        "programma",
+        "giornata",
+        "piano",
+        "generatore",
+        "consigli",
+        "giorni"
+      ],
+      "tags_en": [
+        "itinerary",
+        "plan",
+        "day",
+        "generator",
+        "tips",
+        "schedule"
+      ],
+      "it": "La pagina Itinerario genera un piano su misura in base a giorni, interessi e gusti, con tappe, consigli food e tips. Si può anche copiare l'itinerario.",
+      "en": "The Itinerary page generates a tailored plan based on days, interests and tastes, with stops, food tips and advice. You can also copy the itinerary.",
+      "tags_all": [
+        "dias",
+        "giorni",
+        "itineraire",
+        "itinerario",
+        "jours",
+        "route",
+        "tage"
+      ]
+    },
+    {
+      "id": "farmacie",
+      "cat": "servizi",
+      "tags_it": [
+        "farmacia",
+        "medicine",
+        "medico",
+        "dottore"
+      ],
+      "tags_en": [
+        "pharmacy",
+        "medicines",
+        "doctor"
+      ],
+      "it": "La pagina Farmacie ed emergenze elenca farmacie vicine, numeri utili e cosa fare in caso di emergenza.",
+      "en": "The Pharmacies and emergencies page lists nearby pharmacies, useful numbers and what to do in an emergency."
+    }
+  ]
+}

@@ -18,6 +18,8 @@ export interface AnimatedFeatureCardProps {
   icon?: React.ReactNode;
   /** Variante cromatica (token del sito, light+dark) */
   color?: "green" | "sand" | "gold";
+  /** Mostra il numero indice in alto a sinistra */
+  showIndex?: boolean;
 }
 
 const colorVariants = {
@@ -33,7 +35,7 @@ const colorVariants = {
 } as const;
 
 const AnimatedFeatureCard = React.forwardRef<HTMLDivElement, AnimatedFeatureCardProps>(
-  ({ className, index, tag, title, imageSrc, icon, color = "green" }, ref) => {
+  ({ className, index, tag, title, imageSrc, icon, color = "green", showIndex = true }, ref) => {
     const cardStyle = colorVariants[color] as React.CSSProperties;
 
     return (
@@ -60,9 +62,11 @@ const AnimatedFeatureCard = React.forwardRef<HTMLDivElement, AnimatedFeatureCard
           }}
         />
 
-        <div className="absolute left-6 top-6 font-mono text-lg font-bold text-muted-foreground">
-          {index}
-        </div>
+        {showIndex ? (
+          <div className="absolute left-6 top-6 font-mono text-lg font-bold text-muted-foreground">
+            {index}
+          </div>
+        ) : null}
 
         <motion.div
           className="absolute inset-0 z-10 flex items-center justify-center"

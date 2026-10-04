@@ -1,6 +1,5 @@
 import { Suspense } from "react";
-import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { BackButton } from "@/components/back-button";
 import { notFound } from "next/navigation";
 import { SiteHeader } from "@/components/site-header";
 import { LanguageSync } from "@/components/language-sync";
@@ -9,7 +8,9 @@ import { ColazioneForm } from "@/components/colazione-form";
 import { LuoghiIsland } from "@/components/luoghi-island";
 import { MangiareIsland } from "@/components/mangiare-island";
 import { ItinerarioIsland } from "@/components/itinerario-island";
-import { ManualeCards } from "@/components/manuale-cards";
+import { SectionCards } from "@/components/section-cards";
+import { manualeCards } from "@/lib/legacy/manuale-cards.generated";
+import { regoleCards } from "@/lib/legacy/regole-cards.generated";
 import { resolveLang, withLang } from "@/lib/lang-server";
 import type { Lang } from "@/lib/i18n";
 import "../legacy-compat.css";
@@ -32,11 +33,11 @@ const SLUGS = [
 type Slug = (typeof SLUGS)[number];
 
 const BACK: Record<Lang, string> = {
-  it: "← Torna a Permanenza",
-  en: "← Back to Stay",
-  es: "← Volver a Estancia",
-  fr: "← Retour au Séjour",
-  de: "← Zurück zum Aufenthalt",
+  it: "Torna a Permanenza",
+  en: "Back to Stay",
+  es: "Volver a Estancia",
+  fr: "Retour au Séjour",
+  de: "Zurück zum Aufenthalt",
 };
 
 async function load(slug: Slug) {
@@ -102,16 +103,12 @@ export default async function LegacyPage({
       </Suspense>
       <SiteHeader lang={lang} />
       <main className="mx-auto max-w-4xl px-4 pb-16 pt-6 sm:px-6">
-        <Link
-          href={withLang("/permanenza", lang)}
-          className="mb-4 inline-flex min-h-[44px] items-center gap-2 rounded-full bg-secondary px-4 py-2 text-sm font-semibold text-secondary-foreground no-underline"
-        >
-          <ArrowLeft className="h-4 w-4" aria-hidden />
-          {BACK[lang]}
-        </Link>
+        <BackButton label={BACK[lang]} fallbackHref={withLang("/permanenza", lang)} />
         <h1 className="font-serif text-3xl text-foreground sm:text-4xl">{mod.title[lang]}</h1>
         {slug === "manuale" ? (
-          <ManualeCards lang={lang} />
+          <SectionCards cards={manualeCards} lang={lang} />
+        ) : slug === "regole" ? (
+          <SectionCards cards={regoleCards} lang={lang} />
         ) : (
           <div className="mt-4">
             <LegacyContent html={mod.html[lang]} lang={lang} />

@@ -16,6 +16,7 @@ const STRIP_IDS = {
 const STRIP_CLASSES = ["scroll-hint", "back-home"];
 const STRIP_CLASSES_PER_SLUG = {
   mangiare: ["food-choice-grid"],
+  regole: ["rules-group", "rules-index"],
 };
 
 // slug legacy -> rotta Next (query ?lang= aggiunta in coda)

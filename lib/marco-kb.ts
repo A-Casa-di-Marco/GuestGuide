@@ -62,6 +62,13 @@ export const MARCO_UI = {
     fr: "Ouvrir le chat avec Marco",
     de: "Chat mit Marco öffnen",
   },
+  tagline: {
+    it: "La tua guida A Casa di Marco",
+    en: "Your A Casa di Marco guide",
+    es: "Tu guía A Casa di Marco",
+    fr: "Ton guide A Casa di Marco",
+    de: "Dein A Casa di Marco Guide",
+  },
   offline: {
     it: "Marco non è disponibile al momento. Scrivici su WhatsApp al +39 392 3064010.",
     en: "Marco is unavailable right now. Message us on WhatsApp at +39 392 3064010.",

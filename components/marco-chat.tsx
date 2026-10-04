@@ -146,10 +146,11 @@ function ChatPanel({ lang, onClose }: { lang: Lang; onClose: () => void }) {
             src="/assets/robin-mascot.png"
             alt=""
             aria-hidden="true"
-            className="h-8 w-8 rounded-full bg-secondary object-cover"
+            className="h-8 w-8 shrink-0 object-contain"
           />
           <div>
-            <h3 className="font-serif text-base text-foreground">{MARCO_UI.title[lang]}</h3>
+            <h3 className="font-serif text-base leading-tight text-foreground">{MARCO_UI.title[lang]}</h3>
+            <p className="m-0 text-xs text-muted-foreground">{MARCO_UI.tagline[lang]}</p>
           </div>
         </div>
         <button

@@ -22,10 +22,12 @@ function imgSrc(src?: string): string {
 
 function RestaurantCard({ place, lang }: { place: Restaurant; lang: Lang }) {
   return (
-    <Card className="grid grid-cols-[clamp(110px,24%,220px)_minmax(0,1fr)] overflow-hidden rounded-[14px]">
+    <Card className="grid min-w-0 grid-cols-1 overflow-hidden rounded-[14px] sm:grid-cols-[clamp(140px,26%,220px)_minmax(0,1fr)]">
       {place.image ? (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img src={imgSrc(place.image)} alt={place.name[lang]} loading="lazy" className="aspect-square h-full w-full object-cover" />
+        <div className="relative aspect-[16/10] w-full min-w-0 overflow-hidden sm:aspect-auto sm:h-full sm:min-h-[190px]">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={imgSrc(place.image)} alt={place.name[lang]} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+        </div>
       ) : null}
       <CardContent className="min-w-0 p-4 md:p-5">
         <div className="flex flex-wrap gap-1.5">

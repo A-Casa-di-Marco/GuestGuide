@@ -39,7 +39,7 @@
   border-radius: 12px;
 }
 
-.legacy-content a {
+.legacy-content a:not([data-slot="button"]) {
   color: var(--primary);
 }
 

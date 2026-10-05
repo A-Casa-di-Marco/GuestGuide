@@ -27,6 +27,8 @@ export type CheckinSlide = {
     imageAfter?: { src: string; alt: string; contain?: boolean };
   }[];
   note?: string;
+  /** Contenuto React integrato nella card (es. regole complete). */
+  content?: React.ReactNode;
   /** Tasti finali della card (link interni o di conferma WhatsApp/email). */
   actions?: { label: string; href: string; external?: boolean; kind?: "primary" | "whatsapp" | "email" }[];
 };
@@ -178,6 +180,7 @@ export function CheckinCarousel({ slides, className, ariaLabel, prevLabel, nextL
                     />
                   ))}
                 </ul>
+                {slide.content ? <div className="mt-4">{slide.content}</div> : null}
                 {slide.sections?.map((sec) => (
                   <div key={sec.title} className="mt-4">
                     {sec.imageBefore ? (

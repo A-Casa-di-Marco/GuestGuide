@@ -9,7 +9,10 @@ import { EMAIL_HREF, MAPS_URL, PARKING_IMG_BY_LANG, WHATSAPP_ASJA } from "@/lib/
 import { checkin, tCheckin } from "@/lib/content-checkin";
 import { parseLang, ui, type Lang } from "@/lib/i18n";
 import { TCheckin } from "@/components/t-checkin";
+import { SectionCards } from "@/components/section-cards";
+import { regoleCards } from "@/lib/legacy/regole-cards.generated";
 import { cn } from "@/lib/utils";
+import "../permanenza/legacy-compat.css";
 
 function bullets(keys: readonly string[], lang: Lang): string[] {
   return keys.map((k) => tCheckin(k, lang));
@@ -125,9 +128,16 @@ function selfSlides(lang: Lang): CheckinSlide[] {
       image: "/assets/regole.png",
       imageAlt: ui.regoleSlideTitle[lang],
       contain: true,
-      bullets: [ui.regoleSlideLead[lang], ui.regoleSlideHint[lang], ui.regoleSlideConfirm[lang]],
+      bullets: [ui.regoleSlideLead[lang], ui.regoleSlideHint[lang]],
+      content: (
+        <>
+          <SectionCards cards={regoleCards} lang={lang} />
+          <p className="mt-4 rounded-xl bg-accent px-4 py-3 text-[15px] text-accent-foreground">
+            {ui.regoleSlideConfirm[lang]}
+          </p>
+        </>
+      ),
       actions: [
-        { label: ui.btnRules[lang], href: `/permanenza/regole?lang=${lang}` },
         { label: ui.btnLaCasa[lang], href: `/permanenza/manuale?lang=${lang}` },
         {
           label: ui.btnWhatsappAck[lang],

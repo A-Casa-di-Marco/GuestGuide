@@ -5,9 +5,9 @@ import { useSearchParams } from "next/navigation";
 import { SiteHeader } from "@/components/site-header";
 import { CheckinCarousel, type CheckinSlide } from "@/components/checkin-carousel";
 import { LanguageSync } from "@/components/language-sync";
-import { MAPS_URL, PARKING_IMG_BY_LANG, WHATSAPP_ASJA } from "@/lib/site";
+import { EMAIL_HREF, MAPS_URL, PARKING_IMG_BY_LANG, WHATSAPP_ASJA } from "@/lib/site";
 import { checkin, tCheckin } from "@/lib/content-checkin";
-import { parseLang, type Lang } from "@/lib/i18n";
+import { parseLang, ui, type Lang } from "@/lib/i18n";
 import { TCheckin } from "@/components/t-checkin";
 import { cn } from "@/lib/utils";
 
@@ -117,6 +117,30 @@ function selfSlides(lang: Lang): CheckinSlide[] {
         },
       ],
       note: tCheckin(checkin.keysNote, lang),
+    },
+    {
+      id: "regole",
+      eyebrow: `9 · ${tCheckin(checkin.selfTitle, lang)}`,
+      title: ui.regoleSlideTitle[lang],
+      image: "/assets/regole.png",
+      imageAlt: ui.regoleSlideTitle[lang],
+      contain: true,
+      bullets: [ui.regoleSlideLead[lang], ui.regoleSlideHint[lang], ui.regoleSlideConfirm[lang]],
+      actions: [
+        { label: ui.btnRules[lang], href: `/permanenza/regole?lang=${lang}` },
+        { label: ui.btnLaCasa[lang], href: `/permanenza/manuale?lang=${lang}` },
+        {
+          label: ui.btnWhatsappAck[lang],
+          href: `${WHATSAPP_ASJA}?text=${encodeURIComponent(ui.waAckMessage[lang])}`,
+          external: true,
+          kind: "whatsapp",
+        },
+        {
+          label: ui.btnEmailAck[lang],
+          href: `${EMAIL_HREF}?subject=${encodeURIComponent(ui.emailAckSubject[lang])}`,
+          kind: "email",
+        },
+      ],
     },
   ];
 }

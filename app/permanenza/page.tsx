@@ -25,7 +25,7 @@ export default async function Permanenza({
           Guida della casa e cosa visitare in zona. Le guide complete restano nelle pagine
           originali, senza modifiche ai contenuti.
         </p>
-        <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mx-auto mt-6 grid max-w-4xl grid-cols-2 gap-5">
           {tiles.map((tile) => {
             const slug = tile.href.split("/").pop() || "";
             const desc = hubDesc[slug]?.[lang] || tHome(tile.descKey, lang);

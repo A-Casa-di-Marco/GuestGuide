@@ -42,7 +42,7 @@ const ProjectCard = React.forwardRef<HTMLDivElement, ProjectCardProps>(
           />
         </div>
 
-        <div className="flex flex-1 flex-col p-6">
+        <div className="flex flex-1 flex-col p-6 text-center">
           <h3 className="text-xl font-semibold transition-colors duration-300 group-hover:text-primary">
             {title}
           </h3>
@@ -51,7 +51,7 @@ const ProjectCard = React.forwardRef<HTMLDivElement, ProjectCardProps>(
           <a
             href={link}
             {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-            className="group/button mt-4 inline-flex items-center gap-2 text-sm font-medium text-primary transition-all duration-300 hover:underline"
+            className="group/button mt-4 inline-flex items-center justify-center gap-2 text-sm font-medium text-primary transition-all duration-300 hover:underline"
             onClick={(e) => e.stopPropagation()}
           >
             {linkText}

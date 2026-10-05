@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { SiteHeader } from "@/components/site-header";
 import { CheckinCarousel, type CheckinSlide } from "@/components/checkin-carousel";
@@ -126,6 +126,15 @@ function CheckInInner() {
   const lang = parseLang(params.get("lang"));
   const [mode, setMode] = useState<"presenza" | "self" | null>(null);
   const slides = mode === "presenza" ? presenzaCard(lang) : mode === "self" ? selfSlides(lang) : [];
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!mode) return;
+    const header = document.querySelector("header");
+    const offset = header ? Math.round(header.getBoundingClientRect().height) + 8 : 0;
+    if (contentRef.current) contentRef.current.style.scrollMarginTop = `${offset}px`;
+    contentRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, [mode]);
 
   return (
     <>
@@ -187,42 +196,44 @@ function CheckInInner() {
           </a>
         </div>
 
-        {mode === "presenza" ? (
-          <div className="mt-6">
-            <h2 className="text-center font-serif text-xl text-foreground sm:text-left sm:text-2xl">
-              <TCheckin k={checkin.inSection1} lang={lang} />
-            </h2>
-            <ul className="mt-3 grid list-none gap-3 p-0">
-              {[checkin.inB1, checkin.inB2].map((k) => (
-                <li
-                  key={k}
-                  className="rounded-[18px] bg-secondary px-4 py-3 text-[15px] text-secondary-foreground"
-                  dangerouslySetInnerHTML={{ __html: tCheckin(k, lang) }}
+        <div ref={contentRef}>
+          {mode === "presenza" ? (
+            <div className="mt-6">
+              <h2 className="text-center font-serif text-xl text-foreground sm:text-left sm:text-2xl">
+                <TCheckin k={checkin.inSection1} lang={lang} />
+              </h2>
+              <ul className="mt-3 grid list-none gap-3 p-0">
+                {[checkin.inB1, checkin.inB2].map((k) => (
+                  <li
+                    key={k}
+                    className="rounded-[18px] bg-secondary px-4 py-3 text-[15px] text-secondary-foreground"
+                    dangerouslySetInnerHTML={{ __html: tCheckin(k, lang) }}
+                  />
+                ))}
+              </ul>
+              <div className="mt-6">
+                <CheckinCarousel
+                  slides={slides}
+                  ariaLabel={tCheckin(checkin.choiceInTitle, lang)}
+                  prevLabel={tCheckin(checkin.prev, lang)}
+                  nextLabel={tCheckin(checkin.next, lang)}
+                  lang={lang}
                 />
-              ))}
-            </ul>
+              </div>
+            </div>
+          ) : null}
+          {mode === "self" ? (
             <div className="mt-6">
               <CheckinCarousel
                 slides={slides}
-                ariaLabel={tCheckin(checkin.choiceInTitle, lang)}
+                ariaLabel={tCheckin(checkin.selfTitle, lang)}
                 prevLabel={tCheckin(checkin.prev, lang)}
                 nextLabel={tCheckin(checkin.next, lang)}
                 lang={lang}
               />
             </div>
-          </div>
-        ) : null}
-        {mode === "self" ? (
-          <div className="mt-6">
-            <CheckinCarousel
-              slides={slides}
-              ariaLabel={tCheckin(checkin.selfTitle, lang)}
-              prevLabel={tCheckin(checkin.prev, lang)}
-              nextLabel={tCheckin(checkin.next, lang)}
-              lang={lang}
-            />
-          </div>
-        ) : null}
+          ) : null}
+        </div>
       </main>
     </>
   );

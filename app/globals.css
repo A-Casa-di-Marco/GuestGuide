@@ -139,3 +139,11 @@
 .manager label{display:block;font-weight:600}
 .manager input{display:block;width:100%;margin:8px 0 18px;border:1px solid var(--border);border-radius:8px;padding:12px;color:var(--foreground);background:var(--card);min-width:0}
 .manager small{font-weight:400;color:var(--muted-foreground)}
+
+/* Uccellino launcher (MarcoChat): sprite legacy - pose a terra (becco) e battito ali */
+.robin-sprite{display:block;width:100%;height:100%;background-size:400% 200%;background-repeat:no-repeat;transform-origin:55% 60%}
+.robin-sprite--peck{background-image:url("/assets/robin-ground.png");animation:robin-ground-peck var(--robin-peck-period,4.5s) steps(1,end) infinite;transform:none}
+.robin-sprite--flap{background-image:url("/assets/robin-flight-v2.png");animation:robin-wingbeat .52s steps(1,end) infinite,robin-flight-bob .52s ease-in-out infinite}
+@keyframes robin-wingbeat{0%{background-position:0% 0%}12.5%{background-position:33.333333% 0%}25%{background-position:66.666667% 0%}37.5%{background-position:100% 0%}50%{background-position:0% 100%}62.5%{background-position:33.333333% 100%}75%{background-position:66.666667% 100%}87.5%,100%{background-position:100% 100%}}
+@keyframes robin-flight-bob{0%,100%{transform:translateY(-1px) rotate(-1deg)}50%{transform:translateY(2px) rotate(1deg)}}
+@keyframes robin-ground-peck{0%,27%{background-position:100% 0%}28%,36%{background-position:0% 100%}37%,47%{background-position:33.333333% 100%}48%,54%{background-position:66.666667% 100%}55%,59%{background-position:0% 100%}60%,68%{background-position:33.333333% 100%}69%,77%{background-position:66.666667% 100%}78%,100%{background-position:100% 100%}}

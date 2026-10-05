@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Send, X } from "lucide-react";
 import { MARCO_UI } from "@/lib/marco-kb";
@@ -208,10 +208,84 @@ function ChatPanel({ lang, onClose }: { lang: Lang; onClose: () => void }) {
 export function MarcoChat() {
   const [open, setOpen] = useState(false);
   const [lang, setLang] = useState<Lang>("it");
+  const [pose, setPose] = useState<"peck" | "flap">("peck");
+  const [bubble, setBubble] = useState(false);
+  const [peckPeriod] = useState(() => `${(3.8 + Math.random() * 1.2).toFixed(2)}s`);
   const reduceMotion = useReducedMotion();
+
+  // Ciclo di pose: becco a terra -> qualche battito d'ali -> di nuovo becco...
+  useEffect(() => {
+    if (open || reduceMotion) return;
+    const timers: number[] = [];
+    const cycle = () => {
+      timers.push(
+        window.setTimeout(() => {
+          setPose("flap");
+          timers.push(
+            window.setTimeout(() => {
+              setPose("peck");
+              cycle();
+            }, 1500),
+          );
+        }, 4200 + Math.random() * 3200),
+      );
+    };
+    cycle();
+    return () => timers.forEach((t) => window.clearTimeout(t));
+  }, [open, reduceMotion]);
+
+  // Ogni tanto spunta la nuvoletta "serve aiuto?" (cliccando si apre la chat)
+  useEffect(() => {
+    if (open) {
+      const t = window.setTimeout(() => setBubble(false), 0);
+      return () => window.clearTimeout(t);
+    }
+    let alive = true;
+    const timers: number[] = [];
+    const loop = (delay: number) => {
+      timers.push(
+        window.setTimeout(() => {
+          if (!alive) return;
+          setLang(resolveLang());
+          setBubble(true);
+          timers.push(
+            window.setTimeout(() => {
+              if (!alive) return;
+              setBubble(false);
+              loop(30000 + Math.random() * 20000);
+            }, 5500),
+          );
+        }, delay),
+      );
+    };
+    loop(12000);
+    return () => {
+      alive = false;
+      timers.forEach((t) => window.clearTimeout(t));
+    };
+  }, [open]);
 
   return (
     <>
+      <AnimatePresence>
+        {!open && bubble && (
+          <motion.button
+            key="help-bubble"
+            type="button"
+            initial={{ opacity: 0, y: 10, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 10, scale: 0.9 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+            onClick={() => {
+              setLang(resolveLang());
+              setOpen(true);
+            }}
+            className="fixed bottom-[96px] right-4 z-[90] max-w-[210px] cursor-pointer rounded-2xl rounded-br-sm border border-border bg-card px-3.5 py-2.5 text-left text-sm font-medium leading-snug text-card-foreground shadow-lg"
+          >
+            {MARCO_UI.helpBubble[lang]}
+          </motion.button>
+        )}
+      </AnimatePresence>
       <AnimatePresence>
         {!open && (
           <motion.button
@@ -237,8 +311,16 @@ export function MarcoChat() {
               animate={reduceMotion ? {} : { y: [0, -3, 0] }}
               transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/assets/robin-perched.png" alt="" aria-hidden="true" className="h-full w-full object-contain" />
+              {reduceMotion ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src="/assets/robin-perched.png" alt="" aria-hidden="true" className="h-full w-full object-contain" />
+              ) : (
+                <span
+                  aria-hidden="true"
+                  className={cn("robin-sprite", pose === "flap" ? "robin-sprite--flap" : "robin-sprite--peck")}
+                  style={{ "--robin-peck-period": peckPeriod } as CSSProperties}
+                />
+              )}
             </motion.span>
           </motion.button>
         )}

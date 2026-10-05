@@ -29,8 +29,6 @@ export type CheckinSlide = {
   note?: string;
   /** Contenuto React integrato nella card (es. regole complete). */
   content?: React.ReactNode;
-  /** Tasti finali della card (link interni o di conferma WhatsApp/email). */
-  actions?: { label: string; href: string; external?: boolean; kind?: "primary" | "whatsapp" | "email" }[];
 };
 
 type Props = {
@@ -216,27 +214,6 @@ export function CheckinCarousel({ slides, className, ariaLabel, prevLabel, nextL
                     {imgButton(img.src, img.alt, img.contain ?? true)}
                   </div>
                 ))}
-                {slide.actions?.length ? (
-                  <div className="mt-4 grid gap-2.5">
-                    {slide.actions.map((a) => (
-                      <a
-                        key={a.label}
-                        href={a.href}
-                        {...(a.external ? { target: "_blank", rel: "noreferrer" } : {})}
-                        className={cn(
-                          "inline-flex min-h-[48px] items-center justify-center rounded-full px-5 py-3 text-center text-[15px] font-semibold no-underline transition-opacity hover:opacity-90",
-                          a.kind === "whatsapp"
-                            ? "bg-[#25D366] text-white"
-                            : a.kind === "email"
-                              ? "border border-border bg-secondary text-secondary-foreground"
-                              : "bg-primary text-primary-foreground",
-                        )}
-                      >
-                        {a.label}
-                      </a>
-                    ))}
-                  </div>
-                ) : null}
               </div>
             </article>
           </SwiperSlide>

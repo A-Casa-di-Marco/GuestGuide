@@ -62,6 +62,13 @@ export const MARCO_UI = {
     fr: "Ouvrir le chat avec Marco",
     de: "Chat mit Marco öffnen",
   },
+  helpBubble: {
+    it: "Hai bisogno di aiuto?",
+    en: "Need any help?",
+    es: "¿Necesitas ayuda?",
+    fr: "Besoin d'aide ?",
+    de: "Brauchst du Hilfe?",
+  },
   tagline: {
     it: "La tua guida A Casa di Marco",
     en: "Your A Casa di Marco guide",

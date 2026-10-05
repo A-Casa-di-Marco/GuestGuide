@@ -5,11 +5,12 @@ import { useSearchParams } from "next/navigation";
 import { SiteHeader } from "@/components/site-header";
 import { CheckinCarousel, type CheckinSlide } from "@/components/checkin-carousel";
 import { LanguageSync } from "@/components/language-sync";
-import { EMAIL_HREF, MAPS_URL, PARKING_IMG_BY_LANG, WHATSAPP_ASJA } from "@/lib/site";
+import { MAPS_URL, PARKING_IMG_BY_LANG, WHATSAPP_ASJA } from "@/lib/site";
 import { checkin, tCheckin } from "@/lib/content-checkin";
 import { parseLang, ui, type Lang } from "@/lib/i18n";
 import { TCheckin } from "@/components/t-checkin";
 import { SectionCards } from "@/components/section-cards";
+import { RulesAck } from "@/components/rules-ack";
 import { regoleCards } from "@/lib/legacy/regole-cards.generated";
 import { cn } from "@/lib/utils";
 import "../permanenza/legacy-compat.css";
@@ -128,29 +129,21 @@ function selfSlides(lang: Lang): CheckinSlide[] {
       image: "/assets/regole.png",
       imageAlt: ui.regoleSlideTitle[lang],
       contain: true,
-      bullets: [ui.regoleSlideLead[lang], ui.regoleSlideHint[lang]],
+      bullets: [
+        ui.regoleSlideLead[lang],
+        ui.regoleSlideHint[lang]
+          .replace(
+            "<strong>",
+            `<a href="/permanenza/manuale?lang=${lang}" class="font-semibold underline underline-offset-2">`,
+          )
+          .replace("</strong>", "</a>"),
+      ],
       content: (
         <>
           <SectionCards cards={regoleCards} lang={lang} />
-          <p className="mt-4 rounded-xl bg-accent px-4 py-3 text-[15px] text-accent-foreground">
-            {ui.regoleSlideConfirm[lang]}
-          </p>
+          <RulesAck lang={lang} />
         </>
       ),
-      actions: [
-        { label: ui.btnLaCasa[lang], href: `/permanenza/manuale?lang=${lang}` },
-        {
-          label: ui.btnWhatsappAck[lang],
-          href: `${WHATSAPP_ASJA}?text=${encodeURIComponent(ui.waAckMessage[lang])}`,
-          external: true,
-          kind: "whatsapp",
-        },
-        {
-          label: ui.btnEmailAck[lang],
-          href: `${EMAIL_HREF}?subject=${encodeURIComponent(ui.emailAckSubject[lang])}`,
-          kind: "email",
-        },
-      ],
     },
   ];
 }

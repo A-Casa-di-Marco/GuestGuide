@@ -33,7 +33,7 @@ export function RulesAck({ lang }: { lang: Lang }) {
             setChecked(e.target.checked);
             setOpen(e.target.checked);
           }}
-          className="h-5 w-5 shrink-0 accent-[#3a5a40]"
+          className="h-5 w-5 shrink-0 accent-primary"
         />
         <span>{u.rulesCheckLabel[lang]}</span>
       </label>
@@ -69,7 +69,7 @@ export function RulesAck({ lang }: { lang: Lang }) {
                 setChecked(false);
                 setOpen(false);
               }}
-              className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-[#25D366] px-5 py-3 text-[15px] font-semibold text-white no-underline"
+              className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-whatsapp px-5 py-3 text-[15px] font-semibold text-white no-underline"
             >
               {u.rulesDialogConfirm[lang]}
             </a>

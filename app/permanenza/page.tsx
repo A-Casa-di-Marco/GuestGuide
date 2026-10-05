@@ -70,12 +70,12 @@ export default async function Permanenza({
                 )}
               >
                 <Icon
-                  className={cn("h-6 w-6 shrink-0", dark ? "text-[#caa75d]" : "text-primary")}
+                  className={cn("h-6 w-6 shrink-0", dark ? "text-focus" : "text-primary")}
                   strokeWidth={1.7}
                   aria-hidden
                 />
                 <strong className="text-[15px] font-medium leading-snug sm:text-base">
-                  {tHome(tile.titleKey)}
+                  {tHome(tile.titleKey, lang)}
                 </strong>
                 <small
                   className={cn(

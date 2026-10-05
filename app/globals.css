@@ -78,6 +78,8 @@
   --color-warning: var(--warning);
   --color-warning-accent: var(--warning-accent);
   --color-warning-foreground: var(--warning-foreground);
+  --color-focus: var(--focus);
+  --color-whatsapp: #25d366;
   --font-sans: "Poppins", system-ui, -apple-system, sans-serif;
   --font-serif: "Fraunces", Georgia, serif;
 }

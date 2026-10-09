@@ -566,6 +566,39 @@
   display: none;
 }
 
+/* Wi-Fi: connessione assistita (password copiata + impostazioni di sistema) */
+.legacy-content .wifi-connect {
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+  border-radius: 18px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.legacy-content .wifi-connect strong {
+  display: block;
+  color: var(--foreground);
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+.legacy-content .wifi-connect p {
+  margin: 0 0 14px;
+  font-size: 14px;
+}
+
+.legacy-content .wifi-connect-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.legacy-content .wifi-connect-actions .btn.light {
+  background: var(--card);
+  color: var(--card-foreground);
+  border: 1px solid var(--border);
+}
+
 /* Colazione form legacy residuo */
 .legacy-content .breakfast-order-box {
   border-radius: 14px;

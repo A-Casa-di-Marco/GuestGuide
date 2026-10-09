@@ -184,6 +184,54 @@
       margin-bottom:6px;
     }
 
+    .wifi-connect {
+      background:var(--ottanio-soft);
+      border-radius:18px;
+      padding:20px;
+      margin-top:20px;
+    }
+
+    .wifi-connect strong {
+      display:block;
+      color:var(--ottanio-dark);
+      margin-bottom:8px;
+      font-size:16px;
+    }
+
+    .wifi-connect p {
+      margin:0 0 14px;
+      font-size:14px;
+      line-height:1.6;
+    }
+
+    .wifi-connect-actions {
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .wifi-connect .btn {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      background:var(--ottanio);
+      color:#fff;
+      border-radius:999px;
+      padding:12px 18px;
+      font-size:14px;
+      font-weight:700;
+      text-decoration:none;
+      border:none;
+      cursor:pointer;
+      min-height:48px;
+    }
+
+    .wifi-connect .btn.light {
+      background:#fff;
+      color:var(--ottanio-dark);
+      border:1px solid rgba(58,90,64,.25);
+    }
+
     .simple-list {
       list-style:none;
       display:grid;
@@ -803,6 +851,15 @@
 <div class="info-card">
 <strong data-de="Passwort" data-en="Password" data-es="Contraseña" data-fr="Mot de passe" data-it="Password">Password</strong>
 <span class="placeholder" data-de="ACASADIMARCO!17" data-en="ACASADIMARCO!17" data-es="ACASADIMARCO!17" data-fr="ACASADIMARCO!17" data-it="ACASADIMARCO!17">ACASADIMARCO!17</span>
+</div>
+</div>
+<div class="wifi-connect">
+<strong data-de="Automatisch verbinden" data-en="Connect automatically" data-es="Conectar automáticamente" data-fr="Connecter automatiquement" data-it="Connetti automaticamente">Connetti automaticamente</strong>
+<p data-de="Tippe unten auf den Button: Das Passwort wird kopiert und die WLAN-Einstellungen öffnen sich. Wähle das Netzwerk, füge das Passwort ein und du bist verbunden." data-en="Tap the button below from your phone: the password is copied and the Wi-Fi settings open. Choose the network, paste the password and you are connected." data-es="Pulsa el botón desde el teléfono: la contraseña se copia y se abren los ajustes Wi-Fi. Elige la red, pega la contraseña y listo." data-fr="Appuyez sur le bouton depuis votre téléphone : le mot de passe est copié et les réglages Wi-Fi s’ouvrent. Choisissez le réseau, collez le mot de passe et c’est connecté." data-it="Premi il pulsante qui sotto dal telefono: la password viene copiata e si aprono le impostazioni Wi-Fi. Scegli la rete, incolla la password e sei connesso.">Premi il pulsante qui sotto dal telefono: la password viene copiata e si aprono le impostazioni Wi-Fi. Scegli la rete, incolla la password e sei connesso.</p>
+<div class="wifi-connect-actions">
+<a class="btn wifi-join" data-wifi-join data-auth="WPA" data-password="ACASADIMARCO!17" data-ssid="A Casa di Marco - Wifi" href="WIFI:T:WPA;S:A Casa di Marco - Wifi;P:ACASADIMARCO!17;;" data-de="📶 Mit WLAN verbinden" data-en="📶 Connect to Wi-Fi" data-es="📶 Conectar al Wi-Fi" data-fr="📶 Se connecter au Wi-Fi" data-it="📶 Connetti al Wi-Fi">📶 Connetti al Wi-Fi</a>
+<button type="button" class="btn light wifi-copy" data-wifi-copy data-copy-value="A Casa di Marco - Wifi" data-de="Netzwerknamen kopieren" data-en="Copy network name" data-es="Copiar nombre de red" data-fr="Copier le nom du réseau" data-it="Copia nome rete">Copia nome rete</button>
+<button type="button" class="btn light wifi-copy" data-wifi-copy data-copy-value="ACASADIMARCO!17" data-de="Passwort kopieren" data-en="Copy password" data-es="Copiar contraseña" data-fr="Copier le mot de passe" data-it="Copia password">Copia password</button>
 </div>
 </div>
 <ul class="simple-list">
@@ -1518,6 +1575,61 @@ document.querySelectorAll('.moka-choice-button').forEach(function (button) {
         localStorage.setItem('guestGuideLang', lang);
       } catch (e) {}
     }
+
+    // Wi-Fi: copia password/nome rete + apertura impostazioni di sistema.
+    // I browser non permettono il join diretto per motivi di sicurezza:
+    // copiamo la password e apriamo il pannello Wi-Fi del telefono.
+    document.addEventListener('click', function (e) {
+      var t = e.target && e.target.closest ? e.target.closest('[data-wifi-join],[data-wifi-copy]') : null;
+      if (!t) return;
+      function copyText(text, done) {
+        function fallback() {
+          try {
+            var ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.position = 'fixed';
+            ta.style.opacity = '0';
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            ta.remove();
+            done(true);
+          } catch (err) { done(false); }
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(function () { done(true); }, fallback);
+        } else { fallback(); }
+      }
+      function flash(el, msg) {
+        var orig = el.textContent;
+        el.textContent = msg;
+        setTimeout(function () { el.textContent = orig; }, 2000);
+      }
+      var copied = { it: 'Copiata ✓', en: 'Copied ✓', es: 'Copiada ✓', fr: 'Copié ✓', de: 'Kopiert ✓' };
+      var lang = getLang();
+      if (t.hasAttribute('data-wifi-copy')) {
+        e.preventDefault();
+        var value = t.getAttribute('data-copy-value') || '';
+        if (value) copyText(value, function (ok) { if (ok) flash(t, copied[lang] || copied.it); });
+        return;
+      }
+      var ssid = t.getAttribute('data-ssid') || '';
+      var password = t.getAttribute('data-password') || '';
+      var auth = t.getAttribute('data-auth') || 'WPA';
+      var wifiUri = 'WIFI:T:' + auth + ';S:' + ssid + ';P:' + password + ';;';
+      if (password) copyText(password, function (ok) { if (ok) flash(t, copied[lang] || copied.it); });
+      var ua = navigator.userAgent || '';
+      if (/Android/i.test(ua)) {
+        e.preventDefault();
+        window.location.href = 'intent:#Intent;action=android.settings.WIFI_SETTINGS;end';
+      } else if (/iPhone|iPad|iPod/i.test(ua)) {
+        e.preventDefault();
+        window.location.href = 'App-Prefs:WIFI';
+        setTimeout(function () { window.location.href = wifiUri; }, 600);
+      } else {
+        e.preventDefault();
+      }
+    });
 
     translatePage(getLang());
   </script>

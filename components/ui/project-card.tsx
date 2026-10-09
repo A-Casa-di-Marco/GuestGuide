@@ -51,7 +51,7 @@ const ProjectCard = React.forwardRef<HTMLDivElement, ProjectCardProps>(
           <a
             href={link}
             {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-            className="group/button mt-4 inline-flex items-center justify-center gap-2 text-sm font-medium text-primary transition-all duration-300 hover:underline"
+            className="group/button mt-4 inline-flex items-center justify-center gap-2 text-sm font-medium text-primary transition-all duration-300 hover:underline dark:text-secondary-foreground"
             onClick={(e) => e.stopPropagation()}
           >
             {linkText}

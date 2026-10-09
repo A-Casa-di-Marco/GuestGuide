@@ -70,7 +70,10 @@ export default async function Permanenza({
                 )}
               >
                 <Icon
-                  className={cn("h-6 w-6 shrink-0", dark ? "text-focus" : "text-primary")}
+                  className={cn(
+                    "h-6 w-6 shrink-0",
+                    dark ? "text-focus dark:text-primary-foreground" : "text-primary",
+                  )}
                   strokeWidth={1.7}
                   aria-hidden
                 />

@@ -43,12 +43,17 @@
   color: var(--primary);
 }
 
-/* Link/bottoni generici */
-.legacy-content .btn,
-.legacy-content .shop-btn,
-.legacy-content .parking-btn,
-.legacy-content .transport-btn,
-.legacy-content .manual-help {
+/* Link/bottoni generici (selettore a.btn: batte la regola a:not qui sopra) */
+.legacy-content a.btn,
+.legacy-content button.btn,
+.legacy-content a.shop-btn,
+.legacy-content button.shop-btn,
+.legacy-content a.parking-btn,
+.legacy-content button.parking-btn,
+.legacy-content a.transport-btn,
+.legacy-content button.transport-btn,
+.legacy-content a.manual-help,
+.legacy-content button.manual-help {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -593,10 +598,9 @@
   gap: 10px;
 }
 
-.legacy-content .wifi-connect-actions .btn.light {
-  background: var(--card);
-  color: var(--card-foreground);
-  border: 1px solid var(--border);
+.legacy-content .info-card .wifi-copy {
+  margin-top: 12px;
+  width: 100%;
 }
 
 /* Colazione form legacy residuo */

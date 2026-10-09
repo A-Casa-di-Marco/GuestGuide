@@ -210,7 +210,8 @@
       gap:10px;
     }
 
-    .wifi-connect .btn {
+    .wifi-connect .btn,
+    .info-card .btn {
       display:inline-flex;
       align-items:center;
       justify-content:center;
@@ -226,10 +227,16 @@
       min-height:48px;
     }
 
-    .wifi-connect .btn.light {
+    .wifi-connect .btn.light,
+    .info-card .btn.light {
       background:#fff;
       color:var(--ottanio-dark);
       border:1px solid rgba(58,90,64,.25);
+    }
+
+    .info-card .wifi-copy {
+      margin-top:12px;
+      width:100%;
     }
 
     .simple-list {
@@ -847,10 +854,12 @@
 <div class="info-card">
 <strong data-de="Netzwerkname" data-en="Network name" data-es="Nombre de la red" data-fr="Nom du réseau" data-it="Nome rete">Nome rete</strong>
 <span class="placeholder" data-de="A Casa di Marco - Wifi" data-en="A Casa di Marco - Wifi" data-es="A Casa di Marco - Wifi" data-fr="A Casa di Marco - Wifi" data-it="A Casa di Marco - Wifi">A Casa di Marco - Wifi</span>
+<button type="button" class="btn light wifi-copy" data-wifi-copy data-copy-value="A Casa di Marco - Wifi" data-de="Netzwerknamen kopieren" data-en="Copy network name" data-es="Copiar nombre de red" data-fr="Copier le nom du réseau" data-it="Copia nome rete">Copia nome rete</button>
 </div>
 <div class="info-card">
 <strong data-de="Passwort" data-en="Password" data-es="Contraseña" data-fr="Mot de passe" data-it="Password">Password</strong>
 <span class="placeholder" data-de="ACASADIMARCO!17" data-en="ACASADIMARCO!17" data-es="ACASADIMARCO!17" data-fr="ACASADIMARCO!17" data-it="ACASADIMARCO!17">ACASADIMARCO!17</span>
+<button type="button" class="btn light wifi-copy" data-wifi-copy data-copy-value="ACASADIMARCO!17" data-de="Passwort kopieren" data-en="Copy password" data-es="Copiar contraseña" data-fr="Copier le mot de passe" data-it="Copia password">Copia password</button>
 </div>
 </div>
 <div class="wifi-connect">
@@ -858,8 +867,6 @@
 <p data-de="Tippe unten auf den Button: Das Passwort wird kopiert und die WLAN-Einstellungen öffnen sich. Wähle das Netzwerk, füge das Passwort ein und du bist verbunden." data-en="Tap the button below from your phone: the password is copied and the Wi-Fi settings open. Choose the network, paste the password and you are connected." data-es="Pulsa el botón desde el teléfono: la contraseña se copia y se abren los ajustes Wi-Fi. Elige la red, pega la contraseña y listo." data-fr="Appuyez sur le bouton depuis votre téléphone : le mot de passe est copié et les réglages Wi-Fi s’ouvrent. Choisissez le réseau, collez le mot de passe et c’est connecté." data-it="Premi il pulsante qui sotto dal telefono: la password viene copiata e si aprono le impostazioni Wi-Fi. Scegli la rete, incolla la password e sei connesso.">Premi il pulsante qui sotto dal telefono: la password viene copiata e si aprono le impostazioni Wi-Fi. Scegli la rete, incolla la password e sei connesso.</p>
 <div class="wifi-connect-actions">
 <a class="btn wifi-join" data-wifi-join data-auth="WPA" data-password="ACASADIMARCO!17" data-ssid="A Casa di Marco - Wifi" href="WIFI:T:WPA;S:A Casa di Marco - Wifi;P:ACASADIMARCO!17;;" data-de="📶 Mit WLAN verbinden" data-en="📶 Connect to Wi-Fi" data-es="📶 Conectar al Wi-Fi" data-fr="📶 Se connecter au Wi-Fi" data-it="📶 Connetti al Wi-Fi">📶 Connetti al Wi-Fi</a>
-<button type="button" class="btn light wifi-copy" data-wifi-copy data-copy-value="A Casa di Marco - Wifi" data-de="Netzwerknamen kopieren" data-en="Copy network name" data-es="Copiar nombre de red" data-fr="Copier le nom du réseau" data-it="Copia nome rete">Copia nome rete</button>
-<button type="button" class="btn light wifi-copy" data-wifi-copy data-copy-value="ACASADIMARCO!17" data-de="Passwort kopieren" data-en="Copy password" data-es="Copiar contraseña" data-fr="Copier le mot de passe" data-it="Copia password">Copia password</button>
 </div>
 </div>
 <ul class="simple-list">

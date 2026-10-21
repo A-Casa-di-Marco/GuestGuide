@@ -83,6 +83,27 @@ export const MARCO_UI = {
     fr: "Marco est indisponible pour le moment. Écrivez-nous sur WhatsApp au +39 392 3064010.",
     de: "Marco ist gerade nicht verfügbar. Schreib uns per WhatsApp an +39 392 3064010.",
   },
+  busy: {
+    it: "Ho troppe domande in questo momento. Riprova tra un minuto o scrivici su WhatsApp al +39 392 3064010.",
+    en: "I'm getting a lot of questions right now. Try again in a minute or message us on WhatsApp at +39 392 3064010.",
+    es: "Estoy recibiendo muchas preguntas ahora. Inténtalo de nuevo en un minuto o escríbenos por WhatsApp al +39 392 3064010.",
+    fr: "Je reçois beaucoup de questions en ce moment. Réessayez dans une minute ou écrivez-nous sur WhatsApp au +39 392 3064010.",
+    de: "Ich bekomme gerade viele Fragen. Versuch es in einer Minute noch einmal oder schreib uns per WhatsApp an +39 392 3064010.",
+  },
+  trouble: {
+    it: "Qualcosa è andato storto. Riprova tra poco o scrivici su WhatsApp al +39 392 3064010.",
+    en: "Something went wrong. Try again shortly or message us on WhatsApp at +39 392 3064010.",
+    es: "Algo ha salido mal. Inténtalo de nuevo en breve o escríbenos por WhatsApp al +39 392 3064010.",
+    fr: "Un problème est survenu. Réessayez dans un instant ou écrivez-nous sur WhatsApp au +39 392 3064010.",
+    de: "Etwas ist schiefgelaufen. Versuch es gleich noch einmal oder schreib uns per WhatsApp an +39 392 3064010.",
+  },
+  badRequest: {
+    it: "Richiesta non valida.",
+    en: "Invalid request.",
+    es: "Solicitud no válida.",
+    fr: "Requête invalide.",
+    de: "Ungültige Anfrage.",
+  },
   unknown: {
     it: "Non trovo questa informazione nella guida. Scrivici su WhatsApp al +39 392 3064010 e ti aiutiamo subito.",
     en: "I can't find this information in the guide. Message us on WhatsApp at +39 392 3064010 and we'll help you right away.",

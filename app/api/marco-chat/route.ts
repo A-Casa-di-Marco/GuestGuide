@@ -1,12 +1,20 @@
 import { env } from "cloudflare:workers";
 import { isLang, type Lang } from "../../../lib/i18n";
 import { marcoSystemPrompt, MARCO_UI } from "../../../lib/marco-kb";
-import { retrieve } from "../../../lib/marco-retrieval";
+import { isContentQuery, retrieve } from "../../../lib/marco-retrieval";
+import { getCachedReply, storeCachedReply } from "../../../lib/marco-cache";
 
 export const dynamic = "force-dynamic";
 
-const DEFAULT_MODEL = "openrouter/free";
-const TIMEOUT_MS = 20000;
+// Modelli :free in ordine di preferenza (il primo è il default).
+// Override con la env MARCO_MODEL (anche lista separata da virgole).
+const DEFAULT_MODELS = [
+  "google/gemma-4-31b-it:free",
+  "nvidia/nemotron-3-super-120b-a12b:free",
+  "minimax/minimax-m3.1-flash:free",
+];
+const BUDGET_MS = 30000;
+const ATTEMPT_MS = 20000;
 
 // Throttle leggero anti-abuso (per isolate, come il login host).
 const attempts = new Map<string, { n: number; reset: number }>();
@@ -31,12 +39,71 @@ function clientIp(request: Request): string {
   );
 }
 
+function modelList(override?: string): string[] {
+  const custom = (override || "").split(",").map((m) => m.trim()).filter(Boolean);
+  return custom.length ? custom : DEFAULT_MODELS;
+}
+
+/** Scarta risposte vuote o palesemente rotte (es. rifiuti dei modelli content-safety). */
+function validReply(text: string): boolean {
+  const s = text.trim();
+  if (s.length < 12) return false;
+  if (/user safety|content[- ]safety|\bmoderation\b/i.test(s)) return false;
+  return true;
+}
+
+async function askModel(
+  model: string,
+  apiKey: string,
+  origin: string,
+  messages: { role: string; content: string }[],
+  budgetLeft: number,
+): Promise<{ ok: true; reply: string } | { ok: false; status: number }> {
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), Math.min(budgetLeft, ATTEMPT_MS));
+  try {
+    const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+      method: "POST",
+      signal: ctrl.signal,
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+        "HTTP-Referer": origin,
+        "X-Title": "A Casa di Marco - Marco Chat",
+      },
+      body: JSON.stringify({
+        model,
+        temperature: 0.3,
+        max_tokens: 400,
+        messages,
+      }),
+    });
+    if (!res.ok) {
+      const detail = await res.text().catch(() => "");
+      console.error("marco-chat openrouter", res.status, model, detail.slice(0, 200));
+      return { ok: false, status: res.status };
+    }
+    const data = (await res.json()) as { choices?: { message?: { content?: string } }[] };
+    const reply = data.choices?.[0]?.message?.content?.trim() || "";
+    if (!validReply(reply)) {
+      console.error("marco-chat risposta scartata", model, JSON.stringify(reply.slice(0, 120)));
+      return { ok: false, status: 502 };
+    }
+    return { ok: true, reply };
+  } catch (err) {
+    console.error("marco-chat fetch failed", model, err instanceof Error ? err.message : err);
+    return { ok: false, status: 502 };
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
 export async function POST(request: Request) {
   let body: { message?: unknown; lang?: unknown; history?: unknown };
   try {
     body = (await request.json()) as typeof body;
   } catch {
-    return Response.json({ error: "Richiesta non valida." }, { status: 400 });
+    return Response.json({ error: MARCO_UI.badRequest.it }, { status: 400 });
   }
 
   const message = typeof body.message === "string" ? body.message.trim().slice(0, 1000) : "";
@@ -49,15 +116,29 @@ export async function POST(request: Request) {
     : [];
 
   if (!message) {
-    return Response.json({ error: "Messaggio vuoto." }, { status: 400 });
+    return Response.json({ error: MARCO_UI.badRequest[lang] }, { status: 400 });
   }
   if (throttled(clientIp(request))) {
-    return Response.json({ error: MARCO_UI.offline[lang] }, { status: 429 });
+    return Response.json({ error: MARCO_UI.busy[lang] }, { status: 429 });
+  }
+  if (!isContentQuery(message)) {
+    return Response.json(
+      { reply: MARCO_UI.greeting[lang] },
+      { headers: { "Cache-Control": "no-store" } },
+    );
+  }
+
+  // Risposta già in cache: nessuna chiamata al modello.
+  const cached = await getCachedReply(message, lang);
+  if (cached) {
+    return Response.json(
+      { reply: cached },
+      { headers: { "Cache-Control": "no-store", "X-Marco-Cache": "hit" } },
+    );
   }
 
   const e = env as unknown as Record<string, string | undefined>;
   const apiKey = e.OPENROUTER_API_KEY || "";
-  const model = e.MARCO_MODEL || DEFAULT_MODEL;
   if (!apiKey) {
     return Response.json({ error: MARCO_UI.offline[lang] }, { status: 503 });
   }
@@ -71,44 +152,32 @@ export async function POST(request: Request) {
     );
   }
   const context = chunks.map((c) => `- ${c.text}`).join("\n");
+  const messages = [
+    { role: "system", content: marcoSystemPrompt(lang, context) },
+    ...history,
+    { role: "user", content: message },
+  ];
 
-  const ctrl = new AbortController();
-  const timeout = setTimeout(() => ctrl.abort(), TIMEOUT_MS);
-  try {
-    const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-      method: "POST",
-      signal: ctrl.signal,
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        "Content-Type": "application/json",
-        "HTTP-Referer": new URL(request.url).origin,
-        "X-Title": "A Casa di Marco - Marco Chat",
-      },
-      body: JSON.stringify({
-        model,
-        temperature: 0.3,
-        max_tokens: 400,
-        messages: [
-          { role: "system", content: marcoSystemPrompt(lang, context) },
-          ...history,
-          { role: "user", content: message },
-        ],
-      }),
-    });
-    if (!res.ok) {
-      console.error("marco-chat openrouter", res.status, model);
-      return Response.json({ error: MARCO_UI.offline[lang] }, { status: 502 });
+  const origin = new URL(request.url).origin;
+  let sawRateLimit = false;
+  const deadline = Date.now() + BUDGET_MS;
+
+  for (const model of modelList(e.MARCO_MODEL)) {
+    const left = deadline - Date.now();
+    if (left < 3000) break;
+    const out = await askModel(model, apiKey, origin, messages, left);
+    if (out.ok) {
+      await storeCachedReply(message, lang, out.reply, model);
+      return Response.json(
+        { reply: out.reply },
+        { headers: { "Cache-Control": "no-store", "X-Marco-Cache": "miss" } },
+      );
     }
-    const data = (await res.json()) as { choices?: { message?: { content?: string } }[] };
-    const reply = data.choices?.[0]?.message?.content?.trim() || "";
-    if (!reply) {
-      return Response.json({ error: MARCO_UI.offline[lang] }, { status: 502 });
-    }
-    return Response.json({ reply }, { headers: { "Cache-Control": "no-store" } });
-  } catch (err) {
-    console.error("marco-chat fetch failed", err instanceof Error ? err.message : err);
-    return Response.json({ error: MARCO_UI.offline[lang] }, { status: 502 });
-  } finally {
-    clearTimeout(timeout);
+    if (out.status === 429) sawRateLimit = true;
   }
+
+  return Response.json(
+    { error: sawRateLimit ? MARCO_UI.busy[lang] : MARCO_UI.trouble[lang] },
+    { status: 502 },
+  );
 }

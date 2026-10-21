@@ -3,7 +3,15 @@
 // Default: produzione. Passa --fast per non aspettare tra le richieste (rischio 429).
 // Nota: /api/marco-chat accetta max ~10 richieste/minuto per IP.
 
-const BASE = process.argv.find((a) => a.startsWith("http")) || "https://a-casa-di-marco.casa-di-marco.workers.dev";
+import { setDefaultResultOrder } from "node:dns";
+import { setDefaultAutoSelectFamily } from "node:net";
+
+// Alcune reti hanno un percorso IPv6 rotto verso Cloudflare (404/timeout): forza IPv4
+// e disattiva Happy Eyeballs, che altrimenti continua a scegliere IPv6.
+setDefaultResultOrder("ipv4first");
+setDefaultAutoSelectFamily(false);
+
+const BASE = process.argv.find((a) => a.startsWith("http")) || "https://a-casa-di-maro.casa-di-marco.workers.dev";
 const FAST = process.argv.includes("--fast");
 const GAP_MS = FAST ? 500 : 7000;
 
@@ -37,14 +45,28 @@ const BAD = [
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
+async function ask(message, lang) {
+  let lastErr;
+  for (let attempt = 1; attempt <= 2; attempt++) {
+    try {
+      return await fetch(`${BASE}/api/marco-chat`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message, lang }),
+        signal: AbortSignal.timeout(30000),
+      });
+    } catch (err) {
+      lastErr = err;
+      await sleep(1500);
+    }
+  }
+  throw lastErr;
+}
+
 let failed = 0;
 for (const [message, lang] of CASES) {
   try {
-    const res = await fetch(`${BASE}/api/marco-chat`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message, lang }),
-    });
+    const res = await ask(message, lang);
     const data = await res.json().catch(() => ({}));
     const reply = (data.reply || "").trim();
     const cache = res.headers.get("x-marco-cache") || "-";
@@ -52,7 +74,8 @@ for (const [message, lang] of CASES) {
     const bad = BAD.some((b) => low.includes(b));
     if (!res.ok || !reply || bad) {
       failed++;
-      console.error(`FAIL [${lang}] "${message}" http=${res.status} cache=${cache} -> ${(reply || data.error || "").slice(0, 120)}`);
+      const hint = res.status === 404 ? ` [${res.url}]` : "";
+      console.error(`FAIL [${lang}] "${message}" http=${res.status} cache=${cache}${hint} -> ${(reply || data.error || "").slice(0, 120)}`);
     } else {
       console.log(`ok   [${lang}] "${message}" http=${res.status} cache=${cache} -> ${reply.slice(0, 70).replace(/\s+/g, " ")}…`);
     }

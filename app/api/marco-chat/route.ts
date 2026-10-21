@@ -1,4 +1,4 @@
-import { env } from "cloudflare:workers";
+﻿import { env } from "cloudflare:workers";
 import { isLang, type Lang } from "../../../lib/i18n";
 import { marcoSystemPrompt, MARCO_UI } from "../../../lib/marco-kb";
 import { isContentQuery, retrieve } from "../../../lib/marco-retrieval";
@@ -19,10 +19,11 @@ const ATTEMPT_MS = 12000;
 // Fallback su Cloudflare Workers AI (binding `AI`), indipendente dalla quota OpenRouter.
 // I modelli vengono ritirati spesso: si prova la lista e si ricorda il primo che risponde.
 const DEFAULT_AI_MODELS = [
-  "@cf/google/gemma-4-26b-a4b-it",
-  "@cf/qwen/qwen3-30b-a3b-fp8",
   "@cf/meta/llama-3.1-8b-instruct-fp8",
+  "@cf/qwen/qwen3-30b-a3b-fp8",
+  "@cf/google/gemma-4-26b-a4b-it",
 ];
+const AI_ATTEMPT_MS = 10000;
 let aiModelOk = "";
 
 // Throttle leggero anti-abuso (per isolate, come il login host).
@@ -115,22 +116,33 @@ async function askWorkersAi(
   messages: { role: string; content: string }[],
 ): Promise<string | null> {
   try {
-    const out = (await ai.run(model, {
+    const run = ai.run(model, {
       messages,
       max_tokens: 400,
       temperature: 0.3,
-    })) as { response?: string };
+    }) as Promise<{ response?: string }>;
+    const out = await Promise.race([
+      run,
+      new Promise<never>((_, reject) =>
+        setTimeout(() => reject(new Error(`timeout ${AI_ATTEMPT_MS}ms`)), AI_ATTEMPT_MS),
+      ),
+    ]);
     const reply = (out?.response || "").trim();
     if (!validReply(reply)) {
-      console.error("marco-chat workers-ai risposta scartata", JSON.stringify(reply.slice(0, 120)));
+      console.error("marco-chat workers-ai risposta scartata", model, JSON.stringify(reply.slice(0, 120)));
       return null;
     }
     return reply;
   } catch (err) {
-    console.error("marco-chat workers-ai failed", err instanceof Error ? err.message : err);
+    console.error("marco-chat workers-ai failed", model, err instanceof Error ? err.message : err);
     return null;
   }
 }
+
+const noStore = (extra?: Record<string, string>) => ({
+  "Cache-Control": "no-store",
+  ...extra,
+});
 
 export async function POST(request: Request) {
   let body: { message?: unknown; lang?: unknown; history?: unknown };
@@ -207,7 +219,7 @@ export async function POST(request: Request) {
         await storeCachedReply(message, lang, out.reply, model);
         return Response.json(
           { reply: out.reply },
-          { headers: { "Cache-Control": "no-store", "X-Marco-Cache": "miss" } },
+          { headers: noStore({ "X-Marco-Cache": "miss", "X-Marco-Model": model }) },
         );
       }
       // La quota dei modelli :free è per account: inutile provare gli altri.
@@ -228,7 +240,7 @@ export async function POST(request: Request) {
         await storeCachedReply(message, lang, reply, `workers-ai:${aiModel}`);
         return Response.json(
           { reply },
-          { headers: { "Cache-Control": "no-store", "X-Marco-Cache": "miss-ai" } },
+          { headers: noStore({ "X-Marco-Cache": "miss-ai", "X-Marco-Model": `workers-ai:${aiModel}` }) },
         );
       }
       if (override) break;

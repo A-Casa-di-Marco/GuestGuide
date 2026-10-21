@@ -80,7 +80,7 @@ const AnimatedFeatureCard = React.forwardRef<HTMLDivElement, AnimatedFeatureCard
             // eslint-disable-next-line @next/next/no-img-element
             <img src={imageSrc} alt={tag} className="h-40 w-40 object-contain" loading="lazy" />
           ) : (
-            <span aria-hidden className="text-primary">
+            <span aria-hidden className="text-primary dark:text-secondary-foreground">
               {icon}
             </span>
           )}

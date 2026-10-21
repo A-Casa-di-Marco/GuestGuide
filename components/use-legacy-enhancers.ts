@@ -10,6 +10,43 @@ const WASTE_LABELS = {
   de: { category: "Kategorie", what: "Was hineingehört", attention: "Achtung" },
 } as const;
 
+const WIFI_COPIED: Record<Lang, string> = {
+  it: "Copiata ✓",
+  en: "Copied ✓",
+  es: "Copiada ✓",
+  fr: "Copié ✓",
+  de: "Kopiert ✓",
+};
+
+async function copyText(text: string): Promise<boolean> {
+  try {
+    await navigator.clipboard.writeText(text);
+    return true;
+  } catch {
+    try {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      ta.remove();
+      return true;
+    } catch {
+      return false;
+    }
+  }
+}
+
+function flashLabel(el: HTMLElement, msg: string) {
+  const orig = el.textContent;
+  el.textContent = msg;
+  window.setTimeout(() => {
+    el.textContent = orig;
+  }, 2000);
+}
+
 type Lang = keyof typeof WASTE_LABELS;
 
 /**
@@ -34,10 +71,47 @@ export function useLegacyEnhancers(ref: RefObject<HTMLElement | null>, lang: Lan
     };
     document.addEventListener("click", onMokaClick);
 
+    // 2. Wi-Fi: i browser non permettono il join diretto alla rete per motivi
+    // di sicurezza: copiamo la password e apriamo il pannello Wi-Fi del
+    // telefono (Android via intent, iOS via preferenze). Il link porta anche
+    // l'URI WIFI: standard come progressivo miglioramento.
+    const onWifiClick = async (e: Event) => {
+      const el = (e.target as HTMLElement).closest?.("[data-wifi-join],[data-wifi-copy]") as HTMLElement | null;
+      if (!el || !el.closest(".legacy-content")) return;
+      if (el.hasAttribute("data-wifi-copy")) {
+        e.preventDefault();
+        const value = el.getAttribute("data-copy-value") || "";
+        if (value && (await copyText(value))) flashLabel(el, WIFI_COPIED[lang] || WIFI_COPIED.it);
+        return;
+      }
+      const ssid = el.getAttribute("data-ssid") || "";
+      const password = el.getAttribute("data-password") || "";
+      const auth = el.getAttribute("data-auth") || "WPA";
+      const wifiUri = `WIFI:T:${auth};S:${ssid};P:${password};;`;
+      if (password && (await copyText(password))) flashLabel(el, WIFI_COPIED[lang] || WIFI_COPIED.it);
+      const ua = navigator.userAgent || "";
+      if (/Android/i.test(ua)) {
+        e.preventDefault();
+        window.location.href = "intent:#Intent;action=android.settings.WIFI_SETTINGS;end";
+        return;
+      }
+      if (/iPhone|iPad|iPod/i.test(ua)) {
+        e.preventDefault();
+        window.location.href = "App-Prefs:WIFI";
+        window.setTimeout(() => {
+          window.location.href = wifiUri;
+        }, 600);
+        return;
+      }
+      e.preventDefault();
+    };
+    document.addEventListener("click", onWifiClick);
+
     const root = ref.current;
     if (!root) {
       return () => {
         document.removeEventListener("click", onMokaClick);
+        document.removeEventListener("click", onWifiClick);
       };
     }
 
@@ -66,6 +140,7 @@ export function useLegacyEnhancers(ref: RefObject<HTMLElement | null>, lang: Lan
 
     return () => {
       document.removeEventListener("click", onMokaClick);
+      document.removeEventListener("click", onWifiClick);
       window.removeEventListener("hashchange", openFromHash);
     };
   }, [ref, lang, contentKey]);

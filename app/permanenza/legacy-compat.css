@@ -43,12 +43,17 @@
   color: var(--primary);
 }
 
-/* Link/bottoni generici */
-.legacy-content .btn,
-.legacy-content .shop-btn,
-.legacy-content .parking-btn,
-.legacy-content .transport-btn,
-.legacy-content .manual-help {
+/* Link/bottoni generici (selettore a.btn: batte la regola a:not qui sopra) */
+.legacy-content a.btn,
+.legacy-content button.btn,
+.legacy-content a.shop-btn,
+.legacy-content button.shop-btn,
+.legacy-content a.parking-btn,
+.legacy-content button.parking-btn,
+.legacy-content a.transport-btn,
+.legacy-content button.transport-btn,
+.legacy-content a.manual-help,
+.legacy-content button.manual-help {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -564,6 +569,38 @@
 
 .legacy-content .moka-option[hidden] {
   display: none;
+}
+
+/* Wi-Fi: connessione assistita (password copiata + impostazioni di sistema) */
+.legacy-content .wifi-connect {
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+  border-radius: 18px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.legacy-content .wifi-connect strong {
+  display: block;
+  color: var(--foreground);
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+.legacy-content .wifi-connect p {
+  margin: 0 0 14px;
+  font-size: 14px;
+}
+
+.legacy-content .wifi-connect-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.legacy-content .info-card .wifi-copy {
+  margin-top: 12px;
+  width: 100%;
 }
 
 /* Colazione form legacy residuo */

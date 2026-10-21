@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      statuses: write
     steps:
       - uses: actions/checkout@v4
 
@@ -38,10 +39,26 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
       - name: Deploy Worker
-        run: npx wrangler deploy --config dist/server/wrangler.json
+        run: npx wrangler deploy --config dist/server/wrangler.json 2>&1 | tee deploy.log
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      - name: Diagnostica URL pubblico
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          URL=$(grep -o 'https://[a-zA-Z0-9.-]*workers\.dev' deploy.log | head -1)
+          if [ -z "$URL" ]; then URL="https://a-casa-di-maro.casa-di-marco.workers.dev"; fi
+          CODE=$(curl -s -o /dev/null -w '%{http_code}' --max-time 20 "$URL" || true)
+          DESC="deployed=${URL} home=${CODE}"
+          echo "$DESC"
+          curl -s -X POST \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${{ github.repository }}/statuses/${{ github.sha }}" \
+            -d "{\"state\":\"success\",\"context\":\"cloudflare/deploy-url\",\"description\":\"$DESC\"}"
 
       - name: Imposta password del pannello
         run: echo "$OWNER_PASSWORD" | npx wrangler secret put OWNER_PASSWORD --config dist/server/wrangler.json

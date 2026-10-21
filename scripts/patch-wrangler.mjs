@@ -6,6 +6,9 @@ const FILE = 'dist/server/wrangler.json';
 const D1_NAME = 'a-casa-di-maro';
 
 const config = JSON.parse(readFileSync(FILE, 'utf8'));
+// Esposizione esplicita su <nome>.<account>.workers.dev: senza questa chiave un
+// deploy può lasciare il worker senza route e il dispatcher risponde 404.
+config.workers_dev = true;
 const db = config.d1_databases?.[0];
 if (!db) {
   console.error('wrangler.json: nessun d1_databases[0]');

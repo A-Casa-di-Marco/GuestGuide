@@ -17,7 +17,13 @@ const BUDGET_MS = 20000;
 const ATTEMPT_MS = 12000;
 
 // Fallback su Cloudflare Workers AI (binding `AI`), indipendente dalla quota OpenRouter.
-const DEFAULT_AI_MODEL = "@cf/meta/llama-3.1-8b-instruct";
+// I modelli vengono ritirati spesso: si prova la lista e si ricorda il primo che risponde.
+const DEFAULT_AI_MODELS = [
+  "@cf/google/gemma-4-26b-a4b-it",
+  "@cf/qwen/qwen3-30b-a3b-fp8",
+  "@cf/meta/llama-3.1-8b-instruct-fp8",
+];
+let aiModelOk = "";
 
 // Throttle leggero anti-abuso (per isolate, come il login host).
 const attempts = new Map<string, { n: number; reset: number }>();
@@ -213,14 +219,19 @@ export async function POST(request: Request) {
   }
 
   if (ai) {
-    const aiModel = e.MARCO_AI_MODEL || DEFAULT_AI_MODEL;
-    const reply = await askWorkersAi(ai, aiModel, messages);
-    if (reply) {
-      await storeCachedReply(message, lang, reply, `workers-ai:${aiModel}`);
-      return Response.json(
-        { reply },
-        { headers: { "Cache-Control": "no-store", "X-Marco-Cache": "miss-ai" } },
-      );
+    const override = (e.MARCO_AI_MODEL || "").trim();
+    const candidates = override ? [override] : aiModelOk ? [aiModelOk] : DEFAULT_AI_MODELS;
+    for (const aiModel of candidates) {
+      const reply = await askWorkersAi(ai, aiModel, messages);
+      if (reply) {
+        aiModelOk = aiModel;
+        await storeCachedReply(message, lang, reply, `workers-ai:${aiModel}`);
+        return Response.json(
+          { reply },
+          { headers: { "Cache-Control": "no-store", "X-Marco-Cache": "miss-ai" } },
+        );
+      }
+      if (override) break;
     }
   }
 

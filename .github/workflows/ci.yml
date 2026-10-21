@@ -13,6 +13,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm lint
       - run: pnpm exec tsc --noEmit
+      - run: node scripts/test-retrieval.mjs
       - run: node scripts/validate-tokens.mjs
       - run: node scripts/check-contrast.mjs
       - run: pnpm build

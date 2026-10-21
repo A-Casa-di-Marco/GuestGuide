@@ -49,6 +49,8 @@ La knowledge base è generata dai contenuti verificati della guida (`node script
 
 Le risposte valide sono salvate in D1 (`marco_cache`, TTL 14 giorni, tabella creata dalla migrazione in `drizzle/`): una domanda già vista non consuma quota del modello. Se cambi la base di conoscenza, rigenera il JSON e incrementa `CACHE_VERSION` in `lib/marco-cache.ts`.
 
+Se la quota gratuita di OpenRouter è esaurita (429) la chat non riprova inutilmente gli altri modelli: passa subito al fallback **Cloudflare Workers AI** (binding `AI`, modello `@cf/meta/llama-3.1-8b-instruct`, override con la env `MARCO_AI_MODEL`), che ha un tetto gratuito giornaliero indipendente. Il binding è aggiunto da `scripts/patch-wrangler.mjs`.
+
 Dopo il deploy, verifica la chat in produzione: `node scripts/smoke-marco.mjs` (10 domande reali in 5 lingue, con pausa di 7s per non urtare il throttle; `--fast` per saltarla).
 
 ### 1. Crea la chiave

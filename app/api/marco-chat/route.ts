@@ -13,8 +13,11 @@ const DEFAULT_MODELS = [
   "nvidia/nemotron-3-super-120b-a12b:free",
   "minimax/minimax-m3.1-flash:free",
 ];
-const BUDGET_MS = 30000;
-const ATTEMPT_MS = 20000;
+const BUDGET_MS = 20000;
+const ATTEMPT_MS = 12000;
+
+// Fallback su Cloudflare Workers AI (binding `AI`), indipendente dalla quota OpenRouter.
+const DEFAULT_AI_MODEL = "@cf/meta/llama-3.1-8b-instruct";
 
 // Throttle leggero anti-abuso (per isolate, come il login host).
 const attempts = new Map<string, { n: number; reset: number }>();
@@ -98,6 +101,31 @@ async function askModel(
   }
 }
 
+type AiBinding = { run: (model: string, input: unknown) => Promise<unknown> };
+
+async function askWorkersAi(
+  ai: AiBinding,
+  model: string,
+  messages: { role: string; content: string }[],
+): Promise<string | null> {
+  try {
+    const out = (await ai.run(model, {
+      messages,
+      max_tokens: 400,
+      temperature: 0.3,
+    })) as { response?: string };
+    const reply = (out?.response || "").trim();
+    if (!validReply(reply)) {
+      console.error("marco-chat workers-ai risposta scartata", JSON.stringify(reply.slice(0, 120)));
+      return null;
+    }
+    return reply;
+  } catch (err) {
+    console.error("marco-chat workers-ai failed", err instanceof Error ? err.message : err);
+    return null;
+  }
+}
+
 export async function POST(request: Request) {
   let body: { message?: unknown; lang?: unknown; history?: unknown };
   try {
@@ -138,10 +166,8 @@ export async function POST(request: Request) {
   }
 
   const e = env as unknown as Record<string, string | undefined>;
+  const ai = (env as unknown as { AI?: AiBinding }).AI;
   const apiKey = e.OPENROUTER_API_KEY || "";
-  if (!apiKey) {
-    return Response.json({ error: MARCO_UI.offline[lang] }, { status: 503 });
-  }
 
   // RAG simulata: solo i brani pertinenti entrano nel prompt.
   const chunks = retrieve(message, lang);
@@ -151,6 +177,10 @@ export async function POST(request: Request) {
       { headers: { "Cache-Control": "no-store" } },
     );
   }
+  if (!apiKey && !ai) {
+    return Response.json({ error: MARCO_UI.offline[lang] }, { status: 503 });
+  }
+
   const context = chunks.map((c) => `- ${c.text}`).join("\n");
   const messages = [
     { role: "system", content: marcoSystemPrompt(lang, context) },
@@ -162,18 +192,36 @@ export async function POST(request: Request) {
   let sawRateLimit = false;
   const deadline = Date.now() + BUDGET_MS;
 
-  for (const model of modelList(e.MARCO_MODEL)) {
-    const left = deadline - Date.now();
-    if (left < 3000) break;
-    const out = await askModel(model, apiKey, origin, messages, left);
-    if (out.ok) {
-      await storeCachedReply(message, lang, out.reply, model);
+  if (apiKey) {
+    for (const model of modelList(e.MARCO_MODEL)) {
+      const left = deadline - Date.now();
+      if (left < 3000) break;
+      const out = await askModel(model, apiKey, origin, messages, left);
+      if (out.ok) {
+        await storeCachedReply(message, lang, out.reply, model);
+        return Response.json(
+          { reply: out.reply },
+          { headers: { "Cache-Control": "no-store", "X-Marco-Cache": "miss" } },
+        );
+      }
+      // La quota dei modelli :free è per account: inutile provare gli altri.
+      if (out.status === 429) {
+        sawRateLimit = true;
+        break;
+      }
+    }
+  }
+
+  if (ai) {
+    const aiModel = e.MARCO_AI_MODEL || DEFAULT_AI_MODEL;
+    const reply = await askWorkersAi(ai, aiModel, messages);
+    if (reply) {
+      await storeCachedReply(message, lang, reply, `workers-ai:${aiModel}`);
       return Response.json(
-        { reply: out.reply },
-        { headers: { "Cache-Control": "no-store", "X-Marco-Cache": "miss" } },
+        { reply },
+        { headers: { "Cache-Control": "no-store", "X-Marco-Cache": "miss-ai" } },
       );
     }
-    if (out.status === 429) sawRateLimit = true;
   }
 
   return Response.json(

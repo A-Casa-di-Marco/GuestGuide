@@ -43,7 +43,13 @@ Rigenera i testi dopo modifiche ai legacy: `node scripts/build-content.mjs && no
 
 ## Chat di Marco (OpenRouter, solo modelli free)
 
-La chat chiama `POST /api/marco-chat`, che inoltra a `https://openrouter.ai/api/v1/chat/completions` con modello `openrouter/free` (router automatico dei modelli gratuiti; override con secret `MARCO_MODEL`, es. `meta-llama/llama-3.2-3b-instruct:free`).
+La chat chiama `POST /api/marco-chat`, che inoltra a `https://openrouter.ai/api/v1/chat/completions` con una lista di modelli gratuiti in ordine di preferenza (`google/gemma-4-31b-it:free`, `nvidia/nemotron-3-super-120b-a12b:free`, `minimax/minimax-m3.1-flash:free`): se il primo fallisce, va in timeout o restituisce una risposta non valida, prova il successivo. Override con il secret `MARCO_MODEL` (anche lista separata da virgole).
+
+La knowledge base è generata dai contenuti verificati della guida (`node scripts/build-marco-kb.mjs` → `lib/kb/guide-kb.json`: luoghi, ristoranti, regole, manuale, pagine servizi + `lib/kb/curated.mjs`). Il retriever (`lib/marco-retrieval-core.mjs`) lavora per radici, così domande come "dove si parcheggia?" trovano la pagina Parcheggio. `node scripts/test-retrieval.mjs` verifica ~30 domande in 5 lingue ed è eseguito in CI.
+
+Le risposte valide sono salvate in D1 (`marco_cache`, TTL 14 giorni, tabella creata dalla migrazione in `drizzle/`): una domanda già vista non consuma quota del modello. Se cambi la base di conoscenza, rigenera il JSON e incrementa `CACHE_VERSION` in `lib/marco-cache.ts`.
+
+Dopo il deploy, verifica la chat in produzione: `node scripts/smoke-marco.mjs` (10 domande reali in 5 lingue, con pausa di 7s per non urtare il throttle; `--fast` per saltarla).
 
 ### 1. Crea la chiave
 
@@ -68,7 +74,7 @@ e riavvia `pnpm dev`. Nota Windows: scrivi il file in UTF-8 senza BOM (es. con u
 
 ## CI/CD
 
-- `ci.yml` (push/PR): install, lint, `tsc`, validate-tokens, check-contrast, build.
+- `ci.yml` (push/PR): install, lint, `tsc`, test-retrieval, validate-tokens, check-contrast, build.
 - `deploy.yml` (push su `main`): build, migrazioni D1, deploy Worker, `wrangler secret put` di `OWNER_PASSWORD` e `OPENROUTER_API_KEY` dai GitHub secrets.
 
 ## Test e QA
